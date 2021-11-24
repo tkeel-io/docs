@@ -1,6 +1,6 @@
 # Summary
 
-* [介绍](intro.md)
+* [介绍](docs/intro.md)
 * [第1部分 - 概述](part1/intro.md)
 * [第2部分 - 安全机制](part2/intro.md)
 * [第3部分 - 数据模型（Core）](part3/intro.md)

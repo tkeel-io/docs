@@ -1,6 +1,5 @@
 ---
-sidebar_position: 2
-slug: /intro
+sidebar_position: 5
 ---
 
 # tKeel 是什么？

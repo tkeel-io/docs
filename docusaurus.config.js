@@ -14,7 +14,7 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'images/favicon.ico',
   organizationName: 'tkeel-io', // Usually your GitHub org/user name.
-  projectName: 'tkeel', // Usually your repo name.
+  projectName: 'docs', // Usually your repo name.
   deploymentBranch: 'gh-pages',	
 
   presets: [

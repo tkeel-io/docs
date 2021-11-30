@@ -26,7 +26,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/',
           // Please change this to your repo.
-          editUrl: 'https://github.com/tkeel-io/docs/main/',
+          editUrl: 'https://github.com/tkeel-io/docs/tree/main/',
         },
         theme: {
           customCss: require.resolve('./src/styles/custom.scss'),

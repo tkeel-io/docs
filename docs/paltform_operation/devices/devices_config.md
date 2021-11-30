@@ -1,5 +1,7 @@
 ---
-sidebar_position: 1
+sidebar_position: 3
+title: "Devices Config"
+id: devices-config
 ---
 
 # 如何连接你的设备

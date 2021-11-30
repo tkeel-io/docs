@@ -1,46 +1,48 @@
 ---
-sidebar_position: 1
+sidebar_position: 3
+title: " Getting Started"
+id: connect-device
 ---
 
-# 如何连接你的设备
+# Getting Started
+跟着本文档的流程，您将体验设备连接以及获取相应数据的整体表现。
+## Prerequisites
 
-## 前置条件
+确保平台中安装如下三个插件 ：
+1. iothub
+2. device
+3. core;
 
-需安装如下四个plugin ：1、iothub   2、device   3、core;
 
-
+### 第一步：在 tkeel 平台申请用户 token
 
 ## 流程
-
-
-
 ### 第一步：在tkeel 平台申请用户token
 
-获取用户**access_token**后，请求开放接口时将**access_token**添加在请求头，格式：
+获取用户 **access_token** 后，请求开放接口时将 **access_token** 添加在请求头，格式：
 
 Authorization：Bearer **access_token**
 
 #### 动作:
-##### 1 、在管理平台创建一个租户&租户管理员   
+##### 1. 在管理平台创建一个租户&租户管理员   
 
-URL
-
+[创建租户&租户管理员 API]
 ```
 http://host:port/v1/tenants
 ```
 
- params
+ Params
 
 | Name           | Type   | Required | Where | Description       |
 | -------------- | ------ | -------- | ----- | ----------------- |
-| title          | stirng | true     | body  | 租户Title(租户名) |
+| title          | stirng | true     | body  | 租户 Title (租户名) |
 | remark         | string | false    | body  | 租户备注信息      |
 | admin.username | string | true     | body  | 租户管理员-用户名 |
 | admin.password | string | true     | body  | 租户管理员-密码   |
 
-example
+**example**
 
-```
+```bash
 curl -X POST 'http://192.168.123.12:30777/v1/tenants' \
  -H 'Content-Type: application/json' \
  -d '{
@@ -73,10 +75,10 @@ expected result
 }
 ```
 
-##### 2、获取用户(管理员)Token
+##### 2. 获取用户(管理员)Token
 
-URL
 
+[获取用户 Token API]
 ```
 http://host:port/apis/security/v1/oauth/token
 ```
@@ -85,13 +87,13 @@ params
 
 | Name       | Type   | Required | Where | Description                                    |
 | ---------- | ------ | -------- | ----- | ---------------------------------------------- |
-| grant_type | string | true     | query | 授权类型(password)                             |
-| username   | string | true     | query | 用户名字,注意这儿格式必需为`tenantID-username` |
+| grant_type | string | true     | query | 授权类型（password）                             |
+| username   | string | true     | query | 用户名字,注意这儿格式必需为 `tenantID-username`  |
 | password   | string | true     | query | 用户密码                                       |
 
-example
+**example**
 
-```
+```bash
 curl -X GET 'http://192.168.123.11:30707/apis/security/v1/oauth/token?grant_type=password&username=6-demoadmin&password=123456'
 ```
 
@@ -110,16 +112,13 @@ expected result
 }
 ```
 
-
-
-### 第二步： 在tkeel 平台注册数字化设备
+### 第二步： 在 tkeel 平台注册数字化设备
 
 #### 依赖插件：device ，插件功能列表：
-#### 动作：
-##### 1 、创建设备
+#### 操作：
+##### 1. 创建设备
 
-URL
-
+[创建设备 API]
 ```
 http://host:port/v1/devices
 ```
@@ -132,7 +131,7 @@ params
 |      |      |          |       |             |
 |      |      |          |       |             |
 
-example
+**Example**
 
 ```
 ```
@@ -144,15 +143,15 @@ expected result
 
 
 
-##### 2 、创建设备组（可选）
+##### 2. 创建设备组（可选）
 
-URL
+[创建设备组 API]
 
 ```
 http://host:port/v1/groups
 ```
 
-params
+Params
 
 | Name | Type | Required | Where | Description |
 | ---- | ---- | -------- | ----- | ----------- |
@@ -160,27 +159,26 @@ params
 |      |      |          |       |             |
 |      |      |          |       |             |
 
-example
+**Example**
 
 ```
 ```
 
-expected result
+Expected result
 
 ```
 ```
 
 
 
-##### 3 、添加设备进设备组分类（可选）
+##### 3. 添加设备进设备组分类（可选）
 
-URL
-
+[添加设备进设备组分类 API]
 ```
 httpL//host:port/v1/{id}/items
 ```
 
-params
+Params
 
 | Name | Type | Required | Where | Description |
 | ---- | ---- | -------- | ----- | ----------- |
@@ -188,13 +186,13 @@ params
 |      |      |          |       |             |
 |      |      |          |       |             |
 
-example
+**Example**
 
 ```
 
 ```
 
-expected result
+Expected result
 
 ```
 
@@ -203,35 +201,29 @@ expected result
 
 
 ### 第三步： 发送数据到tkeel 平台
-
-
-
-#### 依赖插件：iothub、core
-#### 动作：
+#### 依赖插件：iothub， [core](../../core/getting_started.md)
+#### 操作：
 ##### MQTT 协议：
 
-publish topic
+Publish Topic
 
 ```
 
 ```
 
-example
+**Example**
 
 ```
 ```
-
-
-
 ##### HTTP 连接：
 
-URL
+[请求 API]
 
 ```
 
 ```
 
-example
+**Example**
 
 ```
 ```
@@ -240,13 +232,13 @@ example
 
 ##### COAP 连接：
 
-URL
+[请求 API]
 
 ```
 
 ```
 
-example
+**Example**
 
 ```
 
@@ -254,31 +246,29 @@ example
 
 
 
-### 第四步： 从tkeel平台 获取设备数据
-
-
+### 第四步： 从 tkeel平台 获取设备数据
 
 #### 依赖插件：device
-#### 动作：
+#### 操作：
 ##### 查询：
 
-URL
+[设备查询 API]
 
 ```
 
 ```
 
-params
+Params
 
 ```
 ```
 
-example
+**Example**
 
 ```
 ```
 
-expected result
+Expected result
 
 ```
 ```

@@ -15,7 +15,7 @@ const config = {
   favicon: 'images/favicon.ico',
   organizationName: 'tkeel-io', // Usually your GitHub org/user name.
   projectName: 'docs', // Usually your repo name.
-  deploymentBranch: 'gh-pages',	
+  deploymentBranch: 'gh-pages',
 
   presets: [
     [
@@ -39,17 +39,17 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'My Site',
+        title: 'tKeel',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'tKeel',
           src: 'images/logo.svg',
         },
         items: [
           {
             type: 'doc',
-            docId: 'intro',
+            docId: 'getting_started/installation',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Documents',
           },
         ],
       },
@@ -60,17 +60,17 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
+                label: 'Start',
                 to: '/',
               },
             ],
           },
           {
-            title: 'More',
+            title: 'Github',
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/tkeel-io/docs',
+                href: 'https://github.com/tkeel-io/tkeel',
               },
             ],
           },
@@ -84,6 +84,11 @@ const config = {
     }),
 
   plugins: ['docusaurus-plugin-sass'],
+
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'zh-cn'],
+  },
 };
 
 module.exports = config;

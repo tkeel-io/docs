@@ -1,9 +1,8 @@
 ---
-title: Getting Started
+title: Overview
 ---
 
-# Getting Started
-## Introduction
+# Overview
 tKeel 开放平台有强大的拓展功能，支持安装任意您需要的插件。
 
 本页指南将引导您通过 tKeel CLI 完成在 tKeel 上安装和注册一个指定 helm 源的插件。有关更多信息，请参见 [在 tKeel 上安装插件] 和在 [tKeel 上注册插件]。

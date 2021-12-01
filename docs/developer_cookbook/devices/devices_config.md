@@ -1,10 +1,10 @@
 ---
 sidebar_position: 3
-title: " Getting Started"
+title: "How-To: Device Access"
 id: connect-device
 ---
 
-# Getting Started
+# How-To: Device Access
 跟着本文档的流程，您将体验设备连接以及获取相应数据的整体表现。
 ## Prerequisites
 
@@ -13,11 +13,8 @@ id: connect-device
 2. device
 3. core;
 
-
-### 第一步：在 tkeel 平台申请用户 token
-
 ## 流程
-### 第一步：在tkeel 平台申请用户token
+### 第一步：在 tKeel 平台申请用户 token
 
 获取用户 **access_token** 后，请求开放接口时将 **access_token** 添加在请求头，格式：
 
@@ -201,7 +198,7 @@ Expected result
 
 
 ### 第三步： 发送数据到tkeel 平台
-#### 依赖插件：iothub， [core](../../core/getting_started.md)
+#### 依赖插件：iothub， [core](../../concepts/core.md)
 #### 操作：
 ##### MQTT 协议：
 

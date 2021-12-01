@@ -16,4 +16,19 @@ title: 创建插件
 - 基础的 Go 编程能力
 
 #### 开始一个插件项目
-xxxxxx
+#### 开发插件&安装部署->tKeel平台
+1、	基于tKeet平台提供的项目框架工具Artisan快速生成自己的工程 https://tkeel-io.github.io/docs/developer_cookbook/artisan
+2、	进入到项目目录
+     ![image](https://user-images.githubusercontent.com/84012206/144231710-250d6203-61e7-4136-a779-1c56f001008d.png)
+
+3、	通过docker build -t helloworld:v1 . 命令镜像文件
+ 
+     ![image](https://user-images.githubusercontent.com/84012206/144231741-5c5710dc-9b72-451f-927b-a9814720480b.png)
+     ![image](https://user-images.githubusercontent.com/84012206/144231768-77602a16-e7e7-487b-b9fe-ed21588d1ca3.png)
+
+
+4、	推送到镜像仓库
+     
+     ![image](https://user-images.githubusercontent.com/84012206/144231788-ed86aad9-0432-4f58-9579-da20f25f4e6d.png)
+
+5、	编写chart & 打包 chart

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: OAuth2 Access
+title: 授权服务
 ---
 # OAuth Access
 该文档将会为您展示 api 的访问控制的安全机制
@@ -8,9 +8,9 @@ title: OAuth2 Access
 ## 怎样通过 api 访问平台
 当外部以调用接口的方式访问平台时，需要通过平台的授权服务的成功认证才能访问到相应接口。授权服务支持标准的 oaut2 协议。
 
-## 支持的 oauth2 
+## 支持的授权类型 
 
-### 1 password √
+### 1 password 
 
 资源请求方(client方)使用
 如果充分信任接入应用(client), 用户就可以直接把用户名密码给接入应用.
@@ -27,7 +27,8 @@ title: OAuth2 Access
 - password: `client_secret`
 
 **Header**  
-`Content-Type: application/x-www-form-urlencoded`
+`Content-Type: application/x-www-form-urlencoded` 
+
 
 **Body参数说明**  
 

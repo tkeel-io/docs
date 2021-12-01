@@ -1,12 +1,12 @@
 ---
-title: OAuth 2 Acceess
+title: OAuth 接入
 ---
-# OAuth Acceess
+# OAuth 接入
 该文档将会为您展示如何通过配置和调用认证接口。
 
 ## 第三方平台
 ### QQ
 
-### WeChat
+### 微信
 
 ## 自定义平台

@@ -1,7 +1,7 @@
 ---
-title: Auth Server
+title: Auth 服务
 ---
-# Auth Server
+# Auth 服务
 该文档将会为您展示平台是如何架设的认证服务，以及如何使用认证服务。
 
 ## 创建用户

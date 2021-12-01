@@ -1,22 +1,22 @@
 ---
 id: init
 sidebar_position: 2
-title: ⚙ Init tKeel Platform
+title: 初始 tKeel Platform
 slug: /init
 ---
 
-# Init tKeel Platform
+# 初始 tKeel Platform
 
 > 我们希望我们提供的安装方式能符合我们平台气质——简单、便捷。
 
 在您的环境运行 tKeel 平台有多种选择，您可以选择任意一个让您感到舒适的方式安装。
 
 
-## Get Started by tKeel CLI
+## 通过 tKeel CLI 安装平台
 使用 _tKeel_ CLI 是我们最推荐的方式，因为它将使您的安装简单到只需一条命令。不过请先正确 [安装 tKeel CLI](cli#install-cli)
 
 但是使用 tKeel CLI 之前请先确保在您的环境中满足如下要求：
-#### Prerequisites
+#### 前提条件
 - ✅ 如果您需要在 Kubernetes 中安装 tKeel ，确保您的环境中已 [安装 dapr](https://docs.dapr.io/operations/hosting/kubernetes/kubernetes-deploy) 且 dapr 版本必须 `>= 1.4`。
 - ✅ 环境中已安装 dapr，且开启 mTLS
 
@@ -24,7 +24,7 @@ slug: /init
 > * dapr 在 Kubernetes 上安装时，默认开启了 mTLS。
 
 
-#### Initialize tKeel Platform by CLI
+#### 使用 CLI 初始化平台
 使用上面安装的命令行工具初始 tKeel 平台。
 ```bash
 tkeel init --debug --wait --timeout 600

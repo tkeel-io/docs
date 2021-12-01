@@ -89,17 +89,6 @@ expected result
 ##### 1. 创建设备
 
 [创建设备 API]
-```
-http://host:port/v1/devices
-```
-
-params
-
-| Name | Type | Required | Where | Description |
-| ---- | ---- | -------- | ----- | ----------- |
-|      |      |          |       |             |
-|      |      |          |       |             |
-|      |      |          |       |             |
 
 **Example**
 
@@ -115,18 +104,6 @@ expected result
 
 [创建设备组 API]
 
-```
-http://host:port/v1/groups
-```
-
-Params
-
-| Name | Type | Required | Where | Description |
-| ---- | ---- | -------- | ----- | ----------- |
-|      |      |          |       |             |
-|      |      |          |       |             |
-|      |      |          |       |             |
-
 **Example**
 
 ```
@@ -139,20 +116,9 @@ Expected result
 
 
 
-###### 3. 添加设备进设备组分类（可选）
+##### 3. 添加设备进设备组分类（可选）
 
 [添加设备进设备组分类 API]
-```
-httpL//host:port/v1/{id}/items
-```
-
-Params
-
-| Name | Type | Required | Where | Description |
-| ---- | ---- | -------- | ----- | ----------- |
-|      |      |          |       |             |
-|      |      |          |       |             |
-|      |      |          |       |             |
 
 **Example**
 
@@ -165,13 +131,12 @@ Expected result
 ```
 
 ```
-
 
 
 #### 第三步： 发送数据到 tkeel 平台
 ##### MQTT 协议：
 
-Publish Topic
+[Publish Topic]
 
 ```
 

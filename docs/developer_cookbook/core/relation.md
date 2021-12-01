@@ -1,10 +1,10 @@
 ---
-title: Relation
+title: 关系
 sidebar_position: 4
 ---
-# Relation
+# 关系
 该片文档将会为您介绍如何操作 Core 强大的『关系功能』。
-## Introduction
+## 简介
 什么是 关系 ，实现了什么，解决了什么问题。
 ## 建立关系
 ### 关于创建的高级话题

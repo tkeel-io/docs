@@ -1,10 +1,10 @@
 ---
-title: Entity
+title: 实体
 sidebar_position: 1
 ---
-# Entity
+# 实体
 该篇文档将会为您介绍如何操作 Core 实体（Entity）对象。
-## Introduction
+## 简介
 什么是 Entity ，实现了什么，解决了什么问题。
 ## 创建实体
 ### 关于创建实体的高级话题

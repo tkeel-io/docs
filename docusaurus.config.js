@@ -45,12 +45,6 @@ const config = {
           src: 'images/logo.svg',
         },
         items: [
-          {
-            type: 'doc',
-            docId: 'getting_started/quickstart',
-            position: 'left',
-            label: 'Quick Start',
-          },
         ],
       },
       footer: {

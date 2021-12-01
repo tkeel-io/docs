@@ -6,17 +6,17 @@ sidebar_position: 1
 # Artisan
 这是我们专门为开发者打造的一款用于生成项目架构和一些代码的 CLI 工具。
 
-## Install
+## 安装
 ```bash
-go install github.com/tkeel-io/tkeel-interface/tool/cmd/artisan
+go install github.com/tkeel-io/tkeel-interface/tool/cmd/artisan@latest
 ```
-### Required
+### 前提条件
 - [go](https://golang.org/dl/)
 - [protoc](https://github.com/protocolbuffers/protobuf)
 - [protoc-gen-go](https://github.com/protocolbuffers/protobuf-go)
 
-## Usage
-### Create project template
+## 使用方法
+### 创建一个新项目
 ```bash
 artisan new github.com/tkeel-io/helloworld
 
@@ -25,7 +25,7 @@ cd helloworld
 # Download necessary plug-ins
 make init
 ```
-### Generate proto template
+### 生成 protobuf
 ```bash
 artisan proto add api/helloworld/v1/helloworld.proto
 

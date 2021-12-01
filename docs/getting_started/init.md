@@ -1,7 +1,7 @@
 ---
 id: init
 sidebar_position: 2
-title: 初始 tKeel Platform
+title: 初始 tKeel 平台
 slug: /init
 ---
 

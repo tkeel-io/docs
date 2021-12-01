@@ -47,9 +47,9 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'getting_started/installation',
+            docId: 'getting_started/quickstart',
             position: 'left',
-            label: 'Documents',
+            label: 'Quick Start',
           },
         ],
       },

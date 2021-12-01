@@ -1,10 +1,12 @@
 ---
-title: 🕹️ CLI
-sidebar_position: 2
+title: 🕹️ Install tKeel CLI
+sidebar_position: 1
 slug: /cli
 ---
-# CLI
+# Install tKeel CLI
+
 ## Introduction
+
 tKeel CLI 是您用于各种 tKeel 相关任务操作的简易使用工具。
 
 您可以使用它来 **安装 tKeel 平台**、**管理插件** 以及 **用户模块**。

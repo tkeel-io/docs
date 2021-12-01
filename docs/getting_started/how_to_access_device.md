@@ -1,11 +1,19 @@
 ---
-title: 🌐 Use tKeel Platform
+title: 🌐 如何使用tkeel平台连接你的设备
 sidebar_position: 3
 slug: /use
 ---
-# Use tKeel Platform
-## Introduction
-该篇文档告诉您如何使用tkeel平台连接您的设备及安装所需插件
+
+# 如何连接您的设备 
+
+
+
+## 前置条件
+
+### 完成设备连接需安装2个插件
+1. iothub 插件：连接设备
+
+2. device 插件 ：管理设备
 
 
 

@@ -1,28 +1,45 @@
 ---
-title: 🚀 如何连接您的设备
+title: 🌐 Use tKeel Platform
 sidebar_position: 3
-slug: /how-to-access-your-device
+slug: /use
 ---
-# 如何连接您的设备
-该篇文档通过命令行终端的方式快速带领您将您的设备连接至 tKeel 平台。
-## 前提条件
+# Use tKeel Platform
+## Introduction
+该篇文档告诉您如何使用tkeel平台连接您的设备及安装所需插件
 
-需要平台中安装如下三个插件模块 ：
-1. iothub
-2. device
-3. core;
 
-### 第一步：在 tkeel 平台申请用户 token
 
-获取用户 **access_token** 后，请求开放接口时将 **access_token** 添加在请求头，格式：
+## 如何在tkeel平台安装插件
 
-Authorization：Bearer **access_token**
+
+
+连接您的设备需要平台中安装如下2个插件模块：
+
+### Step 1 : 安装用于连接设备的插件：iothub
+
+```bash
+tkeel plugin install https://tkeel-io.github.io/helm-charts/tkeel-iothub@v0.2.0 tkeel-iothub
+```
+
+###  Step 2:  安装用于管理设备的插件: device
+
+```bash
+tkeel plugin install https://tkeel-io.github.io/helm-charts/tkeel-device@v0.2.0 tkeel-device
+```
+
+
+
+## 如何在tkeel平台连接您的设备
+
+
+
+### Step 1：在 tkeel 平台申请用户 token 
+
+
 
 #### 1. 在管理平台创建一个租户&租户管理员
 
-[创建租户&租户管理员 API]
-
-**示例**
+**example**
 
 ```bash
 curl -X POST 'http://192.168.123.12:30777/v1/tenants' \
@@ -35,9 +52,9 @@ curl -X POST 'http://192.168.123.12:30777/v1/tenants' \
  
 ```
 
-预期结果 
+**expected result ** 
 
-```
+```json
 {
     "code": 0,
     "msg": "ok",
@@ -57,19 +74,19 @@ curl -X POST 'http://192.168.123.12:30777/v1/tenants' \
 }
 ```
 
-#### 2. 获取用户(管理员) Token
 
-[获取用户 Token API]
 
-**示例**
+#### 2. 利用租户&租户管理员分配用户(管理员) Token
+
+**example**
 
 ```bash
 curl -X GET 'http://192.168.123.11:30707/apis/security/v1/oauth/token?grant_type=password&username=6-demoadmin&password=123456'
 ```
 
-预期结果 
+**expected result** 
 
-```
+```json
 {
     "code": 0,
     "msg": "ok",
@@ -82,91 +99,130 @@ curl -X GET 'http://192.168.123.11:30707/apis/security/v1/oauth/token?grant_type
 }
 ```
 
-### 第二步： 在 tkeel 平台注册数字化设备
+
+
+### Step 2： 在 tkeel 平台注册数字化设备
+
+step 1获取用户 **access_token** 后，请求开放接口时将 **access_token** 添加在请求头，格式：
+
+Authorization：Bearer **access_token**
+
 #### 1. 创建设备
 
-[创建设备 API]
+**example**
 
-**示例**
-
-```
-```
-
-预期结果
-
-```
-```
-
-##### 2. 创建设备组（可选）
-
-[创建设备组 API]
-
-**示例**
-
-```
+```bash
+curl --location --request POST '127.0.0.1:31234/v1/devices' \
+--header 'Authorization: Bearer <分配的用户result “access_token”字段> '\
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name":"dev_name",
+    "desc":"dev_desc",
+    "group":"default",
+    "ext":{
+        "version":"1.1",
+        "other":"other"
+    }
+}'
 ```
 
-预期结果
+**expected result**
 
-```
+```json
+{"dev":{"name":"dev_name","desc":"dev_desc","group":"default","ext":{"other":"other","version":"1.1"}},"sysField":{"_id":"f2dbf4a9-bc0b-4dc4-9a3c-aac568e81cd3","_createdAt":1638347417928116200,"_updatedAt":1638347417928116200,"_enable":true,"_token":"eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbnRpdHlfaWQiOiJmMmRiZjRhOS1iYzBiLTRkYzQtOWEzYy1hYWM1NjhlODFjZDMiLCJlbnRpdHlfdHlwZSI6ImRldmljZSIsImV4cCI6MTY2OTg4MzQxNywib3duZXIiOiJ1c3ItNC05YTRkZjljZTYwNGU4MDQ0ZmZmMGQzNjE1Mzk0NzQ1ZiJ9.L9o4ixGnqQqFAuEkqkjfxmAUUovammgQm8iKPVQhjBavpv9SF3xuWohvNNij5TFXeO_ejHOGm8vfLebKgcyX3g"}}
 ```
 
 
 
-##### 3. 添加设备进设备组分类（可选）
+#### 2. 创建设备组（可选）
 
-[添加设备进设备组分类 API]
+**example**
 
-**示例**
-
+```bash
+curl --location --request POST '127.0.0.1:31234/v1/groups' \
+--header 'Authorization: Bearer <分配的用户result “access_token”字段>\
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "name":"group_name",
+    "desc":"group desc",
+    "parent":"root",
+    "ext":{
+        "classify":"abc",
+        "other":"ohter"
+    }
+}'
 ```
 
+**expected result**
+
+```json
+{"result":"ok","entityInfo":{"group":{"name":"group_name","desc":"group desc","parent":"root","ext":{"classify":"abc","other":"ohter"}},"subIds":{},"sysField":{"_id":"c175a35e-4171-4bf0-b53b-8d05caf2e394","_createdAt":1638348873147219200,"_updatedAt":1638348873147219500}}}
 ```
 
-预期结果
 
+
+#### 3. 添加设备进设备组分类（可选）
+
+**example**
+
+```bash
+curl --location --request POST '127.0.0.1:31234/v1/groups/<创建设备组result “_id” 字段>/items' \
+--header 'Authorization: Bearer <分配的用户result “access_token”字段> '\
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "ids":["<创建设备result “_id”字段 >"]
+}'
 ```
 
+**expected result**
+
+```json
+{"result":"Ok"}
 ```
 
 
-### 第三步： 发送数据到 tkeel 平台
+
+#### 4. 查看设备定义详情
+
+**example**
+
+```bash
+curl --location --request GET '127.0.0.1:31234/v1/devices/<创建设备result “_id”字段>' \
+--header 'Authorization: Bearer <分配的用户result “access_token”字段>'\
+```
+
+**expected result**
+
+```json
+{"dev":{"name":"dev_name","desc":"dev_desc","group":"c175a35e-4171-4bf0-b53b-8d05caf2e394","ext":{"other":"other","version":"1.1"}},"sysField":{"_id":"f2dbf4a9-bc0b-4dc4-9a3c-aac568e81cd3","_createdAt":1638347417928116200,"_updatedAt":1638347417928116200,"_enable":true,"_token":"eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbnRpdHlfaWQiOiJmMmRiZjRhOS1iYzBiLTRkYzQtOWEzYy1hYWM1NjhlODFjZDMiLCJlbnRpdHlfdHlwZSI6ImRldmljZSIsImV4cCI6MTY2OTg4MzQxNywib3duZXIiOiJ1c3ItNC05YTRkZjljZTYwNGU4MDQ0ZmZmMGQzNjE1Mzk0NzQ1ZiJ9.L9o4ixGnqQqFAuEkqkjfxmAUUovammgQm8iKPVQhjBavpv9SF3xuWohvNNij5TFXeO_ejHOGm8vfLebKgcyX3g"}}
+```
+
+
+
+### Step 3： 发送数据到 tkeel 平台
+
+
+
 #### MQTT 协议：
 
-[Publish Topic]
-
-```
-
-```
-
-**示例**
+**example**
 
 ```
 ```
+
+
 #### HTTP 连接：
 
-[请求 API]
-
-```
-
-```
-
-**示例**
+**example**
 
 ```
 ```
 
 
 
-##### COAP 连接：
+#### COAP 连接：
 
-[请求 API]
-
-```
-
-```
-
-**示例**
+**example**
 
 ```
 
@@ -174,17 +230,15 @@ curl -X GET 'http://192.168.123.11:30707/apis/security/v1/oauth/token?grant_type
 
 
 
-### 第四步： 从 tkeel平台 获取设备数据
+### Step 4 ： 从 tkeel平台 获取设备数据
 #### 查询：
 
-[设备查询 API]
-
-**示例**
+**example**
 
 ```
 ```
 
-预期结果
+**expected result**
 
 ```
 ```
@@ -194,5 +248,5 @@ curl -X GET 'http://192.168.123.11:30707/apis/security/v1/oauth/token?grant_type
 #### 订阅：
 
 ```
-
+to do
 ```

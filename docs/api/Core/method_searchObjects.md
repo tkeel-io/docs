@@ -1,5 +1,5 @@
 ---
-title: "searchObjects"
+title: "SearchObjects"
 description: 'Search objects by keyword'
 ---
 

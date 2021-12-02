@@ -1,5 +1,5 @@
 ---
-title: "listEntity"
+title: "ListEntity"
 description: 'List entities'
 ---
 

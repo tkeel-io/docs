@@ -4,15 +4,17 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
+const tKeelGitHub = 'https://github.com/tkeel-io/tkeel';
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'tKeel',
   tagline: 'tKeel are cool',
   url: 'https://tkeel-io.github.io',
-  baseUrl: '/docs/',
+  baseUrl: process.env.NODE_ENV === 'production' ? '/docs/' : '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'images/favicon.ico',
+  favicon: 'images/logo.svg',
   organizationName: 'tkeel-io', // Usually your GitHub org/user name.
   projectName: 'docs', // Usually your repo name.
   deploymentBranch: 'gh-pages',
@@ -25,7 +27,6 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/',
-          // Please change this to your repo.
           editUrl: 'https://github.com/tkeel-io/docs/tree/main/',
         },
         theme: {
@@ -45,31 +46,47 @@ const config = {
           src: 'images/logo.svg',
         },
         items: [
+          { to: '/getting_started/guide', label: '新手引导', position: 'left' },
+          { to: '/api/Core/tag', label: 'API', position: 'left' },
+          {
+            href: tKeelGitHub,
+            position: 'right',
+            className: 'header-github-link',
+            'aria-label': 'GitHub repository',
+          },
         ],
       },
       footer: {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: '文档',
             items: [
               {
-                label: 'Start',
+                label: '什么是 tKeel',
                 to: '/',
+              },
+              {
+                label: '概念',
+                to: '/internal_concepts/platform',
+              },
+              {
+                label: '新手引导',
+                to: '/getting_started/guide',
               },
             ],
           },
           {
-            title: 'Github',
+            title: '社区',
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/tkeel-io/tkeel',
+                href: tKeelGitHub,
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} tKeel. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
@@ -77,12 +94,19 @@ const config = {
       },
     }),
 
-  plugins: ['docusaurus-plugin-sass'],
-
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'zh-cn'],
   },
+
+  scripts: [
+    {
+      src: 'https://hm.baidu.com/hm.js?fd45d3e0a66aec212c9e87dcf4b45160',
+      async: true,
+    },
+  ],
+
+  plugins: ['docusaurus-plugin-sass'],
 };
 
 module.exports = config;

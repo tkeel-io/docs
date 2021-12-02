@@ -1,5 +1,5 @@
 ---
-title: "deleteSubscription"
+title: "DeleteSubscription"
 description: 'Delete subscription'
 ---
 

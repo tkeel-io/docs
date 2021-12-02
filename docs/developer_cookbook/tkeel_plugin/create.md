@@ -8,7 +8,7 @@ title: 创建插件
 
 通过 tKeel CLI 完成在 tKeel 上安装和注册一个指定 helm 源的插件。有关更多信息，请参见 [在 tKeel 上安装插件] 和在 [tKeel 上注册插件]。
 ## 使用 Artisan 快速搭建
-我们极力推荐您使用我们推出的开发者工具 [artisan](../artisan.md)，因为我们将一些能自动化的开发流程都集成在了该工具中，它能帮助您简单便捷的开发出一款插件应用。
+我们极力推荐您使用我们推出的开发者工具 [artisan](../tools/artisan.md)，因为我们将一些能自动化的开发流程都集成在了该工具中，它能帮助您简单便捷的开发出一款插件应用。
 ### 前提条件
 
 - [tKeel 平台](/#install-and-initialize-your-tkeel)
@@ -17,7 +17,7 @@ title: 创建插件
 
 ### 开发插件
 #### 新建项目
-使用 [artisan new](../artisan.md#创建一个新项目) 创建一个新项目，并安装依赖。
+使用 [artisan new](../tools/artisan.md#创建一个新项目) 创建一个新项目，并安装依赖。
 ```bash
 $ artisan new github.com/tkeel-io/newPlugin
 🚀 Creating service newPlugin, layout repo is https://github.com/tkeel-io/tkeel-template-go.git, please wait a moment.
@@ -202,7 +202,7 @@ artisan 帮助我们生成的项目结构大概是这样的：
 - 在 `cmd/newPlugin/main.go` 中注册服务（server）
 - 在 `pkg/service/xxx.go` 中对应编写业务逻辑
 
-> 📢 您可以使用 [artisan](../artisan.md#生成-protobuf) 生成更多您需要的 protobuf 文件，并编写自己想要的业务逻辑。
+> 📢 您可以使用 [artisan](../tools/artisan.md#生成-protobuf) 生成更多您需要的 protobuf 文件，并编写自己想要的业务逻辑。
 
 #### 构建插件镜像
 通过命令构建 docker 镜像文件：
@@ -213,4 +213,8 @@ docker build -t helloworld:v1 .
 ```bash
 docker push tkeelio/helloworld:v1
 ```
-#### 将服务打包成 chart
+#### 将服务打包成 chart 并提交仓库
+在您完成了服务镜像打包之后，请参考 [Helm Chart](https://helm.sh/zh/docs/topics/charts/) 为服务打包成一个 Chart 包，并将 Chart 上传至一个网络可达的仓库内即可。
+
+#### 安装 tKeel CLI 工具用于安装、卸载、管理插件
+在开始行动中，我们有一份叫做 [如何使用插件功能](../../getting_started/how-to-use-plugin.md) 的演示文档，简单介绍了如何快速使用插件。

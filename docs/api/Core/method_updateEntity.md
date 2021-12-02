@@ -1,5 +1,5 @@
 ---
-title: "updateEntity"
+title: "UpdateEntity"
 description: 'Update a entity'
 ---
 

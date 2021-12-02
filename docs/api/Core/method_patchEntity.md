@@ -1,5 +1,5 @@
 ---
-title: "patchEntity"
+title: "PatchEntity"
 description: 'Patch a entity properties'
 ---
 

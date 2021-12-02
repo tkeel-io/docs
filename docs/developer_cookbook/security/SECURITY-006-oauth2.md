@@ -1,20 +1,20 @@
 ---
-sidebar_position: 2
+sidebar_position: 5
 title: 授权服务
 ---
-# OAuth Access
-该文档将会为您展示 api 的访问控制的安全机制
-
-##  API 访问安全
-当外部以调用接口的方式访问平台时，需要通过平台的授权服务的成功认证才能访问到相应接口。授权服务支持标准的 OAuth2 协议。
-
 ## 支持的授权类型 
 现平台安全模块支持如下多种授权类型：
-### Password 
 
-资源请求方(client方)使用
-如果充分信任接入应用(client), 用户就可以直接把用户名密码给接入应用.
-接入应用使用用户账号密码申请令牌.
+| 授权类型           | 描述           | 有效支持 | 简介                                                         |
+| :----------------- | -------------- | -------- | ------------------------------------------------------------ |
+| password           | 密码模式       | √        | 资源请求方使用，如果充分信任接入应用, 用户就可以直接把用户名密码给接入应用，接入应用使用用户账号密码申请令牌. |
+| Authorization Code | 授权码模式     |          | 安全性高，使用率高，流程复杂。要求第三方应用必须有服务器。对安全性要求较高。 |
+| Implicit           | 简化模式       |          | 资源请求方使用，多用于没有后端的应用，用户授权登录之后, 会直接向前端发送令牌(`access_token`) |
+| Client Credentials | 客户端凭据模式 |          | 资源请求方使用，使用在 OAuth2 服务器注册的 client_id 和 client_secret 获取 access_token，发出 API 请求时，它应将access_token作为 Bearer 令牌传递到 Authorization 请求头中。 |
+
+
+
+### Password 
 
 **请求方式**
 ```
@@ -114,11 +114,7 @@ POST /oauth/token
 ```
 
 ### Implicit
-资源请求方(client)使用。
 
-多用于没有后端的应用。
-
-用户授权登录之后, 会直接向前端发送令牌(`access_token`)
 
 **请求方式**
 ```http
@@ -154,10 +150,6 @@ http://localhost:8080/oauth/on_code#access_token=eyJhbGciOiJIUzUxMiIsInR5cCI6Ikp
 
 ### Client Credentials
 
-资源请求方(client方)使用
-使用在 OAuth2 服务器注册的 client_id 和 client_secret 获取 access_token,
-发出 API 请求时，它应将access_token作为 Bearer 令牌传递到 Authorization 请求头中。
-
 **请求方式**
 
 `POST` `/oauth/token`
@@ -185,7 +177,7 @@ http://localhost:8080/oauth/on_code#access_token=eyJhbGciOiJIUzUxMiIsInR5cCI6Ikp
     "token_type": "Bearer"
 }
 ```
-## Access Token 的使用
+## Token 的使用
 当您获取到 token 之后，请在您的请求头按照如下要求携带该 token，您就能使用您在平台下的账号应有的权力。
 **请求头**
 - Bearer Token

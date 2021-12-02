@@ -1,6 +1,6 @@
 ---
 title: Artisan
-sidebar_position: 1
+sidebar_position: 20
 ---
 
 # Artisan
@@ -8,7 +8,7 @@ sidebar_position: 1
 
 ## 安装
 ```bash
-go install github.com/tkeel-io/tkeel-interface/tool/cmd/artisan
+go install github.com/tkeel-io/tkeel-interface/tool/cmd/artisan@latest
 ```
 ### 前提条件
 - [go](https://golang.org/dl/)

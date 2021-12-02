@@ -1,5 +1,5 @@
 ---
-title: "indexObject"
+title: "IndexObject"
 description: 'Index a object'
 ---
 

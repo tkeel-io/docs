@@ -49,7 +49,6 @@ id: device
 
 ### 1、物理世界的组成
 
-![image-20211201235714219](/home/tanli/.config/Typora/typora-user-images/image-20211201235714219.png)
 
 ### 2、抽象的基础逻辑
 
@@ -88,11 +87,9 @@ id: device
 
 组织的本质为构建关系，根据关系自由编排组织成某一目的的业务或服务形态
 
-![image-20211202001120160](/home/tanli/.config/Typora/typora-user-images/image-20211202001120160.png)
 
 ### 2、如何构建关系
 
-![image-20211202001203358](/home/tanli/.config/Typora/typora-user-images/image-20211202001203358.png)
 
 
 
@@ -108,11 +105,9 @@ id: device
 
 ### 1、选择物理设备到数字化设备的感知映射方式
 
-![image-20211202002219190](/home/tanli/.config/Typora/typora-user-images/image-20211202002219190.png)
 
 ### 2、 物理设备数据驱动数字化设备示例
 
-![image-20211202002641305](/home/tanli/.config/Typora/typora-user-images/image-20211202002641305.png)
 
 
 
@@ -122,7 +117,6 @@ id: device
 
   一切行为都能解析出动机和目地，抽象、定义、组织编排、驱动数字化设备的最终目的是为了解决某一场景需求，例如：对物理设备实时数据映射、控制、融合构建时空关系、追溯过去、提效降本现在、预测优化未来等.
 
-![image-20211202003145719](/home/tanli/.config/Typora/typora-user-images/image-20211202003145719.png)
 
 ### 2、数字化设备输入能力
 

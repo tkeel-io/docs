@@ -1,11 +1,11 @@
 ---
 id: init
 sidebar_position: 30
-title: 初始 tKeel 平台
+title: 初始化 tKeel 平台
 slug: /init
 ---
 
-# 初始 tKeel Platform
+# 初始化 tKeel Platform
 
 > 我们希望我们提供的安装方式能符合我们平台气质——简单、便捷。
 

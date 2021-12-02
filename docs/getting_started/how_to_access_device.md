@@ -1,6 +1,6 @@
 ---
 title: 🌐 如何使用tkeel平台连接你的设备
-sidebar_position: 3
+sidebar_position: 30
 slug: /use
 ---
 

@@ -1,9 +1,10 @@
 ---
-title: Core
-sidebar_position: 2
+title: 架构
+sidebar_position: 1
 ---
 
 
+## 架构
 
 ![Architecture](/images/core/architecture.png)
 

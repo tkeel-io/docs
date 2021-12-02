@@ -244,6 +244,7 @@ curl --location --request GET '127.0.0.1:31234/v1/devices/<创建设备result �
 **example**
 
 ```
+mosquitto_pub -h 192.168.123.9 -t system/test/topic -m "{\"message\": \"hello, tkeel\",\"value\":0}" -p 30805 -u "<设备owner>" -P "<设备token>" -i "<设备ID>"
 ```
 
 #### HTTP 连接：
@@ -251,6 +252,7 @@ curl --location --request GET '127.0.0.1:31234/v1/devices/<创建设备result �
 **example**
 
 ```
+todo
 ```
 
 #### COAP 连接：
@@ -258,7 +260,7 @@ curl --location --request GET '127.0.0.1:31234/v1/devices/<创建设备result �
 **example**
 
 ```
-
+coap-client -m get -s 1000  "coap://192.168.123.9:30588/mqtt/topic1?c=<设备ID>&p=<设备token>&u=<设备owner>"
 ```
 
 ### Step 4 ： 从 tkeel平台 获取设备数据
@@ -268,11 +270,24 @@ curl --location --request GET '127.0.0.1:31234/v1/devices/<创建设备result �
 **example**
 
 ```
+curl --location --request GET 'http://192.168.123.9:30707/apis/core/v1/plugins/abc/entities/<设备ID>?owner=<设备owner>@source=device' \
+--header 'Authorization: Bearer <用户token>'
 ```
 
 **expected result**
 
 ```
+{
+    "id": "4e901bc2-927b-4d4f-8a0e-25fa32a66ada",
+    "owner": "usr-4-9a4df9ce604e8044fff0d3615394745f",
+    "configs": {},
+    "properties": {
+        "_data_": "MTIzNA==",
+        "message": "hello, tkeel",
+        "msg": "hello3333",
+        "value": 0
+    }
+}
 ```
 
 #### 订阅：

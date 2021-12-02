@@ -7,12 +7,15 @@ title: 🌐 如何使用tkeel平台连接你的设备 sidebar_position: 30 slug:
 ## 前置条件
 
 ### 完成设备连接需安装2个插件
-
 1. iothub 插件：连接设备
 
 2. device 插件 ：管理设备
 
+
+
 ## 如何在tkeel平台安装插件
+
+
 
 连接您的设备需要平台中安装如下2个插件模块：
 
@@ -51,23 +54,25 @@ curl -X POST 'http://192.168.123.12:30777/v1/tenants' \
 
 ```json
 {
-  "code": 0,
-  "msg": "ok",
-  "data": {
-    "tenant_id": 6,
-    "title": "TenantDemo",
-    "remark": "this is demo tenant",
-    "admin": {
-      "tenant_id": 6,
-      "username": "demoadmin",
-      "password": "",
-      "nick_name": "",
-      "avatar": "",
-      "email": ""
+    "code": 0,
+    "msg": "ok",
+    "data": {
+        "tenant_id": 6,
+        "title": "TenantDemo",
+        "remark": "this is demo tenant",
+        "admin": {
+            "tenant_id": 6,
+            "username": "demoadmin",
+            "password": "",
+            "nick_name": "",
+            "avatar": "",
+            "email": ""
+        }
     }
-  }
 }
 ```
+
+
 
 #### 2. 利用租户&租户管理员分配用户(管理员) Token
 
@@ -81,14 +86,14 @@ curl -X GET 'http://192.168.123.11:30707/apis/security/v1/oauth/token?grant_type
 
 ```json
 {
-  "code": 0,
-  "msg": "ok",
-  "data": {
-    "access_token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiIwMDAwMDAiLCJleHAiOjE2NDE4NzY0MTksInN1YiI6InVzci02LWJmMTdkZTU4ZTgwNGYyODkxY2ZjZDFkMjM1M2RlYzgyIn0.B4WbYKr4kbAyEIKpXDPSYdicL-irl1bzJwWXPDltytrCuIGwlgWiByaglwWnJi7lwbYznhLku4yYQiwq4dHQRw",
-    "expires_in": 3600000,
-    "refresh_token": "NJK3NWQ1MJETMWQYYI01NZI2LTK0YZITNMM2MJLLZTGWZTM4",
-    "token_type": "Bearer"
-  }
+    "code": 0,
+    "msg": "ok",
+    "data": {
+        "access_token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiIwMDAwMDAiLCJleHAiOjE2NDE4NzY0MTksInN1YiI6InVzci02LWJmMTdkZTU4ZTgwNGYyODkxY2ZjZDFkMjM1M2RlYzgyIn0.B4WbYKr4kbAyEIKpXDPSYdicL-irl1bzJwWXPDltytrCuIGwlgWiByaglwWnJi7lwbYznhLku4yYQiwq4dHQRw",
+        "expires_in": 3600000,
+        "refresh_token": "NJK3NWQ1MJETMWQYYI01NZI2LTK0YZITNMM2MJLLZTGWZTM4",
+        "token_type": "Bearer"
+    }
 }
 ```
 
@@ -120,24 +125,7 @@ curl --location --request POST '127.0.0.1:31234/v1/devices' \
 **expected result**
 
 ```json
-{
-  "dev": {
-    "name": "dev_name",
-    "desc": "dev_desc",
-    "group": "default",
-    "ext": {
-      "other": "other",
-      "version": "1.1"
-    }
-  },
-  "sysField": {
-    "_id": "f2dbf4a9-bc0b-4dc4-9a3c-aac568e81cd3",
-    "_createdAt": 1638347417928116200,
-    "_updatedAt": 1638347417928116200,
-    "_enable": true,
-    "_token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbnRpdHlfaWQiOiJmMmRiZjRhOS1iYzBiLTRkYzQtOWEzYy1hYWM1NjhlODFjZDMiLCJlbnRpdHlfdHlwZSI6ImRldmljZSIsImV4cCI6MTY2OTg4MzQxNywib3duZXIiOiJ1c3ItNC05YTRkZjljZTYwNGU4MDQ0ZmZmMGQzNjE1Mzk0NzQ1ZiJ9.L9o4ixGnqQqFAuEkqkjfxmAUUovammgQm8iKPVQhjBavpv9SF3xuWohvNNij5TFXeO_ejHOGm8vfLebKgcyX3g"
-  }
-}
+{"dev":{"name":"dev_name","desc":"dev_desc","group":"default","ext":{"other":"other","version":"1.1"}},"sysField":{"_id":"f2dbf4a9-bc0b-4dc4-9a3c-aac568e81cd3","_createdAt":1638347417928116200,"_updatedAt":1638347417928116200,"_enable":true,"_token":"eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbnRpdHlfaWQiOiJmMmRiZjRhOS1iYzBiLTRkYzQtOWEzYy1hYWM1NjhlODFjZDMiLCJlbnRpdHlfdHlwZSI6ImRldmljZSIsImV4cCI6MTY2OTg4MzQxNywib3duZXIiOiJ1c3ItNC05YTRkZjljZTYwNGU4MDQ0ZmZmMGQzNjE1Mzk0NzQ1ZiJ9.L9o4ixGnqQqFAuEkqkjfxmAUUovammgQm8iKPVQhjBavpv9SF3xuWohvNNij5TFXeO_ejHOGm8vfLebKgcyX3g"}}
 ```
 
 #### 2. 创建设备组（可选）
@@ -162,26 +150,7 @@ curl --location --request POST '127.0.0.1:31234/v1/groups' \
 **expected result**
 
 ```json
-{
-  "result": "ok",
-  "entityInfo": {
-    "group": {
-      "name": "group_name",
-      "desc": "group desc",
-      "parent": "root",
-      "ext": {
-        "classify": "abc",
-        "other": "ohter"
-      }
-    },
-    "subIds": {},
-    "sysField": {
-      "_id": "c175a35e-4171-4bf0-b53b-8d05caf2e394",
-      "_createdAt": 1638348873147219200,
-      "_updatedAt": 1638348873147219500
-    }
-  }
-}
+{"result":"ok","entityInfo":{"group":{"name":"group_name","desc":"group desc","parent":"root","ext":{"classify":"abc","other":"ohter"}},"subIds":{},"sysField":{"_id":"c175a35e-4171-4bf0-b53b-8d05caf2e394","_createdAt":1638348873147219200,"_updatedAt":1638348873147219500}}}
 ```
 
 #### 3. 添加设备进设备组分类（可选）
@@ -200,9 +169,7 @@ curl --location --request POST '127.0.0.1:31234/v1/groups/<创建设备组result
 **expected result**
 
 ```json
-{
-  "result": "Ok"
-}
+{"result":"Ok"}
 ```
 
 #### 4. 查看设备定义详情
@@ -217,24 +184,7 @@ curl --location --request GET '127.0.0.1:31234/v1/devices/<创建设备result �
 **expected result**
 
 ```json
-{
-  "dev": {
-    "name": "dev_name",
-    "desc": "dev_desc",
-    "group": "c175a35e-4171-4bf0-b53b-8d05caf2e394",
-    "ext": {
-      "other": "other",
-      "version": "1.1"
-    }
-  },
-  "sysField": {
-    "_id": "f2dbf4a9-bc0b-4dc4-9a3c-aac568e81cd3",
-    "_createdAt": 1638347417928116200,
-    "_updatedAt": 1638347417928116200,
-    "_enable": true,
-    "_token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbnRpdHlfaWQiOiJmMmRiZjRhOS1iYzBiLTRkYzQtOWEzYy1hYWM1NjhlODFjZDMiLCJlbnRpdHlfdHlwZSI6ImRldmljZSIsImV4cCI6MTY2OTg4MzQxNywib3duZXIiOiJ1c3ItNC05YTRkZjljZTYwNGU4MDQ0ZmZmMGQzNjE1Mzk0NzQ1ZiJ9.L9o4ixGnqQqFAuEkqkjfxmAUUovammgQm8iKPVQhjBavpv9SF3xuWohvNNij5TFXeO_ejHOGm8vfLebKgcyX3g"
-  }
-}
+{"dev":{"name":"dev_name","desc":"dev_desc","group":"c175a35e-4171-4bf0-b53b-8d05caf2e394","ext":{"other":"other","version":"1.1"}},"sysField":{"_id":"f2dbf4a9-bc0b-4dc4-9a3c-aac568e81cd3","_createdAt":1638347417928116200,"_updatedAt":1638347417928116200,"_enable":true,"_token":"eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbnRpdHlfaWQiOiJmMmRiZjRhOS1iYzBiLTRkYzQtOWEzYy1hYWM1NjhlODFjZDMiLCJlbnRpdHlfdHlwZSI6ImRldmljZSIsImV4cCI6MTY2OTg4MzQxNywib3duZXIiOiJ1c3ItNC05YTRkZjljZTYwNGU4MDQ0ZmZmMGQzNjE1Mzk0NzQ1ZiJ9.L9o4ixGnqQqFAuEkqkjfxmAUUovammgQm8iKPVQhjBavpv9SF3xuWohvNNij5TFXeO_ejHOGm8vfLebKgcyX3g"}}
 ```
 
 ### Step 3： 发送数据到 tkeel 平台
@@ -264,7 +214,6 @@ coap-client -m get -s 1000  "coap://192.168.123.9:30588/mqtt/topic1?c=<设备ID>
 ```
 
 ### Step 4 ： 从 tkeel平台 获取设备数据
-
 #### 查询：
 
 **example**

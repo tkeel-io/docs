@@ -3,7 +3,6 @@ sidebar_position: 3 title: Rudder slug: /internal_concepts/rudder
 ---
 
 # Rudder
-
 Rudder 是 tKeel 中的管理核心，为平台提供了插件安装、注册和管理功能，也是 tKeel 中 Security 服务的载体。
 
 Rudder 如其名一般，管理着 tKeel 平台中插件的生命周期以及租户权限等信息，控制着平台的运转。

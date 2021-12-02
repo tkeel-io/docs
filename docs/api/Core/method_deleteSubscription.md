@@ -6,7 +6,10 @@ description: 'Delete subscription'
 
 调用该接口Delete subscription。
 
+
+
 ## Request
+
 
 ```
 delete /plugins/{plugin}/subscriptions/{id}

@@ -6,7 +6,10 @@ description: 'Patch a entity properties'
 
 调用该接口Patch a entity properties。
 
+
+
 ## Request
+
 
 ```
 patch /plugins/{plugin}/entities/{id}

@@ -6,7 +6,10 @@ description: 'Update a entity'
 
 调用该接口Update a entity。
 
+
+
 ## Request
+
 
 ```
 put /plugins/{plugin}/entities/{id}

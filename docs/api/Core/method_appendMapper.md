@@ -6,7 +6,10 @@ description: 'Append entity mapper'
 
 调用该接口Append entity mapper。
 
+
+
 ## Request
+
 
 ```
 post /plugins/{plugin}/entities/{id}/mappers

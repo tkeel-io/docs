@@ -6,7 +6,10 @@ description: 'List subscriptions'
 
 调用该接口List subscriptions。
 
+
+
 ## Request
+
 
 ```
 get /plugins/{plugin}/subscriptions

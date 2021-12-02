@@ -6,7 +6,10 @@ description: 'Update subscription'
 
 调用该接口Update subscription。
 
+
+
 ## Request
+
 
 ```
 put /plugins/{plugin}/subscriptions/{id}

@@ -6,6 +6,8 @@ description: 'Get a message.（服务描述）'
 
 调用该接口Get a message.（服务描述）。
 
+
+
 ## Request
 
 ```

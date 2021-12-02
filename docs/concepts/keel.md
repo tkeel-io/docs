@@ -1,7 +1,6 @@
 ---
 sidebar_position: 2 title: Keel slug: /internal_concepts/keel
 ---
-
 # Keel
 
 Keel 是 tKeel 的一个统一网关，拥有动态注册路由能力，所有对平台的访问均通过 Keel 进行转发。

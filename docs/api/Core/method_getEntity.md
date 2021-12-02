@@ -6,7 +6,10 @@ description: 'Get a entity'
 
 调用该接口Get a entity。
 
+
+
 ## Request
+
 
 ```
 get /plugins/{plugin}/entities/{id}

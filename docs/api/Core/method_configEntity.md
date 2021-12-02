@@ -6,7 +6,10 @@ description: 'Config entity'
 
 调用该接口Config entity。
 
+
+
 ## Request
+
 
 ```
 put /plugins/{plugin}/entities/{id}/configs

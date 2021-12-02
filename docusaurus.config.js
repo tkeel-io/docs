@@ -44,8 +44,7 @@ const config = {
           alt: 'tKeel',
           src: 'images/logo.svg',
         },
-        items: [
-        ],
+        items: [],
       },
       footer: {
         style: 'dark',
@@ -83,6 +82,13 @@ const config = {
     defaultLocale: 'en',
     locales: ['en', 'zh-cn'],
   },
+
+  scripts: [
+    {
+      src: 'https://hm.baidu.com/hm.js?fd45d3e0a66aec212c9e87dcf4b45160',
+      async: true,
+    },
+  ],
 };
 
 module.exports = config;

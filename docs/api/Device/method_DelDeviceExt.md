@@ -1,10 +1,10 @@
 ---
-title: "listGroup"
-description: 'list entity group'
+title: "DelDeviceExt"
+description: 'delete device extensions'
 ---
 
 
-调用该接口list entity group。
+调用该接口delete device extensions。
 
 
 
@@ -12,10 +12,14 @@ description: 'list entity group'
 
 
 ```
-post /groups/search
+post /devices/{id}/ext/delete
 ```
 
 
+
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string | 设备ID |  
 
 
 
@@ -27,40 +31,18 @@ post /groups/search
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 限制 | Object | [apigroupv1Filter](#apigroupv1Filter) |
+| 设备扩展属性Key 数组 | Object | [apidevicev1Keys](#apidevicev1Keys) |
 
-#### apigroupv1Filter
+#### apidevicev1Keys
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |         
-| condition | Array[apigroupv1Condition] | 组合条件 [ 具体参数可见下面 [apigroupv1Condition](#apigroupv1Condition) ] |       
-| page |  | 分页 |   
+| ---- | ---- | ----------- |        
+| keys | Array[ string ] | key 字符串数组 |    
 
 
   
        
-         
-### apigroupv1Condition
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| field | string | 查询输出字段 |      
-| operator | string | 操作符, $eq为相等，$neq为不等，$lt为小于，$gt为大于，$lne为小于等于， $gne为大于等于 |      
-| value | string | 值 |   
-
-
-  
-     
-   
-     
-   
-     
- 
- 
-
-
           
-     
-   
      
  
  
@@ -78,19 +60,16 @@ post /groups/search
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListGroupResponse](#v1ListGroupResponse) |
+| 200 | OK | Object | [v1DeleteDeviceExtResponse](#v1DeleteDeviceExtResponse) |
 
-#### v1ListGroupResponse
+#### v1DeleteDeviceExtResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| listEntityInfo |  | 设备组列表信息 |      
-| result | string | ok  or failed |   
+| result | string |  |   
 
 
   
-     
-   
      
  
  

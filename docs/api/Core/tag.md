@@ -11,33 +11,33 @@ sidebar_position: 0
 
 | Name |  Description | 
 | ---- |  ----------- | 
-| [deleteSubscription](./method_deleteSubscription)|  Delete subscription |
-| [getSubscription](./method_getSubscription)|  Get subscription |
-| [listEntity](./method_listEntity)|  List entities |
-| [patchEntity](./method_patchEntity)|  Patch a entity properties |
+| [createEntity](./method_createEntity)|  Create a entity |
 | [getEntity](./method_getEntity)|  Get a entity |
 | [deleteEntity](./method_deleteEntity)|  Delete a entity |
 | [updateEntity](./method_updateEntity)|  Update a entity |
+| [patchEntity](./method_patchEntity)|  Patch a entity properties |
 | [configEntity](./method_configEntity)|  Config entity |
-| [listScription](./method_listScription)|  List subscriptions |
-| [createEntity](./method_createEntity)|  Create a entity |
 | [appendMapper](./method_appendMapper)|  Append entity mapper |
+| [listEntity](./method_listEntity)|  List entities |
 
 
 ## Search相关API
 
 | Name |  Description | 
 | ---- |  ----------- | 
-| [indexObject](./method_indexObject)|  Index a object |
 | [searchObjects](./method_searchObjects)|  Search objects by keyword |
+| [indexObject](./method_indexObject)|  Index a object |
 
 
 ## Subscription相关API
 
 | Name |  Description | 
 | ---- |  ----------- | 
-| [updateSubscription](./method_updateSubscription)|  Update subscription |
+| [listScription](./method_listScription)|  List subscriptions |
 | [createSubscription](./method_createSubscription)|  Create subscription |
+| [getSubscription](./method_getSubscription)|  Get subscription |
+| [deleteSubscription](./method_deleteSubscription)|  Delete subscription |
+| [updateSubscription](./method_updateSubscription)|  Update subscription |
 
 
 ## TopicEvent相关API

@@ -8,7 +8,7 @@ sidebar_position: 1
 
 ## 安装
 ```bash
-go install github.com/tkeel-io/tkeel-interface/tool/cmd/artisan@latest
+go install github.com/tkeel-io/tkeel-interface/tool/cmd/artisan
 ```
 ### 前提条件
 - [go](https://golang.org/dl/)

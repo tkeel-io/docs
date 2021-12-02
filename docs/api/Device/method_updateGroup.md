@@ -1,10 +1,10 @@
 ---
-title: "Subscription_CreateSubscription"
-description: ''
+title: "updateGroup"
+description: 'update entity group'
 ---
 
 
-调用该接口。
+调用该接口update entity group。
 
 
 
@@ -12,24 +12,16 @@ description: ''
 
 
 ```
-post /plugins/{plugin}/subscriptions
+put /groups/{id}
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| plugin | path | string |  |  
+| id | path | string | 设备组ID |  
 
 
-
-###  Request Parameters
-
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| id | query | string |  |  false |
-| source | query | string |  |  false |
-| owner | query | string |  |  false |
 
 
 
@@ -39,27 +31,23 @@ post /plugins/{plugin}/subscriptions
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1SubscriptionObject](#v1SubscriptionObject) |
+| 更新设备组信息 | Object | [v1GroupEntity](#v1GroupEntity) |
 
-#### v1SubscriptionObject
+#### v1GroupEntity
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| filter | string |  |      
-| mode | string |  |      
-| pubsub_name | string |  |      
-| source | string |  |      
-| target | string |  |      
-| topic | string |  |   
+| desc | string | 设备组说明 |     
+| ext | Object | 设备组扩展属性   |      
+| name | string | 设备组名称 |      
+| parent | string | 父设备组ID |   
 
 
   
      
    
-     
-   
-     
-   
+    
+          
      
    
      
@@ -81,28 +69,16 @@ post /plugins/{plugin}/subscriptions
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [v1SubscriptionResponse](#v1SubscriptionResponse) |
+| 200 | OK | Object | [apigroupv1CommonResponse](#apigroupv1CommonResponse) |
 
-#### v1SubscriptionResponse
+#### apigroupv1CommonResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| id | string |  |      
-| owner | string |  |      
-| plugin | string |  |      
-| source | string |  |      
-| subscription |  |  |   
+| result | string | ok  or failed |   
 
 
   
-     
-   
-     
-   
-     
-   
-     
-   
      
  
  

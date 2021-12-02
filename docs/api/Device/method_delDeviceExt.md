@@ -1,10 +1,10 @@
 ---
-title: "Openapi_TenantBind"
-description: 'Post tenant bind.'
+title: "delDeviceExt"
+description: 'delete device extensions'
 ---
 
 
-调用该接口Post tenant bind.。
+调用该接口delete device extensions。
 
 
 
@@ -12,10 +12,14 @@ description: 'Post tenant bind.'
 
 
 ```
-post /tenant/bind
+post /devices/{id}/ext/delete
 ```
 
 
+
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string | 设备ID |  
 
 
 
@@ -27,19 +31,18 @@ post /tenant/bind
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1TenantBindRequst](#v1TenantBindRequst) |
+| 设备扩展属性Key 数组 | Object | [apidevicev1Keys](#apidevicev1Keys) |
 
-#### v1TenantBindRequst
+#### apidevicev1Keys
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| extra | string |  |      
-| tenantID | string |  |   
+| ---- | ---- | ----------- |        
+| keys | Array[ string ] | key 字符串数组 |    
 
 
   
-     
-   
+       
+          
      
  
  
@@ -57,13 +60,13 @@ post /tenant/bind
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [v1TenantBindResponse](#v1TenantBindResponse) |
+| 200 | OK | Object | [v1DeleteDeviceExtResponse](#v1DeleteDeviceExtResponse) |
 
-#### v1TenantBindResponse
+#### v1DeleteDeviceExtResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| res |  |  |   
+| result | string |  |   
 
 
   

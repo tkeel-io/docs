@@ -1,10 +1,10 @@
 ---
-title: "Subscription_ListSubscription"
-description: ''
+title: "listGroupitems"
+description: 'list group items'
 ---
 
 
-调用该接口。
+调用该接口list group items。
 
 
 
@@ -12,23 +12,16 @@ description: ''
 
 
 ```
-get /plugins/{plugin}/subscriptions
+get /groups/{id}/items
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| plugin | path | string |  |  
+| id | path | string | 设备组ID |  
 
 
-
-###  Request Parameters
-
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| source | query | string |  |  false |
-| owner | query | string |  |  false |
 
 
 
@@ -41,46 +34,19 @@ get /plugins/{plugin}/subscriptions
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [v1ListSubscriptionResponse](#v1ListSubscriptionResponse) |
+| 200 | OK | Object | [v1ListGroupItemsResponse](#v1ListGroupItemsResponse) |
 
-#### v1ListSubscriptionResponse
+#### v1ListGroupItemsResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| count | integer |  |          
-| items | Array[v1SubscriptionResponse] |  [ 具体参数可见下面 [v1SubscriptionResponse](#v1SubscriptionResponse) ] |    
+| result | string | ok  or failed |      
+| subIds |  | 子设备信息 |   
 
 
   
      
    
-       
-         
-### v1SubscriptionResponse
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| id | string |  |      
-| owner | string |  |      
-| plugin | string |  |      
-| source | string |  |      
-| subscription |  |  |   
-
-
-  
-     
-   
-     
-   
-     
-   
-     
-   
-     
- 
- 
-
-
-          
      
  
  

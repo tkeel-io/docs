@@ -1,10 +1,10 @@
 ---
-title: "Openapi_TenantUnbind"
-description: 'Post tenant bind.'
+title: "getDevice"
+description: 'get device entity'
 ---
 
 
-调用该接口Post tenant bind.。
+调用该接口get device entity。
 
 
 
@@ -12,37 +12,14 @@ description: 'Post tenant bind.'
 
 
 ```
-post /tenant/unbind
+get /devices/{id}
 ```
 
 
 
-
-
-
-
-### Request Body
-
-
- 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [v1TenantUnbindRequst](#v1TenantUnbindRequst) |
-
-#### v1TenantUnbindRequst
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| extra | string |  |      
-| tenantID | string |  |   
-
-
-  
-     
-   
-     
- 
- 
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string | 设备ID |  
 
 
 
@@ -57,16 +34,19 @@ post /tenant/unbind
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [v1TenantUnbindResponse](#v1TenantUnbindResponse) |
+| 200 | OK | Object | [v1GetDeviceResponse](#v1GetDeviceResponse) |
 
-#### v1TenantUnbindResponse
+#### v1GetDeviceResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| res |  |  |   
+| dev |  | 设备信息 |      
+| sysField |  | 设备系统信息 |   
 
 
   
+     
+   
      
  
  

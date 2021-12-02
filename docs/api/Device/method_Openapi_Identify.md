@@ -36,11 +36,11 @@ get /identify
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |         
-| addonsPoint | Array[v1AddonsPoint] |  [ 具体参数可见下面 [v1AddonsPoint](#v1AddonsPoint) ] |           
-| implementedPlugin | Array[v1ImplementedPlugin] |  [ 具体参数可见下面 [v1ImplementedPlugin](#v1ImplementedPlugin) ] |       
-| pluginID | string |  |      
+| addons_point | Array[v1AddonsPoint] |  [ 具体参数可见下面 [v1AddonsPoint](#v1AddonsPoint) ] |           
+| implemented_plugin | Array[v1ImplementedPlugin] |  [ 具体参数可见下面 [v1ImplementedPlugin](#v1ImplementedPlugin) ] |       
+| plugin_id | string |  |      
 | res |  |  |      
-| tkeelVersion | string |  |      
+| tkeel_version | string |  |      
 | version | string |  |   
 
 
@@ -80,8 +80,8 @@ get /identify
 ### v1ImplementedAddons
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| addonsPoint | string |  |      
-| implementedEndpoint | string |  |   
+| addons_point | string |  |      
+| implemented_endpoint | string |  |   
 
 
   

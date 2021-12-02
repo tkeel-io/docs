@@ -1,10 +1,10 @@
 ---
-title: "Topic_TopicEventHandler"
-description: ''
+title: "createDevice"
+description: 'create device entity'
 ---
 
 
-调用该接口。
+调用该接口create device entity。
 
 
 
@@ -12,7 +12,7 @@ description: ''
 
 
 ```
-post /topic
+post /devices
 ```
 
 
@@ -27,41 +27,23 @@ post /topic
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1TopicEventRequest](#v1TopicEventRequest) |
+| 设备信息 | Object | [v1DeviceEntity](#v1DeviceEntity) |
 
-#### v1TopicEventRequest
+#### v1DeviceEntity
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |    
-| data | Object |    |      
-| data_base64 | string |  |      
-| datacontenttype | string |  |      
-| id | string |  |      
-| pubsubname | string |  |      
-| source | string |  |      
-| specversion | string |  |      
-| subject | string |  |      
-| topic | string |  |      
-| type | string |  |   
+| ---- | ---- | ----------- |     
+| desc | string | 设备描述 |     
+| ext | Object | 设备扩展配置   |      
+| group | string | 设备组ID |      
+| name | string | 设备名称 |   
 
 
   
+     
+   
     
           
-     
-   
-     
-   
-     
-   
-     
-   
-     
-   
-     
-   
-     
-   
      
    
      
@@ -83,16 +65,19 @@ post /topic
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [v1TopicEventResponse](#v1TopicEventResponse) |
+| 200 | OK | Object | [v1CreateDeviceResponse](#v1CreateDeviceResponse) |
 
-#### v1TopicEventResponse
+#### v1CreateDeviceResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| status | string |  |   
+| dev |  | 设备信息 |      
+| sysField |  | 设备系统信息 |   
 
 
   
+     
+   
      
  
  

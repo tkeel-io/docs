@@ -1,10 +1,10 @@
 ---
-title: "Openapi_AddonsIdentify"
-description: 'Post addons identify.'
+title: "deleteGroup"
+description: 'delete entity group'
 ---
 
 
-调用该接口Post addons identify.。
+调用该接口delete entity group。
 
 
 
@@ -12,7 +12,7 @@ description: 'Post addons identify.'
 
 
 ```
-post /addons/identify
+post /groups/delete
 ```
 
 
@@ -27,37 +27,18 @@ post /addons/identify
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1AddonsIdentifyRequest](#v1AddonsIdentifyRequest) |
+| 设备组ID 数组 | Object | [apigroupv1Ids](#apigroupv1Ids) |
 
-#### v1AddonsIdentifyRequest
+#### apigroupv1Ids
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |         
-| implementedAddons | Array[v1ImplementedAddons] |  [ 具体参数可见下面 [v1ImplementedAddons](#v1ImplementedAddons) ] |       
-| plugin |  |  |   
+| ---- | ---- | ----------- |        
+| ids | Array[ string ] | id 数组 |    
 
 
   
        
-         
-### v1ImplementedAddons
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| addonsPoint | string |  |      
-| implementedEndpoint | string |  |   
-
-
-  
-     
-   
-     
- 
- 
-
-
           
-     
-   
      
  
  
@@ -75,13 +56,13 @@ post /addons/identify
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [v1AddonsIdentifyResponse](#v1AddonsIdentifyResponse) |
+| 200 | OK | Object | [apigroupv1CommonResponse](#apigroupv1CommonResponse) |
 
-#### v1AddonsIdentifyResponse
+#### apigroupv1CommonResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| res |  |  |   
+| result | string | ok  or failed |   
 
 
   

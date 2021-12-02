@@ -1,10 +1,10 @@
 ---
-title: "Subscription_UpdateSubscription"
-description: ''
+title: "createGroup"
+description: 'create entity group'
 ---
 
 
-调用该接口。
+调用该接口create entity group。
 
 
 
@@ -12,24 +12,12 @@ description: ''
 
 
 ```
-put /plugins/{plugin}/subscriptions/{id}
+post /groups
 ```
 
 
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| plugin | path | string |  |  
-| id | path | string |  |  
 
-
-
-###  Request Parameters
-
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| source | query | string |  |  false |
-| owner | query | string |  |  false |
 
 
 
@@ -39,27 +27,23 @@ put /plugins/{plugin}/subscriptions/{id}
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1SubscriptionObject](#v1SubscriptionObject) |
+| 设备组信息 | Object | [v1GroupEntity](#v1GroupEntity) |
 
-#### v1SubscriptionObject
+#### v1GroupEntity
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| filter | string |  |      
-| mode | string |  |      
-| pubsub_name | string |  |      
-| source | string |  |      
-| target | string |  |      
-| topic | string |  |   
+| desc | string | 设备组说明 |     
+| ext | Object | 设备组扩展属性   |      
+| name | string | 设备组名称 |      
+| parent | string | 父设备组ID |   
 
 
   
      
    
-     
-   
-     
-   
+    
+          
      
    
      
@@ -81,26 +65,17 @@ put /plugins/{plugin}/subscriptions/{id}
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [v1SubscriptionResponse](#v1SubscriptionResponse) |
+| 200 | OK | Object | [v1CreateGroupResponse](#v1CreateGroupResponse) |
 
-#### v1SubscriptionResponse
+#### v1CreateGroupResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| id | string |  |      
-| owner | string |  |      
-| plugin | string |  |      
-| source | string |  |      
-| subscription |  |  |   
+| entityInfo |  | 设备组信息 |      
+| result | string | ok  or failed |   
 
 
   
-     
-   
-     
-   
-     
-   
      
    
      

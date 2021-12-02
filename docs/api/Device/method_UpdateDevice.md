@@ -1,10 +1,10 @@
 ---
-title: "Search_Index"
-description: ''
+title: "UpdateDevice"
+description: 'update device entity'
 ---
 
 
-调用该接口。
+调用该接口update device entity。
 
 
 
@@ -12,10 +12,14 @@ description: ''
 
 
 ```
-post /index
+put /devices/{id}
 ```
 
 
+
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string | 设备ID |  
 
 
 
@@ -27,15 +31,29 @@ post /index
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [](#) |
+| 设备信息 | Object | [v1DeviceEntity](#v1DeviceEntity) |
 
-#### 
+#### v1DeviceEntity
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |  
+| ---- | ---- | ----------- |     
+| desc | string | 设备描述 |     
+| ext | Object | 设备扩展配置   |      
+| group | string | 设备组ID |      
+| name | string | 设备名称 |   
 
 
-
+  
+     
+   
+    
+          
+     
+   
+     
+   
+     
+ 
  
 
 
@@ -51,16 +69,19 @@ post /index
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [v1IndexResponse](#v1IndexResponse) |
+| 200 | OK | Object | [v1UpdateDeviceResponse](#v1UpdateDeviceResponse) |
 
-#### v1IndexResponse
+#### v1UpdateDeviceResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| status | string |  |   
+| dev |  | 设备信息 |      
+| sysField |  | 设备系统信息 |   
 
 
   
+     
+   
      
  
  

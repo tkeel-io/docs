@@ -1,10 +1,10 @@
 ---
-title: "Subscription_DeleteSubscription"
-description: ''
+title: "updateDeviceExt"
+description: 'update device extensions'
 ---
 
 
-调用该接口。
+调用该接口update device extensions。
 
 
 
@@ -12,24 +12,43 @@ description: ''
 
 
 ```
-delete /plugins/{plugin}/subscriptions/{id}
+put /devices/{id}/ext
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| plugin | path | string |  |  
-| id | path | string |  |  
+| id | path | string | 设备ID |  
 
 
 
-###  Request Parameters
 
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| source | query | string |  |  false |
-| owner | query | string |  |  false |
+
+### Request Body
+
+
+ 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+| 设备扩展属性KV | Object | [v1Ext](#v1Ext) |
+
+#### v1Ext
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| key | string |  |      
+| value | string |  |   
+
+
+  
+     
+   
+     
+ 
+ 
+
+
 
 
 
@@ -42,19 +61,16 @@ delete /plugins/{plugin}/subscriptions/{id}
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [v1DeleteSubscriptionResponse](#v1DeleteSubscriptionResponse) |
+| 200 | OK | Object | [v1UpdateDeviceExtResponse](#v1UpdateDeviceExtResponse) |
 
-#### v1DeleteSubscriptionResponse
+#### v1UpdateDeviceExtResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| id | string |  |      
-| status | string |  |   
+| result | string |  |   
 
 
   
-     
-   
      
  
  

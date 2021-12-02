@@ -1,10 +1,10 @@
 ---
-title: "Subscription_GetSubscription"
-description: ''
+title: "enableDevice"
+description: 'enable device'
 ---
 
 
-调用该接口。
+调用该接口enable device。
 
 
 
@@ -12,24 +12,40 @@ description: ''
 
 
 ```
-get /plugins/{plugin}/subscriptions/{id}
+put /devices/{id}/enable
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| plugin | path | string |  |  
 | id | path | string |  |  
 
 
 
-###  Request Parameters
 
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| source | query | string |  |  false |
-| owner | query | string |  |  false |
+
+### Request Body
+
+
+ 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+|  | Object | [v1Enable](#v1Enable) |
+
+#### v1Enable
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| enable | boolean |  |   
+
+
+  
+     
+ 
+ 
+
+
 
 
 
@@ -42,28 +58,16 @@ get /plugins/{plugin}/subscriptions/{id}
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [v1SubscriptionResponse](#v1SubscriptionResponse) |
+| 200 | OK | Object | [v1EnableDeviceResponse](#v1EnableDeviceResponse) |
 
-#### v1SubscriptionResponse
+#### v1EnableDeviceResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| id | string |  |      
-| owner | string |  |      
-| plugin | string |  |      
-| source | string |  |      
-| subscription |  |  |   
+| result | string |  |   
 
 
   
-     
-   
-     
-   
-     
-   
-     
-   
      
  
  

@@ -1,10 +1,10 @@
 ---
-title: "Openapi_tatus"
-description: 'Query status.'
+title: "addDeviceExt"
+description: 'add device extensions'
 ---
 
 
-调用该接口Query status.。
+调用该接口add device extensions。
 
 
 
@@ -12,10 +12,35 @@ description: 'Query status.'
 
 
 ```
-get /status
+post /devices/{id}/ext
 ```
 
 
+
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string | 设备ID |  
+
+
+
+
+
+### Request Body
+
+
+ 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+| 设备扩展属性KV | Object | [](#) |
+
+#### 
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |  
+
+
+
+ 
 
 
 
@@ -30,19 +55,16 @@ get /status
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [v1StatusResponse](#v1StatusResponse) |
+| 200 | OK | Object | [v1AddDeviceExtResponse](#v1AddDeviceExtResponse) |
 
-#### v1StatusResponse
+#### v1AddDeviceExtResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| res |  |  |      
-| status |  |  |   
+| result | string |  |   
 
 
   
-     
-   
      
  
  

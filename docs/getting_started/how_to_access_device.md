@@ -1,19 +1,16 @@
 ---
 title: 🌐 如何使用tkeel平台连接你的设备
-sidebar_position: 30
+sidebar_position: 50
 slug: /use
 ---
 
 # 如何连接您的设备 
 
 
-
 ### 完成设备连接需要完成如下几个部分：
 1. 在 tkeel 平台安装连接设备依赖插件：1、iothub, 2、device
 2. 利用 device 插件在 tkeel 平台注册您的数字化设备
 3. 利用 iothub 插件发送数据至tkeel平台
-
-
 
 ## 在tkeel平台安装插件
 

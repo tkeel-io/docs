@@ -1,6 +1,6 @@
 ---
 title: 安装 tKeel CLI
-sidebar_position: 10
+sidebar_position: 20
 slug: /cli
 ---
 # 安装 tKeel CLI

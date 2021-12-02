@@ -6,7 +6,7 @@ sidebar_position: 1
 
 ## core 整体架构
 
-![Architecture](/images/core/architecture.png)
+![Architecture](/images/core/architecture-pitrix.png)
 
 
 ### Restful APIs

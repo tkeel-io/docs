@@ -6,7 +6,7 @@ sidebar_position: 2
 
 
 
-![Architecture](/images/core/architecture.png)
+![Architecture](/images/core/architecture-pitrix.png)
 
 
 ### Restful APIs

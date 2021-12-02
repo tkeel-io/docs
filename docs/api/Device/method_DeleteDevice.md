@@ -1,10 +1,10 @@
 ---
-title: "listDevice"
-description: 'list device entity'
+title: "DeleteDevice"
+description: 'delete device entity'
 ---
 
 
-调用该接口list device entity。
+调用该接口delete device entity。
 
 
 
@@ -12,7 +12,7 @@ description: 'list device entity'
 
 
 ```
-post /devices/search
+post /devices/delete
 ```
 
 
@@ -27,40 +27,18 @@ post /devices/search
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 限制 | Object | [apidevicev1Filter](#apidevicev1Filter) |
+| 设备ID 数组 | Object | [apidevicev1Ids](#apidevicev1Ids) |
 
-#### apidevicev1Filter
+#### apidevicev1Ids
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |         
-| condition | Array[apidevicev1Condition] | 组合条件 [ 具体参数可见下面 [apidevicev1Condition](#apidevicev1Condition) ] |       
-| page |  | 分页 |   
+| ---- | ---- | ----------- |        
+| ids | Array[ string ] | id 字符串数组 |    
 
 
   
        
-         
-### apidevicev1Condition
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| field | string | 查询输出字段 |      
-| operator | string | 操作符, $eq为相等，$neq为不等，$lt为小于，$gt为大于，$lne为小于等于， $gne为大于等于 |      
-| value | string | 值 |   
-
-
-  
-     
-   
-     
-   
-     
- 
- 
-
-
           
-     
-   
      
  
  
@@ -78,18 +56,16 @@ post /devices/search
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListDeviceResponse](#v1ListDeviceResponse) |
+| 200 | OK | Object | [v1DeleteDeviceResponse](#v1DeleteDeviceResponse) |
 
-#### v1ListDeviceResponse
+#### v1DeleteDeviceResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |    
-| result | Object |    |   
+| ---- | ---- | ----------- |     
+| result | string |  |   
 
 
   
-    
-          
      
  
  

@@ -1,5 +1,5 @@
 ---
-title: "delGroupitems"
+title: "DelGroupitems"
 description: 'del group items'
 ---
 

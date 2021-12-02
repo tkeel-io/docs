@@ -1,10 +1,10 @@
 ---
-title: "deleteDevice"
-description: 'delete device entity'
+title: "UpdateGroupExt"
+description: 'update group extensions'
 ---
 
 
-调用该接口delete device entity。
+调用该接口update group extensions。
 
 
 
@@ -12,10 +12,14 @@ description: 'delete device entity'
 
 
 ```
-post /devices/delete
+post /groups/{id}/ext
 ```
 
 
+
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string | 设备组ID |  
 
 
 
@@ -27,20 +31,15 @@ post /devices/delete
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 设备ID 数组 | Object | [apidevicev1Ids](#apidevicev1Ids) |
+| 扩展配置kv | Object | [](#) |
 
-#### apidevicev1Ids
+#### 
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |        
-| ids | Array[ string ] | id 字符串数组 |    
+| ---- | ---- | ----------- |  
 
 
-  
-       
-          
-     
- 
+
  
 
 
@@ -56,13 +55,13 @@ post /devices/delete
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1DeleteDeviceResponse](#v1DeleteDeviceResponse) |
+| 200 | OK | Object | [apigroupv1CommonResponse](#apigroupv1CommonResponse) |
 
-#### v1DeleteDeviceResponse
+#### apigroupv1CommonResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| result | string |  |   
+| result | string | ok  or failed |   
 
 
   

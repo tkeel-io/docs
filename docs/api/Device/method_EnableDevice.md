@@ -1,10 +1,10 @@
 ---
-title: "createDevice"
-description: 'create device entity'
+title: "EnableDevice"
+description: 'enable device'
 ---
 
 
-调用该接口create device entity。
+调用该接口enable device。
 
 
 
@@ -12,10 +12,14 @@ description: 'create device entity'
 
 
 ```
-post /devices
+put /devices/{id}/enable
 ```
 
 
+
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string |  |  
 
 
 
@@ -27,27 +31,16 @@ post /devices
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 设备信息 | Object | [v1DeviceEntity](#v1DeviceEntity) |
+|  | Object | [v1Enable](#v1Enable) |
 
-#### v1DeviceEntity
+#### v1Enable
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| desc | string | 设备描述 |     
-| ext | Object | 设备扩展配置   |      
-| group | string | 设备组ID |      
-| name | string | 设备名称 |   
+| enable | boolean |  |   
 
 
   
-     
-   
-    
-          
-     
-   
-     
-   
      
  
  
@@ -65,19 +58,16 @@ post /devices
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1CreateDeviceResponse](#v1CreateDeviceResponse) |
+| 200 | OK | Object | [v1EnableDeviceResponse](#v1EnableDeviceResponse) |
 
-#### v1CreateDeviceResponse
+#### v1EnableDeviceResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| dev |  | 设备信息 |      
-| sysField |  | 设备系统信息 |   
+| result | string |  |   
 
 
   
-     
-   
      
  
  

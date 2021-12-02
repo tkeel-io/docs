@@ -45,12 +45,6 @@ const config = {
           src: 'images/logo.svg',
         },
         items: [
-          {
-            type: 'doc',
-            docId: 'getting_started/installation',
-            position: 'left',
-            label: 'Documents',
-          },
         ],
       },
       footer: {

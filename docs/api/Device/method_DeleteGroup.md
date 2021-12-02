@@ -1,10 +1,10 @@
 ---
-title: "getGroup"
-description: 'get entity group'
+title: "DeleteGroup"
+description: 'delete entity group'
 ---
 
 
-调用该接口get entity group。
+调用该接口delete entity group。
 
 
 
@@ -12,14 +12,36 @@ description: 'get entity group'
 
 
 ```
-get /groups/{id}
+post /groups/delete
 ```
 
 
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string | 设备组ID |  
+
+
+
+
+### Request Body
+
+
+ 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+| 设备组ID 数组 | Object | [apigroupv1Ids](#apigroupv1Ids) |
+
+#### apigroupv1Ids
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |        
+| ids | Array[ string ] | id 数组 |    
+
+
+  
+       
+          
+     
+ 
+ 
 
 
 
@@ -34,19 +56,16 @@ get /groups/{id}
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1GetGroupResponse](#v1GetGroupResponse) |
+| 200 | OK | Object | [apigroupv1CommonResponse](#apigroupv1CommonResponse) |
 
-#### v1GetGroupResponse
+#### apigroupv1CommonResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| entityInfo |  | 设备组信息 |      
 | result | string | ok  or failed |   
 
 
   
-     
-   
      
  
  

@@ -1,10 +1,10 @@
 ---
-title: "addDeviceExt"
-description: 'add device extensions'
+title: "DelGroupExt"
+description: 'delete group extensions'
 ---
 
 
-调用该接口add device extensions。
+调用该接口delete group extensions。
 
 
 
@@ -12,14 +12,14 @@ description: 'add device extensions'
 
 
 ```
-post /devices/{id}/ext
+post /groups/{id}/ext/delete
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | 设备ID |  
+| id | path | string | 设备组ID |  
 
 
 
@@ -31,15 +31,20 @@ post /devices/{id}/ext
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 设备扩展属性KV | Object | [](#) |
+| 扩展配置key 数组 | Object | [apigroupv1Keys](#apigroupv1Keys) |
 
-#### 
+#### apigroupv1Keys
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |  
+| ---- | ---- | ----------- |        
+| keys | Array[ string ] | key 数组 |    
 
 
-
+  
+       
+          
+     
+ 
  
 
 
@@ -55,13 +60,13 @@ post /devices/{id}/ext
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1AddDeviceExtResponse](#v1AddDeviceExtResponse) |
+| 200 | OK | Object | [apigroupv1CommonResponse](#apigroupv1CommonResponse) |
 
-#### v1AddDeviceExtResponse
+#### apigroupv1CommonResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| result | string |  |   
+| result | string | ok  or failed |   
 
 
   

@@ -1,10 +1,10 @@
 ---
-title: "getDevice"
-description: 'get device entity'
+title: "AddGroupitems"
+description: 'add group items'
 ---
 
 
-调用该接口get device entity。
+调用该接口add group items。
 
 
 
@@ -12,14 +12,40 @@ description: 'get device entity'
 
 
 ```
-get /devices/{id}
+post /groups/{id}/items
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | 设备ID |  
+| id | path | string | 设备组ID |  
+
+
+
+
+
+### Request Body
+
+
+ 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+| 子设备ID 数组 | Object | [apigroupv1Ids](#apigroupv1Ids) |
+
+#### apigroupv1Ids
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |        
+| ids | Array[ string ] | id 数组 |    
+
+
+  
+       
+          
+     
+ 
+ 
 
 
 
@@ -34,19 +60,16 @@ get /devices/{id}
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1GetDeviceResponse](#v1GetDeviceResponse) |
+| 200 | OK | Object | [apigroupv1CommonResponse](#apigroupv1CommonResponse) |
 
-#### v1GetDeviceResponse
+#### apigroupv1CommonResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| dev |  | 设备信息 |      
-| sysField |  | 设备系统信息 |   
+| result | string | ok  or failed |   
 
 
   
-     
-   
      
  
  

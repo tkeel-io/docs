@@ -1,6 +1,6 @@
 ---
 title: 新手引导
-sidebar_position: 5
+sidebar_position: 10
 ---
 
 
@@ -20,7 +20,6 @@ sidebar_position: 5
 本指南中的以下步骤是：
 
 1. [安装 tKeel CLI](./cli.md)
-1. [初始 tKeel 平台](./init.md)
-1. [🌐 如何使用tkeel平台连接你的设备](./how_to_access_device.md)
-1. [🚀 如何使用插件功能](./how-to-use-plugin.md)
-
+2. [初始 tKeel 平台](./init.md)
+3. [🚀 如何使用插件功能](./how-to-use-plugin.md)
+4. [🌐 如何使用tkeel平台连接你的设备](./how_to_access_device.md)

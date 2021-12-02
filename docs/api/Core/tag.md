@@ -1,7 +1,11 @@
 ---
 title: "API列表"
-description: 'API列表' sidebar_position: 0
+description: 'API列表'
+sidebar_position: 0
 ---
+
+
+
 
 ## Entity相关API
 
@@ -16,12 +20,14 @@ description: 'API列表' sidebar_position: 0
 | [appendMapper](./method_appendMapper)|  Append entity mapper |
 | [listEntity](./method_listEntity)|  List entities |
 
+
 ## Search相关API
 
 | Name |  Description | 
 | ---- |  ----------- | 
 | [searchObjects](./method_searchObjects)|  Search objects by keyword |
 | [indexObject](./method_indexObject)|  Index a object |
+
 
 ## Subscription相关API
 
@@ -32,6 +38,7 @@ description: 'API列表' sidebar_position: 0
 | [getSubscription](./method_getSubscription)|  Get subscription |
 | [deleteSubscription](./method_deleteSubscription)|  Delete subscription |
 | [updateSubscription](./method_updateSubscription)|  Update subscription |
+
 
 ## TopicEvent相关API
 

@@ -10,16 +10,25 @@ description: 'Get a message.（服务描述）'
 
 ## Request
 
+
 ```
 post /helloworld/{name}
 ```
+
+
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | name | path | string | Description sample of helloworld's name |  
 
+
+
+
+
 ### Request Body
 
+
+ 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 | Description sample of helloworld | Object | [v1Test](#v1Test) |
@@ -31,10 +40,25 @@ post /helloworld/{name}
 | aaa | string |  |      
 | bbb | string |  |   
 
+
+  
+     
+   
+     
+ 
+ 
+
+
+
+
+
 ## Response
+
+
 
 ### Response  200
 
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [v1HelloResponse](#v1HelloResponse) |
@@ -45,8 +69,19 @@ post /helloworld/{name}
 | ---- | ---- | ----------- |     
 | message | string | Hello Response |   
 
+
+  
+     
+ 
+ 
+
+
+ 
+
+
 ### Response  default
 
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -59,8 +94,13 @@ post /helloworld/{name}
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-### protobufAny
 
+  
+     
+   
+       
+         
+### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   

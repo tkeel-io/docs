@@ -1,5 +1,6 @@
 ---
-title: 新手引导 sidebar_position: 5
+title: 新手引导
+sidebar_position: 5
 ---
 
 
@@ -9,11 +10,10 @@ title: 新手引导 sidebar_position: 5
 :::note
 
 ### tKeel 概念
-
-如果您正在寻找 tKeel 的介绍性概述并了解有关 tKeel
-基本术语的更多信息，建议访问[概念部分](/internal_concepts/platform)。
+如果您正在寻找 tKeel 的介绍性概述并了解有关 tKeel 基本术语的更多信息，建议访问[概念部分](/internal_concepts/platform)。
 
 :::
+
 
 本指南将引导您完成安装、初始化和开始使用 tKeel 的一系列步骤。 您可以按照下面的流程，其中包括 tKeel CLI、Keel、Rudder 以及官方组件。
 

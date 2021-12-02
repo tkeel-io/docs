@@ -1,5 +1,7 @@
 ---
-title: 安装 tKeel CLI sidebar_position: 10 slug: /cli
+title: 安装 tKeel CLI
+sidebar_position: 10
+slug: /cli
 ---
 # 安装 tKeel CLI
 
@@ -32,6 +34,5 @@ curl -fsSL https://raw.githubusercontent.com/tkeel-io/cli/master/install/install
 1. 下载 [tKeel CLI](https://github.com/tkeel-io/cli/releases)
 2. 将下载的文件解压 (e.g. tkeel_linux_amd64.tar.gz, tkeel_windows_amd64.zip)
 3. 把它移到你想要的位置
-  * 如果你是 Linux/MacOS 用户 - `/usr/local/bin`
-  * 如果你是 Windows 用户 - 创建一个目录并将其添加到你的 `系统 PATH `中。例如，通过编辑系统环境变量，创建一个名为 `c:\tkeel`
-    的目录，并将这个目录添加到你的 `系统 PATH` 中。
+    * 如果你是 Linux/MacOS 用户 - `/usr/local/bin`
+    * 如果你是 Windows 用户 - 创建一个目录并将其添加到你的 `系统 PATH `中。例如，通过编辑系统环境变量，创建一个名为 `c:\tkeel` 的目录，并将这个目录添加到你的 `系统 PATH` 中。

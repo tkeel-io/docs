@@ -15,20 +15,28 @@ description: 'Append entity mapper'
 post /plugins/{plugin}/entities/{id}/mappers
 ```
 
+
+
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | plugin | path | string | plugin id |  
 | id | path | string | entity id |  
 
-### Request Parameters
+
+
+###  Request Parameters
 
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
 | source | query | string | source id |  false |
 | owner | query | string | owner id |  false |
 
+
+
 ### Request Body
 
+
+ 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 | mapper description | Object | [v1MapperDesc](#v1MapperDesc) |
@@ -40,10 +48,25 @@ post /plugins/{plugin}/entities/{id}/mappers
 | name | string | mapper name |      
 | tql | string | tql content |   
 
+
+  
+     
+   
+     
+ 
+ 
+
+
+
+
+
 ## Response
+
+
 
 ### Response  200
 
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [v1EntityResponse](#v1EntityResponse) |
@@ -61,15 +84,55 @@ post /plugins/{plugin}/entities/{id}/mappers
 | source | string | source id |      
 | type | string | entity type |   
 
-### v1MapperDesc
 
+  
+    
+          
+     
+   
+     
+   
+       
+         
+### v1MapperDesc
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | name | string | mapper name |      
 | tql | string | tql content |   
 
+
+  
+     
+   
+     
+ 
+ 
+
+
+          
+     
+   
+     
+   
+     
+   
+    
+          
+     
+   
+     
+   
+     
+ 
+ 
+
+
+ 
+
+
 ### Response  default
 
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -82,8 +145,13 @@ post /plugins/{plugin}/entities/{id}/mappers
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-### protobufAny
 
+  
+     
+   
+       
+         
+### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   

@@ -1,19 +1,20 @@
 ---
-sidebar_position: 2 title: 授权服务
+sidebar_position: 2
+title: 授权服务
 ---
 # OAuth Access
 该文档将会为您展示 api 的访问控制的安全机制
 
-## API 访问安全
+##  API 访问安全
 当外部以调用接口的方式访问平台时，需要通过平台的授权服务的成功认证才能访问到相应接口。授权服务支持标准的 OAuth2 协议。
 
-## 支持的授权类型
-
+## 支持的授权类型 
 现平台安全模块支持如下多种授权类型：
+### Password 
 
-### Password
-
-资源请求方(client方)使用 如果充分信任接入应用(client), 用户就可以直接把用户名密码给接入应用. 接入应用使用用户账号密码申请令牌.
+资源请求方(client方)使用
+如果充分信任接入应用(client), 用户就可以直接把用户名密码给接入应用.
+接入应用使用用户账号密码申请令牌.
 
 **请求方式**
 ```
@@ -26,12 +27,16 @@ POST /oauth/token
 - username: `client_id`
 - password: `client_secret`
 
-**Body 参数说明**
+**Body 参数说明**  
 
-|参数|类型|说明| |-|-|-| |grant_type|string|固定值 `password`| |username|string|用户名|
-|password|string|用户密码| |scope|string|权限范围,`str1, str2, str3`, 如果没有特殊说明,填 `all` |
+|参数|类型|说明|
+|-|-|-|
+|grant_type|string|固定值 `password`|
+|username|string|用户名|
+|password|string|用户密码|
+|scope|string|权限范围,`str1, str2, str3`, 如果没有特殊说明,填 `all` |
 
-**Response 返回示例**
+**Response 返回示例**  
 
 ```json
 {
@@ -50,13 +55,15 @@ POST /oauth/token
 ```
 GET /oauth/authorize
 ```
+**参数说明**  
 
-**参数说明**
-
-|参数|类型|说明| |-|-|-| |client_id|string|在oauth2 server 注册的client_id|
-|response_type|string|固定值 `code`| |scope|string|权限范围,`str1, str2, str3`,
-如果没有特殊说明,填 `all` | |state|string|验证请求的标志字段| |redirect_uri|string|发放 `code` 用的回调
-uri,回调时会在 uri 后面跟上`?code=**&state=###`|
+|参数|类型|说明|
+|-|-|-|
+|client_id|string|在oauth2 server 注册的client_id|
+|response_type|string|固定值 `code`|
+|scope|string|权限范围,`str1, str2, str3`, 如果没有特殊说明,填 `all` |
+|state|string|验证请求的标志字段|
+|redirect_uri|string|发放 `code` 用的回调 uri,回调时会在 uri 后面跟上`?code=**&state=###`|
 
 **请求示例**
 
@@ -86,13 +93,16 @@ POST /oauth/token
 - username: `client_id`
 - password: `client_secret`
 
-**Body 参数说明**
 
-|参数|类型|说明| |-|-|-| |grant_type|string|固定值 `authorization_code`| |code|string|
-获取授权 code 响应中得到的 code| |redirect_uri|string| 获取授权 code 请求中填写的 redirect_uri|
+**Body 参数说明**  
 
-**Response 返回示例**
+|参数|类型|说明|
+|-|-|-|
+|grant_type|string|固定值 `authorization_code`|
+|code|string| 获取授权 code 响应中得到的 code|
+|redirect_uri|string| 获取授权 code 请求中填写的 redirect_uri|
 
+**Response 返回示例**  
 ```json
 {
     "access_token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiIyMjIyMjIiLCJleHAiOjE1ODU3MTU1NTksInN1YiI6InRlc3QifQ.ZMgIDQMW7FGxbF1V8zWOmEkmB7aLH1suGYjhDdrT7aCYMEudWUoiCkWHSvBmJahGm0RDXa3IyDoGFxeMfzlDNQ",
@@ -114,13 +124,15 @@ POST /oauth/token
 ```http
 GET /oauth/authorize
 ```
+**参数说明**  
 
-**参数说明**
-
-|参数|类型|说明| |-|-|-| |client_id|string|在 oauth2 server 注册的client_id|
-|response_type|string|固定值 `token`| |scope|string|权限范围,`str1, str2, str3`,
-如果没有特殊说明,填 `all` | |state|string|验证请求的标志字段| |redirect_uri|string|发放 `code` 用的回调
-uri,回调时会在 uri 后面跟上 `?code=**&state=###`|
+|参数|类型|说明|
+|-|-|-|
+|client_id|string|在 oauth2 server 注册的client_id|
+|response_type|string|固定值 `token`|
+|scope|string|权限范围,`str1, str2, str3`, 如果没有特殊说明,填 `all` |
+|state|string|验证请求的标志字段|
+|redirect_uri|string|发放 `code` 用的回调 uri,回调时会在 uri 后面跟上 `?code=**&state=###`|
 
 **请求示例**
 ```http
@@ -142,8 +154,9 @@ http://localhost:8080/oauth/on_code#access_token=eyJhbGciOiJIUzUxMiIsInR5cCI6Ikp
 
 ### Client Credentials
 
-资源请求方(client方)使用 使用在 OAuth2 服务器注册的 client_id 和 client_secret 获取 access_token, 发出
-API 请求时，它应将access_token作为 Bearer 令牌传递到 Authorization 请求头中。
+资源请求方(client方)使用
+使用在 OAuth2 服务器注册的 client_id 和 client_secret 获取 access_token,
+发出 API 请求时，它应将access_token作为 Bearer 令牌传递到 Authorization 请求头中。
 
 **请求方式**
 
@@ -156,13 +169,14 @@ API 请求时，它应将access_token作为 Bearer 令牌传递到 Authorization
 - username: `client_id`
 - password: `client_secret`
 
-**Body 参数说明**
+**Body 参数说明**  
 
-|参数|类型|说明| |-|-|-| |grant_type|string|固定值 `client_credentials`|
-|scope|string|权限范围,`str1, str2, str3`, 如果没有特殊说明,填 `all`, `scope` 需要提前在 OAuth2
-服务注册 |
+|参数|类型|说明|
+|-|-|-|
+|grant_type|string|固定值 `client_credentials`|
+|scope|string|权限范围,`str1, str2, str3`, 如果没有特殊说明,填 `all`, `scope` 需要提前在 OAuth2 服务注册 |
 
-**返回示例**
+**返回示例**  
 
 ```json
 {
@@ -182,7 +196,8 @@ API 请求时，它应将access_token作为 Bearer 令牌传递到 Authorization
 
 **接口说明**
 
-这个接口是资源端使用的, 用来验证 `access_token` `scope` 和 `domain` .
+这个接口是资源端使用的, 
+用来验证 `access_token` `scope` 和 `domain` .
 
 **请求方式**
 ```
@@ -193,7 +208,7 @@ GET  oauth/authenticate
 - Bearer Token
 - Token: `access_token`
 
-**返回示例**
+**返回示例**  
 
 ```json
 Status Code: 200
@@ -214,7 +229,7 @@ Response Body
    invalid access token
 ```
 
-> ⚠️ **注意**
+> ⚠️ **注意** 
 > 如果token正确, 接口还会一起返回权限范围`scope` client的注册domain, 这里推荐验证下, 请求方的身份和权限.
 
 ### 刷新 token
@@ -233,9 +248,12 @@ POST /token
 - username: `client_id`
 - password: `client_secret`
 
+
 **Body 参数说明**
 
-|参数|类型|说明| |-|-|-| |grant_type|string|固定值 `refresh_token`|
+|参数|类型|说明|
+|-|-|-|
+|grant_type|string|固定值 `refresh_token`|
 |refresh_token|string|之前获取的 refresh_token|
 
 **返回示例**

@@ -1,10 +1,13 @@
 ---
-sidebar_position: 1 title: Platform slug: /internal_concepts/platform
+sidebar_position: 1
+title: Platform
+slug: /internal_concepts/platform
 ---
 
 # 平台介绍
 
 ![tkeel-layer](/images/docs/tkeel-layer.jpg)
+
 
 - ### **Resource**
 数据存储支持，可以是任意您使用的数据库。

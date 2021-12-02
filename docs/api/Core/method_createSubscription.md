@@ -10,15 +10,20 @@ description: 'Create subscription'
 
 ## Request
 
+
 ```
 post /plugins/{plugin}/subscriptions
 ```
+
+
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | plugin | path | string | plugin id |  
 
-### Request Parameters
+
+
+###  Request Parameters
 
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
@@ -26,8 +31,12 @@ post /plugins/{plugin}/subscriptions
 | source | query | string | source id |  false |
 | owner | query | string | owner id |  false |
 
+
+
 ### Request Body
 
+
+ 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 | subscription object | Object | [v1SubscriptionObject](#v1SubscriptionObject) |
@@ -43,10 +52,33 @@ post /plugins/{plugin}/subscriptions
 | target | string | target id |      
 | topic | string | topic name |   
 
+
+  
+     
+   
+     
+   
+     
+   
+     
+   
+     
+   
+     
+ 
+ 
+
+
+
+
+
 ## Response
+
+
 
 ### Response  200
 
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [v1SubscriptionResponse](#v1SubscriptionResponse) |
@@ -61,8 +93,27 @@ post /plugins/{plugin}/subscriptions
 | source | string | source id |      
 | subscription |  | subscription object |   
 
+
+  
+     
+   
+     
+   
+     
+   
+     
+   
+     
+ 
+ 
+
+
+ 
+
+
 ### Response  default
 
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -75,8 +126,13 @@ post /plugins/{plugin}/subscriptions
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-### protobufAny
 
+  
+     
+   
+       
+         
+### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   

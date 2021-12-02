@@ -15,20 +15,28 @@ description: 'Update subscription'
 put /plugins/{plugin}/subscriptions/{id}
 ```
 
+
+
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | plugin | path | string | plugin id |  
 | id | path | string | subscription id |  
 
-### Request Parameters
+
+
+###  Request Parameters
 
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
 | source | query | string | source id |  false |
 | owner | query | string | owner id |  false |
 
+
+
 ### Request Body
 
+
+ 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 | subscription object | Object | [v1SubscriptionObject](#v1SubscriptionObject) |
@@ -44,10 +52,33 @@ put /plugins/{plugin}/subscriptions/{id}
 | target | string | target id |      
 | topic | string | topic name |   
 
+
+  
+     
+   
+     
+   
+     
+   
+     
+   
+     
+   
+     
+ 
+ 
+
+
+
+
+
 ## Response
+
+
 
 ### Response  200
 
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [v1SubscriptionResponse](#v1SubscriptionResponse) |
@@ -62,8 +93,27 @@ put /plugins/{plugin}/subscriptions/{id}
 | source | string | source id |      
 | subscription |  | subscription object |   
 
+
+  
+     
+   
+     
+   
+     
+   
+     
+   
+     
+ 
+ 
+
+
+ 
+
+
 ### Response  default
 
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -76,8 +126,13 @@ put /plugins/{plugin}/subscriptions/{id}
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-### protobufAny
 
+  
+     
+   
+       
+         
+### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   

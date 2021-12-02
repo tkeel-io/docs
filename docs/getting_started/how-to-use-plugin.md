@@ -1,18 +1,16 @@
 ---
-title: 🚀 如何使用插件功能 sidebar_position: 40
+title: 🚀 如何使用插件功能
+sidebar_position: 40
 ---
 
 # 如何使用插件功能
-
 tKeel 开放平台有强大的拓展功能，支持安装任意您需要的插件。
 
-本页指南将引导您通过 tKeel CLI 完成在 tKeel 上安装和注册一个指定 helm 源的插件。有关更多信息，请参见 [在 tKeel 上安装插件]
-和在 [tKeel 上注册插件]。
+本页指南将引导您通过 tKeel CLI 完成在 tKeel 上安装和注册一个指定 helm 源的插件。有关更多信息，请参见 [在 tKeel 上安装插件] 和在 [tKeel 上注册插件]。
 
 ## 前提条件
 
-确保已经正确 [安装 tKeel 平台](/#install-and-initialize-your-tkeel)
-和 [安装 tKeel CLI](/cli#install-cli)。
+确保已经正确 [安装 tKeel 平台](/#install-and-initialize-your-tkeel) 和 [安装 tKeel CLI](/cli#install-cli)。
 
 ## 安装插件
 我们在平台内对插件的声明周期有如下一个明确的定义：
@@ -50,9 +48,9 @@ release |  |            |       |           |         |   enable | |
 tkeel plugin install https://tkeel-io.github.io/helm-charts/keel-echo@v0.2.0 tkeel-echo
 ```
 > 备注：
->
+> 
 > 示例中所安装的插件为 keel-echo 为平台官方提供的一个演示插件，源地址为 `https://tkeel-io.github.io/helm-charts/` 插件 chart 版本为 `v0.2.0`，如果不指定版本信息将会默认安装发行的最新版本。最后一个参数 「tkeel-echo」是为该插件创建的实体名称，最后对应为部署在 Kubernetes 中的部署实例。
->
+> 
 > 如果您有自己想要安装的插件，请将对应信息进行替换并执行命令。
 
 执行后输出应该如下：
@@ -133,7 +131,7 @@ tkeel plugin uninstall keel-echo
 > 备注：
 > 示例中所卸载的插件实例为上文 install 中命名的 「keel-echo」。
 > 如需安装其他插件，请将对应插件实例名字进行替换并执行命令。
-
+ 
 命令行输出应该如下：
 ```
 ✅  Remove "keel-echo" success!

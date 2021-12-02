@@ -6,14 +6,25 @@ description: 'TopicEvent handler'
 
 调用该接口TopicEvent handler。
 
+
+
 ## Request
+
 
 ```
 post /topic
 ```
 
+
+
+
+
+
+
 ### Request Body
 
+
+ 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 |  | Object | [v1TopicEventRequest](#v1TopicEventRequest) |
@@ -33,10 +44,43 @@ post /topic
 | topic | string |  |      
 | type | string |  |   
 
+
+  
+    
+          
+     
+   
+     
+   
+     
+   
+     
+   
+     
+   
+     
+   
+     
+   
+     
+   
+     
+   
+     
+ 
+ 
+
+
+
+
+
 ## Response
+
+
 
 ### Response  200
 
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [v1TopicEventResponse](#v1TopicEventResponse) |
@@ -47,8 +91,19 @@ post /topic
 | ---- | ---- | ----------- |     
 | status | string |  |   
 
+
+  
+     
+ 
+ 
+
+
+ 
+
+
 ### Response  default
 
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -61,8 +116,13 @@ post /topic
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-### protobufAny
 
+  
+     
+   
+       
+         
+### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   

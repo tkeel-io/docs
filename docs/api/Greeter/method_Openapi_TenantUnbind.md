@@ -6,14 +6,25 @@ description: 'Post tenant bind.'
 
 调用该接口Post tenant bind.。
 
+
+
 ## Request
+
 
 ```
 post /tenant/unbind
 ```
 
+
+
+
+
+
+
 ### Request Body
 
+
+ 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 |  | Object | [v1TenantUnbindRequst](#v1TenantUnbindRequst) |
@@ -25,10 +36,25 @@ post /tenant/unbind
 | extra | string |  |      
 | tenant_id | string |  |   
 
+
+  
+     
+   
+     
+ 
+ 
+
+
+
+
+
 ## Response
+
+
 
 ### Response  200
 
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | A successful response. | Object | [v1TenantUnbindResponse](#v1TenantUnbindResponse) |
@@ -39,8 +65,19 @@ post /tenant/unbind
 | ---- | ---- | ----------- |     
 | res |  |  |   
 
+
+  
+     
+ 
+ 
+
+
+ 
+
+
 ### Response  default
 
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -53,8 +90,13 @@ post /tenant/unbind
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-### protobufAny
 
+  
+     
+   
+       
+         
+### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   

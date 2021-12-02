@@ -10,15 +10,20 @@ description: 'Create a entity'
 
 ## Request
 
+
 ```
 post /plugins/{plugin}/entities
 ```
+
+
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | plugin | path | string | plugin id |  
 
-### Request Parameters
+
+
+###  Request Parameters
 
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
@@ -27,21 +32,36 @@ post /plugins/{plugin}/entities
 | owner | query | string | owner id |  false |
 | type | query | string | entity type |  false |
 
+
+
 ### Request Body
 
+
+ 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 | entity properties, optional | Object | [](#) |
 
-####  
+#### 
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |  
 
+
+
+ 
+
+
+
+
+
 ## Response
+
+
 
 ### Response  200
 
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [v1EntityResponse](#v1EntityResponse) |
@@ -59,15 +79,55 @@ post /plugins/{plugin}/entities
 | source | string | source id |      
 | type | string | entity type |   
 
-### v1MapperDesc
 
+  
+    
+          
+     
+   
+     
+   
+       
+         
+### v1MapperDesc
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | name | string | mapper name |      
 | tql | string | tql content |   
 
+
+  
+     
+   
+     
+ 
+ 
+
+
+          
+     
+   
+     
+   
+     
+   
+    
+          
+     
+   
+     
+   
+     
+ 
+ 
+
+
+ 
+
+
 ### Response  default
 
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -80,8 +140,13 @@ post /plugins/{plugin}/entities
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-### protobufAny
 
+  
+     
+   
+       
+         
+### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   

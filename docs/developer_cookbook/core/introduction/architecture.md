@@ -83,5 +83,5 @@ Inbox 实现从数据源（MQ，数据库等）中消费消息，实现可靠的
 
 ### Storege
 
-[Storege](/docs/developer_cookbook/core/specs/actor#entity-数据落盘) 是 core 持久化缓冲模块，用于封装  core 用到的核心中间件资源，并使用缓冲区对时序数据的读写进行优化。
+[Storege](../developer_cookbook/core/specs/actor.md) 是 core 持久化缓冲模块，用于封装  core 用到的核心中间件资源，并使用缓冲区对时序数据的读写进行优化。
 

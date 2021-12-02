@@ -1,5 +1,6 @@
 ---
 title: 🚀 如何使用插件功能
+sidebar_position: 40
 ---
 
 # 如何使用插件功能

@@ -105,24 +105,26 @@ sidebar_position: 10
   ![dispatch-msg-to-mailbox](/images/core/dispatch-msg-to-mailbox.png)
 
 #### Entity Attach
+
 Entity Attach 流程图如下：
+
 ![entity-runtime-attached](/images/core/entity-runtime-attached.png)
 
 
 
-## Entity 数据落盘
+## Entity 数据持久化
 
 `Entity` 数据落盘的时候需要针对不同的数据来进行存储的，可以分为`时序`，`属性`。
 
 ![entity-tseries-property-store](/images/core/entity-tseries-property-store.png)
 
 
-### 属性数据落盘
+### 属性数据持久化
 
 - 对于属性数据的落盘，我们对属性实现一个变更数据 `Buffer`，当 `Buffer` 满溢我们对窗口内的所有属性进行存储，此外我们也采用定时落盘策略，定时对 `Buffer` 进行落盘，以保证属性的存储一致性和实时性。
 
 
-### 时序数据落盘
+### 时序数据持久化
 
 - 对于时序数据的落盘，我们对时序实现一个变更数据的 `Batch Queue`，当 `Batch Queue` 满溢是我们对时序数据进行存储，此外我们也采用定时刷盘策略，定时对 `Batch Queue` 刷盘，以保证时序数据存储的一致性和实时性。
 

@@ -15,19 +15,19 @@ core 采用 `RESTFUL` 规范实现 API，致力于提供正交的APIs，向外�
 
 
 ### 实体
-实体（Entity） 是我们在物联网世界中对 Things 的一种抽象，是 Core 操作的基础对象。包括智能灯、空调、网关，房间，楼层，甚至是通过数据聚合生成的虚拟设备等等，我们将这些 `Things` 进行抽象，
+实体（[Entity](../specs/entity.md)） 是我们在物联网世界中对 Things 的一种抽象，是 Core 操作的基础对象。包括智能灯、空调、网关，房间，楼层，甚至是通过数据聚合生成的虚拟设备等等，我们将这些 `Things` 进行抽象，
 定义为实体。
 
 *属性* 是对某种实体一部分信息的描述。一个实体包含两类属性：
 1. **基础属性**: 每个实体都必备的属性，如 `id`，`type`等用于标识实体共有特征的属性。
 2. **扩展属性**: 实体除基础属性外的属性，这种属性属于某一类或某一个实体的特征描述，比如一个 **温度计** 的温度。
 
-> 更多技术细节请阅读[实体文档](docs/entity/entity.md)
+> 更多技术细节请阅读[实体文档](../specs/entity.md)
 
 
 ### 实体管理
 
-core 将物理世界中的 `对象` 加以抽象，封装成数字世界中的 `实体`， 实体是对 “物理对象” 的数字镜像，`实体管理` 对 core 中的实体进行管理，并代理实体相关的 [APIs](/docs/api/Core/tag) 操作，为实体和实体运行时（[Actor](../specs/actor)）向外暴露接口。
+`实体管理` 对 core 中的实体进行管理，并代理实体相关的 [APIs](/docs/api/Core/tag) 操作，为实体和实体运行时（[Actor](../specs/actor)）向外暴露接口。
 
 ### Runtime
 
@@ -35,16 +35,6 @@ Runtime 为实体的运行时（Actor）提供环境支持，对 Actor 进行调
 
 
 ![core-actor](/images/core/architecture-actor.png)
-
-
-### Inbox
-
-Inbox 实现从数据源（MQ，数据库等）中消费消息，实现可靠的消息消费机制， 为 Runtime 中的 Actor 提供可靠消息保证。
-
-
-### Channel Endpoint
-
-高频，高吞吐量的消息流对传输效率的要求总是苛刻的， core 采用高效 数据通道（[Channel](../specs/channel.md)）， 封装通道端点，为高频消息提供高速通道。
 
 ### 关系
 
@@ -80,7 +70,18 @@ Inbox 实现从数据源（MQ，数据库等）中消费消息，实现可靠的
 
 在开发上层应用时，我们的需求往往是聚焦一个或者一些实体，如 PUE 的计算。由此 core 提供了简捷方便的订阅([Subscription](../specs/subscription.md)) ，供开发者实时获取自己关心的数据。
 
+
+### Inbox
+
+Inbox 实现从数据源（MQ，数据库等）中消费消息，实现可靠的消息消费机制， 为 Runtime 中的 Actor 提供可靠消息保证。
+
+
+### Channel Endpoint
+
+高频，高吞吐量的消息流对传输效率的要求总是苛刻的， core 采用高效 数据通道（[Channel](../specs/channel.md)）， 封装通道端点，为高频消息提供高速通道。
+
+
 ### Storege
 
-Storege 是 core 持久化缓冲模块。
+[Storege](/docs/developer_cookbook/core/specs/actor#entity-数据落盘) 是 core 持久化缓冲模块，用于封装  core 用到的核心中间件资源，并使用缓冲区对时序数据的读写进行优化。
 

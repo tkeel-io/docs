@@ -21,7 +21,7 @@ sidebar_position: 2
 [映射](../specs/mapper.md) 是实体属性传播的抽象，可以实现数据的向上传递以及控制命令的向下传递。
 <div align="center">
 
-![img.png](/images/message_passing.png)
+![img.png](/images/core/message_passing.png)
 
 <i>映射模拟</i>
 </div>
@@ -38,7 +38,7 @@ sidebar_position: 2
 
 <div align="center">
 
-![img.png](/images/mapping.png)
+![img.png](/images/core/mapping.png)
 </div>
 
 

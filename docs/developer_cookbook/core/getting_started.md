@@ -58,7 +58,7 @@ DEBU[0004] established connection to placement service at dns:///localhost:50005
 
 ## 使用 core 的 APIs
 
-<br>
+
 
 ### 第 1 步： 创建实体
 
@@ -186,41 +186,38 @@ core 对于实体的设计和抽象，绝不止步于 get/set， core通过 映�
 
 1. **创建设备实体 device234：**
 
-    ```bash
-    curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entities?id=device234" \
-    -H "Owner: admin" \
-    -H "Type: DEVICE" \
-    -H "Source: dm" \
-    -H "Content-Type: application/json" \
-    -d '{
-        "status": "start",
-        "temp": 111
-        }'
-    ```
+
+```bash
+  curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entities?id=device234" \
+  -H "Owner: admin" \
+  -H "Type: DEVICE" \
+  -H "Source: dm" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "status": "start",
+      "temp": 111
+    }'
+```
 
 2. **为实体 device123 创建映射：**
 
 
-    ```bash
-    curl -XPOST "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entities/device123/mappers" \
-    -H "Source: dm" \
-    -H "Owner: admin" \
-    -H "Type: DEVICE" \
-    -H "Content-Type: application/json" \
-    -d '{
-        "name": "m-sync-dev234",
-        "tql": "insert into device123 select device234.temp as temp"
-        }'
-    ```
+```bash
+  curl -XPOST "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entities/device123/mappers" \
+  -H "Source: dm" \
+  -H "Owner: admin" \
+  -H "Type: DEVICE" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "name": "m-sync-dev234",
+      "tql": "insert into device123 select device234.temp as temp"
+    }'
+```
 
-insert into device123 select getDeviceByClass("灯").temp as temp
-  
 
-mapper 的描述信息由两部分数据组成：`name` 是映射的名称，[tql](specs/tql.md) 是映射的规则信息， `insert into device123 select device234.temp as temp` 是一条将 device234 的 temp 属性变更 同步到 device123 的 temp 属的规则。在规则生效后，我们可以通过想 device234 推送数据，查看 device123 的 temp 是否变化来校验规则是否生效。
-
+mapper 的描述信息由两部分数据组成： `name` 是映射的名称，[tql](specs/tql.md) 是映射的规则信息， `insert into device123 select device234.temp as temp` 是一条将 device234 的 temp 属性变更 同步到 device123 的 temp 属的规则。在规则生效后，我们可以通过想 device234 推送数据，查看 device123 的 temp 是否变化来校验规则是否生效。
 
 ### 第 8 步： 通过 pubsub 向实体发送消息
-
 
 core 为上层应用提供两个不同场景的接口：[控制平面接口](specs/interfaces.md)，[数据平面接口](specs/interfaces.md)。控制平面的接口着眼于解决上层应用纷繁复杂的接口需求，而数据空面接口力在解决高频，大吞吐量场景下的性能问题。
 
@@ -272,7 +269,7 @@ curl -X DELETE "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/subs
 
 ```bash
 curl -XPOST "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entities/test123/mappers/m-sync-dev234" \
-  -H "Source: dm" \
+  -H "Source: dm"   \
   -H "Owner: admin" \
   -H "Type: DEVICE" \
   -H "Content-Type: application/json"

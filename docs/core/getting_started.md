@@ -10,9 +10,6 @@ sidebar_position: 1
 Core 是 tKeel 物联网平台的数据中心，高性能、可拓展的轻量级下一代数字化数据引擎。  
 以 实体（entity） 为操作单元，通过简易明了的 API 对外提供读写能力（属性读写、时序查询、订阅，映射等）。
 
-## 架构
-
-![Architecture](/images/core/DDD-core.png)
 
 
 
@@ -214,6 +211,9 @@ core 对于实体的设计和抽象，绝不止步于 get/set， core通过 映�
         "tql": "insert into device123 select device234.temp as temp"
         }'
     ```
+
+insert into device123 select getDeviceByClass("灯").temp as temp
+  
 
 mapper 的描述信息由两部分数据组成：`name` 是映射的名称，[tql]() 是映射的规则信息， `insert into device123 select device234.temp as temp` 是一条将 device234 的 temp 属性变更 同步到 device123 的 temp 属的规则。在规则生效后，我们可以通过想 device234 推送数据，查看 device123 的 temp 是否变化来校验规则是否生效。
 

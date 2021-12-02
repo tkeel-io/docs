@@ -6,15 +6,16 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
-  url: 'https://your-docusaurus-test-site.com',
-  baseUrl: '/',
+  title: 'tKeel',
+  tagline: 'tKeel are cool',
+  url: 'https://tkeel-io.github.io',
+  baseUrl: '/docs/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'images/favicon.ico',
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'tkeel-io', // Usually your GitHub org/user name.
+  projectName: 'docs', // Usually your repo name.
+  deploymentBranch: 'gh-pages',
 
   presets: [
     [
@@ -25,7 +26,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/',
           // Please change this to your repo.
-          editUrl: 'https://github.com/tkeel-io/docs/main/',
+          editUrl: 'https://github.com/tkeel-io/docs/tree/main/',
         },
         theme: {
           customCss: require.resolve('./src/styles/custom.scss'),
@@ -38,18 +39,12 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'My Site',
+        title: 'tKeel',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'tKeel',
           src: 'images/logo.svg',
         },
         items: [
-          {
-            type: 'doc',
-            docId: 'intro',
-            position: 'left',
-            label: 'Tutorial',
-          },
         ],
       },
       footer: {
@@ -59,17 +54,17 @@ const config = {
             title: 'Docs',
             items: [
               {
-                label: 'Tutorial',
+                label: 'Start',
                 to: '/',
               },
             ],
           },
           {
-            title: 'More',
+            title: 'Github',
             items: [
               {
                 label: 'GitHub',
-                href: 'https://github.com/tkeel-io/docs',
+                href: 'https://github.com/tkeel-io/tkeel',
               },
             ],
           },
@@ -83,6 +78,11 @@ const config = {
     }),
 
   plugins: ['docusaurus-plugin-sass'],
+
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'zh-cn'],
+  },
 };
 
 module.exports = config;

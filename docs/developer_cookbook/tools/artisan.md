@@ -1,6 +1,6 @@
 ---
 title: Artisan
-sidebar_position: 1
+sidebar_position: 20
 ---
 
 # Artisan

@@ -1,5 +1,5 @@
 ---
-title: "createSubscription"
+title: "CreateSubscription"
 description: 'Create subscription'
 ---
 

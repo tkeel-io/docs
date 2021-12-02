@@ -1,5 +1,5 @@
 ---
-title: "updateSubscription"
+title: "UpdateSubscription"
 description: 'Update subscription'
 ---
 

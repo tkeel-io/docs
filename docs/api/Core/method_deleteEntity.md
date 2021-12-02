@@ -1,5 +1,5 @@
 ---
-title: "deleteEntity"
+title: "DeleteEntity"
 description: 'Delete a entity'
 ---
 

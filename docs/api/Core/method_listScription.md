@@ -1,5 +1,5 @@
 ---
-title: "listScription"
+title: "ListScription"
 description: 'List subscriptions'
 ---
 

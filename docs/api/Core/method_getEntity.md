@@ -1,5 +1,5 @@
 ---
-title: "getEntity"
+title: "GetEntity"
 description: 'Get a entity'
 ---
 

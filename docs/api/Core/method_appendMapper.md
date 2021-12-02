@@ -1,5 +1,5 @@
 ---
-title: "appendMapper"
+title: "AppendMapper"
 description: 'Append entity mapper'
 ---
 

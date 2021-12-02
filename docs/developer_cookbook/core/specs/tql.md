@@ -3,25 +3,20 @@ title: TQL
 sidebar_position: 8
 ---
 
+`TQL`即 tkeel Query Language， 主要用于数据选择:
+1. core 与各个插件之间的订阅的数据选择
+2. core 内部entity之间的映射（mapper）的数据选择
 
-## 简介
-
-`TQL`即Tkeel QL， 主要用于数据选择，如下
-1. core 与各个插件之间的订阅的数据选择 
-2. core 内部entity之间的映射（mapper）的数据选择 
-
-
-提供的功能：
-
-1. `tql`的解析，提供 API 将 `tql` 语句字符串转化为 TargetEntity，SourceActors，Tentacles。
-2.  计算结果，提供 API 输入参数 按照`tql`语法计算出结果并输出。 （订阅不支持这一步， 仅mapper）
+提供了这样两个功能：
+1. `tql` 的解析，提供 API 将 `tql` 语句字符串转化为 TargetEntity，SourceActors，Tentacles。
+2.  计算结果，提供 API 输入参数 按照 `tql` 语法计算出结果并输出。 （订阅不支持这一步， 仅mapper）
 
 
 
-## Demo1
+## Demo A
 
+假设现有三个实体，接下来的语句将会展示如何将 entity1 和 entity2 的部分数据映射到 entity3：
 
-> 现有三个实体，将entity1和entity2的部分数据映射到entity3。
 ```
 TQL:
     insert into entity3 select
@@ -30,16 +25,20 @@ TQL:
 		entity1.property1 + entity2.property3 as property3
 
 ```
-`insert into` 必填，
 
-`entity3` 订阅可以是订阅的ID， mapper是entity ID 
+:::note
+ `insert into` 是必填语句
 
-`select` 必填， 后面支持通配符
+ `entity3` 订阅可以是订阅的 ID， mapper 是 entity ID
 
-`as` 可选， 订阅没有as， mapper有as
+ `select` 必填语句（以后将会支持通配符）
+
+ `as` 可选语句， 订阅没有 as， mapper 有 as
+:::
 
 
-> 1. `tql`解析， 输出如下`json`。
+1. **tql** 解析以上语句将会有如下 `JSON` 输出:
+
 ```json
 {
   "TargetEntity": "entity3",
@@ -51,8 +50,7 @@ TQL:
 }
 ```
 
-
-> 2. 计算结果,输入为Input(map), 输出为Output(map)。
+2. 计算结果, 输入为 Input(map), 输出为 Output(map)。
 ```json
 Input:
 {
@@ -72,7 +70,7 @@ Output:
 
 
 
-## Demo2
+## Demo B
 
 场景：`设备管理` 订阅所有的 `设备接入` 数据, 
 ```
@@ -80,7 +78,7 @@ TQL:
     insert into sub_entity_id select *
 
 ```
-1. tql解析输出
+1. tql 解析输出
 ```json
 {
   "TargetEntity": "sub_entity_id",

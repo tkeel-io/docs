@@ -53,9 +53,6 @@ sidebar_position: 2
 
 
 
-<!-- ![mapper-parse](/images/core/mapper-parse.png) -->
-
-
 ### 解析 Tentacle
 
 对于 `Tentacle` 在定义`TQL` 的时候我们有时候就能够指代清楚我们定义的选取的实体或属性，我们可能需要通过结合服务节点的上下文计算解析才能得到结论。

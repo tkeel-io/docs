@@ -5,7 +5,7 @@ sidebar_position: 2
 
 
 
-![Architecture](/images/core/DDD-core.png)
+![Architecture](/images/core/architecture.png)
 
 
 ### Restful APIs

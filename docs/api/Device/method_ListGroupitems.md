@@ -1,10 +1,10 @@
 ---
-title: "updateGroupExt"
-description: 'update group extensions'
+title: "ListGroupitems"
+description: 'list group items'
 ---
 
 
-调用该接口update group extensions。
+调用该接口list group items。
 
 
 
@@ -12,7 +12,7 @@ description: 'update group extensions'
 
 
 ```
-post /groups/{id}/ext
+get /groups/{id}/items
 ```
 
 
@@ -20,27 +20,6 @@ post /groups/{id}/ext
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string | 设备组ID |  
-
-
-
-
-
-### Request Body
-
-
- 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-| 扩展配置kv | Object | [](#) |
-
-#### 
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
-
-
- 
 
 
 
@@ -55,16 +34,19 @@ post /groups/{id}/ext
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [apigroupv1CommonResponse](#apigroupv1CommonResponse) |
+| 200 | OK | Object | [v1ListGroupItemsResponse](#v1ListGroupItemsResponse) |
 
-#### apigroupv1CommonResponse
+#### v1ListGroupItemsResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| result | string | ok  or failed |   
+| result | string | ok  or failed |      
+| subIds |  | 子设备信息 |   
 
 
   
+     
+   
      
  
  

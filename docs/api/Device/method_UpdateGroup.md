@@ -1,10 +1,10 @@
 ---
-title: "enableDevice"
-description: 'enable device'
+title: "UpdateGroup"
+description: 'update entity group'
 ---
 
 
-调用该接口enable device。
+调用该接口update entity group。
 
 
 
@@ -12,14 +12,14 @@ description: 'enable device'
 
 
 ```
-put /devices/{id}/enable
+put /groups/{id}
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string |  |  
+| id | path | string | 设备组ID |  
 
 
 
@@ -31,16 +31,27 @@ put /devices/{id}/enable
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1Enable](#v1Enable) |
+| 更新设备组信息 | Object | [v1GroupEntity](#v1GroupEntity) |
 
-#### v1Enable
+#### v1GroupEntity
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| enable | boolean |  |   
+| desc | string | 设备组说明 |     
+| ext | Object | 设备组扩展属性   |      
+| name | string | 设备组名称 |      
+| parent | string | 父设备组ID |   
 
 
   
+     
+   
+    
+          
+     
+   
+     
+   
      
  
  
@@ -58,13 +69,13 @@ put /devices/{id}/enable
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1EnableDeviceResponse](#v1EnableDeviceResponse) |
+| 200 | OK | Object | [apigroupv1CommonResponse](#apigroupv1CommonResponse) |
 
-#### v1EnableDeviceResponse
+#### apigroupv1CommonResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| result | string |  |   
+| result | string | ok  or failed |   
 
 
   

@@ -1,10 +1,10 @@
 ---
-title: "delGroupExt"
-description: 'delete group extensions'
+title: "GetDevice"
+description: 'get device entity'
 ---
 
 
-调用该接口delete group extensions。
+调用该接口get device entity。
 
 
 
@@ -12,40 +12,14 @@ description: 'delete group extensions'
 
 
 ```
-post /groups/{id}/ext/delete
+get /devices/{id}
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | 设备组ID |  
-
-
-
-
-
-### Request Body
-
-
- 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-| 扩展配置key 数组 | Object | [apigroupv1Keys](#apigroupv1Keys) |
-
-#### apigroupv1Keys
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |        
-| keys | Array[ string ] | key 数组 |    
-
-
-  
-       
-          
-     
- 
- 
+| id | path | string | 设备ID |  
 
 
 
@@ -60,16 +34,19 @@ post /groups/{id}/ext/delete
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [apigroupv1CommonResponse](#apigroupv1CommonResponse) |
+| 200 | OK | Object | [v1GetDeviceResponse](#v1GetDeviceResponse) |
 
-#### apigroupv1CommonResponse
+#### v1GetDeviceResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| result | string | ok  or failed |   
+| dev |  | 设备信息 |      
+| sysField |  | 设备系统信息 |   
 
 
   
+     
+   
      
  
  

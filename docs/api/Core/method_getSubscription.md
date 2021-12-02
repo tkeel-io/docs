@@ -1,5 +1,5 @@
 ---
-title: "getSubscription"
+title: "GetSubscription"
 description: 'Get subscription'
 ---
 

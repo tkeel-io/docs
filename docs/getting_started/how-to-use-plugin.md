@@ -56,7 +56,7 @@ tkeel plugin install https://tkeel-io.github.io/helm-charts/keel-echo@v0.2.0 tke
 执行后输出应该如下：
 ```bash
 ℹ️  install tKeel plugin<keel-echo> done.
-✅  Install "keel-echo" success! It's named "keel-echo" in k8s
+✅  Install "keel-echo" success! It's named "tkeel-echo" in k8s
 ```
 
 在与 tKeel 平台部署相通的节点执行 _helm_ 命令可以看到已经成功安装了 「tkeel-echo」：
@@ -64,7 +64,7 @@ tkeel plugin install https://tkeel-io.github.io/helm-charts/keel-echo@v0.2.0 tke
 $ helm list
 NAME            NAMESPACE       REVISION        UPDATED                                      STATUS          CHART           APP VERSION
 dapr            tkeel-platform     1          2021-11-30 14:18:25.7012086 +0800 CST         deployed         dapr-1.5.0         1.5.0
-keel-echo       tkeel-platform     1          2021-11-30 17:11:47.6146906 +0800 CST         deployed         keel-echo-0.2.0    0.2.0
+tkeel-echo       tkeel-platform     1          2021-11-30 17:11:47.6146906 +0800 CST         deployed         keel-echo-0.2.0    0.2.0
 tkeel-platform  tkeel-platform     1          2021-11-30 16:05:57.5570544 +0800 CST         deployed         keel-0.2.0         0.2.0
 ```
 
@@ -118,15 +118,15 @@ tkeel plugin unregister -k keel-echo
 
 通过 _tkeel plugin list_ 查看平台上的插件，通过 **PLUGINSTATUS** 字段可以确认 「keel-echo」 已经成功注销。
 ```bash
-tkeel plugin list -k
+$ tkeel plugin list -k
 NAME       NAMESPACE    HEALTHY  STATUS   PLUGINSTATUS  REPLICAS  VERSION  AGE  CREATED
 keel-echo  keel-system  True     Running  NOT_REGISTER  1         0.2.0    1h   2021-11-30 17:11.48
 ```
 
 ### 使用 CLI 卸载插件
-使用 _tkeel_ CLI 可以 **删除** 指定插件。
+使用 _tkeel_ CLI 可以 **删除** 指定插件的实例。
 ```bash
-tkeel plugin uninstall keel-echo
+tkeel plugin uninstall tkeel-echo
 ```
 > 备注：
 > 示例中所卸载的插件实例为上文 install 中命名的 「keel-echo」。
@@ -134,7 +134,7 @@ tkeel plugin uninstall keel-echo
  
 命令行输出应该如下：
 ```
-✅  Remove "keel-echo" success!
+✅  Remove "tkeel-echo" success!
 ```
 
 再次使用与 tKeel 平台部署相通的节点执行 _helm_ 命令可以看到已经成功安装了 「tkeel-echo」：

@@ -129,7 +129,7 @@ keel-echo  keel-system  True     Running  NOT_REGISTER  1         0.2.0    1h   
 tkeel plugin uninstall tkeel-echo
 ```
 > 备注：
-> 示例中所卸载的插件实例为上文 install 中命名的 「keel-echo」。
+> 示例中所卸载的插件实例为上文 install 中命名的 「tkeel-echo」。
 > 如需安装其他插件，请将对应插件实例名字进行替换并执行命令。
  
 命令行输出应该如下：

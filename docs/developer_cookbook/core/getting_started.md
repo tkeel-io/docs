@@ -159,7 +159,7 @@ curl -X PUT "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entitie
     ]'
 ```
 
-上面的 API 调用对设备实体（device123）的 `temp` 属性进行了配置， `type` 表示 temp 被解释为 `int` 类型， `define` 中定义了 temp 属性的约束信息，其单位 `unit` 为"°"，最大值 `max` 为500，最小值 `min` 为10。`enabled` 标识 属性 temp 是否被启用， `enabled_search` 标识属性是否被持久化到搜索引擎，[更多详细资料请查看]()。
+上面的 API 调用对设备实体（device123）的 `temp` 属性进行了配置， `type` 表示 temp 被解释为 `int` 类型， `define` 中定义了 temp 属性的约束信息，其单位 `unit` 为"°"，最大值 `max` 为500，最小值 `min` 为10。`enabled` 标识 属性 temp 是否被启用， `enabled_search` 标识属性是否被持久化到搜索引擎，[更多详细资料请查看](specs/model.md)。
 
 
 ### 第 6 步： 搜索实体

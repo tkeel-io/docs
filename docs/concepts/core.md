@@ -22,7 +22,7 @@ core 将物理世界中的 "对象" 加以抽象，封装成数字世界中的 `
 Runtime 为实体的运行时（Actor）提供环境支持，对实体进行调度和管理。
 
 
-![core-actor](/images/core/architecture-actor)
+![core-actor](/images/core/architecture-actor.png)
 
 
 ### Inbox

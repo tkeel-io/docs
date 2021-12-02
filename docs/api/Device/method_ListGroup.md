@@ -1,10 +1,10 @@
 ---
-title: "deleteGroup"
-description: 'delete entity group'
+title: "ListGroup"
+description: 'list entity group'
 ---
 
 
-调用该接口delete entity group。
+调用该接口list entity group。
 
 
 
@@ -12,7 +12,7 @@ description: 'delete entity group'
 
 
 ```
-post /groups/delete
+post /groups/search
 ```
 
 
@@ -27,18 +27,40 @@ post /groups/delete
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 设备组ID 数组 | Object | [apigroupv1Ids](#apigroupv1Ids) |
+| 限制 | Object | [apigroupv1Filter](#apigroupv1Filter) |
 
-#### apigroupv1Ids
+#### apigroupv1Filter
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |        
-| ids | Array[ string ] | id 数组 |    
+| ---- | ---- | ----------- |         
+| condition | Array[apigroupv1Condition] | 组合条件 [ 具体参数可见下面 [apigroupv1Condition](#apigroupv1Condition) ] |       
+| page |  | 分页 |   
 
 
   
        
+         
+### apigroupv1Condition
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| field | string | 查询输出字段 |      
+| operator | string | 操作符, $eq为相等，$neq为不等，$lt为小于，$gt为大于，$lne为小于等于， $gne为大于等于 |      
+| value | string | 值 |   
+
+
+  
+     
+   
+     
+   
+     
+ 
+ 
+
+
           
+     
+   
      
  
  
@@ -56,16 +78,19 @@ post /groups/delete
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [apigroupv1CommonResponse](#apigroupv1CommonResponse) |
+| 200 | OK | Object | [v1ListGroupResponse](#v1ListGroupResponse) |
 
-#### apigroupv1CommonResponse
+#### v1ListGroupResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
+| listEntityInfo |  | 设备组列表信息 |      
 | result | string | ok  or failed |   
 
 
   
+     
+   
      
  
  

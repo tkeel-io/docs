@@ -1,5 +1,5 @@
 ---
-title: "createEntity"
+title: "CreateEntity"
 description: 'Create a entity'
 ---
 
@@ -29,7 +29,7 @@ post /plugins/{plugin}/entities
 | ---- | ---------- | ----------- | ----------- |  ---- |
 | id | query | string | entity id |  false |
 | source | query | string | source id |  false |
-| owner | query | string | owner id |  false |
+| owner | query | string | owner id |  true |
 | type | query | string | entity type |  false |
 
 

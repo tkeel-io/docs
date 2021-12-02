@@ -1,10 +1,10 @@
 ---
-title: "updateGroup"
-description: 'update entity group'
+title: "AddDeviceExt"
+description: 'add device extensions'
 ---
 
 
-调用该接口update entity group。
+调用该接口add device extensions。
 
 
 
@@ -12,14 +12,14 @@ description: 'update entity group'
 
 
 ```
-put /groups/{id}
+post /devices/{id}/ext
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | 设备组ID |  
+| id | path | string | 设备ID |  
 
 
 
@@ -31,29 +31,15 @@ put /groups/{id}
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 更新设备组信息 | Object | [v1GroupEntity](#v1GroupEntity) |
+| 设备扩展属性KV | Object | [](#) |
 
-#### v1GroupEntity
+#### 
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| desc | string | 设备组说明 |     
-| ext | Object | 设备组扩展属性   |      
-| name | string | 设备组名称 |      
-| parent | string | 父设备组ID |   
+| ---- | ---- | ----------- |  
 
 
-  
-     
-   
-    
-          
-     
-   
-     
-   
-     
- 
+
  
 
 
@@ -69,13 +55,13 @@ put /groups/{id}
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [apigroupv1CommonResponse](#apigroupv1CommonResponse) |
+| 200 | OK | Object | [v1AddDeviceExtResponse](#v1AddDeviceExtResponse) |
 
-#### apigroupv1CommonResponse
+#### v1AddDeviceExtResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| result | string | ok  or failed |   
+| result | string |  |   
 
 
   

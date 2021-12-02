@@ -1,10 +1,10 @@
 ---
-title: "delDeviceExt"
-description: 'delete device extensions'
+title: "UpdateDeviceExt"
+description: 'update device extensions'
 ---
 
 
-调用该接口delete device extensions。
+调用该接口update device extensions。
 
 
 
@@ -12,7 +12,7 @@ description: 'delete device extensions'
 
 
 ```
-post /devices/{id}/ext/delete
+put /devices/{id}/ext
 ```
 
 
@@ -31,18 +31,19 @@ post /devices/{id}/ext/delete
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 设备扩展属性Key 数组 | Object | [apidevicev1Keys](#apidevicev1Keys) |
+| 设备扩展属性KV | Object | [v1Ext](#v1Ext) |
 
-#### apidevicev1Keys
+#### v1Ext
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |        
-| keys | Array[ string ] | key 字符串数组 |    
+| ---- | ---- | ----------- |     
+| key | string |  |      
+| value | string |  |   
 
 
   
-       
-          
+     
+   
      
  
  
@@ -60,9 +61,9 @@ post /devices/{id}/ext/delete
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1DeleteDeviceExtResponse](#v1DeleteDeviceExtResponse) |
+| 200 | OK | Object | [v1UpdateDeviceExtResponse](#v1UpdateDeviceExtResponse) |
 
-#### v1DeleteDeviceExtResponse
+#### v1UpdateDeviceExtResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     

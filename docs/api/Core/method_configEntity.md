@@ -1,5 +1,5 @@
 ---
-title: "configEntity"
+title: "ConfigEntity"
 description: 'Config entity'
 ---
 

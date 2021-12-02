@@ -1,10 +1,10 @@
 ---
-title: "listGroupitems"
-description: 'list group items'
+title: "GetGroup"
+description: 'get entity group'
 ---
 
 
-调用该接口list group items。
+调用该接口get entity group。
 
 
 
@@ -12,7 +12,7 @@ description: 'list group items'
 
 
 ```
-get /groups/{id}/items
+get /groups/{id}
 ```
 
 
@@ -34,14 +34,14 @@ get /groups/{id}/items
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListGroupItemsResponse](#v1ListGroupItemsResponse) |
+| 200 | OK | Object | [v1GetGroupResponse](#v1GetGroupResponse) |
 
-#### v1ListGroupItemsResponse
+#### v1GetGroupResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| result | string | ok  or failed |      
-| subIds |  | 子设备信息 |   
+| entityInfo |  | 设备组信息 |      
+| result | string | ok  or failed |   
 
 
   

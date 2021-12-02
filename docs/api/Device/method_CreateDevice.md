@@ -1,10 +1,10 @@
 ---
-title: "addGroupitems"
-description: 'add group items'
+title: "CreateDevice"
+description: 'create device entity'
 ---
 
 
-调用该接口add group items。
+调用该接口create device entity。
 
 
 
@@ -12,14 +12,10 @@ description: 'add group items'
 
 
 ```
-post /groups/{id}/items
+post /devices
 ```
 
 
-
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string | 设备组ID |  
 
 
 
@@ -31,18 +27,27 @@ post /groups/{id}/items
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 子设备ID 数组 | Object | [apigroupv1Ids](#apigroupv1Ids) |
+| 设备信息 | Object | [v1DeviceEntity](#v1DeviceEntity) |
 
-#### apigroupv1Ids
+#### v1DeviceEntity
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |        
-| ids | Array[ string ] | id 数组 |    
+| ---- | ---- | ----------- |     
+| desc | string | 设备描述 |     
+| ext | Object | 设备扩展配置   |      
+| group | string | 设备组ID |      
+| name | string | 设备名称 |   
 
 
   
-       
+     
+   
+    
           
+     
+   
+     
+   
      
  
  
@@ -60,16 +65,19 @@ post /groups/{id}/items
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [apigroupv1CommonResponse](#apigroupv1CommonResponse) |
+| 200 | OK | Object | [v1CreateDeviceResponse](#v1CreateDeviceResponse) |
 
-#### apigroupv1CommonResponse
+#### v1CreateDeviceResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| result | string | ok  or failed |   
+| dev |  | 设备信息 |      
+| sysField |  | 设备系统信息 |   
 
 
   
+     
+   
      
  
  

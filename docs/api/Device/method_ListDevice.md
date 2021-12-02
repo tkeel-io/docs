@@ -1,10 +1,10 @@
 ---
-title: "createGroup"
-description: 'create entity group'
+title: "ListDevice"
+description: 'list device entity'
 ---
 
 
-调用该接口create entity group。
+调用该接口list device entity。
 
 
 
@@ -12,7 +12,7 @@ description: 'create entity group'
 
 
 ```
-post /groups
+post /devices/search
 ```
 
 
@@ -27,25 +27,38 @@ post /groups
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 设备组信息 | Object | [v1GroupEntity](#v1GroupEntity) |
+| 限制 | Object | [apidevicev1Filter](#apidevicev1Filter) |
 
-#### v1GroupEntity
+#### apidevicev1Filter
 
 | Name | Type | Description | 
+| ---- | ---- | ----------- |         
+| condition | Array[apidevicev1Condition] | 组合条件 [ 具体参数可见下面 [apidevicev1Condition](#apidevicev1Condition) ] |       
+| page |  | 分页 |   
+
+
+  
+       
+         
+### apidevicev1Condition
+| Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| desc | string | 设备组说明 |     
-| ext | Object | 设备组扩展属性   |      
-| name | string | 设备组名称 |      
-| parent | string | 父设备组ID |   
+| field | string | 查询输出字段 |      
+| operator | string | 操作符, $eq为相等，$neq为不等，$lt为小于，$gt为大于，$lne为小于等于， $gne为大于等于 |      
+| value | string | 值 |   
 
 
   
      
    
-    
-          
      
    
+     
+ 
+ 
+
+
+          
      
    
      
@@ -65,19 +78,18 @@ post /groups
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1CreateGroupResponse](#v1CreateGroupResponse) |
+| 200 | OK | Object | [v1ListDeviceResponse](#v1ListDeviceResponse) |
 
-#### v1CreateGroupResponse
+#### v1ListDeviceResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| entityInfo |  | 设备组信息 |      
-| result | string | ok  or failed |   
+| ---- | ---- | ----------- |    
+| result | Object |    |   
 
 
   
-     
-   
+    
+          
      
  
  

@@ -1,5 +1,5 @@
 ---
-title: "获取插件列表"
+title: "ListPlugin"
 description: '获取插件列表接口'
 ---
 

@@ -1,10 +1,10 @@
 ---
-title: "插叙插件"
-description: '插叙插件接口'
+title: "GetPlugin"
+description: '查询插件接口'
 ---
 
 
-调用该接口插叙插件接口。
+调用该接口查询插件接口。
 
 
 

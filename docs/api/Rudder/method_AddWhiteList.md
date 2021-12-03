@@ -1,10 +1,10 @@
 ---
-title: "注册插件"
-description: '注册插件接口'
+title: "AddWhiteList"
+description: '添加 Oauth2 白名单 dapr App ID 接口'
 ---
 
 
-调用该接口注册插件接口。
+调用该接口添加 Oauth2 白名单 dapr App ID 接口。
 
 
 
@@ -12,7 +12,7 @@ description: '注册插件接口'
 
 
 ```
-post \plugins
+post \oauth2\white-list
 ```
 
 
@@ -27,14 +27,14 @@ post \plugins
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1RegisterPluginRequest](#v1RegisterPluginRequest) |
+|  | Object | [v1AddWhiteListRequest](#v1AddWhiteListRequest) |
 
-#### v1RegisterPluginRequest
+#### v1AddWhiteListRequest
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| id | string | plugin id |      
-| secret | string | plugin registered secret |   
+| client_id | string | oauth2 client id |      
+| secret | string | tkeel platform secret |   
 
 
   
@@ -70,30 +70,12 @@ post \plugins
  
 
 
-### Response  400
-
-
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 400 | INVALID_ARGUMENT | {   { }} |
- 
-
-
-### Response  404
-
-
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 404 | PLUGIN_NOT_FOUND | {   { }} |
- 
-
-
 ### Response  409
 
 
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 409 | ALREADY_EXISTS | {   { }} |
+| 409 | CLIENT_ID_ALREADY_EXISTS | {   { }} |
  
 
 

@@ -11,15 +11,15 @@ sidebar_position: 0
 
 | Name |  Description | 
 | ---- |  ----------- | 
-| [添加Oauth2白名单](./method_添加Oauth2白名单)|  添加 Oauth2 白名单 dapr App ID 接口 |
-| [插件Oauth2颁发](./method_插件Oauth2颁发)|  插件Oauth2颁发接口 |
+| [IssueOauth2Token](./method_IssueOauth2Token)|  插件Oauth2颁发接口 |
+| [AddWhiteList](./method_AddWhiteList)|  添加 Oauth2 白名单 dapr App ID 接口 |
 
 
 ## Plugin相关API
 
 | Name |  Description | 
 | ---- |  ----------- | 
-| [获取插件列表](./method_获取插件列表)|  获取插件列表接口 |
-| [注册插件](./method_注册插件)|  注册插件接口 |
-| [插叙插件](./method_插叙插件)|  插叙插件接口 |
-| [删除插件](./method_删除插件)|  删除插件接口 |
+| [ListPlugin](./method_ListPlugin)|  获取插件列表接口 |
+| [RegisterPlugin](./method_RegisterPlugin)|  注册插件接口 |
+| [GetPlugin](./method_GetPlugin)|  查询插件接口 |
+| [DeletePlugin](./method_DeletePlugin)|  删除插件接口 |

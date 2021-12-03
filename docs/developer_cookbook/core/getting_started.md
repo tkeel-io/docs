@@ -13,6 +13,7 @@ sidebar_position: 1
 - [启动服务](#启动服务)
     - [Self-hosted](#self-hosted)
     - [Kubernetes](#kubernetes)
+    - [core作为tKeel的一个组件运行，由tKeel负责安装。](#core作为tkeel的一个组件运行由tkeel负责安装)
 - [使用 core 的 APIs](#使用-core-的-apis)
   - [第 1 步： 创建实体](#第-1-步-创建实体)
   - [第 2 步： 编辑实体](#第-2-步-编辑实体)
@@ -23,14 +24,14 @@ sidebar_position: 1
   - [第 7 步： 为实体创建映射](#第-7-步-为实体创建映射)
   - [第 8 步： 通过 pubsub 向实体发送消息](#第-8-步-通过-pubsub-向实体发送消息)
   - [第 9 步： 创建订阅，订阅实体数据](#第-9-步-创建订阅订阅实体数据)
-  - [10 步： 删除订阅](#10-步-删除订阅)
+  - [第 10 步： 删除订阅](#第-10-步-删除订阅)
   - [第 11 步： 删除映射](#第-11-步-删除映射)
   - [第 12 步： 删除实体](#第-12-步-删除实体)
 
 > 此文档仅供用户快速上手，认识 core。
 
 ## 介绍
-Core 是 tKeel 物联网平台的数据中心，高性能、可拓展的轻量级下一代数字化数据引擎。  
+Core 是 tKeel 物联网平台的数据中心，高性能、可拓展的轻量级下一代数字化数据引擎。Core 可以独立运行，也可以作为tkeel的一个核心组件运行。  
 以 实体（entity） 为操作单元，通过简易明了的 API 对外提供读写能力（属性读写、时序查询、订阅，映射等）。
 
 ## 基础概念
@@ -102,7 +103,9 @@ iothub: iothub-pubsub
 
 > ⚠️ core 依赖于 dapr 启动， 所以我们应该先安装dapr。
 
-> ⚠️ 注意：请本地先运行一个 redis 进程，监听 6379 端口，无密码。
+#### Self-hosted
+> ⚠️ 注意：请本地先运行一个 redis 进程，监听 6379 端口，无密码。  
+> ⚠️ 注意：请本地先运行一个 elasticsearch 进程，监听 9200 端口。
 
 
 拉取仓库
@@ -111,7 +114,6 @@ git clone  git@github.com:tkeel-io/core.git
 cd core
 ```
 
-#### Self-hosted
 ```bash
 dapr run --app-id core --app-protocol http --app-port 6789 --dapr-http-port 3500 --dapr-grpc-port 50001 --log-level debug  --components-path ./examples/configs/core  go run cmd/core/main.go
 ```
@@ -135,11 +137,18 @@ DEBU[0004] established connection to placement service at dns:///localhost:50005
     ```bash
     helm install redis bitnami/redis
     ```
-2. 运行 core 程序
+2. 部署 elasticsearch e服务
+    ```bash
+    helm install elasticsearch elastic/elasticsearch
+    ```
+3. 运行 core 程序
     ```bash
     kubectl apply -f k8s/core.yaml
     ```
 
+#### core作为tKeel的一个组件运行，由tKeel负责安装。
+
+  参见 [tKeel 新手引导 ](../../getting_started/guide.md)
 
 ## 使用 core 的 APIs
 
@@ -339,7 +348,7 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/subscr
         }'
 ```
 
-### 10 步： 删除订阅
+### 第 10 步： 删除订阅
 
 ```bash
 curl -X DELETE "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/subscriptions?id=sub123" \

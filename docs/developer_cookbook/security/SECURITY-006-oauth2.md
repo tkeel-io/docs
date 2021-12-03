@@ -6,12 +6,12 @@ title: 授权服务
 ## 支持的授权类型 
 现平台安全模块支持如下多种授权类型：
 
-|  类型 | 模式 |
-|------|-----|
-| [Password](#password) | 密码模式 |
-| [Authorization Code](#authorization-code) | 授权码模式 |
-| [Implicit](#implicit) | 简化模式 |
-| [Client Credentials](#client-credentials) | 客户端凭据模式 |
+|  类型 | 模式 | 描述 |
+|------|-----|------|
+| [Password](#password) | 密码模式 | 资源请求方使用，如果充分信任接入应用, 用户就可以直接把用户名密码给接入应用，接入应用使用用户账号密码申请令牌. |
+| [Authorization Code](#authorization-code) | 授权码模式 | 安全性高，流程复杂。要求第三方应用必须有服务器。对安全性要求较高。 |
+| [Implicit](#implicit) | 简化模式 | 资源请求方使用，多用于没有后端的应用，用户授权登录之后, 会直接向前端发送令牌(`access_token`) |
+| [Client Credentials](#client-credentials) | 客户端凭据模式 | 资源请求方使用，使用在 OAuth2 服务器注册的 client_id 和 client_secret 获取 access_token，发出 API 请求时，它应将access_token作为 Bearer 令牌传递到 Authorization 请求头中。 |
 
 ### Password 
 资源请求方使用，如果充分信任接入应用, 用户就可以直接把用户名密码给接入应用，接入应用使用用户账号密码申请令牌.

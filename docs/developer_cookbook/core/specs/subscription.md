@@ -8,9 +8,9 @@ sidebar_position: 7
 # 订阅
 
 ----
-每个plugin在注册的时候自动创建一个与core交互的pubsub,名称为plugin的名称。 topic统一为pubcore，subcore，只有core与该plugin有相关权限
+每个 plugin 在注册的时候自动创建一个与 core 交互的 pubsub, 名称为 plugin 的名称。 topic 统一为 pubcore，subcore，只有 core 与该 plugin 有相关权限
 比如
-pluginA: pluginA。pubcore用于向core发布数据，subcore用于从core订阅数据
+pluginA: pluginA。pubcore 用于向 core 发布数据，subcore 用于从 core 订阅数据
 ## 订阅分类
 
 1. 实时订阅（收到消息就触发）
@@ -40,5 +40,5 @@ pluginA: pluginA。pubcore用于向core发布数据，subcore用于从core订阅
   "mode": "realtime"
 }
 ```
-其中filter可采用不同的表达形式
+其中 filter 可采用不同的表达形式
 

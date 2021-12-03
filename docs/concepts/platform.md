@@ -18,10 +18,10 @@ slug: /internal_concepts/platform
   - 通过 **快照** 和 **订阅**（Event数据）的方式解决数据交互的问题。
 
 - ### **Service**
-提供应用 *可拔插能力* 以及其他一些 *核心功能（消息路由、租户管理、权限控制）*。
+tKeel 用一套完善的[*插件机制*](./plugin.md)，通过动态网关 [*Keel*](./keel.md) 和管理组件 [*Rudder*](./rudder.md) 结合 **Interface** 层中的 *OpenAPI* 为平台提供了 *可拔插能力*。通过集成 [*Security*] 为平台提供了*消息路由、租户管理、权限控制*等功能。
 
 - ### **Interface**
-通过封装，向 **Application** 提供简易的 *工具* 以及友好的 *接口*。
+tKeel 以 *OpenAPI* 规范将平台的插件进行接入。通过封装，向 **Application** 提供简易的 *工具* 以及友好的 *接口*。
 
 - ### **Application**
 各种不同量级的应用，可以是您现有平台的一切服务。

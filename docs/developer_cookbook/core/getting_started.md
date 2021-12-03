@@ -152,6 +152,9 @@ DEBU[0004] established connection to placement service at dns:///localhost:50005
 
 ## 使用 core 的 APIs
 
+- 我们可以直接通过http请求使用core的API。
+- self-hosted 模式下也可以通过 dapr invoke 命令执行。
+- Kubernetes​ 和 tKeel模式下可以通过 keel invoke 命令执行，参数一致。
 
 
 ### 第 1 步： 创建实体
@@ -168,10 +171,16 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entiti
     "temp": 234
     }'
 ```
+通过 invoke 调用
+```bash
+$tkeel invoke --plugin-id core --method "v1/plugins/dm/entities?id=device123&source=dm&owner=admin&type=DEVICE" -v POST -d '{"status":"start", "temp":234}'
+{"id":"device123","source":"dm","owner":"admin","type":"DEVICE","configs":{},"properties":{"status":"start","temp":234}}
+✅  Plugin invoked successfully
+```
 
 ### 第 2 步： 编辑实体
 
-现在我们尝试使用 core 的 API 将实体的温度(`temp`) 字段更新为123：
+现在我们尝试使用 core 的 API 将实体的温度(`temp`) 字段更新为123，状态(`status`)更新为testing：
 
 ```bash
 curl -X PUT "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entities/device123" \
@@ -183,6 +192,12 @@ curl -X PUT "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entitie
        "status": "testing",
        "temp":123
      }'
+```
+通过 invoke 调用
+```bash
+$tkeel invoke --plugin-id core --method "v1/plugins/dm/entities/device123?source=dm&owner=admin&type=DEVICE" -v PUT -d '{"status":"testing", "temp":123}'
+{"id":"device123","source":"dm","owner":"admin","type":"DEVICE","configs":{},"properties":{"status":"testing","temp":123}}
+✅  Plugin invoked successfully
 ```
 
 ### 第 3 步： 查询实体
@@ -211,6 +226,12 @@ curl -X GET "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entitie
     }
 }
 ```
+通过 invoke 调用
+```bash
+tkeel invoke --plugin-id core --method "v1/plugins/dm/entities/device123?source=dm&owner=admin&type=DEVICE" -v GET
+{"id":"device123","source":"dm","owner":"admin","type":"DEVICE","configs":{},"properties":{"status":"testing","temp":123}}
+✅  Plugin invoked successfully
+```
 
 ### 第 4 步： Patch 实体属性
 
@@ -231,6 +252,12 @@ curl -X PATCH "http://localhost:6789/v1/plugins/dm/entities/device123" \
   ]'
 ```
 
+通过 invoke 调用
+```bash
+$tkeel invoke --plugin-id core --method "v1/plugins/dm/entities/device123?source=dm&owner=admin&type=DEVICE" -v PATCH -d '[{"path":"temp", "operator":"replace", "value":20}]'
+{"id":"device123","source":"dm","owner":"admin","type":"DEVICE","configs":{},"properties":{"status":"testing","temp":20}}
+✅  Plugin invoked successfully
+```
 
 ### 第 5 步： 配置实体属性配置信息
 
@@ -254,6 +281,13 @@ curl -X PUT "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entitie
     ]'
 ```
 
+通过 invoke 调用
+```bash
+$tkeel invoke --plugin-id core --method "v1/plugins/dm/entities/device123/configs" -v PUT -d '[{"id":"temp","type":"int","define":{"unit":"°","max":500,"min":10},"enabled":true,"enabled_search":true}]'
+{"id":"device123","source":"dm","owner":"admin","type":"DEVICE","configs":{"temp":{"define":{"max":500,"min":10,"unit":"°"},"description":"","enabled":true,"enabled_search":true,"enabled_time_series":false,"id":"temp","last_time":0,"type":"int","weight":0}},"properties":{"status":"testing","temp":20}}
+✅  Plugin invoked successfully
+```
+
 上面的 API 调用对设备实体（device123）的 `temp` 属性进行了配置， `type` 表示 temp 被解释为 `int` 类型， `define` 中定义了 temp 属性的约束信息，其单位 `unit` 为"°"，最大值 `max` 为500，最小值 `min` 为10。`enabled` 标识 属性 temp 是否被启用， `enabled_search` 标识属性是否被持久化到搜索引擎，[更多详细资料请查看](specs/model.md)。
 
 
@@ -268,10 +302,15 @@ curl -XPOST http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entities
   -H "Type: DEVICE" \
   -H "Content-Type: application/json" \
   -d '{
-        "page": {
-        "limit": 200
-      }
+        "query": "testing"
   }'
+```
+
+通过 invoke 调用
+```bash
+$tkeel invoke --plugin-id core --method "v1/plugins/dm/entities/search?source=dm&owner=admin&type=DEVICE" -v POST -d '{"query": "testing"}'
+{"total":1,"limit":10,"items":[{"id":"device123","plugin":"dm","properties":{"id":"device123","last_time":1638500632053,"owner":"admin","source":"dm","status":"testing","temp":"20","type":"DEVICE","version":3}}]}
+✅  Plugin invoked successfully
 ```
 
 ### 第 7 步： 为实体创建映射
@@ -293,6 +332,13 @@ core 对于实体的设计和抽象，绝不止步于 get/set， core通过 映�
     }'
 ```
 
+通过 invoke 调用
+```bash
+$tkeel invoke --plugin-id core --method "v1/plugins/dm/entities?id=device234&source=dm&owner=admin&type=DEVICE" -v POST -d '{"status":"start", "temp":111}'
+{"id":"device234","source":"dm","owner":"admin","type":"DEVICE","configs":{},"properties":{"status":"start","temp":111}}
+✅  Plugin invoked successfully
+```
+
 2. **为实体 device123 创建映射：**
 
 
@@ -308,6 +354,12 @@ core 对于实体的设计和抽象，绝不止步于 get/set， core通过 映�
     }'
 ```
 
+通过 invoke 调用
+```bash
+tkeel invoke --plugin-id core --method "v1/plugins/dm/entities/device234/mappers?source=dm&owner=admin&type=DEVICE" -v POST -d '{"name":"m-sync-dev234","tql":"insert into device123 select device234.temp as temp"}'
+{"id":"device234","source":"dm","owner":"admin","type":"DEVICE","configs":{},"properties":{"status":"start","temp":111}}
+✅  Plugin invoked successfully
+```
 
 mapper 的描述信息由两部分数据组成： `name` 是映射的名称，[tql](specs/tql.md) 是映射的规则信息， `insert into device123 select device234.temp as temp` 是一条将 device234 的 temp 属性变更 同步到 device123 的 temp 属的规则。在规则生效后，我们可以通过想 device234 推送数据，查看 device123 的 temp 是否变化来校验规则是否生效。
 

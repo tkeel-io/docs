@@ -1,10 +1,10 @@
 ---
-title: "删除插件"
-description: '删除插件接口'
+title: "RegisterPlugin"
+description: '注册插件接口'
 ---
 
 
-调用该接口删除插件接口。
+调用该接口注册插件接口。
 
 
 
@@ -12,14 +12,37 @@ description: '删除插件接口'
 
 
 ```
-delete \plugins\{id}
+post \plugins
 ```
 
 
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string | plugin id |  
+
+
+
+
+### Request Body
+
+
+ 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+|  | Object | [v1RegisterPluginRequest](#v1RegisterPluginRequest) |
+
+#### v1RegisterPluginRequest
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| id | string | plugin id |      
+| secret | string | plugin registered secret |   
+
+
+  
+     
+   
+     
+ 
+ 
 
 
 
@@ -31,24 +54,19 @@ delete \plugins\{id}
 
 ### Response  200
 
- 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1DeletePluginResponse](#v1DeletePluginResponse) |
 
-#### v1DeletePluginResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| plugin |  | plugin object |   
-
-
-  
-     
- 
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | A successful response. | {   { }} |
  
 
 
+### Response  204
+
+
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 204 | SUCC_AND_NO_CONTENT | {   { }} |
  
 
 
@@ -70,12 +88,21 @@ delete \plugins\{id}
  
 
 
+### Response  409
+
+
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 409 | ALREADY_EXISTS | {   { }} |
+ 
+
+
 ### Response  500
 
 
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 500 | INTERNAL_ERROR | {   { }} |
+| 500 | INTERNAL_STORE | {   { }} |
  
 
 

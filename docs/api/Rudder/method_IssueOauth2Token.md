@@ -1,5 +1,5 @@
 ---
-title: "插件Oauth2颁发"
+title: "IssueOauth2Token"
 description: '插件Oauth2颁发接口'
 ---
 

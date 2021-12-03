@@ -1,10 +1,10 @@
 ---
-title: "添加Oauth2白名单"
-description: '添加 Oauth2 白名单 dapr App ID 接口'
+title: "DeletePlugin"
+description: '删除插件接口'
 ---
 
 
-调用该接口添加 Oauth2 白名单 dapr App ID 接口。
+调用该接口删除插件接口。
 
 
 
@@ -12,37 +12,14 @@ description: '添加 Oauth2 白名单 dapr App ID 接口'
 
 
 ```
-post \oauth2\white-list
+delete \plugins\{id}
 ```
 
 
 
-
-
-
-
-### Request Body
-
-
- 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [v1AddWhiteListRequest](#v1AddWhiteListRequest) |
-
-#### v1AddWhiteListRequest
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| client_id | string | oauth2 client id |      
-| secret | string | tkeel platform secret |   
-
-
-  
-     
-   
-     
- 
- 
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string | plugin id |  
 
 
 
@@ -54,28 +31,42 @@ post \oauth2\white-list
 
 ### Response  200
 
+ 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [v1DeletePluginResponse](#v1DeletePluginResponse) |
 
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | A successful response. | {   { }} |
+#### v1DeletePluginResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| plugin |  | plugin object |   
+
+
+  
+     
+ 
  
 
 
-### Response  204
-
-
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 204 | SUCC_AND_NO_CONTENT | {   { }} |
  
 
 
-### Response  409
+### Response  400
 
 
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 409 | CLIENT_ID_ALREADY_EXISTS | {   { }} |
+| 400 | INVALID_ARGUMENT | {   { }} |
+ 
+
+
+### Response  404
+
+
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 404 | PLUGIN_NOT_FOUND | {   { }} |
  
 
 
@@ -84,7 +75,7 @@ post \oauth2\white-list
 
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 500 | INTERNAL_STORE | {   { }} |
+| 500 | INTERNAL_ERROR | {   { }} |
  
 
 

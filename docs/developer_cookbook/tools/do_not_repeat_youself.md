@@ -1,22 +1,25 @@
 ---
-title: Don't repeat yourself
+title: Don't Repeat Yourself
 sidebar_position: 10
 ---
 
+
 tKeel 的目标是帮助大家轻松构建云原生、高扩展、可拔插的物联网平台，
 因此我们希望达到的目标是：「如何用更简单更先进更高效的方式来构建我们的服务及其生态？」
+
 
 打造一套供开发者使用的 API，不仅仅是 API 及其背后的服务那么简单。API 要有文档，要有 SDK，要有 API interface 的定义，以及支撑这个 interface 的服务。
 
 这里面会有很多重复的劳动：API doc 和 API interface，以及 SDK 都在不断地重复类似的内容和代码。 当我们对 API 的定义进行改变的时候，往往牵一发而动全身，数个地方都需要修改，而这些都是非常机械的行为。所以，我们要寻找能够「降维打击」的方式。
 
 
-就拿 tKeel 来说，通过 [Artisan](./artisan.md) 系统，就整合了 API 和 API 的文档，使其可以一次定义，两处生效，节省大家的时间。我们试图把问题定义成这样：
+就拿 tKeel 来说，通过 [Artisan](./artisan.md) 脚手架，整合了 API 定义和 API 文档，使其可以一次定义，两处生效，节省大家的时间。我们试图把问题定义成这样：
 
 1. 通过一门「语言」来描述我们的 API
 1. 撰写不同方向上的 Parser（Code generator），将其转换成特定场景的代码
 1. 将 Parser 构建在 build pipeline 中，可以一次 build，生成各种结果
 1. 生成的结果要能很方便地扩展，以及和系统里的其他部分整合
+
 
 我们选择的描述语言是 [Protocol Buffers](https://developers.google.com/protocol-buffers)，
 基于 `Protocol Buffers` 我们可以生成多种服务脚手架，同时通过扩展实现文档以及注释的同步。

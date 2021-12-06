@@ -6,7 +6,7 @@ slug: /internal_concepts/platform
 
 # 平台介绍
 
-![tkeel-layer](/images/docs/tkeel-layer.jpg)
+![tkeel-layer](/images/docs/tkeel-layer.png)
 
 
 - ### **Resource**

@@ -6,7 +6,7 @@ sidebar_position: 4
 
 
 
-![Architecture](/images/core/architecture-pitrix.png)
+![Architecture](/images/core/architecture-pitrix1207.png)
 
 
 ### Restful APIs
@@ -34,7 +34,7 @@ core 采用 `RESTFUL` 规范实现 API，致力于提供正交的APIs，向外�
 Runtime 为实体的运行时（Actor）提供环境支持，对 Actor 进行调度和管理。
 
 
-![core-actor](/images/core/architecture-actor.png)
+![core-actor](/images/core/architecture-actor1207.png)
 
 ### 关系
 
@@ -53,7 +53,7 @@ Runtime 为实体的运行时（Actor）提供环境支持，对 Actor 进行调
 
 借用映射机制，我们可以很容易的实现 iot 场景下设备数据的向上传递以及控制命令的向下传递。
 
-![img.png](/images/core/message_passing.png)
+![img.png](/images/core/message_passing1207.png)
 
 上图中蓝色线条代表数据的上行，如设备数据上报，黑色代表数据的下行，如指令数据的下行。
 
@@ -62,7 +62,7 @@ Runtime 为实体的运行时（Actor）提供环境支持，对 Actor 进行调
 1. 写复制: 实现实体属性变更时，将变更向下游实体传递。
 2. 计算更新: 对上游实体产生的变更组合计算，然后将计算结果更新到当前实体。
 
-![img.png](/images/core/mapping.png)
+![img.png](/images/core/mapping1207.png)
 
 
 

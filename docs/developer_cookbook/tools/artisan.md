@@ -44,7 +44,7 @@ $ ./bin/helloworld
 make init
 ```
 
-通过以上脚本，可以下载protoc工具全家桶，以及protoc插件和依赖
+通过以上脚本，可以下载 protoc 工具全家桶，以及 protoc 插件和依赖
 
 ```
 go get -d -u  github.com/tkeel-io/tkeel-interface/openapi
@@ -121,7 +121,7 @@ artisan proto server api/helloworld/v1/helloworld.proto
 💻 Add the following code to cmd/<project>.go  👇:
 
 import(
-Greeter_v1 "github.com/tkeel-io/tkeeldemo/api/helloworld/v1"
+    Greeter_v1 "github.com/tkeel-io/tkeeldemo/api/helloworld/v1"
 )
 
 GreeterSrv := service.NewGreeterService()

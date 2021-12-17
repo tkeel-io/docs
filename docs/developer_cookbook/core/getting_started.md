@@ -13,7 +13,7 @@ sidebar_position: 1
 - [启动服务](#启动服务)
     - [Self-hosted](#self-hosted)
     - [Kubernetes](#kubernetes)
-    - [core作为tKeel的一个组件运行，由tKeel负责安装。](#core作为tkeel的一个组件运行由tkeel负责安装)
+    - [Core 作为 tKeel 的一个组件运行](#core-作为-tkeel-的一个组件运行)
 - [使用 core 的 APIs](#使用-core-的-apis)
   - [第 1 步： 创建实体](#第-1-步-创建实体)
   - [第 2 步： 编辑实体](#第-2-步-编辑实体)
@@ -43,7 +43,7 @@ Core 是 tKeel 物联网平台的数据中心，高性能、可拓展的轻量�
 1. **基础属性**: 每个实体都必备的属性，如 `id`，`owner`等用于标识实体共有特征的属性。
 2. **扩展属性**: 实体除基础属性外的属性，这种属性属于某一类或某一个实体的特征描述，比如一个 **温度计** 的温度。
 
-更多设计细节请阅读[实体文档](./specs/entity.md)
+更多设计细节请阅读 [实体文档](./specs/entity.md)
 
 ### Actor
 [Actor](./specs/actor.md) 是实体（Entity）的运行时的一种模式抽象, 用于维护实体的实时状态以及提供实体的一些具体行为。
@@ -52,12 +52,12 @@ Core 是 tKeel 物联网平台的数据中心，高性能、可拓展的轻量�
 [映射](./specs/mapper.md) 是实体属性传播的抽象，可以实现数据的向上传递以及控制命令的向下传递。
 <div align="center">
 
-![img.png](/images/core/message_passing.png)
+![img.png](/images/core/message_passing1207.png)
 
 <i>映射模拟</i>
 </div>
 
-上图中蓝色线条代表数据的上行，如设备数据上报，黑色代表数据的下行，如指令数据的下行。
+上图中红色线条代表数据的上行，如设备数据上报；黑色代表数据的下行，如指令数据的下行。
 
 
 
@@ -69,7 +69,7 @@ Core 是 tKeel 物联网平台的数据中心，高性能、可拓展的轻量�
 
 <div align="center">
 
-![img.png](/images/core/mapping.png)
+![img.png](/images/core/mapping1207.png)
 </div>
 
 
@@ -110,7 +110,7 @@ iothub: iothub-pubsub
 
 拉取仓库
 ```bash 
-git clone  git@github.com:tkeel-io/core.git
+git clone  https://github.com/tkeel-io/core.git
 cd core
 ```
 
@@ -137,7 +137,7 @@ DEBU[0004] established connection to placement service at dns:///localhost:50005
     ```bash
     helm install redis bitnami/redis
     ```
-2. 部署 elasticsearch e服务
+2. 部署 elasticsearch 服务
     ```bash
     helm install elasticsearch elastic/elasticsearch
     ```
@@ -146,7 +146,7 @@ DEBU[0004] established connection to placement service at dns:///localhost:50005
     kubectl apply -f k8s/core.yaml
     ```
 
-#### core作为tKeel的一个组件运行，由tKeel负责安装。
+#### Core 作为 tKeel 的一个组件运行
 
   参见 [tKeel 新手引导 ](../../getting_started/guide.md)
 

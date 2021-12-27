@@ -1,10 +1,10 @@
 ---
-title: "GetEntity"
-description: 'Get a entity'
+title: "Entity_PatchEntityZ"
+description: ''
 ---
 
 
-调用该接口Get a entity。
+调用该接口。
 
 
 
@@ -12,14 +12,13 @@ description: 'Get a entity'
 
 
 ```
-get /plugins/{plugin}/entities/{id}
+put /entities/{id}/patch
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| plugin | path | string | plugin id |  
 | id | path | string | entity id |  
 
 
@@ -33,6 +32,27 @@ get /plugins/{plugin}/entities/{id}
 
 
 
+### Request Body
+
+
+ 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+| entity properties | Object | [](#) |
+
+#### 
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |  
+
+
+
+ 
+
+
+
+
+
 ## Response
 
 
@@ -42,7 +62,7 @@ get /plugins/{plugin}/entities/{id}
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1EntityResponse](#v1EntityResponse) |
+| 200 | A successful response. | Object | [v1EntityResponse](#v1EntityResponse) |
 
 #### v1EntityResponse
 
@@ -51,8 +71,7 @@ get /plugins/{plugin}/entities/{id}
 | configs | Object | entity configs   |      
 | id | string | entity id |          
 | mappers | Array[v1MapperDesc] | entity mappers [ 具体参数可见下面 [v1MapperDesc](#v1MapperDesc) ] |       
-| owner | string | owner id |      
-| plugin | string | plugin id |     
+| owner | string | owner id |     
 | properties | Object | entity properties   |      
 | source | string | source id |      
 | type | string | entity type |   
@@ -83,8 +102,6 @@ get /plugins/{plugin}/entities/{id}
 
 
           
-     
-   
      
    
      

@@ -1,10 +1,10 @@
 ---
-title: "AppendMapper"
-description: 'Append entity mapper'
+title: "UpdateSubscription"
+description: 'Update subscription'
 ---
 
 
-调用该接口Append entity mapper。
+调用该接口Update subscription。
 
 
 
@@ -12,15 +12,14 @@ description: 'Append entity mapper'
 
 
 ```
-post /plugins/{plugin}/entities/{id}/mappers
+put /subscriptions/{id}
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| plugin | path | string | plugin id |  
-| id | path | string | entity id |  
+| id | path | string | subscription id |  
 
 
 
@@ -39,17 +38,29 @@ post /plugins/{plugin}/entities/{id}/mappers
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| mapper description | Object | [v1MapperDesc](#v1MapperDesc) |
+| subscription object | Object | [v1SubscriptionObject](#v1SubscriptionObject) |
 
-#### v1MapperDesc
+#### v1SubscriptionObject
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| name | string | mapper name |      
-| tql | string | tql content |   
+| filter | string | filter |      
+| mode | string | suscription mode |      
+| pubsub_name | string | pubsub name |      
+| source | string | source id |      
+| target | string | target id |      
+| topic | string | topic name |   
 
 
   
+     
+   
+     
+   
+     
+   
+     
+   
      
    
      
@@ -69,55 +80,21 @@ post /plugins/{plugin}/entities/{id}/mappers
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1EntityResponse](#v1EntityResponse) |
+| 200 | OK | Object | [v1SubscriptionResponse](#v1SubscriptionResponse) |
 
-#### v1EntityResponse
+#### v1SubscriptionResponse
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |    
-| configs | Object | entity configs   |      
-| id | string | entity id |          
-| mappers | Array[v1MapperDesc] | entity mappers [ 具体参数可见下面 [v1MapperDesc](#v1MapperDesc) ] |       
-| owner | string | owner id |      
-| plugin | string | plugin id |     
-| properties | Object | entity properties   |      
-| source | string | source id |      
-| type | string | entity type |   
-
-
-  
-    
-          
-     
-   
-     
-   
-       
-         
-### v1MapperDesc
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| name | string | mapper name |      
-| tql | string | tql content |   
+| id | string | subscription id |      
+| owner | string | owner id |      
+| source | string | source id |      
+| subscription |  | subscription object |   
 
 
   
      
    
-     
- 
- 
-
-
-          
-     
-   
-     
-   
-     
-   
-    
-          
      
    
      

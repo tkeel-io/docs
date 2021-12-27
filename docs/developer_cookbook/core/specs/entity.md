@@ -32,6 +32,11 @@ sidebar_position: 1
 对于物联网世界中的操作对象的数字化抽象，我们不仅抽象其状态，对其行为的抽象也是非常重要的。物理世界中存在的`对象`，我们知道其类型不同其行为一般是不同的。所以我们为实体创建运行时`Actor`，来体现物理世界中`对象`的`状态`和`行为`。
 
 
+## 实体的生命周期
+
+
+curl -X GET "http://localhost:3500/v1.0/invoke/core/method/v1/entities/test123?source=abcd&owner=admin&type=DEVICE" 
+
 
 ## 实体状态的存储
 

@@ -115,7 +115,7 @@ cd core
 ```
 
 ```bash
-dapr run --app-id core --app-protocol http --app-port 6789 --dapr-http-port 3500 --dapr-grpc-port 50001 --log-level debug  --components-path ./examples/configs/core  go run cmd/core/main.go
+dapr run --app-id core --app-protocol http --app-port 6789 --dapr-http-port 3500 --dapr-grpc-port 50005 --log-level debug  --components-path ./examples/configs/core  go run cmd/core/main.go
 ```
 
 在 core 启动后，core 通过 sidecar 代理的 http 端口（默认3500）向外提供服务。
@@ -161,29 +161,59 @@ DEBU[0004] established connection to placement service at dns:///localhost:50005
 
 首先我们通过 API 创建一个实体：
 ```bash 
-curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entities?id=device123" \
+curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities?id=device123" \
 -H "Owner: admin" \
 -H "Type: DEVICE" \
 -H "Source: dm" \
 -H "Content-Type: application/json" \
 -d '{
-    "status": "start",
-    "temp": 234
+      "status": "start",
+      "temp": 2344,
+      "object": {
+          "field1": "value1",
+          "field2": 123,
+          "field3": {
+              "ffff": "vvv"
+          },
+          "field4": [
+              {
+                  "age":21,
+                  "name": "tom"
+              },
+              {
+                  "age":22,
+                  "name": "tomas"
+              }
+          ]
+      }
+    }'
+
+# 通过`from` 参数指定模板创建实体
+curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities?id=device234&from=device123" \
+-H "Owner: admin" \
+-H "Type: DEVICE" \
+-H "Source: dm" \
+-H "Content-Type: application/json" \
+-d '{
+      "mem_size": "10Gib"
     }'
 ```
 通过 invoke 调用
 ```bash
-$tkeel invoke --plugin-id core --method "v1/plugins/dm/entities?id=device123&source=dm&owner=admin&type=DEVICE" -v POST -d '{"status":"start", "temp":234}'
+$tkeel invoke --plugin-id core --method "v1/entities?id=device123&source=dm&owner=admin&type=DEVICE" -v POST -d '{"status":"start", "temp":234}'
 {"id":"device123","source":"dm","owner":"admin","type":"DEVICE","configs":{},"properties":{"status":"start","temp":234}}
 ✅  Plugin invoked successfully
 ```
+
+
+
 
 ### 第 2 步： 编辑实体
 
 现在我们尝试使用 core 的 API 将实体的温度(`temp`) 字段更新为123，状态(`status`)更新为testing：
 
 ```bash
-curl -X PUT "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entities/device123" \
+curl -X PUT "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123" \
   -H "Source: dm" \
   -H "Owner: admin" \
   -H "Type: DEVICE" \
@@ -195,7 +225,7 @@ curl -X PUT "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entitie
 ```
 通过 invoke 调用
 ```bash
-$tkeel invoke --plugin-id core --method "v1/plugins/dm/entities/device123?source=dm&owner=admin&type=DEVICE" -v PUT -d '{"status":"testing", "temp":123}'
+$tkeel invoke --plugin-id core --method "v1/entities/device123?source=dm&owner=admin&type=DEVICE" -v PUT -d '{"status":"testing", "temp":123}'
 {"id":"device123","source":"dm","owner":"admin","type":"DEVICE","configs":{},"properties":{"status":"testing","temp":123}}
 ✅  Plugin invoked successfully
 ```
@@ -205,7 +235,7 @@ $tkeel invoke --plugin-id core --method "v1/plugins/dm/entities/device123?source
 查看我们创建的实体，核对前面操作的变化：
 
 ```bash
-curl -X GET "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entities/device123" \
+curl -X GET "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123" \
   -H "Source: dm" \
   -H "Owner: admin"  \
   -H "Type: DEVICE"
@@ -228,17 +258,31 @@ curl -X GET "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entitie
 ```
 通过 invoke 调用
 ```bash
-tkeel invoke --plugin-id core --method "v1/plugins/dm/entities/device123?source=dm&owner=admin&type=DEVICE" -v GET
+tkeel invoke --plugin-id core --method "v1/entities/device123?source=dm&owner=admin&type=DEVICE" -v GET
 {"id":"device123","source":"dm","owner":"admin","type":"DEVICE","configs":{},"properties":{"status":"testing","temp":123}}
 ✅  Plugin invoked successfully
 ```
+
+### 3.2 步： 通过指定实体属性来查询实体属性
+
+
+```bash
+# 指定属性ID，查询实体属性.
+curl -X GET "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/properties?pids=temp,object.field1" \
+-H "Owner: admin" \
+-H "Type: DEVICE" \
+-H "Source: dm" \
+-H "Content-Type: application/json" 
+```
+
+
 
 ### 第 4 步： Patch 实体属性
 
 core 为我们提供强大 `json patch` 操作， 允许我们灵活的更新实体属性：
 
 ```bash
-curl -X PATCH "http://localhost:6789/v1/plugins/dm/entities/device123" \
+curl -X PATCH "http://localhost:6789/v1/entities/device123" \
   -H "Source: dm" \
   -H "Owner: admin" \
   -H "Type: DEVICE" \
@@ -254,7 +298,7 @@ curl -X PATCH "http://localhost:6789/v1/plugins/dm/entities/device123" \
 
 通过 invoke 调用
 ```bash
-$tkeel invoke --plugin-id core --method "v1/plugins/dm/entities/device123?source=dm&owner=admin&type=DEVICE" -v PATCH -d '[{"path":"temp", "operator":"replace", "value":20}]'
+$tkeel invoke --plugin-id core --method "v1/entities/device123?source=dm&owner=admin&type=DEVICE" -v PATCH -d '[{"path":"temp", "operator":"replace", "value":20}]'
 {"id":"device123","source":"dm","owner":"admin","type":"DEVICE","configs":{},"properties":{"status":"testing","temp":20}}
 ✅  Plugin invoked successfully
 ```
@@ -264,7 +308,7 @@ $tkeel invoke --plugin-id core --method "v1/plugins/dm/entities/device123?source
 core 中的实体属性（property）是可以被配置的，配置信息作用于对实体属性的解析和使用：
 
 ```bash
-curl -X PUT "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entities/device123/configs" \
+curl -X PUT "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/configs" \
   -H "Content-Type: application/json" \
   -d '[
           {
@@ -283,7 +327,7 @@ curl -X PUT "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entitie
 
 通过 invoke 调用
 ```bash
-$tkeel invoke --plugin-id core --method "v1/plugins/dm/entities/device123/configs" -v PUT -d '[{"id":"temp","type":"int","define":{"unit":"°","max":500,"min":10},"enabled":true,"enabled_search":true}]'
+$tkeel invoke --plugin-id core --method "v1/entities/device123/configs" -v PUT -d '[{"id":"temp","type":"int","define":{"unit":"°","max":500,"min":10},"enabled":true,"enabled_search":true}]'
 {"id":"device123","source":"dm","owner":"admin","type":"DEVICE","configs":{"temp":{"define":{"max":500,"min":10,"unit":"°"},"description":"","enabled":true,"enabled_search":true,"enabled_time_series":false,"id":"temp","last_time":0,"type":"int","weight":0}},"properties":{"status":"testing","temp":20}}
 ✅  Plugin invoked successfully
 ```
@@ -296,7 +340,7 @@ $tkeel invoke --plugin-id core --method "v1/plugins/dm/entities/device123/config
 core 通过配置搜索为用户提供强大的索引能力：
 
 ```bash
-curl -XPOST http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entities/search \
+curl -XPOST http://localhost:3500/v1.0/invoke/core/method/v1/entities/search \
   -H "Source: dm" \
   -H "Owner: admin" \
   -H "Type: DEVICE" \
@@ -308,7 +352,7 @@ curl -XPOST http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entities
 
 通过 invoke 调用
 ```bash
-$tkeel invoke --plugin-id core --method "v1/plugins/dm/entities/search?source=dm&owner=admin&type=DEVICE" -v POST -d '{"query": "testing"}'
+$tkeel invoke --plugin-id core --method "v1/entities/search?source=dm&owner=admin&type=DEVICE" -v POST -d '{"query": "testing"}'
 {"total":1,"limit":10,"items":[{"id":"device123","plugin":"dm","properties":{"id":"device123","last_time":1638500632053,"owner":"admin","source":"dm","status":"testing","temp":"20","type":"DEVICE","version":3}}]}
 ✅  Plugin invoked successfully
 ```
@@ -321,7 +365,7 @@ core 对于实体的设计和抽象，绝不止步于 get/set， core通过 映�
 
 
 ```bash
-  curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entities?id=device234" \
+  curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities?id=device234" \
   -H "Owner: admin" \
   -H "Type: DEVICE" \
   -H "Source: dm" \
@@ -334,7 +378,7 @@ core 对于实体的设计和抽象，绝不止步于 get/set， core通过 映�
 
 通过 invoke 调用
 ```bash
-$tkeel invoke --plugin-id core --method "v1/plugins/dm/entities?id=device234&source=dm&owner=admin&type=DEVICE" -v POST -d '{"status":"start", "temp":111}'
+$tkeel invoke --plugin-id core --method "v1/entities?id=device234&source=dm&owner=admin&type=DEVICE" -v POST -d '{"status":"start", "temp":111}'
 {"id":"device234","source":"dm","owner":"admin","type":"DEVICE","configs":{},"properties":{"status":"start","temp":111}}
 ✅  Plugin invoked successfully
 ```
@@ -343,7 +387,7 @@ $tkeel invoke --plugin-id core --method "v1/plugins/dm/entities?id=device234&sou
 
 
 ```bash
-  curl -XPOST "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entities/device123/mappers" \
+  curl -XPOST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/mappers" \
   -H "Source: dm" \
   -H "Owner: admin" \
   -H "Type: DEVICE" \
@@ -356,7 +400,7 @@ $tkeel invoke --plugin-id core --method "v1/plugins/dm/entities?id=device234&sou
 
 通过 invoke 调用
 ```bash
-tkeel invoke --plugin-id core --method "v1/plugins/dm/entities/device234/mappers?source=dm&owner=admin&type=DEVICE" -v POST -d '{"name":"m-sync-dev234","tql":"insert into device123 select device234.temp as temp"}'
+tkeel invoke --plugin-id core --method "v1/entities/device234/mappers?source=dm&owner=admin&type=DEVICE" -v POST -d '{"name":"m-sync-dev234","tql":"insert into device123 select device234.temp as temp"}'
 {"id":"device234","source":"dm","owner":"admin","type":"DEVICE","configs":{},"properties":{"status":"start","temp":111}}
 ✅  Plugin invoked successfully
 ```
@@ -371,12 +415,16 @@ core 为上层应用提供两个不同场景的接口：[控制平面接口](spe
 curl -X POST http://localhost:3500/v1.0/publish/core-pubsub/core-pub \
   -H "Content-Type: application/json" \
   -d '{
-       "entity_id": "device234",
+       "id": "device123",
        "owner": "admin",
        "source": "dm",
        "data": {
-           "temp": 234
-       }
+           "temp": 234,
+           "cpu_used": {
+              "value": 0.3,
+              "type": "number"
+           }
+        }
      }'
 ```
 
@@ -387,14 +435,14 @@ curl -X POST http://localhost:3500/v1.0/publish/core-pubsub/core-pub \
 不同的业务场景对 订阅（[subscription](specs/subscription.md)） 的需求粒度不尽相同，core 为使用者提供内置的，高性能的，多模式的订阅功能：
 
 ```bash
-curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/subscriptions?id=sub123" \
+curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/subscriptions?id=sub12345" \
     -H "Source: dm" \
     -H "Owner: admin" \
     -H "Type: SUBSCRIPTION" \
     -H "Content-Type: application/json" \
-    -d '{
+    -d '{ 
             "mode": "realtime",
-            "filter":"insert into sub123 select device123.temp",
+            "filter":"insert into sub12345 select device123.*",
             "topic": "sub123",
             "pubsub_name": "core-pubsub"
         }'
@@ -403,7 +451,7 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/subscr
 ### 第 10 步： 删除订阅
 
 ```bash
-curl -X DELETE "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/subscriptions?id=sub123" \
+curl -X DELETE "http://localhost:3500/v1.0/invoke/core/method/v1/subscriptions/sub123" \
     -H "Source: dm" \
     -H "Owner: admin" \
     -H "Type: SUBSCRIPTION" \
@@ -411,10 +459,10 @@ curl -X DELETE "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/subs
 ```
 
 
-### 第 11 步： 删除映射
+### 第 11 步： 删除映射 
 
 ```bash
-curl -XPOST "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entities/test123/mappers/m-sync-dev234" \
+curl -XPOST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/test123/mappers/m-sync-dev234" \
   -H "Source: dm"   \
   -H "Owner: admin" \
   -H "Type: DEVICE" \
@@ -426,7 +474,7 @@ curl -XPOST "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entitie
 ### 第 12 步： 删除实体
 
 ```bash
-curl -X DELETE "http://localhost:3500/v1.0/invoke/core/method/v1/plugins/dm/entities/device123" \
+curl -X DELETE "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123" \
   -H "Source: dm" \
   -H "Owner: admin" \
   -H "Type: DEVICE" 

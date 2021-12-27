@@ -1,10 +1,10 @@
 ---
-title: "CreateEntity"
-description: 'Create a entity'
+title: "GetEntityProps"
+description: 'Get Entity Properties'
 ---
 
 
-调用该接口Create a entity。
+调用该接口Get Entity Properties。
 
 
 
@@ -12,14 +12,14 @@ description: 'Create a entity'
 
 
 ```
-post /plugins/{plugin}/entities
+get /entities/{id}/properties
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| plugin | path | string | plugin id |  
+| id | path | string | entity id |  
 
 
 
@@ -27,31 +27,10 @@ post /plugins/{plugin}/entities
 
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
-| id | query | string | entity id |  false |
 | source | query | string | source id |  false |
 | owner | query | string | owner id |  true |
 | type | query | string | entity type |  false |
-
-
-
-### Request Body
-
-
- 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-| entity properties, optional | Object | [](#) |
-
-#### 
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
-
-
- 
-
-
+| pids | query | string | entity property ids, eg: pids=1,2,3 |  false |
 
 
 
@@ -73,8 +52,7 @@ post /plugins/{plugin}/entities
 | configs | Object | entity configs   |      
 | id | string | entity id |          
 | mappers | Array[v1MapperDesc] | entity mappers [ 具体参数可见下面 [v1MapperDesc](#v1MapperDesc) ] |       
-| owner | string | owner id |      
-| plugin | string | plugin id |     
+| owner | string | owner id |     
 | properties | Object | entity properties   |      
 | source | string | source id |      
 | type | string | entity type |   
@@ -105,8 +83,6 @@ post /plugins/{plugin}/entities
 
 
           
-     
-   
      
    
      

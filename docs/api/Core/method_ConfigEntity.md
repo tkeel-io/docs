@@ -1,10 +1,10 @@
 ---
-title: "DeleteSubscription"
-description: 'Delete subscription'
+title: "ConfigEntity"
+description: 'Config entity'
 ---
 
 
-调用该接口Delete subscription。
+调用该接口Config entity。
 
 
 
@@ -12,15 +12,14 @@ description: 'Delete subscription'
 
 
 ```
-delete /plugins/{plugin}/subscriptions/{id}
+put /entities/{id}/configs
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| plugin | path | string | plugin id |  
-| id | path | string | subscription id |  
+| id | path | string | entity id |  
 
 
 
@@ -33,6 +32,27 @@ delete /plugins/{plugin}/subscriptions/{id}
 
 
 
+### Request Body
+
+
+ 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+| configs | Object | [](#) |
+
+#### 
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |  
+
+
+
+ 
+
+
+
+
+
 ## Response
 
 
@@ -42,17 +62,54 @@ delete /plugins/{plugin}/subscriptions/{id}
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1DeleteSubscriptionResponse](#v1DeleteSubscriptionResponse) |
+| 200 | OK | Object | [v1EntityResponse](#v1EntityResponse) |
 
-#### v1DeleteSubscriptionResponse
+#### v1EntityResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| id | string | subscription id |      
-| status | string | status |   
+| ---- | ---- | ----------- |    
+| configs | Object | entity configs   |      
+| id | string | entity id |          
+| mappers | Array[v1MapperDesc] | entity mappers [ 具体参数可见下面 [v1MapperDesc](#v1MapperDesc) ] |       
+| owner | string | owner id |     
+| properties | Object | entity properties   |      
+| source | string | source id |      
+| type | string | entity type |   
 
 
   
+    
+          
+     
+   
+     
+   
+       
+         
+### v1MapperDesc
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| name | string | mapper name |      
+| tql | string | tql content |   
+
+
+  
+     
+   
+     
+ 
+ 
+
+
+          
+     
+   
+     
+   
+    
+          
+     
+   
      
    
      

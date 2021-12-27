@@ -1,10 +1,10 @@
 ---
-title: "ListEntity"
-description: 'List entities'
+title: "CreateEntity"
+description: 'Create a entity'
 ---
 
 
-调用该接口List entities。
+调用该接口Create a entity。
 
 
 
@@ -12,16 +12,22 @@ description: 'List entities'
 
 
 ```
-post /plugins/{plugin}/entities/search
+post /entities
 ```
 
 
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| plugin | path | string | plugin id |  
 
 
+###  Request Parameters
+
+| Name | Located in | Type | Description |  Required |
+| ---- | ---------- | ----------- | ----------- |  ---- |
+| id | query | string | entity id |  false |
+| from | query | string | template entity id |  false |
+| source | query | string | source id |  false |
+| owner | query | string | owner id |  true |
+| type | query | string | entity type |  false |
 
 
 
@@ -31,7 +37,7 @@ post /plugins/{plugin}/entities/search
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [](#) |
+| entity properties, optional | Object | [](#) |
 
 #### 
 
@@ -55,30 +61,16 @@ post /plugins/{plugin}/entities/search
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListEntityResponse](#v1ListEntityResponse) |
+| 200 | OK | Object | [v1EntityResponse](#v1EntityResponse) |
 
-#### v1ListEntityResponse
+#### v1EntityResponse
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |         
-| items | Array[v1EntityResponse] | entity list [ 具体参数可见下面 [v1EntityResponse](#v1EntityResponse) ] |       
-| limit | string | limit |      
-| offset | string | offset |      
-| page | string | page |      
-| total | string | total count of the entities |   
-
-
-  
-       
-         
-### v1EntityResponse
 | Name | Type | Description | 
 | ---- | ---- | ----------- |    
 | configs | Object | entity configs   |      
 | id | string | entity id |          
 | mappers | Array[v1MapperDesc] | entity mappers [ 具体参数可见下面 [v1MapperDesc](#v1MapperDesc) ] |       
-| owner | string | owner id |      
-| plugin | string | plugin id |     
+| owner | string | owner id |     
 | properties | Object | entity properties   |      
 | source | string | source id |      
 | type | string | entity type |   
@@ -113,24 +105,8 @@ post /plugins/{plugin}/entities/search
    
      
    
-     
-   
     
           
-     
-   
-     
-   
-     
- 
- 
-
-
-          
-     
-   
-     
-   
      
    
      

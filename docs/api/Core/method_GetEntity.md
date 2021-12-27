@@ -1,10 +1,10 @@
 ---
-title: "PatchEntity"
-description: 'Patch a entity properties'
+title: "GetEntity"
+description: 'Get a entity'
 ---
 
 
-调用该接口Patch a entity properties。
+调用该接口Get a entity。
 
 
 
@@ -12,14 +12,13 @@ description: 'Patch a entity properties'
 
 
 ```
-patch /plugins/{plugin}/entities/{id}
+get /entities/{id}
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| plugin | path | string | plugin id |  
 | id | path | string | entity id |  
 
 
@@ -30,27 +29,6 @@ patch /plugins/{plugin}/entities/{id}
 | ---- | ---------- | ----------- | ----------- |  ---- |
 | source | query | string | source id |  false |
 | owner | query | string | owner id |  false |
-
-
-
-### Request Body
-
-
- 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-| entity properties | Object | [](#) |
-
-#### 
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
-
-
- 
-
-
 
 
 
@@ -72,8 +50,7 @@ patch /plugins/{plugin}/entities/{id}
 | configs | Object | entity configs   |      
 | id | string | entity id |          
 | mappers | Array[v1MapperDesc] | entity mappers [ 具体参数可见下面 [v1MapperDesc](#v1MapperDesc) ] |       
-| owner | string | owner id |      
-| plugin | string | plugin id |     
+| owner | string | owner id |     
 | properties | Object | entity properties   |      
 | source | string | source id |      
 | type | string | entity type |   
@@ -104,8 +81,6 @@ patch /plugins/{plugin}/entities/{id}
 
 
           
-     
-   
      
    
      

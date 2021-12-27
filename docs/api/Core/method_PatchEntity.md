@@ -1,10 +1,10 @@
 ---
-title: "DeleteEntity"
-description: 'Delete a entity'
+title: "PatchEntity"
+description: 'Patch a entity properties'
 ---
 
 
-调用该接口Delete a entity。
+调用该接口Patch a entity properties。
 
 
 
@@ -12,14 +12,13 @@ description: 'Delete a entity'
 
 
 ```
-delete /plugins/{plugin}/entities/{id}
+patch /entities/{id}
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| plugin | path | string | plugin id |  
 | id | path | string | entity id |  
 
 
@@ -33,6 +32,27 @@ delete /plugins/{plugin}/entities/{id}
 
 
 
+### Request Body
+
+
+ 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+| entity properties | Object | [](#) |
+
+#### 
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |  
+
+
+
+ 
+
+
+
+
+
 ## Response
 
 
@@ -42,17 +62,54 @@ delete /plugins/{plugin}/entities/{id}
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1DeleteEntityResponse](#v1DeleteEntityResponse) |
+| 200 | OK | Object | [v1EntityResponse](#v1EntityResponse) |
 
-#### v1DeleteEntityResponse
+#### v1EntityResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| id | string | entity id |      
-| status | string | status |   
+| ---- | ---- | ----------- |    
+| configs | Object | entity configs   |      
+| id | string | entity id |          
+| mappers | Array[v1MapperDesc] | entity mappers [ 具体参数可见下面 [v1MapperDesc](#v1MapperDesc) ] |       
+| owner | string | owner id |     
+| properties | Object | entity properties   |      
+| source | string | source id |      
+| type | string | entity type |   
 
 
   
+    
+          
+     
+   
+     
+   
+       
+         
+### v1MapperDesc
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| name | string | mapper name |      
+| tql | string | tql content |   
+
+
+  
+     
+   
+     
+ 
+ 
+
+
+          
+     
+   
+     
+   
+    
+          
+     
+   
      
    
      

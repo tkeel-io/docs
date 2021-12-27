@@ -1,10 +1,10 @@
 ---
-title: "ListScription"
-description: 'List subscriptions'
+title: "GetSubscription"
+description: 'Get subscription'
 ---
 
 
-调用该接口List subscriptions。
+调用该接口Get subscription。
 
 
 
@@ -12,14 +12,14 @@ description: 'List subscriptions'
 
 
 ```
-get /plugins/{plugin}/subscriptions
+get /subscriptions/{id}
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| plugin | path | string | plugin id |  
+| id | path | string | subscription id |  
 
 
 
@@ -41,27 +41,14 @@ get /plugins/{plugin}/subscriptions
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListSubscriptionResponse](#v1ListSubscriptionResponse) |
+| 200 | OK | Object | [v1SubscriptionResponse](#v1SubscriptionResponse) |
 
-#### v1ListSubscriptionResponse
+#### v1SubscriptionResponse
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| count | integer | count of the subscriptions |          
-| items | Array[v1SubscriptionResponse] | subscription items [ 具体参数可见下面 [v1SubscriptionResponse](#v1SubscriptionResponse) ] |    
-
-
-  
-     
-   
-       
-         
-### v1SubscriptionResponse
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | id | string | subscription id |      
 | owner | string | owner id |      
-| plugin | string | plugin id |      
 | source | string | source id |      
 | subscription |  | subscription object |   
 
@@ -73,14 +60,6 @@ get /plugins/{plugin}/subscriptions
    
      
    
-     
-   
-     
- 
- 
-
-
-          
      
  
  

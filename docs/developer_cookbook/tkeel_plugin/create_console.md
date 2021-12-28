@@ -7,7 +7,7 @@ title: 创建插件前端界面
 
 tKeel 的整个前端控制台分为 core（也可以被称为基座、主应用）和 plugin（也可以被称为插件 、子应用、微应用），整个前端是一个基于 [qiankun（乾坤）](https://github.com/umijs/qiankun) 的微前端架构系统。
 
-## 前提条件​
+## 前提条件
 
 - Node.js >= 16.0.0
 - Yarn >= 3.0.0

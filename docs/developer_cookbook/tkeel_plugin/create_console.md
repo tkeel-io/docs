@@ -50,7 +50,7 @@ yarn dev
 
 ### 将 plugin 模拟添加至 core 的菜单中
 
-<!-- TODO: 需要补全 -->
+<!-- TODO: 需要补全，后续可能修改  -->
 
 在 console 仓库的 `./packages/tkeel-console-core/src/mock/index.ts` 中，添加 plugin 的 mock 数据：
 
@@ -69,7 +69,7 @@ const menus = [
 
 core 会在注册 plugin（`registerMicroApps`）时，通过 props 传递给 plugin 如下数据：
 
-<!-- TODO: 需要补全 -->
+<!-- TODO: 需要补全，后续可能修改 -->
 
 ```json
 {

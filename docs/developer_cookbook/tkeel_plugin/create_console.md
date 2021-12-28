@@ -89,6 +89,6 @@ core 会在注册 plugin（`registerMicroApps`）时，通过 props 传递给 pl
 
 [console 仓库](https://github.com/tkeel-io/console) 中 `packages` 目录下，以 `tkeel-console-plugin` 开头的目录，都是 tKeel 的官方插件。
 
-### Vue
+### Vue.js
 
 [console-plugin-vue-example](https://github.com/tkeel-io/console-plugin-vue-example)

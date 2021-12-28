@@ -61,7 +61,7 @@ const menus = [
 ];
 ```
 
-#### core 传递给插件的 props
+### core 传递给插件的 props
 
 core 会在注册插件（`registerMicroApps`）时，通过 props 传递给插件如下数据：
 

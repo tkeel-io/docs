@@ -2,19 +2,19 @@
 sidebar_position: 5
 title: 授权服务
 ---
+我们提供了一些授权方式希望可以满足您的需求。
 ## 支持的授权类型 
 现平台安全模块支持如下多种授权类型：
 
-| 授权类型           | 描述           | 有效支持 | 简介                                                         |
-| :----------------- | -------------- | -------- | ------------------------------------------------------------ |
-| password           | 密码模式       | √        | 资源请求方使用，如果充分信任接入应用, 用户就可以直接把用户名密码给接入应用，接入应用使用用户账号密码申请令牌. |
-| Authorization Code | 授权码模式     |          | 安全性高，使用率高，流程复杂。要求第三方应用必须有服务器。对安全性要求较高。 |
-| Implicit           | 简化模式       |          | 资源请求方使用，多用于没有后端的应用，用户授权登录之后, 会直接向前端发送令牌(`access_token`) |
-| Client Credentials | 客户端凭据模式 |          | 资源请求方使用，使用在 OAuth2 服务器注册的 client_id 和 client_secret 获取 access_token，发出 API 请求时，它应将access_token作为 Bearer 令牌传递到 Authorization 请求头中。 |
-
-
+|  类型 | 模式 | 描述 |
+|------|-----|------|
+| [Password](#password) | 密码模式 | 资源请求方使用，如果充分信任接入应用, 用户就可以直接把用户名密码给接入应用，接入应用使用用户账号密码申请令牌. |
+| [Authorization Code](#authorization-code) | 授权码模式 | 安全性高，流程复杂。要求第三方应用必须有服务器。对安全性要求较高。 |
+| [Implicit](#implicit) | 简化模式 | 资源请求方使用，多用于没有后端的应用，用户授权登录之后, 会直接向前端发送令牌(`access_token`) |
+| [Client Credentials](#client-credentials) | 客户端凭据模式 | 资源请求方使用，使用在 OAuth2 服务器注册的 client_id 和 client_secret 获取 access_token，发出 API 请求时，它应将access_token作为 Bearer 令牌传递到 Authorization 请求头中。 |
 
 ### Password 
+资源请求方使用，如果充分信任接入应用, 用户就可以直接把用户名密码给接入应用，接入应用使用用户账号密码申请令牌.
 
 **请求方式**
 ```
@@ -49,6 +49,7 @@ POST /oauth/token
 ```
 
 ### Authorization Code
+安全性高，使用率高，流程复杂。要求第三方应用必须有服务器。对安全性要求较高。
 #### 获取授权 code
 
 **请求方式**
@@ -114,7 +115,7 @@ POST /oauth/token
 ```
 
 ### Implicit
-
+资源请求方使用，多用于没有后端的应用，用户授权登录之后, 会直接向前端发送令牌(`access_token`) 
 
 **请求方式**
 ```http
@@ -149,6 +150,7 @@ http://localhost:8080/oauth/on_code#access_token=eyJhbGciOiJIUzUxMiIsInR5cCI6Ikp
 > 2. 这种方式把令牌直接传给前端，是很不安全的。因此，只能用于一些安全要求不高的场景，并且令牌的有效期必须非常短，通常就是会话期间（session）有效，浏览器关掉，令牌就失效了
 
 ### Client Credentials
+资源请求方使用，使用在 OAuth2 服务器注册的 client_id 和 client_secret 获取 access_token，发出 API 请求时，它应将access_token作为 Bearer 令牌传递到 Authorization 请求头中。
 
 **请求方式**
 

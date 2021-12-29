@@ -115,7 +115,7 @@ cd core
 ```
 
 ```bash
-dapr run --app-id core --app-protocol http --app-port 6789 --dapr-http-port 3500 --dapr-grpc-port 50005 --log-level debug  --components-path ./examples/configs/core  go run cmd/core/main.go
+dapr run --app-id core --app-protocol http --app-port 6789 --dapr-http-port 3500 --log-level debug  --components-path ./examples/configs/core  go run cmd/core/main.go
 ```
 
 在 core 启动后，core 通过 sidecar 代理的 http 端口（默认3500）向外提供服务。
@@ -282,7 +282,7 @@ curl -X GET "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123
 core 为我们提供强大 `json patch` 操作， 允许我们灵活的更新实体属性：
 
 ```bash
-curl -X PATCH "http://localhost:6789/v1/entities/device123" \
+curl -X PATCH "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123" \
   -H "Source: dm" \
   -H "Owner: admin" \
   -H "Type: DEVICE" \
@@ -308,7 +308,7 @@ $tkeel invoke --plugin-id core --method "v1/entities/device123?source=dm&owner=a
 core 中的实体属性（property）是可以被配置的，配置信息作用于对实体属性的解析和使用：
 
 ```bash
-curl -X PUT "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/configs" \
+curl -X PUT "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/configs?type=BASIC&owner=admin&source=dm" \
   -H "Content-Type: application/json" \
   -d '[
           {
@@ -346,7 +346,7 @@ curl -XPOST http://localhost:3500/v1.0/invoke/core/method/v1/entities/search \
   -H "Type: DEVICE" \
   -H "Content-Type: application/json" \
   -d '{
-        "query": "testing"
+        "query": "device"
   }'
 ```
 
@@ -435,14 +435,14 @@ curl -X POST http://localhost:3500/v1.0/publish/core-pubsub/core-pub \
 不同的业务场景对 订阅（[subscription](specs/subscription.md)） 的需求粒度不尽相同，core 为使用者提供内置的，高性能的，多模式的订阅功能：
 
 ```bash
-curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/subscriptions?id=sub12345" \
+curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/subscriptions?id=sub123" \
     -H "Source: dm" \
     -H "Owner: admin" \
     -H "Type: SUBSCRIPTION" \
     -H "Content-Type: application/json" \
     -d '{ 
             "mode": "realtime",
-            "filter":"insert into sub12345 select device123.*",
+            "filter":"insert into sub123 select device123.*",
             "topic": "sub123",
             "pubsub_name": "core-pubsub"
         }'
@@ -474,7 +474,7 @@ curl -XPOST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/test123/m
 ### 第 12 步： 删除实体
 
 ```bash
-curl -X DELETE "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123" \
+curl -X DELETE "http://localhost:3500/v1.0/invoke/core/method/v1/entities/sub12345" \
   -H "Source: dm" \
   -H "Owner: admin" \
   -H "Type: DEVICE" 

@@ -1,10 +1,10 @@
 ---
-title: "ConfigEntity"
-description: 'Config entity'
+title: "QueryConfigs"
+description: 'query entity configs'
 ---
 
 
-调用该接口Config entity。
+调用该接口query entity configs。
 
 
 
@@ -12,7 +12,7 @@ description: 'Config entity'
 
 
 ```
-put /entities/{id}/configs
+get /entities/{id}/configs
 ```
 
 
@@ -27,29 +27,10 @@ put /entities/{id}/configs
 
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
+| type | query | string | entity type |  false |
 | source | query | string | source id |  false |
 | owner | query | string | owner id |  false |
-
-
-
-### Request Body
-
-
- 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-| configs | Object | [](#) |
-
-#### 
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
-
-
- 
-
-
+| property_ids | query | string | entity property ids |  false |
 
 
 

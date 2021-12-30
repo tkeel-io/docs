@@ -159,7 +159,7 @@ DEBU[0004] established connection to placement service at dns:///localhost:50005
 
 ### 第 1 步： 创建实体
 
-首先我们通过 API 创建一个实体：
+**首先我们通过 API 创建一个实体：**
 ```bash 
 curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities?id=device123" \
 -H "Owner: admin" \
@@ -187,8 +187,11 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities?id=devic
           ]
       }
     }'
+```
 
-# 通过`from` 参数指定模板创建实体
+
+**通过指定`from`参数创建实体：**
+```bash
 curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities?id=device234&from=device123" \
 -H "Owner: admin" \
 -H "Type: DEVICE" \
@@ -198,7 +201,9 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities?id=devic
       "mem_size": "10Gib"
     }'
 ```
-通过 invoke 调用
+
+
+**通过 invoke 调用：**
 ```bash
 $tkeel invoke --plugin-id core --method "v1/entities?id=device123&source=dm&owner=admin&type=DEVICE" -v POST -d '{"status":"start", "temp":234}'
 {"id":"device123","source":"dm","owner":"admin","type":"DEVICE","configs":{},"properties":{"status":"start","temp":234}}
@@ -223,7 +228,9 @@ curl -X PUT "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123
        "temp":123
      }'
 ```
-通过 invoke 调用
+
+
+**通过 invoke 调用：**
 ```bash
 $tkeel invoke --plugin-id core --method "v1/entities/device123?source=dm&owner=admin&type=DEVICE" -v PUT -d '{"status":"testing", "temp":123}'
 {"id":"device123","source":"dm","owner":"admin","type":"DEVICE","configs":{},"properties":{"status":"testing","temp":123}}
@@ -256,7 +263,7 @@ curl -X GET "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123
     }
 }
 ```
-通过 invoke 调用
+**通过 invoke 调用：**
 ```bash
 tkeel invoke --plugin-id core --method "v1/entities/device123?source=dm&owner=admin&type=DEVICE" -v GET
 {"id":"device123","source":"dm","owner":"admin","type":"DEVICE","configs":{},"properties":{"status":"testing","temp":123}}
@@ -307,8 +314,9 @@ $tkeel invoke --plugin-id core --method "v1/entities/device123?source=dm&owner=a
 
 core 中的实体属性（property）是可以被配置的，配置信息作用于对实体属性的解析和使用：
 
+
 ```bash
-curl -X PUT "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/configs?type=BASIC&owner=admin&source=dm" \
+curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/configs?type=BASIC&owner=admin&source=dm" \
   -H "Content-Type: application/json" \
   -d '[
           {
@@ -325,7 +333,46 @@ curl -X PUT "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123
     ]'
 ```
 
-通过 invoke 调用
+
+
+**给实体增添属性配置：**
+```bash
+curl -X PUT "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/configs?type=BASIC&owner=admin&source=dm" \
+  -H "Content-Type: application/json" \
+  -d '[
+          {
+            "id": "temp2",
+            "type": "int",
+            "define": {
+                "unit": "°",
+                "max": 500,
+                "min": 10
+            },
+            "enabled": true,
+            "enabled_search": true
+          }
+    ]'
+```
+
+**指定属性id获取实体属性配置：**
+```bash
+curl -X GET "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/configs?type=BASIC&owner=admin&source=dm&property_ids=temp2" -H "Content-Type: application/json" 
+```
+
+
+**指定属性id删除实体属性配置：**
+```bash
+curl -X DELETE "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/configs?type=BASIC&owner=admin&source=dm&property_ids=temp" \
+  -H "Content-Type: application/json" 
+```
+
+
+
+
+
+
+
+**通过 invoke 调用：**
 ```bash
 $tkeel invoke --plugin-id core --method "v1/entities/device123/configs" -v PUT -d '[{"id":"temp","type":"int","define":{"unit":"°","max":500,"min":10},"enabled":true,"enabled_search":true}]'
 {"id":"device123","source":"dm","owner":"admin","type":"DEVICE","configs":{"temp":{"define":{"max":500,"min":10,"unit":"°"},"description":"","enabled":true,"enabled_search":true,"enabled_time_series":false,"id":"temp","last_time":0,"type":"int","weight":0}},"properties":{"status":"testing","temp":20}}
@@ -474,7 +521,7 @@ curl -XPOST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/test123/m
 ### 第 12 步： 删除实体
 
 ```bash
-curl -X DELETE "http://localhost:3500/v1.0/invoke/core/method/v1/entities/sub12345" \
+curl -X DELETE "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123" \
   -H "Source: dm" \
   -H "Owner: admin" \
   -H "Type: DEVICE" 

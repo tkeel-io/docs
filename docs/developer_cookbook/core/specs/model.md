@@ -218,23 +218,7 @@ type Value struct {
     "light.light2.power.ts": true
   }
 }
-
-
-
-
-
 ```
-
-
-
-
-
-
-
-
-
-
-
 
 
 

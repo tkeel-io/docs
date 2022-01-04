@@ -1,5 +1,5 @@
 ---
-title: IoT 场景下，通过模板创建设备
+title: IoT 场景下，通过模型创建设备
 sidebar_position: 1
 ---
 
@@ -7,10 +7,10 @@ sidebar_position: 1
 
 
 
-### 1. 创建模板实体
+### 1. 创建模型实体
 
 ```bash
-# 1. 创建模板实体
+# 1. 创建模型实体
 curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities?id=template123" \
 -H "Owner: admin" \
 -H "Type: TEMPLATE" \
@@ -22,10 +22,10 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities?id=templ
 
 
 
-### 2. 编辑模板实体配置
+### 2. 编辑模型实体配置
 
 ```bash
-# 编辑模板
+# 编辑模型
 curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/template123/configs?type=TEMPLATE&owner=admin&source=dm" \
   -H "Content-Type: application/json" \
   -d '[
@@ -44,11 +44,11 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/template
 ```
 
 
-### 3. 通过模板创建设备
+### 3. 通过模型创建设备
 
 
 ```bash
-# 指定模板创建设备
+# 指定模型创建设备
 curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities?id=device12344&from=template123" \
 -H "Owner: admin" \
 -H "Type: DEVICE" \

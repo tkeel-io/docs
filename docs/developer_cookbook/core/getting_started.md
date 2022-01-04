@@ -301,6 +301,20 @@ curl -X PATCH "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device1
       "value": 20
     }
   ]'
+
+# 如果不支持 PATCH方法，代替：
+curl -X PUT "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/patch" \
+  -H "Source: dm" \
+  -H "Owner: admin" \
+  -H "Type: DEVICE" \
+  -H "Content-Type: application/json" \
+  -d '[
+    {
+      "path": "temp",
+      "operator": "replace",
+      "value": 20
+    }
+  ]'
 ```
 
 通过 invoke 调用

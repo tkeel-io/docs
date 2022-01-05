@@ -235,11 +235,29 @@ todo
 
 #### COAP 连接：
 
-**example**
+订阅平台数据
+```bash
+coap-client -m get -s 1000  "coap://192.168.123.5:30588/mqtt/system/topic1?c=<设备ID>&p=<设备token>&u=<设备owner>"
+```
+- 主题名称为："system/topic1"
+- Client ID 为："<设备ID>", 字符串即可
+- 用户名为："<设备owner>"， 字符串即可
+- 密码为："<设备token>", 即创建设备返回的“_token”字段的值
+- 订阅的持续时间为：1000 秒
 
+
+
+向平台发布数据
+**example**
+```bash
+coap-client -m put -e 1234   "coap://192.168.123.5:30588/mqtt/system/topic1?c=<设备ID>&p=<设备token>&u=<设备owner>"
 ```
-coap-client -m get -s 1000  "coap://192.168.123.9:30588/mqtt/topic1?c=<设备ID>&p=<设备token>&u=<设备owner>"
-```
+- 主题名称为："system/topic1"
+- Client ID 为："<设备ID>", 字符串即可
+- 用户名为："<设备owner>"， 字符串即可
+- 密码为："<设备token>", 即创建设备返回的“_token”字段的值
+- Payload 为："1234“
+
 
 
 

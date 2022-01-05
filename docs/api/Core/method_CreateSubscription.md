@@ -1,10 +1,10 @@
 ---
-title: "ConfigEntity"
-description: 'Config entity'
+title: "CreateSubscription"
+description: 'Create subscription'
 ---
 
 
-调用该接口Config entity。
+调用该接口Create subscription。
 
 
 
@@ -12,15 +12,10 @@ description: 'Config entity'
 
 
 ```
-put /plugins/{plugin}/entities/{id}/configs
+post /subscriptions
 ```
 
 
-
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| plugin | path | string | plugin id |  
-| id | path | string | entity id |  
 
 
 
@@ -28,6 +23,7 @@ put /plugins/{plugin}/entities/{id}/configs
 
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
+| id | query | string | subscription id |  false |
 | source | query | string | source id |  false |
 | owner | query | string | owner id |  false |
 
@@ -39,15 +35,33 @@ put /plugins/{plugin}/entities/{id}/configs
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| configs | Object | [](#) |
+| subscription object | Object | [v1SubscriptionObject](#v1SubscriptionObject) |
 
-#### 
+#### v1SubscriptionObject
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |  
+| ---- | ---- | ----------- |     
+| filter | string | filter |      
+| mode | string | suscription mode |      
+| pubsub_name | string | pubsub name |      
+| source | string | source id |      
+| target | string | target id |      
+| topic | string | topic name |   
 
 
-
+  
+     
+   
+     
+   
+     
+   
+     
+   
+     
+   
+     
+ 
  
 
 
@@ -63,55 +77,21 @@ put /plugins/{plugin}/entities/{id}/configs
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1EntityResponse](#v1EntityResponse) |
+| 200 | OK | Object | [v1SubscriptionResponse](#v1SubscriptionResponse) |
 
-#### v1EntityResponse
+#### v1SubscriptionResponse
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |    
-| configs | Object | entity configs   |      
-| id | string | entity id |          
-| mappers | Array[v1MapperDesc] | entity mappers [ 具体参数可见下面 [v1MapperDesc](#v1MapperDesc) ] |       
-| owner | string | owner id |      
-| plugin | string | plugin id |     
-| properties | Object | entity properties   |      
-| source | string | source id |      
-| type | string | entity type |   
-
-
-  
-    
-          
-     
-   
-     
-   
-       
-         
-### v1MapperDesc
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| name | string | mapper name |      
-| tql | string | tql content |   
+| id | string | subscription id |      
+| owner | string | owner id |      
+| source | string | source id |      
+| subscription |  | subscription object |   
 
 
   
      
    
-     
- 
- 
-
-
-          
-     
-   
-     
-   
-     
-   
-    
-          
      
    
      

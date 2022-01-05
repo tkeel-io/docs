@@ -59,182 +59,76 @@ sidebar_position: 3
 模型是实体，模型也具有属性，是k-v的，模型的属性用于描述继承该模型的属性的约束条件。
 
 
-```go 
-type Constraint struct {
-    Type string 
-    LastTime int64
-    Weight int
-    Defines []Define
+```go
+type Config struct {
+	ID                string                 `json:"id" mapstructure:"id"`
+	Type              string                 `json:"type" mapstructure:"type"`
+	Weight            int                    `json:"weight" mapstructure:"weight"`
+	Enabled           bool                   `json:"enabled" mapstructure:"enabled"`
+	EnabledSearch     bool                   `json:"enabled_search" mapstructure:"enabled_search"`
+	EnabledTimeSeries bool                   `json:"enabled_time_series" mapstructure:"enabled_time_series"`
+	Description       string                 `json:"description" mapstructure:"description"`
+	Define            map[string]interface{} `json:"define" mapstructure:"define"`
+	LastTime          int64                  `json:"last_time" mapstructure:"last_time"`
 }
 
-
-type Define interface {
-    Viod()
-}
-
-type Bound struct {
-    // ...
-}
-
-func (b Bound) Void() {}
-
-
-type ChangeDelta struct {
-    // percentage or Abs.
-    Type string 
-    Delta float
-}
-
-func (cd ChangeDelta) Void() {}
-
-
-
-
-// model | entity 合体.
-type Value struct {
-    Value []byte
-    Configs ConstraintConf
-    Contraints []Contraint
-}
-
-
-{
-    "id": "xxxx",
-    "name": "e1",
-    "props": map[string]Value{},
-}
-
-{
-    "id": "xxxx",
-    "name": "e1",
-    "props": 
-    "configs",
-    "constrinats":
-}
-
-
-// ..........
-
+// ID: 属性 ID 或者嵌套属性的 ID。
+// Type: 属性的类型，如 int, float32, string 等。
+// Weight: 属性配置的权重。
+// Enabled: 决定属性是否启用，默认true。
+// EnabledSearch: 配置属性是否持久化到搜索引擎。
+// EnabledTimeSeries: 配置属性是否持久化到时序数据库。
+// Description: 关于属性的描述信息。
+// Define: 关于不同类型的属性配置信息。
+// LastTime: 属性配置的最后更新时间。
 ```
+
+### Define 内置字段
+
+|名称|适用类型|必须|描述|
+|---|-------|---|----|
+|max|`number`|false|属性的最大值。|
+|min|`number`|false|属性的最小值。|
+|length|string, array|false|属性的size。|
+
 
 
 ## Example
 
+通过模型创建实体，[详情请查看](../tutorial/iot-create-entity-from-model.md)
+
+
+**具有模型约束的设备实体示例：**
 ```bash
 # device entity
 {
-    "id": "iotd-1234",
-    "name": "处理器1",
+    "id": "device123",
+    "source": "dm",
+    "owner": "admin",
     "type": "DEVICE",
-    "props": {
-        "mem_used": '0.58',
-        "cpu_used": '0.9',
-        "temp": '25'
-    }
-}
-
-# model entity
-{
-    "id": "iotm-xxxx",
-    "name": "处理器模型",
-    "type": "MODEL",
-    "props": {
-        "mem_used": {
-            "type": "float",
-            "max": 1,
-            "dataType": "time-series",
-            "displayName": "内存使用率",
-            "define": {}
-        },
-        "cpu_used": {
-            "type": "float",
-            "max": 1,
-            "dataType": "property",
-            "displayName": "cup使用率",
-            "define": {}
-        },
-        "temp":  {
-            "type": "double",
-            "max": 120,
-            "min": -50,
-            "unit": "°",
-            "define": {}
-        },
-    }
-}
-
-
-
-# entity defination.
-
-
-{
-    "id": "iotd-1234",
-    "name": "处理器1",
-    "type": "DEVICE",
-    "props": {
-        "mem_used": {
-            "value": 0.7,
-            "config": {
-                "type": "float",
-                "max": 1,
-            }
-        },
+    "configs": {
         "temp": {
-            "value": {
-                "t1": 12,
-                "tt": "xxxx"
+            "define": {
+                "max": 500,
+                "min": 10,
+                "unit": "°"
             },
-            "config": {
-                "type": "struct",
-                "define": {
-                    "items": {
-                        "t1": {
-                            "type": "int",
-                        },
-                        "t2": {
-                            "type": "string"
-                        }
-                    }
-                }
-            }
+            "description": "",
+            "enabled": true,
+            "enabled_search": false,
+            "enabled_time_series": false,
+            "id": "temp",
+            "last_time": 0,
+            "type": "int",
+            "weight": 0
         }
+    },
+    "properties": {
+        "status": "end",
+        "temp": 20
     }
 }
-
-
-
-# constraint generate.
-{
-  "iot-001": {
-    "size.value.type": "float",
-    "size.value.max": "100",
-    "size.value.min": "10",
-    "size.value.search": true,
-    "power.ts": true,
-    "light.light1.name.search": true,
-    "light.light1.power.ts": true,
-    "light.light2.name.search": true,
-    "light.light2.power.ts": true
-  }
-}
-
-
-
-
-
 ```
-
-
-
-
-
-
-
-
-
-
-
 
 
 

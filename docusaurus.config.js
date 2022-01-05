@@ -10,8 +10,8 @@ const tKeelGitHub = 'https://github.com/tkeel-io/tkeel';
 const config = {
   title: 'tKeel',
   tagline: 'tKeel are cool',
-  url: 'https://tkeel-io.github.io',
-  baseUrl: process.env.NODE_ENV === 'production' ? '/docs/' : '/',
+  url: 'https://docs.tkeel.io',
+  baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'images/logo.svg',

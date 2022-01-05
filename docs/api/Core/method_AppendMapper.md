@@ -12,14 +12,13 @@ description: 'Append entity mapper'
 
 
 ```
-post /plugins/{plugin}/entities/{id}/mappers
+post /entities/{id}/mappers
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| plugin | path | string | plugin id |  
 | id | path | string | entity id |  
 
 
@@ -78,8 +77,7 @@ post /plugins/{plugin}/entities/{id}/mappers
 | configs | Object | entity configs   |      
 | id | string | entity id |          
 | mappers | Array[v1MapperDesc] | entity mappers [ 具体参数可见下面 [v1MapperDesc](#v1MapperDesc) ] |       
-| owner | string | owner id |      
-| plugin | string | plugin id |     
+| owner | string | owner id |     
 | properties | Object | entity properties   |      
 | source | string | source id |      
 | type | string | entity type |   
@@ -110,8 +108,6 @@ post /plugins/{plugin}/entities/{id}/mappers
 
 
           
-     
-   
      
    
      

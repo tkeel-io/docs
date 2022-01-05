@@ -1,10 +1,10 @@
 ---
-title: "ListScription"
-description: 'List subscriptions'
+title: "QueryConfigs"
+description: 'query entity configs'
 ---
 
 
-调用该接口List subscriptions。
+调用该接口query entity configs。
 
 
 
@@ -12,14 +12,14 @@ description: 'List subscriptions'
 
 
 ```
-get /plugins/{plugin}/subscriptions
+get /entities/{id}/configs
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| plugin | path | string | plugin id |  
+| id | path | string | entity id |  
 
 
 
@@ -27,8 +27,10 @@ get /plugins/{plugin}/subscriptions
 
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
+| type | query | string | entity type |  false |
 | source | query | string | source id |  false |
 | owner | query | string | owner id |  false |
+| property_ids | query | string | entity property ids |  false |
 
 
 
@@ -41,38 +43,38 @@ get /plugins/{plugin}/subscriptions
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListSubscriptionResponse](#v1ListSubscriptionResponse) |
+| 200 | OK | Object | [v1EntityResponse](#v1EntityResponse) |
 
-#### v1ListSubscriptionResponse
+#### v1EntityResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| count | integer | count of the subscriptions |          
-| items | Array[v1SubscriptionResponse] | subscription items [ 具体参数可见下面 [v1SubscriptionResponse](#v1SubscriptionResponse) ] |    
+| ---- | ---- | ----------- |    
+| configs | Object | entity configs   |      
+| id | string | entity id |          
+| mappers | Array[v1MapperDesc] | entity mappers [ 具体参数可见下面 [v1MapperDesc](#v1MapperDesc) ] |       
+| owner | string | owner id |     
+| properties | Object | entity properties   |      
+| source | string | source id |      
+| type | string | entity type |   
 
 
   
+    
+          
+     
+   
      
    
        
          
-### v1SubscriptionResponse
+### v1MapperDesc
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| id | string | subscription id |      
-| owner | string | owner id |      
-| plugin | string | plugin id |      
-| source | string | source id |      
-| subscription |  | subscription object |   
+| name | string | mapper name |      
+| tql | string | tql content |   
 
 
   
-     
-   
-     
-   
-     
-   
      
    
      
@@ -81,6 +83,16 @@ get /plugins/{plugin}/subscriptions
 
 
           
+     
+   
+     
+   
+    
+          
+     
+   
+     
+   
      
  
  

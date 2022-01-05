@@ -1,10 +1,10 @@
 ---
-title: "CreateEntity"
-description: 'Create a entity'
+title: "Entity_PatchEntityZ"
+description: ''
 ---
 
 
-调用该接口Create a entity。
+调用该接口。
 
 
 
@@ -12,14 +12,14 @@ description: 'Create a entity'
 
 
 ```
-post /plugins/{plugin}/entities
+put /entities/{id}/patch
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| plugin | path | string | plugin id |  
+| id | path | string | entity id |  
 
 
 
@@ -27,10 +27,8 @@ post /plugins/{plugin}/entities
 
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
-| id | query | string | entity id |  false |
 | source | query | string | source id |  false |
-| owner | query | string | owner id |  true |
-| type | query | string | entity type |  false |
+| owner | query | string | owner id |  false |
 
 
 
@@ -40,7 +38,7 @@ post /plugins/{plugin}/entities
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| entity properties, optional | Object | [](#) |
+| entity properties | Object | [](#) |
 
 #### 
 
@@ -64,7 +62,7 @@ post /plugins/{plugin}/entities
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1EntityResponse](#v1EntityResponse) |
+| 200 | A successful response. | Object | [v1EntityResponse](#v1EntityResponse) |
 
 #### v1EntityResponse
 
@@ -73,8 +71,7 @@ post /plugins/{plugin}/entities
 | configs | Object | entity configs   |      
 | id | string | entity id |          
 | mappers | Array[v1MapperDesc] | entity mappers [ 具体参数可见下面 [v1MapperDesc](#v1MapperDesc) ] |       
-| owner | string | owner id |      
-| plugin | string | plugin id |     
+| owner | string | owner id |     
 | properties | Object | entity properties   |      
 | source | string | source id |      
 | type | string | entity type |   
@@ -105,8 +102,6 @@ post /plugins/{plugin}/entities
 
 
           
-     
-   
      
    
      

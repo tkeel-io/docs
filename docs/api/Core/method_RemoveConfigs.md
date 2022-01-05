@@ -1,10 +1,10 @@
 ---
-title: "GetEntity"
-description: 'Get a entity'
+title: "RemoveConfigs"
+description: 'remove entity configs'
 ---
 
 
-调用该接口Get a entity。
+调用该接口remove entity configs。
 
 
 
@@ -12,14 +12,13 @@ description: 'Get a entity'
 
 
 ```
-get /plugins/{plugin}/entities/{id}
+delete /entities/{id}/configs
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| plugin | path | string | plugin id |  
 | id | path | string | entity id |  
 
 
@@ -28,8 +27,10 @@ get /plugins/{plugin}/entities/{id}
 
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
-| source | query | string | source id |  false |
+| type | query | string | entity type |  false |
 | owner | query | string | owner id |  false |
+| source | query | string | source id |  false |
+| property_ids | query | string | entity property ids |  false |
 
 
 
@@ -51,8 +52,7 @@ get /plugins/{plugin}/entities/{id}
 | configs | Object | entity configs   |      
 | id | string | entity id |          
 | mappers | Array[v1MapperDesc] | entity mappers [ 具体参数可见下面 [v1MapperDesc](#v1MapperDesc) ] |       
-| owner | string | owner id |      
-| plugin | string | plugin id |     
+| owner | string | owner id |     
 | properties | Object | entity properties   |      
 | source | string | source id |      
 | type | string | entity type |   
@@ -83,8 +83,6 @@ get /plugins/{plugin}/entities/{id}
 
 
           
-     
-   
      
    
      

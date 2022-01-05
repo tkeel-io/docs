@@ -40,6 +40,7 @@ jobs:
         env:
           USE_SSH: true
           GIT_USER: git
+
         run: |
           git config --global user.email "liuzhen@yunify.com"
           git config --global user.name "liuzhen"

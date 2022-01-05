@@ -34,8 +34,10 @@ post /search
 | Name | Type | Description | 
 | ---- | ---- | ----------- |         
 | condition | Array[v1SearchCondition] | conditions list [ 具体参数可见下面 [v1SearchCondition](#v1SearchCondition) ] |       
+| owner | string | owner id |      
 | page |  | page |      
-| query | string | search keyword |   
+| query | string | search keyword |      
+| source | string | source id |   
 
 
   
@@ -62,6 +64,10 @@ post /search
 
 
           
+     
+   
+     
+   
      
    
      

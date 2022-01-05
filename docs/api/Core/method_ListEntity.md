@@ -1,10 +1,10 @@
 ---
-title: "UpdateEntity"
-description: 'Update a entity'
+title: "ListEntity"
+description: 'List entities'
 ---
 
 
-调用该接口Update a entity。
+调用该接口List entities。
 
 
 
@@ -12,24 +12,12 @@ description: 'Update a entity'
 
 
 ```
-put /plugins/{plugin}/entities/{id}
+post /entities/search
 ```
 
 
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| plugin | path | string | plugin id |  
-| id | path | string | entity id |  
 
-
-
-###  Request Parameters
-
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| source | query | string | source id |  false |
-| owner | query | string | owner id |  false |
 
 
 
@@ -39,15 +27,53 @@ put /plugins/{plugin}/entities/{id}
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| entity properties | Object | [](#) |
+|  | Object | [v1ListEntityRequest](#v1ListEntityRequest) |
 
-#### 
+#### v1ListEntityRequest
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |  
+| ---- | ---- | ----------- |         
+| condition | Array[v1SearchCondition] | search conditions [ 具体参数可见下面 [v1SearchCondition](#v1SearchCondition) ] |       
+| owner | string | owner id |      
+| page |  | page |      
+| query | string | search keyword |      
+| source | string | source id |   
 
 
+  
+       
+         
+### v1SearchCondition
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| field | string | entity property key |      
+| operator | string | operator $gt $gte $eq $lt $lte  |     
+| value | Object | value of the key   |   
 
+
+  
+     
+   
+     
+   
+    
+          
+     
+ 
+ 
+
+
+          
+     
+   
+     
+   
+     
+   
+     
+   
+     
+ 
  
 
 
@@ -63,17 +89,29 @@ put /plugins/{plugin}/entities/{id}
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1EntityResponse](#v1EntityResponse) |
+| 200 | OK | Object | [v1ListEntityResponse](#v1ListEntityResponse) |
 
-#### v1EntityResponse
+#### v1ListEntityResponse
 
+| Name | Type | Description | 
+| ---- | ---- | ----------- |         
+| items | Array[v1EntityResponse] | entity list [ 具体参数可见下面 [v1EntityResponse](#v1EntityResponse) ] |       
+| limit | string | limit |      
+| offset | string | offset |      
+| page | string | page |      
+| total | string | total count of the entities |   
+
+
+  
+       
+         
+### v1EntityResponse
 | Name | Type | Description | 
 | ---- | ---- | ----------- |    
 | configs | Object | entity configs   |      
 | id | string | entity id |          
 | mappers | Array[v1MapperDesc] | entity mappers [ 具体参数可见下面 [v1MapperDesc](#v1MapperDesc) ] |       
-| owner | string | owner id |      
-| plugin | string | plugin id |     
+| owner | string | owner id |     
 | properties | Object | entity properties   |      
 | source | string | source id |      
 | type | string | entity type |   
@@ -108,10 +146,22 @@ put /plugins/{plugin}/entities/{id}
    
      
    
-     
-   
     
           
+     
+   
+     
+   
+     
+ 
+ 
+
+
+          
+     
+   
+     
+   
      
    
      

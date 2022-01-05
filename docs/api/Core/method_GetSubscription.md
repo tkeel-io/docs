@@ -1,10 +1,10 @@
 ---
-title: "DeleteSubscription"
-description: 'Delete subscription'
+title: "GetSubscription"
+description: 'Get subscription'
 ---
 
 
-调用该接口Delete subscription。
+调用该接口Get subscription。
 
 
 
@@ -12,14 +12,13 @@ description: 'Delete subscription'
 
 
 ```
-delete /plugins/{plugin}/subscriptions/{id}
+get /subscriptions/{id}
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| plugin | path | string | plugin id |  
 | id | path | string | subscription id |  
 
 
@@ -42,17 +41,23 @@ delete /plugins/{plugin}/subscriptions/{id}
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1DeleteSubscriptionResponse](#v1DeleteSubscriptionResponse) |
+| 200 | OK | Object | [v1SubscriptionResponse](#v1SubscriptionResponse) |
 
-#### v1DeleteSubscriptionResponse
+#### v1SubscriptionResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | id | string | subscription id |      
-| status | string | status |   
+| owner | string | owner id |      
+| source | string | source id |      
+| subscription |  | subscription object |   
 
 
   
+     
+   
+     
+   
      
    
      

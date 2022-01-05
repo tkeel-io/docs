@@ -1,7 +1,7 @@
 ---
-title: "RegisterPlugin"
-description: '注册插件接口'
----调用该接口注册插件接口。
+title: "ListRepoInstaller"
+description: '获取仓库中安装包列表接口'
+---调用该接口获取仓库中安装包列表接口。
 
 
 
@@ -9,36 +9,40 @@ description: '注册插件接口'
 
 
 ```
-post \plugins\{id}\register
+get \repos\{repo}\installers
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | plugin id |  
-
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-| plugin register secret | Object | [](#) |
-
-#### 
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
-
+| repo | path | string | repo name |  
 
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | A successful response. | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | SUCC | Object | [v1ListRepoInstallerResponse](#v1ListRepoInstallerResponse) |
 
-### Response  204
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 204 | SUCC_AND_NO_CONTENT | {   { }} |
+#### v1ListRepoInstallerResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |         
+| brief_installers | Array[v1InstallerObject] | brief installer info list,only has name and version [ 具体参数可见下面 [v1InstallerObject](#v1InstallerObject) ] |    
+
+### v1InstallerObject
+| Name | Type | Description | 
+| ---- | ---- | ----------- |    
+| annotations | Object | repo annotations   |      
+| configuration | string | configuration file |      
+| configuration_schema | string | configuration schema file |      
+| installed | boolean | whether the installer has been installed |      
+| name | string | installer name |      
+| readme | string | readme file |      
+| repo | string | installer repo |      
+| schema_type |  | configuration schema type |      
+| version | string | installer version |   
+
+
 
 ### Response  400
 | Code3 | Description | Type | 
@@ -48,12 +52,7 @@ post \plugins\{id}\register
 ### Response  404
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 404 | PLUGIN_NOT_FOUND | {   { }} |
-
-### Response  409
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 409 | ALREADY_EXISTS | {   { }} |
+| 404 | REPO_NOT_FOUND | {   { }} |
 
 ### Response  500
 | Code3 | Description | Type | 

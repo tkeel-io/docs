@@ -1,7 +1,7 @@
 ---
-title: "RegisterPlugin"
-description: '注册插件接口'
----调用该接口注册插件接口。
+title: "CreateRepo"
+description: '创建仓库接口'
+---调用该接口创建仓库接口。
 
 
 
@@ -9,17 +9,17 @@ description: '注册插件接口'
 
 
 ```
-post \plugins\{id}\register
+post \repos\{name}
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | plugin id |  
+| name | path | string | repo name |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| plugin register secret | Object | [](#) |
+| repo url | Object | [](#) |
 
 #### 
 
@@ -33,22 +33,12 @@ post \plugins\{id}\register
 ### Response  200
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 200 | A successful response. | {   { }} |
-
-### Response  204
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 204 | SUCC_AND_NO_CONTENT | {   { }} |
+| 200 | SUCC | {   { }} |
 
 ### Response  400
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
 | 400 | INVALID_ARGUMENT | {   { }} |
-
-### Response  404
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 404 | PLUGIN_NOT_FOUND | {   { }} |
 
 ### Response  409
 | Code3 | Description | Type | 

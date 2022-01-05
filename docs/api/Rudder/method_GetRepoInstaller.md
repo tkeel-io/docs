@@ -1,7 +1,7 @@
 ---
-title: "RegisterPlugin"
-description: '注册插件接口'
----调用该接口注册插件接口。
+title: "GetRepoInstaller"
+description: '获取仓库中指定安装包'
+---调用该接口获取仓库中指定安装包。
 
 
 
@@ -9,36 +9,29 @@ description: '注册插件接口'
 
 
 ```
-post \plugins\{id}\register
+get \repos\{repo}\installers\{installer_name}\{installer_version}
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | plugin id |  
-
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-| plugin register secret | Object | [](#) |
-
-#### 
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
-
+| repo | path | string | repo name |  
+| installer_name | path | string | installer name |  
+| installer_version | path | string | installer version |  
 
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | A successful response. | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | SUCC | Object | [v1GetRepoInstallerResponse](#v1GetRepoInstallerResponse) |
 
-### Response  204
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 204 | SUCC_AND_NO_CONTENT | {   { }} |
+#### v1GetRepoInstallerResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| installer |  | installer |   
+
+
 
 ### Response  400
 | Code3 | Description | Type | 
@@ -48,12 +41,7 @@ post \plugins\{id}\register
 ### Response  404
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 404 | PLUGIN_NOT_FOUND | {   { }} |
-
-### Response  409
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 409 | ALREADY_EXISTS | {   { }} |
+| 404 | INSTALLER_NOT_FOUND | {   { }} |
 
 ### Response  500
 | Code3 | Description | Type | 

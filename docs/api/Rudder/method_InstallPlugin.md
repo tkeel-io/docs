@@ -1,7 +1,7 @@
 ---
-title: "RegisterPlugin"
-description: '注册插件接口'
----调用该接口注册插件接口。
+title: "InstallPlugin"
+description: '安装插件接口'
+---调用该接口安装插件接口。
 
 
 
@@ -9,36 +9,44 @@ description: '注册插件接口'
 
 
 ```
-post \plugins\{id}\register
+post \plugins\{id}
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | plugin id |  
+| id | path | string | install plugin id |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| plugin register secret | Object | [](#) |
+| installer info | Object | [v1Installer](#v1Installer) |
 
-#### 
+#### v1Installer
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |  
+| ---- | ---- | ----------- |     
+| configuration | string | installer configuration data |      
+| name | string | installer name |      
+| repo | string | repository name |      
+| type |  | configuration type |      
+| version | string | installer version |   
 
 
 
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | A successful response. | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | SUCC | Object | [v1InstallPluginResponse](#v1InstallPluginResponse) |
 
-### Response  204
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 204 | SUCC_AND_NO_CONTENT | {   { }} |
+#### v1InstallPluginResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| plugin |  | plugin object |   
+
+
 
 ### Response  400
 | Code3 | Description | Type | 
@@ -48,7 +56,7 @@ post \plugins\{id}\register
 ### Response  404
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 404 | PLUGIN_NOT_FOUND | {   { }} |
+| 404 | REPOSITORY_OR_INSTALLER_NOT_FOUND | {   { }} |
 
 ### Response  409
 | Code3 | Description | Type | 

@@ -1,7 +1,7 @@
 ---
-title: "RegisterPlugin"
-description: '注册插件接口'
----调用该接口注册插件接口。
+title: "AddPluginWhiteList"
+description: '添加 Plugin 白名单 dapr App ID 接口'
+---调用该接口添加 Plugin 白名单 dapr App ID 接口。
 
 
 
@@ -9,22 +9,19 @@ description: '注册插件接口'
 
 
 ```
-post \plugins\{id}\register
+post \oauth2\plugin\white-list
 ```
-
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string | plugin id |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| plugin register secret | Object | [](#) |
+|  | Object | [v1AddPluginWhiteListRequest](#v1AddPluginWhiteListRequest) |
 
-#### 
+#### v1AddPluginWhiteListRequest
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |  
+| ---- | ---- | ----------- |     
+| plugin_id | string | plugin id(dapr app id) |   
 
 
 
@@ -40,20 +37,10 @@ post \plugins\{id}\register
 | ---- | ----------- | ------ | 
 | 204 | SUCC_AND_NO_CONTENT | {   { }} |
 
-### Response  400
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 400 | INVALID_ARGUMENT | {   { }} |
-
-### Response  404
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 404 | PLUGIN_NOT_FOUND | {   { }} |
-
 ### Response  409
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 409 | ALREADY_EXISTS | {   { }} |
+| 409 | CLIENT_ID_ALREADY_EXISTS | {   { }} |
 
 ### Response  500
 | Code3 | Description | Type | 

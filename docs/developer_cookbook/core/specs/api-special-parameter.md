@@ -422,18 +422,41 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device12
   -H "Content-Type: application/json" \
   -d '[
           {
-            "id": "temp",
-            "type": "int",
+            "id": "metrics",
+            "type": "struct",
             "define": {
-                "unit": "°",
-                "max": 500,
-                "min": 10
+                "fields": {
+                    "temp":   {
+                        "define": {
+                            "max": 500,
+                            "min": 10,
+                            "unit": "°"
+                        },
+                        "description": "",
+                        "enabled": true,
+                        "enabled_search": false,
+                        "enabled_time_series": false,
+                        "id": "temp",
+                        "last_time": 0,
+                        "type": "int",
+                        "weight": 0
+                    }
+                }
             },
             "enabled": true,
             "enabled_search": true
           }
     ]'
+
+
+
+ 
+
 ```
+
+
+
+
 
 **Response：**
 
@@ -484,6 +507,130 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device12
 }
 ```
 
+
+
+## PatchConfigs
+
+
+
+### Example
+
+创建实体，`payload` 指定为`k-v`结构。
+
+**Request：**
+
+```bash
+# append cpu_used
+curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/configs/patch?type=BASIC&owner=admin&source=dm" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "properties": [
+          {
+              "path": "cpu_used",
+              "operator": "replace",
+              "value": {
+                    "id": "cpu_used",
+                    "type": "float",
+                    "define": {
+                        "max": 1,
+                        "min": 0
+                    },
+                    "enabled": true,
+                    "enabled_search": true
+                }
+          }
+    ]}'
+
+# remove cpu_used
+curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/configs/patch?type=BASIC&owner=admin&source=dm" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "properties": [
+          {
+              "path": "cpu_used",
+              "operator": "remove"
+    }]}'
+
+# append metrics.mem_used
+curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/configs/patch?type=BASIC&owner=admin&source=dm" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "properties": [
+          {
+              "path": "metrics.mem_used",
+              "operator": "add",
+              "value": {
+                    "id": "mem_used",
+                    "type": "float",
+                    "define": {
+                        "max": 1,
+                        "min": 0
+                    },
+                    "enabled": true,
+                    "enabled_search": true
+                }
+    }]}'
+
+
+# remove metrics.cpu_used
+curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/configs/patch?type=BASIC&owner=admin&source=dm" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "properties": [
+          {
+              "path": "metrics.cpu_used",
+              "operator": "remove"
+    }]}'
+```
+
+**Response：**
+
+```bash
+{
+    "id": "device123",
+    "source": "dm",
+    "owner": "admin",
+    "type": "DEVICE",
+    "configs": {
+        "temp": {
+            "define": {
+                "max": 500,
+                "min": 10,
+                "unit": "°"
+            },
+            "description": "",
+            "enabled": true,
+            "enabled_search": false,
+            "enabled_time_series": false,
+            "id": "temp",
+            "last_time": 0,
+            "type": "int",
+            "weight": 0
+        }
+    },
+    "properties": {
+        "object": {
+            "field1": "value1",
+            "field2": 123,
+            "field3": {
+                "ffff": "vvv"
+            },
+            "field4": [
+                {
+                    "age": 21,
+                    "name": "tom"
+                },
+                {
+                    "age": 22,
+                    "name": "tomas"
+                }
+            ]
+        },
+        "status": "end",
+        "temp": 20
+    }
+}
+```
 
 
 

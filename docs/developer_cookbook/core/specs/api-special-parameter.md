@@ -523,9 +523,7 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device12
 # append cpu_used
 curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/configs/patch?type=BASIC&owner=admin&source=dm" \
   -H "Content-Type: application/json" \
-  -d '{
-      "properties": [
-          {
+  -d '[{
               "path": "cpu_used",
               "operator": "replace",
               "value": {
@@ -538,24 +536,20 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device12
                     "enabled": true,
                     "enabled_search": true
                 }
-          }
-    ]}'
+    }]'
 
 # remove cpu_used
 curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/configs/patch?type=BASIC&owner=admin&source=dm" \
   -H "Content-Type: application/json" \
-  -d '{
-      "properties": [
-          {
+  -d '[{
               "path": "cpu_used",
               "operator": "remove"
-    }]}'
+    }]'
 
 # append metrics.mem_used
 curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/configs/patch?type=BASIC&owner=admin&source=dm" \
   -H "Content-Type: application/json" \
-  -d '{
-      "properties": [
+  -d '[
           {
               "path": "metrics.mem_used",
               "operator": "add",
@@ -568,19 +562,25 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device12
                     },
                     "enabled": true,
                     "enabled_search": true
-                }
-    }]}'
+            }
+    }]'
 
+
+# copy metrics.mem_used
+curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/configs/patch?type=BASIC&owner=admin&source=dm" \
+  -H "Content-Type: application/json" \
+  -d '[{
+              "path": "metrics.mem_used",
+              "operator": "copy"
+    }]'
 
 # remove metrics.cpu_used
 curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/configs/patch?type=BASIC&owner=admin&source=dm" \
   -H "Content-Type: application/json" \
-  -d '{
-      "properties": [
-          {
+  -d '[{
               "path": "metrics.cpu_used",
               "operator": "remove"
-    }]}'
+    }]'
 ```
 
 **Response：**
@@ -592,19 +592,61 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device12
     "owner": "admin",
     "type": "DEVICE",
     "configs": {
-        "temp": {
+        "metrics": {
             "define": {
-                "max": 500,
-                "min": 10,
-                "unit": "°"
+                "fields": {
+                    "mem_used": {
+                        "define": {
+                            "max": 1,
+                            "min": 0
+                        },
+                        "description": "",
+                        "enabled": true,
+                        "enabled_search": false,
+                        "enabled_time_series": false,
+                        "id": "mem_used",
+                        "last_time": 0,
+                        "type": "float",
+                        "weight": 0
+                    },
+                    "temp": {
+                        "define": {
+                            "max": 500,
+                            "min": 10,
+                            "unit": "°"
+                        },
+                        "description": "",
+                        "enabled": true,
+                        "enabled_search": false,
+                        "enabled_time_series": false,
+                        "id": "temp",
+                        "last_time": 0,
+                        "type": "int",
+                        "weight": 0
+                    }
+                }
             },
             "description": "",
             "enabled": true,
             "enabled_search": false,
             "enabled_time_series": false,
-            "id": "temp",
+            "id": "metrics",
             "last_time": 0,
-            "type": "int",
+            "type": "struct",
+            "weight": 0
+        },
+        "metrics.mem_used": {
+            "define": {
+                "max": 1,
+                "min": 0
+            },
+            "description": "",
+            "enabled": true,
+            "enabled_search": false,
+            "enabled_time_series": false,
+            "id": "mem_used",
+            "last_time": 0,
+            "type": "float",
             "weight": 0
         }
     },
@@ -627,7 +669,7 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device12
             ]
         },
         "status": "end",
-        "temp": 20
+        "temp": 22
     }
 }
 ```
@@ -892,7 +934,7 @@ curl -X DELETE "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device
 |type|true|string| 为实体指定`type` |
 |owner|true|string| 创建 API 指定`owner` |
 |source|true|string| 创建 API 指定`source` |
-|property_ids|true|string| 指定需要删除的实体属性id，property_ids=temp,temp2,temp3 |
+|property_ids|true|string| 指定需要删除的实体属性id，支持嵌套，property_ids=temp,temp2,temp3, metrics.temp|
 
 
 ### Output

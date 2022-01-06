@@ -1,7 +1,7 @@
 ---
-title: "RegisterPlugin"
-description: '注册插件接口'
----调用该接口注册插件接口。
+title: "IssueAdminToken"
+description: '平台管理员 Token 颁发接口'
+---调用该接口平台管理员 Token 颁发接口。
 
 
 
@@ -9,56 +9,42 @@ description: '注册插件接口'
 
 
 ```
-post \plugins\{id}\register
+get \oauth2\admin
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string | plugin id |  
+###  Request Parameters
 
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-| plugin register secret | Object | [](#) |
-
-#### 
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
-
+| Name | Located in | Type | Description |  Required |
+| ---- | ---------- | ----------- | ----------- |  ---- |
+| password | query | string | admin password |  false |
 
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | A successful response. | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [v1IssueTokenResponse](#v1IssueTokenResponse) |
 
-### Response  204
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 204 | SUCC_AND_NO_CONTENT | {   { }} |
+#### v1IssueTokenResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| access_token | string | oauth2 access token |      
+| expires_in | integer | oauth2 token expires |      
+| refresh_token | string | oauth2 refresh token |      
+| token_type | string | oauth2 token type |   
+
+
 
 ### Response  400
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 400 | INVALID_ARGUMENT | {   { }} |
-
-### Response  404
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 404 | PLUGIN_NOT_FOUND | {   { }} |
-
-### Response  409
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 409 | ALREADY_EXISTS | {   { }} |
+| 400 | PASSWORD_NOT_MATCH | {   { }} |
 
 ### Response  500
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 500 | INTERNAL_STORE | {   { }} |
+| 500 | INTERNAL_ERROR | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

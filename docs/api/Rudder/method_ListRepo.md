@@ -1,7 +1,7 @@
 ---
-title: "RegisterPlugin"
-description: '注册插件接口'
----调用该接口注册插件接口。
+title: "ListRepo"
+description: '获取仓库列表接口'
+---调用该接口获取仓库列表接口。
 
 
 
@@ -9,51 +9,35 @@ description: '注册插件接口'
 
 
 ```
-post \plugins\{id}\register
+get \repos
 ```
-
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string | plugin id |  
-
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-| plugin register secret | Object | [](#) |
-
-#### 
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
-
 
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | A successful response. | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | SUCC | Object | [v1ListRepoResponse](#v1ListRepoResponse) |
 
-### Response  204
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 204 | SUCC_AND_NO_CONTENT | {   { }} |
+#### v1ListRepoResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |         
+| repos | Array[v1RepoObject] | repo list [ 具体参数可见下面 [v1RepoObject](#v1RepoObject) ] |    
+
+### v1RepoObject
+| Name | Type | Description | 
+| ---- | ---- | ----------- |    
+| annotations | Object | repo annotations   |      
+| name | string | repo name |      
+| url | string | repo url |   
+
+
 
 ### Response  400
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
 | 400 | INVALID_ARGUMENT | {   { }} |
-
-### Response  404
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 404 | PLUGIN_NOT_FOUND | {   { }} |
-
-### Response  409
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 409 | ALREADY_EXISTS | {   { }} |
 
 ### Response  500
 | Code3 | Description | Type | 

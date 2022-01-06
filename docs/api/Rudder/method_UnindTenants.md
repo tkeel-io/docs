@@ -1,7 +1,7 @@
 ---
-title: "RegisterPlugin"
-description: '注册插件接口'
----调用该接口注册插件接口。
+title: "UnindTenants"
+description: '插件绑定租户接口'
+---调用该接口插件绑定租户接口。
 
 
 
@@ -9,56 +9,35 @@ description: '注册插件接口'
 
 
 ```
-post \plugins\{id}\register
+delete \plugins\{id}\tenants
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string | plugin id |  
 
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-| plugin register secret | Object | [](#) |
+###  Request Parameters
 
-#### 
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
-
+| Name | Located in | Type | Description |  Required |
+| ---- | ---------- | ----------- | ----------- |  ---- |
+| extra | query | string | extra data |  false |
 
 ## Response
 
 ### Response  200
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 200 | A successful response. | {   { }} |
-
-### Response  204
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 204 | SUCC_AND_NO_CONTENT | {   { }} |
+| 200 | OK | {   { }} |
 
 ### Response  400
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
 | 400 | INVALID_ARGUMENT | {   { }} |
 
-### Response  404
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 404 | PLUGIN_NOT_FOUND | {   { }} |
-
-### Response  409
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 409 | ALREADY_EXISTS | {   { }} |
-
 ### Response  500
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 500 | INTERNAL_STORE | {   { }} |
+| 500 | INTERNAL_ERROR | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

@@ -66,7 +66,7 @@ IoTHub 作为 tKeel 平台设备接入的入口，支持海量设备的快速接
 2. 属性数据，topic 为："v1/devices/me/attributes"。
 3. 遥测数据，topic 为："v1/devices/me/telemetry"。
 
-# 下行，如何订阅平台的数据 ？
+## 下行，如何订阅平台的数据 ？
 当通过 MQTT, CoAP 协议 连接到平台之后，客户端主动订阅关心对应的 topic, 当平台的对应数据发生改变了， 平台会主动推送对应的数据到客户端。
 1. 订阅属性数据，topic 为："v1/devices/me/attributes"。
 2. 订阅遥测数据，topic 为："v1/devices/me/telemetry"。

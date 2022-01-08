@@ -509,8 +509,49 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device12
 
 
 
-## PatchConfigs
+## 5. PatchConfigs
 
+### Input
+
+
+|名称|必要|位置|类型|描述|
+|---|---|----|----|----|
+|id|true|query/header|string| 创建实体的id |
+|type|true|query/header|string| 为实体指定`type` |
+|owner|true|query/header|string| 创建 API 指定`owner` |
+|source|true|query/header|string| 创建 API 指定`source` |
+|configs|true|body|object| 实体属性配置信息,信息由下文中的output.Config定义，其中ID在request中被忽略，其他字段可选。 |
+
+
+### Output
+
+```go
+# core 的 API 返回结构
+type Base struct {
+	ID       string 
+	Type     string 
+	Owner    string 
+	Source   string 
+	Version  int64 
+	LastTime int64 
+	Mappers  []MapperDesc 
+	KValues  map[string]constraint.Node 
+	Configs  map[string]constraint.Config 
+}
+
+# Config 是 API 的交互结构
+type Config struct {
+	ID                string 
+	Type              string 
+	Weight            int 
+	Enabled           bool 
+	EnabledSearch     bool 
+	EnabledTimeSeries bool 
+	Description       string 
+	Define            map[string]interface{} 
+	LastTime          int64 
+}
+```
 
 
 ### Example
@@ -527,7 +568,6 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device12
               "path": "cpu_used",
               "operator": "replace",
               "value": {
-                    "id": "cpu_used",
                     "type": "float",
                     "define": {
                         "max": 1,
@@ -554,7 +594,6 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device12
               "path": "metrics.mem_used",
               "operator": "add",
               "value": {
-                    "id": "mem_used",
                     "type": "float",
                     "define": {
                         "max": 1,
@@ -590,7 +629,6 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device12
               "path": "metrics.pathnotfound.ttt",
               "operator": "add",
               "value": {
-                    "id": "ttt",
                     "type": "float",
                     "define": {
                         "max": 1,
@@ -601,15 +639,14 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device12
             }
     }]'
 
-# add config.
+# add root config.
 curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/configs/patch?type=BASIC&owner=admin&source=dm" \
   -H "Content-Type: application/json" \
   -d '[
           {
-              "path": "root2.pathnotfound",
+              "path": "root2.pathnotfound.xxx",
               "operator": "add",
               "value": {
-                    "id": "ttt",
                     "type": "float",
                     "define": {
                         "max": 1,
@@ -657,6 +694,34 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device12
                         "type": "float",
                         "weight": 0
                     },
+                    "pathnotfound": {
+                        "define": {
+                            "fields": {
+                                "ttt": {
+                                    "define": {
+                                        "max": 1,
+                                        "min": 0
+                                    },
+                                    "description": "",
+                                    "enabled": true,
+                                    "enabled_search": false,
+                                    "enabled_time_series": false,
+                                    "id": "ttt",
+                                    "last_time": 0,
+                                    "type": "float",
+                                    "weight": 0
+                                }
+                            }
+                        },
+                        "description": "",
+                        "enabled": true,
+                        "enabled_search": false,
+                        "enabled_time_series": false,
+                        "id": "pathnotfound",
+                        "last_time": 0,
+                        "type": "struct",
+                        "weight": 0
+                    },
                     "temp": {
                         "define": {
                             "max": 500,
@@ -683,18 +748,87 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device12
             "type": "struct",
             "weight": 0
         },
-        "metrics.mem_used": {
+        "root": {
             "define": {
-                "max": 1,
-                "min": 0
+                "fields": {
+                    "pathnotfound": {
+                        "define": {
+                            "fields": {
+                                "ttt": {
+                                    "define": {
+                                        "fields": {
+                                            "ttt": {
+                                                "define": {
+                                                    "max": 1,
+                                                    "min": 0
+                                                },
+                                                "description": "",
+                                                "enabled": true,
+                                                "enabled_search": false,
+                                                "enabled_time_series": false,
+                                                "id": "ttt",
+                                                "last_time": 0,
+                                                "type": "float",
+                                                "weight": 0
+                                            }
+                                        }
+                                    },
+                                    "description": "",
+                                    "enabled": true,
+                                    "enabled_search": false,
+                                    "enabled_time_series": false,
+                                    "id": "ttt",
+                                    "last_time": 0,
+                                    "type": "struct",
+                                    "weight": 0
+                                }
+                            }
+                        },
+                        "description": "",
+                        "enabled": true,
+                        "enabled_search": false,
+                        "enabled_time_series": false,
+                        "id": "pathnotfound",
+                        "last_time": 0,
+                        "type": "struct",
+                        "weight": 0
+                    }
+                }
             },
             "description": "",
             "enabled": true,
             "enabled_search": false,
             "enabled_time_series": false,
-            "id": "mem_used",
+            "id": "root",
             "last_time": 0,
-            "type": "float",
+            "type": "struct",
+            "weight": 0
+        },
+        "root2": {
+            "define": {
+                "fields": {
+                    "pathnotfound": {
+                        "define": {
+                            "fields": {}
+                        },
+                        "description": "",
+                        "enabled": true,
+                        "enabled_search": false,
+                        "enabled_time_series": false,
+                        "id": "pathnotfound",
+                        "last_time": 0,
+                        "type": "struct",
+                        "weight": 0
+                    }
+                }
+            },
+            "description": "",
+            "enabled": true,
+            "enabled_search": false,
+            "enabled_time_series": false,
+            "id": "root2",
+            "last_time": 0,
+            "type": "struct",
             "weight": 0
         }
     },
@@ -716,8 +850,8 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device12
                 }
             ]
         },
-        "status": "end",
-        "temp": 22
+        "status": "testing",
+        "temp": 123
     }
 }
 ```

@@ -81,6 +81,18 @@ type Config struct {
 // Description: 关于属性的描述信息。
 // Define: 关于不同类型的属性配置信息。
 // LastTime: 属性配置的最后更新时间。
+
+// define field.fields for struct.
+type DefineStruct struct {
+	Fields []Config `json:"fields"`
+}
+
+// define field.array for array.
+type DefineArray struct {
+	Length   int    `json:"length"`
+	ElemType Config `json:"elem_type"`
+}
+
 ```
 
 ### Define 内置字段
@@ -89,6 +101,8 @@ type Config struct {
 |---|-------|---|----|
 |max|`number`|false|属性的最大值。|
 |min|`number`|false|属性的最小值。|
+|fields|struct|true|属性配置为`struct`类型时Define必有的字段。|
+|elem_type|array|true|属性配置为`array`类型时Define必有字段。|
 |length|string, array|false|属性的size。|
 
 
@@ -98,7 +112,7 @@ type Config struct {
 通过模型创建实体，[详情请查看](../tutorial/iot-create-entity-from-model.md)
 
 
-**具有模型约束的设备实体示例：**
+**具有模型约束的设备实体示例（1）：**
 ```bash
 # device entity
 {
@@ -131,4 +145,102 @@ type Config struct {
 ```
 
 
+
+**具有模型约束的设备实体示例（2）：**
+
+```bash
+{
+    "id": "device234",
+    "source": "dm",
+    "owner": "admin",
+    "type": "DEVICE",
+    "configs": {
+        "tempsensor": {
+            "id": "tempsensor",
+            "type": "struct",
+            "weight": 0
+            "last_time": 0,
+            "description": "",
+            "enabled": true,
+            "enabled_search": false,
+            "enabled_time_series": false,
+            "define": {
+                "fields": [
+                    {
+                        "define": {
+                            "max": 500,
+                            "min": 10,
+                            "unit": "°"
+                        },
+                        "description": "",
+                        "enabled": true,
+                        "enabled_search": false,
+                        "enabled_time_series": false,
+                        "id": "temp",
+                        "last_time": 0,
+                        "type": "int",
+                        "weight": 0
+                    }
+                ]
+            }
+        }
+    },
+    "properties": {
+        "status": "end",
+        "tempsensor": {
+            "temp": 22
+        }
+    }
+}
+```
+
+
+
+
+**具有模型约束的设备实体示例（3）：**
+
+```bash
+{
+    "id": "device345",
+    "source": "dm",
+    "owner": "admin",
+    "type": "DEVICE",
+    "configs": {
+        "tempsensor": {
+            "id": "tempsensor",
+            "last_time": 0,
+            "type": "array",
+            "weight": 0
+            "description": "",
+            "enabled": true,
+            "enabled_search": false,
+            "enabled_time_series": false,
+            "define": {
+                "length": 2,
+                "elem_type": [
+                    {
+                        "define": {
+                            "max": 500,
+                            "min": 10,
+                            "unit": "°"
+                        },
+                        "description": "",
+                        "enabled": true,
+                        "enabled_search": false,
+                        "enabled_time_series": false,
+                        "id": "temp",
+                        "last_time": 0,
+                        "type": "int",
+                        "weight": 0
+                    }
+                ]
+            }
+        }
+    },
+    "properties": {
+        "status": "end",
+        "tempsensor": [22, 0]
+    }
+}
+```
 

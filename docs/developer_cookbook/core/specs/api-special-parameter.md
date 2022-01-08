@@ -581,6 +581,54 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device12
               "path": "metrics.cpu_used",
               "operator": "remove"
     }]'
+
+# make path if not exists.
+curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/configs/patch?type=BASIC&owner=admin&source=dm" \
+  -H "Content-Type: application/json" \
+  -d '[
+          {
+              "path": "metrics.pathnotfound.ttt",
+              "operator": "add",
+              "value": {
+                    "id": "ttt",
+                    "type": "float",
+                    "define": {
+                        "max": 1,
+                        "min": 0
+                    },
+                    "enabled": true,
+                    "enabled_search": true
+            }
+    }]'
+
+# add config.
+curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/configs/patch?type=BASIC&owner=admin&source=dm" \
+  -H "Content-Type: application/json" \
+  -d '[
+          {
+              "path": "root2.pathnotfound",
+              "operator": "add",
+              "value": {
+                    "id": "ttt",
+                    "type": "float",
+                    "define": {
+                        "max": 1,
+                        "min": 0
+                    },
+                    "enabled": true,
+                    "enabled_search": true
+            }
+    }]'
+
+
+# remove 
+curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/configs/patch?type=BASIC&owner=admin&source=dm" \
+  -H "Content-Type: application/json" \
+  -d '[{
+              "path": "root2.pathnotfound.ttt",
+              "operator": "remove"
+    }]'
+
 ```
 
 **Response：**

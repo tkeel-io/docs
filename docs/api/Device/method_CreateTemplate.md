@@ -1,10 +1,10 @@
 ---
-title: "EnableDevice"
-description: 'enable device'
+title: "CreateTemplate"
+description: 'create Template'
 ---
 
 
-调用该接口enable device。
+调用该接口create Template。
 
 
 
@@ -12,14 +12,10 @@ description: 'enable device'
 
 
 ```
-put /devices/{id}/enable
+post /templates
 ```
 
 
-
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string |  |  
 
 
 
@@ -31,16 +27,19 @@ put /devices/{id}/enable
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1Enable](#v1Enable) |
+| 模板基本信息 | Object | [v1TemplateBasicInfo](#v1TemplateBasicInfo) |
 
-#### v1Enable
+#### v1TemplateBasicInfo
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| enable | boolean |  |   
+| desc | string | 模板描述 |      
+| name | string | 模板名称 |   
 
 
   
+     
+   
      
  
  
@@ -55,10 +54,24 @@ put /devices/{id}/enable
 
 ### Response  200
 
+ 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [v1CreateTemplateResponse](#v1CreateTemplateResponse) |
 
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | OK | {   { }} |
+#### v1CreateTemplateResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| templateObject |  | 模板对象 |   
+
+
+  
+     
+ 
+ 
+
+
  
 
 

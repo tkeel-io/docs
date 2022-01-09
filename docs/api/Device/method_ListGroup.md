@@ -27,38 +27,17 @@ post /groups/search
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 限制 | Object | [apigroupv1Filter](#apigroupv1Filter) |
+|  | Object | [apigroupv1ListEntityQuery](#apigroupv1ListEntityQuery) |
 
-#### apigroupv1Filter
+#### apigroupv1ListEntityQuery
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |         
-| condition | Array[apigroupv1Condition] | 组合条件 [ 具体参数可见下面 [apigroupv1Condition](#apigroupv1Condition) ] |       
-| page |  | 分页 |   
-
-
-  
-       
-         
-### apigroupv1Condition
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| field | string | 查询输出字段 |      
-| operator | string | 操作符, $eq为相等，$neq为不等，$lt为小于，$gt为大于，$lne为小于等于， $gne为大于等于 |      
-| value | string | 值 |   
+| filter |  | 限制 |      
+| query | string | es查询条件 |   
 
 
   
-     
-   
-     
-   
-     
- 
- 
-
-
-          
      
    
      
@@ -84,13 +63,10 @@ post /groups/search
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| listEntityInfo |  | 设备组列表信息 |      
-| result | string | ok  or failed |   
+| listEntityInfo |  | 设备组列表信息 |   
 
 
   
-     
-   
      
  
  

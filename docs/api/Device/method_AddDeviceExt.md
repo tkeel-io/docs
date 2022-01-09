@@ -52,24 +52,10 @@ post /devices/{id}/ext
 
 ### Response  200
 
- 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1AddDeviceExtResponse](#v1AddDeviceExtResponse) |
 
-#### v1AddDeviceExtResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| result | string |  |   
-
-
-  
-     
- 
- 
-
-
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
  
 
 

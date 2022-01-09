@@ -1,10 +1,10 @@
 ---
-title: "EnableDevice"
-description: 'enable device'
+title: "DeleteTemplateTelemetryExt"
+description: 'delete template telemetry ext'
 ---
 
 
-调用该接口enable device。
+调用该接口delete template telemetry ext。
 
 
 
@@ -12,14 +12,15 @@ description: 'enable device'
 
 
 ```
-put /devices/{id}/enable
+post /templates/{uid}/telemetry/{id}/ext/delete
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string |  |  
+| uid | path | string | 模型ID |  
+| id | path | string | 遥测ID |  
 
 
 
@@ -31,16 +32,18 @@ put /devices/{id}/enable
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1Enable](#v1Enable) |
+| 扩展配置key 数组 | Object | [apitemplatev1Keys](#apitemplatev1Keys) |
 
-#### v1Enable
+#### apitemplatev1Keys
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| enable | boolean |  |   
+| ---- | ---- | ----------- |        
+| keys | Array[ string ] | key 数组 |    
 
 
   
+       
+          
      
  
  

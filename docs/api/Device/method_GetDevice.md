@@ -40,13 +40,10 @@ get /devices/{id}
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| dev |  | 设备信息 |      
-| sysField |  | 设备系统信息 |   
+| deviceObject |  | 设备对象 |   
 
 
   
-     
-   
      
  
  

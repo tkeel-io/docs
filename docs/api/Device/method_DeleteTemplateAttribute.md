@@ -1,10 +1,10 @@
 ---
-title: "EnableDevice"
-description: 'enable device'
+title: "DeleteTemplateAttribute"
+description: 'delete Template attribute'
 ---
 
 
-调用该接口enable device。
+调用该接口delete Template attribute。
 
 
 
@@ -12,14 +12,14 @@ description: 'enable device'
 
 
 ```
-put /devices/{id}/enable
+post /templates/{uid}/attribute/delete
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string |  |  
+| uid | path | string | 模板ID |  
 
 
 
@@ -31,16 +31,18 @@ put /devices/{id}/enable
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1Enable](#v1Enable) |
+| 属性ID 数组 | Object | [apitemplatev1Ids](#apitemplatev1Ids) |
 
-#### v1Enable
+#### apitemplatev1Ids
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| enable | boolean |  |   
+| ---- | ---- | ----------- |        
+| ids | Array[ string ] | ID 数组 |    
 
 
   
+       
+          
      
  
  

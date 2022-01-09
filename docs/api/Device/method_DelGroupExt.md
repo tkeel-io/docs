@@ -57,24 +57,10 @@ post /groups/{id}/ext/delete
 
 ### Response  200
 
- 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [apigroupv1CommonResponse](#apigroupv1CommonResponse) |
 
-#### apigroupv1CommonResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| result | string | ok  or failed |   
-
-
-  
-     
- 
- 
-
-
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
  
 
 

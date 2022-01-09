@@ -69,13 +69,13 @@ put /groups/{id}
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [apigroupv1CommonResponse](#apigroupv1CommonResponse) |
+| 200 | OK | Object | [v1UpdateGroupResponse](#v1UpdateGroupResponse) |
 
-#### apigroupv1CommonResponse
+#### v1UpdateGroupResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| result | string | ok  or failed |   
+| groupObject |  | 设备组信息 |   
 
 
   

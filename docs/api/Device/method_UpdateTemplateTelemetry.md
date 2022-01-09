@@ -1,10 +1,10 @@
 ---
-title: "EnableDevice"
-description: 'enable device'
+title: "UpdateTemplateTelemetry"
+description: 'update Template telemetry'
 ---
 
 
-调用该接口enable device。
+调用该接口update Template telemetry。
 
 
 
@@ -12,14 +12,14 @@ description: 'enable device'
 
 
 ```
-put /devices/{id}/enable
+put /templates/{uid}/telemetry
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string |  |  
+| uid | path | string | 模板ID |  
 
 
 
@@ -31,16 +31,30 @@ put /devices/{id}/enable
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1Enable](#v1Enable) |
+| 遥测 | Object | [v1PropConfig](#v1PropConfig) |
 
-#### v1Enable
+#### v1PropConfig
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| enable | boolean |  |   
+| ---- | ---- | ----------- |    
+| define | Object | 数据定义和约束   |      
+| des | string | 说明 |      
+| id | string | 标识符 |      
+| name | string | 名称 |      
+| type | string | 数据类型 |   
 
 
   
+    
+          
+     
+   
+     
+   
+     
+   
+     
+   
      
  
  

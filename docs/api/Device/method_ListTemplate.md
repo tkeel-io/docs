@@ -1,10 +1,10 @@
 ---
-title: "EnableDevice"
-description: 'enable device'
+title: "ListTemplate"
+description: 'list Template'
 ---
 
 
-调用该接口enable device。
+调用该接口list Template。
 
 
 
@@ -12,14 +12,10 @@ description: 'enable device'
 
 
 ```
-put /devices/{id}/enable
+post /templates/search
 ```
 
 
-
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string |  |  
 
 
 
@@ -31,16 +27,19 @@ put /devices/{id}/enable
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1Enable](#v1Enable) |
+| 请求条件 | Object | [apitemplatev1ListEntityQuery](#apitemplatev1ListEntityQuery) |
 
-#### v1Enable
+#### apitemplatev1ListEntityQuery
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| enable | boolean |  |   
+| filter |  | 限制 |      
+| query | string | es 查询条件 |   
 
 
   
+     
+   
      
  
  
@@ -55,10 +54,24 @@ put /devices/{id}/enable
 
 ### Response  200
 
+ 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [v1ListTemplateResponse](#v1ListTemplateResponse) |
 
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | OK | {   { }} |
+#### v1ListTemplateResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| listTemplateObject |  | 模板列表名称 |   
+
+
+  
+     
+ 
+ 
+
+
  
 
 

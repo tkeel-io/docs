@@ -1,10 +1,10 @@
 ---
-title: "EnableDevice"
-description: 'enable device'
+title: "GetTemplateAttribute"
+description: 'get Template attribute'
 ---
 
 
-调用该接口enable device。
+调用该接口get Template attribute。
 
 
 
@@ -12,38 +12,15 @@ description: 'enable device'
 
 
 ```
-put /devices/{id}/enable
+get /templates/{uid}/attributes/{id}
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string |  |  
-
-
-
-
-
-### Request Body
-
-
- 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [v1Enable](#v1Enable) |
-
-#### v1Enable
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| enable | boolean |  |   
-
-
-  
-     
- 
- 
+| uid | path | string | 模板ID |  
+| id | path | string | 属性ID |  
 
 
 
@@ -55,10 +32,24 @@ put /devices/{id}/enable
 
 ### Response  200
 
+ 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [v1GetTemplateAttributeResponse](#v1GetTemplateAttributeResponse) |
 
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | OK | {   { }} |
+#### v1GetTemplateAttributeResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| templateAttrSingleObject |  | 单个属性对象 |   
+
+
+  
+     
+ 
+ 
+
+
  
 
 

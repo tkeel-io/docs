@@ -1,10 +1,10 @@
 ---
-title: "EnableDevice"
-description: 'enable device'
+title: "AddTemplateTelemetryExt"
+description: 'add template telemetry ext'
 ---
 
 
-调用该接口enable device。
+调用该接口add template telemetry ext。
 
 
 
@@ -12,14 +12,15 @@ description: 'enable device'
 
 
 ```
-put /devices/{id}/enable
+post /templates/{uid}/telemetry/{id}/ext
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string |  |  
+| uid | path | string | 模型ID |  
+| id | path | string | 遥测ID |  
 
 
 
@@ -31,18 +32,15 @@ put /devices/{id}/enable
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1Enable](#v1Enable) |
+| 扩展配置KV map | Object | [](#) |
 
-#### v1Enable
+#### 
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| enable | boolean |  |   
+| ---- | ---- | ----------- |  
 
 
-  
-     
- 
+
  
 
 

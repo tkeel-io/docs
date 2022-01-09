@@ -1,10 +1,10 @@
 ---
-title: "EnableDevice"
-description: 'enable device'
+title: "ListTemplateCommand"
+description: 'list template command'
 ---
 
 
-调用该接口enable device。
+调用该接口list template command。
 
 
 
@@ -12,38 +12,14 @@ description: 'enable device'
 
 
 ```
-put /devices/{id}/enable
+get /templates/{uid}/commands
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string |  |  
-
-
-
-
-
-### Request Body
-
-
- 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [v1Enable](#v1Enable) |
-
-#### v1Enable
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| enable | boolean |  |   
-
-
-  
-     
- 
- 
+| uid | path | string | 模板ID |  
 
 
 
@@ -55,10 +31,24 @@ put /devices/{id}/enable
 
 ### Response  200
 
+ 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [v1ListTemplateCommandResponse](#v1ListTemplateCommandResponse) |
 
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | OK | {   { }} |
+#### v1ListTemplateCommandResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| templateCmdObject |  | 命令列表对象 |   
+
+
+  
+     
+ 
+ 
+
+
  
 
 

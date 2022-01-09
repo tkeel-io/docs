@@ -1,10 +1,10 @@
 ---
-title: "EnableDevice"
-description: 'enable device'
+title: "AddGroupExt"
+description: 'add group extensions'
 ---
 
 
-调用该接口enable device。
+调用该接口add group extensions。
 
 
 
@@ -12,14 +12,14 @@ description: 'enable device'
 
 
 ```
-put /devices/{id}/enable
+post /groups/{id}/ext
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string |  |  
+| id | path | string | 设备组ID |  
 
 
 
@@ -31,18 +31,15 @@ put /devices/{id}/enable
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1Enable](#v1Enable) |
+| 扩展配置kv | Object | [](#) |
 
-#### v1Enable
+#### 
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| enable | boolean |  |   
+| ---- | ---- | ----------- |  
 
 
-  
-     
- 
+
  
 
 

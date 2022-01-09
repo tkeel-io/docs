@@ -40,13 +40,10 @@ get /groups/{id}/items
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| result | string | ok  or failed |      
 | subIds |  | 子设备信息 |   
 
 
   
-     
-   
      
  
  

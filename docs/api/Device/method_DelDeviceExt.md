@@ -57,24 +57,10 @@ post /devices/{id}/ext/delete
 
 ### Response  200
 
- 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1DeleteDeviceExtResponse](#v1DeleteDeviceExtResponse) |
 
-#### v1DeleteDeviceExtResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| result | string |  |   
-
-
-  
-     
- 
- 
-
-
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
  
 
 

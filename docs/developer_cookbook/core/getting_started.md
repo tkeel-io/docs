@@ -18,6 +18,7 @@ sidebar_position: 1
   - [第 1 步： 创建实体](#第-1-步-创建实体)
   - [第 2 步： 编辑实体](#第-2-步-编辑实体)
   - [第 3 步： 查询实体](#第-3-步-查询实体)
+  - [3.2 步： 通过指定实体属性来查询实体属性](#32-步-通过指定实体属性来查询实体属性)
   - [第 4 步： Patch 实体属性](#第-4-步-patch-实体属性)
   - [第 5 步： 配置实体属性配置信息](#第-5-步-配置实体属性配置信息)
   - [第 6 步： 搜索实体](#第-6-步-搜索实体)
@@ -400,6 +401,8 @@ $tkeel invoke --plugin-id core --method "v1/entities/device123/configs" -v PUT -
 
 core 通过配置搜索为用户提供强大的索引能力：
 
+query是通过关键字对实体进行搜索
+
 ```bash
 curl -XPOST http://localhost:3500/v1.0/invoke/core/method/v1/entities/search \
   -H "Source: dm" \
@@ -415,6 +418,23 @@ curl -XPOST http://localhost:3500/v1.0/invoke/core/method/v1/entities/search \
 ```bash
 $tkeel invoke --plugin-id core --method "v1/entities/search?source=dm&owner=admin&type=DEVICE" -v POST -d '{"query": "testing"}'
 {"total":1,"limit":10,"items":[{"id":"device123","plugin":"dm","properties":{"id":"device123","last_time":1638500632053,"owner":"admin","source":"dm","status":"testing","temp":"20","type":"DEVICE","version":3}}]}
+✅  Plugin invoked successfully
+```
+我们也可以针对具体的字段进行针对性的搜索，条件之间为逻辑与，operator 支持 "$lt", "$lte", "$gt", "$gte", "$eq", "$neq"
+```bash
+curl -XPOST http://localhost:3500/v1.0/invoke/core/method/v1/entities/search \
+  -H "Source: dm" \
+  -H "Owner: admin" \
+  -H "Type: DEVICE" \
+  -H "Content-Type: application/json" \
+  -d '{"condition":[{"field":"owner","operator":"$eq","value":"dm"}, {"field":"version","operator":"$gt","value":2}], "page":{"limit":3, "sort":"id"}}'
+```
+
+通过 invoke 调用
+```bash
+ $tkeel invoke --plugin-id core --method "v1/entities/search?source=dm&owner=admin&type=DEVICE" -v POST -d '{"condition":[{"field":"owner","operator":"$eq","value":"dm"}, {"field":"version","operator":"$gt","value":2}], "page":{"limit":3, "sort":"id"}}'
+ 
+{"total":25,"limit":3,"items":[{"id":"0b1c43ed-0abe-46da-a412-193da825a80e","properties":{"id":"0b1c43ed-0abe-46da-a412-193da825a80e","last_time":1641535182242,"object":"{\"field1\":\"value1\",\"field2\":123,\"field3\":{\"test\":\"001\"},\"field4\":[{\"age\":21,\"name\":\"tom\"},{\"age\":22,\"name\":\"tomas\"}]}","owner":"dm","source":"dm","status":"testing","temp":"123","type":"device","version":3}},{"id":"ff1c5c6d-0b35-4433-b601-fcc9557257e0","properties":{"id":"ff1c5c6d-0b35-4433-b601-fcc9557257e0","last_time":1641535213868,"object":"{\"field1\":\"value1\",\"field2\":123,\"field3\":{\"test\":\"001\"},\"field4\":[{\"age\":21,\"name\":\"tom\"},{\"age\":22,\"name\":\"tomas\"}]}","owner":"dm","source":"dm","status":"testing","temp":"123","type":"device","version":3}},{"id":"4331ad8e-3822-418f-b31d-3cb26b21bf5b","properties":{"id":"4331ad8e-3822-418f-b31d-3cb26b21bf5b","last_time":1641535371227,"object":"{\"field1\":\"value1\",\"field2\":123,\"field3\":{\"test\":\"001\"},\"field4\":[{\"age\":21,\"name\":\"tom\"},{\"age\":22,\"name\":\"tomas\"}]}","owner":"dm","source":"dm","status":"testing","temp":"123","type":"device","version":3}}]}
 ✅  Plugin invoked successfully
 ```
 

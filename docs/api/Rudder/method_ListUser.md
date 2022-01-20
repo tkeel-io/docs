@@ -1,7 +1,7 @@
 ---
-title: "IssuePluginToken"
-description: '插件 Token 颁发接口'
----调用该接口插件 Token 颁发接口。
+title: "ListUser"
+description: 'list users'
+---调用该接口list users。
 
 
 
@@ -9,50 +9,50 @@ description: '插件 Token 颁发接口'
 
 
 ```
-post \oauth2\plugin
+get \tenants\{tenant_id}\users
 ```
 
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [v1IssuePluginTokenRequest](#v1IssuePluginTokenRequest) |
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| tenant_id | path | string |  |  
 
-#### v1IssuePluginTokenRequest
+###  Request Parameters
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| client_id | string | plugin id(dapr app id) |      
-| client_secret | string | plugin secret |   
-
-
+| Name | Located in | Type | Description |  Required |
+| ---- | ---------- | ----------- | ----------- |  ---- |
+| page_num | query | integer |  |  false |
+| page_size | query | integer |  |  false |
+| order_by | query | string |  |  false |
+| is_descending | query | boolean |  |  false |
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1IssueTokenResponse](#v1IssueTokenResponse) |
+| 200 | OK | Object | [v1ListUserResponse](#v1ListUserResponse) |
 
-#### v1IssueTokenResponse
+#### v1ListUserResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| access_token | string | oauth2 access token |      
-| expires_in | integer | oauth2 token expires |      
-| refresh_token | string | oauth2 refresh token |      
-| token_type | string | oauth2 token type |   
+| page_num | integer |  |      
+| page_size | integer |  |      
+| total | string |  |          
+| users | Array[v1UserListData] |  [ 具体参数可见下面 [v1UserListData](#v1UserListData) ] |    
+
+### v1UserListData
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| avatar | string |  |      
+| email | string |  |      
+| external_id | string |  |      
+| nick_name | string |  |      
+| tenant_id | string |  |      
+| user_id | string |  |      
+| username | string |  |   
 
 
-
-### Response  401
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 401 | INVALID_PLUGIN_ID | {   { }} |
-
-### Response  500
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 500 | INTERNAL_STORE | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

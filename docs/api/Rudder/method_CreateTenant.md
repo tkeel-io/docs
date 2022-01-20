@@ -1,7 +1,7 @@
 ---
-title: "IssuePluginToken"
-description: '插件 Token 颁发接口'
----调用该接口插件 Token 颁发接口。
+title: "CreateTenant"
+description: 'create a tenant'
+---调用该接口create a tenant。
 
 
 
@@ -9,20 +9,22 @@ description: '插件 Token 颁发接口'
 
 
 ```
-post \oauth2\plugin
+post \tenants
 ```
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1IssuePluginTokenRequest](#v1IssuePluginTokenRequest) |
+| create tenant body params | Object | [v1TenantCreateBody](#v1TenantCreateBody) |
 
-#### v1IssuePluginTokenRequest
+#### v1TenantCreateBody
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| client_id | string | plugin id(dapr app id) |      
-| client_secret | string | plugin secret |   
+| admin |  | set tenant admin |      
+| remark | string | tenant remark |      
+| tenant_id | string | tenant id |      
+| title | string | tenant title |   
 
 
 
@@ -31,28 +33,32 @@ post \oauth2\plugin
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1IssueTokenResponse](#v1IssueTokenResponse) |
+| 200 | OK | Object | [v1CreateTenantResponse](#v1CreateTenantResponse) |
 
-#### v1IssueTokenResponse
+#### v1CreateTenantResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| access_token | string | oauth2 access token |      
-| expires_in | integer | oauth2 token expires |      
-| refresh_token | string | oauth2 refresh token |      
-| token_type | string | oauth2 token type |   
+| admin_username | string | created tenant admin username |      
+| tenant_id | string | created tenant id |      
+| tenant_title | string | created tenant title |   
 
 
 
-### Response  401
+### Response  400
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 401 | INVALID_PLUGIN_ID | {   { }} |
+| 400 | INVALID_ARGUMENT | {   { }} |
+
+### Response  409
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 409 | ALREADY_EXISTS | {   { }} |
 
 ### Response  500
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 500 | INTERNAL_STORE | {   { }} |
+| 500 | UNEXPECT_INTERNAL | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

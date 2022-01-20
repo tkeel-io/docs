@@ -1,7 +1,7 @@
 ---
-title: "IssuePluginToken"
-description: '插件 Token 颁发接口'
----调用该接口插件 Token 颁发接口。
+title: "CreateUser"
+description: 'create a  user at tenant'
+---调用该接口create a  user at tenant。
 
 
 
@@ -9,20 +9,24 @@ description: '插件 Token 颁发接口'
 
 
 ```
-post \oauth2\plugin
+post \tenants\{tenant_id}\users
 ```
+
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| tenant_id | path | string | tenant id |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1IssuePluginTokenRequest](#v1IssuePluginTokenRequest) |
+| create user body params | Object | [v1CreateUserBody](#v1CreateUserBody) |
 
-#### v1IssuePluginTokenRequest
+#### v1CreateUserBody
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| client_id | string | plugin id(dapr app id) |      
-| client_secret | string | plugin secret |   
+| password | string | user password |      
+| username | string | user name |   
 
 
 
@@ -31,28 +35,17 @@ post \oauth2\plugin
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1IssueTokenResponse](#v1IssueTokenResponse) |
+| 200 | OK | Object | [v1CreateUserResponse](#v1CreateUserResponse) |
 
-#### v1IssueTokenResponse
+#### v1CreateUserResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| access_token | string | oauth2 access token |      
-| expires_in | integer | oauth2 token expires |      
-| refresh_token | string | oauth2 refresh token |      
-| token_type | string | oauth2 token type |   
+| tenant_id | string |  |      
+| user_id | string |  |      
+| username | string |  |   
 
 
-
-### Response  401
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 401 | INVALID_PLUGIN_ID | {   { }} |
-
-### Response  500
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 500 | INTERNAL_STORE | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

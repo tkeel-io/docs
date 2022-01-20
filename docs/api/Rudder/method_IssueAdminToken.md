@@ -36,10 +36,10 @@ get \oauth2\admin
 
 
 
-### Response  400
+### Response  401
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 400 | PASSWORD_NOT_MATCH | {   { }} |
+| 401 | PASSWORD_NOT_MATCH | {   { }} |
 
 ### Response  500
 | Code3 | Description | Type | 

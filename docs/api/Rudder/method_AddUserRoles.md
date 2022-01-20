@@ -1,7 +1,7 @@
 ---
-title: "IssuePluginToken"
-description: '插件 Token 颁发接口'
----调用该接口插件 Token 颁发接口。
+title: "AddUserRoles"
+description: 'add user roles '
+---调用该接口add user roles 。
 
 
 
@@ -9,20 +9,24 @@ description: '插件 Token 颁发接口'
 
 
 ```
-post \oauth2\plugin
+post \rbac\tenant\{tenant_id}\users\roles
 ```
+
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| tenant_id | path | string |  |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1IssuePluginTokenRequest](#v1IssuePluginTokenRequest) |
+|  | Object | [v1AddUserRolesBody](#v1AddUserRolesBody) |
 
-#### v1IssuePluginTokenRequest
+#### v1AddUserRolesBody
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| client_id | string | plugin id(dapr app id) |      
-| client_secret | string | plugin secret |   
+| ---- | ---- | ----------- |        
+| roles | Array[ string ] |  |          
+| user_ids | Array[ string ] |  |    
 
 
 
@@ -31,28 +35,14 @@ post \oauth2\plugin
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1IssueTokenResponse](#v1IssueTokenResponse) |
+| 200 | OK | Object | [v1AddUserRolesResponse](#v1AddUserRolesResponse) |
 
-#### v1IssueTokenResponse
+#### v1AddUserRolesResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| access_token | string | oauth2 access token |      
-| expires_in | integer | oauth2 token expires |      
-| refresh_token | string | oauth2 refresh token |      
-| token_type | string | oauth2 token type |   
+| ---- | ---- | ----------- |  
 
 
-
-### Response  401
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 401 | INVALID_PLUGIN_ID | {   { }} |
-
-### Response  500
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 500 | INTERNAL_STORE | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

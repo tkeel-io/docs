@@ -1,7 +1,7 @@
 ---
-title: "IssuePluginToken"
-description: '插件 Token 颁发接口'
----调用该接口插件 Token 颁发接口。
+title: "EntityTokenInfo"
+description: 'get a entity token info'
+---调用该接口get a entity token info。
 
 
 
@@ -9,50 +9,31 @@ description: '插件 Token 颁发接口'
 
 
 ```
-post \oauth2\plugin
+get \entity\info\{token}
 ```
 
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [v1IssuePluginTokenRequest](#v1IssuePluginTokenRequest) |
-
-#### v1IssuePluginTokenRequest
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| client_id | string | plugin id(dapr app id) |      
-| client_secret | string | plugin secret |   
-
-
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| token | path | string | entity token  path params |  
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1IssueTokenResponse](#v1IssueTokenResponse) |
+| 200 | OK | Object | [v1TokenInfoResponse](#v1TokenInfoResponse) |
 
-#### v1IssueTokenResponse
+#### v1TokenInfoResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| access_token | string | oauth2 access token |      
-| expires_in | integer | oauth2 token expires |      
-| refresh_token | string | oauth2 refresh token |      
-| token_type | string | oauth2 token type |   
+| created_at | string |  |      
+| entity_id | string |  |      
+| entity_type | string |  |      
+| expired_at | string |  |      
+| owner | string |  |   
 
 
-
-### Response  401
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 401 | INVALID_PLUGIN_ID | {   { }} |
-
-### Response  500
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 500 | INTERNAL_STORE | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

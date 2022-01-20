@@ -1,7 +1,7 @@
 ---
-title: "IssuePluginToken"
-description: '插件 Token 颁发接口'
----调用该接口插件 Token 颁发接口。
+title: "CreateEntityToken"
+description: 'create a entity token'
+---调用该接口create a entity token。
 
 
 
@@ -9,20 +9,22 @@ description: '插件 Token 颁发接口'
 
 
 ```
-post \oauth2\plugin
+post \entity\token
 ```
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1IssuePluginTokenRequest](#v1IssuePluginTokenRequest) |
+| create entity token  body params | Object | [v1TokenRequestBody](#v1TokenRequestBody) |
 
-#### v1IssuePluginTokenRequest
+#### v1TokenRequestBody
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| client_id | string | plugin id(dapr app id) |      
-| client_secret | string | plugin secret |   
+| entity_id | string | entity id  body params |      
+| entity_type | string | entity type  body params |      
+| expires_in | string | entity token expires in  body params |      
+| owner | string | entity owner  body params |   
 
 
 
@@ -31,28 +33,15 @@ post \oauth2\plugin
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1IssueTokenResponse](#v1IssueTokenResponse) |
+| 200 | OK | Object | [v1CreateEntityTokenResponse](#v1CreateEntityTokenResponse) |
 
-#### v1IssueTokenResponse
+#### v1CreateEntityTokenResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| access_token | string | oauth2 access token |      
-| expires_in | integer | oauth2 token expires |      
-| refresh_token | string | oauth2 refresh token |      
-| token_type | string | oauth2 token type |   
+| token | string |  |   
 
 
-
-### Response  401
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 401 | INVALID_PLUGIN_ID | {   { }} |
-
-### Response  500
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 500 | INTERNAL_STORE | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

@@ -1,7 +1,7 @@
 ---
-title: "IssuePluginToken"
-description: '插件 Token 颁发接口'
----调用该接口插件 Token 颁发接口。
+title: "OauthAuthenticate"
+description: 'oauth authenticate with header Authorization'
+---调用该接口oauth authenticate with header Authorization。
 
 
 
@@ -9,50 +9,29 @@ description: '插件 Token 颁发接口'
 
 
 ```
-post \oauth2\plugin
+get \oauth\authenticate
 ```
-
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [v1IssuePluginTokenRequest](#v1IssuePluginTokenRequest) |
-
-#### v1IssuePluginTokenRequest
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| client_id | string | plugin id(dapr app id) |      
-| client_secret | string | plugin secret |   
-
-
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1IssueTokenResponse](#v1IssueTokenResponse) |
+| 200 | OK | Object | [v1AuthenticateResponse](#v1AuthenticateResponse) |
 
-#### v1IssueTokenResponse
+#### v1AuthenticateResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| access_token | string | oauth2 access token |      
-| expires_in | integer | oauth2 token expires |      
-| refresh_token | string | oauth2 refresh token |      
-| token_type | string | oauth2 token type |   
+| avatar | string |  |      
+| expires_in | string |  |      
+| external_id | string |  |      
+| nick_name | string |  |      
+| tenant_id | string |  |      
+| user_id | string |  |      
+| username | string |  |   
 
 
-
-### Response  401
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 401 | INVALID_PLUGIN_ID | {   { }} |
-
-### Response  500
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 500 | INTERNAL_STORE | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

@@ -1,7 +1,7 @@
 ---
-title: "IssuePluginToken"
-description: '插件 Token 颁发接口'
----调用该接口插件 Token 颁发接口。
+title: "OauthAuthorize"
+description: 'oauth authorize code with username and password'
+---调用该接口oauth authorize code with username and password。
 
 
 
@@ -9,50 +9,37 @@ description: '插件 Token 颁发接口'
 
 
 ```
-post \oauth2\plugin
+get \oauth\{tenant_id}\authorize
 ```
 
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [v1IssuePluginTokenRequest](#v1IssuePluginTokenRequest) |
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| tenant_id | path | string | tenantID path param |  
 
-#### v1IssuePluginTokenRequest
+###  Request Parameters
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| client_id | string | plugin id(dapr app id) |      
-| client_secret | string | plugin secret |   
-
-
+| Name | Located in | Type | Description |  Required |
+| ---- | ---------- | ----------- | ----------- |  ---- |
+| response_type | query | string | authorize response type, this must 'code',query param |  true |
+| username | query | string | username query param |  true |
+| password | query | string | password query param |  true |
+| redirect_uri | query | string | redirect uri with code |  true |
+| state | query | string | state |  false |
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1IssueTokenResponse](#v1IssueTokenResponse) |
+| 200 | OK | Object | [v1AuthorizeResponse](#v1AuthorizeResponse) |
 
-#### v1IssueTokenResponse
+#### v1AuthorizeResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| access_token | string | oauth2 access token |      
-| expires_in | integer | oauth2 token expires |      
-| refresh_token | string | oauth2 refresh token |      
-| token_type | string | oauth2 token type |   
+| code | string |  |   
 
 
-
-### Response  401
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 401 | INVALID_PLUGIN_ID | {   { }} |
-
-### Response  500
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 500 | INTERNAL_STORE | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

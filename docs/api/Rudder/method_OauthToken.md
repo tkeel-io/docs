@@ -1,7 +1,7 @@
 ---
-title: "IssuePluginToken"
-description: '插件 Token 颁发接口'
----调用该接口插件 Token 颁发接口。
+title: "OauthToken"
+description: 'oauth token with code or password'
+---调用该接口oauth token with code or password。
 
 
 
@@ -9,50 +9,41 @@ description: '插件 Token 颁发接口'
 
 
 ```
-post \oauth2\plugin
+get \oauth\{tenant_id}\token
 ```
 
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [v1IssuePluginTokenRequest](#v1IssuePluginTokenRequest) |
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| tenant_id | path | string | tenant_id path param |  
 
-#### v1IssuePluginTokenRequest
+###  Request Parameters
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| client_id | string | plugin id(dapr app id) |      
-| client_secret | string | plugin secret |   
-
-
+| Name | Located in | Type | Description |  Required |
+| ---- | ---------- | ----------- | ----------- |  ---- |
+| grant_type | query | string | grant_type 'authorize_code','password', query param |  true |
+| code | query | string | code with authorize response,query param |  false |
+| redirect_uri | query | string | redirect_uri while grant_type is code,query param |  false |
+| username | query | string | username while grant_type is password ,query param |  false |
+| password | query | string | password while grant_type is password,query param |  false |
+| refresh_token | query | string | refresh token while grant_type is refresh_token,query param |  false |
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1IssueTokenResponse](#v1IssueTokenResponse) |
+| 200 | OK | Object | [v1TokenResponse](#v1TokenResponse) |
 
-#### v1IssueTokenResponse
+#### v1TokenResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| access_token | string | oauth2 access token |      
-| expires_in | integer | oauth2 token expires |      
-| refresh_token | string | oauth2 refresh token |      
-| token_type | string | oauth2 token type |   
+| access_token | string |  |      
+| expires_in | string |  |      
+| refresh_token | string |  |      
+| token_type | string |  |   
 
 
-
-### Response  401
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 401 | INVALID_PLUGIN_ID | {   { }} |
-
-### Response  500
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 500 | INTERNAL_STORE | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

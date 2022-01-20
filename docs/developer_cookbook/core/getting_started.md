@@ -455,7 +455,7 @@ $tkeel invoke --plugin-id core --method "v1/entities?id=device234&source=dm&owne
   -H "Content-Type: application/json" \
   -d '{
       "name": "m-sync-dev234",
-      "tql": "insert into device123 select device234.temp as temp"
+      "tql": "insert into device123 select device234.temp1 + device234.temp2 as temp"
     }'
 ```
 
@@ -476,15 +476,13 @@ core 为上层应用提供两个不同场景的接口：[控制平面接口](spe
 curl -X POST http://localhost:3500/v1.0/publish/core-pubsub/core-pub \
   -H "Content-Type: application/json" \
   -d '{
-       "id": "device123",
+       "id": "device234",
        "owner": "admin",
        "source": "dm",
        "data": {
            "temp": 234,
-           "cpu_used": {
-              "value": 0.3,
-              "type": "number"
-           }
+           "temp1": "'devi123'",
+           "temp2": "'111'"
         }
      }'
 ```

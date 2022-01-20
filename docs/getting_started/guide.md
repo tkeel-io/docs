@@ -21,5 +21,5 @@ sidebar_position: 10
 
 1. [安装 tKeel CLI](./cli.md)
 2. [初始 tKeel 平台](./init.md)
-3. [🚀 如何使用插件功能](./how-to-use-plugin.md)
+3. [🚀 如何安装插件](./how-to-install-plugin.md)
 4. [🌐 如何使用tkeel平台连接你的设备](./how_to_access_device.md)

@@ -55,24 +55,10 @@ put /devices/{id}/enable
 
 ### Response  200
 
- 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1EnableDeviceResponse](#v1EnableDeviceResponse) |
 
-#### v1EnableDeviceResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| result | string |  |   
-
-
-  
-     
- 
- 
-
-
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
  
 
 

@@ -24,6 +24,9 @@ yarn-error.log*
 .docusaurus
 .cache-loader
 
+# JetBrains
+.idea/
+
 # Misc
 .DS_Store
 .env.local
@@ -31,10 +34,6 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-.idea/
+design/*
 
-
-package-lock.json
-
-yarn.lock
-
+*.drawio

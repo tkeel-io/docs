@@ -53,24 +53,10 @@ post /devices/delete
 
 ### Response  200
 
- 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1DeleteDeviceResponse](#v1DeleteDeviceResponse) |
 
-#### v1DeleteDeviceResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| result | string |  |   
-
-
-  
-     
- 
- 
-
-
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
  
 
 

@@ -12,14 +12,14 @@ description: 'update group extensions'
 
 
 ```
-post /groups/{id}/ext
+post /groups/{id_1}/ext
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | 设备组ID |  
+| id_1 | path | string | 设备组ID |  
 
 
 
@@ -52,24 +52,10 @@ post /groups/{id}/ext
 
 ### Response  200
 
- 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [apigroupv1CommonResponse](#apigroupv1CommonResponse) |
 
-#### apigroupv1CommonResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| result | string | ok  or failed |   
-
-
-  
-     
- 
- 
-
-
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
  
 
 

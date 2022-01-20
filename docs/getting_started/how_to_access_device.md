@@ -23,7 +23,7 @@ slug: /use
 ### Step 1 : 安装用于连接设备的插件：iothub
 
 ```bash
-tkeel plugin install https://tkeel-io.github.io/helm-charts/iothub@v0.2.0 iothub -n keel-system
+tkeel plugin install https://tkeel-io.github.io/helm-charts/iothub@v0.2.0 iothub
 ```
 
 
@@ -31,7 +31,7 @@ tkeel plugin install https://tkeel-io.github.io/helm-charts/iothub@v0.2.0 iothub
 ###  Step 2 : 安装用于管理设备的插件: device
 
 ```bash
-tkeel plugin install https://tkeel-io.github.io/helm-charts/tkeel-device@v0.2.0 tkeel-device -n keel-system
+tkeel plugin install https://tkeel-io.github.io/helm-charts/tkeel-device@v0.2.0 tkeel-device
 ```
 
 
@@ -176,7 +176,7 @@ curl --location --request POST 'http://192.168.123.11:30707/apis/tkeel-device/v1
 
 ```bash
 curl --location --request POST 'http://192.168.123.11:30707/apis/tkeel-device/v1/groups/<创建设备组result “_id” 字段>/items' \
---header 'Authorization: Bearer <分配的用户result “access_token”字段> ' \
+--header 'Authorization: Bearer <分配的用户result “access_token”字段>' \
 --header 'Content-Type: application/json' \
 --data-raw '{
     "ids":["<创建设备result “_id”字段 >"]
@@ -219,7 +219,7 @@ curl --location --request GET 'http://192.168.123.11:30707/apis/tkeel-device/v1/
 **example**
 
 ```
-mosquitto_pub -h 192.168.123.9 -t system/test/topic -m "{\"message\": \"hello, tkeel\",\"value\":0}" -p 30805 -u "<设备owner>" -P "<设备token>" -i "<设备ID>"
+mosquitto_pub -h 192.168.123.9 -d -t system/test/topic -m "{\"message\": \"hello, tkeel\",\"value\":0}" -p 30805 -u "<设备owner>" -P "<设备token>" -i "<设备ID>"
 ```
 
 
@@ -235,11 +235,29 @@ todo
 
 #### COAP 连接：
 
-**example**
+订阅平台数据
+```bash
+coap-client -m get -s 1000  "coap://192.168.123.5:30588/mqtt/system/topic1?c=<设备ID>&p=<设备token>&u=<设备owner>"
+```
+- 主题名称为："system/topic1"
+- Client ID 为："<设备ID>", 字符串即可
+- 用户名为："<设备owner>"， 字符串即可
+- 密码为："<设备token>", 即创建设备返回的“_token”字段的值
+- 订阅的持续时间为：1000 秒
 
+
+
+向平台发布数据
+**example**
+```bash
+coap-client -m put -e 1234   "coap://192.168.123.5:30588/mqtt/system/topic1?c=<设备ID>&p=<设备token>&u=<设备owner>"
 ```
-coap-client -m get -s 1000  "coap://192.168.123.9:30588/mqtt/topic1?c=<设备ID>&p=<设备token>&u=<设备owner>"
-```
+- 主题名称为："system/topic1"
+- Client ID 为："<设备ID>", 字符串即可
+- 用户名为："<设备owner>"， 字符串即可
+- 密码为："<设备token>", 即创建设备返回的“_token”字段的值
+- Payload 为："1234“
+
 
 
 
@@ -251,21 +269,40 @@ coap-client -m get -s 1000  "coap://192.168.123.9:30588/mqtt/topic1?c=<设备ID>
 
 ```
 curl --location --request GET 'http://192.168.123.9:30707/apis/core/v1/plugins/device/entities/<设备ID>?owner=<设备owner>@source=device' \
---header 'Authorization: Bearer <用户token>'
+--header 'Authorization: Bearer <用户token>' | jq '.'
 ```
 
 **expected result**
 
 ```
 {
-    "id": "4e901bc2-927b-4d4f-8a0e-25fa32a66ada",
-    "owner": "usr-4-9a4df9ce604e8044fff0d3615394745f",
-    "configs": {},
-    "properties": {
-        "_data_": "MTIzNA==",
-        "message": "hello, tkeel",
-        "value": 0
-    }
+  "id": "01bb328e-e3de-474c-9be5-55721f369c5c",
+  "source": "device",
+  "owner": "usr-1-dddb879d93a0d0bd5d339a0dce69833c",
+  "type": "device",
+  "configs": {},
+  "properties": {
+    "dev": {
+      "desc": "dev_desc",
+      "ext": {
+        "other": "other",
+        "version": "1.1"
+      },
+      "group": "344efec6-6fe5-49bb-b995-c157fc39f066",
+      "name": "dev_name"
+    },
+    "message": "hello, tkeel",
+    "sysField": {
+      "_createdAt": 1638499053166762200,
+      "_enable": true,
+      "_id": "01bb328e-e3de-474c-9be5-55721f369c5c",
+      "_owner": "usr-1-dddb879d93a0d0bd5d339a0dce69833c",
+      "_source": "device",
+      "_token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbnRpdHlfaWQiOiIwMWJiMzI4ZS1lM2RlLTQ3NGMtOWJlNS01NTcyMWYzNjljNWMiLCJlbnRpdHlfdHlwZSI6ImRldmljZSIsImV4cCI6MTY3MDAzNTA1NSwib3duZXIiOiJ1c3ItMS1kZGRiODc5ZDkzYTBkMGJkNWQzMzlhMGRjZTY5ODMzYyJ9.vndQ0Awgyl8hrStp_NSjyb30kZJs91QdauRzrC09iB8o5A_25-yD8xM6ZfkCyg3L3J3-C30ecpS5QpUhNFocOQ",
+      "_updatedAt": 1638499053166762200
+    },
+    "value": 0
+  }
 }
 ```
 

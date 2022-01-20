@@ -71,13 +71,10 @@ post /groups
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| entityInfo |  | 设备组信息 |      
-| result | string | ok  or failed |   
+| groupObject |  | 设备组信息 |   
 
 
   
-     
-   
      
  
  

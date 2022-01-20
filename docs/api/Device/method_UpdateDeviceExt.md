@@ -31,21 +31,15 @@ put /devices/{id}/ext
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 设备扩展属性KV | Object | [v1Ext](#v1Ext) |
+| 设备扩展属性KV | Object | [](#) |
 
-#### v1Ext
+#### 
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| key | string |  |      
-| value | string |  |   
+| ---- | ---- | ----------- |  
 
 
-  
-     
-   
-     
- 
+
  
 
 
@@ -58,24 +52,10 @@ put /devices/{id}/ext
 
 ### Response  200
 
- 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1UpdateDeviceExtResponse](#v1UpdateDeviceExtResponse) |
 
-#### v1UpdateDeviceExtResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| result | string |  |   
-
-
-  
-     
- 
- 
-
-
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
  
 
 

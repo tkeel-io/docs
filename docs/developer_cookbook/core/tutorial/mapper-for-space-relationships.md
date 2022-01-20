@@ -15,7 +15,7 @@ sidebar_position: 2
     "configs": {},
     "properties": { 
         "temp": 20,
-        "long_space_id": "space123"
+        "path": "space123"
     }
 }
 
@@ -28,9 +28,8 @@ sidebar_position: 2
     "type": "SPACE",
     "configs": {},
     "properties": { 
-        "temp": 20, 
-        "parent_id": "space123",
-        "long_space_id": "space123/space234"
+        "temp": 20,
+        "path": "space123/space234"
     }
 }
 
@@ -44,9 +43,8 @@ sidebar_position: 2
     "configs": {},
     "properties": {
         "status": "running",
-        "temp": 20, 
-        "parent_id":"space234",
-        "long_space_id": "space123/space234/device123"
+        "temp": 20,  
+        "path": "space123/space234/device123"
     }
 }
 ```
@@ -60,30 +58,37 @@ sidebar_position: 2
 ## 需求 
 
 我们想要实现对设备进行移动后，设备的`long_space_id`自动变更。
+移动实体的的 `path` 需要其上一级实体的 `path` 作为前缀拼接。
 
-在设备和空间组成的树中，移动树中的节点，其实也就是意味着更新节点的`parent_id`， 所以我们可以根据对`parent_id`的监听来更新`long_space_id`字段。
-
-
-
-
-```sql
-insert into device123 select long_space(device123.parent_id) + device123.id as long_space_id;
-```
+那么我们先删除与原来父级实体相关的映射，然后创建一个新的映射，新的映射会自动更新`path`字段。
+ 
 
 
-
-### 为设备创建映射
-
-
-
+### delete old-mapper
 ```bash
-curl -XPOST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/mappers" \
--H "Source: dm" \
--H "Owner: admin" \
--H "Type: DEVICE" \
--H "Content-Type: application/json" \
--d '{
-    "name": "mapper-update-long-space",
-    "tql": "insert into device123 select long_space(device123.parent_id) + device123.id as long_space_id"
-}'
+curl -XPOST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/mappers/mapper_space234" \
+  -H "Source: dm"   \
+  -H "Owner: admin" \
+  -H "Type: DEVICE" \
+  -H "Content-Type: application/json"
 ```
+
+
+
+
+### create new-mapper
+```bash
+  curl -XPOST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/mappers" \
+  -H "Source: dm" \
+  -H "Owner: admin" \
+  -H "Type: DEVICE" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "name": "mapper_space123",
+      "tql": "insert into device123 select space123.path + "/" + device123.id as path"
+    }'
+```
+
+
+
+

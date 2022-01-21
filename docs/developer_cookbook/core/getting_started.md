@@ -420,7 +420,19 @@ $tkeel invoke --plugin-id core --method "v1/entities/search?source=dm&owner=admi
 {"total":1,"limit":10,"items":[{"id":"device123","plugin":"dm","properties":{"id":"device123","last_time":1638500632053,"owner":"admin","source":"dm","status":"testing","temp":"20","type":"DEVICE","version":3}}]}
 ✅  Plugin invoked successfully
 ```
-我们也可以针对具体的字段进行针对性的搜索，条件之间为逻辑与，operator 支持 "$lt", "$lte", "$gt", "$gte", "$eq", "$neq"
+我们也可以针对具体的字段进行针对性的搜索，条件之间为逻辑与，operator 支持
+
+| operator  | 说明     |
+| --------- | -------- |
+| $lt       | 小于     |
+| $lte      | 小于等于 |
+| $gt       | 大于     |
+| $gte      | 大于等于 |
+| $eq       | 等于     |
+| $neq      | 不等于   |
+| $prefix   | 前缀匹配 |
+| $wildcard | 模糊匹配 |
+
 ```bash
 curl -XPOST http://localhost:3500/v1.0/invoke/core/method/v1/entities/search \
   -H "Source: dm" \

@@ -1,7 +1,7 @@
 ---
-title: "UnregisterPlugin"
-description: '注销插件接口'
----调用该接口注销插件接口。
+title: "AddRolePermissionList"
+description: 'add role permission list'
+---调用该接口add role permission list。
 
 
 
@@ -9,47 +9,47 @@ description: '注销插件接口'
 
 
 ```
-delete \plugins\{id}\register
+post \rbac\tenant\{tenant_id}\roles\{role}\permissions
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | plugin id |  
+| tenant_id | path | string |  |  
+| role | path | string |  |  
+
+### Request Body 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+|  | Object | [v1AddRolePermissionListBody](#v1AddRolePermissionListBody) |
+
+#### v1AddRolePermissionListBody
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |         
+| permissions | Array[v1AddRolePermissionBody] |  [ 具体参数可见下面 [v1AddRolePermissionBody](#v1AddRolePermissionBody) ] |    
+
+### v1AddRolePermissionBody
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| permission_action | string |  |      
+| permission_object | string |  |   
+
+
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [v1UnregisterPluginResponse](#v1UnregisterPluginResponse) |
+| 200 | OK | Object | [v1AddRolePermissionResponse](#v1AddRolePermissionResponse) |
 
-#### v1UnregisterPluginResponse
+#### v1AddRolePermissionResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| plugin |  | plugin object |   
+| ok | boolean |  |   
 
 
-
-### Response  204
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 204 | SUCC_AND_NO_CONTENT | {   { }} |
-
-### Response  400
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 400 | INVALID_ARGUMENT | {   { }} |
-
-### Response  404
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 404 | PLUGIN_NOT_FOUND | {   { }} |
-
-### Response  500
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 500 | INTERNAL_STORE | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

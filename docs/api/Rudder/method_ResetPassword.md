@@ -1,7 +1,7 @@
 ---
-title: "BindTenants"
-description: '插件绑定租户接口'
----调用该接口插件绑定租户接口。
+title: "ResetPassword"
+description: 'oauth reset user password'
+---调用该接口oauth reset user password。
 
 
 
@@ -9,41 +9,39 @@ description: '插件绑定租户接口'
 
 
 ```
-post \plugins\{id}\tenants
+post \oauth\pwd
 ```
-
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string | plugin id |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| extra data | Object | [](#) |
+|  | Object | [v1ResetPasswordBody](#v1ResetPasswordBody) |
 
-#### 
+#### v1ResetPasswordBody
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |  
+| ---- | ---- | ----------- |     
+| new_password | string |  |      
+| tenant_id | string |  |      
+| user_id | string |  |   
 
 
 
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | OK | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [v1ResetPasswordResponse](#v1ResetPasswordResponse) |
 
-### Response  400
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 400 | INVALID_ARGUMENT | {   { }} |
+#### v1ResetPasswordResponse
 
-### Response  500
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 500 | INTERNAL_ERROR | {   { }} |
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| has_reset | boolean |  |      
+| tenant_id | string |  |   
+
+
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

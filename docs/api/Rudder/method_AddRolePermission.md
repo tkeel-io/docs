@@ -9,7 +9,7 @@ description: 'add role permission '
 
 
 ```
-post \rbac\tenant\{tenant_id}\roles\{role}\permissions
+post \rbac\tenant\{tenant_id}\roles\{role}\permission
 ```
 
 | Name | Located in | Type | Description | 

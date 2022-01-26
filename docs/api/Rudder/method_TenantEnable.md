@@ -1,7 +1,7 @@
 ---
-title: "UnregisterPlugin"
-description: '注销插件接口'
----调用该接口注销插件接口。
+title: "TenantEnable"
+description: '插件租户启用接口'
+---调用该接口插件租户启用接口。
 
 
 
@@ -9,47 +9,41 @@ description: '注销插件接口'
 
 
 ```
-delete \plugins\{id}\register
+post \plugins\{id}\tenants
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string | plugin id |  
 
-## Response
+### Request Body 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+| extra data | Object | [](#) |
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [v1UnregisterPluginResponse](#v1UnregisterPluginResponse) |
-
-#### v1UnregisterPluginResponse
+#### 
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| plugin |  | plugin object |   
+| ---- | ---- | ----------- |  
 
 
 
-### Response  204
+## Response
+
+### Response  200
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 204 | SUCC_AND_NO_CONTENT | {   { }} |
+| 200 | OK | {   { }} |
 
 ### Response  400
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
 | 400 | INVALID_ARGUMENT | {   { }} |
 
-### Response  404
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 404 | PLUGIN_NOT_FOUND | {   { }} |
-
 ### Response  500
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 500 | INTERNAL_STORE | {   { }} |
+| 500 | INTERNAL_ERROR | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

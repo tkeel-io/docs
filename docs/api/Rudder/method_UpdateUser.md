@@ -1,7 +1,7 @@
 ---
-title: "RegisterPlugin"
-description: '注册插件接口'
----调用该接口注册插件接口。
+title: "UpdateUser"
+description: 'update user'
+---调用该接口update user。
 
 
 
@@ -9,56 +9,42 @@ description: '注册插件接口'
 
 
 ```
-post \plugins\{id}\register
+put \tenants\{tenant_id}\users\{user_id}
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | plugin id |  
+| tenant_id | path | string |  |  
+| user_id | path | string |  |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| plugin register secret | Object | [](#) |
+|  | Object | [v1UpdateUserBody](#v1UpdateUserBody) |
 
-#### 
+#### v1UpdateUserBody
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |  
+| ---- | ---- | ----------- |     
+| nick_name | string |  |         
+| roles | Array[ string ] |  |    
 
 
 
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | A successful response. | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [v1UpdateUserResponse](#v1UpdateUserResponse) |
 
-### Response  204
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 204 | SUCC_AND_NO_CONTENT | {   { }} |
+#### v1UpdateUserResponse
 
-### Response  400
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 400 | INVALID_ARGUMENT | {   { }} |
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| ok | boolean |  |   
 
-### Response  404
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 404 | PLUGIN_NOT_FOUND | {   { }} |
 
-### Response  409
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 409 | ALREADY_EXISTS | {   { }} |
-
-### Response  500
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 500 | INTERNAL_STORE | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

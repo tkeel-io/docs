@@ -16,6 +16,12 @@ get \repos\{repo}\installers
 | ---- | ---------- | ----------- | ----------- | 
 | repo | path | string | repo name |  
 
+###  Request Parameters
+
+| Name | Located in | Type | Description |  Required |
+| ---- | ---------- | ----------- | ----------- |  ---- |
+| installed | query | boolean | installed option |  false |
+
 ## Response
 
 ### Response  200 
@@ -31,15 +37,11 @@ get \repos\{repo}\installers
 
 ### v1InstallerObject
 | Name | Type | Description | 
-| ---- | ---- | ----------- |    
-| annotations | Object | repo annotations   |      
-| configuration | string | configuration file |      
-| configuration_schema | string | configuration schema file |      
-| installed | boolean | whether the installer has been installed |      
+| ---- | ---- | ----------- |     
+| installed | boolean | whether the installer has been installed |     
+| metadata | Object | repo metadata   |      
 | name | string | installer name |      
-| readme | string | readme file |      
 | repo | string | installer repo |      
-| schema_type |  | configuration schema type |      
 | version | string | installer version |   
 
 

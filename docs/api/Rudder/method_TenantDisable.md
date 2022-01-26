@@ -1,7 +1,7 @@
 ---
-title: "ListBindTenants"
-description: '获取插件绑定租户接口'
----调用该接口获取插件绑定租户接口。
+title: "TenantDisable"
+description: '插件租户停用接口'
+---调用该接口插件租户停用接口。
 
 
 
@@ -9,27 +9,25 @@ description: '获取插件绑定租户接口'
 
 
 ```
-get \plugins\{id}\tenants
+delete \plugins\{id}\tenants
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string | plugin id |  
 
+###  Request Parameters
+
+| Name | Located in | Type | Description |  Required |
+| ---- | ---------- | ----------- | ----------- |  ---- |
+| extra | query | string | extra data |  false |
+
 ## Response
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListBindTenantsResponse](#v1ListBindTenantsResponse) |
-
-#### v1ListBindTenantsResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |        
-| tenants | Array[ string ] | plugin bind tenants list |    
-
-
+### Response  200
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
 
 ### Response  400
 | Code3 | Description | Type | 

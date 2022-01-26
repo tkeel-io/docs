@@ -1,7 +1,7 @@
 ---
-title: "ListUser"
-description: 'list users'
----调用该接口list users。
+title: "AddRolePermissionList"
+description: 'add role permission list'
+---调用该接口add role permission list。
 
 
 
@@ -9,51 +9,45 @@ description: 'list users'
 
 
 ```
-get \tenants\{tenant_id}\users
+post \rbac\tenant\{tenant_id}\roles\{role}\permissions
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | tenant_id | path | string |  |  
+| role | path | string |  |  
 
-###  Request Parameters
+### Request Body 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+|  | Object | [v1AddRolePermissionListBody](#v1AddRolePermissionListBody) |
 
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| page_num | query | integer |  |  false |
-| page_size | query | integer |  |  false |
-| order_by | query | string |  |  false |
-| is_descending | query | boolean |  |  false |
-| key_words | query | string |  |  false |
+#### v1AddRolePermissionListBody
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |         
+| permissions | Array[v1AddRolePermissionBody] |  [ 具体参数可见下面 [v1AddRolePermissionBody](#v1AddRolePermissionBody) ] |    
+
+### v1AddRolePermissionBody
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| permission_action | string |  |      
+| permission_object | string |  |   
+
+
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListUserResponse](#v1ListUserResponse) |
+| 200 | OK | Object | [v1AddRolePermissionResponse](#v1AddRolePermissionResponse) |
 
-#### v1ListUserResponse
+#### v1AddRolePermissionResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| page_num | integer |  |      
-| page_size | integer |  |      
-| total | integer |  |          
-| users | Array[v1UserListData] |  [ 具体参数可见下面 [v1UserListData](#v1UserListData) ] |    
-
-### v1UserListData
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| avatar | string |  |      
-| create_at | string |  |      
-| email | string |  |      
-| external_id | string |  |      
-| nick_name | string |  |         
-| roles | Array[ string ] |  |       
-| tenant_id | string |  |      
-| user_id | string |  |      
-| username | string |  |   
+| ok | boolean |  |   
 
 
 

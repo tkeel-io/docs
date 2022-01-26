@@ -1,7 +1,7 @@
 ---
-title: "ListUser"
-description: 'list users'
----调用该接口list users。
+title: "BeforeSetPassword"
+description: 'before reset user password '
+---调用该接口before reset user password 。
 
 
 
@@ -9,48 +9,26 @@ description: 'list users'
 
 
 ```
-get \tenants\{tenant_id}\users
+put \tenants\{tenant_id}\user\{user_id}\pwd
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | tenant_id | path | string |  |  
-
-###  Request Parameters
-
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| page_num | query | integer |  |  false |
-| page_size | query | integer |  |  false |
-| order_by | query | string |  |  false |
-| is_descending | query | boolean |  |  false |
-| key_words | query | string |  |  false |
+| user_id | path | string |  |  
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListUserResponse](#v1ListUserResponse) |
+| 200 | OK | Object | [v1BeforeSetPasswordResponse](#v1BeforeSetPasswordResponse) |
 
-#### v1ListUserResponse
+#### v1BeforeSetPasswordResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| page_num | integer |  |      
-| page_size | integer |  |      
-| total | integer |  |          
-| users | Array[v1UserListData] |  [ 具体参数可见下面 [v1UserListData](#v1UserListData) ] |    
-
-### v1UserListData
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| avatar | string |  |      
-| create_at | string |  |      
-| email | string |  |      
-| external_id | string |  |      
-| nick_name | string |  |         
-| roles | Array[ string ] |  |       
+| nick_name | string |  |      
 | tenant_id | string |  |      
 | user_id | string |  |      
 | username | string |  |   

@@ -1,7 +1,7 @@
 ---
-title: "BindTenants"
-description: '插件绑定租户接口'
----调用该接口插件绑定租户接口。
+title: "ListenableTenants"
+description: '获取插件绑定租户接口'
+---调用该接口获取插件绑定租户接口。
 
 
 
@@ -9,31 +9,34 @@ description: '插件绑定租户接口'
 
 
 ```
-post \plugins\{id}\tenants
+get \plugins\{id}\tenants
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string | plugin id |  
 
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-| extra data | Object | [](#) |
-
-#### 
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
-
-
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | OK | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [v1ListEnabledTenantsResponse](#v1ListEnabledTenantsResponse) |
+
+#### v1ListEnabledTenantsResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |         
+| tenants | Array[v1EnabledTenant] | plugin enable tenants list [ 具体参数可见下面 [v1EnabledTenant](#v1EnabledTenant) ] |    
+
+### v1EnabledTenant
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| enable_timestamp | string | enable timestamp |      
+| operator_id | string | operator user id |      
+| tenant_id | string | enable tenant id |   
+
+
 
 ### Response  400
 | Code3 | Description | Type | 

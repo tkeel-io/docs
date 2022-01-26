@@ -9,37 +9,33 @@ description: 'list user permissions '
 
 
 ```
-post \rbac\check\tenant\users\permissions
+get \rbac\tenant\{tenant_id}\users\{user_id}\permissions
 ```
 
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [v1CheckUserPermissionBody](#v1CheckUserPermissionBody) |
-
-#### v1CheckUserPermissionBody
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| permission_action | string |  |      
-| permission_object | string |  |      
-| tenant_id | string |  |      
-| user_id | string |  |   
-
-
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| tenant_id | path | string |  |  
+| user_id | path | string |  |  
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1CheckUserPermissionResponse](#v1CheckUserPermissionResponse) |
+| 200 | OK | Object | [v1ListUserPermissionResponse](#v1ListUserPermissionResponse) |
 
-#### v1CheckUserPermissionResponse
+#### v1ListUserPermissionResponse
 
 | Name | Type | Description | 
+| ---- | ---- | ----------- |         
+| permissions | Array[v1ListPermissionDetail] |  [ 具体参数可见下面 [v1ListPermissionDetail](#v1ListPermissionDetail) ] |    
+
+### v1ListPermissionDetail
+| Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| allowed | boolean |  |   
+| permission_action | string |  |      
+| permission_object | string |  |      
+| role | string |  |   
 
 
 

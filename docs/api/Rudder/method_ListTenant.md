@@ -28,8 +28,10 @@ get \tenants
 ### v1TenantDetail
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| num_user | string | user number in tenant |      
-| remark | string | tenant remark |      
+| created_at | string | user number in tenant |      
+| num_user | integer | user number in tenant |      
+| remark | string | tenant remark |         
+| roles | Array[ string ] | user roles in tenant |       
 | tenant_id | string | tenant id |      
 | title | string | tenant id |   
 

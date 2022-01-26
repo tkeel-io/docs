@@ -32,17 +32,10 @@ post \rbac\tenant\{tenant_id}\users\roles
 
 ## Response
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1AddUserRolesResponse](#v1AddUserRolesResponse) |
-
-#### v1AddUserRolesResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
-
+### Response  200
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

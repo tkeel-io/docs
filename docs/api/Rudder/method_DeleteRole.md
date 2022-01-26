@@ -19,17 +19,10 @@ delete \rbac\tenant\{tenant_id}\roles\{role}
 
 ## Response
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1DeleteRoleResponse](#v1DeleteRoleResponse) |
-
-#### v1DeleteRoleResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
-
+### Response  200
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

@@ -1,7 +1,7 @@
 ---
-title: "ListUser"
-description: 'list users'
----调用该接口list users。
+title: "UpdateUser"
+description: 'update user'
+---调用该接口update user。
 
 
 
@@ -9,51 +9,40 @@ description: 'list users'
 
 
 ```
-get \tenants\{tenant_id}\users
+put \tenants\{tenant_id}\users\{user_id}
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | tenant_id | path | string |  |  
+| user_id | path | string |  |  
 
-###  Request Parameters
+### Request Body 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+|  | Object | [v1UpdateUserBody](#v1UpdateUserBody) |
 
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| page_num | query | integer |  |  false |
-| page_size | query | integer |  |  false |
-| order_by | query | string |  |  false |
-| is_descending | query | boolean |  |  false |
-| key_words | query | string |  |  false |
+#### v1UpdateUserBody
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| nick_name | string |  |         
+| roles | Array[ string ] |  |    
+
+
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListUserResponse](#v1ListUserResponse) |
+| 200 | OK | Object | [v1UpdateUserResponse](#v1UpdateUserResponse) |
 
-#### v1ListUserResponse
+#### v1UpdateUserResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| page_num | integer |  |      
-| page_size | integer |  |      
-| total | integer |  |          
-| users | Array[v1UserListData] |  [ 具体参数可见下面 [v1UserListData](#v1UserListData) ] |    
-
-### v1UserListData
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| avatar | string |  |      
-| create_at | string |  |      
-| email | string |  |      
-| external_id | string |  |      
-| nick_name | string |  |         
-| roles | Array[ string ] |  |       
-| tenant_id | string |  |      
-| user_id | string |  |      
-| username | string |  |   
+| ok | boolean |  |   
 
 
 

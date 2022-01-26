@@ -1,7 +1,7 @@
 ---
-title: "ListUser"
-description: 'list users'
----调用该接口list users。
+title: "TenantEnable"
+description: '插件租户启用接口'
+---调用该接口插件租户启用接口。
 
 
 
@@ -9,53 +9,41 @@ description: 'list users'
 
 
 ```
-get \tenants\{tenant_id}\users
+post \plugins\{id}\tenants
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| tenant_id | path | string |  |  
+| id | path | string | plugin id |  
 
-###  Request Parameters
+### Request Body 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+| extra data | Object | [](#) |
 
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| page_num | query | integer |  |  false |
-| page_size | query | integer |  |  false |
-| order_by | query | string |  |  false |
-| is_descending | query | boolean |  |  false |
-| key_words | query | string |  |  false |
+#### 
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |  
+
+
 
 ## Response
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListUserResponse](#v1ListUserResponse) |
+### Response  200
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
 
-#### v1ListUserResponse
+### Response  400
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 400 | INVALID_ARGUMENT | {   { }} |
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| page_num | integer |  |      
-| page_size | integer |  |      
-| total | integer |  |          
-| users | Array[v1UserListData] |  [ 具体参数可见下面 [v1UserListData](#v1UserListData) ] |    
-
-### v1UserListData
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| avatar | string |  |      
-| create_at | string |  |      
-| email | string |  |      
-| external_id | string |  |      
-| nick_name | string |  |         
-| roles | Array[ string ] |  |       
-| tenant_id | string |  |      
-| user_id | string |  |      
-| username | string |  |   
-
-
+### Response  500
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 500 | INTERNAL_ERROR | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

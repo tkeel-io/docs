@@ -1,7 +1,7 @@
 ---
-title: "ListUser"
-description: 'list users'
----调用该接口list users。
+title: "ListenableTenants"
+description: '获取插件绑定租户接口'
+---调用该接口获取插件绑定租户接口。
 
 
 
@@ -9,53 +9,44 @@ description: 'list users'
 
 
 ```
-get \tenants\{tenant_id}\users
+get \plugins\{id}\tenants
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| tenant_id | path | string |  |  
-
-###  Request Parameters
-
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| page_num | query | integer |  |  false |
-| page_size | query | integer |  |  false |
-| order_by | query | string |  |  false |
-| is_descending | query | boolean |  |  false |
-| key_words | query | string |  |  false |
+| id | path | string | plugin id |  
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListUserResponse](#v1ListUserResponse) |
+| 200 | OK | Object | [v1ListEnabledTenantsResponse](#v1ListEnabledTenantsResponse) |
 
-#### v1ListUserResponse
+#### v1ListEnabledTenantsResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| page_num | integer |  |      
-| page_size | integer |  |      
-| total | integer |  |          
-| users | Array[v1UserListData] |  [ 具体参数可见下面 [v1UserListData](#v1UserListData) ] |    
+| ---- | ---- | ----------- |         
+| tenants | Array[v1EnabledTenant] | plugin enable tenants list [ 具体参数可见下面 [v1EnabledTenant](#v1EnabledTenant) ] |    
 
-### v1UserListData
+### v1EnabledTenant
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| avatar | string |  |      
-| create_at | string |  |      
-| email | string |  |      
-| external_id | string |  |      
-| nick_name | string |  |         
-| roles | Array[ string ] |  |       
-| tenant_id | string |  |      
-| user_id | string |  |      
-| username | string |  |   
+| enable_timestamp | string | enable timestamp |      
+| operator_id | string | operator user id |      
+| tenant_id | string | enable tenant id |   
 
 
+
+### Response  400
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 400 | INVALID_ARGUMENT | {   { }} |
+
+### Response  500
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 500 | INTERNAL_ERROR | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

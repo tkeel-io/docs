@@ -25,7 +25,9 @@ post \tenants\{tenant_id}\users
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| password | string | user password |      
+| nick_name | string | user nick name |      
+| password | string | user password |         
+| roles | Array[ string ] | user roles |       
 | username | string | user name |   
 
 

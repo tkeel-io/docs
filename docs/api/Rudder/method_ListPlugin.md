@@ -27,11 +27,11 @@ get \plugins
 
 ### v1PluginObject
 | Name | Type | Description | 
-| ---- | ---- | ----------- |        
-| active_tenantes | Array[ string ] | active tenant's id list |           
+| ---- | ---- | ----------- |         
 | addons_point | Array[v1AddonsPoint] | plugin declares addons [ 具体参数可见下面 [v1AddonsPoint](#v1AddonsPoint) ] |       
 | brief_installer_info |  | brief installer info only has name,verison,repo_name and installed field. |          
-| console_entries | Array[v1ConsoleEntry] | plugin console entries [ 具体参数可见下面 [v1ConsoleEntry](#v1ConsoleEntry) ] |       
+| console_entries | Array[v1ConsoleEntry] | plugin console entries [ 具体参数可见下面 [v1ConsoleEntry](#v1ConsoleEntry) ] |           
+| enable_tenantes | Array[v1EnabledTenant] | enable tenant's id list [ 具体参数可见下面 [v1EnabledTenant](#v1EnabledTenant) ] |       
 | id | string | plugin id |          
 | implemented_plugin | Array[v1ImplementedPlugin] | plugin implemented plugin list [ 具体参数可见下面 [v1ImplementedPlugin](#v1ImplementedPlugin) ] |       
 | plugin_version | string | plugin version |          
@@ -56,6 +56,13 @@ get \plugins
 | id | string |  |      
 | name | string |  |      
 | path | string |  |   
+
+### v1EnabledTenant
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| enable_timestamp | string | enable timestamp |      
+| operator_id | string | operator user id |      
+| tenant_id | string | enable tenant id |   
 
 ### v1ImplementedPlugin
 | Name | Type | Description | 

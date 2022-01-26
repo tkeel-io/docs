@@ -27,6 +27,7 @@ get \tenants\{tenant_id}
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
+| created_at | string | tenant remark |      
 | remark | string | tenant remark |      
 | tenant_id | string | tenant id |      
 | title | string | tenant title |   

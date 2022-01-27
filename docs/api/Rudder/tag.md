@@ -7,6 +7,7 @@ sidebar_position: 0
 
 
 
+
 ## Oauth2相关API
 
 | Name |  Description | 
@@ -15,6 +16,7 @@ sidebar_position: 0
 | [AddPluginWhiteList](./method_AddPluginWhiteList)|  添加 Plugin 白名单 dapr App ID 接口 |
 | [VerifyToken](./method_VerifyToken)|  Token 验证接口 |
 | [IssuePluginToken](./method_IssuePluginToken)|  插件 Token 颁发接口 |
+
 
 
 ## Plugin相关API
@@ -30,6 +32,7 @@ sidebar_position: 0
 | [UninstallPlugin](./method_UninstallPlugin)|  卸载插件接口 |
 
 
+
 ## Repo相关API
 
 | Name |  Description | 
@@ -39,6 +42,7 @@ sidebar_position: 0
 | [CreateRepo](./method_CreateRepo)|  创建仓库接口 |
 | [GetRepoInstaller](./method_GetRepoInstaller)|  获取仓库中指定安装包 |
 | [ListRepoInstaller](./method_ListRepoInstaller)|  获取仓库中安装包列表接口 |
+
 
 
 ## [Security] EntityToken相关API
@@ -76,6 +80,7 @@ sidebar_position: 0
 | [DeleteRole](./method_DeleteRole)|  delete role in tenant  |
 
 
+
 ## [Security] Tenant相关API
 
 | Name |  Description | 
@@ -101,3 +106,4 @@ sidebar_position: 0
 | Name |  Description | 
 | ---- |  ----------- | 
 | [GetEntries](./method_GetEntries)|  查询 console entries 接口 |
+

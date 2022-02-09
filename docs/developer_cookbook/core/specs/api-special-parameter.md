@@ -571,7 +571,8 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device12
                     "type": "float",
                     "define": {
                         "max": 1,
-                        "min": 0
+                        "min": 0,
+                        "ext": {"test":123}
                     },
                     "enabled": true,
                     "enabled_search": true
@@ -582,7 +583,7 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device12
 curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/configs/patch?type=BASIC&owner=admin&source=dm" \
   -H "Content-Type: application/json" \
   -d '[{
-              "path": "cpu_used",
+              "path": "metrics.mem_used",
               "operator": "remove"
     }]'
 
@@ -617,7 +618,7 @@ curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device12
 curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device123/configs/patch?type=BASIC&owner=admin&source=dm" \
   -H "Content-Type: application/json" \
   -d '[{
-              "path": "metrics.cpu_used",
+              "path": "metrics.mem_used",
               "operator": "remove"
     }]'
 

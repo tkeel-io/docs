@@ -1,7 +1,7 @@
 ---
-title: "PermissibleTenantPlugin"
-description: 'permissible tenant plugin'
----调用该接口permissible tenant plugin。
+title: "GetResetPasswordKey"
+description: 'get reset user password key '
+---调用该接口get reset user password key 。
 
 
 
@@ -9,28 +9,30 @@ description: 'permissible tenant plugin'
 
 
 ```
-get \tenants\plugins\permissible
+get \tenants\{tenant_id}\users\{user_id}\rpk
 ```
 
-###  Request Parameters
-
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| tenant_id | query | string |  |  false |
-| plugin_id | query | string |  |  false |
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| tenant_id | path | string |  |  
+| user_id | path | string |  |  
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1PluginPermissibleResponse](#v1PluginPermissibleResponse) |
+| 200 | OK | Object | [v1GetResetPasswordKeyResponse](#v1GetResetPasswordKeyResponse) |
 
-#### v1PluginPermissibleResponse
+#### v1GetResetPasswordKeyResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| allowed | boolean |  |   
+| nick_name | string |  |      
+| reset_key | string |  |      
+| tenant_id | string |  |      
+| user_id | string |  |      
+| username | string |  |   
 
 
 

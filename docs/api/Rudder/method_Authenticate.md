@@ -1,7 +1,7 @@
 ---
-title: "PermissibleTenantPlugin"
-description: 'permissible tenant plugin'
----调用该接口permissible tenant plugin。
+title: "Authenticate"
+description: 'tkeel authenticate with header Authorization'
+---调用该接口tkeel authenticate with header Authorization。
 
 
 
@@ -9,30 +9,44 @@ description: 'permissible tenant plugin'
 
 
 ```
-get \tenants\plugins\permissible
+get \authenticate
 ```
 
 ###  Request Parameters
 
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
-| tenant_id | query | string |  |  false |
-| plugin_id | query | string |  |  false |
+| path | query | string | url path |  false |
+| verb | query | string | http verb |  false |
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1PluginPermissibleResponse](#v1PluginPermissibleResponse) |
+| 200 | OK | Object | [apiauthenticationv1AuthenticateResponse](#apiauthenticationv1AuthenticateResponse) |
 
-#### v1PluginPermissibleResponse
+#### apiauthenticationv1AuthenticateResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| allowed | boolean |  |   
+| destination | string | dst plugin id |      
+| method | string | dst plugin method |      
+| role | string | role |      
+| tenant_id | string | tenant id |      
+| user_id | string | user id |   
 
 
+
+### Response  400
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 400 | INVALID_ARG | {   { }} |
+
+### Response  500
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 500 | INTERNAL_ERROR | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

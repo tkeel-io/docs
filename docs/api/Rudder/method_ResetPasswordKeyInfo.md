@@ -1,7 +1,7 @@
 ---
-title: "PermissibleTenantPlugin"
-description: 'permissible tenant plugin'
----调用该接口permissible tenant plugin。
+title: "ResetPasswordKeyInfo"
+description: 'get reset user password key info'
+---调用该接口get reset user password key info。
 
 
 
@@ -9,28 +9,37 @@ description: 'permissible tenant plugin'
 
 
 ```
-get \tenants\plugins\permissible
+post \tenants\users\rpk\info
 ```
 
-###  Request Parameters
+### Request Body 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+|  | Object | [v1RPKInfoBody](#v1RPKInfoBody) |
 
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| tenant_id | query | string |  |  false |
-| plugin_id | query | string |  |  false |
+#### v1RPKInfoBody
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| reset_key | string |  |   
+
+
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1PluginPermissibleResponse](#v1PluginPermissibleResponse) |
+| 200 | OK | Object | [v1RPKInfoResponse](#v1RPKInfoResponse) |
 
-#### v1PluginPermissibleResponse
+#### v1RPKInfoResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| allowed | boolean |  |   
+| nick_name | string |  |      
+| tenant_id | string |  |      
+| user_id | string |  |      
+| username | string |  |   
 
 
 

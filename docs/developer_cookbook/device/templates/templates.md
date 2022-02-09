@@ -51,7 +51,7 @@ sidebar_position: 1
 |字段|Located in|类型|描述|
 |---|---|----|----|
 |name|body|string| 模板名称 |
-|desc|body|string| 模板说明 |
+|description|body|string| 模板说明 |
 
 #### Example
 
@@ -63,7 +63,7 @@ curl --location --request POST '127.0.0.1:31234/v1/templates' \
 --header 'Content-Type: application/json' \
 --data-raw '{
    "name":"三相UPS",
-   "desc":"低压配电"
+   "description":"低压配电"
        
 }'
 ```
@@ -86,7 +86,7 @@ curl --location --request POST '127.0.0.1:31234/v1/templates' \
             "configs": {},
             "properties": {
                 "basicInfo": {
-                    "desc": "低压配电",
+                    "descriptionc": "低压配电",
                     "name": "三相UPS"
                 },
                 "sysField": {
@@ -120,25 +120,12 @@ curl --location --request POST '127.0.0.1:31234/v1/templates' \
 
 #### API 字段说明
 
-| 字段        | Located in | 类型   | 描述                                                         |
-| ----------- | ---------- | ------ | ------------------------------------------------------------ |
-| uid         | path       | string | 模板对象id ，表示创建那一个设备模板对象的属性内容            |
-| name        | body       | string | 属性名称                                                     |
-| id          | body       | string | 属性ID, 表示属性的唯一标识                                   |
-| description | body       | string | 属性说明                                                     |
-| type        | body       | string | 数据类型["int","float","double","array","bool","enum","date","struct","string"] |
-| define      | body       | object | 模型的本质是对数据的约束和定义，前面的字段描述的是此数据的基本信息，那么define 对象是对此数据的详细定义和约束，定义和约束内容并不限制且可适应未来不同情况无限扩展。形式为KV。<br/>对于此处约定是定义和约束属性目前按照设计页面先简单约定如下：<br/> define{<br/>      “default_value”: xxx,     //xxx表示默认值<br/>      "rw" : r   // r 表示可读，w表示可写， rw 表示可读写<br/>}<br/><br/>**根据实际情况如以上define 定义不满足要求时或需要丰富时 ，以kv 的形式扩展define** |
-
-#### 
-
-
-
 | 字段   | Located in | 类型   | 描述                                                         |
 | ------ | ---------- | ------ | ------------------------------------------------------------ |
 | uid    | path       | string | 模板对象id ，表示创建那一个设备模板对象的属性内容            |
 | name   | body       | string | 属性名称                                                     |
 | id     | body       | string | 属性ID, 表示属性的唯一标识                                   |
-| des    | body       | string | 属性说明                                                     |
+| description    | body       | string | 属性说明                                                     |
 | type   | body       | string | 数据类型["int32","float","double","array","bool","enum","date","struct","string"] |
 | define | body       | object | 模型的本质是对数据的约束和定义，前面的字段描述的是此数据的基本信息，那么define 对象是对此数据的详细定义和约束，定义和约束内容并不限制且可适应未来不同情况无限扩展。形式为KV。<br/>对于此处约定是定义和约束属性目前按照设计页面先简单约定如下：<br/> define{<br/>      “default_value”: xxx,     //xxx表示默认值<br/>      "rw" : r   // r 表示可读，w表示可写， rw 表示可读写<br/>}<br/><br/>**根据实际情况如以上define 定义不满足要求时或需要丰富时 ，以kv 的形式扩展define** |
 
@@ -153,7 +140,7 @@ curl --location --request POST '127.0.0.1:31234/v1/templates/4aa904c9-dfd8-454f-
 --data-raw '{
    "name":"序列号",
    "id":"serial",
-   "desc":"设备批次",
+   "description":"设备批次",
    "type":"string",
    "define":{
        "default_value":"xxxxxxxx",
@@ -198,7 +185,7 @@ curl --location --request POST '127.0.0.1:31234/v1/templates/4aa904c9-dfd8-454f-
 | uid    | path       | string | 模板对象id ，表示创建那一个设备模板对象的遥测内容            |
 | name   | body       | string | 遥测名称                                                     |
 | id     | body       | string | 遥测ID, 表示遥测的唯一标识                                   |
-| des    | body       | string | 遥测说明                                                     |
+| description    | body       | string | 遥测说明                                                     |
 | type   | body       | string | 数据类型["int","float","double","array","bool","enum","date","struct","string"] |
 | define | body       | object | 模型的本质是对数据的约束和定义，前面的字段描述的是此数据的基本信息，那么define 对象是对此数据的详细定义和约束，定义和约束内容并不限制且可适应未来不同情况无限扩展。形式为KV。<br/>遥测主要有类似电压、电流、功率、温度、湿度等带时间戳的时序值：<br/>定义和约束按照数据类型划分<br/>参考前面平台：<br/>数据类型 <br />int32,float,double的define约束:<br/>{<br/>    "max": "100",<br/>    "min": "1",<br/>    "step": "1",<br/>    "unit": "v",<br/>    "unitName": "伏"<br/>    "ext":{<br/>        "xxx":"xxx",<br/>        "yyy":"yyy"<br/>    }<br/>}<br/>string约束:<br/>{<br/>    "max": "100"<br/>     "ext":{<br/>  <br/>     }<br/>}<br/>enum约束:<br/><br/>{<br/>    "0": "开",<br/>    "1": "关"<br/>    "2": "无"<br/>}<br/>bool约束<br/><br/>{<br/>    "0": "开",<br/>    "1": "关"<br/>}<br/>array约束:<br/><br/>{<br/>    "size": "10",<br/>    "item": {<br/>        "type":"int32"<br/>    }<br/>}<br/>{<br/>    "size": "10",<br/>    "item": {<br/>        "type":"struct",<br/>        "define":{<br/>           "items": [<br/>        {<br/>            "name":"param1",<br/>            "identifier":"param1",<br/>            "type":"int32",<br/>            "define":{<br/>                "max": "100",<br/>                "min": "1",<br/>                "step": "1",<br/>                "unit": "s",<br/>                "unitName": "s"<br/>            }<br/>        },<br/>        {<br/>            "name":"param2",<br/>            "identifier":"param2",<br/>            "type":"string",<br/>            "define":{<br/>                "max":"1024"<br/>            }<br/>        }<br/>    ]<br/>        }<br/>    }<br/>}<br/>struct约束:<br/><br/>{<br/>    "items": [<br/>        {<br/>            "name":"param1",<br/>            "identifier":"param1",<br/>            "type":"int32"<br/>            "define":{<br/>                "max": "100",<br/>                "min": "1",<br/>                "step": "1",<br/>                "unit": "s",<br/>                "unitName": "s"<br/>            }<br/>        },<br/>        {<br/>            "name":"param1",<br/>            "identifier":"param2",<br/>            "type":"string"<br/>            "define":{<br/>                "max": "100"<br/>            }<br/>        }<br/>    ]<br/>     <br/>}<br/><br/><br/>**根据实际情况如以上define 定义不满足要求时或需要丰富时 ，以kv 的形式扩展define** |
 
@@ -271,7 +258,7 @@ curl --location --request POST '127.0.0.1:31234/v1/templates/4aa904c9-dfd8-454f-
 | uid    | path       | string | 模板对象id ，表示创建那一个设备模板对象的命令内容            |
 | name   | body       | string | 命令名称                                                     |
 | id     | body       | string | 命令ID, 表示属性的唯一标识                                   |
-| des    | body       | string | 命令说明                                                     |
+| description    | body       | string | 命令说明                                                     |
 | type   | body       | string | ["struct"]   //默认填写                                      |
 | define | body       | object | 模型的本质是对数据的约束和定义，前面的字段描述的是此数据的基本信息，那么define 对象是对此数据的详细定义和约束，定义和约束内容并不限制且可适应未来不同情况无限扩展。形式为KV。<br/>对于命令的define 来说 只有存在两个部分，发送的内容input  和  返回的内容output   <br/>命令相对于平台来说 本质是提供一个下发数据到设备的通道，对于input 的内容 可简单暂时约定为自由定义的 json对象，相当于自己定义下发的协议(IDC项目中ota 升级也是采用的此方式)  <br/><br />"define": {<br/>        "mode":"sync", //sync  同步  async 异步<br/>        "input": {<br/>            "name":"ota_send",<br/>            "id":"ota_send",<br/>            "type" : "json" ,<br/>            "define" :{}<br/>        },<br/>        "output": {<br/>           "name":"ota_return",<br/>           "id":"ota_return",<br/>           "type": "string",<br/>            "define": {<br/>                 "eq":"ok"<br/>            }<br/>       }<br/>    }**根据实际情况如以上define 定义不满足要求时或需要丰富时 ，以kv 的形式扩展define** |
 

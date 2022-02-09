@@ -1,5 +1,5 @@
 ---
-title: 使用设备订阅数据-原始数据、模板数据
+title: 设备订阅数据
 sidebar_position: 3
 ---
 

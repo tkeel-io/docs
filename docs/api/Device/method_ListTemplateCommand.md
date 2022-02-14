@@ -12,7 +12,7 @@ description: 'list template command'
 
 
 ```
-get /templates/{uid}/commands
+get /templates/{uid}/command
 ```
 
 
@@ -39,11 +39,13 @@ get /templates/{uid}/commands
 #### v1ListTemplateCommandResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| templateCmdObject |  | 命令列表对象 |   
+| ---- | ---- | ----------- |    
+| templateCmdObject | Object | 命令列表对象   |   
 
 
   
+    
+          
      
  
  

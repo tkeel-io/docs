@@ -37,7 +37,7 @@ put /templates/{uid}
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| desc | string | 模板描述 |      
+| description | string | 模板描述 |      
 | name | string | 模板名称 |   
 
 

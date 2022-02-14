@@ -12,7 +12,7 @@ description: 'list Template attribute'
 
 
 ```
-get /templates/{uid}/attributes
+get /templates/{uid}/attribute
 ```
 
 
@@ -39,11 +39,13 @@ get /templates/{uid}/attributes
 #### v1ListTemplateAttributeResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| templateAttrObject |  | 属性列表对象 |   
+| ---- | ---- | ----------- |    
+| templateAttrObject | Object | 属性列表对象   |   
 
 
   
+    
+          
      
  
  

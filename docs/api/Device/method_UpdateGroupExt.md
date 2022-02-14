@@ -12,14 +12,14 @@ description: 'update group extensions'
 
 
 ```
-post /groups/{id_1}/ext
+put /groups/{id}/ext
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id_1 | path | string | 设备组ID |  
+| id | path | string | 设备组ID |  
 
 
 

@@ -37,11 +37,11 @@ put /devices/{id}
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| desc | string | 设备描述 |      
+| description | string | 设备描述 |      
 | directConnection | boolean | 设备是否直连 |     
 | ext | Object | 设备扩展配置   |      
-| group | string | 设备组ID |      
 | name | string | 设备名称 |      
+| parentId | string | 设备组ID |      
 | selfLearn | boolean | 设备模板自学习 |      
 | templateId | string | 设备模板ID |   
 

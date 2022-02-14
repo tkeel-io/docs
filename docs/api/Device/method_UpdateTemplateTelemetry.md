@@ -38,7 +38,7 @@ put /templates/{uid}/telemetry
 | Name | Type | Description | 
 | ---- | ---- | ----------- |    
 | define | Object | 数据定义和约束   |      
-| des | string | 说明 |      
+| description | string | 说明 |      
 | id | string | 标识符 |      
 | name | string | 名称 |      
 | type | string | 数据类型 |   

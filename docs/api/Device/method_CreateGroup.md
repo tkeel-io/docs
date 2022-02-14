@@ -33,10 +33,10 @@ post /groups
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| desc | string | 设备组说明 |     
+| description | string | 设备组说明 |     
 | ext | Object | 设备组扩展属性   |      
 | name | string | 设备组名称 |      
-| parent | string | 父设备组ID |   
+| parentId | string | 父设备组ID |   
 
 
   

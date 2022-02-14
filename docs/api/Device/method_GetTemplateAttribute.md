@@ -12,7 +12,7 @@ description: 'get Template attribute'
 
 
 ```
-get /templates/{uid}/attributes/{id}
+get /templates/{uid}/attribute/{id}
 ```
 
 
@@ -40,11 +40,13 @@ get /templates/{uid}/attributes/{id}
 #### v1GetTemplateAttributeResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| templateAttrSingleObject |  | 单个属性对象 |   
+| ---- | ---- | ----------- |    
+| templateAttrSingleObject | Object | 单个属性对象   |   
 
 
   
+    
+          
      
  
  

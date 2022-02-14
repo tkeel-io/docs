@@ -39,11 +39,13 @@ get /templates/{uid}/telemetry
 #### v1ListTemplateTelemetryResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| templateTeleObject |  | 遥测列表对象 |   
+| ---- | ---- | ----------- |    
+| templateTeleObject | Object | 遥测列表对象   |   
 
 
   
+    
+          
      
  
  

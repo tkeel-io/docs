@@ -1,10 +1,7 @@
 ---
 title: "ListTemplateAttribute"
 description: 'list Template attribute'
----
-
-
-调用该接口list Template attribute。
+---调用该接口list Template attribute。
 
 
 
@@ -15,23 +12,13 @@ description: 'list Template attribute'
 get /templates/{uid}/attribute
 ```
 
-
-
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | uid | path | string | 模板ID |  
 
-
-
-
-
 ## Response
 
-
-
-### Response  200
-
- 
+### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [v1ListTemplateAttributeResponse](#v1ListTemplateAttributeResponse) |
@@ -43,20 +30,8 @@ get /templates/{uid}/attribute
 | templateAttrObject | Object | 属性列表对象   |   
 
 
-  
-    
-          
-     
- 
- 
 
-
- 
-
-
-### Response  default
-
- 
+### Response  default 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -69,32 +44,10 @@ get /templates/{uid}/attribute
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-
-  
-     
-   
-       
-         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
-
-  
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
 
 

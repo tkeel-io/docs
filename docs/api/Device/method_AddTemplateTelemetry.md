@@ -1,10 +1,7 @@
 ---
 title: "AddTemplateTelemetry"
 description: 'add Template telemetry'
----
-
-
-调用该接口add Template telemetry。
+---调用该接口add Template telemetry。
 
 
 
@@ -15,20 +12,11 @@ description: 'add Template telemetry'
 post /templates/{uid}/telemetry
 ```
 
-
-
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | uid | path | string | 模板ID |  
 
-
-
-
-
-### Request Body
-
-
- 
+### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 | 遥测 | Object | [v1PropConfig](#v1PropConfig) |
@@ -44,41 +32,15 @@ post /templates/{uid}/telemetry
 | type | string | 数据类型 |   
 
 
-  
-    
-          
-     
-   
-     
-   
-     
-   
-     
-   
-     
- 
- 
-
-
-
-
 
 ## Response
 
-
-
 ### Response  200
-
-
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
 | 200 | OK | {   { }} |
- 
 
-
-### Response  default
-
- 
+### Response  default 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -91,32 +53,10 @@ post /templates/{uid}/telemetry
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-
-  
-     
-   
-       
-         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
-
-  
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
 
 

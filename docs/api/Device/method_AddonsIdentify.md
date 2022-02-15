@@ -1,7 +1,7 @@
 ---
-title: "UpdateTemplate"
-description: 'update Template'
----调用该接口update Template。
+title: "AddonsIdentify"
+description: 'openapi addons identify'
+---调用该接口openapi addons identify。
 
 
 
@@ -9,24 +9,26 @@ description: 'update Template'
 
 
 ```
-put /templates/{uid}
+post /addons/identify
 ```
-
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| uid | path | string | 模板ID |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 模板基本信息 | Object | [v1TemplateBasicInfo](#v1TemplateBasicInfo) |
+|  | Object | [v1AddonsIdentifyRequest](#v1AddonsIdentifyRequest) |
 
-#### v1TemplateBasicInfo
+#### v1AddonsIdentifyRequest
 
 | Name | Type | Description | 
+| ---- | ---- | ----------- |         
+| implemented_addons | Array[v1ImplementedAddons] |  [ 具体参数可见下面 [v1ImplementedAddons](#v1ImplementedAddons) ] |       
+| plugin |  |  |   
+
+### v1ImplementedAddons
+| Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| description | string | 模板描述 |      
-| name | string | 模板名称 |   
+| addons_point | string |  |      
+| implemented_endpoint | string |  |   
 
 
 
@@ -35,13 +37,13 @@ put /templates/{uid}
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1UpdateTemplateResponse](#v1UpdateTemplateResponse) |
+| 200 | OK | Object | [v1AddonsIdentifyResponse](#v1AddonsIdentifyResponse) |
 
-#### v1UpdateTemplateResponse
+#### v1AddonsIdentifyResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| templateObject |  | 模板对象 |   
+| res |  |  |   
 
 
 

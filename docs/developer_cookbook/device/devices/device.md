@@ -241,7 +241,7 @@ curl --location --request POST '127.0.0.1:31234/v1/groups' \
 后端的做法是先全量查出所有的设备组（假如设备组过多 ，core没法全量返回的可能问题后续再讨论），通过解析  sysField._spacePath 字段内容 ，组成树状结构的map  
 
 ```
-get  127.0.0.1:31234/v1/groups/tree
+post  127.0.0.1:31234/v1/groups/tree
 ```
 
 #### example
@@ -339,6 +339,305 @@ curl --location --request POST '127.0.0.1:31234/v1/groups/tree' \
 
 说明：按设备组id  构建出的 空间树
 
+如果带上每个id 的详细内容  如下  ： nodeInfo 表示自己节点的所有信息，  subNode 表示下层的信息
+
+```json
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/api.group.v1.GetGroupTreeResponse",
+        "GroupTree": {
+            "0629d508-2b35-42b0-ab65-a04bd190c49d": {
+                "nodeInfo": {
+                    "id": "0629d508-2b35-42b0-ab65-a04bd190c49d",
+                    "owner": "usr-33737945c2b718db4c309d633d2f",
+                    "properties": {
+                        "group": {
+                            "description": "",
+                            "ext": {},
+                            "name": "测试设备组_001",
+                            "parentId": ""
+                        },
+                        "sysField": {
+                            "_createdAt": 1644896556921636000,
+                            "_id": "0629d508-2b35-42b0-ab65-a04bd190c49d",
+                            "_owner": "usr-33737945c2b718db4c309d633d2f",
+                            "_source": "device",
+                            "_spacePath": "0629d508-2b35-42b0-ab65-a04bd190c49d",
+                            "_updatedAt": 1644896556921636000
+                        }
+                    },
+                    "source": "device",
+                    "type": "group"
+                },
+                "subNode": {}
+            },
+            "07bbe91a-0494-45ab-8e52-60c20261386f": {
+                "nodeInfo": {
+                    "id": "07bbe91a-0494-45ab-8e52-60c20261386f",
+                    "owner": "usr-33737945c2b718db4c309d633d2f",
+                    "properties": {
+                        "group": {
+                            "description": "",
+                            "ext": {
+                                "厂商": "厂商_A",
+                                "版本": "1.0.0"
+                            },
+                            "name": "测试设备组_001",
+                            "parentId": ""
+                        },
+                        "sysField": {
+                            "_createdAt": 1644895063663798000,
+                            "_id": "07bbe91a-0494-45ab-8e52-60c20261386f",
+                            "_owner": "usr-33737945c2b718db4c309d633d2f",
+                            "_source": "device",
+                            "_spacePath": "07bbe91a-0494-45ab-8e52-60c20261386f",
+                            "_updatedAt": 1644895063663798300
+                        }
+                    },
+                    "source": "device",
+                    "type": "group"
+                },
+                "subNode": {}
+            },
+            "0dfb11d5-8962-4607-aa80-b6f5c4007dc8": {
+                "nodeInfo": {
+                    "id": "0dfb11d5-8962-4607-aa80-b6f5c4007dc8",
+                    "owner": "usr-33737945c2b718db4c309d633d2f",
+                    "properties": {
+                        "group": {
+                            "description": "",
+                            "ext": {
+                                "厂商": "qingcloud2",
+                                "版本": "1.0.1"
+                            },
+                            "name": "DeviceGroup_2",
+                            "parentId": ""
+                        },
+                        "sysField": {
+                            "_createdAt": 1644828922752394500,
+                            "_id": "0dfb11d5-8962-4607-aa80-b6f5c4007dc8",
+                            "_owner": "usr-33737945c2b718db4c309d633d2f",
+                            "_source": "device",
+                            "_spacePath": "0dfb11d5-8962-4607-aa80-b6f5c4007dc8",
+                            "_updatedAt": 1644828922752394500
+                        }
+                    },
+                    "source": "device",
+                    "type": "group"
+                },
+                "subNode": {}
+            },
+            "491b74da-0dcc-4fd1-90c8-a25867483abc": {
+                "nodeInfo": {},
+                "subNode": {
+                    "6ce4280c-3e00-44c0-a544-8845de77eb28": {
+                        "nodeInfo": {},
+                        "subNode": {
+                            "1909d775-55da-4cb3-b263-0da05f782eaa": {
+                                "nodeInfo": {
+                                    "id": "1909d775-55da-4cb3-b263-0da05f782eaa",
+                                    "owner": "usr-33737945c2b718db4c309d633d2f",
+                                    "properties": {
+                                        "group": {
+                                            "description": "",
+                                            "ext": {
+                                                "test": "test"
+                                            },
+                                            "name": "group3",
+                                            "parentId": "6ce4280c-3e00-44c0-a544-8845de77eb28"
+                                        },
+                                        "sysField": {
+                                            "_createdAt": 1644810122059558700,
+                                            "_id": "1909d775-55da-4cb3-b263-0da05f782eaa",
+                                            "_owner": "usr-33737945c2b718db4c309d633d2f",
+                                            "_source": "device",
+                                            "_spacePath": "491b74da-0dcc-4fd1-90c8-a25867483abc/6ce4280c-3e00-44c0-a544-8845de77eb28/1909d775-55da-4cb3-b263-0da05f782eaa",
+                                            "_updatedAt": 1644810122059558700
+                                        }
+                                    },
+                                    "source": "device",
+                                    "type": "group"
+                                },
+                                "subNode": {}
+                            },
+                            "8e584f2d-5bf4-4f1d-b960-fbd5b68a296d": {
+                                "nodeInfo": {
+                                    "id": "8e584f2d-5bf4-4f1d-b960-fbd5b68a296d",
+                                    "owner": "usr-33737945c2b718db4c309d633d2f",
+                                    "properties": {
+                                        "group": {
+                                            "description": "",
+                                            "ext": {
+                                                "test": "test"
+                                            },
+                                            "name": "group3",
+                                            "parentId": "6ce4280c-3e00-44c0-a544-8845de77eb28"
+                                        },
+                                        "sysField": {
+                                            "_createdAt": 1644810111997655000,
+                                            "_id": "8e584f2d-5bf4-4f1d-b960-fbd5b68a296d",
+                                            "_owner": "usr-33737945c2b718db4c309d633d2f",
+                                            "_source": "device",
+                                            "_spacePath": "491b74da-0dcc-4fd1-90c8-a25867483abc/6ce4280c-3e00-44c0-a544-8845de77eb28/8e584f2d-5bf4-4f1d-b960-fbd5b68a296d",
+                                            "_updatedAt": 1644810111997655300
+                                        }
+                                    },
+                                    "source": "device",
+                                    "type": "group"
+                                },
+                                "subNode": {}
+                            },
+                            "a5be91c7-3374-4f42-8848-8a48dd901a75": {
+                                "nodeInfo": {
+                                    "id": "a5be91c7-3374-4f42-8848-8a48dd901a75",
+                                    "owner": "usr-33737945c2b718db4c309d633d2f",
+                                    "properties": {
+                                        "group": {
+                                            "description": "",
+                                            "ext": {
+                                                "test": "test"
+                                            },
+                                            "name": "group3",
+                                            "parentId": "6ce4280c-3e00-44c0-a544-8845de77eb28"
+                                        },
+                                        "sysField": {
+                                            "_createdAt": 1644808684413428200,
+                                            "_id": "a5be91c7-3374-4f42-8848-8a48dd901a75",
+                                            "_owner": "usr-33737945c2b718db4c309d633d2f",
+                                            "_source": "device",
+                                            "_spacePath": "491b74da-0dcc-4fd1-90c8-a25867483abc/6ce4280c-3e00-44c0-a544-8845de77eb28/a5be91c7-3374-4f42-8848-8a48dd901a75",
+                                            "_updatedAt": 1644808684413428500
+                                        }
+                                    },
+                                    "source": "device",
+                                    "type": "group"
+                                },
+                                "subNode": {}
+                            },
+                            "b1953add-0472-4575-a2f6-2d1d2609cba8": {
+                                "nodeInfo": {
+                                    "id": "b1953add-0472-4575-a2f6-2d1d2609cba8",
+                                    "owner": "usr-33737945c2b718db4c309d633d2f",
+                                    "properties": {
+                                        "group": {
+                                            "description": "",
+                                            "ext": {
+                                                "test": "test"
+                                            },
+                                            "name": "group3",
+                                            "parentId": "6ce4280c-3e00-44c0-a544-8845de77eb28"
+                                        },
+                                        "sysField": {
+                                            "_createdAt": 1644810119130464500,
+                                            "_id": "b1953add-0472-4575-a2f6-2d1d2609cba8",
+                                            "_owner": "usr-33737945c2b718db4c309d633d2f",
+                                            "_source": "device",
+                                            "_spacePath": "491b74da-0dcc-4fd1-90c8-a25867483abc/6ce4280c-3e00-44c0-a544-8845de77eb28/b1953add-0472-4575-a2f6-2d1d2609cba8",
+                                            "_updatedAt": 1644810119130464800
+                                        }
+                                    },
+                                    "source": "device",
+                                    "type": "group"
+                                },
+                                "subNode": {}
+                            }
+                        }
+                    }
+                }
+            },
+            "a31a508c-3838-451c-be3c-4a20d3f2cd64": {
+                "nodeInfo": {
+                    "id": "a31a508c-3838-451c-be3c-4a20d3f2cd64",
+                    "owner": "usr-33737945c2b718db4c309d633d2f",
+                    "properties": {
+                        "group": {
+                            "description": "",
+                            "ext": {
+                                "厂商": "qingcloud2",
+                                "版本": "1.0.1"
+                            },
+                            "name": "DeviceGroup_2",
+                            "parentId": ""
+                        },
+                        "sysField": {
+                            "_createdAt": 1644897321224237800,
+                            "_id": "a31a508c-3838-451c-be3c-4a20d3f2cd64",
+                            "_owner": "usr-33737945c2b718db4c309d633d2f",
+                            "_source": "device",
+                            "_spacePath": "a31a508c-3838-451c-be3c-4a20d3f2cd64",
+                            "_updatedAt": 1644897321224237800
+                        }
+                    },
+                    "source": "device",
+                    "type": "group"
+                },
+                "subNode": {}
+            },
+            "c0ff98fb-1135-43d5-be54-1046a488501c": {
+                "nodeInfo": {
+                    "id": "c0ff98fb-1135-43d5-be54-1046a488501c",
+                    "owner": "usr-33737945c2b718db4c309d633d2f",
+                    "properties": {
+                        "group": {
+                            "description": "",
+                            "ext": {
+                                "厂商": "厂商_A",
+                                "版本": "1.0.1"
+                            },
+                            "name": "测试设备组_001",
+                            "parentId": ""
+                        },
+                        "sysField": {
+                            "_createdAt": 1644896051026015700,
+                            "_id": "c0ff98fb-1135-43d5-be54-1046a488501c",
+                            "_owner": "usr-33737945c2b718db4c309d633d2f",
+                            "_source": "device",
+                            "_spacePath": "c0ff98fb-1135-43d5-be54-1046a488501c",
+                            "_updatedAt": 1644896051026016000
+                        }
+                    },
+                    "source": "device",
+                    "type": "group"
+                },
+                "subNode": {}
+            },
+            "d3967629-2906-4629-ba08-35bd229b8b39": {
+                "nodeInfo": {
+                    "id": "d3967629-2906-4629-ba08-35bd229b8b39",
+                    "owner": "usr-33737945c2b718db4c309d633d2f",
+                    "properties": {
+                        "group": {
+                            "description": "",
+                            "ext": {
+                                "厂商": "qingcloud2",
+                                "版本": "1.0.1"
+                            },
+                            "name": "DeviceGroup_2",
+                            "parentId": ""
+                        },
+                        "sysField": {
+                            "_createdAt": 1644897081691624700,
+                            "_id": "d3967629-2906-4629-ba08-35bd229b8b39",
+                            "_owner": "usr-33737945c2b718db4c309d633d2f",
+                            "_source": "device",
+                            "_spacePath": "d3967629-2906-4629-ba08-35bd229b8b39",
+                            "_updatedAt": 1644897081691624700
+                        }
+                    },
+                    "source": "device",
+                    "type": "group"
+                },
+                "subNode": {}
+            }
+        }
+    }
+}
+```
+
+
+
 
 
 #### 3.3.2 改变设备/设备组层级关系
@@ -357,20 +656,14 @@ post v1/search
 
 搜索内容和规则由body 确定，body 由如下部分构成
 
-| 字段     | Located in | 类型   | 说明        |
-| -------- | ---------- | ------ | ----------- |
-| query    | body       | string | es 模糊匹配 |
-| page     | body       | object | 翻页        |
-| conditon | body       | object | 限制条件    |
-
-page 说明
-
-| 字段     | Located in | 类型   | 说明                                |
-| -------- | ---------- | ------ | ----------------------------------- |
-| offset   | body       | uint32 | 记录开始位置                        |
-| limit    | body       | uint32 | 每页限制条数                        |
-| sort     | body       | string | 排序字段                            |
-| serverse | body       | bool   | 是否逆序， false：不逆序，true:逆序 |
+| 字段          | tpye     | 类型   | 说明                                |
+| ------------- | -------- | ------ | ----------------------------------- |
+| page_num      | require  | uint32 | 记录开始页                          |
+| page_size     | require  | uint32 | 每页限制条数                        |
+| order_by      | optional | string | 排序字段                            |
+| is_descending | optional | bool   | 是否逆序， false：不逆序，true:逆序 |
+| query         | optional | string | es 模糊查询                         |
+| condition     | optional | object | 组合条件                            |
 
 condtion 说明
 
@@ -391,12 +684,10 @@ curl --location --request POST '127.0.0.1:31234/v1/search' \
 --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY0NDgyMzA2Miwic3ViIjoidXNyLTMzNzM3OTQ1YzJiNzE4ZGI0YzMwOWQ2MzNkMmYifQ.dwZtc-TdXN_Ja3V3ckkYkcXxYO-XTjNduFjChfVoSSg_rAmuiWJ8_6kxFPd44odp7H6GyJRzEsznjsd4L3dUBg' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "page":{
-        "offset":0,
-        "limit":1000,
-        "sort":"name",
-        "reverse":false
-    },
+    "page_num":0,
+    "page_size":1000,
+    "order_by":"name",
+    "is_descending":false ,
     "query":"",
     "condition":[{
         "field":"type",
@@ -425,12 +716,10 @@ curl --location --request POST '127.0.0.1:31234/v1/search' \
 --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY0NDgyMzA2Miwic3ViIjoidXNyLTMzNzM3OTQ1YzJiNzE4ZGI0YzMwOWQ2MzNkMmYifQ.dwZtc-TdXN_Ja3V3ckkYkcXxYO-XTjNduFjChfVoSSg_rAmuiWJ8_6kxFPd44odp7H6GyJRzEsznjsd4L3dUBg' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "page":{
-        "offset":0,
-        "limit":1000,
-        "sort":"name",
-        "reverse":false
-    },
+ 	"page_num":0,
+    "page_size":1000,
+    "order_by":"name",
+    "is_descending":false ,
     "query":"",
     "condition":[{
         "field":"type",
@@ -459,12 +748,10 @@ curl --location --request POST '127.0.0.1:31234/v1/search' \
 --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY0NDgyMzA2Miwic3ViIjoidXNyLTMzNzM3OTQ1YzJiNzE4ZGI0YzMwOWQ2MzNkMmYifQ.dwZtc-TdXN_Ja3V3ckkYkcXxYO-XTjNduFjChfVoSSg_rAmuiWJ8_6kxFPd44odp7H6GyJRzEsznjsd4L3dUBg' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "page":{
-        "offset":0,
-        "limit":1000,
-        "sort":"name",
-        "reverse":false
-    },
+ 	"page_num":0,
+    "page_size":1000,
+    "order_by":"name",
+    "is_descending":false ,
     "query":"",
     "condition":[{
         "field":"type",
@@ -495,24 +782,22 @@ curl --location --request POST '127.0.0.1:31234/v1/search' \
 --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY0NDgyMzA2Miwic3ViIjoidXNyLTMzNzM3OTQ1YzJiNzE4ZGI0YzMwOWQ2MzNkMmYifQ.dwZtc-TdXN_Ja3V3ckkYkcXxYO-XTjNduFjChfVoSSg_rAmuiWJ8_6kxFPd44odp7H6GyJRzEsznjsd4L3dUBg' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "page":{
-        "offset":0,
-        "limit":1000,
-        "sort":"name",
-        "reverse":false
-    },
+ 	"page_num":0,
+    "page_size":1000,
+    "order_by":"name",
+    "is_descending":false ,
     "query":"",
     "condition":[
-        {
+     {
             "field":"sysField._spacePath",
             "operator":"$wildcard",
             "value":"6ce4280c-3e00-44c0-a544-8845de77eb28"
-        },
-        {
+     },
+     {
             "field":"type",
             "operator":"$eq",
             "value":"device"
-        }
+     }
        
     ]
 }'
@@ -547,12 +832,10 @@ curl --location --request POST '127.0.0.1:31234/v1/search' \
 --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY0NDgyMzA2Miwic3ViIjoidXNyLTMzNzM3OTQ1YzJiNzE4ZGI0YzMwOWQ2MzNkMmYifQ.dwZtc-TdXN_Ja3V3ckkYkcXxYO-XTjNduFjChfVoSSg_rAmuiWJ8_6kxFPd44odp7H6GyJRzEsznjsd4L3dUBg' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "page":{
-        "offset":0,
-        "limit":1000,
-        "sort":"name",
-        "reverse":false
-    },
+ 	"page_num":0,
+    "page_size":1000,
+    "order_by":"name",
+    "is_descending":false ,
     "query":"",
     "condition":[ 
         {
@@ -588,12 +871,10 @@ curl --location --request POST '127.0.0.1:31234/v1/search' \
 --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY0NDgyMzA2Miwic3ViIjoidXNyLTMzNzM3OTQ1YzJiNzE4ZGI0YzMwOWQ2MzNkMmYifQ.dwZtc-TdXN_Ja3V3ckkYkcXxYO-XTjNduFjChfVoSSg_rAmuiWJ8_6kxFPd44odp7H6GyJRzEsznjsd4L3dUBg' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "page":{
-        "offset":0,
-        "limit":1000,
-        "sort":"name",
-        "reverse":false
-    },
+ 	"page_num":0,
+    "page_size":1000,
+    "order_by":"name",
+    "is_descending":false ,
     "query":"",
     "condition":[
       

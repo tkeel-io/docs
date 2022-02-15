@@ -1,10 +1,10 @@
 ---
-title: "TenantEnable"
-description: 'openapi tenant enable'
+title: "SearchEntity"
+description: 'search entity'
 ---
 
 
-调用该接口openapi tenant enable。
+调用该接口search entity。
 
 
 
@@ -12,7 +12,7 @@ description: 'openapi tenant enable'
 
 
 ```
-post /tenant/enable
+post /search
 ```
 
 
@@ -27,17 +27,41 @@ post /tenant/enable
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1TenantEnableRequest](#v1TenantEnableRequest) |
+| 设备列表请求信息 | Object | [apidevicev1ListEntityQuery](#apidevicev1ListEntityQuery) |
 
-#### v1TenantEnableRequest
+#### apidevicev1ListEntityQuery
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| extra | string |  |      
-| tenant_id | string |  |   
+| ---- | ---- | ----------- |         
+| condition | Array[apidevicev1Condition] | 组合条件 [ 具体参数可见下面 [apidevicev1Condition](#apidevicev1Condition) ] |       
+| page |  | 分页 |      
+| query | string | es查询条件 |   
 
 
   
+       
+         
+### apidevicev1Condition
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| field | string | 查询输出字段 |      
+| operator | string | 操作符, $eq为相等，$neq为不等，$lt为小于，$gt为大于，$lne为小于等于， $gne为大于等于 |      
+| value | string | 值 |   
+
+
+  
+     
+   
+     
+   
+     
+ 
+ 
+
+
+          
+     
+   
      
    
      
@@ -57,13 +81,13 @@ post /tenant/enable
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1TenantEnableResponse](#v1TenantEnableResponse) |
+| 200 | OK | Object | [v1ListDeviceResponse](#v1ListDeviceResponse) |
 
-#### v1TenantEnableResponse
+#### v1ListDeviceResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| res |  |  |   
+| listDeviceObject |  | 设备列表对象 |   
 
 
   

@@ -1,7 +1,7 @@
 ---
-title: "TenantDisable"
-description: 'openapi tenant disable'
----调用该接口openapi tenant disable。
+title: "getSubscribe"
+description: 'get subscribe'
+---调用该接口get subscribe。
 
 
 
@@ -9,35 +9,31 @@ description: 'openapi tenant disable'
 
 
 ```
-post /tenant/disable
+get /subscribe/{id}
 ```
 
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [v1TenantDisableRequest](#v1TenantDisableRequest) |
-
-#### v1TenantDisableRequest
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| extra | string |  |      
-| tenant_id | string |  |   
-
-
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string | 订阅ID |  
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1TenantDisableResponse](#v1TenantDisableResponse) |
+| 200 | OK | Object | [v1GetSubscribeResponse](#v1GetSubscribeResponse) |
 
-#### v1TenantDisableResponse
+#### v1GetSubscribeResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| res |  |  |   
+| count | string | 订阅数量 |      
+| created_at | string | 订阅创建时间 |      
+| description | string | 订阅描述 |      
+| endpoint | string | 订阅endpoint |      
+| id | string | 订阅ID |      
+| title | string | 订阅名称 |      
+| updated_at | string | 订阅更新时间 |   
 
 
 

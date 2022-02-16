@@ -1,7 +1,7 @@
 ---
-title: "Identify"
-description: 'openapi addons identify'
----调用该接口openapi addons identify。
+title: "subscribeEntitiesByModels"
+description: 'add subscribe entities by models'
+---调用该接口add subscribe entities by models。
 
 
 
@@ -9,26 +9,22 @@ description: 'openapi addons identify'
 
 
 ```
-post /addons/identify
+post /subscribe/{id}/models
 ```
+
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string | 订阅ID |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1AddonsIdentifyRequest](#v1AddonsIdentifyRequest) |
+|  | Object | [](#) |
 
-#### v1AddonsIdentifyRequest
+#### 
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |         
-| implemented_addons | Array[v1ImplementedAddons] |  [ 具体参数可见下面 [v1ImplementedAddons](#v1ImplementedAddons) ] |       
-| plugin |  |  |   
-
-### v1ImplementedAddons
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| addons_point | string |  |      
-| implemented_endpoint | string |  |   
+| ---- | ---- | ----------- |  
 
 
 
@@ -37,13 +33,14 @@ post /addons/identify
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1AddonsIdentifyResponse](#v1AddonsIdentifyResponse) |
+| 200 | OK | Object | [v1SubscribeEntitiesByModelsResponse](#v1SubscribeEntitiesByModelsResponse) |
 
-#### v1AddonsIdentifyResponse
+#### v1SubscribeEntitiesByModelsResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| res |  |  |   
+| id | string | 订阅ID |      
+| status | string | 订阅状态 |   
 
 
 

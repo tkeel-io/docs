@@ -1,7 +1,7 @@
 ---
-title: "Identify"
-description: 'openapi addons identify'
----调用该接口openapi addons identify。
+title: "createSubscribe"
+description: 'create subscribe'
+---调用该接口create subscribe。
 
 
 
@@ -9,26 +9,20 @@ description: 'openapi addons identify'
 
 
 ```
-post /addons/identify
+post /subscribe
 ```
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1AddonsIdentifyRequest](#v1AddonsIdentifyRequest) |
+|  | Object | [v1CreateSubscribeRequest](#v1CreateSubscribeRequest) |
 
-#### v1AddonsIdentifyRequest
+#### v1CreateSubscribeRequest
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |         
-| implemented_addons | Array[v1ImplementedAddons] |  [ 具体参数可见下面 [v1ImplementedAddons](#v1ImplementedAddons) ] |       
-| plugin |  |  |   
-
-### v1ImplementedAddons
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| addons_point | string |  |      
-| implemented_endpoint | string |  |   
+| description | string | 订阅描述 |      
+| title | string | 订阅名称 |   
 
 
 
@@ -37,13 +31,16 @@ post /addons/identify
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1AddonsIdentifyResponse](#v1AddonsIdentifyResponse) |
+| 200 | OK | Object | [v1CreateSubscribeResponse](#v1CreateSubscribeResponse) |
 
-#### v1AddonsIdentifyResponse
+#### v1CreateSubscribeResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| res |  |  |   
+| description | string | 订阅描述 |      
+| endpoint | string | 订阅endpoint |      
+| id | string | 订阅ID |      
+| title | string | 订阅名称 |   
 
 
 

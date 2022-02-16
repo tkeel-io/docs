@@ -1,10 +1,7 @@
 ---
 title: "Subscribe_GetSubscribe"
 description: ''
----
-
-
-调用该接口。
+---调用该接口。
 
 
 
@@ -15,19 +12,9 @@ description: ''
 get /subscribe
 ```
 
-
-
-
-
-
-
 ## Response
 
-
-
-### Response  200
-
- 
+### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | A successful response. | Object | [daprListTopicSubscriptionsResponse](#daprListTopicSubscriptionsResponse) |
@@ -38,10 +25,6 @@ get /subscribe
 | ---- | ---- | ----------- |         
 | subscriptions | Array[daprTopicSubscription] | The list of topics. [ 具体参数可见下面 [daprTopicSubscription](#daprTopicSubscription) ] |    
 
-
-  
-       
-         
 ### daprTopicSubscription
 | Name | Type | Description | 
 | ---- | ---- | ----------- |    
@@ -52,32 +35,8 @@ is still invoked but the matching path is sent in the TopicEventRequest. |
 | topic | string |  |   
 
 
-  
-    
-          
-     
-   
-     
-   
-     
-   
-     
- 
- 
 
-
-          
-     
- 
- 
-
-
- 
-
-
-### Response  default
-
- 
+### Response  default 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -90,32 +49,10 @@ is still invoked but the matching path is sent in the TopicEventRequest. |
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-
-  
-     
-   
-       
-         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
-
-  
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
 
 

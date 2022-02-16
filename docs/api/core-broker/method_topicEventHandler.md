@@ -1,7 +1,7 @@
 ---
-title: "Identify"
-description: 'openapi addons identify'
----调用该接口openapi addons identify。
+title: "topicEventHandler"
+description: 'TopicEvent handler'
+---调用该接口TopicEvent handler。
 
 
 
@@ -9,26 +9,28 @@ description: 'openapi addons identify'
 
 
 ```
-post /addons/identify
+post /topic
 ```
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1AddonsIdentifyRequest](#v1AddonsIdentifyRequest) |
+|  | Object | [v1TopicEventRequest](#v1TopicEventRequest) |
 
-#### v1AddonsIdentifyRequest
+#### v1TopicEventRequest
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |         
-| implemented_addons | Array[v1ImplementedAddons] |  [ 具体参数可见下面 [v1ImplementedAddons](#v1ImplementedAddons) ] |       
-| plugin |  |  |   
-
-### v1ImplementedAddons
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| addons_point | string |  |      
-| implemented_endpoint | string |  |   
+| ---- | ---- | ----------- |    
+| data | Object |    |      
+| data_base64 | string |  |      
+| datacontenttype | string |  |      
+| id | string |  |      
+| pubsubname | string |  |      
+| source | string |  |      
+| specversion | string |  |      
+| subject | string |  |      
+| topic | string |  |      
+| type | string |  |   
 
 
 
@@ -37,13 +39,13 @@ post /addons/identify
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1AddonsIdentifyResponse](#v1AddonsIdentifyResponse) |
+| 200 | OK | Object | [v1TopicEventResponse](#v1TopicEventResponse) |
 
-#### v1AddonsIdentifyResponse
+#### v1TopicEventResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| res |  |  |   
+| status | string |  |   
 
 
 

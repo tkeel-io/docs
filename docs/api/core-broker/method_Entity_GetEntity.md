@@ -1,7 +1,7 @@
 ---
-title: "TenantDisable"
-description: 'openapi tenant disable'
----调用该接口openapi tenant disable。
+title: "Entity_GetEntity"
+description: ''
+---调用该接口。
 
 
 
@@ -9,35 +9,20 @@ description: 'openapi tenant disable'
 
 
 ```
-post /tenant/disable
+get /ws
 ```
-
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [v1TenantDisableRequest](#v1TenantDisableRequest) |
-
-#### v1TenantDisableRequest
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| extra | string |  |      
-| tenant_id | string |  |   
-
-
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1TenantDisableResponse](#v1TenantDisableResponse) |
+| 200 | A successful response. | Object | [v1GetEntityResponse](#v1GetEntityResponse) |
 
-#### v1TenantDisableResponse
+#### v1GetEntityResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| res |  |  |   
+| ---- | ---- | ----------- |  
 
 
 

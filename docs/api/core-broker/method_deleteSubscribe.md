@@ -1,7 +1,7 @@
 ---
-title: "TenantDisable"
-description: 'openapi tenant disable'
----调用该接口openapi tenant disable。
+title: "deleteSubscribe"
+description: 'delete subscribe'
+---调用该接口delete subscribe。
 
 
 
@@ -9,35 +9,25 @@ description: 'openapi tenant disable'
 
 
 ```
-post /tenant/disable
+delete /subscribe/{id}
 ```
 
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [v1TenantDisableRequest](#v1TenantDisableRequest) |
-
-#### v1TenantDisableRequest
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| extra | string |  |      
-| tenant_id | string |  |   
-
-
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string | 订阅ID |  
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1TenantDisableResponse](#v1TenantDisableResponse) |
+| 200 | OK | Object | [v1DeleteSubscribeResponse](#v1DeleteSubscribeResponse) |
 
-#### v1TenantDisableResponse
+#### v1DeleteSubscribeResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| res |  |  |   
+| id | string | 订阅ID |   
 
 
 

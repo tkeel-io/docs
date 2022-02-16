@@ -1,7 +1,7 @@
 ---
-title: "TenantDisable"
-description: 'openapi tenant disable'
----调用该接口openapi tenant disable。
+title: "Status"
+description: 'openapi status'
+---调用该接口openapi status。
 
 
 
@@ -9,35 +9,22 @@ description: 'openapi tenant disable'
 
 
 ```
-post /tenant/disable
+get /status
 ```
-
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [v1TenantDisableRequest](#v1TenantDisableRequest) |
-
-#### v1TenantDisableRequest
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| extra | string |  |      
-| tenant_id | string |  |   
-
-
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1TenantDisableResponse](#v1TenantDisableResponse) |
+| 200 | OK | Object | [v1StatusResponse](#v1StatusResponse) |
 
-#### v1TenantDisableResponse
+#### v1StatusResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| res |  |  |   
+| res |  |  |      
+| status |  |  |   
 
 
 

@@ -1,7 +1,7 @@
 ---
-title: "Identify"
-description: 'openapi addons identify'
----调用该接口openapi addons identify。
+title: "changeSubscribe"
+description: 'change subscribed to other subscription'
+---调用该接口change subscribed to other subscription。
 
 
 
@@ -9,26 +9,22 @@ description: 'openapi addons identify'
 
 
 ```
-post /addons/identify
+put /subscribe/{id}
 ```
+
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string | 当前订阅ID |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1AddonsIdentifyRequest](#v1AddonsIdentifyRequest) |
+|  | Object | [](#) |
 
-#### v1AddonsIdentifyRequest
+#### 
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |         
-| implemented_addons | Array[v1ImplementedAddons] |  [ 具体参数可见下面 [v1ImplementedAddons](#v1ImplementedAddons) ] |       
-| plugin |  |  |   
-
-### v1ImplementedAddons
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| addons_point | string |  |      
-| implemented_endpoint | string |  |   
+| ---- | ---- | ----------- |  
 
 
 
@@ -37,13 +33,13 @@ post /addons/identify
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1AddonsIdentifyResponse](#v1AddonsIdentifyResponse) |
+| 200 | OK | Object | [v1ChangeSubscribedResponse](#v1ChangeSubscribedResponse) |
 
-#### v1AddonsIdentifyResponse
+#### v1ChangeSubscribedResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| res |  |  |   
+| status | string | 请求状态 |   
 
 
 

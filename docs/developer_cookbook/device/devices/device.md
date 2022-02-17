@@ -240,7 +240,7 @@ curl --location --request POST '127.0.0.1:31234/v1/groups' \
 
 后端的做法是先全量查出所有的设备组（假如设备组过多 ，core没法全量返回的可能问题后续再讨论），通过解析  sysField._spacePath 字段内容 ，组成树状结构的map  
 
-```
+```json
 post  127.0.0.1:31234/v1/groups/tree
 ```
 
@@ -253,12 +253,10 @@ curl --location --request POST '127.0.0.1:31234/v1/groups/tree' \
 --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY0NDgyMzA2Miwic3ViIjoidXNyLTMzNzM3OTQ1YzJiNzE4ZGI0YzMwOWQ2MzNkMmYifQ.dwZtc-TdXN_Ja3V3ckkYkcXxYO-XTjNduFjChfVoSSg_rAmuiWJ8_6kxFPd44odp7H6GyJRzEsznjsd4L3dUBg' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "page":{
-        "offset":0,
-        "limit":1000,
-        "sort":"name",
-        "reverse":false
-    },
+    "page_num":0,
+    "page_size":1000,
+    "order_by":"name",
+    "is_descending":false ,
     "query":"",
     "condition":[{
         "field":"type",
@@ -269,6 +267,10 @@ curl --location --request POST '127.0.0.1:31234/v1/groups/tree' \
 ```
 
 说明： limit 足够大才能全量查处所有的设备组，才能构成完整的空间树
+
+**之所以加body 字段，目的是 还可以对树进行筛选，不排除未来有这种需求**
+
+
 
 ##### response
 

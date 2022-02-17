@@ -59,8 +59,10 @@ post 127.0.0.1:31234/v1/devices
 |name|body|string|设备名称|
 |description|body|string|设备说明|
 |parentId|body|string|设备组ID，按照目前的设计是对于没有制定设备组的默认放在default 设备组里面。default 在后端看来也是一个设备组。这里涉及到一个操作就是，前端需要提前创建好默认设备组，此处填默认设备组的ID。无设备组填写""|
+|parentName|body|string|设备组名称|
 |directConnection|body|bool|是否直连，直连的意思是直接对接iothub 接受数据（例如平台网关设备），非直连表示数据来源于其他设备数据映射（比如网关下子设备）。非直连设备目前必须要存在模板（配置设备数据映射关系后，模板映射的依据）。|
 |templateId|body|string|设备模板ID，指定设备模板后，设备数据按照模板约束。无设备模板 填写""|
+|templateName|body|string|设备模板名称|
 |selfLearn|body|bool|模板自学习开关，是一种动作行为，表示未指定模板或者模板涵盖不全的情况下。自动生成相关的属性、遥测。|
 |ext|body|object|是一个kv 的map  ，可自由定义和扩展，承载设备的一些外围信息。|
 
@@ -164,6 +166,7 @@ post 127.0.0.1:31234/v1/groups
 | name        | body       | string | 设备组名称                          |
 | description | body       | string | 设备组说明                          |
 | parentId    | body       | string | 父设备组ID,无父设备组填写""         |
+| parentName  | body       | string | 父设备组名称                        |
 | ext         | body       | object | 可扩展的kv map,承载设备组的外围信息 |
 
 #### Example 

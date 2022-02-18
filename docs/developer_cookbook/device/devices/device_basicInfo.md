@@ -150,7 +150,8 @@ propertie 里分类字段：basicInfo  AND  sysField
     "_owner": "usr-33737945c2b718db4c309d633d2f", //所有者
     "_source": "device",                          //来源插件
     "_spacePath": "bba16255-bf35-468a-b000-25181bfcdb02", //空间路径，内容由所有上层父ID（设备组）拼接而成，（此处没有设备组故是自己的id）。
-    "_status": false,   //状态 (在线、离线、模拟在线、禁用)
+    "_status": "offline",   //状态 (在线online、离线offline、模拟在线SimulatedOline 、禁用disable）
+    "_subscribeAddr":"mqp://127.0.0.1:5672/abc",//订阅地址   如果为空"" 表示没有订阅 
     "_token": "OGIxMTdlMTYtZWE5Yy0zNDE4LWE3YTktYjhiM2U3Yzk3YzE1",  //连接的token  ，如果是直连设备需返回给用户。
     "_updatedAt": 1644461780472115700  //更新时间
 }

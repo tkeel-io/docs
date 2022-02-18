@@ -1,7 +1,7 @@
 ---
-title: "UpdateTemplateTelemetryExt"
-description: 'update template telemetry ext'
----调用该接口update template telemetry ext。
+title: "TenantEnable"
+description: 'openapi tenant enable'
+---调用该接口openapi tenant enable。
 
 
 
@@ -9,32 +9,37 @@ description: 'update template telemetry ext'
 
 
 ```
-put /templates/{uid}/telemetry/{id}/ext
+post /tenant/enable
 ```
-
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| uid | path | string | 模型ID |  
-| id | path | string | 遥测ID |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 扩展配置KV map | Object | [](#) |
+|  | Object | [v1TenantEnableRequest](#v1TenantEnableRequest) |
 
-#### 
+#### v1TenantEnableRequest
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |  
+| ---- | ---- | ----------- |     
+| extra | string |  |      
+| tenant_id | string |  |   
 
 
 
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | OK | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [v1TenantEnableResponse](#v1TenantEnableResponse) |
+
+#### v1TenantEnableResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| res |  |  |   
+
+
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

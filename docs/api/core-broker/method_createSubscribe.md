@@ -1,7 +1,7 @@
 ---
-title: "GetDevice"
-description: 'get device entity'
----调用该接口get device entity。
+title: "createSubscribe"
+description: 'create subscribe'
+---调用该接口create subscribe。
 
 
 
@@ -9,25 +9,38 @@ description: 'get device entity'
 
 
 ```
-get /devices/{id}
+post /subscribe
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string | 设备ID |  
+### Request Body 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+|  | Object | [v1CreateSubscribeRequest](#v1CreateSubscribeRequest) |
+
+#### v1CreateSubscribeRequest
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| description | string | 订阅描述 |      
+| title | string | 订阅名称 |   
+
+
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1GetDeviceResponse](#v1GetDeviceResponse) |
+| 200 | OK | Object | [v1CreateSubscribeResponse](#v1CreateSubscribeResponse) |
 
-#### v1GetDeviceResponse
+#### v1CreateSubscribeResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| deviceObject |  | 设备对象 |   
+| description | string | 订阅描述 |      
+| endpoint | string | 订阅endpoint |      
+| id | string | 订阅ID |      
+| title | string | 订阅名称 |   
 
 
 

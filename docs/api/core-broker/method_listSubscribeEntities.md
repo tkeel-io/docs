@@ -1,7 +1,7 @@
 ---
-title: "UpdateTemplate"
-description: 'update Template'
----调用该接口update Template。
+title: "listSubscribeEntities"
+description: 'get subscribe entities list'
+---调用该接口get subscribe entities list。
 
 
 
@@ -9,24 +9,22 @@ description: 'update Template'
 
 
 ```
-put /templates/{uid}
+post /subscribe/{id}/entities/list
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| uid | path | string | 模板ID |  
+| id | path | string | 订阅ID |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 模板基本信息 | Object | [v1TemplateBasicInfo](#v1TemplateBasicInfo) |
+|  | Object | [](#) |
 
-#### v1TemplateBasicInfo
+#### 
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| description | string | 模板描述 |      
-| name | string | 模板名称 |   
+| ---- | ---- | ----------- |  
 
 
 
@@ -35,13 +33,27 @@ put /templates/{uid}
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1UpdateTemplateResponse](#v1UpdateTemplateResponse) |
+| 200 | OK | Object | [v1ListSubscribeEntitiesResponse](#v1ListSubscribeEntitiesResponse) |
 
-#### v1UpdateTemplateResponse
+#### v1ListSubscribeEntitiesResponse
 
 | Name | Type | Description | 
+| ---- | ---- | ----------- |         
+| data | Array[v1Entity] | 订阅实体 [ 具体参数可见下面 [v1Entity](#v1Entity) ] |       
+| last_page | string | Last page |      
+| page_num | string | Page number |      
+| page_size | string | Page size |      
+| total | string | Total |   
+
+### v1Entity
+| Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| templateObject |  | 模板对象 |   
+| ID | string | entity id |      
+| group | string | group |      
+| name | string | name |      
+| status | string | status |      
+| template | string | template |      
+| updated_at | string | update time |   
 
 
 

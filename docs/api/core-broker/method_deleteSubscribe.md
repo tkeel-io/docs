@@ -1,7 +1,7 @@
 ---
-title: "UpdateTemplateTelemetryExt"
-description: 'update template telemetry ext'
----调用该接口update template telemetry ext。
+title: "deleteSubscribe"
+description: 'delete subscribe'
+---调用该接口delete subscribe。
 
 
 
@@ -9,32 +9,27 @@ description: 'update template telemetry ext'
 
 
 ```
-put /templates/{uid}/telemetry/{id}/ext
+delete /subscribe/{id}
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| uid | path | string | 模型ID |  
-| id | path | string | 遥测ID |  
-
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-| 扩展配置KV map | Object | [](#) |
-
-#### 
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
-
+| id | path | string | 订阅ID |  
 
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | OK | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [v1DeleteSubscribeResponse](#v1DeleteSubscribeResponse) |
+
+#### v1DeleteSubscribeResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| id | string | 订阅ID |   
+
+
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

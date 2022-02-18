@@ -1,10 +1,7 @@
 ---
-title: "Openapi_TenantUnbind"
-description: 'Post tenant bind.'
----
-
-
-调用该接口Post tenant bind.。
+title: "TenantEnable"
+description: 'openapi tenant enable'
+---调用该接口openapi tenant enable。
 
 
 
@@ -12,24 +9,15 @@ description: 'Post tenant bind.'
 
 
 ```
-post /tenant/unbind
+post /tenant/enable
 ```
 
-
-
-
-
-
-
-### Request Body
-
-
- 
+### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1TenantUnbindRequst](#v1TenantUnbindRequst) |
+|  | Object | [v1TenantEnableRequest](#v1TenantEnableRequest) |
 
-#### v1TenantUnbindRequst
+#### v1TenantEnableRequest
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
@@ -37,47 +25,23 @@ post /tenant/unbind
 | tenant_id | string |  |   
 
 
-  
-     
-   
-     
- 
- 
-
-
-
-
 
 ## Response
 
-
-
-### Response  200
-
- 
+### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [v1TenantUnbindResponse](#v1TenantUnbindResponse) |
+| 200 | OK | Object | [v1TenantEnableResponse](#v1TenantEnableResponse) |
 
-#### v1TenantUnbindResponse
+#### v1TenantEnableResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | res |  |  |   
 
 
-  
-     
- 
- 
 
-
- 
-
-
-### Response  default
-
- 
+### Response  default 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -90,32 +54,10 @@ post /tenant/unbind
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-
-  
-     
-   
-       
-         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
-
-  
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
 
 

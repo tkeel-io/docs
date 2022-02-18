@@ -1,7 +1,7 @@
 ---
-title: "ListTemplateTelemetry"
-description: 'list Template telemetry'
----调用该接口list Template telemetry。
+title: "getSubscribe"
+description: 'get subscribe'
+---调用该接口get subscribe。
 
 
 
@@ -9,25 +9,31 @@ description: 'list Template telemetry'
 
 
 ```
-get /templates/{uid}/telemetry
+get /subscribe/{id}
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| uid | path | string | 属性ID |  
+| id | path | string | 订阅ID |  
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListTemplateTelemetryResponse](#v1ListTemplateTelemetryResponse) |
+| 200 | OK | Object | [v1GetSubscribeResponse](#v1GetSubscribeResponse) |
 
-#### v1ListTemplateTelemetryResponse
+#### v1GetSubscribeResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |    
-| templateTeleObject | Object | 遥测列表对象   |   
+| ---- | ---- | ----------- |     
+| count | string | 订阅数量 |      
+| created_at | string | 订阅创建时间 |      
+| description | string | 订阅描述 |      
+| endpoint | string | 订阅endpoint |      
+| id | string | 订阅ID |      
+| title | string | 订阅名称 |      
+| updated_at | string | 订阅更新时间 |   
 
 
 

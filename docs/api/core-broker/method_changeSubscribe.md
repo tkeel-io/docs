@@ -1,7 +1,7 @@
 ---
-title: "UpdateTemplateTelemetryExt"
-description: 'update template telemetry ext'
----调用该接口update template telemetry ext。
+title: "changeSubscribe"
+description: 'change subscribed to other subscription'
+---调用该接口change subscribed to other subscription。
 
 
 
@@ -9,18 +9,17 @@ description: 'update template telemetry ext'
 
 
 ```
-put /templates/{uid}/telemetry/{id}/ext
+put /subscribe/{id}
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| uid | path | string | 模型ID |  
-| id | path | string | 遥测ID |  
+| id | path | string | 当前订阅ID |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 扩展配置KV map | Object | [](#) |
+|  | Object | [](#) |
 
 #### 
 
@@ -31,10 +30,18 @@ put /templates/{uid}/telemetry/{id}/ext
 
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | OK | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [v1ChangeSubscribedResponse](#v1ChangeSubscribedResponse) |
+
+#### v1ChangeSubscribedResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| status | string | 请求状态 |   
+
+
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

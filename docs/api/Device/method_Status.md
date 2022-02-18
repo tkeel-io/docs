@@ -1,7 +1,7 @@
 ---
-title: "DeleteTemplate"
-description: 'delete Template'
----调用该接口delete Template。
+title: "Status"
+description: 'openapi status'
+---调用该接口openapi status。
 
 
 
@@ -9,28 +9,24 @@ description: 'delete Template'
 
 
 ```
-post /templates/delete
+get /status
 ```
-
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-| 模板ID 数组 | Object | [apitemplatev1Ids](#apitemplatev1Ids) |
-
-#### apitemplatev1Ids
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |        
-| ids | Array[ string ] | ID 数组 |    
-
-
 
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | OK | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [v1StatusResponse](#v1StatusResponse) |
+
+#### v1StatusResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| res |  |  |      
+| status |  |  |   
+
+
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

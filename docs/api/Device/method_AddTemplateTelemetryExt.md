@@ -1,10 +1,7 @@
 ---
 title: "AddTemplateTelemetryExt"
 description: 'add template telemetry ext'
----
-
-
-调用该接口add template telemetry ext。
+---调用该接口add template telemetry ext。
 
 
 
@@ -15,21 +12,12 @@ description: 'add template telemetry ext'
 post /templates/{uid}/telemetry/{id}/ext
 ```
 
-
-
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | uid | path | string | 模型ID |  
 | id | path | string | 遥测ID |  
 
-
-
-
-
-### Request Body
-
-
- 
+### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 | 扩展配置KV map | Object | [](#) |
@@ -41,28 +29,14 @@ post /templates/{uid}/telemetry/{id}/ext
 
 
 
- 
-
-
-
-
-
 ## Response
 
-
-
 ### Response  200
-
-
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
 | 200 | OK | {   { }} |
- 
 
-
-### Response  default
-
- 
+### Response  default 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -75,32 +49,10 @@ post /templates/{uid}/telemetry/{id}/ext
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-
-  
-     
-   
-       
-         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
-
-  
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
 
 

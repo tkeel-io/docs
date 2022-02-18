@@ -1,7 +1,7 @@
 ---
-title: "UpdateTemplate"
-description: 'update Template'
----调用该接口update Template。
+title: "topicEventHandler"
+description: 'TopicEvent handler'
+---调用该接口TopicEvent handler。
 
 
 
@@ -9,24 +9,28 @@ description: 'update Template'
 
 
 ```
-put /templates/{uid}
+post /topic
 ```
-
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| uid | path | string | 模板ID |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 模板基本信息 | Object | [v1TemplateBasicInfo](#v1TemplateBasicInfo) |
+|  | Object | [v1TopicEventRequest](#v1TopicEventRequest) |
 
-#### v1TemplateBasicInfo
+#### v1TopicEventRequest
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| description | string | 模板描述 |      
-| name | string | 模板名称 |   
+| ---- | ---- | ----------- |    
+| data | Object |    |      
+| data_base64 | string |  |      
+| datacontenttype | string |  |      
+| id | string |  |      
+| pubsubname | string |  |      
+| source | string |  |      
+| specversion | string |  |      
+| subject | string |  |      
+| topic | string |  |      
+| type | string |  |   
 
 
 
@@ -35,13 +39,13 @@ put /templates/{uid}
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1UpdateTemplateResponse](#v1UpdateTemplateResponse) |
+| 200 | OK | Object | [v1TopicEventResponse](#v1TopicEventResponse) |
 
-#### v1UpdateTemplateResponse
+#### v1TopicEventResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| templateObject |  | 模板对象 |   
+| status | string |  |   
 
 
 

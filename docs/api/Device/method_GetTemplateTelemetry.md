@@ -1,7 +1,7 @@
 ---
-title: "UpdateTemplateTelemetryExt"
-description: 'update template telemetry ext'
----调用该接口update template telemetry ext。
+title: "GetTemplateTelemetry"
+description: 'get Template telemetry'
+---调用该接口get Template telemetry。
 
 
 
@@ -9,32 +9,28 @@ description: 'update template telemetry ext'
 
 
 ```
-put /templates/{uid}/telemetry/{id}/ext
+get /templates/{uid}/telemetry/{id}
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| uid | path | string | 模型ID |  
+| uid | path | string | 模板ID |  
 | id | path | string | 遥测ID |  
-
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-| 扩展配置KV map | Object | [](#) |
-
-#### 
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
-
 
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | OK | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [v1GetTemplateTelemetryResponse](#v1GetTemplateTelemetryResponse) |
+
+#### v1GetTemplateTelemetryResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |    
+| templateTeleSingleObject | Object | 单个遥测对象   |   
+
+
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

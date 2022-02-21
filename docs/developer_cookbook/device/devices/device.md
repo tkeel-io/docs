@@ -262,7 +262,7 @@ curl --location --request POST '127.0.0.1:31234/v1/groups/tree' \
 --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY0NDgyMzA2Miwic3ViIjoidXNyLTMzNzM3OTQ1YzJiNzE4ZGI0YzMwOWQ2MzNkMmYifQ.dwZtc-TdXN_Ja3V3ckkYkcXxYO-XTjNduFjChfVoSSg_rAmuiWJ8_6kxFPd44odp7H6GyJRzEsznjsd4L3dUBg' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "page_num":0,
+    "page_num":1,
     "page_size":1000,
     "order_by":"name",
     "is_descending":false ,
@@ -677,7 +677,7 @@ post v1/search
 | query         | optional | string | es 模糊查询                                                  |
 | condition     | optional | object | 组合条件                                                     |
 
-condtion 说明   **组合condtion  可以实现很多类型的search**
+condtion 说明   **组合condtion  可以实现很多类型的search， 多个 condtion 之间是 并且关系**
 
 | 字段     | Located in | 类型   | 说明                                                         |
 | -------- | ---------- | ------ | ------------------------------------------------------------ |

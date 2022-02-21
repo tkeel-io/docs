@@ -58,8 +58,11 @@ sidebar_position: 3
 
 #### 设备获取平台属性
 1. 一般的设备
+
 **steps:**
+
 a. 设备订阅 topic: ` v1/devices/me/attributes/response/+`
+
 b. 设备发布 topic: `v1/devices/me/attributes/request/$request_id`, 其中$request_id为请求ID。payload:
 ```json
 {
@@ -76,8 +79,11 @@ c. 平台发布 topic: "v1/devices/me/attributes/response/$request_id", payload:
 d. 设备收到平台发送的C的数据
 
 2. 有下游设备的网关设备
+
 **steps:**
+
 a. 设备订阅 topic: `v1/gateway/attributes/response`
+
 b. 设备发布 topic: `v1/gateway/attributes/request`,payload:
 ```json
 {
@@ -178,8 +184,11 @@ d. 设备收到平台发送的C的数据
 ```
 
 ### 命令数据 API
+
 **steps:**
+
 a. 设备订阅topic: `1/devices/me/command/request/+`
+
 b. 平台发布topic: `v1/devices/me/command/request/$request_id`, payload:
 ```json
 {

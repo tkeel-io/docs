@@ -1,10 +1,10 @@
 ---
-title: "GetEntityProps"
-description: 'Get Entity Properties'
+title: "UpdateEntityProps"
+description: 'Update entity properties'
 ---
 
 
-调用该接口Get Entity Properties。
+调用该接口Update entity properties。
 
 
 
@@ -12,7 +12,7 @@ description: 'Get Entity Properties'
 
 
 ```
-get /entities/{id}/properties
+put /entities/{id}/properties
 ```
 
 
@@ -27,10 +27,30 @@ get /entities/{id}/properties
 
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
-| source | query | string | source id |  false |
-| owner | query | string | owner id |  true |
 | type | query | string | entity type |  false |
-| property_keys | query | string | entity property ids, eg: pids=1,2,3 |  false |
+| source | query | string | source id |  false |
+| owner | query | string | owner id |  false |
+
+
+
+### Request Body
+
+
+ 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+| entity properties | Object | [](#) |
+
+#### 
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |  
+
+
+
+ 
+
+
 
 
 

@@ -1,10 +1,10 @@
 ---
 title: "SearchObjects"
-description: 'Delete objects by id'
+description: 'Search objects by keyword'
 ---
 
 
-调用该接口Delete objects by id。
+调用该接口Search objects by keyword。
 
 
 
@@ -12,20 +12,71 @@ description: 'Delete objects by id'
 
 
 ```
-delete /search
+post /search
 ```
 
 
 
 
 
-###  Request Parameters
 
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| id | query | string | entity id |  false |
-| source | query | string | source id |  false |
-| owner | query | string | owner id |  false |
+
+### Request Body
+
+
+ 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+|  | Object | [v1SearchRequest](#v1SearchRequest) |
+
+#### v1SearchRequest
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |         
+| condition | Array[v1SearchCondition] | conditions list [ 具体参数可见下面 [v1SearchCondition](#v1SearchCondition) ] |       
+| owner | string | owner id |      
+| page |  | page |      
+| query | string | search keyword |      
+| source | string | source id |   
+
+
+  
+       
+         
+### v1SearchCondition
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| field | string | entity property key |      
+| operator | string | operator $gt $gte $eq $lt $lte  |     
+| value | Object | value of the key   |   
+
+
+  
+     
+   
+     
+   
+    
+          
+     
+ 
+ 
+
+
+          
+     
+   
+     
+   
+     
+   
+     
+   
+     
+ 
+ 
+
+
 
 
 
@@ -38,15 +89,32 @@ delete /search
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1DeleteByIDResponse](#v1DeleteByIDResponse) |
+| 200 | OK | Object | [v1SearchResponse](#v1SearchResponse) |
 
-#### v1DeleteByIDResponse
+#### v1SearchResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |  
+| ---- | ---- | ----------- |        
+| items | Array[ object ] | items of the results |       
+| limit | string | limit |      
+| offset | string | offset |      
+| page | string | page number |      
+| total | string | count of the results |   
 
 
-
+  
+       
+          
+     
+   
+     
+   
+     
+   
+     
+   
+     
+ 
  
 
 

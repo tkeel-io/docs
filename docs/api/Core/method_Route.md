@@ -1,10 +1,10 @@
 ---
-title: "DeleteEntity"
-description: 'Delete a entity'
+title: "Route"
+description: 'route apis Request'
 ---
 
 
-调用该接口Delete a entity。
+调用该接口route apis Request。
 
 
 
@@ -12,24 +12,33 @@ description: 'Delete a entity'
 
 
 ```
-delete /entities/{id}
+post /route
 ```
 
 
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string | entity id |  
 
 
 
-###  Request Parameters
 
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| type | query | string | entity type |  false |
-| source | query | string | source id |  false |
-| owner | query | string | owner id |  false |
+### Request Body
+
+
+ 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+|  | Object | [](#) |
+
+#### 
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |  
+
+
+
+ 
+
+
 
 
 
@@ -42,21 +51,15 @@ delete /entities/{id}
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1DeleteEntityResponse](#v1DeleteEntityResponse) |
+| 200 | OK | Object | [v1RouteResponse](#v1RouteResponse) |
 
-#### v1DeleteEntityResponse
+#### v1RouteResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| id | string | entity id |      
-| status | string | status |   
+| ---- | ---- | ----------- |  
 
 
-  
-     
-   
-     
- 
+
  
 
 

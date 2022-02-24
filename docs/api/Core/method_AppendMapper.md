@@ -1,10 +1,10 @@
 ---
 title: "AppendMapper"
-description: 'Append entity mapper'
+description: 'Append mapper for entity'
 ---
 
 
-调用该接口Append entity mapper。
+调用该接口Append mapper for entity。
 
 
 
@@ -27,6 +27,7 @@ post /entities/{id}/mappers
 
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
+| type | query | string | entity type |  false |
 | source | query | string | source id |  false |
 | owner | query | string | owner id |  false |
 
@@ -38,17 +39,23 @@ post /entities/{id}/mappers
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| mapper description | Object | [v1MapperDesc](#v1MapperDesc) |
+| mapper description | Object | [v1Mapper](#v1Mapper) |
 
-#### v1MapperDesc
+#### v1Mapper
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
+| description | string | mapper description |      
+| id | string | mapper id |      
 | name | string | mapper name |      
-| tql | string | tql content |   
+| tql_text | string | mapper tql text |   
 
 
   
+     
+   
+     
+   
      
    
      
@@ -68,58 +75,15 @@ post /entities/{id}/mappers
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1EntityResponse](#v1EntityResponse) |
+| 200 | OK | Object | [v1AppendMapperResponse](#v1AppendMapperResponse) |
 
-#### v1EntityResponse
+#### v1AppendMapperResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |    
-| configs | Object | entity configs   |      
-| id | string | entity id |          
-| mappers | Array[v1MapperDesc] | entity mappers [ 具体参数可见下面 [v1MapperDesc](#v1MapperDesc) ] |       
-| owner | string | owner id |     
-| properties | Object | entity properties   |      
-| source | string | source id |      
-| type | string | entity type |   
+| ---- | ---- | ----------- |  
 
 
-  
-    
-          
-     
-   
-     
-   
-       
-         
-### v1MapperDesc
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| name | string | mapper name |      
-| tql | string | tql content |   
 
-
-  
-     
-   
-     
- 
- 
-
-
-          
-     
-   
-     
-   
-    
-          
-     
-   
-     
-   
-     
- 
  
 
 

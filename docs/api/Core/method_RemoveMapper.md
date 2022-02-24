@@ -1,10 +1,10 @@
 ---
-title: "DeleteEntity"
-description: 'Delete a entity'
+title: "RemoveMapper"
+description: 'remove mappers from entity'
 ---
 
 
-调用该接口Delete a entity。
+调用该接口remove mappers from entity。
 
 
 
@@ -12,7 +12,7 @@ description: 'Delete a entity'
 
 
 ```
-delete /entities/{id}
+delete /entities/{id}/mappers/{mapper_id}
 ```
 
 
@@ -20,6 +20,7 @@ delete /entities/{id}
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string | entity id |  
+| mapper_id | path | string | mapper name |  
 
 
 
@@ -28,8 +29,8 @@ delete /entities/{id}
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
 | type | query | string | entity type |  false |
-| source | query | string | source id |  false |
 | owner | query | string | owner id |  false |
+| source | query | string | source id |  false |
 
 
 
@@ -42,21 +43,15 @@ delete /entities/{id}
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1DeleteEntityResponse](#v1DeleteEntityResponse) |
+| 200 | OK | Object | [v1RemoveMapperResponse](#v1RemoveMapperResponse) |
 
-#### v1DeleteEntityResponse
+#### v1RemoveMapperResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| id | string | entity id |      
-| status | string | status |   
+| ---- | ---- | ----------- |  
 
 
-  
-     
-   
-     
- 
+
  
 
 

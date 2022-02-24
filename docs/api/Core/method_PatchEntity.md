@@ -29,6 +29,7 @@ patch /entities/{id}
 | ---- | ---------- | ----------- | ----------- |  ---- |
 | source | query | string | source id |  false |
 | owner | query | string | owner id |  false |
+| type | query | string | entity type |  false |
 
 
 

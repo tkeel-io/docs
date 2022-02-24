@@ -539,4 +539,3 @@ curl -X DELETE "http://localhost:3500/v1.0/invoke/core/method/v1/entities/device
   -H "Type: DEVICE" 
 ```
 
-

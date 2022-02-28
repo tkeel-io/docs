@@ -1,10 +1,10 @@
 ---
-title: "AppendMapper"
-description: 'Append mapper for entity'
+title: "ListMapper"
+description: 'list mappers'
 ---
 
 
-调用该接口Append mapper for entity。
+调用该接口list mappers。
 
 
 
@@ -12,7 +12,7 @@ description: 'Append mapper for entity'
 
 
 ```
-post /entities/{entity_id}/mappers
+get /entities/{entity_id}/mappers
 ```
 
 
@@ -33,16 +33,34 @@ post /entities/{entity_id}/mappers
 
 
 
-### Request Body
+## Response
 
+
+
+### Response  200
 
  
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-| mapper information | Object | [v1Mapper](#v1Mapper) |
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [v1ListMapperResponse](#v1ListMapperResponse) |
 
-#### v1Mapper
+#### v1ListMapperResponse
 
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| entity_id | string | entity id |          
+| mappers | Array[v1Mapper] | mapper informations [ 具体参数可见下面 [v1Mapper](#v1Mapper) ] |       
+| owner | string | owner id |      
+| source | string | source id |      
+| type | string | entity type |   
+
+
+  
+     
+   
+       
+         
+### v1Mapper
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | description | string | mapper description |      
@@ -63,34 +81,7 @@ post /entities/{entity_id}/mappers
  
 
 
-
-
-
-## Response
-
-
-
-### Response  200
-
- 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1AppendMapperResponse](#v1AppendMapperResponse) |
-
-#### v1AppendMapperResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| entity_id | string | entity id |      
-| mapper |  | mapper information |      
-| owner | string | owner id |      
-| source | string | source id |      
-| type | string | entity type |   
-
-
-  
-     
-   
+          
      
    
      

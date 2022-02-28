@@ -12,15 +12,15 @@ description: 'remove mappers from entity'
 
 
 ```
-delete /entities/{id}/mappers/{mapper_id}
+delete /entities/{entity_id}/mappers/{id}
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | entity id |  
-| mapper_id | path | string | mapper name |  
+| entity_id | path | string | entity id |  
+| id | path | string | mapper id |  
 
 
 
@@ -48,10 +48,25 @@ delete /entities/{id}/mappers/{mapper_id}
 #### v1RemoveMapperResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |  
+| ---- | ---- | ----------- |     
+| entity_id | string | entity id |      
+| id | string | mapper id |      
+| owner | string | owner id |      
+| source | string | source id |      
+| type | string | entity type |   
 
 
-
+  
+     
+   
+     
+   
+     
+   
+     
+   
+     
+ 
  
 
 

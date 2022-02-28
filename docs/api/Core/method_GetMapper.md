@@ -1,10 +1,10 @@
 ---
-title: "AppendMapper"
-description: 'Append mapper for entity'
+title: "GetMapper"
+description: 'get mapper by id'
 ---
 
 
-调用该接口Append mapper for entity。
+调用该接口get mapper by id。
 
 
 
@@ -12,7 +12,7 @@ description: 'Append mapper for entity'
 
 
 ```
-post /entities/{entity_id}/mappers
+get /entities/{entity_id}/mappers/{id}
 ```
 
 
@@ -20,6 +20,7 @@ post /entities/{entity_id}/mappers
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | entity_id | path | string | entity id |  
+| id | path | string | mapper id |  
 
 
 
@@ -28,41 +29,8 @@ post /entities/{entity_id}/mappers
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
 | type | query | string | entity type |  false |
-| source | query | string | source id |  false |
 | owner | query | string | owner id |  false |
-
-
-
-### Request Body
-
-
- 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-| mapper information | Object | [v1Mapper](#v1Mapper) |
-
-#### v1Mapper
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| description | string | mapper description |      
-| id | string | mapper id |      
-| name | string | mapper name |      
-| tql_text | string | mapper tql text |   
-
-
-  
-     
-   
-     
-   
-     
-   
-     
- 
- 
-
-
+| source | query | string | source id |  false |
 
 
 
@@ -75,9 +43,9 @@ post /entities/{entity_id}/mappers
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1AppendMapperResponse](#v1AppendMapperResponse) |
+| 200 | OK | Object | [v1GetMapperResponse](#v1GetMapperResponse) |
 
-#### v1AppendMapperResponse
+#### v1GetMapperResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     

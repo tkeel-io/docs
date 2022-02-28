@@ -87,14 +87,93 @@ sidebar_position: 1
 
 
 
+## 平铺实体属性
+
+`id, type, owner, source` 等字段也可以看做实体的必须属性字段，是被 Core 保留的，用于描述实体，用户不能重新定义。
+
+
+故，实体可以存在两种展示形式：
+
+**Structured:**
+
+```json
+{
+    "id": "device123",
+    "source": "dm",
+    "owner": "admin",
+    "type": "DEVICE",
+    "configs": {
+        "temp": {
+            "define": {
+                "max": 500,
+                "min": 10,
+                "unit": "°"
+            },
+            "description": "",
+            "enabled": true,
+            "enabled_search": false,
+            "enabled_time_series": false,
+            "id": "temp",
+            "last_time": 0,
+            "type": "int",
+            "weight": 0
+        }
+    },
+    "properties": {
+        "status": "end",
+        "temp": 20
+    }
+}
+```
+
+**Tiled：**
+
+```json
+{
+    "id": "device123",
+    "source": "dm",
+    "owner": "admin",
+    "type": "DEVICE",
+    "configs": {
+        "temp": {
+            "define": {
+                "max": 500,
+                "min": 10,
+                "unit": "°"
+            },
+            "description": "",
+            "enabled": true,
+            "enabled_search": false,
+            "enabled_time_series": false,
+            "id": "temp",
+            "last_time": 0,
+            "type": "int",
+            "weight": 0
+        }
+    },
+    "status": "end",
+    "temp": 20
+}
+```
 
 
 
 
+### 实体保留字段
 
 
-
-
-
+|名称|类型|描述|
+|---|----|---|
+|id|string|实体的id，用于唯一标识实体。|
+|type|string|实体的类型，用于实体分类，诸如设备，空间等。|
+|owner|string|实体的拥有者ID。|
+|source|string|创建实体的插件名称。|
+|version|int64|实体的版本号。|
+|last_time|int64|实体的最近修改时间。|
+|template|string|标识实体的模板ID|
+|properties|object|用于结构化展示实体属性。|
+|configs|object|用于展示实体属性定义信息。|
+|config_file|string| 用于存储实体属性定义。|
+|mappers|object|用于展示实体的映射。|
 
 

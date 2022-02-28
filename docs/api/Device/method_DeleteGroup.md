@@ -1,10 +1,7 @@
 ---
 title: "DeleteGroup"
 description: 'delete entity group'
----
-
-
-调用该接口delete entity group。
+---调用该接口delete entity group。
 
 
 
@@ -15,16 +12,7 @@ description: 'delete entity group'
 post /groups/delete
 ```
 
-
-
-
-
-
-
-### Request Body
-
-
- 
+### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 | 设备组ID 数组 | Object | [apigroupv1Ids](#apigroupv1Ids) |
@@ -36,47 +24,15 @@ post /groups/delete
 | ids | Array[ string ] | id 数组 |    
 
 
-  
-       
-          
-     
- 
- 
-
-
-
-
 
 ## Response
 
-
-
 ### Response  200
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
 
- 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [apigroupv1CommonResponse](#apigroupv1CommonResponse) |
-
-#### apigroupv1CommonResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| result | string | ok  or failed |   
-
-
-  
-     
- 
- 
-
-
- 
-
-
-### Response  default
-
- 
+### Response  default 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -89,32 +45,10 @@ post /groups/delete
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-
-  
-     
-   
-       
-         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
-
-  
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
 
 

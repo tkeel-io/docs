@@ -216,5 +216,7 @@ docker push tkeelio/helloworld:v1
 #### 将服务打包成 chart 并提交仓库
 在您完成了服务镜像打包之后，请参考 [Helm Chart](https://helm.sh/zh/docs/topics/charts/) 为服务打包成一个 Chart 包，并将 Chart 上传至一个网络可达的仓库内即可。
 
+> chart 定义的详细信息可查看：[tKeel 插件 chart 规范](./plugin_chart.md)
+
 #### 登录 tKeel 管理平台安装您的插件
 在开始行动中，我们有一份叫做 [如何安装插件](../../getting_started/how-to-install-plugin.md) 的演示文档，简单介绍了如何快速将您的插件安装至 tKeel 平台中。

@@ -1,7 +1,7 @@
 ---
-title: "createSubscribe"
-description: 'create subscribe'
----调用该接口create subscribe。
+title: "ValidateSubscribed"
+description: 'validate subscribe topic is user request'
+---调用该接口validate subscribe topic is user request。
 
 
 
@@ -9,20 +9,19 @@ description: 'create subscribe'
 
 
 ```
-post /subscribe
+post /validate/subscribe
 ```
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1CreateSubscribeRequest](#v1CreateSubscribeRequest) |
+|  | Object | [v1ValidateSubscribedRequest](#v1ValidateSubscribedRequest) |
 
-#### v1CreateSubscribeRequest
+#### v1ValidateSubscribedRequest
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| description | string | 订阅描述 |      
-| title | string | 订阅名称 |   
+| topic | string | topic |   
 
 
 
@@ -31,17 +30,13 @@ post /subscribe
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1CreateSubscribeResponse](#v1CreateSubscribeResponse) |
+| 200 | OK | Object | [v1ValidateSubscribedResponse](#v1ValidateSubscribedResponse) |
 
-#### v1CreateSubscribeResponse
+#### v1ValidateSubscribedResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| description | string | 订阅描述 |      
-| endpoint | string | 订阅endpoint |      
-| id | string | 订阅ID |      
-| is_default | boolean | 是否为默认订阅 |      
-| title | string | 订阅名称 |   
+| status | string | status |   
 
 
 

@@ -1,7 +1,7 @@
 ---
-title: "createSubscribe"
-description: 'create subscribe'
----调用该接口create subscribe。
+title: "SubscribeByDevice"
+description: 'subscribe by device'
+---调用该接口subscribe by device。
 
 
 
@@ -9,20 +9,22 @@ description: 'create subscribe'
 
 
 ```
-post /subscribe
+post /subscribe/device/{id}
 ```
+
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string | device id |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1CreateSubscribeRequest](#v1CreateSubscribeRequest) |
+|  | Object | [](#) |
 
-#### v1CreateSubscribeRequest
+#### 
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| description | string | 订阅描述 |      
-| title | string | 订阅名称 |   
+| ---- | ---- | ----------- |  
 
 
 
@@ -31,17 +33,13 @@ post /subscribe
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1CreateSubscribeResponse](#v1CreateSubscribeResponse) |
+| 200 | OK | Object | [v1SubscribeByDeviceResponse](#v1SubscribeByDeviceResponse) |
 
-#### v1CreateSubscribeResponse
+#### v1SubscribeByDeviceResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| description | string | 订阅描述 |      
-| endpoint | string | 订阅endpoint |      
-| id | string | 订阅ID |      
-| is_default | boolean | 是否为默认订阅 |      
-| title | string | 订阅名称 |   
+| status | string | status |   
 
 
 

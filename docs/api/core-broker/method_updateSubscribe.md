@@ -42,6 +42,7 @@ patch /subscribe/{id}
 | description | string | 订阅描述 |      
 | endpoint | string | 订阅endpoint |      
 | id | string | 订阅ID |      
+| is_default | boolean | 是否为默认订阅 |      
 | title | string | 订阅名称 |   
 
 

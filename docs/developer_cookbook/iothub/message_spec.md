@@ -155,31 +155,20 @@ d. 设备收到平台发送的C的数据
 - payload:
 ```json
 {
-  "Device A": [
-    {
-      "ts": 1483228800000,
-      "values": {
-        "temperature": 42,
-        "humidity": 80
-      }
+    "Device A":{
+        "ts":1483228800000,
+        "values":{
+            "temperature":42,
+            "humidity":80
+        }
     },
-    {
-      "ts": 1483228801000,
-      "values": {
-        "temperature": 43,
-        "humidity": 82
-      }
+    "Device B":{
+        "ts":1483228800000,
+        "values":{
+            "temperature":42,
+            "humidity":80
+        }
     }
-  ],
-  "Device B": [
-    {
-      "ts": 1483228800000,
-      "values": {
-        "temperature": 42,
-        "humidity": 80
-      }
-    }
-  ]
 }
 ```
 

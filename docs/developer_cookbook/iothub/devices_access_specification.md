@@ -5,7 +5,7 @@ sidebar_position: 2
 
 
 ## 介绍
-设备接入是 tkeel 物联网平台提供的基础能力，支持各种标准协议的接入，需要使用`设备token`和`设备ID`进行连接。IoT Hub 目前支持 MQTT、WebSocket、CoAP接入。 后续将逐渐支持 MQTTS、WebSocket Secure（WSS）、STOMP、MQTT-SN、LwM2M 等协议的接入
+设备接入是 tkeel 物联网平台提供的基础能力，支持各种标准协议的接入，需要使用`设备token`和`设备ID`进行连接。IoT Hub 目前支持 MQTT、WebSocket、CoAP、MQTT-SN接入。 后续将逐渐支持 MQTTS、WebSocket Secure（WSS）、STOMP、LwM2M 等协议的接入
 
 
 ## MQTT 协议
@@ -94,3 +94,32 @@ coap-client -m put -e "{'key': 'value'}"   "coap://192.168.123.9:30588/mqtt/1cb1
 {"key": "value"}
 ```
 
+
+## MQTT-SN 协议
+mqtt-sn client <--> mqtt-sn gateway <--> mqtt broker
+连接地址： mqtt-sn://192.168.123.9:31884
+连接条件：
+- 设备token
+- 设备ID
+开启 MQTT-SN 的时候需要指定 设备ID 和 设备token
+
+### mqtt-sn-pub 示例（cmd）
+
+#### 订阅属性消息
+```bash
+./mqtt-sn-sub  -h 192.168.123.9 -p 31884 -t "v1/devices/me/attributes"
+```
+- 主题名称为：`v1/devices/me/attributes`
+
+
+#### 发布属性消息
+```bash
+./mqtt-sn-pub  -h 192.168.123.9 -p 31884 -t "v1/devices/me/attributes" -m "{‘key_test’: 'value'}"
+```
+- 主题名称为：`v1/devices/me/attributes`
+- Payload 为：`{‘key_test’: 'value'}`
+
+查看订阅的消息收到了
+```json
+{‘key_test’: 'value'}
+```

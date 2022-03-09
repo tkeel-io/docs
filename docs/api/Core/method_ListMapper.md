@@ -1,10 +1,10 @@
 ---
-title: "GetEntityProps"
-description: 'Get Entity Properties'
+title: "ListMapper"
+description: 'list mappers'
 ---
 
 
-调用该接口Get Entity Properties。
+调用该接口list mappers。
 
 
 
@@ -12,14 +12,14 @@ description: 'Get Entity Properties'
 
 
 ```
-get /entities/{id}/properties
+get /entities/{entity_id}/mappers
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | entity id |  
+| entity_id | path | string | entity id |  
 
 
 
@@ -27,10 +27,9 @@ get /entities/{id}/properties
 
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
-| source | query | string | source id |  false |
-| owner | query | string | owner id |  true |
 | type | query | string | entity type |  false |
-| property_keys | query | string | entity property ids, eg: pids=1,2,3 |  false |
+| source | query | string | source id |  false |
+| owner | query | string | owner id |  false |
 
 
 
@@ -43,26 +42,20 @@ get /entities/{id}/properties
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1EntityResponse](#v1EntityResponse) |
+| 200 | OK | Object | [v1ListMapperResponse](#v1ListMapperResponse) |
 
-#### v1EntityResponse
+#### v1ListMapperResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |    
-| configs | Object | entity configs   |      
-| id | string | entity id |          
-| mappers | Array[v1Mapper] | entity mappers [ 具体参数可见下面 [v1Mapper](#v1Mapper) ] |       
-| owner | string | owner id |     
-| properties | Object | entity properties   |      
+| ---- | ---- | ----------- |     
+| entity_id | string | entity id |          
+| mappers | Array[v1Mapper] | mapper informations [ 具体参数可见下面 [v1Mapper](#v1Mapper) ] |       
+| owner | string | owner id |      
 | source | string | source id |      
 | type | string | entity type |   
 
 
   
-    
-          
-     
-   
      
    
        
@@ -91,10 +84,6 @@ get /entities/{id}/properties
           
      
    
-     
-   
-    
-          
      
    
      

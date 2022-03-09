@@ -110,7 +110,7 @@ post /entities/search
 | ---- | ---- | ----------- |    
 | configs | Object | entity configs   |      
 | id | string | entity id |          
-| mappers | Array[v1MapperDesc] | entity mappers [ 具体参数可见下面 [v1MapperDesc](#v1MapperDesc) ] |       
+| mappers | Array[v1Mapper] | entity mappers [ 具体参数可见下面 [v1Mapper](#v1Mapper) ] |       
 | owner | string | owner id |     
 | properties | Object | entity properties   |      
 | source | string | source id |      
@@ -126,14 +126,20 @@ post /entities/search
    
        
          
-### v1MapperDesc
+### v1Mapper
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
+| description | string | mapper description |      
+| id | string | mapper id |      
 | name | string | mapper name |      
-| tql | string | tql content |   
+| tql_text | string | mapper tql text |   
 
 
   
+     
+   
+     
+   
      
    
      

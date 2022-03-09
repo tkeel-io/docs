@@ -79,8 +79,10 @@ curl --location --request POST '127.0.0.1:31234/v1/devices' \
         "name":"sensor1",
         "description":"test",
         "parentId":"",
+    	"parnetName":"",
         "directConnection":true,
         "templateId":"",
+    	"templateId":"",
         "selfLearn":false,
         "ext":{
             "location":"wuhan",
@@ -114,10 +116,12 @@ curl --location --request POST '127.0.0.1:31234/v1/devices' \
                         "commany": "qingcloud",
                         "location": "wuhan"
                     },
-                    "group": "",
+                    "parentId": "",
+                    "parentName":"",
                     "name": "sensor1",
                     "selfLearn": false,
-                    "templateId": ""
+                    "templateId": "",
+                    "templateName":""
                 },
                 "sysField": {
                     "_createdAt": 1644397058647921200,
@@ -181,6 +185,7 @@ curl --location --request POST '127.0.0.1:31234/v1/groups' \
     "name":"group_name",
     "description":"group desc",
     "parentId":"",
+	"parentName":"",
     "ext":{
         "classify":"abc",
         "other":"ohter"
@@ -213,7 +218,8 @@ curl --location --request POST '127.0.0.1:31234/v1/groups' \
                         "other": "ohter"
                     },
                     "name": "group_name",
-                    "parentId": ""
+                    "parentId": "",
+                    "parentName":""
                 },
                 "sysField": {
                     "_createdAt": 1644398723793111600,
@@ -256,7 +262,7 @@ curl --location --request POST '127.0.0.1:31234/v1/groups/tree' \
 --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY0NDgyMzA2Miwic3ViIjoidXNyLTMzNzM3OTQ1YzJiNzE4ZGI0YzMwOWQ2MzNkMmYifQ.dwZtc-TdXN_Ja3V3ckkYkcXxYO-XTjNduFjChfVoSSg_rAmuiWJ8_6kxFPd44odp7H6GyJRzEsznjsd4L3dUBg' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "page_num":0,
+    "page_num":1,
     "page_size":1000,
     "order_by":"name",
     "is_descending":false ,
@@ -362,7 +368,8 @@ curl --location --request POST '127.0.0.1:31234/v1/groups/tree' \
                             "description": "",
                             "ext": {},
                             "name": "测试设备组_001",
-                            "parentId": ""
+                            "parentId": "",
+							"parentName":""
                         },
                         "sysField": {
                             "_createdAt": 1644896556921636000,
@@ -661,22 +668,24 @@ post v1/search
 
 搜索内容和规则由body 确定，body 由如下部分构成
 
-| 字段          | tpye     | 类型   | 说明                                |
-| ------------- | -------- | ------ | ----------------------------------- |
-| page_num      | require  | uint32 | 记录开始页                          |
-| page_size     | require  | uint32 | 每页限制条数                        |
-| order_by      | optional | string | 排序字段                            |
-| is_descending | optional | bool   | 是否逆序， false：不逆序，true:逆序 |
-| query         | optional | string | es 模糊查询                         |
-| condition     | optional | object | 组合条件                            |
+| 字段          | tpye     | 类型   | 说明                                                         |
+| ------------- | -------- | ------ | ------------------------------------------------------------ |
+| page_num      | require  | uint32 | 记录开始页，从1开始                                          |
+| page_size     | require  | uint32 | 每页限制条数,        ps: 如果填0 ，则只返回数量统计，而不返回实际的列表。 |
+| order_by      | optional | string | 排序字段                                                     |
+| is_descending | optional | bool   | 是否逆序， false：不逆序，true:逆序                          |
+| query         | optional | string | es 模糊查询                                                  |
+| condition     | optional | object | 组合条件                                                     |
 
-condtion 说明
+condtion 说明   **组合condtion  可以实现很多类型的search， 多个 condtion 之间是 并且关系**
 
 | 字段     | Located in | 类型   | 说明                                                         |
 | -------- | ---------- | ------ | ------------------------------------------------------------ |
 | field    | body       | string | 查询操作字段                                                 |
 | operator | body       | string | $lt：小于  $lte：小于等于 $gt：大于 $gte：大于等于 $eq：等于 $neq：不等于 $prefix：前缀匹配 $wildcard：模糊匹配 |
 | value    | body       | 不限   | 值                                                           |
+
+
 
 
 
@@ -689,7 +698,7 @@ curl --location --request POST '127.0.0.1:31234/v1/search' \
 --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY0NDgyMzA2Miwic3ViIjoidXNyLTMzNzM3OTQ1YzJiNzE4ZGI0YzMwOWQ2MzNkMmYifQ.dwZtc-TdXN_Ja3V3ckkYkcXxYO-XTjNduFjChfVoSSg_rAmuiWJ8_6kxFPd44odp7H6GyJRzEsznjsd4L3dUBg' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "page_num":0,
+    "page_num":1,
     "page_size":1000,
     "order_by":"name",
     "is_descending":false ,
@@ -721,7 +730,7 @@ curl --location --request POST '127.0.0.1:31234/v1/search' \
 --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY0NDgyMzA2Miwic3ViIjoidXNyLTMzNzM3OTQ1YzJiNzE4ZGI0YzMwOWQ2MzNkMmYifQ.dwZtc-TdXN_Ja3V3ckkYkcXxYO-XTjNduFjChfVoSSg_rAmuiWJ8_6kxFPd44odp7H6GyJRzEsznjsd4L3dUBg' \
 --header 'Content-Type: application/json' \
 --data-raw '{
- 	"page_num":0,
+ 	"page_num":1,
     "page_size":1000,
     "order_by":"name",
     "is_descending":false ,
@@ -753,7 +762,7 @@ curl --location --request POST '127.0.0.1:31234/v1/search' \
 --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY0NDgyMzA2Miwic3ViIjoidXNyLTMzNzM3OTQ1YzJiNzE4ZGI0YzMwOWQ2MzNkMmYifQ.dwZtc-TdXN_Ja3V3ckkYkcXxYO-XTjNduFjChfVoSSg_rAmuiWJ8_6kxFPd44odp7H6GyJRzEsznjsd4L3dUBg' \
 --header 'Content-Type: application/json' \
 --data-raw '{
- 	"page_num":0,
+ 	"page_num":1,
     "page_size":1000,
     "order_by":"name",
     "is_descending":false ,
@@ -787,7 +796,7 @@ curl --location --request POST '127.0.0.1:31234/v1/search' \
 --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY0NDgyMzA2Miwic3ViIjoidXNyLTMzNzM3OTQ1YzJiNzE4ZGI0YzMwOWQ2MzNkMmYifQ.dwZtc-TdXN_Ja3V3ckkYkcXxYO-XTjNduFjChfVoSSg_rAmuiWJ8_6kxFPd44odp7H6GyJRzEsznjsd4L3dUBg' \
 --header 'Content-Type: application/json' \
 --data-raw '{
- 	"page_num":0,
+ 	"page_num":1,
     "page_size":1000,
     "order_by":"name",
     "is_descending":false ,
@@ -837,7 +846,7 @@ curl --location --request POST '127.0.0.1:31234/v1/search' \
 --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY0NDgyMzA2Miwic3ViIjoidXNyLTMzNzM3OTQ1YzJiNzE4ZGI0YzMwOWQ2MzNkMmYifQ.dwZtc-TdXN_Ja3V3ckkYkcXxYO-XTjNduFjChfVoSSg_rAmuiWJ8_6kxFPd44odp7H6GyJRzEsznjsd4L3dUBg' \
 --header 'Content-Type: application/json' \
 --data-raw '{
- 	"page_num":0,
+ 	"page_num":1,
     "page_size":1000,
     "order_by":"name",
     "is_descending":false ,
@@ -876,7 +885,7 @@ curl --location --request POST '127.0.0.1:31234/v1/search' \
 --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY0NDgyMzA2Miwic3ViIjoidXNyLTMzNzM3OTQ1YzJiNzE4ZGI0YzMwOWQ2MzNkMmYifQ.dwZtc-TdXN_Ja3V3ckkYkcXxYO-XTjNduFjChfVoSSg_rAmuiWJ8_6kxFPd44odp7H6GyJRzEsznjsd4L3dUBg' \
 --header 'Content-Type: application/json' \
 --data-raw '{
- 	"page_num":0,
+ 	"page_num":1,
     "page_size":1000,
     "order_by":"name",
     "is_descending":false ,

@@ -1,10 +1,10 @@
 ---
-title: "DeleteEntity"
-description: 'Delete a entity'
+title: "Health"
+description: 'health for probe'
 ---
 
 
-调用该接口Delete a entity。
+调用该接口health for probe。
 
 
 
@@ -12,24 +12,12 @@ description: 'Delete a entity'
 
 
 ```
-delete /entities/{id}
+get /health
 ```
 
 
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string | entity id |  
 
-
-
-###  Request Parameters
-
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| type | query | string | entity type |  false |
-| source | query | string | source id |  false |
-| owner | query | string | owner id |  false |
 
 
 
@@ -42,21 +30,15 @@ delete /entities/{id}
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1DeleteEntityResponse](#v1DeleteEntityResponse) |
+| 200 | OK | Object | [v1HealthResponse](#v1HealthResponse) |
 
-#### v1DeleteEntityResponse
+#### v1HealthResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| id | string | entity id |      
-| status | string | status |   
+| ---- | ---- | ----------- |  
 
 
-  
-     
-   
-     
- 
+
  
 
 

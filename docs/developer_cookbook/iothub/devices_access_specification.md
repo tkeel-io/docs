@@ -80,7 +80,7 @@ coap-client -m get -s 1000  "coap://192.168.123.9:30588/mqtt/1cb1750c-2b95-4f0b-
 
 #### 发布消息
 ```bash
-coap-client -m put -e "{'key': 'value'}"   "coap://192.168.123.9:30588/mqtt/1cb1750c-2b95-4f0b-9a38-43cfb6b13418/v1/devices/me/attributes?c=<设备ID>&p=<设备token>&u=<用户名>"
+coap-client -m put -t "application/json" -e "{'key': 'value'}"   "coap://192.168.123.9:30588/mqtt/1cb1750c-2b95-4f0b-9a38-43cfb6b13418/v1/devices/me/attributes?c=<设备ID>&p=<设备token>&u=<用户名>"
 ```
 - 主题名称为：`1cb1750c-2b95-4f0b-9a38-43cfb6b13418/v1/devices/me/attributes`
 > 注意这里是 `设备ID/v1/devices/me/attributes`
@@ -122,4 +122,104 @@ mqtt-sn client <--> mqtt-sn gateway <--> mqtt broker
 查看订阅的消息收到了
 ```json
 {‘key_test’: 'value'}
+```
+
+
+
+## LwM2M 协议
+LwM2M client <--> emqx_lwm2m <--> mqtt broker
+连接地址： lwm2m://192.168.123.9:30685
+连接条件：
+- 设备token
+- 设备ID
+  LwM2M client 连接 emqx_lwm2m 的时候需要指定 endpoint name 为 “{设备ID}@{设备token}”
+
+
+### lwm2mclient 示例（cmd）
+
+#### lwm2mclient 连接平台 
+```bash
+./lwm2mclient -n a8e92c6d-0f73-4f7a-8b85-0f110155eed2@NWExMTg3NTUtZWVhNS0zYzNiLWEzNmEtODIzMDU2MWFkMWM1 -h 192.168.123.9 -p 30685 -4
+```
+- -n 表示 endpoint name 为 “{设备ID}@{设备token}”
+
+lwm2mClient 连接平台成功之后平，可在平台原始数据收到消息
+- 主题名称为: "lwm2m/a8e92c6d-0f73-4f7a-8b85-0f110155eed2@NWExMTg3NTUtZWVhNS0zYzNiLWEzNmEtODIzMDU2MWFkMWM1/up/resp"
+- Payload 为：
+```json
+{
+  "msgType":"register",
+  "data":{
+    "objectList":[
+      "/1",
+      "/1/0",
+      "/2/0",
+      "/3/0",
+      "/4/0",
+      "/5/0",
+      "/6/0",
+      "/7/0",
+      "/31024",
+      "/31024/10",
+      "/31024/11",
+      "/31024/12"
+    ],
+    "lwm2m":"1.1",
+    "lt":300,
+    "ep":"a8e92c6d-0f73-4f7a-8b85-0f110155eed2@NWExMTg3NTUtZWVhNS0zYzNiLWEzNmEtODIzMDU2MWFkMWM1",
+    "b":"U",
+    "alternatePath":"/"
+  }
+}
+```
+
+
+#### 通过 HTTP API 发布消息到 lwm2mClient
+```bash
+curl --location --request POST 'http://192.168.123.9:30855/api/v4/mqtt/publish' \
+--header 'Authorization: Basic YWRtaW46cHVibGlj' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "topic":"lwm2m/a8e92c6d-0f73-4f7a-8b85-0f110155eed2@NWExMTg3NTUtZWVhNS0zYzNiLWEzNmEtODIzMDU2MWFkMWM1/dn",
+    "payload":{
+        "reqID":"2",
+        "msgType":"discover",
+        "data":{
+            "path":"/3/0"
+        }
+    },
+    "qos":1,
+    "retain":false,
+    "clientid":"@tkeel.iothub.internal.clientId"
+}'
+```
+- 主题名称为：`lwm2m/a8e92c6d-0f73-4f7a-8b85-0f110155eed2@NWExMTg3NTUtZWVhNS0zYzNiLWEzNmEtODIzMDU2MWFkMWM1/dn`
+- Payload 为：
+```json
+{
+  "reqID": "2",
+  "msgType": "discover",
+  "data": {
+    "path": "/3/0"
+  }
+}
+```
+
+lwm2mClient 收到消息之后回复的消息如下， 可在平台原始数据收到数据
+- 主题名称为: "lwm2m/a8e92c6d-0f73-4f7a-8b85-0f110155eed2@NWExMTg3NTUtZWVhNS0zYzNiLWEzNmEtODIzMDU2MWFkMWM1/up/resp"
+- Payload 为：
+```json
+{
+  "reqID":"2",
+  "msgType":"discover",
+  "data":{
+    "reqPath":"/3/0",
+    "content":[
+      "</3/0>",
+      "</3/0/0>,</3/0/1>,</3/0/2>,</3/0/3>,</3/0/4>,</3/0/5>,</3/0/6>,</3/0/7>,</3/0/8>,</3/0/9>,</3/0/10>,</3/0/11>,</3/0/12>,</3/0/13>,</3/0/14>,</3/0/15>,</3/0/16>"
+    ],
+    "codeMsg":"content",
+    "code":"2.05"
+  }
+}
 ```

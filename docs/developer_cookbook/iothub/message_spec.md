@@ -142,7 +142,7 @@ d. 设备收到平台发送的C的数据
  or（后续扩展支持）
 ```json
 {
-   "ts": 1641349927430079500,
+   "ts": 1646964832292,
    "values": {
         "telemetry1": "value1"
         "telemetry2": "value2"
@@ -155,14 +155,14 @@ d. 设备收到平台发送的C的数据
 - payload:
 ```json
 {
-    "Device A":{
+    "Device A": {
         "ts":1483228800000,
         "values":{
             "temperature":42,
             "humidity":80
         }
     },
-    "Device B":{
+    "Device B": {
         "ts":1483228800000,
         "values":{
             "temperature":42,
@@ -188,7 +188,7 @@ b. 平台发布topic: `v1/devices/me/command/request/$request_id`, payload:
       "secret": "****",
       "http_method": "GET"
    },
-   "time": 1641349927430079500
+   "ts": 1646964832292
 }
 ```
 c. 设备收到命令消息之后回复 topic: `v1/devices/me/command/response/$request_id`, payload:

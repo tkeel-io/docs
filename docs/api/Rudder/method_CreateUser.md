@@ -43,6 +43,7 @@ post \tenants\{tenant_id}\users
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
+| reset_key | string |  |      
 | tenant_id | string |  |      
 | user_id | string |  |      
 | username | string |  |   

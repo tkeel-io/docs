@@ -19,12 +19,13 @@ post \repos\{name}
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| repo url | Object | [](#) |
+| repo url | Object | [CreateRepoRequestRepoUrl](#CreateRepoRequestRepoUrl) |
 
-#### 
+#### CreateRepoRequestRepoUrl
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |  
+| ---- | ---- | ----------- |     
+| url | string | repo url |   
 
 
 

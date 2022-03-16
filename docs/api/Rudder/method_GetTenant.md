@@ -26,11 +26,19 @@ get \tenants\{tenant_id}
 #### v1GetTenantResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
+| ---- | ---- | ----------- |         
+| admins | Array[v1TenantAdmin] | admins in tenant [ 具体参数可见下面 [v1TenantAdmin](#v1TenantAdmin) ] |       
 | created_at | string | tenant remark |      
+| num_user | integer | user number in tenant |      
 | remark | string | tenant remark |      
 | tenant_id | string | tenant id |      
 | title | string | tenant title |   
+
+### v1TenantAdmin
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| password | string |  Tenant Admin password  |      
+| username | string |  Tenant Admin username  |   
 
 
 

@@ -26,6 +26,7 @@ get \oauth\{tenant_id}\token
 | username | query | string | username while grant_type is password ,query param |  false |
 | password | query | string | password while grant_type is password,query param |  false |
 | refresh_token | query | string | refresh token while grant_type is refresh_token,query param |  false |
+| disable_redirect | query | boolean | auto redirect if auto_redirect = trueparam |  false |
 
 ## Response
 
@@ -40,6 +41,7 @@ get \oauth\{tenant_id}\token
 | ---- | ---- | ----------- |     
 | access_token | string |  |      
 | expires_in | string |  |      
+| redirect_url | string |  |      
 | refresh_token | string |  |      
 | token_type | string |  |   
 

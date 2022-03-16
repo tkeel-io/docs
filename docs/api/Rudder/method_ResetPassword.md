@@ -9,7 +9,7 @@ description: 'oauth reset user password'
 
 
 ```
-post \oauth\pwd
+post \oauth\rspwd
 ```
 
 ### Request Body 
@@ -38,7 +38,8 @@ post \oauth\pwd
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | has_reset | boolean |  |      
-| tenant_id | string |  |   
+| tenant_id | string |  |      
+| username | string |  |   
 
 
 

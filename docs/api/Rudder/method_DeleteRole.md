@@ -9,20 +9,27 @@ description: 'delete role in tenant '
 
 
 ```
-delete \rbac\tenant\{tenant_id}\roles\{role}
+delete \rbac\roles\{id}
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| tenant_id | path | string |  |  
-| role | path | string |  |  
+| id | path | string | tenant role id |  
 
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | OK | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [v1DeleteRoleResponse](#v1DeleteRoleResponse) |
+
+#### v1DeleteRoleResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| role |  | tenant role |   
+
+
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

@@ -46,14 +46,20 @@ get \tenants\{tenant_id}\users
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | avatar | string |  |      
-| create_at | string |  |      
+| created_at | string |  |      
 | email | string |  |      
 | external_id | string |  |      
-| nick_name | string |  |         
-| roles | Array[ string ] |  |       
+| nick_name | string |  |          
+| roles | Array[v1UserRole] |  [ 具体参数可见下面 [v1UserRole](#v1UserRole) ] |       
 | tenant_id | string |  |      
 | user_id | string |  |      
 | username | string |  |   
+
+### v1UserRole
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| id | string |  |      
+| name | string |  |   
 
 
 

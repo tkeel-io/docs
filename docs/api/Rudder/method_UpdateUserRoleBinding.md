@@ -1,7 +1,7 @@
 ---
-title: "DeleteRole"
-description: 'delete role in tenant '
----调用该接口delete role in tenant 。
+title: "UpdateUserRoleBinding"
+description: 'create binding to bind user_id with roles'
+---调用该接口create binding to bind user_id with roles。
 
 
 
@@ -9,27 +9,32 @@ description: 'delete role in tenant '
 
 
 ```
-delete \rbac\roles\{id}
+put \rbac\users\{user_id}\roles
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | tenant role id |  
+| user_id | path | string | binding user id |  
+
+### Request Body 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+| binding role id list | Object | [UpdateUserRoleBindingRequestRoleIDList](#UpdateUserRoleBindingRequestRoleIDList) |
+
+#### UpdateUserRoleBindingRequestRoleIDList
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |        
+| roles | Array[ string ] | binding roles |    
+
+
 
 ## Response
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1DeleteRoleResponse](#v1DeleteRoleResponse) |
-
-#### v1DeleteRoleResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| role |  | tenant role |   
-
-
+### Response  200
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

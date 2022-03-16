@@ -9,32 +9,48 @@ description: 'create role in tenant '
 
 
 ```
-post \rbac\tenant\{tenant_id}\roles
+post \rbac\roles
 ```
-
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| tenant_id | path | string |  |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1TenantRole](#v1TenantRole) |
+| tenant role | Object | [v1Role](#v1Role) |
 
-#### v1TenantRole
+#### v1Role
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| role | string |  |   
+| bind_num | integer | role bind user number |      
+| desc | string | role desc |      
+| id | string | tenant role id |      
+| name | string | tenant role name |          
+| permission_list | Array[apirbacv1Permission] | permission path list [ 具体参数可见下面 [apirbacv1Permission](#apirbacv1Permission) ] |       
+| uneditable | boolean | role uneditable |      
+| upsert_timestamp | string | role upsert timestamp |   
+
+### apirbacv1Permission
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| path | string | permission path |      
+| permission |  | permission |   
 
 
 
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | OK | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [v1CreateRoleResponse](#v1CreateRoleResponse) |
+
+#### v1CreateRoleResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| role |  | tenant role |   
+
+
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

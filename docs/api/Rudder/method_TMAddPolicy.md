@@ -1,7 +1,7 @@
 ---
-title: "DeleteRole"
-description: 'delete role in tenant '
----调用该接口delete role in tenant 。
+title: "TMAddPolicy"
+description: 'TM add policy'
+---调用该接口TM add policy。
 
 
 
@@ -9,27 +9,30 @@ description: 'delete role in tenant '
 
 
 ```
-delete \rbac\roles\{id}
+post \tkeel-manager\rbac\policy
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string | tenant role id |  
+### Request Body 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+|  | Object | [v1TMPolicyRequest](#v1TMPolicyRequest) |
 
-## Response
-
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1DeleteRoleResponse](#v1DeleteRoleResponse) |
-
-#### v1DeleteRoleResponse
+#### v1TMPolicyRequest
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| role |  | tenant role |   
+| permission | string |  |      
+| role | string |  |      
+| tenant | string |  |   
 
 
+
+## Response
+
+### Response  200
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

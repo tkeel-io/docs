@@ -40,6 +40,7 @@ post \tenants
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | admin_username | string | created tenant admin username |      
+| reset_key | string |  tenant admin password reset key |      
 | tenant_id | string | created tenant id |      
 | tenant_title | string | created tenant title |   
 

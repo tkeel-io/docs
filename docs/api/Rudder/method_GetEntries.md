@@ -33,7 +33,8 @@ get \entries
 | icon | string |  |      
 | id | string |  |      
 | name | string |  |      
-| path | string |  |   
+| path | string |  |      
+| portal |  |  |   
 
 
 

@@ -1,7 +1,7 @@
 ---
-title: "CreateUser"
-description: 'create a  user at tenant'
----调用该接口create a  user at tenant。
+title: "UpdatePassword"
+description: 'oauth update user password'
+---调用该接口oauth update user password。
 
 
 
@@ -9,26 +9,20 @@ description: 'create a  user at tenant'
 
 
 ```
-post \tenants\{tenant_id}\users
+put \oauth\pwd
 ```
-
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| tenant_id | path | string | tenant id |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| create user body params | Object | [v1CreateUserBody](#v1CreateUserBody) |
+|  | Object | [v1UpdatePasswordBody](#v1UpdatePasswordBody) |
 
-#### v1CreateUserBody
+#### v1UpdatePasswordBody
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| nick_name | string | user nick name |      
-| password | string | user password |         
-| roles | Array[ string ] | user roles |       
-| username | string | user name |   
+| new_password | string |  |      
+| refresh_token | string |  |   
 
 
 
@@ -37,16 +31,13 @@ post \tenants\{tenant_id}\users
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1CreateUserResponse](#v1CreateUserResponse) |
+| 200 | OK | Object | [v1UpdatePasswordResponse](#v1UpdatePasswordResponse) |
 
-#### v1CreateUserResponse
+#### v1UpdatePasswordResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| reset_key | string |  |      
-| tenant_id | string |  |      
-| user_id | string |  |      
-| username | string |  |   
+| tenant_id | string |  |   
 
 
 

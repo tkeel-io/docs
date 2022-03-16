@@ -1,7 +1,7 @@
 ---
-title: "CreateUser"
-description: 'create a  user at tenant'
----调用该接口create a  user at tenant。
+title: "OIDCRegister"
+description: 'oauth OIDC provider register'
+---调用该接口oauth OIDC provider register。
 
 
 
@@ -9,26 +9,29 @@ description: 'create a  user at tenant'
 
 
 ```
-post \tenants\{tenant_id}\users
+post \oauth\oidc\register
 ```
-
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| tenant_id | path | string | tenant id |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| create user body params | Object | [v1CreateUserBody](#v1CreateUserBody) |
+|  | Object | [v1OIDCRegisterBody](#v1OIDCRegisterBody) |
 
-#### v1CreateUserBody
+#### v1OIDCRegisterBody
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| nick_name | string | user nick name |      
-| password | string | user password |         
-| roles | Array[ string ] | user roles |       
-| username | string | user name |   
+| client_id | string |  |      
+| client_secret | string |  |      
+| email_key | string |  |      
+| endpoint |  |  |      
+| get_user_info | boolean |  |      
+| insecure_skip_verify | boolean |  |      
+| issuer | string |  |      
+| preferred_username_key | string |  |      
+| redirect_url | string |  |         
+| scopes | Array[ string ] |  |       
+| tenant_id | string |  |   
 
 
 
@@ -37,16 +40,13 @@ post \tenants\{tenant_id}\users
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1CreateUserResponse](#v1CreateUserResponse) |
+| 200 | OK | Object | [v1OIDCRegisterResponse](#v1OIDCRegisterResponse) |
 
-#### v1CreateUserResponse
+#### v1OIDCRegisterResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| reset_key | string |  |      
-| tenant_id | string |  |      
-| user_id | string |  |      
-| username | string |  |   
+| ok | boolean |  |   
 
 
 

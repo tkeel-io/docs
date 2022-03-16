@@ -1,7 +1,7 @@
 ---
-title: "DeleteRole"
-description: 'delete role in tenant '
----调用该接口delete role in tenant 。
+title: "DeleteRoleBinding"
+description: 'delete binding of the bind role_name with user_id'
+---调用该接口delete binding of the bind role_name with user_id。
 
 
 
@@ -9,27 +9,20 @@ description: 'delete role in tenant '
 
 
 ```
-delete \rbac\roles\{id}
+delete \rbac\roles\{role_id}\users\{user_id}
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | tenant role id |  
+| role_id | path | string | bind role id |  
+| user_id | path | string | bind user id |  
 
 ## Response
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1DeleteRoleResponse](#v1DeleteRoleResponse) |
-
-#### v1DeleteRoleResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| role |  | tenant role |   
-
-
+### Response  200
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

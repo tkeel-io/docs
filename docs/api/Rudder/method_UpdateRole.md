@@ -1,7 +1,7 @@
 ---
-title: "CreateUser"
-description: 'create a  user at tenant'
----调用该接口create a  user at tenant。
+title: "UpdateRole"
+description: 'update role in tenant '
+---调用该接口update role in tenant 。
 
 
 
@@ -9,26 +9,35 @@ description: 'create a  user at tenant'
 
 
 ```
-post \tenants\{tenant_id}\users
+put \rbac\roles\{id}
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| tenant_id | path | string | tenant id |  
+| id | path | string | tenant role id |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| create user body params | Object | [v1CreateUserBody](#v1CreateUserBody) |
+| tenant role | Object | [v1Role](#v1Role) |
 
-#### v1CreateUserBody
+#### v1Role
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| nick_name | string | user nick name |      
-| password | string | user password |         
-| roles | Array[ string ] | user roles |       
-| username | string | user name |   
+| bind_num | integer | role bind user number |      
+| desc | string | role desc |      
+| id | string | tenant role id |      
+| name | string | tenant role name |          
+| permission_list | Array[apirbacv1Permission] | permission path list [ 具体参数可见下面 [apirbacv1Permission](#apirbacv1Permission) ] |       
+| uneditable | boolean | role uneditable |      
+| upsert_timestamp | string | role upsert timestamp |   
+
+### apirbacv1Permission
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| path | string | permission path |      
+| permission |  | permission |   
 
 
 
@@ -37,16 +46,13 @@ post \tenants\{tenant_id}\users
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1CreateUserResponse](#v1CreateUserResponse) |
+| 200 | OK | Object | [v1UpdateRoleResponse](#v1UpdateRoleResponse) |
 
-#### v1CreateUserResponse
+#### v1UpdateRoleResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| reset_key | string |  |      
-| tenant_id | string |  |      
-| user_id | string |  |      
-| username | string |  |   
+| role |  | tenant role |   
 
 
 

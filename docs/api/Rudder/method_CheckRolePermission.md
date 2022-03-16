@@ -1,7 +1,7 @@
 ---
-title: "CreateUser"
-description: 'create a  user at tenant'
----调用该接口create a  user at tenant。
+title: "CheckRolePermission"
+description: 'check role has the permission'
+---调用该接口check role has the permission。
 
 
 
@@ -9,26 +9,19 @@ description: 'create a  user at tenant'
 
 
 ```
-post \tenants\{tenant_id}\users
+post \rbac\permissions\check
 ```
-
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| tenant_id | path | string | tenant id |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| create user body params | Object | [v1CreateUserBody](#v1CreateUserBody) |
+|  | Object | [v1CheckRolePermissionRequest](#v1CheckRolePermissionRequest) |
 
-#### v1CreateUserBody
+#### v1CheckRolePermissionRequest
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| nick_name | string | user nick name |      
-| password | string | user password |         
-| roles | Array[ string ] | user roles |       
-| username | string | user name |   
+| path | string | permission path |   
 
 
 
@@ -37,16 +30,13 @@ post \tenants\{tenant_id}\users
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1CreateUserResponse](#v1CreateUserResponse) |
+| 200 | OK | Object | [v1CheckRolePermissionResponse](#v1CheckRolePermissionResponse) |
 
-#### v1CreateUserResponse
+#### v1CheckRolePermissionResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| reset_key | string |  |      
-| tenant_id | string |  |      
-| user_id | string |  |      
-| username | string |  |   
+| allowed | boolean | permission allowed |   
 
 
 

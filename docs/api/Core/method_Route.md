@@ -1,10 +1,10 @@
 ---
-title: "Openapi_AddonsIdentify"
-description: 'Post addons identify.'
+title: "Route"
+description: 'route apis Request'
 ---
 
 
-调用该接口Post addons identify.。
+调用该接口route apis Request。
 
 
 
@@ -12,7 +12,7 @@ description: 'Post addons identify.'
 
 
 ```
-post /addons/identify
+post /route
 ```
 
 
@@ -27,39 +27,15 @@ post /addons/identify
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1AddonsIdentifyRequest](#v1AddonsIdentifyRequest) |
+|  | Object | [](#) |
 
-#### v1AddonsIdentifyRequest
+#### 
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |         
-| implemented_addons | Array[v1ImplementedAddons] |  [ 具体参数可见下面 [v1ImplementedAddons](#v1ImplementedAddons) ] |       
-| plugin |  |  |   
+| ---- | ---- | ----------- |  
 
 
-  
-       
-         
-### v1ImplementedAddons
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| addons_point | string |  |      
-| implemented_endpoint | string |  |   
 
-
-  
-     
-   
-     
- 
- 
-
-
-          
-     
-   
-     
- 
  
 
 
@@ -75,18 +51,15 @@ post /addons/identify
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [v1AddonsIdentifyResponse](#v1AddonsIdentifyResponse) |
+| 200 | OK | Object | [v1RouteResponse](#v1RouteResponse) |
 
-#### v1AddonsIdentifyResponse
+#### v1RouteResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| res |  |  |   
+| ---- | ---- | ----------- |  
 
 
-  
-     
- 
+
  
 
 

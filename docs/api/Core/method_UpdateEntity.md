@@ -1,10 +1,10 @@
 ---
 title: "UpdateEntity"
-description: 'Update a entity'
+description: 'Update Entity'
 ---
 
 
-调用该接口Update a entity。
+调用该接口Update Entity。
 
 
 
@@ -23,13 +23,6 @@ put /entities/{id}
 
 
 
-###  Request Parameters
-
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| source | query | string | source id |  false |
-| owner | query | string | owner id |  false |
-
 
 
 ### Request Body
@@ -38,7 +31,7 @@ put /entities/{id}
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| entity properties | Object | [](#) |
+|  | Object | [](#) |
 
 #### 
 
@@ -70,7 +63,7 @@ put /entities/{id}
 | ---- | ---- | ----------- |    
 | configs | Object | entity configs   |      
 | id | string | entity id |          
-| mappers | Array[v1MapperDesc] | entity mappers [ 具体参数可见下面 [v1MapperDesc](#v1MapperDesc) ] |       
+| mappers | Array[v1Mapper] | entity mappers [ 具体参数可见下面 [v1Mapper](#v1Mapper) ] |       
 | owner | string | owner id |     
 | properties | Object | entity properties   |      
 | source | string | source id |      
@@ -86,14 +79,20 @@ put /entities/{id}
    
        
          
-### v1MapperDesc
+### v1Mapper
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
+| description | string | mapper description |      
+| id | string | mapper id |      
 | name | string | mapper name |      
-| tql | string | tql content |   
+| tql_text | string | mapper tql text |   
 
 
   
+     
+   
+     
+   
      
    
      

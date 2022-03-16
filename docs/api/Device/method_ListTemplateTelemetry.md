@@ -1,10 +1,7 @@
 ---
 title: "ListTemplateTelemetry"
 description: 'list Template telemetry'
----
-
-
-调用该接口list Template telemetry。
+---调用该接口list Template telemetry。
 
 
 
@@ -15,23 +12,13 @@ description: 'list Template telemetry'
 get /templates/{uid}/telemetry
 ```
 
-
-
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | uid | path | string | 属性ID |  
 
-
-
-
-
 ## Response
 
-
-
-### Response  200
-
- 
+### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [v1ListTemplateTelemetryResponse](#v1ListTemplateTelemetryResponse) |
@@ -39,22 +26,12 @@ get /templates/{uid}/telemetry
 #### v1ListTemplateTelemetryResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| templateTeleObject |  | 遥测列表对象 |   
+| ---- | ---- | ----------- |    
+| templateTeleObject | Object | 遥测列表对象   |   
 
 
-  
-     
- 
- 
 
-
- 
-
-
-### Response  default
-
- 
+### Response  default 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -67,32 +44,10 @@ get /templates/{uid}/telemetry
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-
-  
-     
-   
-       
-         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
-
-  
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
 
 

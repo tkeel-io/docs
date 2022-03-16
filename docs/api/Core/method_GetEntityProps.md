@@ -30,7 +30,7 @@ get /entities/{id}/properties
 | source | query | string | source id |  false |
 | owner | query | string | owner id |  true |
 | type | query | string | entity type |  false |
-| pids | query | string | entity property ids, eg: pids=1,2,3 |  false |
+| property_keys | query | string | entity property ids, eg: pids=1,2,3 |  false |
 
 
 
@@ -51,7 +51,7 @@ get /entities/{id}/properties
 | ---- | ---- | ----------- |    
 | configs | Object | entity configs   |      
 | id | string | entity id |          
-| mappers | Array[v1MapperDesc] | entity mappers [ 具体参数可见下面 [v1MapperDesc](#v1MapperDesc) ] |       
+| mappers | Array[v1Mapper] | entity mappers [ 具体参数可见下面 [v1Mapper](#v1Mapper) ] |       
 | owner | string | owner id |     
 | properties | Object | entity properties   |      
 | source | string | source id |      
@@ -67,14 +67,20 @@ get /entities/{id}/properties
    
        
          
-### v1MapperDesc
+### v1Mapper
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
+| description | string | mapper description |      
+| id | string | mapper id |      
 | name | string | mapper name |      
-| tql | string | tql content |   
+| tql_text | string | mapper tql text |   
 
 
   
+     
+   
+     
+   
      
    
      

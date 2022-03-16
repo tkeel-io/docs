@@ -27,6 +27,7 @@ delete /entities/{id}
 
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
+| type | query | string | entity type |  false |
 | source | query | string | source id |  false |
 | owner | query | string | owner id |  false |
 

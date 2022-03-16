@@ -12,7 +12,7 @@ description: 'patch entity configs'
 
 
 ```
-post /entities/{id}/configs/patch
+put /entities/{id}/configs/patch
 ```
 
 

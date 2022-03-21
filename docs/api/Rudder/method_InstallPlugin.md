@@ -26,10 +26,20 @@ post \plugins\{id}
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | configuration | string | installer configuration data |      
+| desc | string | installer desc |      
+| icon | string | installer icon |          
+| maintainers | Array[v1Installermaintainer] | installer maintainers [ 具体参数可见下面 [v1Installermaintainer](#v1Installermaintainer) ] |       
 | name | string | installer name |      
 | repo | string | repository name |      
 | type |  | configuration type |      
 | version | string | installer version |   
+
+### v1Installermaintainer
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| email | string | maintainer email |      
+| name | string | maintainer name |      
+| url | string | maintainer url |   
 
 
 

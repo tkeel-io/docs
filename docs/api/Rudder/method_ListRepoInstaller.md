@@ -49,15 +49,16 @@ get \repos\{repo}\installers
 | ---- | ---- | ----------- |    
 | annotations | Object | installer metadata   |      
 | desc | string | installer desc |      
-| installed | boolean | whether the installer has been installed |          
-| maintainers | Array[InstallerObjectmaintainer] | installer maintainers [ 具体参数可见下面 [InstallerObjectmaintainer](#InstallerObjectmaintainer) ] |      
+| icon | string | installer icon url |          
+| maintainers | Array[v1InstallerObjectmaintainer] | installer maintainers [ 具体参数可见下面 [v1InstallerObjectmaintainer](#v1InstallerObjectmaintainer) ] |      
 | metadata | Object | installer metadata   |      
 | name | string | installer name |      
 | repo | string | installer repo |      
+| state |  | installer state |      
 | timestamp | string | last change chart timestamp |      
 | version | string | installer version |   
 
-### InstallerObjectmaintainer
+### v1InstallerObjectmaintainer
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | email | string | maintainer email |      

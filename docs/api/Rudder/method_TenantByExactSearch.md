@@ -1,7 +1,7 @@
 ---
-title: "DeleteRole"
-description: 'delete role in tenant '
----调用该接口delete role in tenant 。
+title: "TenantByExactSearch"
+description: 'tenant exact search'
+---调用该接口tenant exact search。
 
 
 
@@ -9,25 +9,29 @@ description: 'delete role in tenant '
 
 
 ```
-delete \rbac\roles\{id}
+get \tenants\exact
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string | tenant role id |  
+###  Request Parameters
+
+| Name | Located in | Type | Description |  Required |
+| ---- | ---------- | ----------- | ----------- |  ---- |
+| title | query | string |  |  false |
+| tenant_id | query | string |  |  false |
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1DeleteRoleResponse](#v1DeleteRoleResponse) |
+| 200 | OK | Object | [v1ExactTenantResponse](#v1ExactTenantResponse) |
 
-#### v1DeleteRoleResponse
+#### v1ExactTenantResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| role |  | tenant role |   
+| tenant_id | string |  |      
+| title | string |  |   
 
 
 

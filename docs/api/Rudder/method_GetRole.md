@@ -1,7 +1,7 @@
 ---
-title: "CreateUser"
-description: 'create a  user at tenant'
----调用该接口create a  user at tenant。
+title: "GetRole"
+description: 'Get role in tenant '
+---调用该接口Get role in tenant 。
 
 
 
@@ -9,44 +9,25 @@ description: 'create a  user at tenant'
 
 
 ```
-post \tenants\{tenant_id}\users
+get \rbac\roles\{id}
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| tenant_id | path | string | tenant id |  
-
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-| create user body params | Object | [v1CreateUserBody](#v1CreateUserBody) |
-
-#### v1CreateUserBody
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| nick_name | string | user nick name |      
-| password | string | user password |         
-| roles | Array[ string ] | user roles |       
-| username | string | user name |   
-
-
+| id | path | string | tenant role id |  
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1CreateUserResponse](#v1CreateUserResponse) |
+| 200 | OK | Object | [v1GetRoleResponse](#v1GetRoleResponse) |
 
-#### v1CreateUserResponse
+#### v1GetRoleResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| reset_key | string |  |      
-| tenant_id | string |  |      
-| user_id | string |  |      
-| username | string |  |   
+| role |  | tenant role |   
 
 
 

@@ -1,7 +1,7 @@
 ---
-title: "GetTenant"
-description: 'get a tenant'
----调用该接口get a tenant。
+title: "ListPermissions"
+description: 'list permissions '
+---调用该接口list permissions 。
 
 
 
@@ -9,36 +9,34 @@ description: 'get a tenant'
 
 
 ```
-get \tenants\{tenant_id}
+get \rbac\permissions
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| tenant_id | path | string | tenant id |  
+###  Request Parameters
+
+| Name | Located in | Type | Description |  Required |
+| ---- | ---------- | ----------- | ----------- |  ---- |
+| key_words | query | string | permission name search words |  false |
+| role | query | string | tenant role name,default is current role |  false |
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1GetTenantResponse](#v1GetTenantResponse) |
+| 200 | OK | Object | [v1ListPermissionResponse](#v1ListPermissionResponse) |
 
-#### v1GetTenantResponse
+#### v1ListPermissionResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |         
-| admins | Array[v1TenantAdmin] | admins in tenant [ 具体参数可见下面 [v1TenantAdmin](#v1TenantAdmin) ] |       
-| created_at | string | tenant remark |      
-| num_user | integer | user number in tenant |      
-| remark | string | tenant remark |      
-| tenant_id | string | tenant id |      
-| title | string | tenant title |   
+| permissions | Array[apirbacv1Permission] | role permissions [ 具体参数可见下面 [apirbacv1Permission](#apirbacv1Permission) ] |    
 
-### v1TenantAdmin
+### apirbacv1Permission
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| password | string |  Tenant Admin password  |      
-| username | string |  Tenant Admin username  |   
+| path | string | permission path |      
+| permission |  | permission |   
 
 
 

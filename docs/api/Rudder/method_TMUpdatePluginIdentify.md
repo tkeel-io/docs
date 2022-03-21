@@ -1,7 +1,7 @@
 ---
-title: "CreateRepo"
-description: '创建仓库接口'
----调用该接口创建仓库接口。
+title: "TMUpdatePluginIdentify"
+description: '获取插件绑定租户接口'
+---调用该接口获取插件绑定租户接口。
 
 
 
@@ -9,47 +9,31 @@ description: '创建仓库接口'
 
 
 ```
-post \repos\{name}
+get \tm\plugins\identify
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| name | path | string | repo name |  
+###  Request Parameters
 
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-| repo url | Object | [CreateRepoRequestRepoUrl](#CreateRepoRequestRepoUrl) |
-
-#### CreateRepoRequestRepoUrl
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| url | string | repo url |   
-
-
+| Name | Located in | Type | Description |  Required |
+| ---- | ---------- | ----------- | ----------- |  ---- |
+| id | query | string |  |  false |
 
 ## Response
 
 ### Response  200
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 200 | SUCC | {   { }} |
+| 200 | OK | {   { }} |
 
 ### Response  400
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
 | 400 | INVALID_ARGUMENT | {   { }} |
 
-### Response  409
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 409 | ALREADY_EXISTS | {   { }} |
-
 ### Response  500
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 500 | INTERNAL_STORE | {   { }} |
+| 500 | INTERNAL_ERROR | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

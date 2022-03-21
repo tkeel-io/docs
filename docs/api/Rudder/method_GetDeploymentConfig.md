@@ -1,7 +1,7 @@
 ---
-title: "DeleteRole"
-description: 'delete role in tenant '
----调用该接口delete role in tenant 。
+title: "GetDeploymentConfig"
+description: '查询 deployment config 接口'
+---调用该接口查询 deployment config 接口。
 
 
 
@@ -9,27 +9,35 @@ description: 'delete role in tenant '
 
 
 ```
-delete \rbac\roles\{id}
+get \config\deployment
 ```
-
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string | tenant role id |  
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1DeleteRoleResponse](#v1DeleteRoleResponse) |
+| 200 | OK | Object | [v1GetDeploymentConfigResponse](#v1GetDeploymentConfigResponse) |
 
-#### v1DeleteRoleResponse
+#### v1GetDeploymentConfigResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| role |  | tenant role |   
+| admin_host | string | admin_host |      
+| port | string | host port |      
+| tenant_host | string | tenant_host |   
 
 
+
+### Response  400
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 400 | INVALID_TENANT | {   { }} |
+
+### Response  500
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 500 | INTERNAL_ERROR | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

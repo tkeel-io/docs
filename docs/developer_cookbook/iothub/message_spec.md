@@ -32,7 +32,7 @@ sidebar_position: 3
  or（后续扩展支持）
 ```json
 {
-   "ts": 1641349927430079500,
+   "ts": 1646964832292, //毫秒
    "values": {
       "attribute1": "value1",
       "attribute2": "value2"
@@ -142,7 +142,7 @@ d. 设备收到平台发送的C的数据
  or（后续扩展支持）
 ```json
 {
-   "ts": 1641349927430079500,
+   "ts": 1646964832292, //毫秒
    "values": {
         "telemetry1": "value1"
         "telemetry2": "value2"
@@ -155,31 +155,20 @@ d. 设备收到平台发送的C的数据
 - payload:
 ```json
 {
-  "Device A": [
-    {
-      "ts": 1483228800000,
-      "values": {
-        "temperature": 42,
-        "humidity": 80
-      }
+    "Device A": {
+        "ts":1483228800000, //毫秒
+        "values":{
+            "temperature":42,
+            "humidity":80
+        }
     },
-    {
-      "ts": 1483228801000,
-      "values": {
-        "temperature": 43,
-        "humidity": 82
-      }
+    "Device B": {
+        "ts":1483228800000, //毫秒
+        "values":{
+            "temperature":42,
+            "humidity":80
+        }
     }
-  ],
-  "Device B": [
-    {
-      "ts": 1483228800000,
-      "values": {
-        "temperature": 42,
-        "humidity": 80
-      }
-    }
-  ]
 }
 ```
 
@@ -199,7 +188,7 @@ b. 平台发布topic: `v1/devices/me/command/request/$request_id`, payload:
       "secret": "****",
       "http_method": "GET"
    },
-   "time": 1641349927430079500
+   "ts": 1646964832292 //毫秒
 }
 ```
 c. 设备收到命令消息之后回复 topic: `v1/devices/me/command/response/$request_id`, payload:

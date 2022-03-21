@@ -19,12 +19,14 @@ post \plugins\{id}\tenants
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| extra data | Object | [](#) |
+| extra data | Object | [TenantEnableRequestEnableExtraData](#TenantEnableRequestEnableExtraData) |
 
-#### 
+#### TenantEnableRequestEnableExtraData
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |  
+| ---- | ---- | ----------- |     
+| desc | string | extra data |      
+| extra | string | extra data |   
 
 
 

@@ -1,7 +1,7 @@
 ---
-title: "CreateRepo"
-description: '创建仓库接口'
----调用该接口创建仓库接口。
+title: "UpdateAdminPassword"
+description: 'admin 重设密码接口'
+---调用该接口admin 重设密码接口。
 
 
 
@@ -9,23 +9,19 @@ description: '创建仓库接口'
 
 
 ```
-post \repos\{name}
+put \oauth2\pwd
 ```
-
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| name | path | string | repo name |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| repo url | Object | [CreateRepoRequestRepoUrl](#CreateRepoRequestRepoUrl) |
+|  | Object | [v1UpdateAdminPasswordRequest](#v1UpdateAdminPasswordRequest) |
 
-#### CreateRepoRequestRepoUrl
+#### v1UpdateAdminPasswordRequest
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| url | string | repo url |   
+| new_password | string | new admin password |   
 
 
 
@@ -34,22 +30,17 @@ post \repos\{name}
 ### Response  200
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 200 | SUCC | {   { }} |
+| 200 | OK | {   { }} |
 
-### Response  400
+### Response  401
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 400 | INVALID_ARGUMENT | {   { }} |
-
-### Response  409
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 409 | ALREADY_EXISTS | {   { }} |
+| 401 | TOKEN_INVALID | {   { }} |
 
 ### Response  500
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 500 | INTERNAL_STORE | {   { }} |
+| 500 | INTERNAL_ERROR | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

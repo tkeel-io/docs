@@ -187,7 +187,9 @@ curl --location --request POST '127.0.0.1:31234/v1/templates/4aa904c9-dfd8-454f-
 | id     | body       | string | 遥测ID, 表示遥测的唯一标识                                   |
 | description    | body       | string | 遥测说明                                                     |
 | type   | body       | string | 数据类型["int","float","double","array","bool","enum","date","struct","string"] |
-| define | body       | object | 模型的本质是对数据的约束和定义，前面的字段描述的是此数据的基本信息，那么define 对象是对此数据的详细定义和约束，定义和约束内容并不限制且可适应未来不同情况无限扩展。形式为KV。<br/>遥测主要有类似电压、电流、功率、温度、湿度等带时间戳的时序值：<br/>定义和约束按照数据类型划分<br/>参考前面平台：<br/>数据类型 <br />int32,float,double的define约束:<br/>{<br/>    "max": "100",<br/>    "min": "1",<br/>    "step": "1",<br/>    "unit": "v",<br/>    "unitName": "伏"<br/>    "ext":{<br/>        "xxx":"xxx",<br/>        "yyy":"yyy"<br/>    }<br/>}<br/>string约束:<br/>{<br/>    "max": "100"<br/>     "ext":{<br/>  <br/>     }<br/>}<br/>enum约束:<br/><br/>{<br/>    "0": "开",<br/>    "1": "关"<br/>    "2": "无"<br/>}<br/>bool约束<br/><br/>{<br/>    "0": "开",<br/>    "1": "关"<br/>}<br/>array约束:<br/><br/>{<br/>    "size": "10",<br/>    "item": {<br/>        "type":"int32"<br/>    }<br/>}<br/>{<br/>    "size": "10",<br/>    "item": {<br/>        "type":"struct",<br/>        "define":{<br/>           "items": [<br/>        {<br/>            "name":"param1",<br/>            "identifier":"param1",<br/>            "type":"int32",<br/>            "define":{<br/>                "max": "100",<br/>                "min": "1",<br/>                "step": "1",<br/>                "unit": "s",<br/>                "unitName": "s"<br/>            }<br/>        },<br/>        {<br/>            "name":"param2",<br/>            "identifier":"param2",<br/>            "type":"string",<br/>            "define":{<br/>                "max":"1024"<br/>            }<br/>        }<br/>    ]<br/>        }<br/>    }<br/>}<br/>struct约束:<br/><br/>{<br/>    "items": [<br/>        {<br/>            "name":"param1",<br/>            "identifier":"param1",<br/>            "type":"int32"<br/>            "define":{<br/>                "max": "100",<br/>                "min": "1",<br/>                "step": "1",<br/>                "unit": "s",<br/>                "unitName": "s"<br/>            }<br/>        },<br/>        {<br/>            "name":"param1",<br/>            "identifier":"param2",<br/>            "type":"string"<br/>            "define":{<br/>                "max": "100"<br/>            }<br/>        }<br/>    ]<br/>     <br/>}<br/><br/><br/>**根据实际情况如以上define 定义不满足要求时或需要丰富时 ，以kv 的形式扩展define** |
+| define | body       | object | 模型的本质是对数据的约束和定义，前面的字段描述的是此数据的基本信息，那么define 对象是对此数据的详细定义和约束，定义和约束内容并不限制且可适应未来不同情况无限扩展。形式为KV。<br/>遥测主要有类似电压、电流、功率、温度、湿度等带时间戳的时序值：<br/>定义和约束按照数据类型划分<br/>参考前面平台：<br/>数据类型 <br />int32,float,double的define约束:<br/>{<br/>    "max": "100",<br/>    "min": "1",<br/>    "step": "1",<br/>    "unit": "v",<br/>    "unitName": "伏"<br/>    "ext":{<br/>        "xxx":"xxx",<br/>        "yyy":"yyy"<br/>    }<br/>}<br/>string约束:<br/>{<br/>    "length": "100"<br/>     "ext":{<br/>  <br/>     }<br/>}<br/>enum约束:<br/><br/>{<br/>    "0": "开",<br/>    "1": "关"<br/>    "2": "无"<br/>}<br/>bool约束<br/><br/>{<br/>    "0": "开",<br/>    "1": "关"<br/>}<br/>array约束:<br/>{<br/>    "length: "10",<br/>    "elem_type": {<br/>        "param1": {<br/>            "name":"param1",<br/>            "identifier":"param1",<br/>            "type":"int32"<br/>            "define":{<br/>                "max": "100",<br/>                "min": "1",<br/>                "step": "1",<br/>                "unit": "s",<br/>                "unitName": "s"<br/>            },<br />           "param2":{<br/>            "name":"param1",<br/>            "identifier":"param2",<br/>            "type":"string"<br/>            "define":{<br/>                "length": "100"<br/>            }<br/>}<br/><br /><br />struct约束:<br/><br/>{<br/>    "fields": {<br/>       "param1": {<br/>            "name":"param1",<br/>            "identifier":"param1",<br/>            "type":"int32"<br/>            "define":{<br/>                "max": "100",<br/>                "min": "1",<br/>                "step": "1",<br/>                "unit": "s",<br/>                "unitName": "s"<br/>            }<br/>        },<br/>        "param2":{<br/>            "name":"param1",<br/>            "identifier":"param2",<br/>            "type":"string"<br/>            "define":{<br/>                "length": "100"<br/>            }<br/>        }<br/>    }<br/>     <br/>}<br/><br/><br/>**根据实际情况如以上define 定义不满足要求时或需要丰富时 ，以kv 的形式扩展define** |
+
+
 
 **关于扩展配置ext ，数据的约束和定义是随着业务的不同而不同或者有更丰富的需求。故增加此字段满足数据约束和定义的扩展**。
 
@@ -196,7 +198,7 @@ curl --location --request POST '127.0.0.1:31234/v1/templates/4aa904c9-dfd8-454f-
 ##### request
 
 ```json
-curl --location --request POST '127.0.0.1:31234/v1/templates/4aa904c9-dfd8-454f-a721-2a8e82f7f43e/attribute' \
+curl --location --request POST '127.0.0.1:31234/v1/templates/4aa904c9-dfd8-454f-a721-2a8e82f7f43e/telemetry' \
 --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY0NDMxNTEyMSwic3ViIjoidXNyLTMzNzM3OTQ1YzJiNzE4ZGI0YzMwOWQ2MzNkMmYifQ.pRDhFqiM2_LpWjN1VzCJfhRvZgnEEOZEIWo4Qm3OQE-PRAzZu24KuK0h6qyiPegtPLxMAGSHyovLHJJl5FXI0Q' \
 --header 'Content-Type: application/json' \
 --data-raw '
@@ -260,40 +262,48 @@ curl --location --request POST '127.0.0.1:31234/v1/templates/4aa904c9-dfd8-454f-
 | id     | body       | string | 命令ID, 表示属性的唯一标识                                   |
 | description    | body       | string | 命令说明                                                     |
 | type   | body       | string | ["struct"]   //默认填写                                      |
-| define | body       | object | 模型的本质是对数据的约束和定义，前面的字段描述的是此数据的基本信息，那么define 对象是对此数据的详细定义和约束，定义和约束内容并不限制且可适应未来不同情况无限扩展。形式为KV。<br/>对于命令的define 来说 只有存在两个部分，发送的内容input  和  返回的内容output   <br/>命令相对于平台来说 本质是提供一个下发数据到设备的通道，对于input 的内容 可简单暂时约定为自由定义的 json对象，相当于自己定义下发的协议(IDC项目中ota 升级也是采用的此方式)  <br/><br />"define": {<br/>        "mode":"sync", //sync  同步  async 异步<br/>        "input": {<br/>            "name":"ota_send",<br/>            "id":"ota_send",<br/>            "type" : "json" ,<br/>            "define" :{}<br/>        },<br/>        "output": {<br/>           "name":"ota_return",<br/>           "id":"ota_return",<br/>           "type": "string",<br/>            "define": {<br/>                 "eq":"ok"<br/>            }<br/>       }<br/>    }**根据实际情况如以上define 定义不满足要求时或需要丰富时 ，以kv 的形式扩展define** |
+| define | body       | object | 模型的本质是对数据的约束和定义，前面的字段描述的是此数据的基本信息，那么define 对象是对此数据的详细定义和约束，定义和约束内容并不限制且可适应未来不同情况无限扩展。形式为KV。<br/>对于命令的define 来说 只有存在两个部分，发送的内容input  和  返回的内容output   <br/>命令相对于平台来说 本质是提供一个下发数据到设备的通道，对于input 的内容 可简单暂时约定为自由定义的 json对象，相当于自己定义下发的协议(IDC项目中ota 升级也是采用的此方式)  <br/> <br />"define": {<br/>        "fields": {<br/>            "mode": {<br/>                "name": "同步模式",<br/>                "id": "mode",<br/>                "type": "string",<br/>                "define": {<br/>                    "mode": "sync"<br/>                }<br/>            },<br/>            "input":{<br/>                "name": "input",<br/>                "id": "ota_send",<br/>                "type": "string",<br/>                "define": {}<br/>            },<br/>            "output":{<br/>                "name": "output",<br/>                "id": "ota_return",<br/>                "type": "string",<br/>                "define": {<br/>                    "eq": "ok"<br/>                }<br/>            }<br/>        }<br/>    }<br />**根据实际情况如以上define 定义不满足要求时或需要丰富时 ，以kv 的形式扩展define** |
 
 #### Example
 
 ##### request
 
 ```json
-curl --location --request GET '127.0.0.1:31234/v1/templates/4aa904c9-dfd8-454f-a721-2a8e82f7f43e/command' \
---header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY0NDMxNTEyMSwic3ViIjoidXNyLTMzNzM3OTQ1YzJiNzE4ZGI0YzMwOWQ2MzNkMmYifQ.pRDhFqiM2_LpWjN1VzCJfhRvZgnEEOZEIWo4Qm3OQE-PRAzZu24KuK0h6qyiPegtPLxMAGSHyovLHJJl5FXI0Q' \
+curl --location --request POST '127.0.0.1:31234/v1/templates/iotd-ab3cb5a0-272a-4156-98bc-b31d4aa442c0/command' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY0NzgzNzE3OCwic3ViIjoidXNyLWJlYzNmZWQ5YTI2NTBiYzAwNGJmMzQyODFiYjEifQ.vncg19e0WdfYK6jxDd-iYsauw5w6IGX8aEoe7JqofgBZaDpoH6f2KDDxx9A2JcD4qOlDlv8NGn-gqe5HhN3WEQ' \
 --header 'Content-Type: application/json' \
---data-raw '
-{
-    "id":"ota",
-    "name":"ota升级",
-    "description":"软件升级",
-    "type":"struct",
+--data-raw '{
+    "id": "ota1",
+    "name": "在线升级",
+    "description": "在线升级",
+    "type": "struct",
     "define": {
-        "mode":"sync",
-        "input": {
-            "name":"ota_send",
-            "id":"ota_send",
-            "type" : "json" ,
-            "define" :{}
-        },
-        "output": {
-           "name":"ota_return",
-           "id":"ota_return",
-           "type": "string",
-            "define": {
-                 "eq":"ok"
+        "fields": {
+            "mode": {
+                "name": "同步模式",
+                "id": "mode",
+                "type": "string",
+                "define": {
+                    "mode": "sync"
+                }
+            },
+            "input":{
+                "name": "input",
+                "id": "ota_send",
+                "type": "string",
+                "define": {}
+            },
+            "output":{
+                "name": "output",
+                "id": "ota_return",
+                "type": "string",
+                "define": {
+                    "eq": "ok"
+                }
             }
-       }
+        }
     }
-}   '
+}'
 ```
 
 ##### response

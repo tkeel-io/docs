@@ -372,13 +372,24 @@ curl --location --request POST '127.0.0.1:31234/v1/templates/iotd-17569b89-4593-
 
 ##### request
 
-```
-
+```json
+curl --location --request POST '127.0.0.1:31234/v1/devices/iotd-52269038-c0e6-471d-b926-5a3abcaa1b21/configs/saveAsSelfTemplate' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY0Nzg2MTkyOSwic3ViIjoidXNyLWJlYzNmZWQ5YTI2NTBiYzAwNGJmMzQyODFiYjEifQ.Ltf4rzTlalN11R_hlicKCYnufgs9ZBhMiE5EV9Im5fpJ-gAyzBalSUsHMitZqKIDMyObLWlsEOsnDXShZAUF3A' \
+--data-raw ''
 ```
 
 ##### response
 
-```
+```json
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/google.protobuf.Empty",
+        "value": {}
+    }
+}
 ```
 
 ### 6、设备新增模板内容另存为模板
@@ -397,13 +408,26 @@ curl --location --request POST '127.0.0.1:31234/v1/templates/iotd-17569b89-4593-
 
 ##### request
 
-```
-
+```json
+curl --location --request POST '127.0.0.1:31234/v1/devices/iotd-52269038-c0e6-471d-b926-5a3abcaa1b21/configs/saveAsOtherTemplate' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY0Nzg2MTkyOSwic3ViIjoidXNyLWJlYzNmZWQ5YTI2NTBiYzAwNGJmMzQyODFiYjEifQ.Ltf4rzTlalN11R_hlicKCYnufgs9ZBhMiE5EV9Im5fpJ-gAyzBalSUsHMitZqKIDMyObLWlsEOsnDXShZAUF3A' \
+--data-raw '{
+    "name":"tempale_saveASother",
+    "description":"xxxxx"
+}'
 ```
 
 ##### response
 
-```
-
+```json
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/google.protobuf.Empty",
+        "value": {}
+    }
+}
 ```
 

@@ -1,5 +1,5 @@
 ---
-title: "Rules_RuleError"
+title: "Rules_RuleStatusSwitch"
 description: ''
 ---调用该接口。
 
@@ -9,32 +9,38 @@ description: ''
 
 
 ```
-get /rules/{rule_id}/errors
+put /rules/{id}/running_status
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| rule_id | path | string |  |  
+| id | path | string |  |  
 
-###  Request Parameters
+### Request Body 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+|  | Object | [](#) |
 
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| user_id | query | string |  |  false |
+#### 
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |  
+
+
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [ruleRuleErrorResp](#ruleRuleErrorResp) |
+| 200 | A successful response. | Object | [ruleRuleStatusSwitchResp](#ruleRuleStatusSwitchResp) |
 
-#### ruleRuleErrorResp
+#### ruleRuleStatusSwitchResp
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |    
-| error | Object |    |      
-| rule_id | string |  |   
+| ---- | ---- | ----------- |     
+| id | string |  |      
+| status | integer |  |   
 
 
 

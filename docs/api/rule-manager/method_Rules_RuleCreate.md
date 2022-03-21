@@ -9,7 +9,7 @@ description: ''
 
 
 ```
-put /rules
+post /rules
 ```
 
 ### Request Body 

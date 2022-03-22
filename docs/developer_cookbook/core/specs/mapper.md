@@ -3,7 +3,7 @@ title: 映射
 sidebar_position: 2
 ---
 
-`mapper`是 对于用于实体与实体之间数据映射的一种对象，`mapper` 使用 `MQL` 描述实体与实体之间的数据映射。
+`mapper`是 对于用于实体与实体之间数据映射的一种对象，`mapper` 使用 `TQL` 描述实体与实体之间的数据映射。
 
 
 
@@ -41,35 +41,120 @@ sidebar_position: 2
 
 
 
-## 解析mapper
+## mapper 解析
 
-我们知道`mapper`执行分为`选取输入`，`计算输出`，`更新目标Actor状态`三个阶段。为了满足这三个阶段，我们给`mapper`引入两个核心概念：`MQL`和`tentacle`，`MQL`是`mapper`的核心组件用于描述映射中json的转化规则，执行计算。`tentacle`译为`触手`，用于映射第一阶段中的属性变更的同步。
+我们知道`mapper`执行分为`选取输入`，`计算输出`，`更新目标Actor状态`三个阶段。为了满足这三个阶段，我们给`mapper`引入两个核心概念：`TQL`和`tentacle`，`TQL`是`mapper`的核心组件用于描述映射中json的转化规则，执行计算。`tentacle`译为`触手`，用于映射第一阶段中的属性变更的同步。
 
-![mapper-tentacle-mql](/images/core/mapper-tentacle-mql2.png)
+![mapper-tentacle-mql](/images/core/mapper-tentacle-mql3.png)
 
 
+**mapper解析示例：**
 
-### 解析 Tentacle
+```sql
+# demo TQL Text.
+insert into device123
+select
+device234.temp as temp,
+device234.status as status,
+device345.* as *
+;
+```
 
-对于 `Tentacle` 在定义 `TQL` 的时候我们有时候就能够指代清楚我们定义的选取的实体或属性，我们可能需要通过结合服务节点的上下文计算解析才能得到结论。
 
-![tentacle-tow-layer-parse](/images/core/tentacle-tow-layer-parse.png)
+经过词法解析后：
+
+```bash
+# tentacles:
+{
+    "device234": ["temp", "status"],
+    "device345": ["*"]
+}
+# runtime.mapper:
+null
+```
+
+
+### tentacle 解析
+
+对于 `tentacle` 在定义 `TQL` 的时候我们有时候就能够指代清楚我们定义的选取的实体或属性，我们可能需要通过结合服务节点的上下文计算解析才能得到结论。
+
+![tentacle-tow-layer-parse](/images/core/tentacle-tow-layer-parse2.png)
+
+
+**tentacle 解析示例：**
+
+*mapper 解析后的 tentacle 如下：*
+
+```bash
+# tentacles:
+{
+    "device345": ["*"]
+}
+```
+
+*core 当前节点的上下文，实体 device345 信息如下：*
+
+```bash
+# Core Context:
+{
+    "id": "device345",
+    "source": "dm",
+    "owner": "admin",
+    "type": "DEVICE",
+    "configs": {
+        "temp": {
+            "define": {
+                "max": 500,
+                "min": 10,
+                "unit": "°"
+            },
+            "description": "",
+            "enabled": true,
+            "enabled_search": false,
+            "enabled_time_series": false,
+            "id": "temp",
+            "last_time": 0,
+            "type": "int",
+            "weight": 0
+        }
+    },
+    "properties": {
+        "status": "start",
+        "temp": 20
+    }
+}
+```
+
+*tentacle 结合 core 的上下文：*
+
+```bash
+# Concrete tentacles：
+{
+    "device345": ["temp", "status"]
+}
+```
+
 
 
 在结合服务节点上下文解析的时候，我们分为动态和静态两种方式。
 
 
 ## tentacle 分发
+
+在完成 TQL 解析生成 `tentacles` 之后，我们将这些 `tentacles` 分发给相关的实体：
+
 ![mapper-tentacles](/images/core/mapper-data-directory2.png)
+
+
+
+
 ## mapper 与 tentacle 的数据流向
 
-mapper通过解析 `MQL` 生成 `tentacle`，`mapper` 为每一个 `SourceActor` 生成一个 `tentacle` 用于同步属性变更。
+实体与实体之间通过 `tentacle` 触发来传递属性的变更：
 
 ![mapper-tentacles](/images/core/mapper-tentacles.png)
 
 
-## Issues
 
-在我们设计的系统中，实体与实体之间的数据是可以相互传递的，对于上行数据而言，是对真实状态的扩散和传递，但是对于下行的调用数据，其实一个期望值向下传递的过程，是否需要Ack，需要desired？ 同事实体的调用属性是否会处于 `占用` 状态？
 
 

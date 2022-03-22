@@ -27,38 +27,17 @@ post /devices/search
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 限制 | Object | [apidevicev1Filter](#apidevicev1Filter) |
+| 设备列表请求信息 | Object | [apidevicev1ListEntityQuery](#apidevicev1ListEntityQuery) |
 
-#### apidevicev1Filter
+#### apidevicev1ListEntityQuery
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |         
-| condition | Array[apidevicev1Condition] | 组合条件 [ 具体参数可见下面 [apidevicev1Condition](#apidevicev1Condition) ] |       
-| page |  | 分页 |   
-
-
-  
-       
-         
-### apidevicev1Condition
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| field | string | 查询输出字段 |      
-| operator | string | 操作符, $eq为相等，$neq为不等，$lt为小于，$gt为大于，$lne为小于等于， $gne为大于等于 |      
-| value | string | 值 |   
+| filter |  | 限制 |      
+| query | string | es查询条件 |   
 
 
   
-     
-   
-     
-   
-     
- 
- 
-
-
-          
      
    
      
@@ -83,13 +62,11 @@ post /devices/search
 #### v1ListDeviceResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |    
-| result | Object |    |   
+| ---- | ---- | ----------- |     
+| listDeviceObject |  | 设备列表对象 |   
 
 
   
-    
-          
      
  
  

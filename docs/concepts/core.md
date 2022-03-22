@@ -15,14 +15,22 @@ Core 采用 `RESTFUL` 规范实现 API，致力于提供正交的APIs，向外�
 
 
 ### 实体
-实体（[Entity](../developer_cookbook/core/specs/entity.md)） 是我们在物联网世界中对 Things 的一种抽象，是 Core 操作的基础对象。包括智能灯、空调、网关，房间，楼层，甚至是通过数据聚合生成的虚拟设备等等，我们将这些 `Things` 进行抽象，
-定义为实体。
+实体（[Entity](../developer_cookbook/core/specs/entity.md)） 是我们在物联网世界中对 Things 的一种抽象，是 Core 操作的基础对象。包括智能灯、空调、网关，房间，楼层，甚至是通过数据聚合生成的虚拟设备等等，我们将这些 `Things` 进行抽象，定义为实体。
+
+
+
+
+#### 实体包含属性和属性配置信息：
 
 *属性* 是对某种实体一部分信息的描述。一个实体包含两类属性：
 1. **基础属性**: 每个实体都必备的属性，如 `id`，`type`等用于标识实体共有特征的属性。
 2. **扩展属性**: 实体除基础属性外的属性，这种属性属于某一类或某一个实体的特征描述，比如一个 **温度计** 的温度。
 
+*属性配置* 是对实体的属性的描述信息。
+
+
 > 更多技术细节请阅读 [实体文档](../developer_cookbook/core/specs/entity.md)
+
 
 
 ### 实体管理
@@ -34,7 +42,7 @@ Core 采用 `RESTFUL` 规范实现 API，致力于提供正交的APIs，向外�
 Runtime 为实体的运行时（Actor）提供环境支持，对 Actor 进行调度和管理。
 
 
-![Core-actor](/images/core/architecture-actor1207.png)
+![Actor](/images/core/architecture-actor1207.png)
 
 ### 关系
 
@@ -54,6 +62,7 @@ Runtime 为实体的运行时（Actor）提供环境支持，对 Actor 进行调
 借用映射机制，我们可以很容易的实现 iot 场景下设备数据的向上传递以及控制命令的向下传递。
 
 ![img.png](/images/core/message_passing1207.png)
+
 
 上图中红色线条代表数据的上行，如设备数据上报；黑色代表数据的下行，如指令数据的下行。
 

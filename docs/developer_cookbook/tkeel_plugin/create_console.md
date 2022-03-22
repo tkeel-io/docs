@@ -7,7 +7,7 @@ title: 创建插件前端界面
 
 tKeel 的整个前端控制台分为 portal（也可以被称为基座、主应用）和 plugin（也可以被称为插件 、子应用、微应用），整个前端是一个基于 [qiankun（乾坤）](https://github.com/umijs/qiankun) 的微前端架构系统。
 
-整个 tKeel 控制台分为「管理平台」和「租户/用户平台」 2 个平台，因此 portal 也有 2 个：admin (tkeel-console-portal-admin) 和 tenant (tkeel-console-portal-tenant)。后面若没有说明是 admin 还是 tenant ，均默认为 tenant 。
+整个 tKeel 控制台分为「管理平台」和「租户/用户平台」 2 个平台，因此 portal 也有 2 个：admin (tkeel-console-portal-admin) 和 tenant (tkeel-console-portal-tenant)。后面若没有说明是 admin 还是 tenant ，均默认为 tenant ，admin 同理。
 
 ## 前提条件
 
@@ -82,17 +82,21 @@ module.exports = {
 };
 ```
 
-tkeel-console-portal-admin 同理。
-
 ### 运行 portal
 
+1. build 租户/用户平台的 portal
+
 ```sh
-yarn dev
+yarn build:development:portal-tenant
 ```
 
-出现选择界面，按空格键键选择 `tkeel-console-portal-tenant`，并回车。
+2. 运行租户/用户平台的 portal
 
-在 Google Chrome 浏览器中访问 <http://127.0.0.1:3001>
+```sh
+yarn start:portal-tenant
+```
+
+3. 在 Google Chrome 浏览器中访问 <http://127.0.0.1:3001>
 
 ### 启动 plugin 前端
 

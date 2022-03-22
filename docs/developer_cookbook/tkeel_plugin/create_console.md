@@ -5,7 +5,9 @@ title: 创建插件前端界面
 
 # 创建插件前端界面
 
-tKeel 的整个前端控制台分为 core（也可以被称为基座、主应用）和 plugin（也可以被称为插件 、子应用、微应用），整个前端是一个基于 [qiankun（乾坤）](https://github.com/umijs/qiankun) 的微前端架构系统。
+tKeel 的整个前端控制台分为 portal（也可以被称为基座、主应用）和 plugin（也可以被称为插件 、子应用、微应用），整个前端是一个基于 [qiankun（乾坤）](https://github.com/umijs/qiankun) 的微前端架构系统。
+
+整个 tKeel 控制台分为「管理平台」和「租户/用户平台」 2 个平台，因此 portal 也有 2 个：admin (tkeel-console-portal-admin) 和 tenant (tkeel-console-portal-tenant)。后面若没有说明是 admin 还是 tenant ，均默认为 tenant 。
 
 ## 前提条件
 
@@ -14,19 +16,13 @@ tKeel 的整个前端控制台分为 core（也可以被称为基座、主应用
 - Google Chrome 浏览器 >= 96
 - 阅读 [qiankun](https://github.com/umijs/qiankun) 文档
 
-## 创建项目
-
-plugin 可以使用任何前端技术栈开发，创建 plugin 前端项目只需按照 qiankun 的 [快速上手](https://qiankun.umijs.org/zh/guide/getting-started) 即可。
-
-## 开发插件
-
 ### 克隆 tKeel console 仓库到本地
 
 - fork 我们的 [console 仓库](https://github.com/tkeel-io/console)
 - 克隆到本地
 - 进入本地仓库目录
 
-我们的前端仓库中包含 core 和官方 plugins
+我们的前端仓库中包含 portal 和官方 plugins
 
 ### 安装 console 仓库的依赖
 
@@ -34,48 +30,150 @@ plugin 可以使用任何前端技术栈开发，创建 plugin 前端项目只�
 yarn install
 ```
 
-### 运行 core
+## 创建插件
+
+plugin 可以使用任何前端技术栈开发，创建 plugin 前端项目只需按照 qiankun 的 [快速上手](https://qiankun.umijs.org/zh/guide/getting-started) 即可。
+
+## 开发插件
+
+### 将 plugin 模拟添加至 portal 的菜单中
+
+在 console 仓库的 `packages/tkeel-console-portal-tenant/config/` 中，创建 `local-development.js` 文件，并在其中添加 plugin 的 mock 数据：
+
+插件在一级菜单
+
+```js
+module.exports = {
+  mock: {
+    menus: [
+      {
+        id: 'id',
+        name: 'name',
+        icon: 'icon',
+        path: '/path', // 对应插件中路由的 base，比如 react-router 中的 basename
+        entry: 'entry', // 对用插件的访问地址，比如 http://127.0.0.1:3002/static/devices
+      },
+    ],
+  },
+};
+```
+
+插件在二级菜单
+
+```js
+module.exports = {
+  mock: {
+    menus: [
+      {
+        id: 'parentId',
+        name: 'parentName',
+        icon: 'parentIcon',
+        children: [
+          {
+            id: 'id',
+            name: 'name',
+            path: '/path', // 对应插件中路由的 base，比如 react-router 中的 basename
+            entry: 'entry', // 对用插件的访问地址，比如 http://127.0.0.1:3002/static/devices
+          },
+        ],
+      },
+    ],
+  },
+};
+```
+
+tkeel-console-portal-admin 同理。
+
+### 运行 portal
 
 ```sh
 yarn dev
 ```
 
-出现选择界面，按空格键键选择 `tkeel-console-core`，并回车。
+出现选择界面，按空格键键选择 `tkeel-console-portal-tenant`，并回车。
 
-在 Google Chrome 浏览器中访问 <http://127.0.0.1:3000>
+在 Google Chrome 浏览器中访问 <http://127.0.0.1:3001>
 
 ### 启动 plugin 前端
 
-将 plugin 前端作为静态服务启动，由于 core 的本地服务端口为 `3000`，所以最好将 plugin 的端口设为 `3000` 以外的值。
+将 plugin 前端作为静态服务启动，由于 portal 的本地服务端口为 `3000` 和 `3001`，所以最好将 plugin 的端口设为其他值。
 
-### 将 plugin 模拟添加至 core 的菜单中
+### portal 传递给 plugin 的 props
 
-<!-- TODO: 需要补全，后续可能修改  -->
-
-在 console 仓库的 `./packages/tkeel-console-core/src/mock/index.ts` 中，添加 plugin 的 mock 数据：
+portal 会在注册 plugin（`registerMicroApps`）时，通过 `props` 传递给 plugin 一个 `portalProps` 属性，数据结构如下：
 
 ```ts
-const menus = [
-  {
-    id: '', // plugin 模拟 id
-    name: '', // plugin 模拟名称
-    path: '', // plugin 在 console 中的相对路径
-    entry: '', // plugin 模拟访问地址
-  },
-];
+import { NavigateFunction } from 'react-router-dom';
+
+interface PortalProps {
+  portalName: 'admin' | 'tenant'; // 当前运行在什么 portal
+  client: {
+    themeName: string; // 主题名称
+    theme: Record<string, unknown>; // 主题
+    tenantInfo: TenantInfo; // 租户信息
+    tokenInfo: TokenInfo; // token 信息
+    toast: ToastFunction; // 显示 toast 提示函数，比如提示操作成功、失败等
+    navigate: NavigateFunction; // portal 路由跳转函数，比如要跨插件跳转
+    refetchMenus: () => void; // 刷新菜单函数
+  };
+  backend: {
+    api: {
+      origin?: string; // 后端 API 的 origin
+      basePath: string; // 后端 API 的 basePath
+    };
+    websocket: {
+      origin?: string; // 后端 WebSocket 的 origin
+      basePath: string; // 后端 WebSocket 的 basePath
+    };
+  };
+}
 ```
 
-### core 传递给 plugin 的 props
+```ts
+interface TenantInfo {
+  tenant_id: string;
+}
+```
 
-core 会在注册 plugin（`registerMicroApps`）时，通过 props 传递给 plugin 如下数据：
+```ts
+interface TokenInfo {
+  access_token: string;
+  expires_in: string;
+  refresh_token: string;
+  token_type: string;
+}
+```
 
-<!-- TODO: 需要补全，后续可能修改 -->
+```ts
+import { ReactNode, ReactText } from 'react';
+import {
+  ToastContent as ToastifyToastContent,
+  ToastOptions as ToastifyToastOptions,
+  TypeOptions,
+} from 'react-toastify';
 
-```json
-{
-  "tokenData": {},
-  "themeName": "",
-  "theme": {}
+type ToastContent = Exclude<ToastifyToastContent, Record<string, never>>;
+
+interface ToastOptions extends Omit<ToastifyToastOptions, 'type'> {
+  title: ReactNode;
+  description?: ReactNode;
+  status?: TypeOptions;
+}
+
+type ToastFunctionArg1 = ToastOptions | ToastContent;
+
+type ToastFunctionArg2 = Omit<ToastOptions, 'title' | 'description'>;
+
+interface ToastBaseFunction {
+  (options: ToastOptions): ReactText;
+  (content: ToastContent, options?: ToastFunctionArg2): ReactText;
+}
+
+interface ToastFunction extends ToastBaseFunction {
+  info: ToastBaseFunction;
+  success: ToastBaseFunction;
+  warning: ToastBaseFunction;
+  error: ToastBaseFunction;
 }
 ```
 

@@ -23,8 +23,7 @@ post /rules
 | ---- | ---- | ----------- |     
 | desc | string |  |      
 | name | string |  |      
-| type | integer |  |      
-| user_id | string |  |   
+| type | integer |  |   
 
 
 

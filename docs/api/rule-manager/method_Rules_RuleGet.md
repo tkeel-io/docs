@@ -16,12 +16,6 @@ get /rules/{id}
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string |  |  
 
-###  Request Parameters
-
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| user_id | query | string |  |  false |
-
 ## Response
 
 ### Response  200 

@@ -1,5 +1,5 @@
 ---
-title: "Rules_RuleQuery"
+title: "Rules_GetRuleDevices"
 description: ''
 ---调用该接口。
 
@@ -9,8 +9,12 @@ description: ''
 
 
 ```
-get /rules
+get /rules/{id}/devices
 ```
+
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string |  |  
 
 ###  Request Parameters
 
@@ -22,39 +26,32 @@ get /rules
 | is_descending | query | boolean | Is descending |  false |
 | key_words | query | string | Key words |  false |
 | search_key | query | string | Search Key |  false |
-| id.value | query | string |  |  false |
-| ids | query | array |  |  false |
-| name.value | query | string |  |  false |
-| type.value | query | integer |  |  false |
-| status.value | query | integer |  |  false |
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [ruleRuleQueryResp](#ruleRuleQueryResp) |
+| 200 | A successful response. | Object | [ruleRuleDevicesResp](#ruleRuleDevicesResp) |
 
-#### ruleRuleQueryResp
+#### ruleRuleDevicesResp
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |         
-| data | Array[ruleRule] |  [ 具体参数可见下面 [ruleRule](#ruleRule) ] |       
+| data | Array[ruleDevice] |  [ 具体参数可见下面 [ruleDevice](#ruleDevice) ] |       
 | last_page | string | Last page |      
 | page_num | string | Page number |      
 | page_size | string | Page size |      
 | total | string | Total |   
 
-### ruleRule
+### ruleDevice
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| created_at | string | 创建时间 |      
-| desc | string |  |      
+| group_name | string |  |      
 | id | string |  |      
 | name | string |  |      
-| status | integer |  |      
-| type | integer |  |      
-| updated_at | string | 更新时间 |   
+| status | string |  |      
+| template | string |  |   
 
 
 

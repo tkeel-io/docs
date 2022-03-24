@@ -1,5 +1,5 @@
 ---
-title: "Rules_RemoveDevicesFromRule"
+title: "Rules_TestConnectToKafka"
 description: ''
 ---调用该接口。
 
@@ -9,18 +9,15 @@ description: ''
 
 
 ```
-delete /rules/{id}/devices
+get /testing/kafka
 ```
-
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string |  |  
 
 ###  Request Parameters
 
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
-| devices_ids | query | string |  |  false |
+| host | query | string |  |  false |
+| topic | query | string |  |  false |
 
 ## Response
 

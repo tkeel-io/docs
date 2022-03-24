@@ -1,6 +1,6 @@
 ---
 title: 🚀 如何安装插件
-sidebar_position: 40
+sidebar_position: 4
 ---
 
 # 如何安装插件
@@ -186,28 +186,4 @@ iothub          keel-system     1               2022-01-05 09:03:09.38254949 +00
 tkeel-device    keel-system     1               2021-12-30 09:29:56.242803919 +0000 UTC deployed        tkeel-device-0.2.0      1.16.0
 tkeel-platform  keel-system     1               2021-12-30 13:48:43.766725 +0800 CST    deployed        keel-0.3.0              0.3.0
 hello-tkeel     keel-system     1               2021-12-30 15:41:43.463725 +0800 CST    deployed        hello-tkeel-0.3.0       0.3.0
-```
-
-5. 注册插件
-
-> * **必须** 经平台安装的插件才能被注册进来。
-> * **必须** 经平台注册后的插件才能被用户启用。
-
-```bash
-curl -XPOST "http://${KEEL_SERVICE}:${KEEL_PORT}/apis/rudder/v1/plugins/${PLUGIN_ID}/register" \
-     -H 'Content-Type: application/json' \
-     -H "Authorization:${ADMIN_TOKEN}" \
-     -d '"changeme"'
-```
-
-执行后返回值应该如下：
-```json
-{
-    "code": 200,
-    "msg": "ok",
-    "data": {
-        "@type": "type.googleapis.com/google.protobuf.Empty",
-        "value": {}
-    }
-}
 ```

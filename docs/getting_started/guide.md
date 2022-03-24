@@ -1,6 +1,6 @@
 ---
 title: 新手引导
-sidebar_position: 10
+sidebar_position: 1
 ---
 
 

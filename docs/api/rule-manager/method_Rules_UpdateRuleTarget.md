@@ -1,5 +1,5 @@
 ---
-title: "Rules_RemoveDevicesFromRule"
+title: "Rules_UpdateRuleTarget"
 description: ''
 ---调用该接口。
 
@@ -9,25 +9,44 @@ description: ''
 
 
 ```
-delete /rules/{id}/devices
+put /rules/{id}/target/{target_id}
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string |  |  
+| target_id | path | string |  |  
 
-###  Request Parameters
+### Request Body 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+|  | Object | [](#) |
 
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| devices_ids | query | string |  |  false |
+#### 
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |  
+
+
 
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | A successful response. | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | A successful response. | Object | [ruleUpdateRuleTargetResp](#ruleUpdateRuleTargetResp) |
+
+#### ruleUpdateRuleTargetResp
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| ext | string |  |      
+| host | string |  |      
+| id | string |  |      
+| type | integer |  |      
+| value | string |  |   
+
+
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

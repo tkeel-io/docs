@@ -84,26 +84,26 @@ type Config struct {
 
 // define field.fields for struct.
 type DefineStruct struct {
-	Fields []Config `json:"fields"`
+	Fields map[string]Config `json:"fields" mapstructure:"fields"`
 }
 
 // define field.array for array.
 type DefineArray struct {
-	Length   int    `json:"length"`
-	ElemType Config `json:"elem_type"`
+	Length   int    `json:"length" mapstructure:"length"`
+	ElemType Config `json:"elem_type" mapstructure:"elem_type"`
 }
 
 ```
 
 ### Define 内置字段
 
-|名称|适用类型|必须|描述|
-|---|-------|---|----|
-|max|`number`|false|属性的最大值。|
-|min|`number`|false|属性的最小值。|
-|fields|struct|true|属性配置为`struct`类型时Define必有的字段。|
-|elem_type|array|true|属性配置为`array`类型时Define必有字段。|
-|length|string, array|false|属性的size。|
+|名称|值类型|适用类型|必须|描述|
+|---|----|---|---|----|
+|max|integer|`number`|false|属性的最大值。|
+|min|integer|`number`|false|属性的最小值。|
+|fields|object|struct|true|属性配置为`struct`类型时Define必有的字段。|
+|elem_type|object([Config](./model.md#模型实现))|array|true|属性配置为`array`类型时Define必有字段。|
+|length|integer|string, array|false|属性的size。|
 
 
 
@@ -165,7 +165,7 @@ type DefineArray struct {
             "enabled_search": false,
             "enabled_time_series": false,
             "define": {
-                "fields": [
+                "fields": {
                     {
                         "define": {
                             "max": 500,
@@ -181,7 +181,7 @@ type DefineArray struct {
                         "type": "int",
                         "weight": 0
                     }
-                ]
+                }
             }
         }
     },
@@ -210,36 +210,37 @@ type DefineArray struct {
             "id": "tempsensor",
             "last_time": 0,
             "type": "array",
-            "weight": 0
+            "weight": 0,
             "description": "",
             "enabled": true,
             "enabled_search": false,
             "enabled_time_series": false,
             "define": {
                 "length": 2,
-                "elem_type": [
-                    {
-                        "define": {
-                            "max": 500,
-                            "min": 10,
-                            "unit": "°"
-                        },
-                        "description": "",
-                        "enabled": true,
-                        "enabled_search": false,
-                        "enabled_time_series": false,
-                        "id": "temp",
-                        "last_time": 0,
-                        "type": "int",
-                        "weight": 0
-                    }
-                ]
+                "elem_type": {
+                    "define": {
+                        "max": 500,
+                        "min": 10,
+                        "unit": "°"
+                    },
+                    "description": "",
+                    "enabled": true,
+                    "enabled_search": false,
+                    "enabled_time_series": false,
+                    "id": "temp",
+                    "last_time": 0,
+                    "type": "int",
+                    "weight": 0
+                }
             }
         }
     },
     "properties": {
         "status": "end",
-        "tempsensor": [22, 0]
+        "tempsensor": [
+            22,
+            0
+        ]
     }
 }
 ```

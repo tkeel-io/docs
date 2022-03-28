@@ -1,7 +1,7 @@
 ---
-title: "UpdateTemplate"
-description: 'update Template'
----调用该接口update Template。
+title: "SetDeviceConfAsSelfTemplte"
+description: 'save device confAsSelfTemplate'
+---调用该接口save device confAsSelfTemplate。
 
 
 
@@ -9,41 +9,31 @@ description: 'update Template'
 
 
 ```
-put /templates/{uid}
+post /devices/{id}/configs/saveAsSelfTemplate
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| uid | path | string | 模板ID |  
+| id | path | string |  设备Id |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 模板基本信息 | Object | [apitemplatev1TemplateBasicInfo](#apitemplatev1TemplateBasicInfo) |
+|  设备Id | Object | [](#) |
 
-#### apitemplatev1TemplateBasicInfo
+#### 
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| description | string | 模板描述 |      
-| name | string | 模板名称 |   
+| ---- | ---- | ----------- |  
 
 
 
 ## Response
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1UpdateTemplateResponse](#v1UpdateTemplateResponse) |
-
-#### v1UpdateTemplateResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |    
-| templateObject | Object | 模板对象   |   
-
-
+### Response  200
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

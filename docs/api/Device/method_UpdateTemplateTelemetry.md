@@ -19,17 +19,12 @@ put /templates/{uid}/telemetry
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 遥测 | Object | [v1PropConfig](#v1PropConfig) |
+| 遥测 | Object | [](#) |
 
-#### v1PropConfig
+#### 
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |    
-| define | Object | 数据定义和约束   |      
-| description | string | 说明 |      
-| id | string | 标识符 |      
-| name | string | 名称 |      
-| type | string | 数据类型 |   
+| ---- | ---- | ----------- |  
 
 
 

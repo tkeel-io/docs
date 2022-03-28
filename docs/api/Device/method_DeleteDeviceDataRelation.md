@@ -1,7 +1,7 @@
 ---
-title: "UpdateTemplate"
-description: 'update Template'
----调用该接口update Template。
+title: "DeleteDeviceDataRelation"
+description: 'delete data relation'
+---调用该接口delete data relation。
 
 
 
@@ -9,41 +9,34 @@ description: 'update Template'
 
 
 ```
-put /templates/{uid}
+post /devices/{id}/relations/delete
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| uid | path | string | 模板ID |  
+| id | path | string | 实体Id |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 模板基本信息 | Object | [apitemplatev1TemplateBasicInfo](#apitemplatev1TemplateBasicInfo) |
+| 关系信息 | Object | [v1Relation](#v1Relation) |
 
-#### apitemplatev1TemplateBasicInfo
+#### v1Relation
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| description | string | 模板描述 |      
-| name | string | 模板名称 |   
+| direction | string | 关系方向 from or to   目前只有 from |      
+| relationType | string | 关系类型 目前只定 contain |      
+| targetId | string | 源 或 目标  实体Id |   
 
 
 
 ## Response
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1UpdateTemplateResponse](#v1UpdateTemplateResponse) |
-
-#### v1UpdateTemplateResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |    
-| templateObject | Object | 模板对象   |   
-
-
+### Response  200
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

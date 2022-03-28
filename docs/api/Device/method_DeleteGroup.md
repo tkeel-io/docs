@@ -27,10 +27,24 @@ post /groups/delete
 
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | OK | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [v1DeleteGroupResponse](#v1DeleteGroupResponse) |
+
+#### v1DeleteGroupResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |         
+| faildDelGroup | Array[v1FaildDelGroup] | 设备组删除失败 数组 [ 具体参数可见下面 [v1FaildDelGroup](#v1FaildDelGroup) ] |    
+
+### v1FaildDelGroup
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| id | string | 设备组ID |      
+| reason | string | 原因 |   
+
+
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

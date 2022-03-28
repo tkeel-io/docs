@@ -32,8 +32,8 @@ post /search
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | field | string | 查询输出字段 |      
-| operator | string | 操作符, $eq为相等，$neq为不等，$lt为小于，$gt为大于，$lne为小于等于， $gne为大于等于 |      
-| value | string | 值 |   
+| operator | string | 操作符, $eq为相等，$neq为不等，$lt为小于，$gt为大于，$lne为小于等于， $gne为大于等于 |     
+| value | Object | 值   |   
 
 
 
@@ -47,8 +47,8 @@ post /search
 #### v1ListDeviceResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| listDeviceObject |  | 设备列表对象 |   
+| ---- | ---- | ----------- |    
+| listDeviceObject | Object | 设备列表对象   |   
 
 
 

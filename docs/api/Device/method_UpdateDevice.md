@@ -30,8 +30,10 @@ put /devices/{id}
 | ext | Object | 设备扩展配置   |      
 | name | string | 设备名称 |      
 | parentId | string | 设备组ID |      
+| parentName | string | 设备组名称 |      
 | selfLearn | boolean | 设备模板自学习 |      
-| templateId | string | 设备模板ID |   
+| templateId | string | 设备模板ID |      
+| templateName | string | 设备模板名称 |   
 
 
 
@@ -45,8 +47,8 @@ put /devices/{id}
 #### v1UpdateDeviceResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| deviceObject |  | 设备对象 |   
+| ---- | ---- | ----------- |    
+| deviceObject | Object | 设备对象   |   
 
 
 

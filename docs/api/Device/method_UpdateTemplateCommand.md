@@ -19,17 +19,12 @@ put /templates/{uid}/command
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 命令 | Object | [v1PropConfig](#v1PropConfig) |
+| 命令 | Object | [](#) |
 
-#### v1PropConfig
+#### 
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |    
-| define | Object | 数据定义和约束   |      
-| description | string | 说明 |      
-| id | string | 标识符 |      
-| name | string | 名称 |      
-| type | string | 数据类型 |   
+| ---- | ---- | ----------- |  
 
 
 

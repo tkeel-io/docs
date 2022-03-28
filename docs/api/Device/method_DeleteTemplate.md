@@ -27,10 +27,24 @@ post /templates/delete
 
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | OK | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [v1DeleteTemplateResponse](#v1DeleteTemplateResponse) |
+
+#### v1DeleteTemplateResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |         
+| faildDelTemplate | Array[v1FaildDelTemplate] | 模板删除失败 数组 [ 具体参数可见下面 [v1FaildDelTemplate](#v1FaildDelTemplate) ] |    
+
+### v1FaildDelTemplate
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| id | string | 模板ID |      
+| reason | string | 原因 |   
+
+
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

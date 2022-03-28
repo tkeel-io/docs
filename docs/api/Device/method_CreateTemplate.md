@@ -15,9 +15,9 @@ post /templates
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 模板基本信息 | Object | [v1TemplateBasicInfo](#v1TemplateBasicInfo) |
+| 模板基本信息 | Object | [apitemplatev1TemplateBasicInfo](#apitemplatev1TemplateBasicInfo) |
 
-#### v1TemplateBasicInfo
+#### apitemplatev1TemplateBasicInfo
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
@@ -36,8 +36,8 @@ post /templates
 #### v1CreateTemplateResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| templateObject |  | 模板对象 |   
+| ---- | ---- | ----------- |    
+| templateObject | Object | 模板对象   |   
 
 
 

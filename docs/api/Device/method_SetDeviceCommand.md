@@ -1,7 +1,7 @@
 ---
-title: "UpdateTemplate"
-description: 'update Template'
----调用该接口update Template。
+title: "SetDeviceCommand"
+description: 'set device command'
+---调用该接口set device command。
 
 
 
@@ -9,41 +9,33 @@ description: 'update Template'
 
 
 ```
-put /templates/{uid}
+post /devices/{id}/command/set
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| uid | path | string | 模板ID |  
+| id | path | string |  设备Id |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 模板基本信息 | Object | [apitemplatev1TemplateBasicInfo](#apitemplatev1TemplateBasicInfo) |
+|  设置内容 | Object | [v1SetContent](#v1SetContent) |
 
-#### apitemplatev1TemplateBasicInfo
+#### v1SetContent
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| description | string | 模板描述 |      
-| name | string | 模板名称 |   
+| id | string | 属性 or  命令 标识符id |     
+| value | Object | 设置的 value   |   
 
 
 
 ## Response
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1UpdateTemplateResponse](#v1UpdateTemplateResponse) |
-
-#### v1UpdateTemplateResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |    
-| templateObject | Object | 模板对象   |   
-
-
+### Response  200
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

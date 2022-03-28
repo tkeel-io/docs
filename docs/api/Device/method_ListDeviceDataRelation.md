@@ -1,7 +1,7 @@
 ---
-title: "GetDevice"
-description: 'get device entity'
----调用该接口get device entity。
+title: "ListDeviceDataRelation"
+description: 'list data relation'
+---调用该接口list data relation。
 
 
 
@@ -9,27 +9,19 @@ description: 'get device entity'
 
 
 ```
-get /devices/{id}
+get /devices/{id}/relations
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | 设备ID |  
+| id | path | string | 实体Id |  
 
 ## Response
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1GetDeviceResponse](#v1GetDeviceResponse) |
-
-#### v1GetDeviceResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |    
-| deviceObject | Object | 设备对象   |   
-
-
+### Response  200
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

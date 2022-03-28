@@ -24,8 +24,11 @@ get /identify
 | Name | Type | Description | 
 | ---- | ---- | ----------- |         
 | addons_point | Array[v1AddonsPoint] |  [ 具体参数可见下面 [v1AddonsPoint](#v1AddonsPoint) ] |           
+| dependence | Array[v1BriefPluginInfo] |  [ 具体参数可见下面 [v1BriefPluginInfo](#v1BriefPluginInfo) ] |       
+| disable_manual_activation | boolean |  |          
 | entries | Array[v1ConsoleEntry] |  [ 具体参数可见下面 [v1ConsoleEntry](#v1ConsoleEntry) ] |           
-| implemented_plugin | Array[v1ImplementedPlugin] |  [ 具体参数可见下面 [v1ImplementedPlugin](#v1ImplementedPlugin) ] |       
+| implemented_plugin | Array[v1ImplementedPlugin] |  [ 具体参数可见下面 [v1ImplementedPlugin](#v1ImplementedPlugin) ] |           
+| permissions | Array[v1Permission] |  [ 具体参数可见下面 [v1Permission](#v1Permission) ] |       
 | plugin_id | string |  |      
 | res |  |  |      
 | tkeel_version | string |  |      
@@ -37,6 +40,12 @@ get /identify
 | desc | string |  |      
 | name | string |  |   
 
+### v1BriefPluginInfo
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| id | string |  |      
+| version | string |  |   
+
 ### v1ConsoleEntry
 | Name | Type | Description | 
 | ---- | ---- | ----------- |         
@@ -45,7 +54,8 @@ get /identify
 | icon | string |  |      
 | id | string |  |      
 | name | string |  |      
-| path | string |  |   
+| path | string |  |      
+| portal |  |  |   
 
 ### v1ImplementedPlugin
 | Name | Type | Description | 
@@ -58,6 +68,21 @@ get /identify
 | ---- | ---- | ----------- |     
 | addons_point | string |  |      
 | implemented_endpoint | string |  |   
+
+### v1Permission
+| Name | Type | Description | 
+| ---- | ---- | ----------- |         
+| children | Array[v1Permission] |  [ 具体参数可见下面 [v1Permission](#v1Permission) ] |           
+| dependences | Array[PermissionDependence] |  [ 具体参数可见下面 [PermissionDependence](#PermissionDependence) ] |       
+| desc | string |  |      
+| id | string |  |      
+| name | string |  |   
+
+### PermissionDependence
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| desc | string | ID>/authority ID.The content in <> is variable. |      
+| path | string |  |   
 
 
 

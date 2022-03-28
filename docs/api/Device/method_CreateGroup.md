@@ -24,7 +24,8 @@ post /groups
 | description | string | 设备组说明 |     
 | ext | Object | 设备组扩展属性   |      
 | name | string | 设备组名称 |      
-| parentId | string | 父设备组ID |   
+| parentId | string | 父设备组ID |      
+| parentName | string | 父设备组名称 |   
 
 
 
@@ -38,8 +39,8 @@ post /groups
 #### v1CreateGroupResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| groupObject |  | 设备组信息 |   
+| ---- | ---- | ----------- |    
+| groupObject | Object | 设备组信息   |   
 
 
 

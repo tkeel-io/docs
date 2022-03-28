@@ -26,8 +26,8 @@ get /templates/{uid}
 #### v1GetTemplateResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| templateObject |  | 模板对象 |   
+| ---- | ---- | ----------- |    
+| templateObject | Object | 模板对象   |   
 
 
 

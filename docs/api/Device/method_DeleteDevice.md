@@ -27,10 +27,24 @@ post /devices/delete
 
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | OK | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [v1DeleteDeviceResponse](#v1DeleteDeviceResponse) |
+
+#### v1DeleteDeviceResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |         
+| faildDelDevice | Array[v1FaildDelDevice] | 设备删除失败 数组 [ 具体参数可见下面 [v1FaildDelDevice](#v1FaildDelDevice) ] |    
+
+### v1FaildDelDevice
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| id | string | 设备ID |      
+| reason | string | 原因 |   
+
+
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

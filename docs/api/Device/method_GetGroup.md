@@ -26,8 +26,8 @@ get /groups/{id}
 #### v1GetGroupResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| groupObject |  | 设备组信息 |   
+| ---- | ---- | ----------- |    
+| groupObject | Object | 设备组信息   |   
 
 
 

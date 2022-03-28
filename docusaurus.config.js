@@ -1,6 +1,6 @@
-const _ = require('lodash');
+const { merge } = require('webpack-merge');
 
-const configType = 'tkeel';
+const configType = 'qingcloud'; // tkeel, qingcloud
 
 const baseConfig = require('./docusaurus.config.base');
 const tkeelConfig = require('./docusaurus.config.tkeel');
@@ -9,9 +9,9 @@ const qingcloudConfig = require('./docusaurus.config.qingcloud');
 let config = null;
 
 if (configType === 'qingcloud') {
-  config = _.merge({}, baseConfig, qingcloudConfig);
+  config = merge({}, baseConfig, qingcloudConfig);
 } else {
-  config = _.merge({}, baseConfig, tkeelConfig);
+  config = merge({}, baseConfig, tkeelConfig);
 }
 
 module.exports = config;

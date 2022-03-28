@@ -1,10 +1,10 @@
 ---
-title: "ListGroupitems"
-description: 'list group items'
+title: "SetDeviceAttrubte"
+description: 'set device attribte'
 ---
 
 
-调用该接口list group items。
+调用该接口set device attribte。
 
 
 
@@ -12,14 +12,43 @@ description: 'list group items'
 
 
 ```
-get /groups/{id}/items
+post /devices/{id}/attribute/set
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | 设备组ID |  
+| id | path | string |  设备Id |  
+
+
+
+
+
+### Request Body
+
+
+ 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+|  设置内容 | Object | [v1SetContent](#v1SetContent) |
+
+#### v1SetContent
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| id | string | 属性 or  命令 标识符id |     
+| value | Object | 设置的 value   |   
+
+
+  
+     
+   
+    
+          
+     
+ 
+ 
 
 
 
@@ -31,24 +60,10 @@ get /groups/{id}/items
 
 ### Response  200
 
- 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListGroupItemsResponse](#v1ListGroupItemsResponse) |
 
-#### v1ListGroupItemsResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| subIds |  | 子设备信息 |   
-
-
-  
-     
- 
- 
-
-
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
  
 
 

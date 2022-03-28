@@ -1,10 +1,10 @@
 ---
-title: "DelGroupitems"
-description: 'del group items'
+title: "CreateDeviceDataRelation"
+description: 'Create data relation'
 ---
 
 
-调用该接口del group items。
+调用该接口Create data relation。
 
 
 
@@ -12,14 +12,14 @@ description: 'del group items'
 
 
 ```
-post /groups/{id}/items/delete
+post /devices/{id}/relations
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | 设备组ID |  
+| id | path | string | 实体Id |  
 
 
 
@@ -31,18 +31,22 @@ post /groups/{id}/items/delete
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 子设备ID 数组 | Object | [apigroupv1Ids](#apigroupv1Ids) |
+| 关系信息 | Object | [v1Relation](#v1Relation) |
 
-#### apigroupv1Ids
+#### v1Relation
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |        
-| ids | Array[ string ] | id 数组 |    
+| ---- | ---- | ----------- |     
+| direction | string | 关系方向 from or to   目前只有 from |      
+| relationType | string | 关系类型 目前只定 contain |      
+| targetId | string | 源 或 目标  实体Id |   
 
 
   
-       
-          
+     
+   
+     
+   
      
  
  

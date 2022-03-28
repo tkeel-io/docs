@@ -1,10 +1,10 @@
 ---
-title: "GetGroup"
-description: 'get entity group'
+title: "SetDeviceCommand"
+description: 'set device command'
 ---
 
 
-调用该接口get entity group。
+调用该接口set device command。
 
 
 
@@ -12,14 +12,43 @@ description: 'get entity group'
 
 
 ```
-get /groups/{id}
+post /devices/{id}/command/set
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | 设备组ID |  
+| id | path | string |  设备Id |  
+
+
+
+
+
+### Request Body
+
+
+ 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+|  设置内容 | Object | [v1SetContent](#v1SetContent) |
+
+#### v1SetContent
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| id | string | 属性 or  命令 标识符id |     
+| value | Object | 设置的 value   |   
+
+
+  
+     
+   
+    
+          
+     
+ 
+ 
 
 
 
@@ -31,26 +60,10 @@ get /groups/{id}
 
 ### Response  200
 
- 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1GetGroupResponse](#v1GetGroupResponse) |
 
-#### v1GetGroupResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |    
-| groupObject | Object | 设备组信息   |   
-
-
-  
-    
-          
-     
- 
- 
-
-
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
  
 
 

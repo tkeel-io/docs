@@ -1,7 +1,10 @@
 ---
 title: "SearchEntity"
 description: 'search entity'
----调用该接口search entity。
+---
+
+
+调用该接口search entity。
 
 
 
@@ -12,7 +15,16 @@ description: 'search entity'
 post /search
 ```
 
-### Request Body 
+
+
+
+
+
+
+### Request Body
+
+
+ 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 | 设备列表请求信息 | Object | [apidevicev1ListEntityQuery](#apidevicev1ListEntityQuery) |
@@ -28,18 +40,56 @@ post /search
 | page_size | integer | 每页限制条数 |      
 | query | string | es查询条件 |   
 
+
+  
+       
+         
 ### apidevicev1Condition
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | field | string | 查询输出字段 |      
-| operator | string | 操作符, $eq为相等，$neq为不等，$lt为小于，$gt为大于，$lne为小于等于， $gne为大于等于 |      
-| value | string | 值 |   
+| operator | string | 操作符, $eq为相等，$neq为不等，$lt为小于，$gt为大于，$lne为小于等于， $gne为大于等于 |     
+| value | Object | 值   |   
+
+
+  
+     
+   
+     
+   
+    
+          
+     
+ 
+ 
+
+
+          
+     
+   
+     
+   
+     
+   
+     
+   
+     
+   
+     
+ 
+ 
+
+
 
 
 
 ## Response
 
-### Response  200 
+
+
+### Response  200
+
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [v1ListDeviceResponse](#v1ListDeviceResponse) |
@@ -47,12 +97,24 @@ post /search
 #### v1ListDeviceResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| listDeviceObject |  | 设备列表对象 |   
+| ---- | ---- | ----------- |    
+| listDeviceObject | Object | 设备列表对象   |   
 
 
+  
+    
+          
+     
+ 
+ 
 
-### Response  default 
+
+ 
+
+
+### Response  default
+
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -65,10 +127,32 @@ post /search
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
+
+  
+     
+   
+       
+         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
+
+  
+     
+ 
+ 
+
+
+          
+     
+   
+     
+ 
+ 
+
+
+ 
 
 

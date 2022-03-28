@@ -1,7 +1,10 @@
 ---
 title: "CreateDevice"
 description: 'create device entity'
----调用该接口create device entity。
+---
+
+
+调用该接口create device entity。
 
 
 
@@ -12,7 +15,16 @@ description: 'create device entity'
 post /devices
 ```
 
-### Request Body 
+
+
+
+
+
+
+### Request Body
+
+
+ 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 | 设备信息 | Object | [v1DeviceEntityBasicInfo](#v1DeviceEntityBasicInfo) |
@@ -32,10 +44,40 @@ post /devices
 | templateName | string | 设备模板名称 |   
 
 
+  
+     
+   
+     
+   
+    
+          
+     
+   
+     
+   
+     
+   
+     
+   
+     
+   
+     
+   
+     
+ 
+ 
+
+
+
+
 
 ## Response
 
-### Response  200 
+
+
+### Response  200
+
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [v1CreateDeviceResponse](#v1CreateDeviceResponse) |
@@ -47,8 +89,20 @@ post /devices
 | deviceObject | Object | 设备对象   |   
 
 
+  
+    
+          
+     
+ 
+ 
 
-### Response  default 
+
+ 
+
+
+### Response  default
+
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -61,10 +115,32 @@ post /devices
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
+
+  
+     
+   
+       
+         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
+
+  
+     
+ 
+ 
+
+
+          
+     
+   
+     
+ 
+ 
+
+
+ 
 
 

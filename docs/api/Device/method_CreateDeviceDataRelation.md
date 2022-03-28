@@ -1,7 +1,10 @@
 ---
 title: "CreateDeviceDataRelation"
 description: 'Create data relation'
----调用该接口Create data relation。
+---
+
+
+调用该接口Create data relation。
 
 
 
@@ -12,11 +15,20 @@ description: 'Create data relation'
 post /devices/{id}/relations
 ```
 
+
+
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string | 实体Id |  
 
-### Request Body 
+
+
+
+
+### Request Body
+
+
+ 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 | 关系信息 | Object | [v1Relation](#v1Relation) |
@@ -30,15 +42,35 @@ post /devices/{id}/relations
 | targetId | string | 源 或 目标  实体Id |   
 
 
+  
+     
+   
+     
+   
+     
+ 
+ 
+
+
+
+
 
 ## Response
 
+
+
 ### Response  200
+
+
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
 | 200 | OK | {   { }} |
+ 
 
-### Response  default 
+
+### Response  default
+
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -51,10 +83,32 @@ post /devices/{id}/relations
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
+
+  
+     
+   
+       
+         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
+
+  
+     
+ 
+ 
+
+
+          
+     
+   
+     
+ 
+ 
+
+
+ 
 
 

@@ -1,7 +1,10 @@
 ---
 title: "UpdateGroup"
 description: 'update entity group'
----调用该接口update entity group。
+---
+
+
+调用该接口update entity group。
 
 
 
@@ -12,11 +15,20 @@ description: 'update entity group'
 put /groups/{id}
 ```
 
+
+
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string | 设备组ID |  
 
-### Request Body 
+
+
+
+
+### Request Body
+
+
+ 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 | 更新设备组信息 | Object | [v1GroupEntity](#v1GroupEntity) |
@@ -32,10 +44,32 @@ put /groups/{id}
 | parentName | string | 父设备组名称 |   
 
 
+  
+     
+   
+    
+          
+     
+   
+     
+   
+     
+   
+     
+ 
+ 
+
+
+
+
 
 ## Response
 
-### Response  200 
+
+
+### Response  200
+
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [v1UpdateGroupResponse](#v1UpdateGroupResponse) |
@@ -47,8 +81,20 @@ put /groups/{id}
 | groupObject | Object | 设备组信息   |   
 
 
+  
+    
+          
+     
+ 
+ 
 
-### Response  default 
+
+ 
+
+
+### Response  default
+
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -61,10 +107,32 @@ put /groups/{id}
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
+
+  
+     
+   
+       
+         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
+
+  
+     
+ 
+ 
+
+
+          
+     
+   
+     
+ 
+ 
+
+
+ 
 
 

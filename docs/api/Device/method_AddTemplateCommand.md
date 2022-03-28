@@ -1,7 +1,10 @@
 ---
 title: "AddTemplateCommand"
 description: 'add template command'
----调用该接口add template command。
+---
+
+
+调用该接口add template command。
 
 
 
@@ -12,11 +15,20 @@ description: 'add template command'
 post /templates/{uid}/command
 ```
 
+
+
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | uid | path | string | 模板ID |  
 
-### Request Body 
+
+
+
+
+### Request Body
+
+
+ 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 | 命令 | Object | [](#) |
@@ -28,14 +40,28 @@ post /templates/{uid}/command
 
 
 
+ 
+
+
+
+
+
 ## Response
 
+
+
 ### Response  200
+
+
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
 | 200 | OK | {   { }} |
+ 
 
-### Response  default 
+
+### Response  default
+
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -48,10 +74,32 @@ post /templates/{uid}/command
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
+
+  
+     
+   
+       
+         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
+
+  
+     
+ 
+ 
+
+
+          
+     
+   
+     
+ 
+ 
+
+
+ 
 
 

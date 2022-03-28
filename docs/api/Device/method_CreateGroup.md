@@ -1,7 +1,10 @@
 ---
 title: "CreateGroup"
 description: 'create entity group'
----调用该接口create entity group。
+---
+
+
+调用该接口create entity group。
 
 
 
@@ -12,7 +15,16 @@ description: 'create entity group'
 post /groups
 ```
 
-### Request Body 
+
+
+
+
+
+
+### Request Body
+
+
+ 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 | 设备组信息 | Object | [v1GroupEntity](#v1GroupEntity) |
@@ -28,10 +40,32 @@ post /groups
 | parentName | string | 父设备组名称 |   
 
 
+  
+     
+   
+    
+          
+     
+   
+     
+   
+     
+   
+     
+ 
+ 
+
+
+
+
 
 ## Response
 
-### Response  200 
+
+
+### Response  200
+
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [v1CreateGroupResponse](#v1CreateGroupResponse) |
@@ -43,8 +77,20 @@ post /groups
 | groupObject | Object | 设备组信息   |   
 
 
+  
+    
+          
+     
+ 
+ 
 
-### Response  default 
+
+ 
+
+
+### Response  default
+
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -57,10 +103,32 @@ post /groups
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
+
+  
+     
+   
+       
+         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
+
+  
+     
+ 
+ 
+
+
+          
+     
+   
+     
+ 
+ 
+
+
+ 
 
 

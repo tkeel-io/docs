@@ -1,10 +1,10 @@
 ---
-title: "DelGroupitems"
-description: 'del group items'
+title: "SetDeviceCommand"
+description: 'set device command'
 ---
 
 
-调用该接口del group items。
+调用该接口set device command。
 
 
 
@@ -12,14 +12,14 @@ description: 'del group items'
 
 
 ```
-post /groups/{id}/items/delete
+post /devices/{id}/command/set
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | 设备组ID |  
+| id | path | string |  设备Id |  
 
 
 
@@ -31,17 +31,20 @@ post /groups/{id}/items/delete
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 子设备ID 数组 | Object | [apigroupv1Ids](#apigroupv1Ids) |
+|  设置内容 | Object | [v1SetContent](#v1SetContent) |
 
-#### apigroupv1Ids
+#### v1SetContent
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |        
-| ids | Array[ string ] | id 数组 |    
+| ---- | ---- | ----------- |     
+| id | string | 属性 or  命令 标识符id |     
+| value | Object | 设置的 value   |   
 
 
   
-       
+     
+   
+    
           
      
  

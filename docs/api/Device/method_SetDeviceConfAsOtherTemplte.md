@@ -1,10 +1,10 @@
 ---
-title: "ListTemplate"
-description: 'list Template'
+title: "SetDeviceConfAsOtherTemplte"
+description: 'save device confAsOtherTemplate'
 ---
 
 
-调用该接口list Template。
+调用该接口save device confAsOtherTemplate。
 
 
 
@@ -12,10 +12,14 @@ description: 'list Template'
 
 
 ```
-post /templates/search
+post /devices/{id}/configs/saveAsOtherTemplate
 ```
 
 
+
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string |  设备Id |  
 
 
 
@@ -27,14 +31,14 @@ post /templates/search
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 请求条件 | Object | [apitemplatev1ListEntityQuery](#apitemplatev1ListEntityQuery) |
+| 另存为模板的基本信息 | Object | [apidevicev1TemplateBasicInfo](#apidevicev1TemplateBasicInfo) |
 
-#### apitemplatev1ListEntityQuery
+#### apidevicev1TemplateBasicInfo
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| filter |  | 限制 |      
-| query | string | es 查询条件 |   
+| description | string | 模板描述 |      
+| name | string | 模板名称 |   
 
 
   
@@ -54,24 +58,10 @@ post /templates/search
 
 ### Response  200
 
- 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListTemplateResponse](#v1ListTemplateResponse) |
 
-#### v1ListTemplateResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| listTemplateObject |  | 模板列表名称 |   
-
-
-  
-     
- 
- 
-
-
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
  
 
 

@@ -1,7 +1,10 @@
 ---
 title: "DeleteTemplate"
 description: 'delete Template'
----调用该接口delete Template。
+---
+
+
+调用该接口delete Template。
 
 
 
@@ -12,7 +15,16 @@ description: 'delete Template'
 post /templates/delete
 ```
 
-### Request Body 
+
+
+
+
+
+
+### Request Body
+
+
+ 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 | 模板ID 数组 | Object | [apitemplatev1Ids](#apitemplatev1Ids) |
@@ -24,15 +36,65 @@ post /templates/delete
 | ids | Array[ string ] | ID 数组 |    
 
 
+  
+       
+          
+     
+ 
+ 
+
+
+
+
 
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | OK | {   { }} |
 
-### Response  default 
+
+### Response  200
+
+ 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [v1DeleteTemplateResponse](#v1DeleteTemplateResponse) |
+
+#### v1DeleteTemplateResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |         
+| faildDelTemplate | Array[v1FaildDelTemplate] | 模板删除失败 数组 [ 具体参数可见下面 [v1FaildDelTemplate](#v1FaildDelTemplate) ] |    
+
+
+  
+       
+         
+### v1FaildDelTemplate
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| id | string | 模板ID |      
+| reason | string | 原因 |   
+
+
+  
+     
+   
+     
+ 
+ 
+
+
+          
+     
+ 
+ 
+
+
+ 
+
+
+### Response  default
+
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -45,10 +107,32 @@ post /templates/delete
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
+
+  
+     
+   
+       
+         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
+
+  
+     
+ 
+ 
+
+
+          
+     
+   
+     
+ 
+ 
+
+
+ 
 
 

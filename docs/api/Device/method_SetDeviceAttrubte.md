@@ -1,10 +1,10 @@
 ---
-title: "ListGroup"
-description: 'list entity group'
+title: "SetDeviceAttrubte"
+description: 'set device attribte'
 ---
 
 
-调用该接口list entity group。
+调用该接口set device attribte。
 
 
 
@@ -12,10 +12,14 @@ description: 'list entity group'
 
 
 ```
-post /groups/search
+post /devices/{id}/attribute/set
 ```
 
 
+
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string |  设备Id |  
 
 
 
@@ -27,19 +31,21 @@ post /groups/search
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [apigroupv1ListEntityQuery](#apigroupv1ListEntityQuery) |
+|  设置内容 | Object | [v1SetContent](#v1SetContent) |
 
-#### apigroupv1ListEntityQuery
+#### v1SetContent
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| filter |  | 限制 |      
-| query | string | es查询条件 |   
+| id | string | 属性 or  命令 标识符id |     
+| value | Object | 设置的 value   |   
 
 
   
      
    
+    
+          
      
  
  
@@ -54,24 +60,10 @@ post /groups/search
 
 ### Response  200
 
- 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListGroupResponse](#v1ListGroupResponse) |
 
-#### v1ListGroupResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| listEntityInfo |  | 设备组列表信息 |   
-
-
-  
-     
- 
- 
-
-
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
  
 
 

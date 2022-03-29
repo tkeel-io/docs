@@ -1,10 +1,10 @@
 ---
-title: "AddGroupitems"
-description: 'add group items'
+title: "ListDeviceDataRelation"
+description: 'list data relation'
 ---
 
 
-调用该接口add group items。
+调用该接口list data relation。
 
 
 
@@ -12,40 +12,14 @@ description: 'add group items'
 
 
 ```
-post /groups/{id}/items
+get /devices/{id}/relations
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | 设备组ID |  
-
-
-
-
-
-### Request Body
-
-
- 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-| 子设备ID 数组 | Object | [apigroupv1Ids](#apigroupv1Ids) |
-
-#### apigroupv1Ids
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |        
-| ids | Array[ string ] | id 数组 |    
-
-
-  
-       
-          
-     
- 
- 
+| id | path | string | 实体Id |  
 
 
 

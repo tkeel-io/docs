@@ -1,10 +1,10 @@
 ---
-title: "ListDevice"
-description: 'list device entity'
+title: "UpdateDeviceDataRelation"
+description: 'update data relation'
 ---
 
 
-调用该接口list device entity。
+调用该接口update data relation。
 
 
 
@@ -12,10 +12,14 @@ description: 'list device entity'
 
 
 ```
-post /devices/search
+put /devcies/{id}/relations
 ```
 
 
+
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string | 实体Id |  
 
 
 
@@ -27,17 +31,20 @@ post /devices/search
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 设备列表请求信息 | Object | [apidevicev1ListEntityQuery](#apidevicev1ListEntityQuery) |
+| 关系信息 | Object | [v1Relation](#v1Relation) |
 
-#### apidevicev1ListEntityQuery
+#### v1Relation
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| filter |  | 限制 |      
-| query | string | es查询条件 |   
+| direction | string | 关系方向 from or to   目前只有 from |      
+| relationType | string | 关系类型 目前只定 contain |      
+| targetId | string | 源 或 目标  实体Id |   
 
 
   
+     
+   
      
    
      
@@ -54,24 +61,10 @@ post /devices/search
 
 ### Response  200
 
- 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListDeviceResponse](#v1ListDeviceResponse) |
 
-#### v1ListDeviceResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| listDeviceObject |  | 设备列表对象 |   
-
-
-  
-     
- 
- 
-
-
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
  
 
 

@@ -1,10 +1,10 @@
 ---
-title: "ListGroupitems"
-description: 'list group items'
+title: "CreateDeviceDataRelation"
+description: 'Create data relation'
 ---
 
 
-调用该接口list group items。
+调用该接口Create data relation。
 
 
 
@@ -12,14 +12,44 @@ description: 'list group items'
 
 
 ```
-get /groups/{id}/items
+post /devices/{id}/relations
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | 设备组ID |  
+| id | path | string | 实体Id |  
+
+
+
+
+
+### Request Body
+
+
+ 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+| 关系信息 | Object | [v1Relation](#v1Relation) |
+
+#### v1Relation
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| direction | string | 关系方向 from or to   目前只有 from |      
+| relationType | string | 关系类型 目前只定 contain |      
+| targetId | string | 源 或 目标  实体Id |   
+
+
+  
+     
+   
+     
+   
+     
+ 
+ 
 
 
 
@@ -31,24 +61,10 @@ get /groups/{id}/items
 
 ### Response  200
 
- 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListGroupItemsResponse](#v1ListGroupItemsResponse) |
 
-#### v1ListGroupItemsResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| subIds |  | 子设备信息 |   
-
-
-  
-     
- 
- 
-
-
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
  
 
 

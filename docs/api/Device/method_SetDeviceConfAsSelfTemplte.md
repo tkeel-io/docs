@@ -1,7 +1,10 @@
 ---
-title: "TenantEnable"
-description: 'openapi tenant enable'
----调用该接口openapi tenant enable。
+title: "SetDeviceConfAsSelfTemplte"
+description: 'save device confAsSelfTemplate'
+---
+
+
+调用该接口save device confAsSelfTemplate。
 
 
 
@@ -9,39 +12,56 @@ description: 'openapi tenant enable'
 
 
 ```
-post /tenant/enable
+post /devices/{id}/configs/saveAsSelfTemplate
 ```
 
-### Request Body 
+
+
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string |  设备Id |  
+
+
+
+
+
+### Request Body
+
+
+ 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1TenantEnableRequest](#v1TenantEnableRequest) |
+|  设备Id | Object | [](#) |
 
-#### v1TenantEnableRequest
+#### 
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| extra | string |  |      
-| tenant_id | string |  |   
+| ---- | ---- | ----------- |  
+
+
+
+ 
+
+
 
 
 
 ## Response
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1TenantEnableResponse](#v1TenantEnableResponse) |
-
-#### v1TenantEnableResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| res |  |  |   
 
 
+### Response  200
 
-### Response  default 
+
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
+ 
+
+
+### Response  default
+
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -54,10 +74,32 @@ post /tenant/enable
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
+
+  
+     
+   
+       
+         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
+
+  
+     
+ 
+ 
+
+
+          
+     
+   
+     
+ 
+ 
+
+
+ 
 
 

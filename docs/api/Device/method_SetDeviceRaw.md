@@ -1,7 +1,10 @@
 ---
-title: "TenantDisable"
-description: 'openapi tenant disable'
----调用该接口openapi tenant disable。
+title: "SetDeviceRaw"
+description: 'set device raw'
+---
+
+
+调用该接口set device raw。
 
 
 
@@ -9,39 +12,56 @@ description: 'openapi tenant disable'
 
 
 ```
-post /tenant/disable
+post /devices/{id}/raw/set
 ```
 
-### Request Body 
+
+
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string |  设备Id |  
+
+
+
+
+
+### Request Body
+
+
+ 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1TenantDisableRequest](#v1TenantDisableRequest) |
+| 设置的 value | Object | [](#) |
 
-#### v1TenantDisableRequest
+#### 
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| extra | string |  |      
-| tenant_id | string |  |   
+| ---- | ---- | ----------- |  
+
+
+
+ 
+
+
 
 
 
 ## Response
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1TenantDisableResponse](#v1TenantDisableResponse) |
-
-#### v1TenantDisableResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| res |  |  |   
 
 
+### Response  200
 
-### Response  default 
+
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
+ 
+
+
+### Response  default
+
+ 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -54,10 +74,32 @@ post /tenant/disable
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
+
+  
+     
+   
+       
+         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
+
+  
+     
+ 
+ 
+
+
+          
+     
+   
+     
+ 
+ 
+
+
+ 
 
 

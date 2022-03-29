@@ -35,10 +35,11 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'tKeel',
         logo: {
           alt: 'tKeel',
-          src: 'images/tkeel-logo-mark.svg',
+          src: 'images/tkeel-logo-type-dark.svg',
+          width: 149,
+          height: 28,
         },
         items: [
           {
@@ -49,7 +50,7 @@ const config = {
           },
         ],
       },
-      footer: {
+      /* footer: {
         links: [
           {
             title: '社区',
@@ -62,7 +63,7 @@ const config = {
           },
         ],
         copyright: `Copyright © ${new Date().getFullYear()} tKeel. Built with Docusaurus.`,
-      },
+      }, */
     }),
 
   scripts: [

@@ -40,3 +40,28 @@ a.navbar__item.navbar__link {
     0px 4px 6px -2px rgba(113, 128, 150, 0.05);
   background-color: #fff;
 }
+
+.pagination-nav__sublabel {
+  // font-size: 14px;
+  // line-height: 24px;
+  color: #79879c;
+}
+
+.pagination-nav__label {
+  font-weight: 500;
+  // font-size: 16px;
+  // line-height: 28px;
+  color: #242e42;
+
+  &:hover {
+    color: var(--ifm-color-primary);
+  }
+}
+
+.pagination-nav__item:first-child .pagination-nav__label::before {
+  content: ' ';
+}
+
+.pagination-nav__item--next .pagination-nav__label::after {
+  content: ' ';
+}

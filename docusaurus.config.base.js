@@ -24,7 +24,7 @@ const config = {
           { to: '/api/Core/tag', label: 'API', position: 'left' },
         ],
       },
-      footer: {
+      /* footer: {
         style: 'dark',
         links: [
           {
@@ -45,7 +45,7 @@ const config = {
             ],
           },
         ],
-      },
+      }, */
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,

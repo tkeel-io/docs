@@ -1,1 +1,22 @@
 @import '_base';
+
+:root {
+  --ifm-color-primary: #55bc8a;
+  --ifm-color-primary-dark: #45b07c;
+  --ifm-color-primary-darker: #42a675;
+  --ifm-color-primary-darkest: #368961;
+  --ifm-color-primary-light: #69c497;
+  --ifm-color-primary-lighter: #72c89e;
+  --ifm-color-primary-lightest: #90d3b2;
+}
+
+a.navbar__item.navbar__link {
+  color: #fff;
+}
+
+a.navbar__item.navbar__link {
+  &:hover,
+  &.navbar__link--active {
+    color: var(--ifm-navbar-link-hover-color);
+  }
+}

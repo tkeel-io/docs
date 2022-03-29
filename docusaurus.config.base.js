@@ -13,6 +13,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+      colorMode: {
+        defaultMode: 'light',
+        disableSwitch: true,
+        respectPrefersColorScheme: false,
+      },
       navbar: {
         items: [
           { to: '/getting_started/guide', label: '新手引导', position: 'left' },
@@ -49,7 +54,7 @@ const config = {
 
   i18n: {
     defaultLocale: 'zh-cn',
-    locales: ['en', 'zh-cn'],
+    locales: ['zh-cn'],
   },
 
   plugins: ['docusaurus-plugin-sass'],

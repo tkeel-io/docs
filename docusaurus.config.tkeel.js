@@ -22,6 +22,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/',
           editUrl: 'https://github.com/tkeel-io/docs/tree/main/',
+          showLastUpdateTime: true,
         },
         theme: {
           customCss: require.resolve('./src/styles/tkeel.scss'),

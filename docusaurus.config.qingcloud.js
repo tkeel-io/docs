@@ -19,7 +19,7 @@ const config = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/',
-          editUrl: 'https://github.com/tkeel-io/docs/tree/main/',
+          showLastUpdateTime: true,
         },
         theme: {
           customCss: require.resolve('./src/styles/qingcloud.scss'),
@@ -34,10 +34,6 @@ const config = {
       navbar: {
         style: 'dark',
         title: 'QingCloud 物联网平台',
-        logo: {
-          alt: 'QingCloud 物联网平台',
-          src: 'images/qingcloud-logo-mark.svg',
-        },
       },
     }),
 };

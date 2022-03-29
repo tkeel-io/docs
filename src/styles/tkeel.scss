@@ -1,3 +1,35 @@
+@import '_base';
+
+:root {
+  --ifm-color-primary: #2580ff;
+  --ifm-color-primary-dark: #086fff;
+  --ifm-color-primary-darker: #0068f8;
+  --ifm-color-primary-darkest: #0055cc;
+  --ifm-color-primary-light: #4291ff;
+  --ifm-color-primary-lighter: #519aff;
+  --ifm-color-primary-lightest: #7db3ff;
+  --ifm-navbar-shadow: 0px 4px 4px rgba(54, 67, 92, 0.03);
+}
+
+.navbar__brand {
+  margin-right: 5rem;
+}
+
+.navbar__title {
+  color: #000;
+}
+
+a.navbar__item.navbar__link {
+  color: #5f708a;
+}
+
+a.navbar__item.navbar__link {
+  &:hover,
+  &.navbar__link--active {
+    color: #000;
+  }
+}
+
 html[data-theme='dark'] {
   .header-github-link {
     &:before {

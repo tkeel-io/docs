@@ -1,0 +1,67 @@
+:root {
+  --ifm-background-color: #eff4f9;
+  --ifm-hover-overlay: #eff4f9;
+  --ifm-navbar-item-padding-horizontal: 1rem;
+  --doc-sidebar-width: 240px !important;
+  --ifm-menu-color: #404e68;
+  --ifm-menu-color-background-active: transparent;
+}
+
+.navbar__title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 27px;
+}
+
+a.navbar__item.navbar__link {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.theme-doc-sidebar-container {
+  background-color: #f9fbfd;
+}
+
+.menu__link {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.pagination-nav__link {
+  border-width: 0;
+}
+
+.markdown img {
+  box-sizing: border-box;
+  padding: 8px;
+  border: 1px solid #d1d7df;
+  box-shadow: 0 10px 15px -3px rgba(113, 128, 150, 0.1),
+    0px 4px 6px -2px rgba(113, 128, 150, 0.05);
+  background-color: #fff;
+}
+
+.pagination-nav__sublabel {
+  // font-size: 14px;
+  // line-height: 24px;
+  color: #79879c;
+}
+
+.pagination-nav__label {
+  font-weight: 500;
+  // font-size: 16px;
+  // line-height: 28px;
+  color: #242e42;
+
+  &:hover {
+    color: var(--ifm-color-primary);
+  }
+}
+
+.pagination-nav__item:first-child .pagination-nav__label::before {
+  content: ' ';
+}
+
+.pagination-nav__item--next .pagination-nav__label::after {
+  content: ' ';
+}

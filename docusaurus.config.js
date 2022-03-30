@@ -1,6 +1,6 @@
 const { merge } = require('webpack-merge');
 
-const configType = 'tkeel'; // tkeel, qingcloud
+const configType = 'qingcloud'; // tkeel, qingcloud
 
 const baseConfig = require('./docusaurus.config.base');
 const tkeelConfig = require('./docusaurus.config.tkeel');

@@ -8,8 +8,8 @@
 }
 
 .navbar__title {
-  font-size: 18px;
   font-weight: 700;
+  font-size: 18px;
   line-height: 27px;
 }
 
@@ -35,10 +35,10 @@ a.navbar__item.navbar__link {
 .markdown img {
   box-sizing: border-box;
   padding: 8px;
-  border: 1px solid #d1d7df;
-  box-shadow: 0 10px 15px -3px rgba(113, 128, 150, 0.1),
-    0px 4px 6px -2px rgba(113, 128, 150, 0.05);
   background-color: #fff;
+  border: 1px solid #d1d7df;
+  box-shadow: 0 10px 15px -3px rgb(113 128 150 / 10%),
+    0 4px 6px -2px rgb(113 128 150 / 5%);
 }
 
 .pagination-nav__sublabel {
@@ -48,10 +48,10 @@ a.navbar__item.navbar__link {
 }
 
 .pagination-nav__label {
-  font-weight: 500;
   // font-size: 16px;
   // line-height: 28px;
   color: #242e42;
+  font-weight: 500;
 
   &:hover {
     color: var(--ifm-color-primary);

@@ -1,7 +1,3 @@
-// @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
-
-/** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'tKeel',
   tagline: 'tKeel are cool',
@@ -14,8 +10,7 @@ const config = {
   presets: [
     [
       '@docusaurus/preset-classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
+      {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           routeBasePath: '/',
@@ -25,58 +20,56 @@ const config = {
         theme: {
           customCss: require.resolve('./src/styles/tkeel.scss'),
         },
-      }),
+      },
     ],
   ],
 
-  themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
-      navbar: {
-        logo: {
-          alt: 'tKeel',
-          src: 'images/tkeel-logo-type-dark.svg',
-          width: 149,
-          height: 28,
+  themeConfig: {
+    navbar: {
+      logo: {
+        alt: 'tKeel',
+        src: 'images/tkeel-logo-type-dark.svg',
+        width: 149,
+        height: 28,
+      },
+      items: [
+        { to: '/getting_started/guide', label: '新手引导', position: 'left' },
+        { to: '/api/Core/tag', label: 'API', position: 'left' },
+      ],
+    },
+    footer: {
+      style: 'dark',
+      links: [
+        {
+          title: '文档',
+          items: [
+            {
+              label: '什么是 tKeel',
+              to: '/',
+            },
+            {
+              label: '概念',
+              to: '/internal_concepts/platform',
+            },
+            {
+              label: '新手引导',
+              to: '/getting_started/guide',
+            },
+          ],
         },
-        items: [
-          { to: '/getting_started/guide', label: '新手引导', position: 'left' },
-          { to: '/api/Core/tag', label: 'API', position: 'left' },
-        ],
-      },
-      footer: {
-        style: 'dark',
-        links: [
-          {
-            title: '文档',
-            items: [
-              {
-                label: '什么是 tKeel',
-                to: '/',
-              },
-              {
-                label: '概念',
-                to: '/internal_concepts/platform',
-              },
-              {
-                label: '新手引导',
-                to: '/getting_started/guide',
-              },
-            ],
-          },
-          {
-            title: '社区',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/tkeel-io/tkeel',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} tKeel. Built with Docusaurus.`,
-      },
-    }),
+        {
+          title: '社区',
+          items: [
+            {
+              label: 'GitHub',
+              href: 'https://github.com/tkeel-io/tkeel',
+            },
+          ],
+        },
+      ],
+      copyright: `Copyright © ${new Date().getFullYear()} tKeel. Built with Docusaurus.`,
+    },
+  },
 
   scripts: [
     {

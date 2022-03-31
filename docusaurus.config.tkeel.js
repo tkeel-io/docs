@@ -2,6 +2,7 @@ const config = {
   title: 'tKeel',
   tagline: 'tKeel are cool',
   url: 'https://docs.tkeel.io',
+  baseUrl: '/',
   favicon: 'images/tkeel-logo-mark.svg',
   organizationName: 'tkeel-io',
   projectName: 'docs',

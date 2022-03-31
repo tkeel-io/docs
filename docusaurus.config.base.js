@@ -32,7 +32,7 @@ const config = {
 
   i18n: {
     defaultLocale: 'zh-cn',
-    locales: ['zh-cn'],
+    locales: ['en', 'zh-cn'],
   },
 
   plugins: ['docusaurus-plugin-sass'],

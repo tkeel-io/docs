@@ -4,6 +4,7 @@ const lightCodeTheme = require('prism-react-renderer/themes/github');
 const config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
+  onDuplicateRoutes: 'warn',
 
   themeConfig: {
     colorMode: {

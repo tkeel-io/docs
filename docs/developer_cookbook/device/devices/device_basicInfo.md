@@ -248,15 +248,298 @@ propertie 里分类字段：basicInfo  AND  sysField
 
 ## 3、设备属性值修改
 
+request
+
+```json
+curl --location --request POST '127.0.0.1:31234/v1/devices/iotd-2f130021-f24b-4856-80fd-d940ef1da89b/attribute/set' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY0OTM4ODU4MSwic3ViIjoidXNyLTY5MTE0YjMxNGFhZGJkMTgwMjFkMzY5NmJjNjQifQ._tHo3cMLBCNdLhLOA9IItzhXW-PHs24e2Nmr9MXpuiHiFQr2cl_ySX9O6aPnY6Tm7azuBipmib4tQ8BxKWV-Tw' \
+--data-raw '{
+    "id":"serial",
+    "value": "22xx33"
+}'
 ```
+
+resopnse
+
+```json
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/google.protobuf.Empty",
+        "value": {}
+    }
+}
 ```
 
 
 
 ## 4、设备命令调用
 
+request
+
+```json
+curl --location --request GET '127.0.0.1:31234/v1/devices/iotd-2f130021-f24b-4856-80fd-d940ef1da89b/command/set' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY0OTM4ODU4MSwic3ViIjoidXNyLTY5MTE0YjMxNGFhZGJkMTgwMjFkMzY5NmJjNjQifQ._tHo3cMLBCNdLhLOA9IItzhXW-PHs24e2Nmr9MXpuiHiFQr2cl_ySX9O6aPnY6Tm7azuBipmib4tQ8BxKWV-Tw' \
+--data-raw '{
+    "id":"ota_complex",
+    "value":{
+        "input":{
+            "downCmd":{
+                "ip":"1.1.1.1",
+                "port":3200,
+                "url":"xxx.xxx.xxx",
+                "verb":"get"
+            }
+        }
+    }
+}'
 ```
+
+response
+
 ```
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/google.protobuf.Empty",
+        "value": {}
+    }
+}
+```
+
+设备实体内容 properties 中的commands 部分
+
+```json
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/api.device.v1.GetDeviceResponse",
+        "deviceObject": {
+            "@type": "type.googleapis.com/api.core.v1.EntityResponse",
+            "configs": {
+                "commands": {
+                    "define": {
+                        "fields": {
+                            "ota_complex": {
+                                "define": {
+                                    "fields": {
+                                        "input": {
+                                            "define": {
+                                                "fields": {
+                                                    "devName": {
+                                                        "define": {},
+                                                        "description": "",
+                                                        "enabled": false,
+                                                        "enabled_search": false,
+                                                        "enabled_time_series": false,
+                                                        "id": "",
+                                                        "last_time": 1649381403413,
+                                                        "name": "设备名",
+                                                        "type": "string",
+                                                        "weight": 0
+                                                    },
+                                                    "downCmd": {
+                                                        "define": {
+                                                            "fields": {}
+                                                        },
+                                                        "description": "",
+                                                        "enabled": false,
+                                                        "enabled_search": false,
+                                                        "enabled_time_series": false,
+                                                        "id": "",
+                                                        "last_time": 1649381403413,
+                                                        "name": "下载指令json",
+                                                        "type": "struct",
+                                                        "weight": 0
+                                                    },
+                                                    "gwId": {
+                                                        "define": {},
+                                                        "description": "",
+                                                        "enabled": false,
+                                                        "enabled_search": false,
+                                                        "enabled_time_series": false,
+                                                        "id": "",
+                                                        "last_time": 1649381403413,
+                                                        "name": "网关id",
+                                                        "type": "string",
+                                                        "weight": 0
+                                                    },
+                                                    "op": {
+                                                        "define": {},
+                                                        "description": "",
+                                                        "enabled": false,
+                                                        "enabled_search": false,
+                                                        "enabled_time_series": false,
+                                                        "id": "",
+                                                        "last_time": 1649381403413,
+                                                        "name": "操作",
+                                                        "type": "string",
+                                                        "weight": 0
+                                                    },
+                                                    "pointName": {
+                                                        "define": {},
+                                                        "description": "",
+                                                        "enabled": false,
+                                                        "enabled_search": false,
+                                                        "enabled_time_series": false,
+                                                        "id": "",
+                                                        "last_time": 1649381403413,
+                                                        "name": "测点名",
+                                                        "type": "string",
+                                                        "weight": 0
+                                                    },
+                                                    "restart": {
+                                                        "define": {
+                                                            "fields": {}
+                                                        },
+                                                        "description": "",
+                                                        "enabled": false,
+                                                        "enabled_search": false,
+                                                        "enabled_time_series": false,
+                                                        "id": "",
+                                                        "last_time": 1649381403413,
+                                                        "name": "重启指令json",
+                                                        "type": "struct",
+                                                        "weight": 0
+                                                    },
+                                                    "value": {
+                                                        "define": {},
+                                                        "description": "",
+                                                        "enabled": false,
+                                                        "enabled_search": false,
+                                                        "enabled_time_series": false,
+                                                        "id": "",
+                                                        "last_time": 1649381403413,
+                                                        "name": "int值",
+                                                        "type": "int",
+                                                        "weight": 0
+                                                    }
+                                                }
+                                            },
+                                            "description": "",
+                                            "enabled": false,
+                                            "enabled_search": false,
+                                            "enabled_time_series": false,
+                                            "id": "",
+                                            "last_time": 1649381403413,
+                                            "name": "输入",
+                                            "type": "struct",
+                                            "weight": 0
+                                        },
+                                        "output": {
+                                            "define": {
+                                                "fields": {}
+                                            },
+                                            "description": "",
+                                            "enabled": false,
+                                            "enabled_search": false,
+                                            "enabled_time_series": false,
+                                            "id": "",
+                                            "last_time": 1649381403413,
+                                            "name": "输出",
+                                            "type": "struct",
+                                            "weight": 0
+                                        }
+                                    }
+                                },
+                                "description": "在线升级",
+                                "enabled": false,
+                                "enabled_search": false,
+                                "enabled_time_series": false,
+                                "id": "",
+                                "last_time": 1649381403413,
+                                "name": "在线升级",
+                                "type": "struct",
+                                "weight": 0
+                            }
+                        }
+                    },
+                    "description": "",
+                    "enabled": true,
+                    "enabled_search": true,
+                    "enabled_time_series": true,
+                    "id": "commands",
+                    "last_time": 1649321287046,
+                    "name": "commands",
+                    "type": "struct",
+                    "weight": 0
+                }
+            },
+            "description": "",
+            "id": "iotd-2f130021-f24b-4856-80fd-d940ef1da89b",
+            "last_time": "1649382412371",
+            "mappers": [
+                {
+                    "description": "",
+                    "id": "mapper_space_path",
+                    "name": "mapper_space_path",
+                    "tql": "insert into iotd-2f130021-f24b-4856-80fd-d940ef1da89b select iotd-usr-69114b314aadbd18021d3696bc64-defaultGroup.properties.sysField._spacePath + '/iotd-2f130021-f24b-4856-80fd-d940ef1da89b'  as properties.sysField._spacePath"
+                }
+            ],
+            "owner": "usr-69114b314aadbd18021d3696bc64",
+            "properties": {
+                "basicInfo": {
+                    "description": "test",
+                    "directConnection": true,
+                    "ext": {
+                        "commany": "qingcloud",
+                        "location": "wuhan"
+                    },
+                    "name": "sensor202",
+                    "parentId": "iotd-usr-69114b314aadbd18021d3696bc64-defaultGroup",
+                    "parentName": "默认分组",
+                    "selfLearn": false,
+                    "templateId": "iotd-29c1fca9-79eb-437b-ba9d-0dc225eb4ce0",
+                    "templateName": ""
+                },
+                "commands": {
+                    "ota_complex": {
+                        "input": {
+                            "downCmd": {
+                                "ip": "1.1.1.1",
+                                "port": 3200,
+                                "url": "xxx.xxx.xxx",
+                                "verb": "get"
+                            }
+                        }
+                    }
+                },
+                "connectInfo": {
+                    "_clientId": "",
+                    "_online": false,
+                    "_peerHost": "",
+                    "_protocol": "",
+                    "_sockPort": "",
+                    "_userName": ""
+                },
+                "sysField": {
+                    "_createdAt": 1649381802106,
+                    "_enable": true,
+                    "_id": "iotd-2f130021-f24b-4856-80fd-d940ef1da89b",
+                    "_owner": "usr-69114b314aadbd18021d3696bc64",
+                    "_source": "device",
+                    "_spacePath": "iotd-2f130021-f24b-4856-80fd-d940ef1da89b",
+                    "_status": "offline",
+                    "_subscribeAddr": "",
+                    "_token": "ZDIyODFiNDQtY2Q4ZS0zOGZiLWIxZTgtMGFjM2EzOTQ5Njdi",
+                    "_updatedAt": 1649381802106
+                }
+            },
+            "source": "device",
+            "template_id": "iotd-29c1fca9-79eb-437b-ba9d-0dc225eb4ce0",
+            "type": "device",
+            "version": "4"
+        }
+    }
+}
+```
+
+
 
 
 

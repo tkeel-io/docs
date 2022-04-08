@@ -287,62 +287,15 @@ curl --location --request POST '127.0.0.1:31234/v1/templates/iotd-17569b89-4593-
 | name   | body       | string | 命令名称                                                     |
 | id     | body       | string | 命令ID, 表示属性的唯一标识 ，放在前面作为key， 可批量添加           |
 | description    | body       | string | 命令说明                                                     |
-| type   | body       | string | ["struct"]   //默认填写  struct  内的子字段用fields 标识     |
-| define | body       | object | 模型的本质是对数据的约束和定义，前面的字段描述的是此数据的基本信息，那么define 对象是对此数据的详细定义和约束，定义和约束内容并不限制且可适应未来不同情况无限扩展。形式为KV。<br/>对于命令的define 来说 只有存在两个部分，发送的内容input  和  返回的内容output   <br/>命令相对于平台来说 本质是提供一个下发数据到设备的通道，对于input 的内容 可简单暂时约定为自由定义的 json对象，相当于自己定义下发的协议(IDC项目中ota 升级也是采用的此方式)  <br/> <br />简单定义命令<br /><br />{<br/>    "ota_simple": {<br/>        "name": "在线升级",<br/>        "description": "在线升级",<br/>        "type": "struct",<br/>        "define": {<br/>            "fields": {<br/>                "input": {<br/>                    "name": "输入",<br/>                    "type": "int",<br/>                    "define": {<br/>                        "max": 100,<br/>                        "min": 10<br/>                    }<br/>                },<br/>                "output": {<br/>                    "name": "输出",<br/>                    "type": "string",<br/>                    "define": {<br/>                        "eq": "ok"<br/>                    }<br/>                }<br/>            }<br/>        }<br/>    }<br/>}<br /><br />复杂嵌套定义命令<br /><br />{<br/>    "ota_complex": {<br/>        "name": "在线升级",<br/>        "description": "在线升级",<br/>        "type": "struct",<br/>        "define": {<br/>            "fields": {<br/>                "input": {<br/>                    "name": "输入",<br/>                    "type": "struct",<br/>                    "define": {<br/>                        "fields": {<br/>                            "gwId": {<br/>                                "name": "网关id",<br/>                                "type": "string",<br/>                                "define": {}<br/>                            },<br/>                            "devName": {<br/>                                "name": "设备名",<br/>                                "type": "string",<br/>                                "define": {}<br/>                            },<br/>                            "pointName": {<br/>                                "name": "测点名",<br/>                                "type": "string",<br/>                                "define": {}<br/>                            },<br/>                            "op": {<br/>                                "name": "操作",<br/>                                "type": "string",<br/>                                "define": {}<br/>                            },<br/>                            "value": {<br/>                                "name": "值",<br/>                                "type": "int",<br/>                                "define": {}<br/>                            }<br/>                        }<br/>                    }<br/>                },<br/>                "output": {<br/>                    "name": "输出",<br/>                    "type": "string",<br/>                    "define": {<br/>                        "eq": "ok"<br/>                    }<br/>                }<br/>            }<br/>        }<br/>    }<br/>}br/>}**根据实际情况如以上define 定义不满足要求时或需要丰富时 ，以kv 的形式扩展define** |
+| type   | body       | string | ["struct"]   //默认填写  struct  内的子字段用fields 标识  ,input \output 默认也为struct |
+| define | body       | object | 模型的本质是对数据的约束和定义，前面的字段描述的是此数据的基本信息，那么define 对象是对此数据的详细定义和约束，定义和约束内容并不限制且可适应未来不同情况无限扩展。形式为KV。<br/>对于命令的define 来说 只有存在两个部分，发送的内容input  和  返回的内容output   <br/>命令相对于平台来说 本质是提供一个下发数据到设备的通道，对于input 的内容 可简单暂时约定为自由定义的 json对象，相当于自己定义下发的协议(IDC项目中ota 升级也是采用的此方式)  <br/> <br /> <br />"define": {<br/>            "fields": {<br/>                "input": {<br/>                    "name": "输入",<br/>                    "type": "struct",<br/>                    "define": {<br/>                        "fields": {<br/>                            "gwId": {<br/>                                "name": "网关id",<br/>                                "type": "string",<br/>                                "define": {}<br/>                            },<br/>                            "devName": {<br/>                                "name": "设备名",<br/>                                "type": "string",<br/>                                "define": {}<br/>                            },<br/>                            "pointName": {<br/>                                "name": "测点名",<br/>                                "type": "string",<br/>                                "define": {}<br/>                            },<br/>                            "op": {<br/>                                "name": "操作",<br/>                                "type": "string",<br/>                                "define": {}<br/>                            },<br/>                            "value": {<br/>                                "name": "int值",<br/>                                "type": "int",<br/>                                "define": {}<br/>                            },<br/>                            "restart":{<br/>                                "name":"重启指令json",<br/>                                "type":"struct",<br/>                                "define":{}<br/>                            },<br/>                            "downCmd":{<br/>                                "name":"下载指令json",<br/>                                "type":"struct",<br/>                                "define":{}<br/>                            }<br/>                        }<br/>                    }<br/>                },<br/>                "output": {<br/>                    "name": "输出",<br/>                    "type": "struct",<br/>                    "define": {<br/>                    }<br/>                }<br/>            }<br/>        }<br />**根据实际情况如以上define 定义不满足要求时或需要丰富时 ，以kv 的形式扩展define** |
 
 #### Example
 
-##### 创建一个 简单的 输入int 命令 request 
+##### 创建一个输入命令request
 
 ```json
-curl --location --request GET '127.0.0.1:31234/v1/templates/iotd-29c1fca9-79eb-437b-ba9d-0dc225eb4ce0/command' \
---header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY0OTMyNDc4OCwic3ViIjoidXNyLTY5MTE0YjMxNGFhZGJkMTgwMjFkMzY5NmJjNjQifQ.YjaEcF5w1rKW-ecgTzbIy7z8-xSMALH2zL6X6wJaFTIzx_r3LEgAf3BIk-WUJZb_WVlit61q_yuXh06LPifOmA' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "ota_simple": {
-        "name": "在线升级",
-        "description": "在线升级",
-        "type": "struct",
-        "define": {
-            "fields": {
-                "input": {
-                    "name": "输入",
-                    "type": "int",
-                    "define": {
-                        "max": 100,
-                        "min": 10
-                    }
-                },
-                "output": {
-                    "name": "输出",
-                    "type": "string",
-                    "define": {
-                        "eq": "ok"
-                    }
-                }
-            }
-        }
-    }
-}'
-```
-
-##### response
-
-```json
-{
-    "code": 200,
-    "msg": "ok",
-    "data": {
-        "@type": "type.googleapis.com/google.protobuf.Empty",
-        "value": {}
-    }
-}
-```
-
-##### 创建一个嵌套的复杂struct 输入命令request
-
-```json
-curl --location --request GET '127.0.0.1:31234/v1/templates/iotd-29c1fca9-79eb-437b-ba9d-0dc225eb4ce0/command' \
+curl --location --request POST '127.0.0.1:31234/v1/templates/iotd-29c1fca9-79eb-437b-ba9d-0dc225eb4ce0/command' \
 --header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY0OTMyNDc4OCwic3ViIjoidXNyLTY5MTE0YjMxNGFhZGJkMTgwMjFkMzY5NmJjNjQifQ.YjaEcF5w1rKW-ecgTzbIy7z8-xSMALH2zL6X6wJaFTIzx_r3LEgAf3BIk-WUJZb_WVlit61q_yuXh06LPifOmA' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -378,18 +331,27 @@ curl --location --request GET '127.0.0.1:31234/v1/templates/iotd-29c1fca9-79eb-4
                                 "define": {}
                             },
                             "value": {
-                                "name": "值",
+                                "name": "int值",
                                 "type": "int",
                                 "define": {}
+                            },
+                            "restart":{
+                                "name":"重启指令json",
+                                "type":"struct",
+                                "define":{}
+                            },
+                            "downCmd":{
+                                "name":"下载指令json",
+                                "type":"struct",
+                                "define":{}
                             }
                         }
                     }
                 },
                 "output": {
                     "name": "输出",
-                    "type": "string",
+                    "type": "struct",
                     "define": {
-                        "eq": "ok"
                     }
                 }
             }

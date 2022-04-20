@@ -157,4 +157,45 @@ null
 
 
 
+## Expression
+
+对于实体之间的数据映射主要分为两步，`传递` + `计算`，使用TQL来实现不够直观，管理比较复杂。因此我们简化TQL的设计，将TQL中的 `field （eg: device234.temp as temp）`取出来以表达式的方式（`eg: temp = device234.temp`） 对实体进行配置，如此更加直观且便于管理。
+
+> api-docs: https://docs.tkeel.io/api/Core/tag/method_AppendExpression
+
+
+### Example
+
+
+为实体 device123 创建表达式 `temp = device234.temp`：
+
+```curl
+curl --location --request POST 'http://192.168.100.8:31228/v1/entities/device123/expressions?type=DEVICE&owner=admin&source=dm' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "expressions": [
+        {
+            "path": "temp",
+            "name": "temp eval  expression.",
+            "expression": "device234.temp"
+        }
+    ]
+}'
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

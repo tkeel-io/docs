@@ -39,10 +39,16 @@ post /devices/{id}/relations/delete
 | ---- | ---- | ----------- |     
 | direction | string | 关系方向 from or to   目前只有 from |      
 | relationType | string | 关系类型 目前只定 contain |      
-| targetId | string | 源 或 目标  实体Id |   
+| targetId | string | 源 或 目标  实体Id |      
+| targetName | string | 源 或 目标  实体名称 |      
+| targetType | string | 源 或 目标  实体类型 |   
 
 
   
+     
+   
+     
+   
      
    
      

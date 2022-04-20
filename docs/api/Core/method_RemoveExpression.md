@@ -27,8 +27,7 @@ delete /entities/{entity_id}/expressions
 
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
-| path | query | string | expression target path |  false |
-| type | query | string | entity type |  false |
+| paths | query | string | expression target path |  false |
 | owner | query | string | owner id |  false |
 | source | query | string | source id |  false |
 
@@ -49,18 +48,12 @@ delete /entities/{entity_id}/expressions
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
+| count | integer | effect count |      
 | entity_id | string | entity id |      
-| owner | string | owner id |      
-| path | string | expression target path |      
-| source | string | source id |      
-| type | string | entity type |   
+| owner | string | owner id |   
 
 
   
-     
-   
-     
-   
      
    
      

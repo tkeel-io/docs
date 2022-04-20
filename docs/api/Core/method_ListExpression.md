@@ -27,7 +27,6 @@ get /entities/{entity_id}/expressions
 
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
-| type | query | string | entity type |  false |
 | source | query | string | source id |  false |
 | owner | query | string | owner id |  false |
 
@@ -50,9 +49,7 @@ get /entities/{entity_id}/expressions
 | ---- | ---- | ----------- |     
 | entity_id | string | entity id |          
 | expressions | Array[v1Expression] | expression informations [ 具体参数可见下面 [v1Expression](#v1Expression) ] |       
-| owner | string | owner id |      
-| source | string | source id |      
-| type | string | entity type |   
+| owner | string | owner id |   
 
 
   
@@ -82,10 +79,6 @@ get /entities/{entity_id}/expressions
 
 
           
-     
-   
-     
-   
      
    
      

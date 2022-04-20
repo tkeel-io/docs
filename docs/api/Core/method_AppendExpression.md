@@ -27,7 +27,6 @@ post /entities/{entity_id}/expressions
 
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
-| type | query | string | entity type |  false |
 | source | query | string | source id |  false |
 | owner | query | string | owner id |  false |
 
@@ -98,16 +97,10 @@ post /entities/{entity_id}/expressions
 | ---- | ---- | ----------- |     
 | count | integer | effect count |      
 | entity_id | string | entity id |      
-| owner | string | owner id |      
-| source | string | source id |      
-| type | string | entity type |   
+| owner | string | owner id |   
 
 
   
-     
-   
-     
-   
      
    
      

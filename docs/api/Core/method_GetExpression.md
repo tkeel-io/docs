@@ -28,7 +28,6 @@ get /entities/{entity_id}/expressions/{path}
 
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
-| type | query | string | entity type |  false |
 | owner | query | string | owner id |  false |
 | source | query | string | source id |  false |
 
@@ -51,16 +50,10 @@ get /entities/{entity_id}/expressions/{path}
 | ---- | ---- | ----------- |     
 | entity_id | string | entity id |      
 | expression |  | expression information |      
-| owner | string | owner id |      
-| source | string | source id |      
-| type | string | entity type |   
+| owner | string | owner id |   
 
 
   
-     
-   
-     
-   
      
    
      

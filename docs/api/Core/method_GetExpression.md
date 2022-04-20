@@ -1,10 +1,10 @@
 ---
-title: "GetEntity"
-description: 'Get a entity'
+title: "GetExpression"
+description: 'get expression by id'
 ---
 
 
-调用该接口Get a entity。
+调用该接口get expression by id。
 
 
 
@@ -12,14 +12,15 @@ description: 'Get a entity'
 
 
 ```
-get /entities/{id}
+get /entities/{entity_id}/expressions/{path}
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | entity id |  
+| entity_id | path | string | entity id |  
+| path | path | string | target property path |  
 
 
 
@@ -28,8 +29,8 @@ get /entities/{id}
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
 | type | query | string | entity type |  false |
-| source | query | string | source id |  false |
 | owner | query | string | owner id |  false |
+| source | query | string | source id |  false |
 
 
 
@@ -42,66 +43,20 @@ get /entities/{id}
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1EntityResponse](#v1EntityResponse) |
+| 200 | OK | Object | [v1GetExpressionResp](#v1GetExpressionResp) |
 
-#### v1EntityResponse
+#### v1GetExpressionResp
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |    
-| configs | Object | entity configs   |      
-| description | string | entity description |      
-| id | string | entity id |      
-| last_time | string | entity last modify timestamp |          
-| mappers | Array[v1Mapper] | entity mappers [ 具体参数可见下面 [v1Mapper](#v1Mapper) ] |       
-| owner | string | owner id |     
-| properties | Object | entity properties   |      
-| source | string | source id |      
-| template_id | string | entity template |      
-| type | string | entity type |      
-| version | string | entity version |   
-
-
-  
-    
-          
-     
-   
-     
-   
-     
-   
-     
-   
-       
-         
-### v1Mapper
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| description | string | mapper description |      
-| id | string | mapper id |      
-| name | string | mapper name |      
-| tql | string | mapper tql text |   
+| entity_id | string | entity id |      
+| expression |  | expression information |      
+| owner | string | owner id |      
+| source | string | source id |      
+| type | string | entity type |   
 
 
   
-     
-   
-     
-   
-     
-   
-     
- 
- 
-
-
-          
-     
-   
-     
-   
-    
-          
      
    
      

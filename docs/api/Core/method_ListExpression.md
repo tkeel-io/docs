@@ -1,10 +1,10 @@
 ---
-title: "PatchEntityConfigs"
-description: 'patch entity configs'
+title: "ListExpression"
+description: 'list expression'
 ---
 
 
-调用该接口patch entity configs。
+调用该接口list expression。
 
 
 
@@ -12,14 +12,14 @@ description: 'patch entity configs'
 
 
 ```
-patch /entities/{id}/configs
+get /entities/{entity_id}/expressions
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | entity id |  
+| entity_id | path | string | entity id |  
 
 
 
@@ -28,29 +28,8 @@ patch /entities/{id}/configs
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
 | type | query | string | entity type |  false |
-| owner | query | string | owner id |  false |
 | source | query | string | source id |  false |
-
-
-
-### Request Body
-
-
- 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-| property configs | Object | [](#) |
-
-#### 
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
-
-
- 
-
-
+| owner | query | string | owner id |  false |
 
 
 
@@ -63,45 +42,31 @@ patch /entities/{id}/configs
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1EntityResponse](#v1EntityResponse) |
+| 200 | OK | Object | [v1ListExpressionResp](#v1ListExpressionResp) |
 
-#### v1EntityResponse
+#### v1ListExpressionResp
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |    
-| configs | Object | entity configs   |      
-| description | string | entity description |      
-| id | string | entity id |      
-| last_time | string | entity last modify timestamp |          
-| mappers | Array[v1Mapper] | entity mappers [ 具体参数可见下面 [v1Mapper](#v1Mapper) ] |       
-| owner | string | owner id |     
-| properties | Object | entity properties   |      
+| ---- | ---- | ----------- |     
+| entity_id | string | entity id |          
+| expressions | Array[v1Expression] | expression informations [ 具体参数可见下面 [v1Expression](#v1Expression) ] |       
+| owner | string | owner id |      
 | source | string | source id |      
-| template_id | string | entity template |      
-| type | string | entity type |      
-| version | string | entity version |   
+| type | string | entity type |   
 
 
   
-    
-          
-     
-   
-     
-   
-     
-   
      
    
        
          
-### v1Mapper
+### v1Expression
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| description | string | mapper description |      
-| id | string | mapper id |      
-| name | string | mapper name |      
-| tql | string | mapper tql text |   
+| description | string | expression description |      
+| expression | string | expression text |      
+| name | string | expression name |      
+| path | string | target property path |   
 
 
   
@@ -117,14 +82,6 @@ patch /entities/{id}/configs
 
 
           
-     
-   
-     
-   
-    
-          
-     
-   
      
    
      

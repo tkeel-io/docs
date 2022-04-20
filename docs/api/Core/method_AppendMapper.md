@@ -48,7 +48,7 @@ post /entities/{entity_id}/mappers
 | description | string | mapper description |      
 | id | string | mapper id |      
 | name | string | mapper name |      
-| tql_text | string | mapper tql text |   
+| tql | string | mapper tql text |   
 
 
   

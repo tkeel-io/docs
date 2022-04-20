@@ -1,10 +1,10 @@
 ---
-title: "PatchEntityConfigs"
-description: 'patch entity configs'
+title: "AppendExpression"
+description: 'Append expressions for entity'
 ---
 
 
-调用该接口patch entity configs。
+调用该接口Append expressions for entity。
 
 
 
@@ -12,14 +12,14 @@ description: 'patch entity configs'
 
 
 ```
-patch /entities/{id}/configs
+post /entities/{entity_id}/expressions
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | entity id |  
+| entity_id | path | string | entity id |  
 
 
 
@@ -28,8 +28,8 @@ patch /entities/{id}/configs
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
 | type | query | string | entity type |  false |
-| owner | query | string | owner id |  false |
 | source | query | string | source id |  false |
+| owner | query | string | owner id |  false |
 
 
 
@@ -39,15 +39,42 @@ patch /entities/{id}/configs
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| property configs | Object | [](#) |
+| expression information | Object | [v1Expressions](#v1Expressions) |
 
-#### 
+#### v1Expressions
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |  
+| ---- | ---- | ----------- |         
+| expressions | Array[v1Expression] |  [ 具体参数可见下面 [v1Expression](#v1Expression) ] |    
 
 
+  
+       
+         
+### v1Expression
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| description | string | expression description |      
+| expression | string | expression text |      
+| name | string | expression name |      
+| path | string | target property path |   
 
+
+  
+     
+   
+     
+   
+     
+   
+     
+ 
+ 
+
+
+          
+     
+ 
  
 
 
@@ -63,66 +90,20 @@ patch /entities/{id}/configs
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1EntityResponse](#v1EntityResponse) |
+| 200 | OK | Object | [v1AppendExpressionResp](#v1AppendExpressionResp) |
 
-#### v1EntityResponse
+#### v1AppendExpressionResp
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |    
-| configs | Object | entity configs   |      
-| description | string | entity description |      
-| id | string | entity id |      
-| last_time | string | entity last modify timestamp |          
-| mappers | Array[v1Mapper] | entity mappers [ 具体参数可见下面 [v1Mapper](#v1Mapper) ] |       
-| owner | string | owner id |     
-| properties | Object | entity properties   |      
-| source | string | source id |      
-| template_id | string | entity template |      
-| type | string | entity type |      
-| version | string | entity version |   
-
-
-  
-    
-          
-     
-   
-     
-   
-     
-   
-     
-   
-       
-         
-### v1Mapper
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| description | string | mapper description |      
-| id | string | mapper id |      
-| name | string | mapper name |      
-| tql | string | mapper tql text |   
+| count | integer | effect count |      
+| entity_id | string | entity id |      
+| owner | string | owner id |      
+| source | string | source id |      
+| type | string | entity type |   
 
 
   
-     
-   
-     
-   
-     
-   
-     
- 
- 
-
-
-          
-     
-   
-     
-   
-    
-          
      
    
      

@@ -1,10 +1,10 @@
 ---
-title: "ListMapper"
-description: 'list mappers'
+title: "TS_DownloadTSData"
+description: ''
 ---
 
 
-调用该接口list mappers。
+调用该接口。
 
 
 
@@ -12,14 +12,14 @@ description: 'list mappers'
 
 
 ```
-get /entities/{entity_id}/mappers
+get /ts/{id}
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| entity_id | path | string | entity id |  
+| id | path | string | 实体 id |  
 
 
 
@@ -27,9 +27,9 @@ get /entities/{entity_id}/mappers
 
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
-| type | query | string | entity type |  false |
-| source | query | string | source id |  false |
-| owner | query | string | owner id |  false |
+| start_time | query | string | 起始时间 |  false |
+| end_time | query | string | 终止时间 |  false |
+| identifiers | query | string | 标识符 |  false |
 
 
 
@@ -42,48 +42,18 @@ get /entities/{entity_id}/mappers
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListMapperResponse](#v1ListMapperResponse) |
+| 200 | A successful response. | Object | [v1DownloadTSDataResponse](#v1DownloadTSDataResponse) |
 
-#### v1ListMapperResponse
+#### v1DownloadTSDataResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| entity_id | string | entity id |          
-| mappers | Array[v1Mapper] | mapper informations [ 具体参数可见下面 [v1Mapper](#v1Mapper) ] |       
-| owner | string | owner id |      
-| source | string | source id |      
-| type | string | entity type |   
+| data | string | content |      
+| filename | string | filename |      
+| length | string | content length in string |   
 
 
   
-     
-   
-       
-         
-### v1Mapper
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| description | string | mapper description |      
-| id | string | mapper id |      
-| name | string | mapper name |      
-| tql | string | mapper tql text |   
-
-
-  
-     
-   
-     
-   
-     
-   
-     
- 
- 
-
-
-          
-     
-   
      
    
      

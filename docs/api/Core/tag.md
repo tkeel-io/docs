@@ -11,32 +11,29 @@ sidebar_position: 0
 
 | Name |  Description | 
 | ---- |  ----------- | 
-| [ListEntity](./method_ListEntity)|  List entities |
-| [ListMapper](./method_ListMapper)|  list mappers |
-| [AppendMapper](./method_AppendMapper)|  Append mapper for entity |
-| [GetEntityConfigs](./method_GetEntityConfigs)|  query entity configs |
+| [GetExpression](./method_GetExpression)|  get expression by id |
+| [PatchEntityConfigsZ](./method_PatchEntityConfigsZ)|  patch entity configs |
+| [CreateEntity](./method_CreateEntity)|  Create a entity |
 | [RemoveEntityConfigs](./method_RemoveEntityConfigs)|  remove entity configs |
 | [UpdateEntityConfigs](./method_UpdateEntityConfigs)|  update entity configs. |
 | [PatchEntityConfigs](./method_PatchEntityConfigs)|  patch entity configs |
+| [GetEntityConfigs](./method_GetEntityConfigs)|  query entity configs |
 | [GetEntityProps](./method_GetEntityProps)|  Get Entity Properties |
 | [RemoveEntityProps](./method_RemoveEntityProps)|  Remove Entity Properties |
 | [UpdateEntityProps](./method_UpdateEntityProps)|  Update entity properties |
-| [PatchEntityProps](./method_PatchEntityProps)|  Patch entity properties |
-| [PatchEntityConfigsZ](./method_PatchEntityConfigsZ)|  patch entity configs |
-| [CreateEntity](./method_CreateEntity)|  Create a entity |
-| [GetMapper](./method_GetMapper)|  get mapper by id |
-| [RemoveMapper](./method_RemoveMapper)|  remove mappers from entity |
-| [PatchEntityPropsZ](./method_PatchEntityPropsZ)|  Patch entity properties |
+| [ListEntity](./method_ListEntity)|  List entities |
+| [ListExpression](./method_ListExpression)|  list expression |
+| [RemoveExpression](./method_RemoveExpression)|  remove expression from entity |
+| [AppendExpression](./method_AppendExpression)|  Append expressions for entity |
 | [GetEntity](./method_GetEntity)|  Get a entity |
 | [DeleteEntity](./method_DeleteEntity)|  Delete a entity |
 | [UpdateEntity](./method_UpdateEntity)|  Update Entity |
-
-
-## Probe相关API
-
-| Name |  Description | 
-| ---- |  ----------- | 
-| [Health](./method_Health)|  health for probe |
+| [PatchEntityProps](./method_PatchEntityProps)|  Patch entity properties |
+| [PatchEntityPropsZ](./method_PatchEntityPropsZ)|  Patch entity properties |
+| [ListMapper](./method_ListMapper)|  list mappers |
+| [RemoveMapper](./method_RemoveMapper)|  remove mappers from entity |
+| [AppendMapper](./method_AppendMapper)|  Append mapper for entity |
+| [GetMapper](./method_GetMapper)|  get mapper by id |
 
 
 ## Search相关API
@@ -57,3 +54,12 @@ sidebar_position: 0
 | [UpdateSubscription](./method_UpdateSubscription)|  Update subscription |
 | [ListScription](./method_ListScription)|  List subscriptions |
 | [CreateSubscription](./method_CreateSubscription)|  Create subscription |
+
+
+## TS相关API
+
+| Name |  Description | 
+| ---- |  ----------- | 
+| [TS_DownloadTSData](./method_TS_DownloadTSData)|   |
+| [TS_GetTSData](./method_TS_GetTSData)|   |
+| [TS_GetLatestEntities](./method_TS_GetLatestEntities)|   |

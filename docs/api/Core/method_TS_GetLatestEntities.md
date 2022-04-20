@@ -1,10 +1,10 @@
 ---
-title: "CreateEntity"
-description: 'Create a entity'
+title: "TS_GetLatestEntities"
+description: ''
 ---
 
 
-调用该接口Create a entity。
+调用该接口。
 
 
 
@@ -12,41 +12,10 @@ description: 'Create a entity'
 
 
 ```
-post /entities
+get /ts
 ```
 
 
-
-
-
-###  Request Parameters
-
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| id | query | string | entity id |  false |
-| from | query | string | template entity id |  false |
-| source | query | string | source id |  false |
-| owner | query | string | owner id |  true |
-| type | query | string | entity type |  false |
-
-
-
-### Request Body
-
-
- 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-| entity properties, optional | Object | [](#) |
-
-#### 
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
-
-
- 
 
 
 
@@ -61,10 +30,20 @@ post /entities
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1EntityResponse](#v1EntityResponse) |
+| 200 | A successful response. | Object | [v1GetLatestEntitiesResponse](#v1GetLatestEntitiesResponse) |
 
-#### v1EntityResponse
+#### v1GetLatestEntitiesResponse
 
+| Name | Type | Description | 
+| ---- | ---- | ----------- |         
+| items | Array[v1EntityResponse] | entity list [ 具体参数可见下面 [v1EntityResponse](#v1EntityResponse) ] |       
+| total | string | total count of the entities |   
+
+
+  
+       
+         
+### v1EntityResponse
 | Name | Type | Description | 
 | ---- | ---- | ----------- |    
 | configs | Object | entity configs   |      
@@ -127,6 +106,14 @@ post /entities
    
      
    
+     
+   
+     
+ 
+ 
+
+
+          
      
    
      

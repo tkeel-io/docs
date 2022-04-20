@@ -1,10 +1,10 @@
 ---
-title: "UpdateEntity"
-description: 'Update Entity'
+title: "TS_GetTSData"
+description: ''
 ---
 
 
-调用该接口Update Entity。
+调用该接口。
 
 
 
@@ -12,14 +12,14 @@ description: 'Update Entity'
 
 
 ```
-put /entities/{id}
+post /ts/{id}
 ```
 
 
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | entity id |  
+| id | path | string | 实体 id |  
 
 
 
@@ -55,68 +55,39 @@ put /entities/{id}
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1EntityResponse](#v1EntityResponse) |
+| 200 | A successful response. | Object | [v1GetTSDataResponse](#v1GetTSDataResponse) |
 
-#### v1EntityResponse
+#### v1GetTSDataResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |    
-| configs | Object | entity configs   |      
-| description | string | entity description |      
-| id | string | entity id |      
-| last_time | string | entity last modify timestamp |          
-| mappers | Array[v1Mapper] | entity mappers [ 具体参数可见下面 [v1Mapper](#v1Mapper) ] |       
-| owner | string | owner id |     
-| properties | Object | entity properties   |      
-| source | string | source id |      
-| template_id | string | entity template |      
-| type | string | entity type |      
-| version | string | entity version |   
+| ---- | ---- | ----------- |         
+| items | Array[v1TSResponse] | data list [ 具体参数可见下面 [v1TSResponse](#v1TSResponse) ] |       
+| page_num | integer | 记录开始位置 |      
+| page_size | integer | 每页限制条数 |      
+| total | integer | total count of the entities |   
 
 
   
-    
-          
-     
-   
-     
-   
-     
-   
-     
-   
        
          
-### v1Mapper
+### v1TSResponse
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| description | string | mapper description |      
-| id | string | mapper id |      
-| name | string | mapper name |      
-| tql | string | mapper tql text |   
+| time | string |  |     
+| value | Object |    |   
 
 
   
      
    
-     
-   
-     
-   
-     
- 
- 
-
-
-          
-     
-   
-     
-   
     
           
      
-   
+ 
+ 
+
+
+          
      
    
      

@@ -70,17 +70,25 @@ put /entities/{id}/properties
 | Name | Type | Description | 
 | ---- | ---- | ----------- |    
 | configs | Object | entity configs   |      
-| id | string | entity id |          
+| description | string | entity description |      
+| id | string | entity id |      
+| last_time | string | entity last modify timestamp |          
 | mappers | Array[v1Mapper] | entity mappers [ 具体参数可见下面 [v1Mapper](#v1Mapper) ] |       
 | owner | string | owner id |     
 | properties | Object | entity properties   |      
 | source | string | source id |      
-| type | string | entity type |   
+| template_id | string | entity template |      
+| type | string | entity type |      
+| version | string | entity version |   
 
 
   
     
           
+     
+   
+     
+   
      
    
      
@@ -93,7 +101,7 @@ put /entities/{id}/properties
 | description | string | mapper description |      
 | id | string | mapper id |      
 | name | string | mapper name |      
-| tql_text | string | mapper tql text |   
+| tql | string | mapper tql text |   
 
 
   
@@ -115,6 +123,10 @@ put /entities/{id}/properties
    
     
           
+     
+   
+     
+   
      
    
      

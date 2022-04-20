@@ -12,7 +12,7 @@ description: 'remove mappers from entity'
 
 
 ```
-delete /entities/{entity_id}/mappers/{id}
+delete /entities/{entity_id}/mappers
 ```
 
 
@@ -20,7 +20,6 @@ delete /entities/{entity_id}/mappers/{id}
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | entity_id | path | string | entity id |  
-| id | path | string | mapper id |  
 
 
 
@@ -28,6 +27,7 @@ delete /entities/{entity_id}/mappers/{id}
 
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
+| id | query | string | mapper id |  false |
 | type | query | string | entity type |  false |
 | owner | query | string | owner id |  false |
 | source | query | string | source id |  false |

@@ -34,8 +34,11 @@ post /search
 | Name | Type | Description | 
 | ---- | ---- | ----------- |         
 | condition | Array[v1SearchCondition] | conditions list [ 具体参数可见下面 [v1SearchCondition](#v1SearchCondition) ] |       
+| is_descending | boolean | 是否逆序， false：不逆序，true:逆序 |      
+| order_by | string | 排序字段 |      
 | owner | string | owner id |      
-| page |  | page |      
+| page_num | integer | 记录开始位置 |      
+| page_size | integer | 每页限制条数 |      
 | query | string | search keyword |      
 | source | string | source id |   
 
@@ -73,6 +76,12 @@ post /search
      
    
      
+   
+     
+   
+     
+   
+     
  
  
 
@@ -96,17 +105,14 @@ post /search
 | Name | Type | Description | 
 | ---- | ---- | ----------- |        
 | items | Array[ object ] | items of the results |       
-| limit | string | limit |      
-| offset | string | offset |      
-| page | string | page number |      
+| page_num | integer | 记录开始位置 |      
+| page_size | integer | 每页限制条数 |      
 | total | string | count of the results |   
 
 
   
        
           
-     
-   
      
    
      

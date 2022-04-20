@@ -34,8 +34,11 @@ post /entities/search
 | Name | Type | Description | 
 | ---- | ---- | ----------- |         
 | condition | Array[v1SearchCondition] | search conditions [ 具体参数可见下面 [v1SearchCondition](#v1SearchCondition) ] |       
+| is_descending | boolean | 是否逆序， false：不逆序，true:逆序 |      
+| order_by | string | 排序字段 |      
 | owner | string | owner id |      
-| page |  | page |      
+| page_num | integer | 记录开始位置 |      
+| page_size | integer | 每页限制条数 |      
 | query | string | search keyword |      
 | source | string | source id |   
 
@@ -73,6 +76,12 @@ post /entities/search
      
    
      
+   
+     
+   
+     
+   
+     
  
  
 
@@ -96,10 +105,9 @@ post /entities/search
 | Name | Type | Description | 
 | ---- | ---- | ----------- |         
 | items | Array[v1EntityResponse] | entity list [ 具体参数可见下面 [v1EntityResponse](#v1EntityResponse) ] |       
-| limit | string | limit |      
-| offset | string | offset |      
-| page | string | page |      
-| total | string | total count of the entities |   
+| page_num | integer | 记录开始位置 |      
+| page_size | integer | 每页限制条数 |      
+| total | integer | total count of the entities |   
 
 
   
@@ -109,17 +117,25 @@ post /entities/search
 | Name | Type | Description | 
 | ---- | ---- | ----------- |    
 | configs | Object | entity configs   |      
-| id | string | entity id |          
+| description | string | entity description |      
+| id | string | entity id |      
+| last_time | string | entity last modify timestamp |          
 | mappers | Array[v1Mapper] | entity mappers [ 具体参数可见下面 [v1Mapper](#v1Mapper) ] |       
 | owner | string | owner id |     
 | properties | Object | entity properties   |      
 | source | string | source id |      
-| type | string | entity type |   
+| template_id | string | entity template |      
+| type | string | entity type |      
+| version | string | entity version |   
 
 
   
     
           
+     
+   
+     
+   
      
    
      
@@ -132,7 +148,7 @@ post /entities/search
 | description | string | mapper description |      
 | id | string | mapper id |      
 | name | string | mapper name |      
-| tql_text | string | mapper tql text |   
+| tql | string | mapper tql text |   
 
 
   
@@ -159,13 +175,15 @@ post /entities/search
      
    
      
+   
+     
+   
+     
  
  
 
 
           
-     
-   
      
    
      

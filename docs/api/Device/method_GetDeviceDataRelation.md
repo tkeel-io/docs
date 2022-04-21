@@ -1,10 +1,10 @@
 ---
-title: "ListDeviceDataRelation"
-description: 'list data relation'
+title: "GetDeviceDataRelation"
+description: 'get single relation'
 ---
 
 
-调用该接口list data relation。
+调用该接口get single relation。
 
 
 
@@ -12,7 +12,7 @@ description: 'list data relation'
 
 
 ```
-get /devices/{id}/relation
+get /devices/{id}/relation/{path}
 ```
 
 
@@ -20,6 +20,7 @@ get /devices/{id}/relation
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string | 实体Id |  
+| path | path | string | 路径 |  
 
 
 
@@ -34,13 +35,13 @@ get /devices/{id}/relation
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListDeviceDataRelationResponse](#v1ListDeviceDataRelationResponse) |
+| 200 | OK | Object | [v1GetDeviceDataRelationResponse](#v1GetDeviceDataRelationResponse) |
 
-#### v1ListDeviceDataRelationResponse
+#### v1GetDeviceDataRelationResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |    
-| expressionObject | Object | 关系表达式列表对象   |   
+| expressions | Object | 单个关系表达式   |   
 
 
   

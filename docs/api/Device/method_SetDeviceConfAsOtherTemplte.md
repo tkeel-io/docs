@@ -58,10 +58,26 @@ post /devices/{id}/configs/saveAsOtherTemplate
 
 ### Response  200
 
+ 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [apidevicev1CreateTemplateResponse](#apidevicev1CreateTemplateResponse) |
 
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | OK | {   { }} |
+#### apidevicev1CreateTemplateResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |    
+| templateObject | Object | 模板对象   |   
+
+
+  
+    
+          
+     
+ 
+ 
+
+
  
 
 

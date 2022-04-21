@@ -57,9 +57,9 @@ post /templates
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1CreateTemplateResponse](#v1CreateTemplateResponse) |
+| 200 | OK | Object | [apitemplatev1CreateTemplateResponse](#apitemplatev1CreateTemplateResponse) |
 
-#### v1CreateTemplateResponse
+#### apitemplatev1CreateTemplateResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |    

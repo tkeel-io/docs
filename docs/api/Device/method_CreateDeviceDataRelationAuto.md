@@ -1,10 +1,10 @@
 ---
-title: "ListDeviceDataRelation"
-description: 'list data relation'
+title: "CreateDeviceDataRelationAuto"
+description: 'Create data relation auto'
 ---
 
 
-调用该接口list data relation。
+调用该接口Create data relation auto。
 
 
 
@@ -12,7 +12,7 @@ description: 'list data relation'
 
 
 ```
-get /devices/{id}/relation
+post /devices/{id}/relation/auto
 ```
 
 
@@ -20,6 +20,45 @@ get /devices/{id}/relation
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string | 实体Id |  
+
+
+
+
+
+### Request Body
+
+
+ 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+| 关系信息 | Object | [v1Relation](#v1Relation) |
+
+#### v1Relation
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| curName | string | 当前设备名称 |      
+| direction | string | 关系方向 from or to   目前只填： from |      
+| relationType | string | 关系类型 目前只填： contain |      
+| targetId | string | 来源设备Id |      
+| targetName | string |  来源设备名称 |      
+| targetType | string | 来源设备类型 目前只填:device |   
+
+
+  
+     
+   
+     
+   
+     
+   
+     
+   
+     
+   
+     
+ 
+ 
 
 
 
@@ -34,9 +73,9 @@ get /devices/{id}/relation
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListDeviceDataRelationResponse](#v1ListDeviceDataRelationResponse) |
+| 200 | OK | Object | [v1CreateDeviceDataRelationAutoResponse](#v1CreateDeviceDataRelationAutoResponse) |
 
-#### v1ListDeviceDataRelationResponse
+#### v1CreateDeviceDataRelationAutoResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |    

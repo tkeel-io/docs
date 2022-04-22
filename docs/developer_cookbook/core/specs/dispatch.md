@@ -77,6 +77,12 @@ Dispatch 模块可以作为 Core 服务的一个模块构建，也可以将 Disp
 
 
 
+### Runtime 和 Dispatch 的数据交互
+
+![runtime-dispatch](/images/core/runtime-dispatch.png)
+
+
+
 ## Reference
 
 - [Pub-Sub vs. Message Queues](https://www.baeldung.com/pub-sub-vs-message-queues)

@@ -1,10 +1,7 @@
 ---
 title: "TS_GetLatestEntities"
 description: ''
----
-
-
-调用该接口。
+---调用该接口。
 
 
 
@@ -15,19 +12,9 @@ description: ''
 get /ts
 ```
 
-
-
-
-
-
-
 ## Response
 
-
-
-### Response  200
-
- 
+### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | A successful response. | Object | [v1GetLatestEntitiesResponse](#v1GetLatestEntitiesResponse) |
@@ -39,10 +26,6 @@ get /ts
 | items | Array[v1EntityResponse] | entity list [ 具体参数可见下面 [v1EntityResponse](#v1EntityResponse) ] |       
 | total | string | total count of the entities |   
 
-
-  
-       
-         
 ### v1EntityResponse
 | Name | Type | Description | 
 | ---- | ---- | ----------- |    
@@ -58,20 +41,6 @@ get /ts
 | type | string | entity type |      
 | version | string | entity version |   
 
-
-  
-    
-          
-     
-   
-     
-   
-     
-   
-     
-   
-       
-         
 ### v1Mapper
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
@@ -81,52 +50,8 @@ get /ts
 | tql | string | mapper tql text |   
 
 
-  
-     
-   
-     
-   
-     
-   
-     
- 
- 
 
-
-          
-     
-   
-     
-   
-    
-          
-     
-   
-     
-   
-     
-   
-     
-   
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
-
-
-### Response  default
-
- 
+### Response  default 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -139,32 +64,10 @@ get /ts
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-
-  
-     
-   
-       
-         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
-
-  
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
 
 

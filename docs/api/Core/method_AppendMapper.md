@@ -1,10 +1,7 @@
 ---
 title: "AppendMapper"
 description: 'Append mapper for entity'
----
-
-
-调用该接口Append mapper for entity。
+---调用该接口Append mapper for entity。
 
 
 
@@ -15,13 +12,9 @@ description: 'Append mapper for entity'
 post /entities/{entity_id}/mappers
 ```
 
-
-
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | entity_id | path | string | entity id |  
-
-
 
 ###  Request Parameters
 
@@ -31,12 +24,7 @@ post /entities/{entity_id}/mappers
 | source | query | string | source id |  false |
 | owner | query | string | owner id |  false |
 
-
-
-### Request Body
-
-
- 
+### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 | mapper information | Object | [v1Mapper](#v1Mapper) |
@@ -51,28 +39,10 @@ post /entities/{entity_id}/mappers
 | tql | string | mapper tql text |   
 
 
-  
-     
-   
-     
-   
-     
-   
-     
- 
- 
-
-
-
-
 
 ## Response
 
-
-
-### Response  200
-
- 
+### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [v1AppendMapperResponse](#v1AppendMapperResponse) |
@@ -88,26 +58,8 @@ post /entities/{entity_id}/mappers
 | type | string | entity type |   
 
 
-  
-     
-   
-     
-   
-     
-   
-     
-   
-     
- 
- 
 
-
- 
-
-
-### Response  default
-
- 
+### Response  default 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -120,32 +72,10 @@ post /entities/{entity_id}/mappers
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-
-  
-     
-   
-       
-         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
-
-  
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
 
 

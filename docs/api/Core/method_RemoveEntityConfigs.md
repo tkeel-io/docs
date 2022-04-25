@@ -1,10 +1,7 @@
 ---
 title: "RemoveEntityConfigs"
 description: 'remove entity configs'
----
-
-
-调用该接口remove entity configs。
+---调用该接口remove entity configs。
 
 
 
@@ -15,13 +12,9 @@ description: 'remove entity configs'
 delete /entities/{id}/configs
 ```
 
-
-
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string | entity id |  
-
-
 
 ###  Request Parameters
 
@@ -32,15 +25,9 @@ delete /entities/{id}/configs
 | source | query | string | source id |  false |
 | property_keys | query | string | entity property ids |  false |
 
-
-
 ## Response
 
-
-
-### Response  200
-
- 
+### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [v1EntityResponse](#v1EntityResponse) |
@@ -61,20 +48,6 @@ delete /entities/{id}/configs
 | type | string | entity type |      
 | version | string | entity version |   
 
-
-  
-    
-          
-     
-   
-     
-   
-     
-   
-     
-   
-       
-         
 ### v1Mapper
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
@@ -84,44 +57,8 @@ delete /entities/{id}/configs
 | tql | string | mapper tql text |   
 
 
-  
-     
-   
-     
-   
-     
-   
-     
- 
- 
 
-
-          
-     
-   
-     
-   
-    
-          
-     
-   
-     
-   
-     
-   
-     
-   
-     
- 
- 
-
-
- 
-
-
-### Response  default
-
- 
+### Response  default 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -134,32 +71,10 @@ delete /entities/{id}/configs
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-
-  
-     
-   
-       
-         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
-
-  
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
 
 

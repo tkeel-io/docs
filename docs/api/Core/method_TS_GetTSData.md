@@ -1,10 +1,7 @@
 ---
 title: "TS_GetTSData"
 description: ''
----
-
-
-调用该接口。
+---调用该接口。
 
 
 
@@ -15,20 +12,11 @@ description: ''
 post /ts/{id}
 ```
 
-
-
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string | 实体 id |  
 
-
-
-
-
-### Request Body
-
-
- 
+### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 |  | Object | [](#) |
@@ -40,19 +28,9 @@ post /ts/{id}
 
 
 
- 
-
-
-
-
-
 ## Response
 
-
-
-### Response  200
-
- 
+### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | A successful response. | Object | [v1GetTSDataResponse](#v1GetTSDataResponse) |
@@ -66,10 +44,6 @@ post /ts/{id}
 | page_size | integer | 每页限制条数 |      
 | total | integer | total count of the entities |   
 
-
-  
-       
-         
 ### v1TSResponse
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
@@ -77,34 +51,8 @@ post /ts/{id}
 | value | Object |    |   
 
 
-  
-     
-   
-    
-          
-     
- 
- 
 
-
-          
-     
-   
-     
-   
-     
-   
-     
- 
- 
-
-
- 
-
-
-### Response  default
-
- 
+### Response  default 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -117,32 +65,10 @@ post /ts/{id}
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-
-  
-     
-   
-       
-         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
-
-  
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
 
 

@@ -3,185 +3,318 @@ title: 映射
 sidebar_position: 2
 ---
 
-`mapper`是 对于用于实体与实体之间数据映射的一种对象，`mapper` 使用 `TQL` 描述实体与实体之间的数据映射。
+> 映射是指实体与实体之间属性实现计算、重组、赋值的规则。
+
 
 
 
 ## 映射
 
-映射就是从一个或多个实体中选取部分属性，然后将选取的部分属性经过重组或计算然后更新目标实体的状态。
+我们通过配置 Entity1 和 Entity2 之间的映射，实现：
+- Entity2.property1 = Entity1.property1
+- Entity2.property3 = Entity1.property3 + Entity1.property4
+
 
 ![property-mapping](/images/core/property-mapping.png)
 
 
-### 概念
 
-- Actor：实体的运行时，维护实体的状态和提供的操作。
-- maper: Actor 与 Actor 之间数据映射的执行实例。
-- computed： mapper 内的计算模块，通过输入计算输出。
-- SourceActor：在映射中提供变更数据的 Actor，如图中的 Actor1。
-- TargetActor：在映射中作为映射目标的 Actor，如图中的 Actor2。
+从实体的维度看来，实现映射，也就意味着我们通过映射规则实现了实体之间的通信。
 
+![property-mapping-outline](/images/core/mapping-outline.png)
 
-我们通过对此过程的分析，可将这一过程分为三部分：
-1. 写复制传递实体属性的变更。
-2. 将属性的变更作为输入计算映射结果。
-3. 将映射计算结果更新到 Actor。
+我们通过对此过程的分析，可将这一过程分为三个阶段：
+1. 传递：实现实体之间数据的传递（写复制）。
+2. 计算：根据映射规则计算得到输出。
+3. 更新：使用计算得到的输出结果更新目标实体。
 
 
 
-采用宏观的视角看来，实体与实体之间的数据映射就是从一个或多个 `SourceActor` 中选取部分属性作为输入，通过重组或计算得到输出，然后将输出更新到 `TargetActor`。而我们可以对这一过程进行概括，来自`SourceActor` 的输入组成一个 `Json` 数据，`映射` 输出是一个`JSON`，那么此时我们发现我们所做的映射其实就是从 `SourceActor` 拿到输入 `Json`，通过一定的转化 `规则` 将输入 `Json` 转化成另一个输出 `JSON`，然后在将输出的 `JSON` 更新到 `TargetActor`。
+#### 映射规则
 
-![property-mapping-outline](/images/core/mapping-outline.png))
+我们提供了两类映射规则实现： Expression，TQL。
 
-我们通过对此过程的分析，可将这一过程分为三部分：
-1. 从一个或多个 `SourceActor` 中选取部分属性，选取的数据可以构成一个 `JSON`。
-2. 以选取的数据作为 `mapper` 的输入，执行 `mapper` 并输出一个 `JSON`。
-3. 将 `mapper` 执行的输出作为反馈更新目标实体的状态。
+## Expression
+
+表达式，使用简单的语法来对实体属性的赋值方式进行设置：
+
+```bash
+device123.temp = device234.temp
+```
+如存在实体 device123 和 device234， 我们为 device123 配置表达式：`device123.temp = device234.temp`。次表达式实现使用 device234.temp 属性更新 device123.temp 属性。
+
+使用 core 接口创建此 Expression：
+
+```bash
+curl --location --request POST 'http://192.168.123.9:32758/v1/entities/device123/expressions?type=DEVICE&owner=admin&source=dm' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "expressions": [
+        {
+            "name": "setTemp",
+            "path": "temp",
+            "expression": "device234.temp",
+            "description": "使用设备实体 device234 的 temp 属性更新设备实体 device123 的 temp 属性。"
+        }
+    ]
+}'
+```
+
+> *notes: 更多 APIs 详细信息请查看 [APIs docs](https://docs.tkeel.io/api/Core/tag)。*
+
+### 表达式资源定义
+
+```go
+type Expression struct {
+	// expression identifier.
+	ID string
+	// target path.
+	Path string
+	// expression name.
+	Name string
+	// expression type, enum{ sub | eval}.
+	Type string
+	// expression owner.
+	Owner string
+	// entity id.
+	EntityID string
+	// expression text.
+	Expression string
+	// expression description.
+	Description string
+}
+```
+
+表达式作为一种元数据资源被 core::node 同步并解析处理。
+
+
+### 表达式解析
+
+表达式中指定了该表达式计算输入需要的实体ID和实体属性。通过对表达式的解析我们可以得到这些信息，解析结果输出如下：
+
+![expression-parse-delivery](/images/core/expression-parse-delivery.png)
+
+
+```go
+type ExpressionInfo struct {
+	// embeded Expression.
+	dao.Expression
+    // expression 所属 entity 是否属于当前 runtime.
+	isHere        bool
+	version       int
+    // subscribe endpoint
+	subEndpoints  []SubEndpoint
+    // eval endpoint.
+	evalEndpoints []EvalEndpoint
+}
+
+type SubEndpoint struct {
+	path         string
+	target       string
+	runtimeID   string
+	expressionID string
+}
+
+type EvalEndpoint struct {
+	path        string
+	target      string
+	expresionID string
+}
+```
+
+我们解析 Expression 得到多个 ExpressionInfo，然后将 ExpressionInfo 加载到对应的 Runtime 中：
+
+```js
+/*
+    前提：
+        1. 存在 设备 device234，device345 和 device123
+        2. 存在两个 runtime
+            1. device123 和 device234 运行在 runtime1 上
+            2. device345 运行在 runtime2 上
+
+*/
+// expression demo.
+{
+    id: "admin.device123.temp",
+    name: "sum device temp",
+    path: "temp",
+    type: "eval",
+    owner: "admin",
+    entity_id: "device123",
+    expression: "device234.temp + device345.temp",
+    description: "求和 device234 和 device345 的 temp 属性",
+}
+
+// call func parseExpression(expr dao.Expression, version int) (map[string]*ExpressionInfo, error) .
+
+// => result:
+
+{
+    "runtime1": {
+        // embed Expression
+        isHere: true,
+        version: 1,
+        subEndpoints: [
+            {
+                path: "device234.properties.temp",
+                target: "device123",
+                runtimeID: "runtime1",
+                expressionID: "admin.device123.temp"
+            }
+        ],
+        evalEndpoints: [
+            {
+                path: "device234.properties.temp",
+                target: "device123",
+                expressionID: "admin.device123.temp"
+            },{
+                path: "device345.properties.temp",
+                target: "device123",
+                expressionID: "admin.device123.temp"
+            }
+        ]
+    },
+    "runtime2": {
+        // embed Expression
+        isHere: false,
+        version: 1,
+        subEndpoints: [
+            {
+                path: "device345.properties.temp",
+                target: "device123",
+                runtimeID: "runtime2",
+                expressionID: "admin.device123.temp"
+            }
+        ],
+        evalEndpoints: []
+    }
+}
+```
+
+
+### Expression 在 Runtime 挂载
+
+
+在 Runtime 模块中我们构建 `subTree` 和 `evalTree` 来匹配实体属性更新 path 和映射监听 path，以此完成映射的 `传递` 和 `计算` 两个阶段。
+
+
+![expression-parse-and-mount](/images/core/expression-parse-and-mount.png)
+
+
+ExpressionInfo 中的 subEndpoints 中的端点挂载到 subTree 中，用于在实体状态更新后，配更新实体属性的订阅者，如果存在，则根据 SubEndpoint 将变更属性发送给订阅者；evalEndpoints 中的端点挂载到 Runtime 中的 evalTree，用于订阅者收到订阅消息之后，匹配计算表达式，通过计算表达式计算结果。
+
+
+### Path 匹配原则
+
+当实体的属性变更之后，我们需要知道其订阅者是谁，就需要通过变更属性的path（`eg: device234.properties.temp`）。
+
+匹配原则：
+- 匹配变更path的所有前缀path。
+- 匹配所有以变更path为前缀的 path。
+- 支持模糊匹配。
+
+
+#### 匹配变更path的所有前缀path
+
+在 JSON 中，内层字段值发生变更，包含此变更字段的对象也就发生了变更：
+
+```json
+{
+    "a": {
+        "b": {
+            "d": 20
+        },
+        "c": 800
+    }
+}
+
+// 当 a.b.d 发生变化，那么a, a.b 都包含了变更。
+```
+
+所以当 path: `device234.properties.temp` 发生变更，下列 path 的订阅者都能收到变更：
+
+1. device234.*
+2. device234.properties
+3. device234.properties.temp
+
+
+#### 匹配所有以变更path为前缀的 path
+
+JSON 中外层的字段发生变更，我们判定为其变更字段包含的内层字段同样发生变更：
+
+```json
+{
+    "a": {
+        "b": {
+            "d": 20
+        },
+        "c": 800
+    }
+}
+
+// 当 a.b 发生变化，那么判定为 a.b.d 也发生了变更。
+```
+
+
+#### 支持模糊匹配
+
+- Separator： `.`
+- WildcardOne:  `+`,
+- WildcardSome: `*`,
 
 
 
-## mapper 解析
-
-我们知道`mapper`执行分为`选取输入`，`计算输出`，`更新目标Actor状态`三个阶段。为了满足这三个阶段，我们给`mapper`引入两个核心概念：`TQL`和`tentacle`，`TQL`是`mapper`的核心组件用于描述映射中json的转化规则，执行计算。`tentacle`译为`触手`，用于映射第一阶段中的属性变更的同步。
-
-![mapper-tentacle-mql](/images/core/mapper-tentacle-mql3.png)
 
 
-**mapper解析示例：**
+## TQL
+
+TQL 不是一套独立的规则描述，TQL 是一个或多个 Expression 的复合体，且其与 Expression 的使用场景有所区别。
 
 ```sql
 # demo TQL Text.
 insert into device123
 select
 device234.temp as temp,
-device234.status as status,
-device345.* as *
-;
+device234.status as status;
 ```
 
+一条 TQL 语句可以转换成多条 Expression，由此我么可以通过 TQL 创建批量创建 Expression。
 
-经过词法解析后：
-
-```bash
-# tentacles:
+```js
+// TQL => Expressions:
 {
-    "device234": ["temp", "status"],
-    "device345": ["*"]
+    id: "admin.device123.temp",
+    name: "sync device temp",
+    path: "temp",
+    type: "eval",
+    owner: "admin",
+    entity_id: "device123",
+    expression: "device234.temp",
 }
-# runtime.mapper:
-null
-```
-
-
-### tentacle 解析
-
-对于 `tentacle` 在定义 `TQL` 的时候我们有时候就能够指代清楚我们定义的选取的实体或属性，我们可能需要通过结合服务节点的上下文计算解析才能得到结论。
-
-![tentacle-tow-layer-parse](/images/core/tentacle-tow-layer-parse2.png)
-
-
-**tentacle 解析示例：**
-
-*mapper 解析后的 tentacle 如下：*
-
-```bash
-# tentacles:
 {
-    "device345": ["*"]
+    id: "admin.device123.status",
+    name: "sync device status",
+    path: "status",
+    type: "eval",
+    owner: "admin",
+    entity_id: "device123",
+    expression: "device234.status",
 }
 ```
 
-*core 当前节点的上下文，实体 device345 信息如下：*
+当然我们更多使用 TQL 用于实体数据的订阅，而非映射，映射可以直接使用 Expression 得到更好的表达。
 
-```bash
-# Core Context:
-{
-    "id": "device345",
-    "source": "dm",
-    "owner": "admin",
-    "type": "DEVICE",
-    "configs": {
-        "temp": {
-            "define": {
-                "max": 500,
-                "min": 10,
-                "unit": "°"
-            },
-            "description": "",
-            "enabled": true,
-            "enabled_search": false,
-            "enabled_time_series": false,
-            "id": "temp",
-            "last_time": 0,
-            "type": "int",
-            "weight": 0
-        }
-    },
-    "properties": {
-        "status": "start",
-        "temp": 20
-    }
-}
-```
-
-*tentacle 结合 core 的上下文：*
-
-```bash
-# Concrete tentacles：
-{
-    "device345": ["temp", "status"]
-}
+```sql
+insert into sub123 select device123.*, device234.properties.temp, device345.*;
 ```
 
 
+## Runtime 之间的数据订阅
 
-在结合服务节点上下文解析的时候，我们分为动态和静态两种方式。
-
-
-## tentacle 分发
-
-在完成 TQL 解析生成 `tentacles` 之后，我们将这些 `tentacles` 分发给相关的实体：
-
-![mapper-tentacles](/images/core/mapper-data-directory2.png)
-
-
-
-
-## mapper 与 tentacle 的数据流向
-
-实体与实体之间通过 `tentacle` 触发来传递属性的变更：
+实体存在于 Runtime 内部，实体之间的通信可以基于Runtime之间的通信来完成，且更加高效。
 
 ![mapper-tentacles](/images/core/mapper-tentacles.png)
 
-
-
-
-## Expression
-
-对于实体之间的数据映射主要分为两步，`传递` + `计算`，使用TQL来实现不够直观，管理比较复杂。因此我们简化TQL的设计，将TQL中的 `field （eg: device234.temp as temp）`取出来以表达式的方式（`eg: temp = device234.temp`） 对实体进行配置，如此更加直观且便于管理。
-
-> api-docs: https://docs.tkeel.io/api/Core/tag/method_AppendExpression
-
-
-### Example
-
-
-为实体 device123 创建表达式 `temp = device234.temp`：
-
-```curl
-curl --location --request POST 'http://192.168.100.8:31228/v1/entities/device123/expressions?type=DEVICE&owner=admin&source=dm' \
---header 'Content-Type: application/json' \
---data-raw '{
-    "expressions": [
-        {
-            "path": "temp",
-            "name": "temp eval  expression.",
-            "expression": "device234.temp"
-        }
-    ]
-}'
-```
 
 
 

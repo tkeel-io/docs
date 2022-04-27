@@ -214,6 +214,11 @@ ExpressionInfo 中的 subEndpoints 中的端点挂载到 subTree 中，用于在
 - 支持模糊匹配。
 
 
+
+![mapper-trie-tree-match](/images/core/mapper-trie-tree-match.png)
+
+
+
 #### 匹配变更path的所有前缀path
 
 在 JSON 中，内层字段值发生变更，包含此变更字段的对象也就发生了变更：

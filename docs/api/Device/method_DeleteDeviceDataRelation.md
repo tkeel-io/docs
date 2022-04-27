@@ -12,7 +12,7 @@ description: 'delete data relation'
 
 
 ```
-post /devices/{id}/relations/delete
+post /devices/{id}/relation/delete
 ```
 
 
@@ -31,28 +31,18 @@ post /devices/{id}/relations/delete
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 关系信息 | Object | [v1Relation](#v1Relation) |
+| 关系信息path 数组 | Object | [v1Paths](#v1Paths) |
 
-#### v1Relation
+#### v1Paths
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| direction | string | 关系方向 from or to   目前只有 from |      
-| relationType | string | 关系类型 目前只定 contain |      
-| targetId | string | 源 或 目标  实体Id |      
-| targetName | string | 源 或 目标  实体名称 |      
-| targetType | string | 源 或 目标  实体类型 |   
+| ---- | ---- | ----------- |        
+| paths | Array[ string ] | path 字符串数组 |    
 
 
   
-     
-   
-     
-   
-     
-   
-     
-   
+       
+          
      
  
  

@@ -1,7 +1,7 @@
 ---
-title: "UpdateEntity"
-description: 'Update Entity'
----调用该接口Update Entity。
+title: "GetRawdata"
+description: 'Get entity rawdata'
+---调用该接口Get entity rawdata。
 
 
 
@@ -9,12 +9,12 @@ description: 'Update Entity'
 
 
 ```
-put /entities/{id}
+post /rawdata/{entity_id}
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string | entity id |  
+| entity_id | path | string | 实体 id |  
 
 ### Request Body 
 | Description | Type | Schema |
@@ -33,31 +33,25 @@ put /entities/{id}
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1EntityResponse](#v1EntityResponse) |
+| 200 | OK | Object | [v1GetRawdataResponse](#v1GetRawdataResponse) |
 
-#### v1EntityResponse
+#### v1GetRawdataResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |    
-| configs | Object | entity configs   |      
-| description | string | entity description |      
-| id | string | entity id |      
-| last_time | string | entity last modify timestamp |          
-| mappers | Array[v1Mapper] | entity mappers [ 具体参数可见下面 [v1Mapper](#v1Mapper) ] |       
-| owner | string | owner id |     
-| properties | Object | entity properties   |      
-| source | string | source id |      
-| template_id | string | entity template |      
-| type | string | entity type |      
-| version | string | entity version |   
+| ---- | ---- | ----------- |         
+| items | Array[v1RawdataResponse] | data list [ 具体参数可见下面 [v1RawdataResponse](#v1RawdataResponse) ] |       
+| page_num | integer | 记录开始位置 |      
+| page_size | integer | 每页限制条数 |      
+| total | integer | total count of the entities |   
 
-### v1Mapper
+### v1RawdataResponse
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| description | string | mapper description |      
-| id | string | mapper id |      
-| name | string | mapper name |      
-| tql | string | mapper tql text |   
+| entity_id | string |  |      
+| id | string |  |      
+| path | string |  |      
+| timestamp | string |  |      
+| values | string |  |   
 
 
 

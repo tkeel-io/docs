@@ -547,14 +547,380 @@ response
 
 设备实体详情里分类字段：ralations
 
-详情：
+目地：建立设备与设备之间的 数据映射关系
 
-### 定义关系
+### 5.1  手动构建数据关系
 
-```
+字段说明
+
+| 字段名      | Located in | 类型  | 描述                  |
+| ----------- | ---------- | ----- | --------------------- |
+| expressions | body       | array | 数据关系的结构体 数组 |
+
+单条数据关系结构体
+
+| 字段名      | located in | 类型   | 描述                                                         |
+| ----------- | ---------- | ------ | ------------------------------------------------------------ |
+| path        | body       | string | 设备属性or遥测 在设备数结构中id的路径  以.衔接 例如 attributes.aaa  telemerty.bbb |
+| expression  | body       | string | 关系表达式（可以扩展的很复杂）： 目前只是最简单的 =等于 ，目标设备的数据id路径 例如：iotd-xxx.attributes.aaa  iotd-yyy.telemerty.bbb |
+| description | body       | string | 可以用来承载 id 与名字的对应，  可用于解析展示 ， 例如 "aaa="电压"，bbb="电流" ，iotd-xxx="设备1" " |
+| name        | body       | string | 关系的名称  可为空                                           |
+
+假如现在有2个设备  :
+
+  设备1： 设备名：sensor600  设备id ：iotd-c0fb0b6c-d8d3-492c-b52a-7ca7adc11244     
+
+​                 设备模板里存在 ：
+
+​                         1、遥测名：电压，  遥测id:  voltage 
+
+​                         2、遥测名：电流， 遥测 id：electricity
+
+​                         3、属性名：序列号   属性id: serial-2
+
+  设备2： 设备名 ：gw600     设备id ：iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa      引用了模板
+
+​                      设备模板里存在 ：
+
+​                         1、遥测名：电压，  遥测id:  voltage 
+
+​                         2、遥测名：电流， 遥测 id：electricity
+
+​                         3、属性名：序列号   属性id: serial-2 
+
+目地： 设备1 的电流、电压  序列号等数据   通过“选择”设备2  数据映射过来
+
+#### 5.1.1 创建数据关系
+
+request
+
+```json
+curl --location --request POST '127.0.0.1:31234/v1/devices/iotd-c0fb0b6c-d8d3-492c-b52a-7ca7adc11244/relation' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1MDUxMjM1Nywic3ViIjoidXNyLTY5MTE0YjMxNGFhZGJkMTgwMjFkMzY5NmJjNjQifQ.IGawL3e5rS7lID-WExXMKJgueJtmHGQMJe7md04P2_snDzGxjI8eFntQ7AhcZqNKLEtQJuftX0mTSiNtL9C_Gw' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "expressions": [
+        {
+            "path": "telemetry.electricity",
+            "expression": "iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa.telemetry.electricity",
+            "description": "electricity=电流, iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa=gw600",
+            "name": ""
+        },
+        {
+            "path": "telemetry.voltage",
+            "expression": "iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa.telemetry.voltage",
+            "description": "electricity=电压, iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa=gw600",
+            "name": ""
+        },
+        {
+            "path": "attributes.serial-2",
+            "expression": "iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa.attributes.serial-2",
+            "description": "serial-2=序列号, iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa=gw600",
+            "name": ""
+        }
+    ]
+}'
 ```
 
-### 获取关系
+response
 
+```json
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/google.protobuf.Empty",
+        "value": {}
+    }
+}
 ```
+
+
+
+#### 5.1.2 更新单条数据关系
+
+request 
+
+```json
+curl --location --request PUT '127.0.0.1:31234/v1/devices/iotd-c0fb0b6c-d8d3-492c-b52a-7ca7adc11244/relation' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1MDUxMjM1Nywic3ViIjoidXNyLTY5MTE0YjMxNGFhZGJkMTgwMjFkMzY5NmJjNjQifQ.IGawL3e5rS7lID-WExXMKJgueJtmHGQMJe7md04P2_snDzGxjI8eFntQ7AhcZqNKLEtQJuftX0mTSiNtL9C_Gw' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "expressions": [
+        {
+            "path": "telemetry.electricity",
+            "expression": "iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa.telemetry.electricity",
+            "description": "electricity=电流_update, iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa=gw600",
+            "name": ""
+        },
+        {
+            "path": "telemetry.voltage",
+            "expression": "iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa.telemetry.voltage",
+            "description": "electricity=电压_update, iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa=gw600",
+            "name": ""
+        },
+        {
+            "path": "attributes.serial-2",
+            "expression": "iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa.attributes.serial-2",
+            "description": "serial-2=序列号_update, iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa=gw600",
+            "name": ""
+        }
+    ]
+}'
 ```
+
+response
+
+```json
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/google.protobuf.Empty",
+        "value": {}
+    }
+}
+```
+
+
+
+#### 5.1.3 删除数据关系
+
+request
+
+```json
+curl --location --request POST '127.0.0.1:31234/v1/devices/iotd-c0fb0b6c-d8d3-492c-b52a-7ca7adc11244/relation/delete' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1MDUxMjM1Nywic3ViIjoidXNyLTY5MTE0YjMxNGFhZGJkMTgwMjFkMzY5NmJjNjQifQ.IGawL3e5rS7lID-WExXMKJgueJtmHGQMJe7md04P2_snDzGxjI8eFntQ7AhcZqNKLEtQJuftX0mTSiNtL9C_Gw' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "paths":["voltage"]
+}'
+```
+
+response
+
+```json
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/google.protobuf.Empty",
+        "value": {}
+    }
+}
+```
+
+
+
+#### 5.1.4 获取数据关系
+
+request
+
+```json
+curl --location --request GET '127.0.0.1:31234/v1/devices/iotd-c0fb0b6c-d8d3-492c-b52a-7ca7adc11244/relation/attributes.serial-2' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1MDUyNjMzMywic3ViIjoidXNyLTY5MTE0YjMxNGFhZGJkMTgwMjFkMzY5NmJjNjQifQ.3m5dhauUQL-VVXycCBC8OH-KhuWixprMNVIp_z45kUp4gauEeEFhKXcyK44_ObbgOV93CgYrr42AG4P4jnas_g' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+
+}'
+```
+
+response
+
+```json
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/api.device.v1.GetDeviceDataRelationResponse",
+        "expressions": {
+            "@type": "type.googleapis.com/api.core.v1.GetExpressionResp",
+            "entity_id": "iotd-c0fb0b6c-d8d3-492c-b52a-7ca7adc11244",
+            "expression": {
+                "description": "serial-2=序列号_update, iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa=gw600",
+                "expression": "iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa.properties.attributes.serial-2",
+                "name": "",
+                "path": "attributes.serial-2"
+            },
+            "owner": "usr-69114b314aadbd18021d3696bc64"
+        }
+    }
+}
+```
+
+
+
+#### 5.1.5 获取数据关系列表
+
+request
+
+```json
+curl --location --request GET '127.0.0.1:31234/v1/devices/iotd-c0fb0b6c-d8d3-492c-b52a-7ca7adc11244/relation' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1MDUyNjMzMywic3ViIjoidXNyLTY5MTE0YjMxNGFhZGJkMTgwMjFkMzY5NmJjNjQifQ.3m5dhauUQL-VVXycCBC8OH-KhuWixprMNVIp_z45kUp4gauEeEFhKXcyK44_ObbgOV93CgYrr42AG4P4jnas_g' \
+--data-raw ''
+```
+
+response
+
+```json
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/api.device.v1.ListDeviceDataRelationResponse",
+        "expressionObject": {
+            "@type": "type.googleapis.com/api.core.v1.ListExpressionResp",
+            "entity_id": "iotd-c0fb0b6c-d8d3-492c-b52a-7ca7adc11244",
+            "expressions": [
+                {
+                    "description": "serial-2=序列号_update, iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa=gw600",
+                    "expression": "iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa.properties.attributes.serial-2",
+                    "name": "",
+                    "path": "attributes.serial-2"
+                },
+                {
+                    "description": "electricity=电流_update, iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa=gw600",
+                    "expression": "iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa.properties.telemetry.electricity",
+                    "name": "",
+                    "path": "telemetry.electricity"
+                },
+                {
+                    "description": "electricity=电压_update, iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa=gw600",
+                    "expression": "iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa.properties.telemetry.voltage",
+                    "name": "",
+                    "path": "telemetry.voltage"
+                }
+             
+            ],
+            "owner": "usr-69114b314aadbd18021d3696bc64"
+        }
+    }
+}
+```
+
+
+
+### 5.2 根据模板自动生成关系
+
+自动构建数据映射关系：
+
+
+
+| 字段名       | located in | 类型   | 描述                           |
+| ------------ | ---------- | ------ | ------------------------------ |
+| curName      | body       | string | 当前设备名                     |
+| direction    | body       | string | 关系方向：目前只填：from       |
+| relationType | body       | string | 关系类型：目前只填：contain    |
+| targetName   | body       | string | 来源设备名称                   |
+| targetId     | body       | string | 来源设备id                     |
+| targetTyep   | body       | string | 来源设备类型：目前只填：device |
+
+后台逻辑说明：
+
+1、获取设备1的字段
+
+​        1.1  根据设备1模板configs 内容获取  
+
+2、获取设备2 的 数据字段
+
+​        1.1  根据设备2模板configs 内容获取
+
+​        1.2   根据设备2数据 properties 内容获取
+
+​        1.3  不管设备2 是否存在字段，关系先构建，如果有数据来就会对应上（先这么做）。
+
+​                   实际现实情况会面临如下情况：
+
+​                    1、如果设备2是网关设备   
+​                            1、数据可能会非常多， 所以网关的模板（自学习或手动构建）不是必须的
+
+​                            2、网关的采集数据 字段  与 实际 平台使用是不同的规范或者厂家 或者标准 ，所以设备1中的字段对应设备2数据字段需要映射
+
+​                            3、格式可能是消息规范的平铺格式  ，也可能是消息规范的带子设备名的格式，所以设备1数据映射需要找到具体设备2数据内容的子设备及其数据字段
+
+​                            
+
+​                         解决如上问题 ： 在模板的遥测的扩展配置可配置如下key
+
+​                                                     1、 alias : 面对情况2
+
+​                                                            例如： 
+
+​                                                                         情况：	设备1 模板有一个遥测叫：1001   是按照互联网基础设设施监控标准规范建立的
+
+​                                                                         				设备2网关的采集的此数据有一个有自己逻辑的厂商采集命名为：AL_EL
+
+​                                                                          解决：  在设备1模板1001遥测的扩展配置里配置：mapper_alias="AL_EL" ,自动映射时候会自动转换，映射设备2 的AL_EL 字段
+
+
+
+​                                                      2、 profix  :面对情况 3
+
+​                                                                 例如： 
+
+​                                                                                情况： 设备1模板有一个遥测叫： va
+​                                                                                             设备2网关 的遥测上报的带子设备名的消息格式： 
+
+​                                                                                               "dev1":{
+
+​                                                                                                       va:1,
+
+​                                                                                                        v1:2,
+
+​                                                                                                         vc:3 
+
+​                                                                                              }
+
+​                                                                                  解决：   在设备1模板1001遥测的扩展配置里配置：mappr_profix="dev1" ,自动映射时候会加上此前缀找到dev1 下面的va 字段
+
+   
+
+request
+
+```json
+curl --location --request POST '127.0.0.1:31234/v1/devices/iotd-78ec2d93-46b9-4f55-84e4-34c0c1bd2aa7/relation/auto' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1MDUzNzA0MCwic3ViIjoidXNyLTY5MTE0YjMxNGFhZGJkMTgwMjFkMzY5NmJjNjQifQ.XoLVO6vnPsPzAwQQl0Fvr9HdsNzTfZXtS5pOU8nSB37-n2CthuuExLXmweqdHqKrBGTjMZDaYW1EEuSgCsKzuA' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "curName":"sensor600",
+    "direction":"from",
+    "relationType":"contain",
+    "targetName":"gw600",
+    "targetId":"iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa",
+    "targetType":"device"
+}'
+```
+
+
+
+resoponse
+
+```json
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/api.device.v1.CreateDeviceDataRelationAutoResponse",
+        "expressionObject": {
+            "@type": "type.googleapis.com/api.core.v1.ListExpressionResp",
+            "entity_id": "iotd-78ec2d93-46b9-4f55-84e4-34c0c1bd2aa7",
+            "expressions": [
+                {
+                    "description": "iotd-78ec2d93-46b9-4f55-84e4-34c0c1bd2aa7=sensor600,electricity=电流,iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa=gw600",
+                    "expression": "iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa.properties.telemetry.electricity",
+                    "name": "electricity",
+                    "path": "telemetry.electricity"
+                },
+                {
+                    "description": "iotd-78ec2d93-46b9-4f55-84e4-34c0c1bd2aa7=sensor600,voltage=电压,iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa=gw600",
+                    "expression": "iotd-51c0c135-a223-4cd1-aaa4-889959cc49aa.properties.telemetry.voltage",
+                    "name": "voltage",
+                    "path": "telemetry.voltage"
+                }
+            ],
+            "owner": "usr-69114b314aadbd18021d3696bc64"
+        }
+    }
+}
+```
+

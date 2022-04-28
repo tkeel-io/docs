@@ -83,7 +83,7 @@ Core 是 tKeel 物联网平台的数据中心，高性能、可拓展的轻量�
 我们将实体属性的约束集合定义为模型。实体是属性数据的载体，但是如何解析和使用实体的属性数据，我们需要实体属性的描述信息，如类型，取值范围等，我们将这些描述信息称之为 `约束`。而模型就是一个包含`约束`集合的载体，模型也以实体的形式存在， [更多设计细节请阅读模型文档](./specs/model.md) 。
 
 ### 订阅
-Core 提供了简捷方便的[订阅](./specs/subscription.md) ，供开发者实时获取自己关心的数据。
+Core 提供了简捷方便的 订阅，供开发者实时获取自己关心的数据。
 
 在 tKeel 平台中用于多个 plugin 之间和一个 plugin 内所有以实体为操作对象的数据交换。
 
@@ -498,7 +498,7 @@ tkeel invoke --plugin-id core --method "v1/entities/device234/mappers?source=dm&
 ✅  Plugin invoked successfully
 ```
 
-mapper 的描述信息由两部分数据组成： `name` 是映射的名称，[tql](specs/tql.md) 是映射的规则信息， `insert into device123 select device234.temp as temp` 是一条将 device234 的 temp 属性变更 同步到 device123 的 temp 属的规则。在规则生效后，我们可以通过想 device234 推送数据，查看 device123 的 temp 是否变化来校验规则是否生效。
+mapper 的描述信息由两部分数据组成： `name` 是映射的名称，TQL 是映射的规则信息， `insert into device123 select device234.temp as temp` 是一条将 device234 的 temp 属性变更 同步到 device123 的 temp 属的规则。在规则生效后，我们可以通过想 device234 推送数据，查看 device123 的 temp 是否变化来校验规则是否生效。
 
 ### 第 8 步： 通过 pubsub 向实体发送消息
 
@@ -523,7 +523,7 @@ curl -X POST http://localhost:3500/v1.0/publish/core-pubsub/core-pub \
 
 ### 第 9 步： 创建订阅，订阅实体数据
 
-不同的业务场景对 订阅（[subscription](specs/subscription.md)） 的需求粒度不尽相同，core 为使用者提供内置的，高性能的，多模式的订阅功能：
+不同的业务场景对 订阅（subscription） 的需求粒度不尽相同，core 为使用者提供内置的，高性能的，多模式的订阅功能：
 
 ```bash
 curl -X POST "http://localhost:3500/v1.0/invoke/core/method/v1/subscriptions?id=sub123" \

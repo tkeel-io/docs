@@ -1,10 +1,7 @@
 ---
 title: "AppendExpression"
 description: 'Append expressions for entity'
----
-
-
-调用该接口Append expressions for entity。
+---调用该接口Append expressions for entity。
 
 
 
@@ -15,13 +12,9 @@ description: 'Append expressions for entity'
 post /entities/{entity_id}/expressions
 ```
 
-
-
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | entity_id | path | string | entity id |  
-
-
 
 ###  Request Parameters
 
@@ -30,12 +23,7 @@ post /entities/{entity_id}/expressions
 | source | query | string | source id |  false |
 | owner | query | string | owner id |  false |
 
-
-
-### Request Body
-
-
- 
+### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 | expression information | Object | [v1Expressions](#v1Expressions) |
@@ -46,10 +34,6 @@ post /entities/{entity_id}/expressions
 | ---- | ---- | ----------- |         
 | expressions | Array[v1Expression] |  [ 具体参数可见下面 [v1Expression](#v1Expression) ] |    
 
-
-  
-       
-         
 ### v1Expression
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
@@ -59,34 +43,10 @@ post /entities/{entity_id}/expressions
 | path | string | target property path |   
 
 
-  
-     
-   
-     
-   
-     
-   
-     
- 
- 
-
-
-          
-     
- 
- 
-
-
-
-
 
 ## Response
 
-
-
-### Response  200
-
- 
+### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [v1AppendExpressionResp](#v1AppendExpressionResp) |
@@ -100,22 +60,8 @@ post /entities/{entity_id}/expressions
 | owner | string | owner id |   
 
 
-  
-     
-   
-     
-   
-     
- 
- 
 
-
- 
-
-
-### Response  default
-
- 
+### Response  default 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -128,32 +74,10 @@ post /entities/{entity_id}/expressions
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-
-  
-     
-   
-       
-         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
-
-  
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
 
 

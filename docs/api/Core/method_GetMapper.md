@@ -1,10 +1,7 @@
 ---
 title: "GetMapper"
 description: 'get mapper by id'
----
-
-
-调用该接口get mapper by id。
+---调用该接口get mapper by id。
 
 
 
@@ -15,14 +12,10 @@ description: 'get mapper by id'
 get /entities/{entity_id}/mappers/{id}
 ```
 
-
-
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | entity_id | path | string | entity id |  
 | id | path | string | mapper id |  
-
-
 
 ###  Request Parameters
 
@@ -32,15 +25,9 @@ get /entities/{entity_id}/mappers/{id}
 | owner | query | string | owner id |  false |
 | source | query | string | source id |  false |
 
-
-
 ## Response
 
-
-
-### Response  200
-
- 
+### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [v1GetMapperResponse](#v1GetMapperResponse) |
@@ -56,26 +43,8 @@ get /entities/{entity_id}/mappers/{id}
 | type | string | entity type |   
 
 
-  
-     
-   
-     
-   
-     
-   
-     
-   
-     
- 
- 
 
-
- 
-
-
-### Response  default
-
- 
+### Response  default 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -88,32 +57,10 @@ get /entities/{entity_id}/mappers/{id}
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-
-  
-     
-   
-       
-         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
-
-  
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
 
 

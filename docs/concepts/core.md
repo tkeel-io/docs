@@ -77,7 +77,7 @@ Runtime 为实体的运行时（Actor）提供环境支持，对 Actor 进行调
 
 ### 订阅
 
-在开发上层应用时，我们的需求往往是聚焦一个或者一些实体，如 PUE 的计算。由此 Core 提供了简捷方便的订阅（[Subscription](../developer_cookbook/core/specs/subscription.md)） ，供开发者实时获取自己关心的数据。
+在开发上层应用时，我们的需求往往是聚焦一个或者一些实体，如 PUE 的计算。由此 Core 提供了简捷方便的订阅（Subscription） ，供开发者实时获取自己关心的数据。
 
 
 ### Inbox

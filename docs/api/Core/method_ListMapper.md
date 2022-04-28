@@ -1,10 +1,7 @@
 ---
 title: "ListMapper"
 description: 'list mappers'
----
-
-
-调用该接口list mappers。
+---调用该接口list mappers。
 
 
 
@@ -15,13 +12,9 @@ description: 'list mappers'
 get /entities/{entity_id}/mappers
 ```
 
-
-
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | entity_id | path | string | entity id |  
-
-
 
 ###  Request Parameters
 
@@ -31,15 +24,9 @@ get /entities/{entity_id}/mappers
 | source | query | string | source id |  false |
 | owner | query | string | owner id |  false |
 
-
-
 ## Response
 
-
-
-### Response  200
-
- 
+### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [v1ListMapperResponse](#v1ListMapperResponse) |
@@ -54,12 +41,6 @@ get /entities/{entity_id}/mappers
 | source | string | source id |      
 | type | string | entity type |   
 
-
-  
-     
-   
-       
-         
 ### v1Mapper
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
@@ -69,36 +50,8 @@ get /entities/{entity_id}/mappers
 | tql | string | mapper tql text |   
 
 
-  
-     
-   
-     
-   
-     
-   
-     
- 
- 
 
-
-          
-     
-   
-     
-   
-     
-   
-     
- 
- 
-
-
- 
-
-
-### Response  default
-
- 
+### Response  default 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -111,32 +64,10 @@ get /entities/{entity_id}/mappers
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-
-  
-     
-   
-       
-         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
-
-  
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
 
 

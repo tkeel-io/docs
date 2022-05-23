@@ -138,10 +138,19 @@ propertie 里分类字段：basicInfo  AND  sysField
         "commany": "qingcloud",  
         "location": "wuhan" 
     },
+    "extBusiness":{  //扩展业务
+        "net_proxy":{  //网络代理服务业务
+        },
+        "stor":{   //存储服务业务
+        },
+        "xxx":{}   //其他拓展业务
+    },
     "name": "sensor1",   //设备名称
     "parentId": "",      //设备组ID
+    "parentName":"",     //设备组名称
     "selfLearn": false,  //自学习开关
-    "templateId": "935b39e4-11fc-43d7-9c08-0eab66f94cc5" //设备模板Id
+    "templateId": "935b39e4-11fc-43d7-9c08-0eab66f94cc5", //设备模板Id
+    "templateName":""                    //模板名称
 },
 "sysField": {  //系统生产的信息
     "_createdAt": 1644461780472115700,   //创建时间
@@ -154,6 +163,239 @@ propertie 里分类字段：basicInfo  AND  sysField
     "_subscribeAddr":"mqp://127.0.0.1:5672/abc",//订阅地址   如果为空"" 表示没有订阅 
     "_token": "OGIxMTdlMTYtZWE5Yy0zNDE4LWE3YTktYjhiM2U3Yzk3YzE1",  //连接的token  ，如果是直连设备需返回给用户。
     "_updatedAt": 1644461780472115700  //更新时间
+}
+```
+
+### 1.1 设备扩展业务
+
+目的： 设备扩展业务 是为了承载关于设备外围的一些业务数据，提供增、删、改、查（设备详情）的能力
+
+承载字段：basicInfo.extBusiness
+
+承载形式：以tap 为key   可任意拓展多个tap   目前的操作增、删、改 粒度为 tap key 
+
+```json
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/api.device.v1.GetDeviceResponse",
+        "deviceObject": {
+            "@type": "type.googleapis.com/api.core.v1.EntityResponse",
+            "configs": {},
+            "description": "",
+            "id": "iotd-da4f3bf5-a740-477f-a3e3-39ab11d15658",
+            "last_time": "1653293866252",
+            "mappers": [],
+            "owner": "usr-69114b314aadbd18021d3696bc64",
+            "properties": {
+                "basicInfo": {
+                    "description": "test",
+                    "directConnection": true,
+                    "ext": {
+                        "commany": "qingcloud",
+                        "location": "wuhan"
+                    },
+                    "extBusiness": {
+                        "net_proxy": {
+                            "title": "代理服务_update",
+                            "type": "fluxswitch",
+                            "value": [
+                                {
+                                    "description": "华兴部署服务",
+                                    "icon": "",
+                                    "title": "代理服务条目1_update",
+                                    "type": "HTTP",
+                                    "value": "https: //proxy.tkeel.io/"
+                                },
+                                {
+                                    "description": "华兴部署服务",
+                                    "icon": "",
+                                    "title": "代理服务条目2_update",
+                                    "type": "SSH",
+                                    "value": "https: //proxy.tkeel.io/"
+                                },
+                                {
+                                    "description": "华兴部署服务",
+                                    "icon": "",
+                                    "title": "代理服务条目3_update",
+                                    "type": "TCP",
+                                    "value": "tkeel proxy xxx xxx"
+                                }
+                            ]
+                        },
+                        "stor_server": {
+                            "title": "存储服务",
+                            "type": "fluxswitch",
+                            "value": [
+                                {
+                                    "description": "华兴部署存储服务",
+                                    "icon": "",
+                                    "title": "存储服务条目1_update",
+                                    "type": "HTTP",
+                                    "value": "https: //proxy.tkeel.io/"
+                                }
+                            ]
+                        }
+                    },
+                    "name": "gw607",
+                    "parentId": "iotd-usr-69114b314aadbd18021d3696bc64-defaultGroup",
+                    "parentName": "默认分组",
+                    "templateName": "tmeplate_relation"
+                },
+                "connectInfo": {},
+                "sysField": {
+                    "_createdAt": 1653293322281,
+                    "_enable": true,
+                    "_id": "iotd-da4f3bf5-a740-477f-a3e3-39ab11d15658",
+                    "_owner": "usr-69114b314aadbd18021d3696bc64",
+                    "_source": "device",
+                    "_spacePath": "iotd-da4f3bf5-a740-477f-a3e3-39ab11d15658",
+                    "_status": "offline",
+                    "_token": "M2M1NTYxYjAtMzc0Zi0zNmRhLWI2ZjQtODMyOThiMGUwZWZm",
+                    "_updatedAt": 1653293322281
+                }
+            },
+            "source": "device",
+            "template_id": "",
+            "type": "device",
+            "version": "6"
+        }
+    }
+}
+```
+
+操作：
+
+#### 1.1.1 添加扩展业务
+
+request
+
+```json
+curl --location --request POST '127.0.0.1:31234/v1/devices/iotd-da4f3bf5-a740-477f-a3e3-39ab11d15658/extBusiness' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1MzI5NzkxNSwic3ViIjoidXNyLTY5MTE0YjMxNGFhZGJkMTgwMjFkMzY5NmJjNjQifQ.laVK21tqrNUZvMla66YIF8irpBp5160C-RZSpD6ZznV8SMo4WRiJmFlolDiht6YMuu2071uHY43f1czHLQp6bw' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "net_proxy": {
+        "title": "代理服务",
+        "type": "fluxswitch",
+        "value": [
+            {
+                "title": "代理服务条目1",
+                "type": "HTTP",
+                "icon": "",
+                "description": "华兴部署服务",
+                "value": "https: //proxy.tkeel.io/"
+            },
+            {
+                "title": "代理服务条目2",
+                "type": "SSH",
+                "icon": "",
+                "description": "华兴部署服务",
+                "value": "https: //proxy.tkeel.io/"
+            },
+            {
+                "title": "代理服务条目3",
+                "type": "TCP",
+                "icon": "",
+                "description": "华兴部署服务",
+                "value": "tkeel proxy xxx xxx"
+            }
+        ]
+    }
+}'
+```
+
+response
+
+```json
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/google.protobuf.Empty",
+        "value": {}
+    }
+}
+```
+
+
+
+#### 1.1.2 更新设备扩展业务
+
+request
+
+```json
+curl --location --request PUT '127.0.0.1:31234/v1/devices/iotd-da4f3bf5-a740-477f-a3e3-39ab11d15658/extBusiness' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1MzI5NzkxNSwic3ViIjoidXNyLTY5MTE0YjMxNGFhZGJkMTgwMjFkMzY5NmJjNjQifQ.laVK21tqrNUZvMla66YIF8irpBp5160C-RZSpD6ZznV8SMo4WRiJmFlolDiht6YMuu2071uHY43f1czHLQp6bw' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "net_proxy": {
+        "title": "代理服务_update",
+        "type": "fluxswitch",
+        "value": [
+            {
+                "title": "代理服务条目1_update",
+                "type": "HTTP",
+                "icon": "",
+                "description": "华兴部署服务",
+                "value": "https: //proxy.tkeel.io/"
+            },
+            {
+                "title": "代理服务条目2_update",
+                "type": "SSH",
+                "icon": "",
+                "description": "华兴部署服务",
+                "value": "https: //proxy.tkeel.io/"
+            },
+            {
+                "title": "代理服务条目3_update",
+                "type": "TCP",
+                "icon": "",
+                "description": "华兴部署服务",
+                "value": "tkeel proxy xxx xxx"
+            }
+        ]
+    }
+}'
+```
+
+response
+
+```json
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/google.protobuf.Empty",
+        "value": {}
+    }
+}
+```
+
+#### 1.1.3 删除设备扩展业务
+
+requset
+
+```json
+curl --location --request POST '127.0.0.1:31234/v1/devices/iotd-da4f3bf5-a740-477f-a3e3-39ab11d15658/extBusiness/delete' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1MzI5NzkxNSwic3ViIjoidXNyLTY5MTE0YjMxNGFhZGJkMTgwMjFkMzY5NmJjNjQifQ.laVK21tqrNUZvMla66YIF8irpBp5160C-RZSpD6ZznV8SMo4WRiJmFlolDiht6YMuu2071uHY43f1czHLQp6bw' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "keys":["stor_server"]
+}'
+```
+
+response
+
+```json
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/google.protobuf.Empty",
+        "value": {}
+    }
 }
 ```
 

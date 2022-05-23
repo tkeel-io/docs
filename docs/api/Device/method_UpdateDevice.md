@@ -39,7 +39,8 @@ put /devices/{id}
 | ---- | ---- | ----------- |     
 | description | string | 设备描述 |      
 | directConnection | boolean | 设备是否直连 |     
-| ext | Object | 设备扩展配置   |      
+| ext | Object | 设备扩展信息   |     
+| extBusiness | Object | 设备扩展业务   |      
 | name | string | 设备名称 |      
 | parentId | string | 设备组ID |      
 | parentName | string | 设备组名称 |      
@@ -51,6 +52,10 @@ put /devices/{id}
   
      
    
+     
+   
+    
+          
      
    
     

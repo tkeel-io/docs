@@ -56,7 +56,7 @@ sidebar_position: 3
 }
 ```
 
-#### 设备获取平台属性
+#### 设备获取平台属性 [暂未实现]
 1. 一般的设备
 
 **steps:**
@@ -76,7 +76,7 @@ c. 平台发布 topic: "v1/devices/me/attributes/response/$request_id", payload:
    "attribute2": "value2"
 }
 ```
-d. 设备收到平台发送的C的数据
+d. 设备收到平台发送的的数据
 
 2. 有下游设备的网关设备
 
@@ -176,9 +176,11 @@ d. 设备收到平台发送的C的数据
 
 **steps:**
 
-a. 设备订阅topic: `1/devices/me/command/request/+`
+a. 设备订阅topic: `v1/devices/me/commands`
 
-b. 平台发布topic: `v1/devices/me/command/request/$request_id`, payload:
+b. iothub 收到发送的命令然后 pub topic: `v1/devices/me/commands`
+
+payload:
 ```json
 {
    "id": "ota",
@@ -188,15 +190,29 @@ b. 平台发布topic: `v1/devices/me/command/request/$request_id`, payload:
       "secret": "****",
       "http_method": "GET"
    },
-   "ts": 1646964832292 //毫秒
+   "ts": 1646964832292
 }
 ```
-c. 设备收到命令消息之后回复 topic: `v1/devices/me/command/response/$request_id`, payload:
+注：ts 为毫秒
+
+c. 设备收到命令消息之后回复 topic: `v1/devices/me/command/response`
+
+payload:
 ```json
 {
    "id": "ota",
-   "data": {
-       "success": true
+   "ota": {
+     "output": {
+       "success": true,
+       "ts": 12345
+     }
    }
 }
 ```
+
+### 反控数据 API
+a. 设备订阅 v1/devices/me/raw
+
+b. 平台推送数据到设备的 topic(v1/devices/me/raw)
+
+命令跟反控的区别在于命令下发的是格式化的数据（json），而反控可以是任意的数据。

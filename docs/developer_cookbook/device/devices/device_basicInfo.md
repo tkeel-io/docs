@@ -138,10 +138,19 @@ propertie 里分类字段：basicInfo  AND  sysField
         "commany": "qingcloud",  
         "location": "wuhan" 
     },
+    "extBusiness":{  //扩展业务
+        "net_proxy":{  //网络代理服务业务
+        },
+        "stor":{   //存储服务业务
+        },
+        "xxx":{}   //其他拓展业务
+    },
     "name": "sensor1",   //设备名称
     "parentId": "",      //设备组ID
+    "parentName":"",     //设备组名称
     "selfLearn": false,  //自学习开关
-    "templateId": "935b39e4-11fc-43d7-9c08-0eab66f94cc5" //设备模板Id
+    "templateId": "935b39e4-11fc-43d7-9c08-0eab66f94cc5", //设备模板Id
+    "templateName":""                    //模板名称
 },
 "sysField": {  //系统生产的信息
     "_createdAt": 1644461780472115700,   //创建时间
@@ -154,6 +163,239 @@ propertie 里分类字段：basicInfo  AND  sysField
     "_subscribeAddr":"mqp://127.0.0.1:5672/abc",//订阅地址   如果为空"" 表示没有订阅 
     "_token": "OGIxMTdlMTYtZWE5Yy0zNDE4LWE3YTktYjhiM2U3Yzk3YzE1",  //连接的token  ，如果是直连设备需返回给用户。
     "_updatedAt": 1644461780472115700  //更新时间
+}
+```
+
+### 1.1 设备扩展业务
+
+目的： 设备扩展业务 是为了承载关于设备外围的一些业务数据，提供增、删、改、查（设备详情）的能力
+
+承载字段：basicInfo.extBusiness
+
+承载形式：以tap 为key   可任意拓展多个tap   目前的操作增、删、改 粒度为 tap key 
+
+```json
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/api.device.v1.GetDeviceResponse",
+        "deviceObject": {
+            "@type": "type.googleapis.com/api.core.v1.EntityResponse",
+            "configs": {},
+            "description": "",
+            "id": "iotd-da4f3bf5-a740-477f-a3e3-39ab11d15658",
+            "last_time": "1653293866252",
+            "mappers": [],
+            "owner": "usr-69114b314aadbd18021d3696bc64",
+            "properties": {
+                "basicInfo": {
+                    "description": "test",
+                    "directConnection": true,
+                    "ext": {
+                        "commany": "qingcloud",
+                        "location": "wuhan"
+                    },
+                    "extBusiness": {
+                        "net_proxy": {
+                            "title": "代理服务_update",
+                            "type": "fluxswitch",
+                            "value": [
+                                {
+                                    "description": "华兴部署服务",
+                                    "icon": "",
+                                    "title": "代理服务条目1_update",
+                                    "type": "HTTP",
+                                    "value": "https: //proxy.tkeel.io/"
+                                },
+                                {
+                                    "description": "华兴部署服务",
+                                    "icon": "",
+                                    "title": "代理服务条目2_update",
+                                    "type": "SSH",
+                                    "value": "https: //proxy.tkeel.io/"
+                                },
+                                {
+                                    "description": "华兴部署服务",
+                                    "icon": "",
+                                    "title": "代理服务条目3_update",
+                                    "type": "TCP",
+                                    "value": "tkeel proxy xxx xxx"
+                                }
+                            ]
+                        },
+                        "stor_server": {
+                            "title": "存储服务",
+                            "type": "fluxswitch",
+                            "value": [
+                                {
+                                    "description": "华兴部署存储服务",
+                                    "icon": "",
+                                    "title": "存储服务条目1_update",
+                                    "type": "HTTP",
+                                    "value": "https: //proxy.tkeel.io/"
+                                }
+                            ]
+                        }
+                    },
+                    "name": "gw607",
+                    "parentId": "iotd-usr-69114b314aadbd18021d3696bc64-defaultGroup",
+                    "parentName": "默认分组",
+                    "templateName": "tmeplate_relation"
+                },
+                "connectInfo": {},
+                "sysField": {
+                    "_createdAt": 1653293322281,
+                    "_enable": true,
+                    "_id": "iotd-da4f3bf5-a740-477f-a3e3-39ab11d15658",
+                    "_owner": "usr-69114b314aadbd18021d3696bc64",
+                    "_source": "device",
+                    "_spacePath": "iotd-da4f3bf5-a740-477f-a3e3-39ab11d15658",
+                    "_status": "offline",
+                    "_token": "M2M1NTYxYjAtMzc0Zi0zNmRhLWI2ZjQtODMyOThiMGUwZWZm",
+                    "_updatedAt": 1653293322281
+                }
+            },
+            "source": "device",
+            "template_id": "",
+            "type": "device",
+            "version": "6"
+        }
+    }
+}
+```
+
+操作：
+
+#### 1.1.1 添加扩展业务
+
+request
+
+```json
+curl --location --request POST '127.0.0.1:31234/v1/devices/iotd-da4f3bf5-a740-477f-a3e3-39ab11d15658/extBusiness' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1MzI5NzkxNSwic3ViIjoidXNyLTY5MTE0YjMxNGFhZGJkMTgwMjFkMzY5NmJjNjQifQ.laVK21tqrNUZvMla66YIF8irpBp5160C-RZSpD6ZznV8SMo4WRiJmFlolDiht6YMuu2071uHY43f1czHLQp6bw' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "net_proxy": {
+        "title": "代理服务",
+        "type": "fluxswitch",
+        "value": [
+            {
+                "title": "代理服务条目1",
+                "type": "HTTP",
+                "icon": "",
+                "description": "华兴部署服务",
+                "value": "https: //proxy.tkeel.io/"
+            },
+            {
+                "title": "代理服务条目2",
+                "type": "SSH",
+                "icon": "",
+                "description": "华兴部署服务",
+                "value": "https: //proxy.tkeel.io/"
+            },
+            {
+                "title": "代理服务条目3",
+                "type": "TCP",
+                "icon": "",
+                "description": "华兴部署服务",
+                "value": "tkeel proxy xxx xxx"
+            }
+        ]
+    }
+}'
+```
+
+response
+
+```json
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/google.protobuf.Empty",
+        "value": {}
+    }
+}
+```
+
+
+
+#### 1.1.2 更新设备扩展业务
+
+request
+
+```json
+curl --location --request PUT '127.0.0.1:31234/v1/devices/iotd-da4f3bf5-a740-477f-a3e3-39ab11d15658/extBusiness' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1MzI5NzkxNSwic3ViIjoidXNyLTY5MTE0YjMxNGFhZGJkMTgwMjFkMzY5NmJjNjQifQ.laVK21tqrNUZvMla66YIF8irpBp5160C-RZSpD6ZznV8SMo4WRiJmFlolDiht6YMuu2071uHY43f1czHLQp6bw' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "net_proxy": {
+        "title": "代理服务_update",
+        "type": "fluxswitch",
+        "value": [
+            {
+                "title": "代理服务条目1_update",
+                "type": "HTTP",
+                "icon": "",
+                "description": "华兴部署服务",
+                "value": "https: //proxy.tkeel.io/"
+            },
+            {
+                "title": "代理服务条目2_update",
+                "type": "SSH",
+                "icon": "",
+                "description": "华兴部署服务",
+                "value": "https: //proxy.tkeel.io/"
+            },
+            {
+                "title": "代理服务条目3_update",
+                "type": "TCP",
+                "icon": "",
+                "description": "华兴部署服务",
+                "value": "tkeel proxy xxx xxx"
+            }
+        ]
+    }
+}'
+```
+
+response
+
+```json
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/google.protobuf.Empty",
+        "value": {}
+    }
+}
+```
+
+#### 1.1.3 删除设备扩展业务
+
+requset
+
+```json
+curl --location --request POST '127.0.0.1:31234/v1/devices/iotd-da4f3bf5-a740-477f-a3e3-39ab11d15658/extBusiness/delete' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1MzI5NzkxNSwic3ViIjoidXNyLTY5MTE0YjMxNGFhZGJkMTgwMjFkMzY5NmJjNjQifQ.laVK21tqrNUZvMla66YIF8irpBp5160C-RZSpD6ZznV8SMo4WRiJmFlolDiht6YMuu2071uHY43f1czHLQp6bw' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "keys":["stor_server"]
+}'
+```
+
+response
+
+```json
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/google.protobuf.Empty",
+        "value": {}
+    }
 }
 ```
 
@@ -819,9 +1061,7 @@ response
 
 1、获取设备1的字段
 
-​        1.1  根据设备1模板configs 内容获取   ，
-
-​        1.2  如果设备1  和 设备2  的数据字段id是不同的  那么可在模板 扩展配置 里配置key=alias  value=实际数据id  ，后台会自动转换id 对应 关系
+​        1.1  根据设备1模板configs 内容获取  
 
 2、获取设备2 的 数据字段
 
@@ -831,7 +1071,55 @@ response
 
 ​        1.3  不管设备2 是否存在字段，关系先构建，如果有数据来就会对应上（先这么做）。
 
+​                   实际现实情况会面临如下情况（针对遥测）：
 
+​                    1、如果设备2是网关设备   
+​                            1、遥测数据可能会非常多， 所以网关的模板（自学习或手动构建）不是必须的
+
+​                            2、网关的采集遥测数据 字段  与 实际 平台使用是不同的规范或者厂家 或者标准 ，所以设备1中的字段对应设备2数据字段需要映射
+
+​                            3、格式可能是消息规范的平铺格式  ，也可能是消息规范的带子设备名的格式，所以设备1数据映射需要找到具体设备2数据内容的子设备及其数据字段
+
+​                            
+
+​                         解决如上问题 ： 在模板的遥测的扩展配置可配置如下key
+
+​                                                     1、 alias : 面对情况2
+
+​                                                            例如： 
+
+​                                                                         情况：	设备1 模板有一个遥测叫：1001   是按照互联网基础设设施监控标准规范建立的
+
+​                                                                         				设备2网关的采集的此数据有一个有自己逻辑的厂商采集命名为：AL_EL
+
+​                                                                          解决：  在设备1模板1001遥测的扩展配置里配置：mapper_alias="AL_EL" （key 输入框输入maaper_alias, 值输入框输入AL_EL）,自动映射时候会自动转换，映射设备2 的AL_EL 字段
+
+
+
+​                                                      2、 profix  :面对情况 3
+
+​                                                                 例如： 
+
+​                                                                                情况： 设备1模板有一个遥测叫： va
+​                                                                                             设备2网关 的遥测上报的带子设备名的消息格式： 
+
+​                                                                                               "dev1":{
+
+​                                                                                                       va:1,
+
+​                                                                                                        v1:2,
+
+​                                                                                                         vc:3 
+
+​                                                                                              }
+
+​                                                                                  解决：   在设备1模板1001遥测的扩展配置里配置：mappr_prefix="dev1"（key输入框输入mapper_prefix,值输入框输入dev1） ,自动映射时候会加上此前缀找到dev1 下面的va 字段
+
+​                                                   
+
+​                                                      3、 2  和  3 的情况 可以组合存在
+
+   
 
 request
 

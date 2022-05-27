@@ -1,10 +1,7 @@
 ---
 title: "PatchEntityConfigs"
 description: 'patch entity configs'
----
-
-
-调用该接口patch entity configs。
+---调用该接口patch entity configs。
 
 
 
@@ -15,13 +12,9 @@ description: 'patch entity configs'
 patch /entities/{id}/configs
 ```
 
-
-
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string | entity id |  
-
-
 
 ###  Request Parameters
 
@@ -31,12 +24,7 @@ patch /entities/{id}/configs
 | owner | query | string | owner id |  false |
 | source | query | string | source id |  false |
 
-
-
-### Request Body
-
-
- 
+### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 | property configs | Object | [](#) |
@@ -48,19 +36,9 @@ patch /entities/{id}/configs
 
 
 
- 
-
-
-
-
-
 ## Response
 
-
-
-### Response  200
-
- 
+### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [v1EntityResponse](#v1EntityResponse) |
@@ -81,20 +59,6 @@ patch /entities/{id}/configs
 | type | string | entity type |      
 | version | string | entity version |   
 
-
-  
-    
-          
-     
-   
-     
-   
-     
-   
-     
-   
-       
-         
 ### v1Mapper
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
@@ -104,44 +68,8 @@ patch /entities/{id}/configs
 | tql | string | mapper tql text |   
 
 
-  
-     
-   
-     
-   
-     
-   
-     
- 
- 
 
-
-          
-     
-   
-     
-   
-    
-          
-     
-   
-     
-   
-     
-   
-     
-   
-     
- 
- 
-
-
- 
-
-
-### Response  default
-
- 
+### Response  default 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -154,32 +82,10 @@ patch /entities/{id}/configs
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-
-  
-     
-   
-       
-         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
-
-  
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
 
 

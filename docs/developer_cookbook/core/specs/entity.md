@@ -35,6 +35,10 @@ sidebar_position: 1
     |source|string|创建实体的插件名称。|
     |version|int64|实体的版本号。|
     |last_time|int64|实体的最近修改时间。|
+    |template_id|string|实体继承的模板ID。|
+    |description|string|实体的描述信息。|
+    |scheme|json|实体的定义。|
+    |properties|json|实体的属性数据。|
 
 
 
@@ -45,7 +49,11 @@ sidebar_position: 1
     "source": "dm",
     "owner": "admin",
     "type": "DEVICE",
-    "configs": {
+    "version": 1,
+    "last_time": 1650613276000,
+    "template_id": "",
+    "description": "",
+    "scheme": {
         "temp": {
             "define": {
                 "max": 500,
@@ -63,7 +71,7 @@ sidebar_position: 1
         }
     },
     "properties": {
-        "status": "end",
+        "status": "online",
         "temp": 20
     }
 }
@@ -78,7 +86,7 @@ sidebar_position: 1
 
 ## 实体的生命周期
 
-实体的生命周期从用户创建，存在于状态存储，当有实体的消息到达，实体被加载到内存，执行收到的消息，当消息执行完成，再无消息可执行则从 `runtime` 卸载实体。当用户删除实体，实体则从状态存储，Runtime，搜索引擎删除。
+实体的生命周期从用户创建实体开始，到用户删除实体结束。创建完成后实体的状态是 `PowerOn`，实体存在于 Runtime 执行实体消息，当一定时间内实体没有可以处理的消息时，Runtime 将实体 Unload 到状态存储。当下一次 Runtime 收到实体的消息，Load 实体到 Runtime 并执行消息。
 
 ![entity-life-cycle](/images/core/entity=life-cycle.png)
 
@@ -177,10 +185,9 @@ sidebar_position: 1
 |source|string|创建实体的插件名称。|
 |version|int64|实体的版本号。|
 |last_time|int64|实体的最近修改时间。|
-|template|string|标识实体的模板ID|
+|template_id|string|实体继承的模板ID。|
+|description|string|实体的描述信息。|
 |properties|object|用于结构化展示实体属性。|
-|configs|object|用于展示实体属性定义信息。|
-|config_file|string| 用于存储实体属性定义。|
-|mappers|object|用于展示实体的映射。|
+|scheme|object|用于展示实体属性定义信息。|
 
 

@@ -1,10 +1,7 @@
 ---
 title: "ListEntity"
 description: 'List entities'
----
-
-
-调用该接口List entities。
+---调用该接口List entities。
 
 
 
@@ -15,16 +12,7 @@ description: 'List entities'
 post /entities/search
 ```
 
-
-
-
-
-
-
-### Request Body
-
-
- 
+### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 |  | Object | [v1ListEntityRequest](#v1ListEntityRequest) |
@@ -42,10 +30,6 @@ post /entities/search
 | query | string | search keyword |      
 | source | string | source id |   
 
-
-  
-       
-         
 ### v1SearchCondition
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
@@ -54,48 +38,10 @@ post /entities/search
 | value | Object | value of the key   |   
 
 
-  
-     
-   
-     
-   
-    
-          
-     
- 
- 
-
-
-          
-     
-   
-     
-   
-     
-   
-     
-   
-     
-   
-     
-   
-     
-   
-     
- 
- 
-
-
-
-
 
 ## Response
 
-
-
-### Response  200
-
- 
+### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [v1ListEntityResponse](#v1ListEntityResponse) |
@@ -109,10 +55,6 @@ post /entities/search
 | page_size | integer | 每页限制条数 |      
 | total | integer | total count of the entities |   
 
-
-  
-       
-         
 ### v1EntityResponse
 | Name | Type | Description | 
 | ---- | ---- | ----------- |    
@@ -128,20 +70,6 @@ post /entities/search
 | type | string | entity type |      
 | version | string | entity version |   
 
-
-  
-    
-          
-     
-   
-     
-   
-     
-   
-     
-   
-       
-         
 ### v1Mapper
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
@@ -151,56 +79,8 @@ post /entities/search
 | tql | string | mapper tql text |   
 
 
-  
-     
-   
-     
-   
-     
-   
-     
- 
- 
 
-
-          
-     
-   
-     
-   
-    
-          
-     
-   
-     
-   
-     
-   
-     
-   
-     
- 
- 
-
-
-          
-     
-   
-     
-   
-     
-   
-     
- 
- 
-
-
- 
-
-
-### Response  default
-
- 
+### Response  default 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -213,32 +93,10 @@ post /entities/search
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-
-  
-     
-   
-       
-         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
-
-  
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
 
 

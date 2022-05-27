@@ -1,10 +1,7 @@
 ---
 title: "RemoveExpression"
 description: 'remove expression from entity'
----
-
-
-调用该接口remove expression from entity。
+---调用该接口remove expression from entity。
 
 
 
@@ -15,13 +12,9 @@ description: 'remove expression from entity'
 delete /entities/{entity_id}/expressions
 ```
 
-
-
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | entity_id | path | string | entity id |  
-
-
 
 ###  Request Parameters
 
@@ -31,15 +24,9 @@ delete /entities/{entity_id}/expressions
 | owner | query | string | owner id |  false |
 | source | query | string | source id |  false |
 
-
-
 ## Response
 
-
-
-### Response  200
-
- 
+### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [v1RemoveExpressionResp](#v1RemoveExpressionResp) |
@@ -53,22 +40,8 @@ delete /entities/{entity_id}/expressions
 | owner | string | owner id |   
 
 
-  
-     
-   
-     
-   
-     
- 
- 
 
-
- 
-
-
-### Response  default
-
- 
+### Response  default 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -81,32 +54,10 @@ delete /entities/{entity_id}/expressions
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-
-  
-     
-   
-       
-         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
-
-  
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
 
 

@@ -1,10 +1,7 @@
 ---
 title: "DeleteSubscription"
 description: 'Delete subscription'
----
-
-
-调用该接口Delete subscription。
+---调用该接口Delete subscription。
 
 
 
@@ -15,13 +12,9 @@ description: 'Delete subscription'
 delete /subscriptions/{id}
 ```
 
-
-
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string | subscription id |  
-
-
 
 ###  Request Parameters
 
@@ -30,15 +23,9 @@ delete /subscriptions/{id}
 | source | query | string | source id |  false |
 | owner | query | string | owner id |  false |
 
-
-
 ## Response
 
-
-
-### Response  200
-
- 
+### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [v1DeleteSubscriptionResponse](#v1DeleteSubscriptionResponse) |
@@ -51,20 +38,8 @@ delete /subscriptions/{id}
 | status | string | status |   
 
 
-  
-     
-   
-     
- 
- 
 
-
- 
-
-
-### Response  default
-
- 
+### Response  default 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -77,32 +52,10 @@ delete /subscriptions/{id}
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-
-  
-     
-   
-       
-         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
-
-  
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
 
 

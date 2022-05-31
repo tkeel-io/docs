@@ -30,7 +30,9 @@ post /subscriptions
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | filter | string | filter |      
+| id | string | suscription id |      
 | mode | string | suscription mode |      
+| owner | string | suscription owner |      
 | pubsub_name | string | pubsub name |      
 | source | string | source id |      
 | target | string | target id |      

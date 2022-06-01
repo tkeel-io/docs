@@ -1,7 +1,7 @@
 ---
-title: "Rules_TestConnectToKafka"
-description: ''
----调用该接口。
+title: "ErrSubscribe"
+description: 'Error Subscribe'
+---调用该接口Error Subscribe。
 
 
 
@@ -9,22 +9,31 @@ description: ''
 
 
 ```
-get /testing/kafka
+post /rules/{id}/subscribe/error
 ```
 
-###  Request Parameters
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string |  |  
 
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| host | query | string | Try to connect to kafka server address, split by ',' |  true |
-| topic | query | string |  |  false |
+### Request Body 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+|  | Object | [](#) |
+
+#### 
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |  
+
+
 
 ## Response
 
 ### Response  200
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 200 | A successful response. | {   { }} |
+| 200 | OK | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

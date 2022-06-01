@@ -1,7 +1,7 @@
 ---
-title: "Rules_RuleGet"
-description: ''
----调用该接口。
+title: "TableList"
+description: 'Table List'
+---调用该接口Table List。
 
 
 
@@ -9,7 +9,7 @@ description: ''
 
 
 ```
-get /rules/{id}
+get /sink/{id}/tables
 ```
 
 | Name | Located in | Type | Description | 
@@ -21,24 +21,32 @@ get /rules/{id}
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [ruleRule](#ruleRule) |
+| 200 | OK | Object | [ruleASTableListResp](#ruleASTableListResp) |
 
-#### ruleRule
+#### ruleASTableListResp
 
 | Name | Type | Description | 
+| ---- | ---- | ----------- |         
+| tables | Array[ruleTable] |  [ 具体参数可见下面 [ruleTable](#ruleTable) ] |    
+
+### ruleTable
+| Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| created_at | string | 创建时间 |      
-| desc | string |  |      
-| devices_status | integer |  |      
-| id | string |  |      
-| model_id | string | 模板id |      
-| model_name | string | 模板名称 |      
+| Engine | string |  |      
+| IndexGranularity | string |  |      
+| Name | string |  |         
+| OrderBy | Array[ string ] |  |          
+| Partitions | Array[ string ] |  |       
+| Sql | string |  |      
+| TTL | string |  |          
+| fields | Array[ruleField] |  [ 具体参数可见下面 [ruleField](#ruleField) ] |    
+
+### ruleField
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| isPK | boolean |  |      
 | name | string |  |      
-| status | integer |  |      
-| sub_id | integer |  |      
-| targets_status | integer |  |      
-| type | integer | Type 1 for Message Data, 2 for Timeseries Data |      
-| updated_at | string | 更新时间 |   
+| type | string |  |   
 
 
 

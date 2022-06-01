@@ -1,7 +1,7 @@
 ---
-title: "Rules_RuleGet"
-description: ''
----调用该接口。
+title: "UpdateTableMap"
+description: 'Update Table Map'
+---调用该接口Update Table Map。
 
 
 
@@ -9,36 +9,46 @@ description: ''
 
 
 ```
-get /rules/{id}
+put /sink/{id}/maps
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string |  |  
 
+### Request Body 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+|  | Object | [](#) |
+
+#### 
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |  
+
+
+
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [ruleRule](#ruleRule) |
+| 200 | OK | Object | [ruleASUpdateTableMapResp](#ruleASUpdateTableMapResp) |
 
-#### ruleRule
+#### ruleASUpdateTableMapResp
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| created_at | string | 创建时间 |      
-| desc | string |  |      
-| devices_status | integer |  |      
+| ---- | ---- | ----------- |         
+| fields | Array[ruleMapField] |  [ 具体参数可见下面 [ruleMapField](#ruleMapField) ] |       
 | id | string |  |      
-| model_id | string | 模板id |      
-| model_name | string | 模板名称 |      
-| name | string |  |      
-| status | integer |  |      
-| sub_id | integer |  |      
-| targets_status | integer |  |      
-| type | integer | Type 1 for Message Data, 2 for Timeseries Data |      
-| updated_at | string | 更新时间 |   
+| table_name | string |  |      
+| target_id | string |  |   
+
+### ruleMapField
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| m_field |  |  |      
+| t_field |  |  |   
 
 
 

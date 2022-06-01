@@ -39,11 +39,23 @@ post /rules/{id}/target
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| ext | string |  |      
+| database | string |  |          
+| fields | Array[ruleMapField] |  [ 具体参数可见下面 [ruleMapField](#ruleMapField) ] |       
 | host | string |  |      
 | id | string |  |      
-| type | integer |  |      
+| password | string |  |      
+| sink_id | string |  |      
+| sink_type | string |  |      
+| table_name | string |  |      
+| type | integer | type 1 for Kafka, 2 for Object-Storage |      
+| user | string |  |      
 | value | string |  |   
+
+### ruleMapField
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| m_field |  |  |      
+| t_field |  |  |   
 
 
 

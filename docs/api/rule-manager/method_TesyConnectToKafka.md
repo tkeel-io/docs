@@ -1,7 +1,7 @@
 ---
-title: "Rules_TestConnectToKafka"
-description: ''
----调用该接口。
+title: "TesyConnectToKafka"
+description: 'Test Kafka config'
+---调用该接口Test Kafka config。
 
 
 
@@ -24,7 +24,7 @@ get /testing/kafka
 ### Response  200
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 200 | A successful response. | {   { }} |
+| 200 | OK | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

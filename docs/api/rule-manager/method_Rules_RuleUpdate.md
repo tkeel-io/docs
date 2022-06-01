@@ -42,9 +42,11 @@ put /rules/{id}
 | created_at | string | 创建时间 |      
 | desc | string |  |      
 | id | string |  |      
+| model_id | string | 模板id |      
+| model_name | string | 模板名称 |      
 | name | string |  |      
 | status | integer |  |      
-| type | integer |  |      
+| type | integer | Type 1 for Message Data, 2 for Timeseries Data |      
 | updated_at | string | 更新时间 |   
 
 

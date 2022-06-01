@@ -39,12 +39,20 @@ put /rules/{id}/target/{target_id}
 #### ruleUpdateRuleTargetResp
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| ext | string |  |      
+| ---- | ---- | ----------- |         
+| fields | Array[ruleMapField] |  [ 具体参数可见下面 [ruleMapField](#ruleMapField) ] |       
 | host | string |  |      
 | id | string |  |      
+| sink_id | string |  |      
+| sink_type | string |  |      
 | type | integer |  |      
 | value | string |  |   
+
+### ruleMapField
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| m_field |  |  |      
+| t_field |  |  |   
 
 
 

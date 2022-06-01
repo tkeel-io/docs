@@ -1,5 +1,5 @@
 ---
-title: "Rules_RuleDelete"
+title: "Rules_ActionVerify"
 description: ''
 ---调用该接口。
 
@@ -9,19 +9,40 @@ description: ''
 
 
 ```
-delete /rules/{id}
+post /verify/{sink_type}
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| id | path | string |  |  
+| sink_type | path | string |  |  
+
+### Request Body 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+|  | Object | [](#) |
+
+#### 
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |  
+
+
 
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | A successful response. | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | A successful response. | Object | [ruleASVerifyResp](#ruleASVerifyResp) |
+
+#### ruleASVerifyResp
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| id | string |  |         
+| types | Array[ string ] |  |    
+
+
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

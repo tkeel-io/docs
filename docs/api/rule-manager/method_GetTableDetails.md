@@ -1,7 +1,7 @@
 ---
-title: "Rules_RuleDelete"
-description: ''
----调用该接口。
+title: "GetTableDetails"
+description: 'Get Table Details'
+---调用该接口Get Table Details。
 
 
 
@@ -9,19 +9,28 @@ description: ''
 
 
 ```
-delete /rules/{id}
+get /sink/{id}/tables/{table_name}
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string |  |  
+| table_name | path | string |  |  
 
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | A successful response. | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [ruleASGetTableDetailsResp](#ruleASGetTableDetailsResp) |
+
+#### ruleASGetTableDetailsResp
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| table |  |  |   
+
+
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

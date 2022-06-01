@@ -1,7 +1,7 @@
 ---
-title: "Rules_GetRuleDevices"
-description: ''
----调用该接口。
+title: "GetRuleDevices"
+description: 'Get Rule Devices'
+---调用该接口Get Rule Devices。
 
 
 
@@ -32,7 +32,7 @@ get /rules/{id}/devices
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [ruleRuleDevicesResp](#ruleRuleDevicesResp) |
+| 200 | OK | Object | [ruleRuleDevicesResp](#ruleRuleDevicesResp) |
 
 #### ruleRuleDevicesResp
 

@@ -1,7 +1,7 @@
 ---
-title: "Rules_RuleDelete"
-description: ''
----调用该接口。
+title: "SwitchRuleStatus"
+description: 'Switch Rule Status'
+---调用该接口Switch Rule Status。
 
 
 
@@ -9,19 +9,40 @@ description: ''
 
 
 ```
-delete /rules/{id}
+put /rules/{id}/running_status
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string |  |  
 
+### Request Body 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+|  | Object | [](#) |
+
+#### 
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |  
+
+
+
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | A successful response. | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [ruleRuleStatusSwitchResp](#ruleRuleStatusSwitchResp) |
+
+#### ruleRuleStatusSwitchResp
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| id | string |  |      
+| status | integer | Status 1 for Running, 0 for Stopped |   
+
+
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

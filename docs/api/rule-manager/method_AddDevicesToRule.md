@@ -1,7 +1,7 @@
 ---
-title: "Rules_TestConnectToKafka"
-description: ''
----调用该接口。
+title: "AddDevicesToRule"
+description: 'Add Devices to Rule'
+---调用该接口Add Devices to Rule。
 
 
 
@@ -9,22 +9,31 @@ description: ''
 
 
 ```
-get /testing/kafka
+post /rules/{id}/devices
 ```
 
-###  Request Parameters
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string |  |  
 
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| host | query | string | Try to connect to kafka server address, split by ',' |  true |
-| topic | query | string |  |  false |
+### Request Body 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+|  | Object | [](#) |
+
+#### 
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |  
+
+
 
 ## Response
 
 ### Response  200
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 200 | A successful response. | {   { }} |
+| 200 | OK | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

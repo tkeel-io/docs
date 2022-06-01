@@ -25,7 +25,7 @@ get /rules
 | id.value | query | string |  |  false |
 | ids | query | array |  |  false |
 | name.value | query | string |  |  false |
-| type.value | query | integer |  |  false |
+| type | query | integer | Type 1 for Message Data, 2 for Timeseries Data |  false |
 | status.value | query | integer |  |  false |
 
 ## Response
@@ -40,20 +40,25 @@ get /rules
 | Name | Type | Description | 
 | ---- | ---- | ----------- |         
 | data | Array[ruleRule] |  [ 具体参数可见下面 [ruleRule](#ruleRule) ] |       
-| last_page | string | Last page |      
-| page_num | string | Page number |      
-| page_size | string | Page size |      
-| total | string | Total |   
+| last_page | integer | Last page |      
+| page_num | integer | Page number |      
+| page_size | integer | Page size |      
+| total | integer | Total |   
 
 ### ruleRule
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | created_at | string | 创建时间 |      
 | desc | string |  |      
+| devices_status | integer |  |      
 | id | string |  |      
+| model_id | string | 模板id |      
+| model_name | string | 模板名称 |      
 | name | string |  |      
 | status | integer |  |      
-| type | integer |  |      
+| sub_id | integer |  |      
+| targets_status | integer |  |      
+| type | integer | Type 1 for Message Data, 2 for Timeseries Data |      
 | updated_at | string | 更新时间 |   
 
 

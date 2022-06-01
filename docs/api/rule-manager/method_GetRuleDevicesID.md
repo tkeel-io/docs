@@ -1,7 +1,7 @@
 ---
-title: "Rules_TestConnectToKafka"
-description: ''
----调用该接口。
+title: "GetRuleDevicesID"
+description: 'Get Rule Devices ID'
+---调用该接口Get Rule Devices ID。
 
 
 
@@ -9,22 +9,27 @@ description: ''
 
 
 ```
-get /testing/kafka
+get /rules/{id}/devices_id_array
 ```
 
-###  Request Parameters
-
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| host | query | string | Try to connect to kafka server address, split by ',' |  true |
-| topic | query | string |  |  false |
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string |  |  
 
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | A successful response. | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [ruleRuleDevicesIDResp](#ruleRuleDevicesIDResp) |
+
+#### ruleRuleDevicesIDResp
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |        
+| devices_ids | Array[ string ] |  |    
+
+
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

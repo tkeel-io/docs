@@ -1,7 +1,7 @@
 ---
-title: "Rules_GetRuleDevices"
-description: ''
----调用该接口。
+title: "ListRuleTarget"
+description: 'List Rule Target'
+---调用该接口List Rule Target。
 
 
 
@@ -9,7 +9,7 @@ description: ''
 
 
 ```
-get /rules/{id}/devices
+get /rules/{id}/target
 ```
 
 | Name | Located in | Type | Description | 
@@ -32,26 +32,38 @@ get /rules/{id}/devices
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [ruleRuleDevicesResp](#ruleRuleDevicesResp) |
+| 200 | OK | Object | [ruleListRuleTargetResp](#ruleListRuleTargetResp) |
 
-#### ruleRuleDevicesResp
+#### ruleListRuleTargetResp
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |         
-| data | Array[ruleDevice] |  [ 具体参数可见下面 [ruleDevice](#ruleDevice) ] |       
+| data | Array[ruleCreateRuleTargetResp] |  [ 具体参数可见下面 [ruleCreateRuleTargetResp](#ruleCreateRuleTargetResp) ] |       
 | last_page | integer | Last page |      
 | page_num | integer | Page number |      
 | page_size | integer | Page size |      
 | total | integer | Total |   
 
-### ruleDevice
+### ruleCreateRuleTargetResp
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| group_name | string |  |      
+| database | string |  |          
+| fields | Array[ruleMapField] |  [ 具体参数可见下面 [ruleMapField](#ruleMapField) ] |       
+| host | string |  |      
 | id | string |  |      
-| name | string |  |      
-| status | string |  |      
-| template | string |  |   
+| password | string |  |      
+| sink_id | string |  |      
+| sink_type | string |  |      
+| table_name | string |  |      
+| type | integer | type 1 for Kafka, 2 for Object-Storage |      
+| user | string |  |      
+| value | string |  |   
+
+### ruleMapField
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| m_field |  |  |      
+| t_field |  |  |   
 
 
 

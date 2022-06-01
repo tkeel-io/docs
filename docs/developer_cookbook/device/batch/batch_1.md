@@ -113,7 +113,49 @@ Use "tkeelBatchTool [command] --help" for more information about a command.
 
 ##### 4.2.2.2 空间树批量预期结果
 
+批量新增
+
+```
+./tkeelBatchTool spaceTree -o add -f excel_file/spaceTree.xlsx 
+```
+
+结果：新增了空间树
+
+![image-20220601134048694](../../../../static/images/device/image-20220601134048694.png)
+
+批量删除
+
+```
+./tkeelBatchTool spaceTree -o del -f excel_file/spaceTree.xlsx 
+```
+
+结果：
+
+![image-20220601134338894](../../../../static/images/device/image-20220601134338894.png)
+
 ##### 4.2.2.3 设备列表批量预期结果
+
+批量新增
+
+```
+./tkeelBatchTool dev -o add -f excel_file/device.xlsx 
+```
+
+结果：在空间节点 F103 下面 新增了一批设备
+
+![image-20220601143057770](../../../../static/images/device/image-20220601143057770.png)
+
+批量删除
+
+```
+./tkeelBatchTool dev -o del -f excel_file/device.xlsx 
+```
+
+结果：
+
+![image-20220601143243049](../../../../static/images/device/image-20220601143243049.png)
+
+
 
 ##### 4.2.2.4 设备数据映射批量预期结果
 
@@ -148,9 +190,53 @@ Use "tkeelBatchTool [command] --help" for more information about a command.
 
 ##### 4.2.3.2 空间树excel格式
 
+![image-20220601134405097](../../../../static/images/device/image-20220601134405097.png)
+
+参数说明：红色为必填
+
+1、父空间节点名：父设备组
+
+2、父空间节点ID： 1、如果填写则按此ID、2、如果不填 则自动生成并反写 3、如果前面行已经创建过此节点则会自动引用创建过的节点ID，
+
+3、当前空间节点名：设备组名称 ，目前是 用户下全局唯一  ，也就是此列名称不重复
+
+4、当前空间节点ID：1、如果填写则按此ID、2、如果不填 则自动生成并反写 ，3、创建后 可直接复制用于 设备批量excel 表 填写
+
+![image-20220601135222501](../../../../static/images/device/image-20220601135222501.png)
+
+5、当前空间节点扩展信息：承载关于次空间节点（设备组）维度的配置，json 格式  便于解析
+
+6、描述
+
 
 
 ##### 4.2.3.3 设备excel 格式
+
+![image-20220601143544126](../../../../static/images/device/image-20220601143544126.png)
+
+参数说明：红色为必填
+
+1、空间节点名：来源于空间树excel 表  或者平台已经存在的
+
+2、空间节点ID：来源于空间树excel 表  或者平台已经存在的
+
+3、设备名称：创建设备的名字
+
+4、设备ID：1、如果填写则按此ID ， 2、如果不填自动生成并反写 3、创建后可直接拷贝用于其他excel表（mapper）
+
+![image-20220601145407300](../../../../static/images/device/image-20220601145407300.png)
+
+5、设备是否直连： 直接对应物理世界设备连接并接受数据的为直连   TRUE or FALSE
+
+6、设备模板自学开关：不存在于模板内的数据  可以展示并可以编辑保存为模板等其他操作 TRUE or FALSE
+
+7、设备模板名称：来源于设备模板excel 表 或平台已经存在的
+
+8、设备模板ID：来源于设备模板excel 表  或 平台已经存在的
+
+9、设备扩展信息json：承载单个设备维度的配置，json 格式 ，便于解析
+
+10、设备描述
 
 
 

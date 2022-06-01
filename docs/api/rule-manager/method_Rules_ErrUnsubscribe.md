@@ -1,5 +1,5 @@
 ---
-title: "Rules_TestConnectToKafka"
+title: "Rules_ErrUnsubscribe"
 description: ''
 ---调用该接口。
 
@@ -9,15 +9,12 @@ description: ''
 
 
 ```
-get /testing/kafka
+delete /rules/{id}/subscribe/error
 ```
 
-###  Request Parameters
-
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| host | query | string | Try to connect to kafka server address, split by ',' |  true |
-| topic | query | string |  |  false |
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string |  |  
 
 ## Response
 

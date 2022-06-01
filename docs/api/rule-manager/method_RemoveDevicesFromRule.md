@@ -1,7 +1,7 @@
 ---
-title: "Rules_TestConnectToKafka"
-description: ''
----调用该接口。
+title: "RemoveDevicesFromRule"
+description: 'Remove Devices From Rule'
+---调用该接口Remove Devices From Rule。
 
 
 
@@ -9,22 +9,25 @@ description: ''
 
 
 ```
-get /testing/kafka
+delete /rules/{id}/devices
 ```
+
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string |  |  
 
 ###  Request Parameters
 
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
-| host | query | string | Try to connect to kafka server address, split by ',' |  true |
-| topic | query | string |  |  false |
+| devices_ids | query | string |  |  false |
 
 ## Response
 
 ### Response  200
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
-| 200 | A successful response. | {   { }} |
+| 200 | OK | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

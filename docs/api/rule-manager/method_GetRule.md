@@ -1,7 +1,7 @@
 ---
-title: "Rules_RuleGet"
-description: ''
----调用该接口。
+title: "GetRule"
+description: 'Get Rule'
+---调用该接口Get Rule。
 
 
 
@@ -21,7 +21,7 @@ get /rules/{id}
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [ruleRule](#ruleRule) |
+| 200 | OK | Object | [ruleRule](#ruleRule) |
 
 #### ruleRule
 

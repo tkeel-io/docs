@@ -1,7 +1,7 @@
 ---
-title: "Rules_RuleStatusSwitch"
-description: ''
----调用该接口。
+title: "UpdateRuleTarget"
+description: 'Update Rule Target'
+---调用该接口Update Rule Target。
 
 
 
@@ -9,12 +9,13 @@ description: ''
 
 
 ```
-put /rules/{id}/running_status
+put /rules/{id}/target/{target_id}
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string |  |  
+| target_id | path | string |  |  
 
 ### Request Body 
 | Description | Type | Schema |
@@ -33,14 +34,25 @@ put /rules/{id}/running_status
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [ruleRuleStatusSwitchResp](#ruleRuleStatusSwitchResp) |
+| 200 | OK | Object | [ruleUpdateRuleTargetResp](#ruleUpdateRuleTargetResp) |
 
-#### ruleRuleStatusSwitchResp
+#### ruleUpdateRuleTargetResp
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
+| ---- | ---- | ----------- |         
+| fields | Array[ruleMapField] |  [ 具体参数可见下面 [ruleMapField](#ruleMapField) ] |       
+| host | string |  |      
 | id | string |  |      
-| status | integer | Status 1 for Running, 0 for Stopped |   
+| sink_id | string |  |      
+| sink_type | string |  |      
+| type | integer |  |      
+| value | string |  |   
+
+### ruleMapField
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| m_field |  |  |      
+| t_field |  |  |   
 
 
 

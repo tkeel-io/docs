@@ -1,5 +1,5 @@
 ---
-title: "Rules_TestConnectToKafka"
+title: "Rules_GetTableDetails"
 description: ''
 ---调用该接口。
 
@@ -9,22 +9,28 @@ description: ''
 
 
 ```
-get /testing/kafka
+get /sink/{id}/tables/{table_name}
 ```
 
-###  Request Parameters
-
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| host | query | string | Try to connect to kafka server address, split by ',' |  true |
-| topic | query | string |  |  false |
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string |  |  
+| table_name | path | string |  |  
 
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | A successful response. | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | A successful response. | Object | [ruleASGetTableDetailsResp](#ruleASGetTableDetailsResp) |
+
+#### ruleASGetTableDetailsResp
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| table |  |  |   
+
+
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

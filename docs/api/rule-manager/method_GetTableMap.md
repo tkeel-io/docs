@@ -1,7 +1,7 @@
 ---
-title: "Rules_GetRuleDevices"
-description: ''
----调用该接口。
+title: "GetTableMap"
+description: 'Get Table Map'
+---调用该接口Get Table Map。
 
 
 
@@ -9,7 +9,7 @@ description: ''
 
 
 ```
-get /rules/{id}/devices
+get /sink/{id}/maps
 ```
 
 | Name | Located in | Type | Description | 
@@ -20,38 +20,36 @@ get /rules/{id}/devices
 
 | Name | Located in | Type | Description |  Required |
 | ---- | ---------- | ----------- | ----------- |  ---- |
-| page_num | query | integer | Page number |  true |
-| page_size | query | integer | Page size |  true |
-| order_by | query | string | Order by |  false |
-| is_descending | query | boolean | Is descending |  false |
-| key_words | query | string | Key words |  false |
-| search_key | query | string | Search Key |  false |
+| table_name | query | string |  |  false |
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [ruleRuleDevicesResp](#ruleRuleDevicesResp) |
+| 200 | OK | Object | [ruleASGetTableMapResp](#ruleASGetTableMapResp) |
 
-#### ruleRuleDevicesResp
+#### ruleASGetTableMapResp
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |         
-| data | Array[ruleDevice] |  [ 具体参数可见下面 [ruleDevice](#ruleDevice) ] |       
-| last_page | integer | Last page |      
-| page_num | integer | Page number |      
-| page_size | integer | Page size |      
-| total | integer | Total |   
-
-### ruleDevice
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| group_name | string |  |      
-| id | string |  |      
+| id | string |  |          
+| map_fields | Array[ruleMapField] |  [ 具体参数可见下面 [ruleMapField](#ruleMapField) ] |           
+| table_fields | Array[ruleField] |  [ 具体参数可见下面 [ruleField](#ruleField) ] |       
+| table_name | string |  |   
+
+### ruleMapField
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| m_field |  |  |      
+| t_field |  |  |   
+
+### ruleField
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| isPK | boolean |  |      
 | name | string |  |      
-| status | string |  |      
-| template | string |  |   
+| type | string |  |   
 
 
 

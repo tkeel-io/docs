@@ -22,8 +22,10 @@ post /rules
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | desc | string |  |      
+| model_id | string |  |      
+| model_name | string |  |      
 | name | string |  |      
-| type | integer |  |   
+| type | integer | Type 1 for Message Data, 2 for Timeseries Data |   
 
 
 
@@ -41,9 +43,11 @@ post /rules
 | created_at | string | 创建时间 |      
 | desc | string |  |      
 | id | string |  |      
+| model_id | string | 模板id |      
+| model_name | string | 模板名称 |      
 | name | string |  |      
-| status | integer |  |      
-| type | integer |  |      
+| status | integer | Status 1 for Running, 0 for Stopped |      
+| type | integer | Type 1 for Message Data, 2 for Timeseries Data |      
 | updated_at | string | 更新时间 |   
 
 

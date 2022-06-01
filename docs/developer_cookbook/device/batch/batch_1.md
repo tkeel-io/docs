@@ -113,6 +113,26 @@ Use "tkeelBatchTool [command] --help" for more information about a command.
 
 ##### 4.2.2.2 空间树批量预期结果
 
+批量新增
+
+```
+./tkeelBatchTool spaceTree -o add -f excel_file/spaceTree.xlsx 
+```
+
+结果：新增了空间树
+
+![image-20220601134048694](../../../../static/images/device/image-20220601134048694.png)
+
+批量删除
+
+```
+./tkeelBatchTool spaceTree -o del -f excel_file/spaceTree.xlsx 
+```
+
+结果：
+
+![image-20220601134338894](../../../../static/images/device/image-20220601134338894.png)
+
 ##### 4.2.2.3 设备列表批量预期结果
 
 ##### 4.2.2.4 设备数据映射批量预期结果
@@ -147,6 +167,24 @@ Use "tkeelBatchTool [command] --help" for more information about a command.
 
 
 ##### 4.2.3.2 空间树excel格式
+
+![image-20220601134405097](../../../../static/images/device/image-20220601134405097.png)
+
+参数说明：红色为必填
+
+1、父空间节点名：父设备组
+
+2、父空间节点ID： 1、如果填写则按此ID、2、如果不填 则自动生成并反写 3、如果前面行已经创建过此节点则会自动引用创建过的节点ID，
+
+3、当前空间节点名：设备组名称 ，目前是 用户下全局唯一  ，也就是此列名称不重复
+
+4、当前空间节点ID：1、如果填写则按此ID、2、如果不填 则自动生成并反写 ，3、创建后 可直接复制用于 设备批量excel 表 填写
+
+![image-20220601135222501](../../../../static/images/device/image-20220601135222501.png)
+
+5、当前空间节点扩展信息：承载关于次空间节点（设备组）维度的配置，json 格式  便于解析
+
+6、描述
 
 
 

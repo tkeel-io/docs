@@ -1,5 +1,5 @@
 ---
-title: "Rules_UpdateRuleTarget"
+title: "Rules_RuleDelete"
 description: ''
 ---调用该接口。
 
@@ -9,44 +9,19 @@ description: ''
 
 
 ```
-put /rules/{id}/target/{target_id}
+delete /rules/{id}
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string |  |  
-| target_id | path | string |  |  
-
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [](#) |
-
-#### 
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
-
 
 ## Response
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [ruleUpdateRuleTargetResp](#ruleUpdateRuleTargetResp) |
-
-#### ruleUpdateRuleTargetResp
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| ext | string |  |      
-| host | string |  |      
-| id | string |  |      
-| type | integer |  |      
-| value | string |  |   
-
-
+### Response  200
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | A successful response. | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

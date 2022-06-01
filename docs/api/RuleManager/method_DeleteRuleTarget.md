@@ -1,7 +1,7 @@
 ---
-title: "Rules_CreateRuleTarget"
-description: ''
----调用该接口。
+title: "DeleteRuleTarget"
+description: 'Delete Rule Target'
+---调用该接口Delete Rule Target。
 
 
 
@@ -9,43 +9,20 @@ description: ''
 
 
 ```
-post /rules/{id}/target
+delete /rules/{id}/target/{target_id}
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string |  |  
-
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [](#) |
-
-#### 
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
-
+| target_id | path | string |  |  
 
 ## Response
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [ruleCreateRuleTargetResp](#ruleCreateRuleTargetResp) |
-
-#### ruleCreateRuleTargetResp
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| ext | string |  |      
-| host | string |  |      
-| id | string |  |      
-| type | integer |  |      
-| value | string |  |   
-
-
+### Response  200
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

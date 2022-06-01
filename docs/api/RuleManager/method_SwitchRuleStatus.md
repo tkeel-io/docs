@@ -1,7 +1,7 @@
 ---
-title: "topicEventHandler"
-description: 'TopicEvent handler'
----调用该接口TopicEvent handler。
+title: "SwitchRuleStatus"
+description: 'Switch Rule Status'
+---调用该接口Switch Rule Status。
 
 
 
@@ -9,28 +9,22 @@ description: 'TopicEvent handler'
 
 
 ```
-post /topic
+put /rules/{id}/running_status
 ```
+
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string |  |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1TopicEventRequest](#v1TopicEventRequest) |
+|  | Object | [](#) |
 
-#### v1TopicEventRequest
+#### 
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |    
-| data | Object |    |      
-| data_base64 | string |  |      
-| datacontenttype | string |  |      
-| id | string |  |      
-| pubsubname | string |  |      
-| source | string |  |      
-| specversion | string |  |      
-| subject | string |  |      
-| topic | string |  |      
-| type | string |  |   
+| ---- | ---- | ----------- |  
 
 
 
@@ -39,13 +33,14 @@ post /topic
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1TopicEventResponse](#v1TopicEventResponse) |
+| 200 | OK | Object | [ruleRuleStatusSwitchResp](#ruleRuleStatusSwitchResp) |
 
-#### v1TopicEventResponse
+#### ruleRuleStatusSwitchResp
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| status | string |  |   
+| id | string |  |      
+| status | integer | Status 1 for Running, 0 for Stopped |   
 
 
 

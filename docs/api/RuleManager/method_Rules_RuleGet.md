@@ -1,7 +1,7 @@
 ---
-title: "TenantDisable"
-description: 'openapi tenant disable'
----调用该接口openapi tenant disable。
+title: "Rules_RuleGet"
+description: ''
+---调用该接口。
 
 
 
@@ -9,35 +9,36 @@ description: 'openapi tenant disable'
 
 
 ```
-post /tenant/disable
+get /rules/{id}
 ```
 
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [v1TenantDisableRequest](#v1TenantDisableRequest) |
-
-#### v1TenantDisableRequest
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| extra | string |  |      
-| tenant_id | string |  |   
-
-
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string |  |  
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1TenantDisableResponse](#v1TenantDisableResponse) |
+| 200 | A successful response. | Object | [ruleRule](#ruleRule) |
 
-#### v1TenantDisableResponse
+#### ruleRule
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| res |  |  |   
+| created_at | string | 创建时间 |      
+| desc | string |  |      
+| devices_status | integer |  |      
+| id | string |  |      
+| model_id | string | 模板id |      
+| model_name | string | 模板名称 |      
+| name | string |  |      
+| status | integer |  |      
+| sub_id | integer |  |      
+| targets_status | integer |  |      
+| type | integer | Type 1 for Message Data, 2 for Timeseries Data |      
+| updated_at | string | 更新时间 |   
 
 
 

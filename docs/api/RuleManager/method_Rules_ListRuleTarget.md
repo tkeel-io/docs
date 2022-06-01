@@ -1,5 +1,5 @@
 ---
-title: "Rules_RuleQuery"
+title: "Rules_ListRuleTarget"
 description: ''
 ---调用该接口。
 
@@ -9,8 +9,12 @@ description: ''
 
 
 ```
-get /rules
+get /rules/{id}/target
 ```
+
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string |  |  
 
 ###  Request Parameters
 
@@ -22,39 +26,44 @@ get /rules
 | is_descending | query | boolean | Is descending |  false |
 | key_words | query | string | Key words |  false |
 | search_key | query | string | Search Key |  false |
-| id.value | query | string |  |  false |
-| ids | query | array |  |  false |
-| name.value | query | string |  |  false |
-| type.value | query | integer |  |  false |
-| status.value | query | integer |  |  false |
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [ruleRuleQueryResp](#ruleRuleQueryResp) |
+| 200 | A successful response. | Object | [ruleListRuleTargetResp](#ruleListRuleTargetResp) |
 
-#### ruleRuleQueryResp
+#### ruleListRuleTargetResp
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |         
-| data | Array[ruleRule] |  [ 具体参数可见下面 [ruleRule](#ruleRule) ] |       
-| last_page | string | Last page |      
-| page_num | string | Page number |      
-| page_size | string | Page size |      
-| total | string | Total |   
+| data | Array[ruleCreateRuleTargetResp] |  [ 具体参数可见下面 [ruleCreateRuleTargetResp](#ruleCreateRuleTargetResp) ] |       
+| last_page | integer | Last page |      
+| page_num | integer | Page number |      
+| page_size | integer | Page size |      
+| total | integer | Total |   
 
-### ruleRule
+### ruleCreateRuleTargetResp
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| created_at | string | 创建时间 |      
-| desc | string |  |      
+| database | string |  |          
+| fields | Array[ruleMapField] |  [ 具体参数可见下面 [ruleMapField](#ruleMapField) ] |       
+| host | string |  |      
 | id | string |  |      
-| name | string |  |      
-| status | integer |  |      
-| type | integer |  |      
-| updated_at | string | 更新时间 |   
+| password | string |  |      
+| sink_id | string |  |      
+| sink_type | string |  |      
+| table_name | string |  |      
+| type | integer | type 1 for Kafka, 2 for Object-Storage |      
+| user | string |  |      
+| value | string |  |   
+
+### ruleMapField
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| m_field |  |  |      
+| t_field |  |  |   
 
 
 

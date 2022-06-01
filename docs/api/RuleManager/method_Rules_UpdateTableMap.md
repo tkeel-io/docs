@@ -1,5 +1,5 @@
 ---
-title: "Subscribe_GetSubscribe"
+title: "Rules_UpdateTableMap"
 description: ''
 ---调用该接口。
 
@@ -9,30 +9,46 @@ description: ''
 
 
 ```
-get /subscribe
+put /sink/{id}/maps
 ```
+
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string |  |  
+
+### Request Body 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+|  | Object | [](#) |
+
+#### 
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |  
+
+
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [daprListTopicSubscriptionsResponse](#daprListTopicSubscriptionsResponse) |
+| 200 | A successful response. | Object | [ruleASUpdateTableMapResp](#ruleASUpdateTableMapResp) |
 
-#### daprListTopicSubscriptionsResponse
+#### ruleASUpdateTableMapResp
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |         
-| subscriptions | Array[daprTopicSubscription] | The list of topics. [ 具体参数可见下面 [daprTopicSubscription](#daprTopicSubscription) ] |    
+| fields | Array[ruleMapField] |  [ 具体参数可见下面 [ruleMapField](#ruleMapField) ] |       
+| id | string |  |      
+| table_name | string |  |      
+| target_id | string |  |   
 
-### daprTopicSubscription
+### ruleMapField
 | Name | Type | Description | 
-| ---- | ---- | ----------- |    
-| metadata | Object |    |      
-| pubsub_name | string | Required. The name of the pubsub containing the topic below to subscribe to. |      
-| route | string | The optional routing rules to match against. In the gRPC interface, OnTopicEvent
-is still invoked but the matching path is sent in the TopicEventRequest. |      
-| topic | string |  |   
+| ---- | ---- | ----------- |     
+| m_field |  |  |      
+| t_field |  |  |   
 
 
 

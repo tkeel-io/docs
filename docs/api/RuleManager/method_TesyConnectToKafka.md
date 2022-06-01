@@ -1,7 +1,7 @@
 ---
-title: "Entity_GetEntity"
-description: ''
----调用该接口。
+title: "TesyConnectToKafka"
+description: 'Test Kafka config'
+---调用该接口Test Kafka config。
 
 
 
@@ -9,22 +9,22 @@ description: ''
 
 
 ```
-get /ws
+get /testing/kafka
 ```
+
+###  Request Parameters
+
+| Name | Located in | Type | Description |  Required |
+| ---- | ---------- | ----------- | ----------- |  ---- |
+| host | query | string | Try to connect to kafka server address, split by ',' |  true |
+| topic | query | string |  |  false |
 
 ## Response
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [v1GetEntityResponse](#v1GetEntityResponse) |
-
-#### v1GetEntityResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
-
+### Response  200
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

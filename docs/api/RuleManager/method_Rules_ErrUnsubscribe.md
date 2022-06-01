@@ -1,5 +1,5 @@
 ---
-title: "Rules_RuleUpdate"
+title: "Rules_ErrUnsubscribe"
 description: ''
 ---调用该接口。
 
@@ -9,45 +9,19 @@ description: ''
 
 
 ```
-put /rules/{id}
+delete /rules/{id}/subscribe/error
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string |  |  
 
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [](#) |
-
-#### 
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
-
-
 ## Response
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [ruleRuleUpdateResp](#ruleRuleUpdateResp) |
-
-#### ruleRuleUpdateResp
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| created_at | string | 创建时间 |      
-| desc | string |  |      
-| id | string |  |      
-| name | string |  |      
-| status | integer |  |      
-| type | integer |  |      
-| updated_at | string | 更新时间 |   
-
-
+### Response  200
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | A successful response. | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

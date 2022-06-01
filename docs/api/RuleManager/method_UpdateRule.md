@@ -1,7 +1,7 @@
 ---
-title: "Rules_RuleStatusSwitch"
-description: ''
----调用该接口。
+title: "UpdateRule"
+description: 'Update Rule'
+---调用该接口Update Rule。
 
 
 
@@ -9,7 +9,7 @@ description: ''
 
 
 ```
-put /rules/{id}/running_status
+put /rules/{id}
 ```
 
 | Name | Located in | Type | Description | 
@@ -33,14 +33,21 @@ put /rules/{id}/running_status
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [ruleRuleStatusSwitchResp](#ruleRuleStatusSwitchResp) |
+| 200 | OK | Object | [ruleRuleUpdateResp](#ruleRuleUpdateResp) |
 
-#### ruleRuleStatusSwitchResp
+#### ruleRuleUpdateResp
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
+| created_at | string | 创建时间 |      
+| desc | string |  |      
 | id | string |  |      
-| status | integer |  |   
+| model_id | string | 模板id |      
+| model_name | string | 模板名称 |      
+| name | string |  |      
+| status | integer |  |      
+| type | integer | Type 1 for Message Data, 2 for Timeseries Data |      
+| updated_at | string | 更新时间 |   
 
 
 

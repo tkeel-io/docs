@@ -1,5 +1,5 @@
 ---
-title: "Rules_RuleGet"
+title: "Rules_ChangeErrSubscribe"
 description: ''
 ---调用该接口。
 
@@ -9,33 +9,31 @@ description: ''
 
 
 ```
-get /rules/{id}
+put /rules/{id}/subscribe/error
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string |  |  
 
-## Response
+### Request Body 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+|  | Object | [](#) |
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | A successful response. | Object | [ruleRule](#ruleRule) |
-
-#### ruleRule
+#### 
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| created_at | string | 创建时间 |      
-| desc | string |  |      
-| id | string |  |      
-| name | string |  |      
-| status | integer |  |      
-| type | integer |  |      
-| updated_at | string | 更新时间 |   
+| ---- | ---- | ----------- |  
 
 
+
+## Response
+
+### Response  200
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | A successful response. | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

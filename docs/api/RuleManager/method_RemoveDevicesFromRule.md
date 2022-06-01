@@ -1,7 +1,7 @@
 ---
-title: "Status"
-description: 'openapi status'
----调用该接口openapi status。
+title: "RemoveDevicesFromRule"
+description: 'Remove Devices From Rule'
+---调用该接口Remove Devices From Rule。
 
 
 
@@ -9,24 +9,25 @@ description: 'openapi status'
 
 
 ```
-get /status
+delete /rules/{id}/devices
 ```
+
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string |  |  
+
+###  Request Parameters
+
+| Name | Located in | Type | Description |  Required |
+| ---- | ---------- | ----------- | ----------- |  ---- |
+| devices_ids | query | string |  |  false |
 
 ## Response
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1StatusResponse](#v1StatusResponse) |
-
-#### v1StatusResponse
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| res |  |  |      
-| status |  |  |   
-
-
+### Response  200
+| Code3 | Description | Type | 
+| ---- | ----------- | ------ | 
+| 200 | OK | {   { }} |
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

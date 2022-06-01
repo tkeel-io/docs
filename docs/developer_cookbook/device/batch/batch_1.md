@@ -1,4 +1,5 @@
 ---
+
 title: 批量工具1
 sidebar_position: 1
 ---
@@ -29,6 +30,14 @@ sidebar_position: 1
 ### 4.2 命令行工具
 
 #### 4.2.1 命令行工具视图
+
+gihub
+
+```
+git clone https://github.com/tkeel-io/tkeel-batch-tool.git
+go build
+./tkeelBatchTool -h
+```
 
 ```
 tanli@ubuntu:~/Desktop/workspace/project/tkeel-batch-tool$ ./tkeelBatchTool -h
@@ -67,8 +76,8 @@ Use "tkeelBatchTool [command] --help" for more information about a command.
 
 ```json
 {
-"iotUrl":"http://127.0.0.1:31234",                                       //tkeel 平台设备管理服务url	"token":"eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1MzQ0ODAwOCwic3ViIjoidXNyLWY0ZTFiMDY4YWE3YzE4YzFiNjQxYjJhNTA2OTUifQ.bVr41poNuKx9QgZJMdTGgeHNRffJzmiQfOpOdazF3yhO-RE14bhD"     //用户token 
-}  
+  "iotUrl":"http://127.0.0.1:31234",      "token":"eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1NDA3NzE4MSwic3ViIjoidXNyLWY0ZTFiMDY4YWE3YzE4YzFiNjQxYjJhNTA2OTUifQ.ZP4aJvJrFad5nJQEqO4kGqINdTg7ST7yrJTbJEH_q017FF_UP3fS
+  }      
 ```
 
 命令概览：以下命令是一个完整的流程  注意顺序
@@ -97,6 +106,10 @@ Use "tkeelBatchTool [command] --help" for more information about a command.
 ./tkeelBatchTool template -o add -f excel_file/template.xlsx
 ```
 
+工具日志：
+
+![image-20220601161854328](../../../../static/images/device/image-20220601161854328.png)
+
 结果：新增了UPS   温室度传感器   SICAM 电表  三个设备模板
 
 ![image-20220531151943844](../../../../static/images/device/image-20220531151943844.png)
@@ -109,6 +122,12 @@ Use "tkeelBatchTool [command] --help" for more information about a command.
 ./tkeelBatchTool template -o del -f excel_file/template.xlsx  //批量删除模板
 ```
 
+工具日志
+
+![image-20220601161815592](../../../../static/images/device/image-20220601161815592.png)
+
+结果
+
 ![image-20220531172335160](../../../../static/images/device/image-20220531172335160.png)
 
 ##### 4.2.2.2 空间树批量预期结果
@@ -119,6 +138,10 @@ Use "tkeelBatchTool [command] --help" for more information about a command.
 ./tkeelBatchTool spaceTree -o add -f excel_file/spaceTree.xlsx 
 ```
 
+工具日志
+
+![image-20220601161934089](../../../../static/images/device/image-20220601161934089.png)
+
 结果：新增了空间树
 
 ![image-20220601134048694](../../../../static/images/device/image-20220601134048694.png)
@@ -128,6 +151,10 @@ Use "tkeelBatchTool [command] --help" for more information about a command.
 ```
 ./tkeelBatchTool spaceTree -o del -f excel_file/spaceTree.xlsx 
 ```
+
+工具日志
+
+![image-20220601161718526](../../../../static/images/device/image-20220601161718526.png)
 
 结果：
 
@@ -141,6 +168,10 @@ Use "tkeelBatchTool [command] --help" for more information about a command.
 ./tkeelBatchTool dev -o add -f excel_file/device.xlsx 
 ```
 
+工具日志
+
+![image-20220601162007602](../../../../static/images/device/image-20220601162007602.png)
+
 结果：在空间节点 F103 下面 新增了一批设备
 
 ![image-20220601143057770](../../../../static/images/device/image-20220601143057770.png)
@@ -151,6 +182,10 @@ Use "tkeelBatchTool [command] --help" for more information about a command.
 ./tkeelBatchTool dev -o del -f excel_file/device.xlsx 
 ```
 
+工具日志
+
+![image-20220601161619649](../../../../static/images/device/image-20220601161619649.png)
+
 结果：
 
 ![image-20220601143243049](../../../../static/images/device/image-20220601143243049.png)
@@ -159,7 +194,51 @@ Use "tkeelBatchTool [command] --help" for more information about a command.
 
 ##### 4.2.2.4 设备数据映射批量预期结果
 
+批量新增
 
+```
+./tkeelBatchTool mapper -o add -f excel_file/mapper.xlsx 
+```
+
+工具日志
+
+![image-20220601160230215](../../../../static/images/device/image-20220601160230215.png)
+
+页面结果：
+
+DB1 设备
+
+![image-20220601160256996](../../../../static/images/device/image-20220601160256996.png)
+
+DB2设备
+
+![image-20220601160344899](../../../../static/images/device/image-20220601160344899.png)
+
+DB3 设备
+
+![image-20220601160425642](../../../../static/images/device/image-20220601160425642.png)
+
+DB4 设备
+
+![image-20220601160449927](../../../../static/images/device/image-20220601160449927.png)
+
+
+
+批量删除
+
+```
+./tkeelBatchTool mapper -o del -f excel_file/mapper.xlsx 
+```
+
+工具日志
+
+![image-20220601160623880](../../../../static/images/device/image-20220601160623880.png)
+
+
+
+页面结果：
+
+![image-20220601160705927](../../../../static/images/device/image-20220601160705927.png)
 
 #### 4.2.3 EXCEL 格式
 
@@ -242,9 +321,34 @@ Use "tkeelBatchTool [command] --help" for more information about a command.
 
 ##### 4.2.3.4 设备数据映射excel 格式
 
+![image-20220601160728594](../../../../static/images/device/image-20220601160728594.png)
+
+参数说明：红色为必填
+
+1、设备名：需要映射的设备名 ，可来源于设备列表excel  也可以是平台已经存在
+
+2、设备ID： 需要映射的设备ID ，可来源于设备列表excel  也可以是平台已经存在
+
+3、数据类别：只有2种  属性映射：attributes  和  遥测映射：telemetry 
+
+4、数据字段名：遥测ID  或 上报的数据字段名
 
 
 
+5、规则表达式：目前只有$eq  表示 等于
 
 
 
+6、来源设备名：映射数据来源的设备名 ，可来源于设备列表excel  也可以是平台已经存在
+
+7、来源设备ID： 映射数据来源的设备ID ，可来源于设备列表excel  也可以是平台已经存在
+
+8、数据类别：只有2种  属性映射：attributes  和  遥测映射：telemetry 
+
+9、数据字段名：遥测ID  或 上报的数据字段名
+
+
+
+说明：1、**DB1  DB2  DB3  表达的是 拆分设备   例如网关拆分为各种子设备**
+
+​            2、**DB4  表达的是合并设备  ，例如组合设备**

@@ -1,0 +1,3193 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "api/device/v1/device.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "Device"
+    },
+    {
+      "name": "Group"
+    },
+    {
+      "name": "Openapi"
+    },
+    {
+      "name": "Template"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/addons/identify": {
+      "post": {
+        "summary": "openapi addons identify",
+        "operationId": "AddonsIdentify",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1AddonsIdentifyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1AddonsIdentifyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Openapi"
+        ]
+      }
+    },
+    "/devices": {
+      "post": {
+        "summary": "create device entity",
+        "operationId": "CreateDevice",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1CreateDeviceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": "设备信息",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1DeviceEntityBasicInfo",
+              "description": "设备信息"
+            }
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      }
+    },
+    "/devices/delete": {
+      "post": {
+        "summary": "delete device entity",
+        "operationId": "DeleteDevice",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1DeleteDeviceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": "设备ID 数组",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apidevicev1Ids",
+              "description": "设备ID 数组"
+            }
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      }
+    },
+    "/devices/{id}": {
+      "get": {
+        "summary": "get device entity",
+        "operationId": "GetDevice",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1GetDeviceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "设备ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      },
+      "put": {
+        "summary": "update device entity",
+        "operationId": "UpdateDevice",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1UpdateDeviceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "设备ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "设备信息",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1DeviceEntityBasicInfo",
+              "description": "设备信息"
+            }
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      }
+    },
+    "/devices/{id}/attribute/set": {
+      "post": {
+        "summary": "set device attribte",
+        "operationId": "SetDeviceAttrubte",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": " 设备Id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": " 设置内容",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1SetContent",
+              "description": " 设置内容"
+            }
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      }
+    },
+    "/devices/{id}/command/set": {
+      "post": {
+        "summary": "set device command",
+        "operationId": "SetDeviceCommand",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": " 设备Id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": " 设置内容",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1SetContent",
+              "description": " 设置内容"
+            }
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      }
+    },
+    "/devices/{id}/configs/saveAsOtherTemplate": {
+      "post": {
+        "summary": "save device confAsOtherTemplate",
+        "operationId": "SetDeviceConfAsOtherTemplte",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/apidevicev1CreateTemplateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": " 设备Id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "另存为模板的基本信息",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apidevicev1TemplateBasicInfo",
+              "description": "另存为模板的基本信息"
+            }
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      }
+    },
+    "/devices/{id}/configs/saveAsSelfTemplate": {
+      "post": {
+        "summary": "save device confAsSelfTemplate",
+        "operationId": "SetDeviceConfAsSelfTemplte",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": " 设备Id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": " 设备Id",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": " 设备Id"
+            }
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      }
+    },
+    "/devices/{id}/ext": {
+      "post": {
+        "summary": "add device extensions",
+        "operationId": "AddDeviceExt",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "设备ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "设备扩展属性KV",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "description": "设备扩展属性KV"
+            }
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      },
+      "put": {
+        "summary": "update device extensions",
+        "operationId": "UpdateDeviceExt",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "设备ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "设备扩展属性KV",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "description": "设备扩展属性KV"
+            }
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      }
+    },
+    "/devices/{id}/ext/delete": {
+      "post": {
+        "summary": "delete device extensions",
+        "operationId": "DelDeviceExt",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "设备ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "设备扩展属性Key 数组",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apidevicev1Keys",
+              "description": "设备扩展属性Key 数组"
+            }
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      }
+    },
+    "/devices/{id}/extBusiness": {
+      "post": {
+        "summary": "add device extensions business",
+        "operationId": "AddDeviceExtBusiness",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "设备ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "设备扩展业务",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "description": "设备扩展业务"
+            }
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      },
+      "put": {
+        "summary": "update device extensions business",
+        "operationId": "UpdateDeviceExtBusiness",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "设备ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "设备扩展业务",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "description": "设备扩展业务"
+            }
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      }
+    },
+    "/devices/{id}/extBusiness/delete": {
+      "post": {
+        "summary": "delete device extensions business",
+        "operationId": "DelDeviceExtBusiness",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "设备ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "设备扩展业务Key 数组",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apidevicev1Keys",
+              "description": "设备扩展业务Key 数组"
+            }
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      }
+    },
+    "/devices/{id}/raw/set": {
+      "post": {
+        "summary": "set device raw",
+        "operationId": "SetDeviceRaw",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": " 设备Id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "设置的 value",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "description": "设置的 value"
+            }
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      }
+    },
+    "/devices/{id}/relation": {
+      "get": {
+        "summary": "list data relation",
+        "operationId": "ListDeviceDataRelation",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ListDeviceDataRelationResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "实体Id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      },
+      "post": {
+        "summary": "Create data relation",
+        "operationId": "CreateDeviceDataRelation",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "实体Id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "关系信息",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1listEntityExpression",
+              "description": "关系信息"
+            }
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      },
+      "put": {
+        "summary": "update data relation",
+        "operationId": "UpdateDeviceDataRelation",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "实体Id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "关系信息",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1listEntityExpression",
+              "description": "关系信息"
+            }
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      }
+    },
+    "/devices/{id}/relation/auto": {
+      "post": {
+        "summary": "Create data relation auto",
+        "operationId": "CreateDeviceDataRelationAuto",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1CreateDeviceDataRelationAutoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "实体Id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "关系信息",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1Relation",
+              "description": "关系信息"
+            }
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      }
+    },
+    "/devices/{id}/relation/delete": {
+      "post": {
+        "summary": "delete data relation",
+        "operationId": "DeleteDeviceDataRelation",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "实体Id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "关系信息path 数组",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1Paths",
+              "description": "关系信息path 数组"
+            }
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      }
+    },
+    "/devices/{id}/relation/{path}": {
+      "get": {
+        "summary": "get single relation",
+        "operationId": "GetDeviceDataRelation",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1GetDeviceDataRelationResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "实体Id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "path",
+            "description": "路径",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      }
+    },
+    "/groups": {
+      "post": {
+        "summary": "create entity group",
+        "operationId": "CreateGroup",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1CreateGroupResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": "设备组信息",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1GroupEntity",
+              "description": "设备组信息"
+            }
+          }
+        ],
+        "tags": [
+          "group"
+        ]
+      }
+    },
+    "/groups/delete": {
+      "post": {
+        "summary": "delete entity group",
+        "operationId": "DeleteGroup",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1DeleteGroupResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": "设备组ID 数组",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apigroupv1Ids",
+              "description": "设备组ID 数组"
+            }
+          }
+        ],
+        "tags": [
+          "group"
+        ]
+      }
+    },
+    "/groups/tree": {
+      "post": {
+        "summary": "get group tree",
+        "operationId": "GetGroupTree",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1GetGroupTreeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apigroupv1ListEntityQuery"
+            }
+          }
+        ],
+        "tags": [
+          "group"
+        ]
+      }
+    },
+    "/groups/{id}": {
+      "get": {
+        "summary": "get entity group",
+        "operationId": "GetGroup",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1GetGroupResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "设备组ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "group"
+        ]
+      },
+      "put": {
+        "summary": "update entity group",
+        "operationId": "UpdateGroup",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1UpdateGroupResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "设备组ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "更新设备组信息",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1GroupEntity",
+              "description": "更新设备组信息"
+            }
+          }
+        ],
+        "tags": [
+          "group"
+        ]
+      }
+    },
+    "/groups/{id}/ext": {
+      "post": {
+        "summary": "add group extensions",
+        "operationId": "AddGroupExt",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "设备组ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "扩展配置kv",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "description": "扩展配置kv"
+            }
+          }
+        ],
+        "tags": [
+          "group"
+        ]
+      },
+      "put": {
+        "summary": "update group extensions",
+        "operationId": "UpdateGroupExt",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "设备组ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "扩展配置kv",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "description": "扩展配置kv"
+            }
+          }
+        ],
+        "tags": [
+          "group"
+        ]
+      }
+    },
+    "/groups/{id}/ext/delete": {
+      "post": {
+        "summary": "delete group extensions",
+        "operationId": "DelGroupExt",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "设备组ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "扩展配置key 数组",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apigroupv1Keys",
+              "description": "扩展配置key 数组"
+            }
+          }
+        ],
+        "tags": [
+          "group"
+        ]
+      }
+    },
+    "/identify": {
+      "get": {
+        "summary": "openapi identify",
+        "operationId": "Identify",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1IdentifyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Openapi"
+        ]
+      }
+    },
+    "/search": {
+      "post": {
+        "summary": "search entity",
+        "operationId": "SearchEntity",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ListDeviceResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": "设备列表请求信息",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apidevicev1ListEntityQuery",
+              "description": "设备列表请求信息"
+            }
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      }
+    },
+    "/status": {
+      "get": {
+        "summary": "openapi status",
+        "operationId": "Status",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1StatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Openapi"
+        ]
+      }
+    },
+    "/templates": {
+      "post": {
+        "summary": "create Template",
+        "operationId": "CreateTemplate",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/apitemplatev1CreateTemplateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": "模板基本信息",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apitemplatev1TemplateBasicInfo",
+              "description": "模板基本信息"
+            }
+          }
+        ],
+        "tags": [
+          "template"
+        ]
+      }
+    },
+    "/templates/delete": {
+      "post": {
+        "summary": "delete Template",
+        "operationId": "DeleteTemplate",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1DeleteTemplateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": "模板ID 数组",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apitemplatev1Ids",
+              "description": "模板ID 数组"
+            }
+          }
+        ],
+        "tags": [
+          "template"
+        ]
+      }
+    },
+    "/templates/{uid}": {
+      "get": {
+        "summary": "get Template",
+        "operationId": "GetTemplate",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1GetTemplateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "description": "模板ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "template"
+        ]
+      },
+      "put": {
+        "summary": "update Template",
+        "operationId": "UpdateTemplate",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1UpdateTemplateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "description": "模板ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "模板基本信息",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apitemplatev1TemplateBasicInfo",
+              "description": "模板基本信息"
+            }
+          }
+        ],
+        "tags": [
+          "template"
+        ]
+      }
+    },
+    "/templates/{uid}/attribute": {
+      "get": {
+        "summary": "list Template attribute",
+        "operationId": "ListTemplateAttribute",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ListTemplateAttributeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "description": "模板ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "template"
+        ]
+      },
+      "post": {
+        "summary": "add Template attribute",
+        "operationId": "AddTemplateAttribute",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "description": "模板ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "属性对象",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "description": "属性对象"
+            }
+          }
+        ],
+        "tags": [
+          "template"
+        ]
+      },
+      "put": {
+        "summary": "update Template attribute",
+        "operationId": "UpdateTemplateAttribute",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "description": "模板ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "属性对象",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "description": "属性对象"
+            }
+          }
+        ],
+        "tags": [
+          "template"
+        ]
+      }
+    },
+    "/templates/{uid}/attribute/delete": {
+      "post": {
+        "summary": "delete Template attribute",
+        "operationId": "DeleteTemplateAttribute",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "description": "模板ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "属性ID 数组",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apitemplatev1Ids",
+              "description": "属性ID 数组"
+            }
+          }
+        ],
+        "tags": [
+          "template"
+        ]
+      }
+    },
+    "/templates/{uid}/attribute/{id}": {
+      "get": {
+        "summary": "get Template attribute",
+        "operationId": "GetTemplateAttribute",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1GetTemplateAttributeResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "description": "模板ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "description": "属性ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "template"
+        ]
+      }
+    },
+    "/templates/{uid}/command": {
+      "get": {
+        "summary": "list template command",
+        "operationId": "ListTemplateCommand",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ListTemplateCommandResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "description": "模板ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "template"
+        ]
+      },
+      "post": {
+        "summary": "add template command",
+        "operationId": "AddTemplateCommand",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "description": "模板ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "命令",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "description": "命令"
+            }
+          }
+        ],
+        "tags": [
+          "template"
+        ]
+      },
+      "put": {
+        "summary": "update template command",
+        "operationId": "UpdateTemplateCommand",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "description": "模板ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "命令",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "description": "命令"
+            }
+          }
+        ],
+        "tags": [
+          "template"
+        ]
+      }
+    },
+    "/templates/{uid}/command/delete": {
+      "post": {
+        "summary": "delete template command",
+        "operationId": "DeleteTemplateCommand",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "description": "模板ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "命令ID 数组",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apitemplatev1Ids",
+              "description": "命令ID 数组"
+            }
+          }
+        ],
+        "tags": [
+          "template"
+        ]
+      }
+    },
+    "/templates/{uid}/command/{id}": {
+      "get": {
+        "summary": "get Template command",
+        "operationId": "GetTemplateCommand",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1GetTemplateCommandResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "description": "模板ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "description": "命令ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "template"
+        ]
+      }
+    },
+    "/templates/{uid}/telemetry": {
+      "get": {
+        "summary": "list Template telemetry",
+        "operationId": "ListTemplateTelemetry",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ListTemplateTelemetryResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "description": "属性ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "template"
+        ]
+      },
+      "post": {
+        "summary": "add Template telemetry",
+        "operationId": "AddTemplateTelemetry",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "description": "模板ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "遥测",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "description": "遥测"
+            }
+          }
+        ],
+        "tags": [
+          "template"
+        ]
+      },
+      "put": {
+        "summary": "update Template telemetry",
+        "operationId": "UpdateTemplateTelemetry",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "description": "模板ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "遥测",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "description": "遥测"
+            }
+          }
+        ],
+        "tags": [
+          "template"
+        ]
+      }
+    },
+    "/templates/{uid}/telemetry/delete": {
+      "post": {
+        "summary": "delete Template telemetry",
+        "operationId": "DeleteTemplateTelemetry",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "description": "模板ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "遥测ID 数组",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apitemplatev1Ids",
+              "description": "遥测ID 数组"
+            }
+          }
+        ],
+        "tags": [
+          "template"
+        ]
+      }
+    },
+    "/templates/{uid}/telemetry/{id}": {
+      "get": {
+        "summary": "get Template telemetry",
+        "operationId": "GetTemplateTelemetry",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1GetTemplateTelemetryResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "description": "模板ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "description": "遥测ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "template"
+        ]
+      }
+    },
+    "/templates/{uid}/telemetry/{id}/ext": {
+      "post": {
+        "summary": "add template telemetry ext",
+        "operationId": "AddTemplateTelemetryExt",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "description": "模型ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "description": "遥测ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "扩展配置KV map",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "description": "扩展配置KV map"
+            }
+          }
+        ],
+        "tags": [
+          "template"
+        ]
+      },
+      "put": {
+        "summary": "update template telemetry ext",
+        "operationId": "UpdateTemplateTelemetryExt",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "description": "模型ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "description": "遥测ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "扩展配置KV map",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "description": "扩展配置KV map"
+            }
+          }
+        ],
+        "tags": [
+          "template"
+        ]
+      }
+    },
+    "/templates/{uid}/telemetry/{id}/ext/delete": {
+      "post": {
+        "summary": "delete template telemetry ext",
+        "operationId": "DeleteTemplateTelemetryExt",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "description": "模型ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "description": "遥测ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "扩展配置key 数组",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/apitemplatev1Keys",
+              "description": "扩展配置key 数组"
+            }
+          }
+        ],
+        "tags": [
+          "template"
+        ]
+      }
+    },
+    "/tenant/disable": {
+      "post": {
+        "summary": "openapi tenant disable",
+        "operationId": "TenantDisable",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1TenantDisableResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1TenantDisableRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Openapi"
+        ]
+      }
+    },
+    "/tenant/enable": {
+      "post": {
+        "summary": "openapi tenant enable",
+        "operationId": "TenantEnable",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1TenantEnableResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1TenantEnableRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Openapi"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "PermissionDependence": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "desc": {
+          "type": "string",
+          "description": "ID\u003e/authority ID.The content in \u003c\u003e is variable."
+        }
+      }
+    },
+    "apidevicev1Condition": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "type": "string",
+          "description": "查询输出字段"
+        },
+        "value": {
+          "type": "object",
+          "description": "值"
+        },
+        "operator": {
+          "type": "string",
+          "description": "操作符, $eq为相等，$neq为不等，$lt为小于，$gt为大于，$lne为小于等于， $gne为大于等于",
+          "title": "string value = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: \"值\"}];"
+        }
+      }
+    },
+    "apidevicev1CreateTemplateResponse": {
+      "type": "object",
+      "properties": {
+        "templateObject": {
+          "type": "object",
+          "description": "模板对象"
+        }
+      }
+    },
+    "apidevicev1Ids": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "id 字符串数组"
+        }
+      }
+    },
+    "apidevicev1Keys": {
+      "type": "object",
+      "properties": {
+        "keys": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "key 字符串数组"
+        }
+      }
+    },
+    "apidevicev1ListEntityQuery": {
+      "type": "object",
+      "properties": {
+        "page_num": {
+          "type": "integer",
+          "format": "int32",
+          "description": "记录开始位置",
+          "title": "Filter filter = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: \"限制\"}];\nPage page = 2 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: \"分页\"}];"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "description": "每页限制条数"
+        },
+        "order_by": {
+          "type": "string",
+          "description": "排序字段"
+        },
+        "is_descending": {
+          "type": "boolean",
+          "description": "是否逆序， false：不逆序，true:逆序"
+        },
+        "query": {
+          "type": "string",
+          "description": "es查询条件"
+        },
+        "condition": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apidevicev1Condition"
+          },
+          "description": "组合条件"
+        }
+      }
+    },
+    "apidevicev1TemplateBasicInfo": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "模板名称"
+        },
+        "description": {
+          "type": "string",
+          "description": "模板描述"
+        }
+      }
+    },
+    "apigroupv1Condition": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "type": "string",
+          "description": "查询输出字段"
+        },
+        "value": {
+          "type": "string",
+          "description": "值"
+        },
+        "operator": {
+          "type": "string",
+          "description": "操作符, $eq为相等，$neq为不等，$lt为小于，$gt为大于，$lne为小于等于， $gne为大于等于"
+        }
+      }
+    },
+    "apigroupv1Ids": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "id 数组"
+        }
+      }
+    },
+    "apigroupv1Keys": {
+      "type": "object",
+      "properties": {
+        "keys": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "key 数组"
+        }
+      }
+    },
+    "apigroupv1ListEntityQuery": {
+      "type": "object",
+      "properties": {
+        "page_num": {
+          "type": "integer",
+          "format": "int32",
+          "description": "记录开始位置"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "description": "每页限制条数"
+        },
+        "order_by": {
+          "type": "string",
+          "description": "排序字段"
+        },
+        "is_descending": {
+          "type": "boolean",
+          "description": "是否逆序， false：不逆序，true:逆序"
+        },
+        "query": {
+          "type": "string",
+          "description": "es查询条件"
+        },
+        "condition": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/apigroupv1Condition"
+          },
+          "description": "组合条件"
+        }
+      }
+    },
+    "apitemplatev1CreateTemplateResponse": {
+      "type": "object",
+      "properties": {
+        "templateObject": {
+          "type": "object",
+          "description": "模板对象",
+          "title": "api.core.v1.EntityResponse templateObject = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: \"模板对象\"}];"
+        }
+      }
+    },
+    "apitemplatev1Ids": {
+      "type": "object",
+      "properties": {
+        "ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "ID 数组"
+        }
+      }
+    },
+    "apitemplatev1Keys": {
+      "type": "object",
+      "properties": {
+        "keys": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "key 数组"
+        }
+      }
+    },
+    "apitemplatev1TemplateBasicInfo": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "模板名称"
+        },
+        "customId": {
+          "type": "string",
+          "description": "模板自定义id 选填"
+        },
+        "description": {
+          "type": "string",
+          "description": "模板描述"
+        }
+      },
+      "title": "basic"
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "protobufNullValue": {
+      "type": "string",
+      "enum": [
+        "NULL_VALUE"
+      ],
+      "default": "NULL_VALUE",
+      "description": "`NullValue` is a singleton enumeration to represent the null value for the\r\n`Value` type union.\r\n\r\n The JSON representation for `NullValue` is JSON `null`.\n\n - NULL_VALUE: Null value."
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v1AddonsIdentifyRequest": {
+      "type": "object",
+      "properties": {
+        "plugin": {
+          "$ref": "#/definitions/v1BriefPluginInfo"
+        },
+        "implemented_addons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ImplementedAddons"
+          }
+        }
+      },
+      "description": "*\nThe request value of the POST /v1/addons/identify,\nused when the plugin in the registration process implements\nthe extension point of the registered plugin."
+    },
+    "v1AddonsIdentifyResponse": {
+      "type": "object",
+      "properties": {
+        "res": {
+          "$ref": "#/definitions/v1Result"
+        }
+      },
+      "description": "*\nThe response value of the POST /v1/addons/identify,\nused when the plugin in the registration process implements\nthe extension point of the registered plugin."
+    },
+    "v1AddonsPoint": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "desc": {
+          "type": "string"
+        }
+      },
+      "description": "*\nmessage plugin declares extension point."
+    },
+    "v1BriefPluginInfo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "description": "*\nmessage brief plugin information."
+    },
+    "v1ConsoleEntry": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "entry": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ConsoleEntry"
+          }
+        },
+        "portal": {
+          "$ref": "#/definitions/v1ConsolePortal"
+        }
+      },
+      "description": "plugin console entry."
+    },
+    "v1ConsolePortal": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "tenant"
+      ],
+      "default": "admin",
+      "description": "console portal enum."
+    },
+    "v1CreateDeviceDataRelationAutoResponse": {
+      "type": "object",
+      "properties": {
+        "expressionObject": {
+          "type": "object",
+          "description": "关系表达式列表对象"
+        }
+      }
+    },
+    "v1CreateDeviceResponse": {
+      "type": "object",
+      "properties": {
+        "deviceObject": {
+          "type": "object",
+          "description": "设备对象",
+          "title": "api.core.v1.EntityResponse deviceObject = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: \"设备对象\"}];"
+        }
+      }
+    },
+    "v1CreateGroupResponse": {
+      "type": "object",
+      "properties": {
+        "groupObject": {
+          "type": "object",
+          "description": "设备组信息",
+          "title": "api.core.v1.EntityResponse groupObject = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: \"设备组信息\"}];"
+        }
+      }
+    },
+    "v1DeleteDeviceResponse": {
+      "type": "object",
+      "properties": {
+        "faildDelDevice": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1FaildDelDevice"
+          },
+          "description": "设备删除失败 数组"
+        }
+      }
+    },
+    "v1DeleteGroupResponse": {
+      "type": "object",
+      "properties": {
+        "faildDelGroup": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1FaildDelGroup"
+          },
+          "description": "设备组删除失败 数组"
+        }
+      }
+    },
+    "v1DeleteTemplateResponse": {
+      "type": "object",
+      "properties": {
+        "faildDelTemplate": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1FaildDelTemplate"
+          },
+          "description": "模板删除失败 数组"
+        }
+      }
+    },
+    "v1DeviceEntityBasicInfo": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "设备名称"
+        },
+        "customId": {
+          "type": "string",
+          "description": "设备自定义Id"
+        },
+        "description": {
+          "type": "string",
+          "description": "设备描述"
+        },
+        "parentId": {
+          "type": "string",
+          "description": "设备组ID"
+        },
+        "parentName": {
+          "type": "string",
+          "description": "设备组名称"
+        },
+        "directConnection": {
+          "type": "boolean",
+          "description": "设备是否直连"
+        },
+        "templateId": {
+          "type": "string",
+          "description": "设备模板ID"
+        },
+        "templateName": {
+          "type": "string",
+          "description": "设备模板名称"
+        },
+        "selfLearn": {
+          "type": "boolean",
+          "description": "设备模板自学习"
+        },
+        "ext": {
+          "type": "object",
+          "description": "设备扩展信息"
+        },
+        "extBusiness": {
+          "type": "object",
+          "description": "设备扩展业务"
+        }
+      },
+      "title": "------------------------------------------------------------------------------\nBasic data types\n------------------------------------------------------------------------------"
+    },
+    "v1Expression": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "当前设备属性 or 遥测id 路径"
+        },
+        "expression": {
+          "type": "string",
+          "description": "数据来源设备的路径：设备id + 属性or遥测id"
+        },
+        "description": {
+          "type": "string",
+          "description": "可用于承载id 与名称的映射 便于展示"
+        },
+        "name": {
+          "type": "string"
+        }
+      }
+    },
+    "v1FaildDelDevice": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "设备ID"
+        },
+        "reason": {
+          "type": "string",
+          "description": "原因"
+        }
+      }
+    },
+    "v1FaildDelGroup": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "设备组ID"
+        },
+        "reason": {
+          "type": "string",
+          "description": "原因"
+        }
+      }
+    },
+    "v1FaildDelTemplate": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "模板ID"
+        },
+        "reason": {
+          "type": "string",
+          "description": "原因"
+        }
+      }
+    },
+    "v1GetDeviceDataRelationResponse": {
+      "type": "object",
+      "properties": {
+        "expressions": {
+          "type": "object",
+          "description": "单个关系表达式"
+        }
+      }
+    },
+    "v1GetDeviceResponse": {
+      "type": "object",
+      "properties": {
+        "deviceObject": {
+          "type": "object",
+          "description": "设备对象",
+          "title": "api.core.v1.EntityResponse deviceObject = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: \"设备对象\"}];"
+        }
+      }
+    },
+    "v1GetGroupResponse": {
+      "type": "object",
+      "properties": {
+        "groupObject": {
+          "type": "object",
+          "description": "设备组信息",
+          "title": "api.core.v1.EntityResponse groupObject = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: \"设备组信息\"}];"
+        }
+      }
+    },
+    "v1GetGroupTreeResponse": {
+      "type": "object",
+      "properties": {
+        "GroupTree": {
+          "type": "object",
+          "description": "设备组列表树"
+        }
+      }
+    },
+    "v1GetTemplateAttributeResponse": {
+      "type": "object",
+      "properties": {
+        "templateAttrSingleObject": {
+          "type": "object",
+          "description": "单个属性对象",
+          "title": "api.core.v1.EntityResponse templateAttrSingleObject = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: \"单个属性对象\"}];"
+        }
+      }
+    },
+    "v1GetTemplateCommandResponse": {
+      "type": "object",
+      "properties": {
+        "templateCmdSingleObject": {
+          "type": "object",
+          "description": "单个命令对象",
+          "title": "api.core.v1.EntityResponse templateCmdSingleObject = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: \"单个命令对象\"}];"
+        }
+      }
+    },
+    "v1GetTemplateResponse": {
+      "type": "object",
+      "properties": {
+        "templateObject": {
+          "type": "object",
+          "description": "模板对象"
+        }
+      }
+    },
+    "v1GetTemplateTelemetryResponse": {
+      "type": "object",
+      "properties": {
+        "templateTeleSingleObject": {
+          "type": "object",
+          "description": "单个遥测对象",
+          "title": "api.core.v1.EntityResponse templateTeleSingleObject = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: \"单个遥测对象\"}];"
+        }
+      }
+    },
+    "v1GroupEntity": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "设备组名称"
+        },
+        "customId": {
+          "type": "string",
+          "description": "设备组自定义ID"
+        },
+        "description": {
+          "type": "string",
+          "description": "设备组说明"
+        },
+        "parentId": {
+          "type": "string",
+          "description": "父设备组ID"
+        },
+        "parentName": {
+          "type": "string",
+          "description": "父设备组名称"
+        },
+        "ext": {
+          "type": "object",
+          "description": "设备组扩展属性"
+        }
+      }
+    },
+    "v1IdentifyResponse": {
+      "type": "object",
+      "properties": {
+        "res": {
+          "$ref": "#/definitions/v1Result"
+        },
+        "plugin_id": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "tkeel_version": {
+          "type": "string"
+        },
+        "addons_point": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1AddonsPoint"
+          }
+        },
+        "implemented_plugin": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ImplementedPlugin"
+          }
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ConsoleEntry"
+          }
+        },
+        "dependence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1BriefPluginInfo"
+          }
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Permission"
+          }
+        },
+        "disable_manual_activation": {
+          "type": "boolean"
+        },
+        "profiles": {
+          "type": "string",
+          "format": "byte"
+        }
+      },
+      "description": "*\nThe response value of the GET /v1/identify,\nused when the plugin registered."
+    },
+    "v1ImplementedAddons": {
+      "type": "object",
+      "properties": {
+        "addons_point": {
+          "type": "string"
+        },
+        "implemented_endpoint": {
+          "type": "string"
+        }
+      },
+      "description": "*\nmessage plugin declares implemented other plugin extension point."
+    },
+    "v1ImplementedPlugin": {
+      "type": "object",
+      "properties": {
+        "plugin": {
+          "$ref": "#/definitions/v1BriefPluginInfo"
+        },
+        "addons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ImplementedAddons"
+          }
+        }
+      },
+      "description": "*\nmessage plugin implemented other plugin."
+    },
+    "v1ListDeviceDataRelationResponse": {
+      "type": "object",
+      "properties": {
+        "expressionObject": {
+          "type": "object",
+          "description": "关系表达式列表对象"
+        }
+      }
+    },
+    "v1ListDeviceResponse": {
+      "type": "object",
+      "properties": {
+        "listDeviceObject": {
+          "type": "object",
+          "description": "设备列表对象",
+          "title": "api.core.v1.ListEntityResponse listDeviceObject = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: \"设备列表对象\"}];"
+        }
+      }
+    },
+    "v1ListTemplateAttributeResponse": {
+      "type": "object",
+      "properties": {
+        "templateAttrObject": {
+          "type": "object",
+          "description": "属性列表对象",
+          "title": "repeated Attribute attributes = 3;\napi.core.v1.EntityResponse templateAttrObject = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: \"属性列表对象\"}];"
+        }
+      }
+    },
+    "v1ListTemplateCommandResponse": {
+      "type": "object",
+      "properties": {
+        "templateCmdObject": {
+          "type": "object",
+          "description": "命令列表对象",
+          "title": "api.core.v1.EntityResponse templateCmdObject = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: \"命令列表对象\"}];"
+        }
+      }
+    },
+    "v1ListTemplateTelemetryResponse": {
+      "type": "object",
+      "properties": {
+        "templateTeleObject": {
+          "type": "object",
+          "description": "遥测列表对象",
+          "title": "api.core.v1.EntityResponse templateTeleObject = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: \"遥测列表对象\"}];"
+        }
+      }
+    },
+    "v1Paths": {
+      "type": "object",
+      "properties": {
+        "paths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "path 字符串数组"
+        }
+      }
+    },
+    "v1Permission": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "dependences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PermissionDependence"
+          }
+        },
+        "desc": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Permission"
+          }
+        }
+      },
+      "description": "plugin define permission."
+    },
+    "v1PluginStatus": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN",
+        "WAIT_RUNNING",
+        "ERR_REGISTER",
+        "RUNNING"
+      ],
+      "default": "UNKNOWN",
+      "description": "*\nplugin state enum."
+    },
+    "v1Relation": {
+      "type": "object",
+      "properties": {
+        "curName": {
+          "type": "string",
+          "description": "当前设备名称"
+        },
+        "direction": {
+          "type": "string",
+          "description": "关系方向 from or to   目前只填： from"
+        },
+        "relationType": {
+          "type": "string",
+          "description": "关系类型 目前只填： contain"
+        },
+        "targetName": {
+          "type": "string",
+          "description": " 来源设备名称"
+        },
+        "targetId": {
+          "type": "string",
+          "description": "来源设备Id"
+        },
+        "targetType": {
+          "type": "string",
+          "description": "来源设备类型 目前只填:device"
+        }
+      }
+    },
+    "v1Result": {
+      "type": "object",
+      "properties": {
+        "ret": {
+          "$ref": "#/definitions/v1Retcode"
+        },
+        "msg": {
+          "type": "string"
+        }
+      },
+      "description": "*\nmessage result."
+    },
+    "v1Retcode": {
+      "type": "string",
+      "enum": [
+        "OK",
+        "BAD_REQEUST",
+        "INTERNAL_ERROR"
+      ],
+      "default": "OK",
+      "description": "*\nerror code enum."
+    },
+    "v1SetContent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "属性 or  命令 标识符id"
+        },
+        "value": {
+          "type": "object",
+          "description": "设置的 value"
+        }
+      }
+    },
+    "v1StatusResponse": {
+      "type": "object",
+      "properties": {
+        "res": {
+          "$ref": "#/definitions/v1Result"
+        },
+        "status": {
+          "$ref": "#/definitions/v1PluginStatus"
+        }
+      },
+      "description": "*\nThe request value of the GET /v1/Status.\nused when the tkeel checks the status of plugins regularly."
+    },
+    "v1TenantDisableRequest": {
+      "type": "object",
+      "properties": {
+        "tenant_id": {
+          "type": "string"
+        },
+        "extra": {
+          "type": "string",
+          "format": "byte"
+        }
+      },
+      "description": "*\nThe request value of the POST /v1/tenant/disable,\nused when the tenant administrator disables the plugin."
+    },
+    "v1TenantDisableResponse": {
+      "type": "object",
+      "properties": {
+        "res": {
+          "$ref": "#/definitions/v1Result"
+        }
+      },
+      "description": "*\nThe response value of the POST /v1/tenant/disable,\nused when the tenant administrator disables the plugin."
+    },
+    "v1TenantEnableRequest": {
+      "type": "object",
+      "properties": {
+        "tenant_id": {
+          "type": "string"
+        },
+        "extra": {
+          "type": "string",
+          "format": "byte"
+        }
+      },
+      "description": "*\nThe request value of the POST /v1/tenant/enable,\nused when the tenant administrator enables the plugin."
+    },
+    "v1TenantEnableResponse": {
+      "type": "object",
+      "properties": {
+        "res": {
+          "$ref": "#/definitions/v1Result"
+        }
+      },
+      "description": "*\nThe response value of the POST /v1/tenant/enable,\nused when the tenant administrator enables the plugin."
+    },
+    "v1UpdateDeviceResponse": {
+      "type": "object",
+      "properties": {
+        "deviceObject": {
+          "type": "object",
+          "description": "设备对象",
+          "title": "api.core.v1.EntityResponse deviceObject = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: \"设备对象\"}];"
+        }
+      }
+    },
+    "v1UpdateGroupResponse": {
+      "type": "object",
+      "properties": {
+        "groupObject": {
+          "type": "object",
+          "description": "设备组信息",
+          "title": "api.core.v1.EntityResponse groupObject = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: \"设备组信息\"}];"
+        }
+      }
+    },
+    "v1UpdateTemplateResponse": {
+      "type": "object",
+      "properties": {
+        "templateObject": {
+          "type": "object",
+          "description": "模板对象",
+          "title": "api.core.v1.EntityResponse templateObject = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: \"模板对象\"}];"
+        }
+      }
+    },
+    "v1listEntityExpression": {
+      "type": "object",
+      "properties": {
+        "expressions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Expression"
+          }
+        }
+      }
+    }
+  }
+}

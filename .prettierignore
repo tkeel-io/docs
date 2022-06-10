@@ -5,4 +5,4 @@ docs/
 blog/
 .yarn/
 
-!docs/develop_guide/plugin_develop/web_develop.md
+!(./docs/develop_guide/plugin_develop/web_develop.md)

@@ -22,6 +22,8 @@ post \tenants
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | admin |  | set tenant admin |      
+| auth_type | string | set tenant auth type: internal | external |      
+| id_provider_type | string | external auth type : OIDC | LDAP | SMAL |      
 | remark | string | tenant remark |      
 | tenant_id | string | tenant id |      
 | title | string | tenant title |   

@@ -1,7 +1,7 @@
 ---
-title: "ListRepoInstaller"
-description: '获取仓库中安装包列表接口'
----调用该接口获取仓库中安装包列表接口。
+title: "ListAllRepoInstaller"
+description: '获取所有仓库的安装包列表接口'
+---调用该接口获取所有仓库的安装包列表接口。
 
 
 
@@ -9,12 +9,8 @@ description: '获取仓库中安装包列表接口'
 
 
 ```
-get \repos\{repo}\installers
+get \repos\installers
 ```
-
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| repo | path | string | repo name |  
 
 ###  Request Parameters
 
@@ -32,9 +28,9 @@ get \repos\{repo}\installers
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | SUCC | Object | [v1ListRepoInstallerResponse](#v1ListRepoInstallerResponse) |
+| 200 | SUCC | Object | [v1ListAllRepoInstallerResponse](#v1ListAllRepoInstallerResponse) |
 
-#### v1ListRepoInstallerResponse
+#### v1ListAllRepoInstallerResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |         
@@ -56,7 +52,8 @@ get \repos\{repo}\installers
 | repo | string | installer repo |      
 | state |  | installer state |      
 | timestamp | string | last change chart timestamp |      
-| version | string | installer version |   
+| version | string | installer version |          
+| version_list | Array[v1VersionList] | installer version list [ 具体参数可见下面 [v1VersionList](#v1VersionList) ] |    
 
 ### v1InstallerObjectmaintainer
 | Name | Type | Description | 
@@ -65,17 +62,18 @@ get \repos\{repo}\installers
 | name | string | maintainer name |      
 | url | string | maintainer url |   
 
+### v1VersionList
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| create_time | string |  |      
+| version | string |  |   
+
 
 
 ### Response  400
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
 | 400 | INVALID_ARGUMENT | {   { }} |
-
-### Response  404
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 404 | REPO_NOT_FOUND | {   { }} |
 
 ### Response  500
 | Code3 | Description | Type | 

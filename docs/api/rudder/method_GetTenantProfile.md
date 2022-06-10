@@ -1,7 +1,7 @@
 ---
-title: "OauthAuthenticate"
-description: 'oauth authenticate with header Authorization'
----调用该接口oauth authenticate with header Authorization。
+title: "GetTenantProfile"
+description: 'get tenant profile'
+---调用该接口get tenant profile。
 
 
 
@@ -9,27 +9,33 @@ description: 'oauth authenticate with header Authorization'
 
 
 ```
-get \oauth\authenticate
+get \profile
 ```
+
+###  Request Parameters
+
+| Name | Located in | Type | Description |  Required |
+| ---- | ---------- | ----------- | ----------- |  ---- |
+| tenant_id | query | string |  |  false |
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [apioauthv1AuthenticateResponse](#apioauthv1AuthenticateResponse) |
+| 200 | OK | Object | [v1GetTenantProfileResponse](#v1GetTenantProfileResponse) |
 
-#### apioauthv1AuthenticateResponse
+#### v1GetTenantProfileResponse
 
 | Name | Type | Description | 
+| ---- | ---- | ----------- |         
+| tenant_profiles | Array[v1TenantProfiles] |  [ 具体参数可见下面 [v1TenantProfiles](#v1TenantProfiles) ] |    
+
+### v1TenantProfiles
+| Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| avatar | string |  |      
-| expires_in | string |  |      
-| external_id | string |  |      
-| nick_name | string |  |      
-| tenant_id | string |  |      
-| user_id | string |  |      
-| username | string |  |   
+| plugin_id | string |  |      
+| profiles | string |  |   
 
 
 

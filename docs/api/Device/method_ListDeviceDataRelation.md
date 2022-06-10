@@ -12,7 +12,7 @@ description: 'list data relation'
 
 
 ```
-get /devices/{id}/relations
+get /devices/{id}/relation
 ```
 
 
@@ -31,10 +31,26 @@ get /devices/{id}/relations
 
 ### Response  200
 
+ 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [v1ListDeviceDataRelationResponse](#v1ListDeviceDataRelationResponse) |
 
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | OK | {   { }} |
+#### v1ListDeviceDataRelationResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |    
+| expressionObject | Object | 关系表达式列表对象   |   
+
+
+  
+    
+          
+     
+ 
+ 
+
+
  
 
 

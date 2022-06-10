@@ -12,7 +12,7 @@ description: 'update data relation'
 
 
 ```
-put /devcies/{id}/relations
+put /devices/{id}/relation
 ```
 
 
@@ -31,15 +31,25 @@ put /devcies/{id}/relations
  
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 关系信息 | Object | [v1Relation](#v1Relation) |
+| 关系信息 | Object | [v1listEntityExpression](#v1listEntityExpression) |
 
-#### v1Relation
+#### v1listEntityExpression
 
 | Name | Type | Description | 
+| ---- | ---- | ----------- |         
+| expressions | Array[v1Expression] |  [ 具体参数可见下面 [v1Expression](#v1Expression) ] |    
+
+
+  
+       
+         
+### v1Expression
+| Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| direction | string | 关系方向 from or to   目前只有 from |      
-| relationType | string | 关系类型 目前只定 contain |      
-| targetId | string | 源 或 目标  实体Id |   
+| description | string | 可用于承载id 与名称的映射 便于展示 |      
+| expression | string | 数据来源设备的路径：设备id + 属性or遥测id |      
+| name | string |  |      
+| path | string | 当前设备属性 or 遥测id 路径 |   
 
 
   
@@ -47,6 +57,14 @@ put /devcies/{id}/relations
    
      
    
+     
+   
+     
+ 
+ 
+
+
+          
      
  
  

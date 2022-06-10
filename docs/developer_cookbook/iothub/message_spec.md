@@ -7,105 +7,34 @@ sidebar_position: 3
 - 支持三类上行数据（用户自定义数据， 属性， 遥测）
 - 支持两类下行数据（属性（可写）， 命令）
 
-### 用户自定义数据 API
+### 用户自定义数据
 #### 推送用户自定义数据到平台
 - topic： 合法的非平台预定义的 topic 均作为原始数据topic, 用户可以自定义。
 - payload： 上行原始数据可以是任意类型的数据， 比如 json, 二进制数据等用户自定义数据.
 
 
-### 属性数据 API
+### 属性数据
 属性API包括以下几种
 - 设备推送属性数据到平台
-- 设备获取平台属性
 - 设备订阅平台属性变化
 
 #### 设备推送属性数据到平台
-1. 一般的设备
+
 - topic: `v1/devices/me/attributes`
 - payload:
+
 ```json
 {
    "attribute1": "value1",
    "attribute2": "value2"
 }
 ```
- or（后续扩展支持）
-```json
-{
-   "ts": 1646964832292, //毫秒
-   "values": {
-      "attribute1": "value1",
-      "attribute2": "value2"
-   }
-}
-```
-2. 有下游设备的网关设备
-- topic: `v1/gateway/attributes`
-- payload:
-
-```json
-{
-    "deviceA": { //子设备名
-        "attribute1": "value1",
-        "attribute2": "value2"
-    },
-    "deviceB": { // 子设备名
-        "attribute1": "value1",
-        "attribute2": "value2"
-    }
-}
-```
-
-#### 设备获取平台属性
-1. 一般的设备
-
-**steps:**
-
-a. 设备订阅 topic: ` v1/devices/me/attributes/response/+`
-
-b. 设备发布 topic: `v1/devices/me/attributes/request/$request_id`, 其中$request_id为请求ID。payload:
-```json
-{
-    "keys": "attribute1,attribute2"
-}
-```
-c. 平台发布 topic: "v1/devices/me/attributes/response/$request_id", payload:
-```json
-{
-   "attribute1": "value1",
-   "attribute2": "value2"
-}
-```
-d. 设备收到平台发送的C的数据
-
-2. 有下游设备的网关设备
-
-**steps:**
-
-a. 设备订阅 topic: `v1/gateway/attributes/response`
-
-b. 设备发布 topic: `v1/gateway/attributes/request`,payload:
-```json
-{
-    "id": "$request_id",
-    "device": "device A",
-    "key": "attribute1"
-}
-```
-c. 平台发布 topic: "v1/gateway/attributes/response"。 payload:
-```json
-{
-    "id": "$request_id",
-    "device": "device A",
-    "value": "value1"
-}
-```
-d. 设备收到平台发送的C的数据
 
 #### 订阅平台属性变化
-1. 一般的设备
-设备订阅 topic： `v1/devices/me/attributes`
-平台推送的 payload：
+
+设备订阅 topic: `v1/devices/me/attributes`
+
+平台侧修改属性后设备侧会收到变更的属性 payload：
 ```json
 {
    "attribute1": "value1",
@@ -113,72 +42,23 @@ d. 设备收到平台发送的C的数据
 }
 ```
 
-2. 有下游设备的网关设备
-1. 一般的设备
-设备订阅 topic： `v1/gateway/attributes`
-平台推送的 payload：
-```json
-{
-   "device": "device A",
-   "data": {
-       "attribute1": "value1",
-       "attribute2": "value2"
-   }
-}
-```
-
-### 遥测数据 API
+### 遥测数据
 - 设备推送遥测数据到平台
-1. 一般的设备
 - topic: `v1/devices/me/telemetry`
 - payload:
 ```json
 {
-   "telemetry1": "value1"
+   "telemetry1": "value1",
    "telemetry2": "value2"
 }
 ```
 
- or（后续扩展支持）
-```json
-{
-   "ts": 1646964832292, //毫秒
-   "values": {
-        "telemetry1": "value1"
-        "telemetry2": "value2"
-   }
-}
-```
 
-2. 有下游设备的网关设备
-- topic: `v1/gateway/telemetry`
-- payload:
-```json
-{
-    "Device A": {
-        "ts":1483228800000, //毫秒
-        "values":{
-            "temperature":42,
-            "humidity":80
-        }
-    },
-    "Device B": {
-        "ts":1483228800000, //毫秒
-        "values":{
-            "temperature":42,
-            "humidity":80
-        }
-    }
-}
-```
+### 命令数据
 
-### 命令数据 API
+设备订阅topic: `v1/devices/me/commands`
 
-**steps:**
-
-a. 设备订阅topic: `1/devices/me/command/request/+`
-
-b. 平台发布topic: `v1/devices/me/command/request/$request_id`, payload:
+平台发送命令后在设备侧会收到如下信息 payload:
 ```json
 {
    "id": "ota",
@@ -188,15 +68,47 @@ b. 平台发布topic: `v1/devices/me/command/request/$request_id`, payload:
       "secret": "****",
       "http_method": "GET"
    },
-   "ts": 1646964832292 //毫秒
+   "ts": 1646964832292
 }
 ```
-c. 设备收到命令消息之后回复 topic: `v1/devices/me/command/response/$request_id`, payload:
+注：ts 为毫秒
+
+设备收到命令消息之后可以将执行结果发送到
+
+topic: `v1/devices/me/command/response`
+
+payload:
 ```json
 {
    "id": "ota",
-   "data": {
-       "success": true
+   "ota": {
+     "output": {
+       "success": true,
+       "ts": 12345
+     }
    }
 }
 ```
+
+### 反控数据
+设备订阅 v1/devices/me/raw
+
+平台推送数据到设备的 topic(v1/devices/me/raw)
+
+```
+Tips:
+命令跟反控的区别在于命令下发的是格式化的数据（json），而反控可以是任意的数据
+```
+
+### 注意
+
+对于有子设备的设备比如采集网关，其上报的遥测、属性及其他类型的数据可使用 key 进行区分如：
+
+```json
+{
+   "telemetry1_opcua": "value1",
+   "telemetry2_modbus": "value2"
+}
+```
+
+可以表示 telemetry1 来自 opcua, telemetry2 来自 modbus

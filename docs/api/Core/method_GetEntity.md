@@ -1,10 +1,7 @@
 ---
 title: "GetEntity"
 description: 'Get a entity'
----
-
-
-调用该接口Get a entity。
+---调用该接口Get a entity。
 
 
 
@@ -15,13 +12,9 @@ description: 'Get a entity'
 get /entities/{id}
 ```
 
-
-
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string | entity id |  
-
-
 
 ###  Request Parameters
 
@@ -31,15 +24,9 @@ get /entities/{id}
 | source | query | string | source id |  false |
 | owner | query | string | owner id |  false |
 
-
-
 ## Response
 
-
-
-### Response  200
-
- 
+### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [v1EntityResponse](#v1EntityResponse) |
@@ -49,66 +36,28 @@ get /entities/{id}
 | Name | Type | Description | 
 | ---- | ---- | ----------- |    
 | configs | Object | entity configs   |      
-| id | string | entity id |          
+| description | string | entity description |      
+| id | string | entity id |      
+| last_time | string | entity last modify timestamp |          
 | mappers | Array[v1Mapper] | entity mappers [ 具体参数可见下面 [v1Mapper](#v1Mapper) ] |       
 | owner | string | owner id |     
 | properties | Object | entity properties   |      
 | source | string | source id |      
-| type | string | entity type |   
+| template_id | string | entity template |      
+| type | string | entity type |      
+| version | string | entity version |   
 
-
-  
-    
-          
-     
-   
-     
-   
-       
-         
 ### v1Mapper
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | description | string | mapper description |      
 | id | string | mapper id |      
 | name | string | mapper name |      
-| tql_text | string | mapper tql text |   
+| tql | string | mapper tql text |   
 
 
-  
-     
-   
-     
-   
-     
-   
-     
- 
- 
 
-
-          
-     
-   
-     
-   
-    
-          
-     
-   
-     
-   
-     
- 
- 
-
-
- 
-
-
-### Response  default
-
- 
+### Response  default 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -121,32 +70,10 @@ get /entities/{id}
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-
-  
-     
-   
-       
-         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
-
-  
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
 
 

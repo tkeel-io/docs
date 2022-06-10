@@ -1,10 +1,7 @@
 ---
 title: "CreateSubscription"
 description: 'Create subscription'
----
-
-
-调用该接口Create subscription。
+---调用该接口Create subscription。
 
 
 
@@ -15,10 +12,6 @@ description: 'Create subscription'
 post /subscriptions
 ```
 
-
-
-
-
 ###  Request Parameters
 
 | Name | Located in | Type | Description |  Required |
@@ -27,12 +20,7 @@ post /subscriptions
 | source | query | string | source id |  false |
 | owner | query | string | owner id |  false |
 
-
-
-### Request Body
-
-
- 
+### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 | subscription object | Object | [v1SubscriptionObject](#v1SubscriptionObject) |
@@ -42,39 +30,19 @@ post /subscriptions
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | filter | string | filter |      
+| id | string | suscription id |      
 | mode | string | suscription mode |      
+| owner | string | suscription owner |      
 | pubsub_name | string | pubsub name |      
 | source | string | source id |      
 | target | string | target id |      
 | topic | string | topic name |   
 
 
-  
-     
-   
-     
-   
-     
-   
-     
-   
-     
-   
-     
- 
- 
-
-
-
-
 
 ## Response
 
-
-
-### Response  200
-
- 
+### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [v1SubscriptionResponse](#v1SubscriptionResponse) |
@@ -89,24 +57,8 @@ post /subscriptions
 | subscription |  | subscription object |   
 
 
-  
-     
-   
-     
-   
-     
-   
-     
- 
- 
 
-
- 
-
-
-### Response  default
-
- 
+### Response  default 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -119,32 +71,10 @@ post /subscriptions
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-
-  
-     
-   
-       
-         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
-
-  
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
 
 

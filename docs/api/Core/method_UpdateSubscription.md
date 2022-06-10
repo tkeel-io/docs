@@ -1,10 +1,7 @@
 ---
 title: "UpdateSubscription"
 description: 'Update subscription'
----
-
-
-调用该接口Update subscription。
+---调用该接口Update subscription。
 
 
 
@@ -15,13 +12,9 @@ description: 'Update subscription'
 put /subscriptions/{id}
 ```
 
-
-
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string | subscription id |  
-
-
 
 ###  Request Parameters
 
@@ -30,12 +23,7 @@ put /subscriptions/{id}
 | source | query | string | source id |  false |
 | owner | query | string | owner id |  false |
 
-
-
-### Request Body
-
-
- 
+### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 | subscription object | Object | [v1SubscriptionObject](#v1SubscriptionObject) |
@@ -45,39 +33,19 @@ put /subscriptions/{id}
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | filter | string | filter |      
+| id | string | suscription id |      
 | mode | string | suscription mode |      
+| owner | string | suscription owner |      
 | pubsub_name | string | pubsub name |      
 | source | string | source id |      
 | target | string | target id |      
 | topic | string | topic name |   
 
 
-  
-     
-   
-     
-   
-     
-   
-     
-   
-     
-   
-     
- 
- 
-
-
-
-
 
 ## Response
 
-
-
-### Response  200
-
- 
+### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [v1SubscriptionResponse](#v1SubscriptionResponse) |
@@ -92,24 +60,8 @@ put /subscriptions/{id}
 | subscription |  | subscription object |   
 
 
-  
-     
-   
-     
-   
-     
-   
-     
- 
- 
 
-
- 
-
-
-### Response  default
-
- 
+### Response  default 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -122,32 +74,10 @@ put /subscriptions/{id}
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-
-  
-     
-   
-       
-         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
-
-  
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
 
 

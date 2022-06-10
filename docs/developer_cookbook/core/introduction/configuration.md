@@ -25,10 +25,10 @@ server:
   app_id: core
   # sources 指定 core::runtime 的输入数据源
   sources:
-    - kafka://139.198.125.147:9092/core0/core
-    - kafka://139.198.125.147:9092/core1/core
-    - kafka://139.198.125.147:9092/core2/core
-    - kafka://139.198.125.147:9092/core3/core
+    - kafka://localhost:9092/core0/core
+    - kafka://localhost:9092/core1/core
+    - kafka://localhost:9092/core2/core
+    - kafka://localhost:9092/core3/core
 
 
 # logger 配置 服务的日志
@@ -95,14 +95,14 @@ dispatcher:
   upstreams:
   # 指定 dispatcher 模块的下游输出 stream 数据源，downstreams 是必须指定的，必须包含所有 core.server.sources
   downstreams:
-    - kafka://139.198.125.147:9092/core0/core
-    - kafka://139.198.125.147:9092/core1/core
-    - kafka://139.198.125.147:9092/core2/core
-    - kafka://139.198.125.147:9092/core3/core
-    - kafka://139.198.125.147:9092/core4/core
-    - kafka://139.198.125.147:9092/core5/core
-    - kafka://139.198.125.147:9092/core6/core
-    - kafka://139.198.125.147:9092/core7/core
+    - kafka://localhost:9092/core0/core
+    - kafka://localhost:9092/core1/core
+    - kafka://localhost:9092/core2/core
+    - kafka://localhost:9092/core3/core
+    - kafka://localhost:9092/core4/core
+    - kafka://localhost:9092/core5/core
+    - kafka://localhost:9092/core6/core
+    - kafka://localhost:9092/core7/core
 ```
 
 
@@ -117,6 +117,10 @@ dispatcher:
 |proxy_grpc_port|false|string| CMD | :31233 | 指定 Core 服务 api 回调模块Grpc的端口 |
 |etcd|false|string| CMD | http://localhost:2379 | 指定 Etcd 集群地址配置项 |
 |search_engine|false|string| CMD | es://admin:admin@elasticsearch-master:9200 | 指定搜索引擎集群地址配置项 |
+
+
+
+
 
 
 

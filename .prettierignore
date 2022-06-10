@@ -5,4 +5,4 @@ docs/
 blog/
 .yarn/
 
-!docs/developer_cookbook/tkeel_plugin/create_console.md
+!docs/develop_guide/plugin_develop/web_develop.md

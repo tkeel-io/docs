@@ -1,7 +1,7 @@
 ---
-title: "EntityTokenInfo"
-description: 'get a entity token info'
----调用该接口get a entity token info。
+title: "GetIdentityProvider"
+description: 'get identity provider'
+---调用该接口get identity provider。
 
 
 
@@ -9,29 +9,26 @@ description: 'get a entity token info'
 
 
 ```
-get \entity\info\{token}
+get \oauth\id-provider\{tenant_id}
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| token | path | string | entity token  path params |  
+| tenant_id | path | string |  |  
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1TokenInfoResponse](#v1TokenInfoResponse) |
+| 200 | OK | Object | [v1GetIdentityProviderResponse](#v1GetIdentityProviderResponse) |
 
-#### v1TokenInfoResponse
+#### v1GetIdentityProviderResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| created_at | string |  |      
-| entity_id | string |  |      
-| entity_type | string |  |      
-| expired_at | string |  |      
-| owner | string |  |   
+| config | string |  |      
+| type | string |  |   
 
 
 

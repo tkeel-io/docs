@@ -1,0 +1,2170 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "api/openapi/v1/server.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "Openapi"
+    },
+    {
+      "name": "Rules"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/addons/identify": {
+      "post": {
+        "summary": "openapi addons identify",
+        "operationId": "Identify",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1AddonsIdentifyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1AddonsIdentifyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Openapi"
+        ]
+      }
+    },
+    "/identify": {
+      "get": {
+        "summary": "openapi identify",
+        "operationId": "Identify",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1IdentifyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Openapi"
+        ]
+      }
+    },
+    "/rules": {
+      "get": {
+        "summary": "Query Rules",
+        "operationId": "QueryRule",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleRuleQueryResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page_num",
+            "description": "Page number",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "page_size",
+            "description": "Page size",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "order_by",
+            "description": "Order by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "is_descending",
+            "description": "Is descending",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "key_words",
+            "description": "Key words",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "search_key",
+            "description": "Search Key",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "id.value",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "name.value",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "description": "Type 1 for Message Data, 2 for Timeseries Data",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "status.value",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      },
+      "post": {
+        "summary": "Create Rule",
+        "operationId": "CreateRule",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleRuleCreateResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ruleRuleCreateReq"
+            }
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
+    "/rules/{id}": {
+      "get": {
+        "summary": "Get Rule",
+        "operationId": "GetRule",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleRule"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      },
+      "delete": {
+        "summary": "Delete Rule",
+        "operationId": "DeleteRule",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      },
+      "put": {
+        "summary": "Update Rule",
+        "operationId": "UpdateRule",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleRuleUpdateResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "desc": {
+                  "type": "string"
+                }
+              },
+              "title": "rule update"
+            }
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
+    "/rules/{id}/devices": {
+      "get": {
+        "summary": "Get Rule Devices",
+        "operationId": "GetRuleDevices",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleRuleDevicesResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "page_num",
+            "description": "Page number",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "page_size",
+            "description": "Page size",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "order_by",
+            "description": "Order by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "is_descending",
+            "description": "Is descending",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "key_words",
+            "description": "Key words",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "search_key",
+            "description": "Search Key",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      },
+      "delete": {
+        "summary": "Remove Devices From Rule",
+        "operationId": "RemoveDevicesFromRule",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "devices_ids",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      },
+      "post": {
+        "summary": "Add Devices to Rule",
+        "operationId": "AddDevicesToRule",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "devices_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
+    "/rules/{id}/devices_id_array": {
+      "get": {
+        "summary": "Get Rule Devices ID",
+        "operationId": "GetRuleDevicesID",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleRuleDevicesIDResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
+    "/rules/{id}/running_status": {
+      "put": {
+        "summary": "Switch Rule Status",
+        "operationId": "SwitchRuleStatus",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleRuleStatusSwitchResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "Status 1 for Running, 0 for Stopped"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
+    "/rules/{id}/subscribe/error": {
+      "delete": {
+        "summary": "Error UnSubscribe",
+        "operationId": "ErrUnsubscribe",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      },
+      "post": {
+        "summary": "Error Subscribe",
+        "operationId": "ErrSubscribe",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "subscribe_id": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      },
+      "put": {
+        "summary": "Change Error Subscribe",
+        "operationId": "ChangeErrSubscribe",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "subscribe_id": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
+    "/rules/{id}/target": {
+      "get": {
+        "summary": "List Rule Target",
+        "operationId": "ListRuleTarget",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleListRuleTargetResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "page_num",
+            "description": "Page number",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "page_size",
+            "description": "Page size",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "order_by",
+            "description": "Order by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "is_descending",
+            "description": "Is descending",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "key_words",
+            "description": "Key words",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "search_key",
+            "description": "Search Key",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      },
+      "post": {
+        "summary": "Create Rule Target",
+        "operationId": "CreateRuleTarget",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleCreateRuleTargetResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "type 1 for Kafka, 2 for Object-Storage"
+                },
+                "host": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                },
+                "table_name": {
+                  "type": "string",
+                  "title": "string ext = 5;"
+                },
+                "sink_type": {
+                  "type": "string"
+                },
+                "sink_id": {
+                  "type": "string"
+                },
+                "fields": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/ruleMapField"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
+    "/rules/{id}/target/{target_id}": {
+      "delete": {
+        "summary": "Delete Rule Target",
+        "operationId": "DeleteRuleTarget",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "target_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      },
+      "put": {
+        "summary": "Update Rule Target",
+        "operationId": "UpdateRuleTarget",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleUpdateRuleTargetResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "target_id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "host": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "string"
+                },
+                "sink_type": {
+                  "type": "string",
+                  "title": "string ext = 5;"
+                },
+                "sink_id": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
+    "/sink/{id}/maps": {
+      "get": {
+        "summary": "Get Table Map",
+        "operationId": "GetTableMap",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleASGetTableMapResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "table_name",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      },
+      "put": {
+        "summary": "Update Table Map",
+        "operationId": "UpdateTableMap",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleASUpdateTableMapResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "target_id": {
+                  "type": "string"
+                },
+                "table_name": {
+                  "type": "string"
+                },
+                "fields": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/ruleMapField"
+                  }
+                }
+              },
+              "description": "update table map."
+            }
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
+    "/sink/{id}/tables": {
+      "get": {
+        "summary": "Table List",
+        "operationId": "TableList",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleASTableListResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
+    "/sink/{id}/tables/{table_name}": {
+      "get": {
+        "summary": "Get Table Details",
+        "operationId": "GetTableDetails",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleASGetTableDetailsResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "table_name",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
+    "/status": {
+      "get": {
+        "summary": "openapi status",
+        "operationId": "Status",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1StatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Openapi"
+        ]
+      }
+    },
+    "/tenant/disable": {
+      "post": {
+        "summary": "openapi tenant disable",
+        "operationId": "TenantDisable",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1TenantDisableResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1TenantDisableRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Openapi"
+        ]
+      }
+    },
+    "/tenant/enable": {
+      "post": {
+        "summary": "openapi tenant enable",
+        "operationId": "TenantEnable",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1TenantEnableResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1TenantEnableRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Openapi"
+        ]
+      }
+    },
+    "/testing/kafka": {
+      "get": {
+        "summary": "Test Kafka config",
+        "operationId": "TesyConnectToKafka",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "host",
+            "description": "Try to connect to kafka server address, split by ','",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "topic",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
+    "/verify/{sink_type}": {
+      "post": {
+        "summary": "Action Verify",
+        "operationId": "ActionVerify",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleASVerifyResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "sink_type",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "urls": {
+                  "type": "string",
+                  "title": "delimiter : ';'"
+                },
+                "user_id": {
+                  "type": "string"
+                },
+                "meta": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "title": "meta用于储存不同类型的特有信息，如chronus需要user，和password"
+                }
+              },
+              "description": "verify."
+            }
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "PermissionDependence": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "desc": {
+          "type": "string",
+          "description": "ID\u003e/authority ID.The content in \u003c\u003e is variable."
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "ruleASGetTableDetailsResp": {
+      "type": "object",
+      "properties": {
+        "table": {
+          "$ref": "#/definitions/ruleTable"
+        }
+      }
+    },
+    "ruleASGetTableMapResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "table_name": {
+          "type": "string"
+        },
+        "table_fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ruleField"
+          }
+        },
+        "map_fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ruleMapField"
+          }
+        }
+      }
+    },
+    "ruleASTableListResp": {
+      "type": "object",
+      "properties": {
+        "tables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ruleTable"
+          }
+        }
+      }
+    },
+    "ruleASUpdateTableMapResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "target_id": {
+          "type": "string"
+        },
+        "table_name": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ruleMapField"
+          }
+        }
+      }
+    },
+    "ruleASVerifyResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ruleCreateRuleTargetResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int64",
+          "description": "type 1 for Kafka, 2 for Object-Storage"
+        },
+        "host": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "table_name": {
+          "type": "string",
+          "title": "string ext = 5;"
+        },
+        "sink_type": {
+          "type": "string"
+        },
+        "sink_id": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ruleMapField"
+          }
+        },
+        "user": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "database": {
+          "type": "string"
+        },
+        "endpoint": {
+          "type": "string"
+        }
+      }
+    },
+    "ruleDevice": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "template": {
+          "type": "string"
+        },
+        "group_name": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "ruleField": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "isPK": {
+          "type": "boolean"
+        }
+      }
+    },
+    "ruleListRuleTargetResp": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Total",
+          "required": [
+            "total"
+          ]
+        },
+        "page_num": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Page number",
+          "required": [
+            "page_num"
+          ]
+        },
+        "last_page": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Last page",
+          "required": [
+            "last_page"
+          ]
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Page size",
+          "required": [
+            "page_size"
+          ]
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ruleCreateRuleTargetResp"
+          }
+        }
+      },
+      "required": [
+        "total",
+        "page_num",
+        "last_page",
+        "page_size"
+      ]
+    },
+    "ruleMapField": {
+      "type": "object",
+      "properties": {
+        "t_field": {
+          "$ref": "#/definitions/ruleField"
+        },
+        "m_field": {
+          "$ref": "#/definitions/ruleField"
+        }
+      }
+    },
+    "ruleRule": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "desc": {
+          "type": "string"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Type 1 for Message Data, 2 for Timeseries Data"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "int64",
+          "description": "创建时间"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "int64",
+          "description": "更新时间"
+        },
+        "devices_status": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "targets_status": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "sub_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "model_id": {
+          "type": "string",
+          "description": "模板id"
+        },
+        "model_name": {
+          "type": "string",
+          "description": "模板名称"
+        }
+      }
+    },
+    "ruleRuleCreateReq": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "desc": {
+          "type": "string"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Type 1 for Message Data, 2 for Timeseries Data"
+        },
+        "model_id": {
+          "type": "string"
+        },
+        "model_name": {
+          "type": "string"
+        }
+      },
+      "description": "Rule create."
+    },
+    "ruleRuleCreateResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "desc": {
+          "type": "string"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Type 1 for Message Data, 2 for Timeseries Data"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Status 1 for Running, 0 for Stopped"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "int64",
+          "description": "创建时间"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "int64",
+          "description": "更新时间"
+        },
+        "model_id": {
+          "type": "string",
+          "description": "模板id"
+        },
+        "model_name": {
+          "type": "string",
+          "description": "模板名称"
+        }
+      }
+    },
+    "ruleRuleDevicesIDResp": {
+      "type": "object",
+      "properties": {
+        "devices_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "ruleRuleDevicesResp": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Total",
+          "required": [
+            "total"
+          ]
+        },
+        "page_num": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Page number",
+          "required": [
+            "page_num"
+          ]
+        },
+        "last_page": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Last page",
+          "required": [
+            "last_page"
+          ]
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Page size",
+          "required": [
+            "page_size"
+          ]
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ruleDevice"
+          }
+        }
+      },
+      "required": [
+        "total",
+        "page_num",
+        "last_page",
+        "page_size"
+      ]
+    },
+    "ruleRuleQueryResp": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Total",
+          "required": [
+            "total"
+          ]
+        },
+        "page_num": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Page number",
+          "required": [
+            "page_num"
+          ]
+        },
+        "last_page": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Last page",
+          "required": [
+            "last_page"
+          ]
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Page size",
+          "required": [
+            "page_size"
+          ]
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ruleRule"
+          }
+        }
+      },
+      "required": [
+        "total",
+        "page_num",
+        "last_page",
+        "page_size"
+      ]
+    },
+    "ruleRuleStatusSwitchResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Status 1 for Running, 0 for Stopped"
+        }
+      }
+    },
+    "ruleRuleUpdateResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "desc": {
+          "type": "string"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Type 1 for Message Data, 2 for Timeseries Data"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "int64",
+          "description": "创建时间"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "int64",
+          "description": "更新时间"
+        },
+        "model_id": {
+          "type": "string",
+          "description": "模板id"
+        },
+        "model_name": {
+          "type": "string",
+          "description": "模板名称"
+        }
+      }
+    },
+    "ruleString": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "ruleTable": {
+      "type": "object",
+      "properties": {
+        "Name": {
+          "type": "string"
+        },
+        "Sql": {
+          "type": "string"
+        },
+        "Engine": {
+          "type": "string"
+        },
+        "Partitions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "OrderBy": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "TTL": {
+          "type": "string"
+        },
+        "IndexGranularity": {
+          "type": "string",
+          "format": "int64"
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ruleField"
+          }
+        }
+      }
+    },
+    "ruleUint32": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "ruleUint64": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "ruleUpdateRuleTargetResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "host": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        },
+        "sink_type": {
+          "type": "string",
+          "title": "string ext = 5;"
+        },
+        "sink_id": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ruleMapField"
+          }
+        }
+      }
+    },
+    "v1AddonsIdentifyRequest": {
+      "type": "object",
+      "properties": {
+        "plugin": {
+          "$ref": "#/definitions/v1BriefPluginInfo"
+        },
+        "implemented_addons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ImplementedAddons"
+          }
+        }
+      },
+      "description": "*\nThe request value of the POST /v1/addons/identify,\nused when the plugin in the registration process implements\nthe extension point of the registered plugin."
+    },
+    "v1AddonsIdentifyResponse": {
+      "type": "object",
+      "properties": {
+        "res": {
+          "$ref": "#/definitions/v1Result"
+        }
+      },
+      "description": "*\nThe response value of the POST /v1/addons/identify,\nused when the plugin in the registration process implements\nthe extension point of the registered plugin."
+    },
+    "v1AddonsPoint": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "desc": {
+          "type": "string"
+        }
+      },
+      "description": "*\nmessage plugin declares extension point."
+    },
+    "v1BriefPluginInfo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "description": "*\nmessage brief plugin information."
+    },
+    "v1ConsoleEntry": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "entry": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ConsoleEntry"
+          }
+        }
+      },
+      "description": "plugin console entry."
+    },
+    "v1IdentifyResponse": {
+      "type": "object",
+      "properties": {
+        "res": {
+          "$ref": "#/definitions/v1Result"
+        },
+        "plugin_id": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "tkeel_version": {
+          "type": "string"
+        },
+        "addons_point": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1AddonsPoint"
+          }
+        },
+        "implemented_plugin": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ImplementedPlugin"
+          }
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ConsoleEntry"
+          }
+        },
+        "dependence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1BriefPluginInfo"
+          }
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Permission"
+          }
+        }
+      },
+      "description": "*\nThe response value of the GET /v1/identify,\nused when the plugin registered."
+    },
+    "v1ImplementedAddons": {
+      "type": "object",
+      "properties": {
+        "addons_point": {
+          "type": "string"
+        },
+        "implemented_endpoint": {
+          "type": "string"
+        }
+      },
+      "description": "*\nmessage plugin declares implemented other plugin extension point."
+    },
+    "v1ImplementedPlugin": {
+      "type": "object",
+      "properties": {
+        "plugin": {
+          "$ref": "#/definitions/v1BriefPluginInfo"
+        },
+        "addons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ImplementedAddons"
+          }
+        }
+      },
+      "description": "*\nmessage plugin implemented other plugin."
+    },
+    "v1Permission": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "dependences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PermissionDependence"
+          }
+        },
+        "desc": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Permission"
+          }
+        }
+      },
+      "description": "plugin define permission."
+    },
+    "v1PluginStatus": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN",
+        "WAIT_RUNNING",
+        "ERR_REGISTER",
+        "RUNNING"
+      ],
+      "default": "UNKNOWN",
+      "description": "*\nplugin state enum."
+    },
+    "v1Result": {
+      "type": "object",
+      "properties": {
+        "ret": {
+          "$ref": "#/definitions/v1Retcode"
+        },
+        "msg": {
+          "type": "string"
+        }
+      },
+      "description": "*\nmessage result."
+    },
+    "v1Retcode": {
+      "type": "string",
+      "enum": [
+        "OK",
+        "BAD_REQEUST",
+        "INTERNAL_ERROR"
+      ],
+      "default": "OK",
+      "description": "*\nerror code enum."
+    },
+    "v1StatusResponse": {
+      "type": "object",
+      "properties": {
+        "res": {
+          "$ref": "#/definitions/v1Result"
+        },
+        "status": {
+          "$ref": "#/definitions/v1PluginStatus"
+        }
+      },
+      "description": "*\nThe request value of the GET /v1/Status.\nused when the tkeel checks the status of plugins regularly."
+    },
+    "v1TenantDisableRequest": {
+      "type": "object",
+      "properties": {
+        "tenant_id": {
+          "type": "string"
+        },
+        "extra": {
+          "type": "string",
+          "format": "byte"
+        }
+      },
+      "description": "*\nThe request value of the POST /v1/tenant/disable,\nused when the tenant administrator disables the plugin."
+    },
+    "v1TenantDisableResponse": {
+      "type": "object",
+      "properties": {
+        "res": {
+          "$ref": "#/definitions/v1Result"
+        }
+      },
+      "description": "*\nThe response value of the POST /v1/tenant/disable,\nused when the tenant administrator disables the plugin."
+    },
+    "v1TenantEnableRequest": {
+      "type": "object",
+      "properties": {
+        "tenant_id": {
+          "type": "string"
+        },
+        "extra": {
+          "type": "string",
+          "format": "byte"
+        }
+      },
+      "description": "*\nThe request value of the POST /v1/tenant/enable,\nused when the tenant administrator enables the plugin."
+    },
+    "v1TenantEnableResponse": {
+      "type": "object",
+      "properties": {
+        "res": {
+          "$ref": "#/definitions/v1Result"
+        }
+      },
+      "description": "*\nThe response value of the POST /v1/tenant/enable,\nused when the tenant administrator enables the plugin."
+    }
+  }
+}

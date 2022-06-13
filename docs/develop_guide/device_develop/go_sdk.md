@@ -1,6 +1,5 @@
 ---
-sidebar_position: 20
-title: GO 语言 SDK 开发
+sidebar_position: 20 title: GO 语言 SDK 开发
 ---
 
 本文为您介绍如何使用 GO 语言开发设备 [SDK](https://github.com/tkeel-io/device-sdk-go)
@@ -15,7 +14,6 @@ title: GO 语言 SDK 开发
 ### Go 环境
 
 [golang](https://go.dev/dl/) version: 1.16+
-
 
 ## 导入示例代码
 
@@ -59,7 +57,7 @@ v := `{"temperature": 26.0}`
 cli.PublishTelemetry(ctx, v)
 ```
 
-## 如何反控设备  
+## 如何反控设备
 
 平台发送给设备的数据分为三种类型：
 
@@ -72,6 +70,7 @@ cli.PublishTelemetry(ctx, v)
 ### 原始数据
 
 #### 订阅原始数据 topic
+
 ```go
 // 创建默认的 client
 _brokerAddr := "tcp://139.198.112.150:1883"
@@ -83,23 +82,29 @@ _ = cli.SubscribeRaw(context.TODO(), rawTopicHandler)
 ```
 
 #### 原始数据处理
+
 ```go
 // 收到原始数据后对应的处理函数
-func rawTopicHandler(cli paho.Client, message paho.Message) {
+func rawTopicHandler(message client.Message) (interface{}, error) {
     fmt.Printf("rawTopic=%s\n", string(message.Payload()))
+    return nil, nil
 }
 ```
 
 #### Payload 样例
-```json
-{"value":"12"}
-```
-value 为固定的格式 12 为平台下发的原始数据
 
+```json
+{
+  "value": "12"
+}
+```
+
+value 为固定的格式 12 为平台下发的原始数据
 
 ### 属性数据
 
 #### 订阅属性数据 topic
+
 ```go
 // 创建默认的 client
 _brokerAddr := "tcp://139.198.112.150:1883"
@@ -109,23 +114,31 @@ cli.Connect()
 // 订阅属性，平台会将变更的属性（值的变化）推送到相应的 topic
 _ = cli.SubscribeAttribute(context.TODO(), attributesTopicHandler)
 ```
+
 #### 属性数据处理
+
 ```go
 // 收到属性数据后对应的处理函数
-func attributesTopicHandler(cli paho.Client, message paho.Message) {
+func attributesTopicHandler(message client.Message) (interface{}, error) {
     fmt.Printf("attributes=%s\n", string(message.Payload()))
+    return nil, nil
 }
 ```
 
 #### Payload 样例
+
 ```json
-{"humidity":"12"}
+{
+  "humidity": "12"
+}
 ```
+
 上述样例数据代表该设备的 humidity 发生更改且更改后的值为12
 
 ### 命令
 
 #### 订阅命令 topic
+
 ```go
 // 创建默认的 client
 _brokerAddr := "tcp://139.198.112.150:1883"
@@ -137,23 +150,27 @@ _ = cli.SubscribeCommand(context.TODO(), commandsTopicHandler)
 ```
 
 #### 命令处理
+
 ```go
 // 收到命令后对应的处理函数
-func commandsTopicHandler(cli paho.Client, message paho.Message) {
-    // 在这里处理与设备的交互
+func commandsTopicHandler(message client.Message) (interface{}, error) {
     fmt.Printf("commands=%s\n", string(message.Payload()))
+    return "success", nil
 }
 ```
+
 #### Payload 样例
+
 ```json
 {
-    "hello":{
-        "input":{
-            "temp":12.3
-        }
+  "hello": {
+    "input": {
+      "temp": 12.3
     }
+  }
 }
 ```
-hello 代表命令名称 input 代表输入参数 temp 代表了输入参数的 key
+
+hello 代表命令名称 input 代表输入参数 temp 代表了输入参数的 key，如果 commandsTopicHandler 返回的值不为 nil 那么SDK 会将返回的值相应给 平台
 
 ## 如何通过API查询修改设备

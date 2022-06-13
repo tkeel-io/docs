@@ -30,6 +30,7 @@ get \tenants\exact
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
+| auth_type | string |  |      
 | tenant_id | string |  |      
 | title | string |  |   
 

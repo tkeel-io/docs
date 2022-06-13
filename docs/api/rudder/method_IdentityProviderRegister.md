@@ -1,7 +1,7 @@
 ---
-title: "GetTenant"
-description: 'get a tenant'
----调用该接口get a tenant。
+title: "IdentityProviderRegister"
+description: 'identity provider register'
+---调用该接口identity provider register。
 
 
 
@@ -9,36 +9,39 @@ description: 'get a tenant'
 
 
 ```
-get \tenants\{tenant_id}
+post \oauth\id-provider\register\{tenant_id}
 ```
 
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
-| tenant_id | path | string | tenant id |  
+| tenant_id | path | string |  |  
+
+### Request Body 
+| Description | Type | Schema |
+| ----------- | ------ | ------ |
+|  | Object | [v1IdProviderRegisterRequestBody](#v1IdProviderRegisterRequestBody) |
+
+#### v1IdProviderRegisterRequestBody
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| config | string |  |      
+| type | string |  |   
+
+
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1GetTenantResponse](#v1GetTenantResponse) |
+| 200 | OK | Object | [v1IdProviderRegisterResponse](#v1IdProviderRegisterResponse) |
 
-#### v1GetTenantResponse
+#### v1IdProviderRegisterResponse
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |         
-| admins | Array[v1TenantAdmin] | admins in tenant [ 具体参数可见下面 [v1TenantAdmin](#v1TenantAdmin) ] |       
-| created_at | string | tenant remark |      
-| num_user | integer | user number in tenant |      
-| remark | string | tenant remark |      
-| tenant_id | string | tenant id |      
-| title | string | tenant title |   
-
-### v1TenantAdmin
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| password | string |  Tenant Admin password  |      
-| username | string |  Tenant Admin username  |   
+| registered | boolean |  |   
 
 
 

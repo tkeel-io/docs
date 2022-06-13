@@ -1,7 +1,7 @@
 ---
-title: "ListTenant"
-description: 'tenant list'
----调用该接口tenant list。
+title: "GetTenant"
+description: 'get a tenant'
+---调用该接口get a tenant。
 
 
 
@@ -9,45 +9,31 @@ description: 'tenant list'
 
 
 ```
-get \tenants
+get \tenants\{tenant_id}
 ```
 
-###  Request Parameters
-
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| page_num | query | integer |  |  false |
-| page_size | query | integer |  |  false |
-| order_by | query | string |  |  false |
-| is_descending | query | boolean |  |  false |
-| key_words | query | string |  |  false |
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| tenant_id | path | string | tenant id |  
 
 ## Response
 
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListTenantResponse](#v1ListTenantResponse) |
+| 200 | OK | Object | [v1GetTenantResponse](#v1GetTenantResponse) |
 
-#### v1ListTenantResponse
+#### v1GetTenantResponse
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| page_num | integer |  |      
-| page_size | integer |  |          
-| tenants | Array[v1TenantDetail] | tenants [ 具体参数可见下面 [v1TenantDetail](#v1TenantDetail) ] |       
-| total | integer |  |   
-
-### v1TenantDetail
 | Name | Type | Description | 
 | ---- | ---- | ----------- |         
 | admins | Array[v1TenantAdmin] | admins in tenant [ 具体参数可见下面 [v1TenantAdmin](#v1TenantAdmin) ] |       
-| created_at | string | user number in tenant |      
+| auth_type | string | auth type : internal / external |      
+| created_at | string | tenant remark |      
 | num_user | integer | user number in tenant |      
-| remark | string | tenant remark |         
-| roles | Array[ string ] | user roles in tenant |       
+| remark | string | tenant remark |      
 | tenant_id | string | tenant id |      
-| title | string | tenant id |   
+| title | string | tenant title |   
 
 ### v1TenantAdmin
 | Name | Type | Description | 

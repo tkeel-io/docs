@@ -171,6 +171,37 @@ func commandsTopicHandler(message client.Message) (interface{}, error) {
 }
 ```
 
-hello 代表命令名称 input 代表输入参数 temp 代表了输入参数的 key，如果 commandsTopicHandler 返回的值不为 nil 那么SDK 会将返回的值相应给 平台
+hello 代表命令名称 input 代表输入参数 temp 代表了输入参数的 key，如果 commandsTopicHandler 
+返回的值不为 nil 那么SDK 会将返回的值上传到平台
 
 ## 如何通过API查询修改设备
+
+1. 创建设备
+2. 设备上线（使用SDK）
+3. 创建命令
+4. 下发命令
+
+### 创建设备
+平台创建![](../../../static/images/iothub/create_device.jpg)
+
+[API 参考](https://docs.tkeel.io/api/Device/method_CreateDevice)
+### 设备上线
+使用 [SDK](https://github.com/tkeel-io/device-sdk-go) 上线设备
+
+
+### 创建命令
+平台创建![](../../../static/images/iothub/create_cmd.png)
+[API 参考](https://docs.tkeel.io/api/Device/method_AddTemplateCommand)
+
+### 下发命令
+平台创建![](../../../static/images/iothub/invoke_cmd.jpg)
+
+[API 参考](https://docs.tkeel.io/api/Device/method_SetDeviceCommand)
+
+### 设备执行结果响应
+执行结果响应![](../../../static/images/iothub/cmd_resp.jpg)
+
+
+
+
+

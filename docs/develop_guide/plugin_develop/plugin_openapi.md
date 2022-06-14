@@ -12,25 +12,25 @@ OpenAPI 是一套用于 tKeel 平台中插件与平台进行交互的一套 HTTP
 > API 定义查看：[OpenAPI 定义](#openapi-define)
 
 ### Identify 端点
-[Identify](./plugin_openapi_desc.md#identify)  接口是插件在被安装进平台后，平台等待插件运行状态为 RUNNING 时访问的接口。
+[Identify](#identify)  接口是插件在被安装进平台后，平台等待插件运行状态为 RUNNING 时访问的接口。
 
 该接口主要是平台向插件获取一些必要的信息和插件调用平台部分功能所必须定义的权限、菜单、扩展点或者计量资源等。
 
 通过该接口，平台将插件需要平台帮忙扩展的功能点在平台中定义和初始化，插件才能在平台中运行起来。
 
 ### Status 端点
-[Status](./plugin_openapi_desc.md#status) 接口是插件的状态接口，通过访问该接口，平台可以获取到插件当前的运行状态，并根据运行状态通知网关决定是否需要服务降级等流量控制处理。
+[Status](#status) 接口是插件的状态接口，通过访问该接口，平台可以获取到插件当前的运行状态，并根据运行状态通知网关决定是否需要服务降级等流量控制处理。
 
 ### Tenant-enable 端点
-[Tenant-enable](./plugin_openapi_desc.md#tenant-enable) 接口是平台中的租户启用插件时，平台主动调用的一个接口，平台通过这个接口将租户的必要信息传递给插件，希望插件能够在自身内部完成对当前启用的租户进行初始化数据或者恢复数据等操作。
+[Tenant-enable](#tenant-enable) 接口是平台中的租户启用插件时，平台主动调用的一个接口，平台通过这个接口将租户的必要信息传递给插件，希望插件能够在自身内部完成对当前启用的租户进行初始化数据或者恢复数据等操作。
 
 > 平台的租户管理是一套宽松的协定，插件需自身维护租户的数据，租户数据的隔离需要插件自身处理。平台仅在网关处对未启用租户的访问进行限制。
 
 ### Tenant-disable 端点
-[Tenant-disable](./plugin_openapi_desc.md#tenant-disable) 接口是平台中租户停用插件时，平台主动调用的一个接口，平台通过这个接口将租户的必要信息传递给插件，希望插件能够在自身内部完成对当前停用的租户进行删除数据或者备份数据等操作。
+[Tenant-disable](#tenant-disable) 接口是平台中租户停用插件时，平台主动调用的一个接口，平台通过这个接口将租户的必要信息传递给插件，希望插件能够在自身内部完成对当前停用的租户进行删除数据或者备份数据等操作。
 
 ### Addons-Identify 端点
-[Addons-identify](./plugin_openapi_desc.md#addons-identify) 接口是用于扩展点的确认所使用的。用于通知插件扩展点已被实现，具体流程如下：
+[Addons-identify](#addons-identify) 接口是用于扩展点的确认所使用的。用于通知插件扩展点已被实现，具体流程如下：
 
 ![addons_identify](/images/docs/addons_identify.png)
 

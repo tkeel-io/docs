@@ -50,9 +50,9 @@ release |  |            |       |           |         |   enable | |
 
 
 ## 创建插件
-tKeel 的插件开发十分简单，tKeel 仅要求插件遵守 [**OpenAPI**](plugin_openapi_desc.md) 规范即可，同时我们借助了 dapr 的能力，让开发者无需担忧 runtime 的问题，可以让开发者使用自己最熟悉和最习惯的编程语言进行开发，这可以有效地降低将已有系统或应用改造为 tKeel 插件的难度。
+tKeel 的插件开发十分简单，tKeel 仅要求插件遵守 [**OpenAPI**](plugin_openapi.md) 规范即可，同时我们借助了 dapr 的能力，让开发者无需担忧 runtime 的问题，可以让开发者使用自己最熟悉和最习惯的编程语言进行开发，这可以有效地降低将已有系统或应用改造为 tKeel 插件的难度。
 
-我们也提供了一个极佳的脚手架工具 -- [**Artisan**](../tools/artisan.md)，通过工具我们可以从零开始快速的构造一个 tKeel 插件的 go 项目模板（详情点击[参考](./create.md)）。
+我们也提供了一个极佳的脚手架工具 -- [**Artisan**](../tools/artisan.md)，通过工具我们可以从零开始快速的构造一个 tKeel 插件的 go 项目模板（详情点击[参考](../../developer_cookbook/tkeel_plugin/create.md)）。
 
 ## 插件交互
 tKeel 插件是平级关系，已经安装并注册的插件就是为平台提供了一个新的功能，即扩展了平台的功能。插件与插件间的调用其实就是插件调用平台的某个功能。对于在 Core 中流转的数据则通过 Core 与插件间建立的 channel 直接交互。

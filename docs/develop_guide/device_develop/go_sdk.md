@@ -1,5 +1,6 @@
 ---
-sidebar_position: 20 title: GO 语言 SDK 开发
+title: GO 语言 SDK 开发
+sidebar_position: 20
 ---
 
 本文为您介绍如何使用 GO 语言开发设备 [SDK](https://github.com/tkeel-io/device-sdk-go)

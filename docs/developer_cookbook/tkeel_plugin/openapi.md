@@ -8,7 +8,7 @@ OpenAPI 是一套用于 tKeel 平台中插件与平台进行交互的一套 HTTP
 
 通过在不同生命周期中平台与 OpenAPI 进行交互来管理插件的行为。
 
-> API 定义查看：[OpenAPI 定义](./plugin_openapi.md#openapi-define)
+> API 定义查看：[OpenAPI 定义](../../develop_guide/plugin_develop/plugin_openapi.md#openapi-define)
 
 ## Identify
 Identify 接口是插件在被安装进平台后，平台等待插件运行状态为 RUNNING 时访问的接口。

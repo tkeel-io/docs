@@ -14,7 +14,7 @@ title: 插件打包制作指南
 - [Kubernetes 的基本概念](https://kubernetes.io/zh/docs/home/)
 
 2. 插件功能：
-- [实现 OPENAPI 的端点](plugin_openapi_desc.md)
+- [实现 OPENAPI 的端点](plugin_openapi.md)
 - 必要的 Kubernetes 的 Workloads(Deployment,StatefulSets等可被注入的部署策略)
 
 3. 环境

@@ -149,7 +149,7 @@ curl -XPOST "http://${KEEL_SERVICE}:${KEEL_PORT}/apis/rudder/v1/plugins/${PLUGIN
 
 > 备注：
 >
-> 示例中展示了一个完整的安装请求，其中各个参数的信息请参考[API 文档](../api/Rudder/method_InstallPlugin.md)
+> 示例中展示了一个完整的安装请求，其中各个参数的信息请参考[API 文档](../api/rudder/method_InstallPlugin.md)
 >
 > 示例中变量默认值为：
 >  `PLUGIN_ID=hello-tkeel`

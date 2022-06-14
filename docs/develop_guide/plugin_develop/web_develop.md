@@ -3,11 +3,15 @@ sidebar_position: 40
 title: 前端插件开发
 ---
 
-# 创建前端界面插件
+本文为您介绍如何如何开发 tKeel 前端插件。
+
+## 介绍
 
 tKeel 的整个前端控制台分为 portal（也可以被称为基座、主应用）和 plugin（也可以被称为插件 、子应用、微应用），整个前端是一个基于 [qiankun（乾坤）](https://github.com/umijs/qiankun) 的微前端架构系统。
 
-整个 tKeel 控制台分为「管理平台」和「租户/用户平台」 2 个平台，因此 portal 也有 2 个：admin (tkeel-console-portal-admin) 和 tenant (tkeel-console-portal-tenant)。后面若没有说明是 admin 还是 tenant ，均默认为 tenant ，admin 同理。
+整个 tKeel 控制台分为「管理平台」和「租户/用户平台」 2 个平台，因此 portal 也有 2 个：admin ( `tkeel-console-portal-admin` ) 和 tenant ( `tkeel-console-portal-tenant` )。后面若没有说明是 admin 还是 tenant ，均默认为 tenant ，admin 同理。
+
+## 适用场景
 
 ## 前提条件
 
@@ -113,7 +117,7 @@ interface PortalProps {
   portalName: 'admin' | 'tenant'; // 当前运行在什么 portal
   client: {
     themeName: string; // 主题名称
-    theme: Record<string, unknown>; // 主题
+    theme: Record<string, any>; // 主题
     tenantInfo: TenantInfo; // 租户信息
     tokenInfo: TokenInfo; // token 信息
     toast: ToastFunction; // 显示 toast 提示函数，比如提示操作成功、失败等
@@ -190,5 +194,3 @@ interface ToastFunction extends ToastBaseFunction {
 ### Vue.js
 
 [console-plugin-vue-example](https://github.com/tkeel-io/console-plugin-vue-example)
-
-

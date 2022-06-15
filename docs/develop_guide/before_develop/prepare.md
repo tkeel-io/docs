@@ -18,7 +18,6 @@ title: 准备工作
 
 ###  推荐阅读
 
-- [设备接入方式](../device_develop/access_way)
 - [Go SDK](../device_develop/go_sdk)
 
 
@@ -36,7 +35,6 @@ title: 准备工作
 ###  推荐阅读
 
 - [数据使用方式](../data_develop/data_way)
-- [数据订阅开发](../data_develop/subscribe_develop)
 
 
 ## 插件开发

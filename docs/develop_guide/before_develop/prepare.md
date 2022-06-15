@@ -18,7 +18,6 @@ title: 准备工作
 
 ###  推荐阅读
 
-- [设备接入方式](../device_develop/access_way)
 - [Go SDK](../device_develop/go_sdk)
 
 
@@ -36,7 +35,6 @@ title: 准备工作
 ###  推荐阅读
 
 - [数据使用方式](../data_develop/data_way)
-- [数据订阅开发](../data_develop/subscribe_develop)
 
 
 ## 插件开发
@@ -56,7 +54,7 @@ title: 准备工作
 
 ###  推荐阅读
 
-- [编译部署插件](../plugin_develop/build_deploy)
-- [功能插件开发](../plugin_develop/function_develop)
-- [前端插件开发](../plugin_develop/web_develop)
-- [扩展数据使用方式](../plugin_develop/data_way)
+- [编译部署插件](../plugin_develop/plugin_chart.md)
+- [功能插件开发](../plugin_develop/function_develop.md)
+- [前端插件开发](../plugin_develop/web_develop.md)
+- [扩展数据使用方式](../data_develop/data_way.md)

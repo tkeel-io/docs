@@ -12,7 +12,7 @@ title: 插件扩展开发
 2. tkeel-cal-add: 加法插件，插件提供 add 接口来实现 tkeel-cal 插件的 calc-int-x-y 扩展点，通过将 x 和 y 相加再返回具体的结果给 tkeel-cal 插件。
 3. tkeel-cal-mul: 乘法插件，插件提供 mul 接口来实现 tkeel-cal 插件的 calc-int-x-y 扩展点，通过将 x 和 y相乘在返回具体的结果给 tkeel-cal 插件。
 
-插件的扩展功能依赖于OpenAPI的扩展机制，详细定义请参阅 Addons-Identify(./plugin_openapi_desc.md#addons-identify)。
+插件的扩展功能依赖于OpenAPI的扩展机制，详细定义请参阅 Addons-Identify(./plugin_openapi.md#addons-identify)。
 
 ## 架构设计
 
@@ -23,7 +23,7 @@ title: 插件扩展开发
 
 1. tkeel-cal 声明`calc-int-x-y`扩展点
    
-在 tkeel-cal 的 [OpenAPI](../../appendix/openapi.md) 中声明一个扩展点 `calc-int-x-y`
+在 tkeel-cal 的 [OpenAPI](./plugin_openapi.md#openapi-define) 中声明一个扩展点 `calc-int-x-y`
 
 ```jsx title="https://github.com/tkeel-io/quickstarts/blob/main/tkeel-addons/tkeel-calc/tkeel-calc.py#L24-L29"
 "addons_points": [
@@ -36,7 +36,7 @@ title: 插件扩展开发
 
 2. tkeel-cal-add 声明实现 `calc-int-x-y` 扩展点
 
-在 tkeel-cal-add 的 [OpenAPI](../../appendix/openapi.md) 中声明实现 `add` 端点使用 `calc-int-x-y` 扩展点
+在 tkeel-cal-add 的 [OpenAPI](./plugin_openapi.md#openapi-define) 中声明实现 `add` 端点使用 `calc-int-x-y` 扩展点
 
 ```jsx title="https://github.com/tkeel-io/quickstarts/blob/main/tkeel-addons/tkeel-calc-add/tkeel-calc-add.py#L23-L28"
 "addons": [
@@ -50,7 +50,7 @@ title: 插件扩展开发
 
 3. tkeel-cal-mul 声明实现 `calc-int-x-y` 扩展点
 
-在 tkeel-cal-mul 的 [OpenAPI](../../appendix/openapi.md) 中声明实现 `mul` 端点使用 `calc-int-x-y` 扩展点
+在 tkeel-cal-mul 的 [OpenAPI](./plugin_openapi.md#openapi-define) 中声明实现 `mul` 端点使用 `calc-int-x-y` 扩展点
 
 ```jsx title="https://github.com/tkeel-io/quickstarts/blob/main/tkeel-addons/tkeel-calc-mul/tkeel-calc-mul.py#L23-L28"
 "addons": [

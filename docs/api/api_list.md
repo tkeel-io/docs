@@ -21,5 +21,5 @@ sidebar_position: 10
 
 租户平台包括以下API：
 - 租户API：包含[用户管理](./rudder/tag.md#Tenant)、[权限管理](./rudder/tag.md#RBAC)
-- 设备API：包含[设备服务及映射服务](./device/tag.md#device)、[设备组服务](./device/tag.md#group)、[设备模板服务](./device/tag.md#template)
+- 设备API：包含[设备服务及映射服务](#device)、[设备组服务](#group)、[设备模板服务](#template)
 - 数据服务API：包含[数据查询](./core_broker/tag.md#subscribe)、[订阅管理](./core_broker/tag.md#subscribe)、[数据路由](./rule_manager/tag.md#Rule)、[前端Websocket订阅](./appendix/websocket.md#sequence)

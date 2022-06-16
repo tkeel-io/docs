@@ -11,11 +11,11 @@ sidebar_position: 0
 
 | Name |  Description | 
 | ---- |  ----------- | 
-| [Client_ListClient](./method_Client_ListClient)|   |
-| [Client_CreateClient](./method_Client_CreateClient)|   |
-| [Client_UpdateClient](./method_Client_UpdateClient)|   |
 | [Client_GetClient](./method_Client_GetClient)|   |
 | [Client_DeleteClient](./method_Client_DeleteClient)|   |
+| [Client_UpdateClient](./method_Client_UpdateClient)|   |
+| [Client_ListClient](./method_Client_ListClient)|   |
+| [Client_CreateClient](./method_Client_CreateClient)|   |
 
 
 ## Config API{#Config}
@@ -31,20 +31,20 @@ TKEEL_COMMENT
 
 | Name |  Description | 
 | ---- |  ----------- | 
-| [Status](./method_Status)|  openapi status |
-| [Identify](./method_Identify)|  openapi addons identify |
-| [Identify](./method_Identify)|  openapi identify |
-| [TenantEnable](./method_TenantEnable)|  openapi tenant enable |
 | [TenantDisable](./method_TenantDisable)|  openapi tenant disable |
+| [Identify](./method_Identify)|  openapi addons identify |
+| [TenantEnable](./method_TenantEnable)|  openapi tenant enable |
+| [Identify](./method_Identify)|  openapi identify |
+| [Status](./method_Status)|  openapi status |
 
 
 ## Plugin API{#Plugin}
 
 | Name |  Description | 
 | ---- |  ----------- | 
-| [Plugin_LoginPlugin](./method_Plugin_LoginPlugin)|  TKEEL_COMMENT
-{"response":{"raw_data":true}} |
 | [Plugin_PingPlugin](./method_Plugin_PingPlugin)|  TKEEL_COMMENT
+{"response":{"raw_data":true}} |
+| [Plugin_LoginPlugin](./method_Plugin_LoginPlugin)|  TKEEL_COMMENT
 {"response":{"raw_data":true}} |
 | [Plugin_CloseProxyPlugin](./method_Plugin_CloseProxyPlugin)|  TKEEL_COMMENT
 {"response":{"raw_data":true}} |
@@ -58,31 +58,31 @@ TKEEL_COMMENT
 | ---- |  ----------- | 
 | [Private_ListPrivate](./method_Private_ListPrivate)|   |
 | [Private_CreatePrivate](./method_Private_CreatePrivate)|   |
+| [Private_UpdatePrivate](./method_Private_UpdatePrivate)|   |
 | [Private_GetPrivate](./method_Private_GetPrivate)|   |
 | [Private_DeletePrivate](./method_Private_DeletePrivate)|   |
-| [Private_UpdatePrivate](./method_Private_UpdatePrivate)|   |
 
 
 ## Proxy API{#Proxy}
 
 | Name |  Description | 
 | ---- |  ----------- | 
-| [Proxy_ListProxy](./method_Proxy_ListProxy)|   |
-| [Proxy_CreateProxy](./method_Proxy_CreateProxy)|   |
+| [Proxy_GetProxy](./method_Proxy_GetProxy)|   |
 | [Proxy_DeleteProxy](./method_Proxy_DeleteProxy)|   |
 | [Proxy_UpdateProxy](./method_Proxy_UpdateProxy)|   |
-| [Proxy_GetProxy](./method_Proxy_GetProxy)|   |
+| [Proxy_ListProxy](./method_Proxy_ListProxy)|   |
+| [Proxy_CreateProxy](./method_Proxy_CreateProxy)|   |
 
 
 ## Tools API{#Tools}
 
 | Name |  Description | 
 | ---- |  ----------- | 
-| [Tools_Template](./method_Tools_Template)|   |
-| [Tools_Import](./method_Tools_Import)|  TKEEL_COMMENT
-{"request":{"raw_data":true}} |
 | [Tools_Export](./method_Tools_Export)|  TKEEL_COMMENT
 {"request":{"raw_data":true}} |
+| [Tools_Import](./method_Tools_Import)|  TKEEL_COMMENT
+{"request":{"raw_data":true}} |
+| [Tools_Template](./method_Tools_Template)|   |
 
 
 ## Topology API{#Topology}

@@ -1043,8 +1043,7 @@
           "type": "string"
         },
         "desc": {
-          "type": "string",
-          "description": "ID\u003e/authority ID.The content in \u003c\u003e is variable."
+          "type": "string"
         }
       }
     },

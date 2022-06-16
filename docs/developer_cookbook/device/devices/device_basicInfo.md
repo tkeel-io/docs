@@ -1044,7 +1044,7 @@ response
 
 ### 5.2 根据模板自动生成关系
 
-自动构建数据映射关系：
+自动构建数据映射关系(相当于创建一个测点的hook  有就映射  没有就不管)：
 
 
 
@@ -1170,3 +1170,271 @@ resoponse
 }
 ```
 
+### 6、设备数据查询
+
+#### 6.1 查询设备基础信息
+
+API：
+
+```
+GET  /devices/{id}/basicInfo
+```
+
+example
+
+request
+
+```json
+curl --location --request GET '127.0.0.1:31234/v1/devices/iotd-003cc454-9eb5-4a91-90d4-690a16f785b9/basicInfo' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1NTM1MDQxNCwic3ViIjoidXNyLWY0ZTFiMDY4YWE3YzE4YzFiNjQxYjJhNTA2OTUifQ.BuK6FUnlkbxIBBse_UahjbkGJhSZsLh8ByGwUwW0W4nrht7oNyBWw9pc7unAz9m-fRbIIep7m_DOrFinrFy68Q' \
+--data-raw ''
+```
+
+response
+
+```json
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/api.device.v1.GetDeviceBasicInfoResponse",
+        "basicInfoObject": {
+            "description": "test",                                                     //设备说明
+            "directConnection": true,                                                  // 是否直连
+            "ext": {                                                                   //扩展信息  
+                "commany": "qingcloud",
+                "location": "wuhan"
+            },
+            "extBusiness": {                                                           //扩展业务
+                "net_proxy": {                                                         //网络代理服务业务
+                },
+                "stor": { 															   //存储服务业务
+                },
+                "xxx": {}                                                              //其他拓展业务
+            },
+            "name": "sensor1",                                                         //设备名称
+            "parentId": "",                                                            //设备组ID
+            "parentName": "",                                                          //设备组名称
+            "selfLearn": false,                                                        //自学习开关
+            "templateId": "935b39e4-11fc-43d7-9c08-0eab66f94cc5",                      //设备模板Id
+            "templateName": ""                                                         //模板名称
+        }
+    }
+```
+
+
+
+#### 6.2 查询设备系统信息
+
+API
+
+```
+GET /devices/{id}/sysInfo
+```
+
+example
+
+request
+
+```json
+curl --location --request GET '127.0.0.1:31234/v1/devices/iotd-003cc454-9eb5-4a91-90d4-690a16f785b9/sysInfo' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1NTM1MDQxNCwic3ViIjoidXNyLWY0ZTFiMDY4YWE3YzE4YzFiNjQxYjJhNTA2OTUifQ.BuK6FUnlkbxIBBse_UahjbkGJhSZsLh8ByGwUwW0W4nrht7oNyBWw9pc7unAz9m-fRbIIep7m_DOrFinrFy68Q' \
+--data-raw ''
+```
+
+respones
+
+```json
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/api.device.v1.GetDeviceSysInfoResponse",
+        "sysInfoObject": {
+            "_createdAt": 1644461780472115700,                                   //创建时间
+            "_enable": true,                                                     //禁用or 启用  （暂未使用）
+            "_id": "bba16255-bf35-468a-b000-25181bfcdb02",                       //设备实体ID
+            "_owner": "usr-33737945c2b718db4c309d633d2f",                        //所有者(用户id)
+            "_tenantId":"xxxx",                                                  //租户id
+            "_source": "device",                                                 //来源插件
+            "_spacePath": "bba16255-bf35-468a-b000-25181bfcdb02",                //空间路径，内容由所有上层父ID（设备组）拼接而成，（此处没有设备组故是自己的id）。
+            "_status": "offline",                                                //状态 (在线online、离线offline、模拟在线SimulatedOline 、禁用disable）
+            "_subscribeAddr": "mqp://127.0.0.1:5672/abc",                        //订阅地址   如果为空"" 表示没有订阅 
+            "_token": "OGIxMTdlMTYtZWE5Yy0zNDE4LWE3YTktYjhiM2U3Yzk3YzE1",        //连接的token  
+            "_updatedAt": 1644461780472115700                                    //更新时间
+        }
+    }
+}
+```
+
+
+
+#### 6.3 查询设备连接接信息
+
+API
+
+```
+GET /devices/{id}/connectInfo
+```
+
+example
+
+request
+
+```json
+curl --location --request GET '127.0.0.1:31234/v1/devices/iotd-003cc454-9eb5-4a91-90d4-690a16f785b9/connectInfo' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1NTM1MDQxNCwic3ViIjoidXNyLWY0ZTFiMDY4YWE3YzE4YzFiNjQxYjJhNTA2OTUifQ.BuK6FUnlkbxIBBse_UahjbkGJhSZsLh8ByGwUwW0W4nrht7oNyBWw9pc7unAz9m-fRbIIep7m_DOrFinrFy68Q' \
+--data-raw ''
+```
+
+response
+
+```json
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/api.device.v1.GetDeviceConnectInfoResponse",
+        "connectInfoObject": {
+            "_clientId": "iotd-1234ddd",                                               	//mqtt 用户id
+            "_online": true,															//在线 、离线（连接状态）               
+            "_owner": "",																//所有者
+            "_peerHost": "10.10.137.64", 												//ip
+            "_protocol": "mqtt", 														//协议类型
+            "_sockPort": "1883",														//端口
+            "_timestamp": 1655350213821, 												//连接时间
+            "_userName": "iotd-003cc454-9eb5-4a91-90d4-690a16f785b9" 					//设备id 
+        }
+    }
+}
+```
+
+
+
+#### 6.4 查询设备原始数据
+
+API
+
+```
+GET /devices/{id}/rawData
+```
+
+example
+
+request
+
+```json
+curl --location --request GET '127.0.0.1:31234/v1/devices/iotd-003cc454-9eb5-4a91-90d4-690a16f785b9/rawData' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1NTM1MDQxNCwic3ViIjoidXNyLWY0ZTFiMDY4YWE3YzE4YzFiNjQxYjJhNTA2OTUifQ.BuK6FUnlkbxIBBse_UahjbkGJhSZsLh8ByGwUwW0W4nrht7oNyBWw9pc7unAz9m-fRbIIep7m_DOrFinrFy68Q' \
+--data-raw ''
+```
+
+response
+
+```json
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/api.device.v1.GetDeviceRawDataResponse",
+        "rawDataObject": {
+            "id": "iotd-003cc454-9eb5-4a91-90d4-690a16f785b9",                      //设备id
+            "mark": "upstream", 												    //upstream 上行;downstream 下行;connecting 连接
+            "path": "iotd-003cc454-9eb5-4a91-90d4-690a16f785b9/v1/devices/me/telemetry", //topic
+            "ts": 1655359716343,                                                    //时间戳
+            "type": "telemetry",                                                    //数据分类 ：属性attribute   遥测telemetry
+            "values": "eyAKInRlbGVtZXRyeTEiOjEyMzYsCiAgICJ0YiI6MzYwfQ=="            //数据的basic64 转码
+        }
+    }
+}
+```
+
+
+
+#### 6.5 查询设备属性数据
+
+API
+
+```
+GET /devices/{id}/attributeData
+```
+
+example
+
+request
+
+```json
+curl --location --request GET '127.0.0.1:31234/v1/devices/iotd-003cc454-9eb5-4a91-90d4-690a16f785b9/attributeData' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1NTM1MDQxNCwic3ViIjoidXNyLWY0ZTFiMDY4YWE3YzE4YzFiNjQxYjJhNTA2OTUifQ.BuK6FUnlkbxIBBse_UahjbkGJhSZsLh8ByGwUwW0W4nrht7oNyBWw9pc7unAz9m-fRbIIep7m_DOrFinrFy68Q' \
+--data-raw ''
+```
+
+response
+
+```json
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/api.device.v1.GetDeviceAttributeDataResponse",
+        "attributeDataObject": {
+            "attribute1": 32,                                    //kv 数据结构    “attribute1” 表示数据名（平台属性ID） ，32 为int 型值
+            "s1": "read"                                         //kv 数据结构    “s1” 表示数据名（平台属性ID）， “read”为string 型值
+        }
+    }
+}
+```
+
+
+
+#### 
+
+#### 6.6 查询设备遥测数据
+
+API
+
+```
+GET /devices/{id}/telemetryData
+```
+
+example
+
+request
+
+```json
+curl --location --request GET '127.0.0.1:31234/v1/devices/iotd-003cc454-9eb5-4a91-90d4-690a16f785b9/telemetryData' \
+--header 'Content-Type: application/json' \
+--header 'Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJ0a2VlbCIsImV4cCI6MTY1NTM1MDQxNCwic3ViIjoidXNyLWY0ZTFiMDY4YWE3YzE4YzFiNjQxYjJhNTA2OTUifQ.BuK6FUnlkbxIBBse_UahjbkGJhSZsLh8ByGwUwW0W4nrht7oNyBWw9pc7unAz9m-fRbIIep7m_DOrFinrFy68Q' \
+--data-raw ''
+```
+
+response
+
+```json
+{
+    "code": "io.tkeel.SUCCESS",
+    "msg": "",
+    "data": {
+        "@type": "type.googleapis.com/api.device.v1.GetDeviceTelemetryDataResponse",
+        "telemetryDataObject": {
+            "tb": {                                                     //数据名（平台遥测ID）
+                "ts": 1655350044530,                                    //时间戳  
+                "value": 360                                            //值     
+            },
+            "telemetry1": {                                             //数据名（平台遥测ID）
+                "ts": 1655350044530,                                    //时间戳     
+                "value": 1236                                           //值
+            }
+        }
+    }
+}
+```
+
+
+
+#### 

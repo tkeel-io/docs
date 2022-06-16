@@ -37,7 +37,7 @@ git clone git@github.com:${OWNER}/${REPO}.git
 	TkeelVersion: "v0.3.0",
 }
 ```
-修改为对应的值，具体参考 [OPENAPI](../appendix/openapi.md) 规范。
+修改为对应的值，具体参考 [OPENAPI](../develop_guide/plugin_develop/plugin_openapi.md#openapi-define) 规范。
 
 3. 替换完成后运行
 

@@ -1,5 +1,6 @@
 ---
-title: GO 语言 SDK 设备接入 sidebar_position: 20
+title: GO 语言 SDK 设备接入 
+sidebar_position: 20
 ---
 
 本文为您介绍如何使用 GO 语言 [SDK](https://github.com/tkeel-io/device-sdk-go) 接入设备

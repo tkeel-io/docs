@@ -79,7 +79,7 @@ get /identify
 ### PermissionDependence
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| desc | string | ID>/authority ID.The content in <> is variable. |      
+| desc | string |  |      
 | path | string |  |   
 
 

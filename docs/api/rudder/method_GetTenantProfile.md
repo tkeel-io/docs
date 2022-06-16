@@ -1,15 +1,14 @@
 ---
 title: "GetTenantProfile"
 description: 'get tenant profile'
----调用该接口get tenant profile。
-
-
+---
+调用该接口get tenant profile。
 
 ## Request
 
 
 ```
-get \profile
+get /profile
 ```
 
 ###  Request Parameters

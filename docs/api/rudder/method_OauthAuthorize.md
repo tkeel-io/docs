@@ -1,15 +1,14 @@
 ---
 title: "OauthAuthorize"
 description: 'oauth authorize code with username and password'
----调用该接口oauth authorize code with username and password。
-
-
+---
+调用该接口oauth authorize code with username and password。
 
 ## Request
 
 
 ```
-get \oauth\{tenant_id}\authorize
+get /oauth/{tenant_id}/authorize
 ```
 
 | Name | Located in | Type | Description | 

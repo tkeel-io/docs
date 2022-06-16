@@ -1,9 +1,8 @@
 ---
 title: "ChangeErrSubscribe"
 description: 'Change Error Subscribe'
----调用该接口Change Error Subscribe。
-
-
+---
+调用该接口Change Error Subscribe。
 
 ## Request
 

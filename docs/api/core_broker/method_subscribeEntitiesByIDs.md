@@ -1,9 +1,8 @@
 ---
 title: "subscribeEntitiesByIDs"
 description: 'add subscribe entities by ids'
----调用该接口add subscribe entities by ids。
-
-
+---
+调用该接口add subscribe entities by ids。
 
 ## Request
 

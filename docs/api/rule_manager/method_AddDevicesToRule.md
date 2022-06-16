@@ -1,9 +1,8 @@
 ---
 title: "AddDevicesToRule"
 description: 'Add Devices to Rule'
----调用该接口Add Devices to Rule。
-
-
+---
+调用该接口Add Devices to Rule。
 
 ## Request
 

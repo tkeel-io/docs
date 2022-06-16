@@ -1,38 +1,44 @@
 ---
-title: "AddTemplateAttribute"
-description: 'add Template attribute'
+title: "TenantDisable"
+description: 'openapi tenant disable'
 ---
-调用该接口add Template attribute。
+调用该接口openapi tenant disable。
 
 ## Request
 
 
 ```
-post /templates/{uid}/attribute
+post /tenant/disable
 ```
-
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| uid | path | string | 模板ID |  
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-| 属性对象 | Object | [](#) |
+|  | Object | [v1TenantDisableRequest](#v1TenantDisableRequest) |
 
-#### 
+#### v1TenantDisableRequest
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |  
+| ---- | ---- | ----------- |     
+| extra | string |  |      
+| tenant_id | string |  |   
 
 
 
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | OK | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [v1TenantDisableResponse](#v1TenantDisableResponse) |
+
+#### v1TenantDisableResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| res |  |  |   
+
+
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

@@ -1,15 +1,14 @@
 ---
 title: "GetRole"
 description: 'Get role in tenant '
----调用该接口Get role in tenant 。
-
-
+---
+调用该接口Get role in tenant 。
 
 ## Request
 
 
 ```
-get \rbac\roles\{id}
+get /rbac/roles/{id}
 ```
 
 | Name | Located in | Type | Description | 

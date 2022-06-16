@@ -1,15 +1,14 @@
 ---
 title: "TMAddRoleBinding"
 description: 'TM add policy'
----调用该接口TM add policy。
-
-
+---
+调用该接口TM add policy。
 
 ## Request
 
 
 ```
-post \tkeel-manager\rbac\binding
+post /tkeel-manager/rbac/binding
 ```
 
 ### Request Body 

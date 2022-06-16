@@ -1,9 +1,8 @@
 ---
 title: "CreateEntity"
 description: 'Create a entity'
----调用该接口Create a entity。
-
-
+---
+调用该接口Create a entity。
 
 ## Request
 

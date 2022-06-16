@@ -1,9 +1,8 @@
 ---
 title: "UpdateTableMap"
 description: 'Update Table Map'
----调用该接口Update Table Map。
-
-
+---
+调用该接口Update Table Map。
 
 ## Request
 

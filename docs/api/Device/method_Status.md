@@ -1,38 +1,31 @@
 ---
-title: "AddTemplateAttribute"
-description: 'add Template attribute'
+title: "Status"
+description: 'openapi status'
 ---
-调用该接口add Template attribute。
+调用该接口openapi status。
 
 ## Request
 
 
 ```
-post /templates/{uid}/attribute
+get /status
 ```
-
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| uid | path | string | 模板ID |  
-
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-| 属性对象 | Object | [](#) |
-
-#### 
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
-
 
 ## Response
 
-### Response  200
-| Code3 | Description | Type | 
-| ---- | ----------- | ------ | 
-| 200 | OK | {   { }} |
+### Response  200 
+| Code2 | Description | Type | Schema |
+| ---- | ----------- | ------ | ------ |
+| 200 | OK | Object | [v1StatusResponse](#v1StatusResponse) |
+
+#### v1StatusResponse
+
+| Name | Type | Description | 
+| ---- | ---- | ----------- |     
+| res |  |  |      
+| status |  |  |   
+
+
 
 ### Response  default 
 | Code2 | Description | Type | Schema |

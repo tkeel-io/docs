@@ -1,15 +1,14 @@
 ---
 title: "ListAllRepoInstaller"
 description: '获取所有仓库的安装包列表接口'
----调用该接口获取所有仓库的安装包列表接口。
-
-
+---
+调用该接口获取所有仓库的安装包列表接口。
 
 ## Request
 
 
 ```
-get \repos\installers
+get /repos/installers
 ```
 
 ###  Request Parameters

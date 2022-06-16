@@ -1,9 +1,8 @@
 ---
 title: "ErrUnsubscribe"
 description: 'Error UnSubscribe'
----调用该接口Error UnSubscribe。
-
-
+---
+调用该接口Error UnSubscribe。
 
 ## Request
 

@@ -1,15 +1,14 @@
 ---
 title: "DeleteUser"
 description: 'delete a user'
----调用该接口delete a user。
-
-
+---
+调用该接口delete a user。
 
 ## Request
 
 
 ```
-delete \tenants\{tenant_id}\users\{user_id}
+delete /tenants/{tenant_id}/users/{user_id}
 ```
 
 | Name | Located in | Type | Description | 

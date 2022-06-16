@@ -1,9 +1,8 @@
 ---
 title: "DeleteEntity"
 description: 'Delete a entity'
----调用该接口Delete a entity。
-
-
+---
+调用该接口Delete a entity。
 
 ## Request
 

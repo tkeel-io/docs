@@ -1,9 +1,8 @@
 ---
 title: "subscribeEntitiesByGroups"
 description: 'add subscribe entities by groups'
----调用该接口add subscribe entities by groups。
-
-
+---
+调用该接口add subscribe entities by groups。
 
 ## Request
 

@@ -1,9 +1,8 @@
 ---
 title: "RemoveExpression"
 description: 'remove expression from entity'
----调用该接口remove expression from entity。
-
-
+---
+调用该接口remove expression from entity。
 
 ## Request
 

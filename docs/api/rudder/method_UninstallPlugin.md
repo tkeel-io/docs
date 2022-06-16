@@ -1,15 +1,14 @@
 ---
 title: "UninstallPlugin"
 description: '卸载插件接口'
----调用该接口卸载插件接口。
-
-
+---
+调用该接口卸载插件接口。
 
 ## Request
 
 
 ```
-delete \plugins\{id}
+delete /plugins/{id}
 ```
 
 | Name | Located in | Type | Description | 

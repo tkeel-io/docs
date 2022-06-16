@@ -1,9 +1,8 @@
 ---
 title: "getSubscribe"
 description: 'get subscribe'
----调用该接口get subscribe。
-
-
+---
+调用该接口get subscribe。
 
 ## Request
 

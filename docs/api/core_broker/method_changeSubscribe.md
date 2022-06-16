@@ -1,9 +1,8 @@
 ---
 title: "changeSubscribe"
 description: 'change subscribed to other subscription'
----调用该接口change subscribed to other subscription。
-
-
+---
+调用该接口change subscribed to other subscription。
 
 ## Request
 

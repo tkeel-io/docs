@@ -1,15 +1,14 @@
 ---
 title: "UpdateRole"
 description: 'update role in tenant '
----调用该接口update role in tenant 。
-
-
+---
+调用该接口update role in tenant 。
 
 ## Request
 
 
 ```
-put \rbac\roles\{id}
+put /rbac/roles/{id}
 ```
 
 | Name | Located in | Type | Description | 

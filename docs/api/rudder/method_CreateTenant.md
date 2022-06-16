@@ -1,15 +1,14 @@
 ---
 title: "CreateTenant"
 description: 'create a tenant'
----调用该接口create a tenant。
-
-
+---
+调用该接口create a tenant。
 
 ## Request
 
 
 ```
-post \tenants
+post /tenants
 ```
 
 ### Request Body 

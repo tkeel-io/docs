@@ -1,9 +1,8 @@
 ---
 title: "ErrSubscribe"
 description: 'Error Subscribe'
----调用该接口Error Subscribe。
-
-
+---
+调用该接口Error Subscribe。
 
 ## Request
 

@@ -1,15 +1,14 @@
 ---
 title: "TMDeletePolicy"
 description: 'TM delete policy'
----调用该接口TM delete policy。
-
-
+---
+调用该接口TM delete policy。
 
 ## Request
 
 
 ```
-post \tkeel-manager\rbac\policy\delete
+post /tkeel-manager/rbac/policy/delete
 ```
 
 ### Request Body 

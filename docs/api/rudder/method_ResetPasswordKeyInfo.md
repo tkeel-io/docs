@@ -1,15 +1,14 @@
 ---
 title: "ResetPasswordKeyInfo"
 description: 'get reset user password key info'
----调用该接口get reset user password key info。
-
-
+---
+调用该接口get reset user password key info。
 
 ## Request
 
 
 ```
-post \tenants\users\rpk\info
+post /tenants/users/rpk/info
 ```
 
 ### Request Body 

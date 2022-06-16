@@ -1,9 +1,8 @@
 ---
 title: "DeleteRule"
 description: 'Delete Rule'
----调用该接口Delete Rule。
-
-
+---
+调用该接口Delete Rule。
 
 ## Request
 

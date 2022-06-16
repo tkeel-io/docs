@@ -2,11 +2,7 @@
 title: "DelDeviceExt"
 description: 'delete device extensions'
 ---
-
-
 调用该接口delete device extensions。
-
-
 
 ## Request
 
@@ -15,20 +11,11 @@ description: 'delete device extensions'
 post /devices/{id}/ext/delete
 ```
 
-
-
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string | 设备ID |  
 
-
-
-
-
-### Request Body
-
-
- 
+### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 | 设备扩展属性Key 数组 | Object | [apidevicev1Keys](#apidevicev1Keys) |
@@ -40,33 +27,15 @@ post /devices/{id}/ext/delete
 | keys | Array[ string ] | key 字符串数组 |    
 
 
-  
-       
-          
-     
- 
- 
-
-
-
-
 
 ## Response
 
-
-
 ### Response  200
-
-
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
 | 200 | OK | {   { }} |
- 
 
-
-### Response  default
-
- 
+### Response  default 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -79,32 +48,10 @@ post /devices/{id}/ext/delete
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-
-  
-     
-   
-       
-         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
-
-  
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
 
 

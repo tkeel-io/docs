@@ -1,9 +1,8 @@
 ---
 title: "GetMapper"
 description: 'get mapper by id'
----调用该接口get mapper by id。
-
-
+---
+调用该接口get mapper by id。
 
 ## Request
 

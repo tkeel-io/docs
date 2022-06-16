@@ -1,15 +1,14 @@
 ---
 title: "GetIdentityProvider"
 description: 'get identity provider'
----调用该接口get identity provider。
-
-
+---
+调用该接口get identity provider。
 
 ## Request
 
 
 ```
-get \oauth\id-provider\{tenant_id}
+get /oauth/id-provider/{tenant_id}
 ```
 
 | Name | Located in | Type | Description | 

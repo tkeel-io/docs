@@ -1,15 +1,14 @@
 ---
 title: "UpdateUserRoleBinding"
 description: 'create binding to bind user_id with roles'
----调用该接口create binding to bind user_id with roles。
-
-
+---
+调用该接口create binding to bind user_id with roles。
 
 ## Request
 
 
 ```
-put \rbac\users\{user_id}\roles
+put /rbac/users/{user_id}/roles
 ```
 
 | Name | Located in | Type | Description | 

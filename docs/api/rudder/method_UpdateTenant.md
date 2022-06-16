@@ -1,15 +1,14 @@
 ---
 title: "UpdateTenant"
 description: 'tenant update'
----调用该接口tenant update。
-
-
+---
+调用该接口tenant update。
 
 ## Request
 
 
 ```
-put \tenants\{tenant_id}
+put /tenants/{tenant_id}
 ```
 
 | Name | Located in | Type | Description | 

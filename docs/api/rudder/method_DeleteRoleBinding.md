@@ -1,15 +1,14 @@
 ---
 title: "DeleteRoleBinding"
 description: 'delete binding of the bind role_name with user_id'
----调用该接口delete binding of the bind role_name with user_id。
-
-
+---
+调用该接口delete binding of the bind role_name with user_id。
 
 ## Request
 
 
 ```
-delete \rbac\roles\{role_id}\users\{user_id}
+delete /rbac/roles/{role_id}/users/{user_id}
 ```
 
 | Name | Located in | Type | Description | 

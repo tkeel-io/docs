@@ -1,33 +1,33 @@
 ---
-title: "SetTenantProfile"
-description: 'set tenant profile'
+title: "AddonsIdentify"
+description: 'openapi addons identify'
 ---
-调用该接口set tenant profile。
+调用该接口openapi addons identify。
 
 ## Request
 
 
 ```
-post /profile
+post /addons/identify
 ```
-
-###  Request Parameters
-
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| tenant_id | query | string |  |  false |
 
 ### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
-|  | Object | [v1TenantProfiles](#v1TenantProfiles) |
+|  | Object | [v1AddonsIdentifyRequest](#v1AddonsIdentifyRequest) |
 
-#### v1TenantProfiles
+#### v1AddonsIdentifyRequest
 
 | Name | Type | Description | 
+| ---- | ---- | ----------- |         
+| implemented_addons | Array[v1ImplementedAddons] |  [ 具体参数可见下面 [v1ImplementedAddons](#v1ImplementedAddons) ] |       
+| plugin |  |  |   
+
+### v1ImplementedAddons
+| Name | Type | Description | 
 | ---- | ---- | ----------- |     
-| plugin_id | string |  |      
-| profiles | string |  |   
+| addons_point | string |  |      
+| implemented_endpoint | string |  |   
 
 
 
@@ -36,12 +36,13 @@ post /profile
 ### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1SetTenantPluginProfileResponse](#v1SetTenantPluginProfileResponse) |
+| 200 | OK | Object | [v1AddonsIdentifyResponse](#v1AddonsIdentifyResponse) |
 
-#### v1SetTenantPluginProfileResponse
+#### v1AddonsIdentifyResponse
 
 | Name | Type | Description | 
-| ---- | ---- | ----------- |  
+| ---- | ---- | ----------- |     
+| res |  |  |   
 
 
 

@@ -2,11 +2,7 @@
 title: "SetDeviceConfAsOtherTemplte"
 description: 'save device confAsOtherTemplate'
 ---
-
-
 调用该接口save device confAsOtherTemplate。
-
-
 
 ## Request
 
@@ -15,20 +11,11 @@ description: 'save device confAsOtherTemplate'
 post /devices/{id}/configs/saveAsOtherTemplate
 ```
 
-
-
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string |  设备Id |  
 
-
-
-
-
-### Request Body
-
-
- 
+### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 | 另存为模板的基本信息 | Object | [apidevicev1TemplateBasicInfo](#apidevicev1TemplateBasicInfo) |
@@ -41,24 +28,10 @@ post /devices/{id}/configs/saveAsOtherTemplate
 | name | string | 模板名称 |   
 
 
-  
-     
-   
-     
- 
- 
-
-
-
-
 
 ## Response
 
-
-
-### Response  200
-
- 
+### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [apidevicev1CreateTemplateResponse](#apidevicev1CreateTemplateResponse) |
@@ -70,20 +43,8 @@ post /devices/{id}/configs/saveAsOtherTemplate
 | templateObject | Object | 模板对象   |   
 
 
-  
-    
-          
-     
- 
- 
 
-
- 
-
-
-### Response  default
-
- 
+### Response  default 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -96,32 +57,10 @@ post /devices/{id}/configs/saveAsOtherTemplate
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-
-  
-     
-   
-       
-         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
-
-  
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
 
 

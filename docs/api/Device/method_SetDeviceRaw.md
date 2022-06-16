@@ -2,11 +2,7 @@
 title: "SetDeviceRaw"
 description: 'set device raw'
 ---
-
-
 调用该接口set device raw。
-
-
 
 ## Request
 
@@ -15,20 +11,11 @@ description: 'set device raw'
 post /devices/{id}/raw/set
 ```
 
-
-
 | Name | Located in | Type | Description | 
 | ---- | ---------- | ----------- | ----------- | 
 | id | path | string |  设备Id |  
 
-
-
-
-
-### Request Body
-
-
- 
+### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 | 设置的 value | Object | [](#) |
@@ -40,28 +27,14 @@ post /devices/{id}/raw/set
 
 
 
- 
-
-
-
-
-
 ## Response
 
-
-
 ### Response  200
-
-
 | Code3 | Description | Type | 
 | ---- | ----------- | ------ | 
 | 200 | OK | {   { }} |
- 
 
-
-### Response  default
-
- 
+### Response  default 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -74,32 +47,10 @@ post /devices/{id}/raw/set
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-
-  
-     
-   
-       
-         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
-
-  
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
 
 

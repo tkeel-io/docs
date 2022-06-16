@@ -2,11 +2,7 @@
 title: "SearchEntity"
 description: 'search entity'
 ---
-
-
 调用该接口search entity。
-
-
 
 ## Request
 
@@ -15,16 +11,7 @@ description: 'search entity'
 post /search
 ```
 
-
-
-
-
-
-
-### Request Body
-
-
- 
+### Request Body 
 | Description | Type | Schema |
 | ----------- | ------ | ------ |
 | 设备列表请求信息 | Object | [apidevicev1ListEntityQuery](#apidevicev1ListEntityQuery) |
@@ -40,10 +27,6 @@ post /search
 | page_size | integer | 每页限制条数 |      
 | query | string | es查询条件 |   
 
-
-  
-       
-         
 ### apidevicev1Condition
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
@@ -52,44 +35,10 @@ post /search
 | value | Object | 值   |   
 
 
-  
-     
-   
-     
-   
-    
-          
-     
- 
- 
-
-
-          
-     
-   
-     
-   
-     
-   
-     
-   
-     
-   
-     
- 
- 
-
-
-
-
 
 ## Response
 
-
-
-### Response  200
-
- 
+### Response  200 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | 200 | OK | Object | [v1ListDeviceResponse](#v1ListDeviceResponse) |
@@ -101,20 +50,8 @@ post /search
 | listDeviceObject | Object | 设备列表对象   |   
 
 
-  
-    
-          
-     
- 
- 
 
-
- 
-
-
-### Response  default
-
- 
+### Response  default 
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
 | default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
@@ -127,32 +64,10 @@ post /search
 | details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
 | message | string |  |   
 
-
-  
-     
-   
-       
-         
 ### protobufAny
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
 | @type | string |  |   
 
-
-  
-     
- 
- 
-
-
-          
-     
-   
-     
- 
- 
-
-
- 
 
 

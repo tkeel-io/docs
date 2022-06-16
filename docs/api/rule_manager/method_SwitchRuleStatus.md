@@ -1,9 +1,8 @@
 ---
 title: "SwitchRuleStatus"
 description: 'Switch Rule Status'
----调用该接口Switch Rule Status。
-
-
+---
+调用该接口Switch Rule Status。
 
 ## Request
 

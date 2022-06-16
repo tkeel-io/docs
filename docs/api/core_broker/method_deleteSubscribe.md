@@ -1,9 +1,8 @@
 ---
 title: "deleteSubscribe"
 description: 'delete subscribe'
----调用该接口delete subscribe。
-
-
+---
+调用该接口delete subscribe。
 
 ## Request
 

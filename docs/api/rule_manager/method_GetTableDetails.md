@@ -1,9 +1,8 @@
 ---
 title: "GetTableDetails"
 description: 'Get Table Details'
----调用该接口Get Table Details。
-
-
+---
+调用该接口Get Table Details。
 
 ## Request
 

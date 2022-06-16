@@ -1,9 +1,8 @@
 ---
 title: "listSubscribeEntities"
 description: 'get subscribe entities list'
----调用该接口get subscribe entities list。
-
-
+---
+调用该接口get subscribe entities list。
 
 ## Request
 

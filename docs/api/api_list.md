@@ -1,6 +1,6 @@
 ---
 title: API列表
-sidebar_position: 10
+sidebar_position: 30
 ---
 
 平台 API 分为管理平台以及用户平台。
@@ -9,7 +9,7 @@ sidebar_position: 10
 
 管理平台包括以下API：
 - 平台基础API: 包含[平台配置接口](./rudder/tag.md#config)、[前端菜单接口](./rudder/tag.md#entry)
-  - 平台配置接口支持了[平台样式服务]以及[基础信息]
+  - 平台配置接口支持了[平台样式服务](./appendix/console.md#system-theme)以及[基础信息](./appendix/console.md#system-config)
 - 系统管理：包含[平台管理员 Token 颁发](./rudder/tag.md#Oauth2)、[Plugin 白名单](./rudder/tag.md#Oauth2)、[Token 验证接口](./rudder/tag.md#Oauth2)、[Admin重设密码接口](./rudder/tag.md#Oauth2)
 - 插件管理：包含[插件列表](./rudder/tag.md#Plugin)、[插件启用、停用、注册、更新](./rudder/tag.md#Plugin)、[插件仓库管理](./rudder/tag.md#Repo)
 - 租户管理：包含[租户空间管理](./rudder/tag.md#Tenant)、[单点登录配置](./rudder/tag.md#RBAC)

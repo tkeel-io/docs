@@ -66,7 +66,7 @@ sidebar_position: 0
 | [ListRepoInstaller](./method_ListRepoInstaller)|  获取仓库中安装包列表接口 |
 
 
-## [Security] EntityToken API{#[Security] EntityToken}
+## [Security] EntityToken API{#EntityToken}
 
 | Name |  Description | 
 | ---- |  ----------- | 
@@ -75,7 +75,7 @@ sidebar_position: 0
 | [CreateEntityToken](./method_CreateEntityToken)|  create a entity token |
 
 
-## [Security] OAuth API{#[Security] OAuth}
+## [Security] OAuth API{#OAuth}
 
 | Name |  Description | 
 | ---- |  ----------- | 
@@ -91,7 +91,7 @@ sidebar_position: 0
 | [TokenRevoke](./method_TokenRevoke)|  oauth token revoke with refresh token |
 
 
-## [Security] Tenant API{#[Security] Tenant}
+## [Security] Tenant API{#Tenant}
 
 | Name |  Description | 
 | ---- |  ----------- | 
@@ -136,7 +136,6 @@ sidebar_position: 0
 | Name |  Description | 
 | ---- |  ----------- | 
 | [GetEntries](./method_GetEntries)|  查询 console entries 接口 |
-
 
 ## profile API{#profile}
 

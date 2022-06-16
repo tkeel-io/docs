@@ -28,26 +28,26 @@ end
 ## Request
 
 ```
-websocket /v/ws
+websocket /v1/ws
 ```
 
 ### Request Body
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
+| Description         | Type   | Schema                                     |
+| ------------------- | ------ | ------------------------------------------ |
 | subscription object | Object | [v1SubscriptionObject](#v1WebsocketObject) |
 
 #### v1WebsocketObject
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| id | string | device id |    
+| Name | Type   | Description |
+| ---- | ------ | ----------- |
+| id   | string | device id   |
 
 
 ## Response
 
 ### Response  200
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [设备实体](#) |
+| Code2 | Description | Type   | Schema        |
+| ----- | ----------- | ------ | ------------- |
+| 200   | OK          | Object | [设备实体](#) |
 
 

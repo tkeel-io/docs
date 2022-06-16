@@ -37,6 +37,7 @@ put /groups/{id}
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
+| customId | string | 设备组自定义ID |      
 | description | string | 设备组说明 |     
 | ext | Object | 设备组扩展属性   |      
 | name | string | 设备组名称 |      
@@ -45,6 +46,8 @@ put /groups/{id}
 
 
   
+     
+   
      
    
     

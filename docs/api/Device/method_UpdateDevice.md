@@ -37,6 +37,7 @@ put /devices/{id}
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
+| customId | string | 设备自定义Id |      
 | description | string | 设备描述 |      
 | directConnection | boolean | 设备是否直连 |     
 | ext | Object | 设备扩展信息   |     
@@ -50,6 +51,8 @@ put /devices/{id}
 
 
   
+     
+   
      
    
      

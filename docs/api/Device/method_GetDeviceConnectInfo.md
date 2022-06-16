@@ -1,10 +1,10 @@
 ---
-title: "CreateTemplate"
-description: 'create Template'
+title: "GetDeviceConnectInfo"
+description: 'get device entity connectInfo'
 ---
 
 
-调用该接口create Template。
+调用该接口get device entity connectInfo。
 
 
 
@@ -12,40 +12,14 @@ description: 'create Template'
 
 
 ```
-post /templates
+get /devices/{id}/connectInfo
 ```
 
 
 
-
-
-
-
-### Request Body
-
-
- 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-| 模板基本信息 | Object | [apitemplatev1TemplateBasicInfo](#apitemplatev1TemplateBasicInfo) |
-
-#### apitemplatev1TemplateBasicInfo
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| customId | string | 模板自定义id 选填 |      
-| description | string | 模板描述 |      
-| name | string | 模板名称 |   
-
-
-  
-     
-   
-     
-   
-     
- 
- 
+| Name | Located in | Type | Description | 
+| ---- | ---------- | ----------- | ----------- | 
+| id | path | string | 设备ID |  
 
 
 
@@ -60,13 +34,13 @@ post /templates
  
 | Code2 | Description | Type | Schema |
 | ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [apitemplatev1CreateTemplateResponse](#apitemplatev1CreateTemplateResponse) |
+| 200 | OK | Object | [v1GetDeviceConnectInfoResponse](#v1GetDeviceConnectInfoResponse) |
 
-#### apitemplatev1CreateTemplateResponse
+#### v1GetDeviceConnectInfoResponse
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |    
-| templateObject | Object | 模板对象   |   
+| connectInfoObject | Object | 设备连接信息对象   |   
 
 
   

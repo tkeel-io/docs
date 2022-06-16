@@ -12,9 +12,6 @@
       "name": "Group"
     },
     {
-      "name": "Openapi"
-    },
-    {
       "name": "Template"
     }
   ],
@@ -25,39 +22,6 @@
     "application/json"
   ],
   "paths": {
-    "/addons/identify": {
-      "post": {
-        "summary": "openapi addons identify",
-        "operationId": "AddonsIdentify",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1AddonsIdentifyResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1AddonsIdentifyRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Openapi"
-        ]
-      }
-    },
     "/devices": {
       "post": {
         "summary": "create device entity",
@@ -242,6 +206,70 @@
         ]
       }
     },
+    "/devices/{id}/attributeData": {
+      "get": {
+        "summary": "get device entity attributeData",
+        "operationId": "GetDeviceAttributeData",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1GetDeviceAttributeDataResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "设备ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      }
+    },
+    "/devices/{id}/basicInfo": {
+      "get": {
+        "summary": "get device entity basicInfo",
+        "operationId": "GetDeviceBasicInfo",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1GetDeviceBasicInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "设备ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      }
+    },
     "/devices/{id}/command/set": {
       "post": {
         "summary": "set device command",
@@ -361,6 +389,38 @@
               "type": "string",
               "description": " 设备Id"
             }
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      }
+    },
+    "/devices/{id}/connectInfo": {
+      "get": {
+        "summary": "get device entity connectInfo",
+        "operationId": "GetDeviceConnectInfo",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1GetDeviceConnectInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "设备ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
           }
         ],
         "tags": [
@@ -658,6 +718,38 @@
         ]
       }
     },
+    "/devices/{id}/rawData": {
+      "get": {
+        "summary": "get device entity rawData",
+        "operationId": "GetDeviceRawData",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1GetDeviceRawDataResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "设备ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      }
+    },
     "/devices/{id}/relation": {
       "get": {
         "summary": "list data relation",
@@ -883,6 +975,70 @@
           {
             "name": "path",
             "description": "路径",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      }
+    },
+    "/devices/{id}/sysInfo": {
+      "get": {
+        "summary": "get device entity sysInfo",
+        "operationId": "GetDeviceSysInfo",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1GetDeviceSysInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "设备ID",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "device"
+        ]
+      }
+    },
+    "/devices/{id}/telemetryData": {
+      "get": {
+        "summary": "get device entity telemetryData",
+        "operationId": "GetDeviceTelemetryData",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1GetDeviceTelemetryDataResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "设备ID",
             "in": "path",
             "required": true,
             "type": "string"
@@ -1192,29 +1348,6 @@
         ]
       }
     },
-    "/identify": {
-      "get": {
-        "summary": "openapi identify",
-        "operationId": "Identify",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1IdentifyResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "tags": [
-          "Openapi"
-        ]
-      }
-    },
     "/search": {
       "post": {
         "summary": "search entity",
@@ -1247,29 +1380,6 @@
         ],
         "tags": [
           "device"
-        ]
-      }
-    },
-    "/status": {
-      "get": {
-        "summary": "openapi status",
-        "operationId": "Status",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1StatusResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "tags": [
-          "Openapi"
         ]
       }
     },
@@ -2138,87 +2248,9 @@
           "template"
         ]
       }
-    },
-    "/tenant/disable": {
-      "post": {
-        "summary": "openapi tenant disable",
-        "operationId": "TenantDisable",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1TenantDisableResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1TenantDisableRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Openapi"
-        ]
-      }
-    },
-    "/tenant/enable": {
-      "post": {
-        "summary": "openapi tenant enable",
-        "operationId": "TenantEnable",
-        "responses": {
-          "200": {
-            "description": "OK",
-            "schema": {
-              "$ref": "#/definitions/v1TenantEnableResponse"
-            }
-          },
-          "default": {
-            "description": "An unexpected error response.",
-            "schema": {
-              "$ref": "#/definitions/rpcStatus"
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/v1TenantEnableRequest"
-            }
-          }
-        ],
-        "tags": [
-          "Openapi"
-        ]
-      }
     }
   },
   "definitions": {
-    "PermissionDependence": {
-      "type": "object",
-      "properties": {
-        "path": {
-          "type": "string"
-        },
-        "desc": {
-          "type": "string",
-          "description": "ID\u003e/authority ID.The content in \u003c\u003e is variable."
-        }
-      }
-    },
     "apidevicev1Condition": {
       "type": "object",
       "properties": {
@@ -2480,93 +2512,6 @@
         }
       }
     },
-    "v1AddonsIdentifyRequest": {
-      "type": "object",
-      "properties": {
-        "plugin": {
-          "$ref": "#/definitions/v1BriefPluginInfo"
-        },
-        "implemented_addons": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/v1ImplementedAddons"
-          }
-        }
-      },
-      "description": "*\nThe request value of the POST /v1/addons/identify,\nused when the plugin in the registration process implements\nthe extension point of the registered plugin."
-    },
-    "v1AddonsIdentifyResponse": {
-      "type": "object",
-      "properties": {
-        "res": {
-          "$ref": "#/definitions/v1Result"
-        }
-      },
-      "description": "*\nThe response value of the POST /v1/addons/identify,\nused when the plugin in the registration process implements\nthe extension point of the registered plugin."
-    },
-    "v1AddonsPoint": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "desc": {
-          "type": "string"
-        }
-      },
-      "description": "*\nmessage plugin declares extension point."
-    },
-    "v1BriefPluginInfo": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "version": {
-          "type": "string"
-        }
-      },
-      "description": "*\nmessage brief plugin information."
-    },
-    "v1ConsoleEntry": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "icon": {
-          "type": "string"
-        },
-        "path": {
-          "type": "string"
-        },
-        "entry": {
-          "type": "string"
-        },
-        "children": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/v1ConsoleEntry"
-          }
-        },
-        "portal": {
-          "$ref": "#/definitions/v1ConsolePortal"
-        }
-      },
-      "description": "plugin console entry."
-    },
-    "v1ConsolePortal": {
-      "type": "string",
-      "enum": [
-        "admin",
-        "tenant"
-      ],
-      "default": "admin",
-      "description": "console portal enum."
-    },
     "v1CreateDeviceDataRelationAutoResponse": {
       "type": "object",
       "properties": {
@@ -2741,12 +2686,48 @@
         }
       }
     },
+    "v1GetDeviceAttributeDataResponse": {
+      "type": "object",
+      "properties": {
+        "attributeDataObject": {
+          "type": "object",
+          "description": "设备属性数据对象"
+        }
+      }
+    },
+    "v1GetDeviceBasicInfoResponse": {
+      "type": "object",
+      "properties": {
+        "basicInfoObject": {
+          "type": "object",
+          "description": "设备基本信息对象"
+        }
+      }
+    },
+    "v1GetDeviceConnectInfoResponse": {
+      "type": "object",
+      "properties": {
+        "connectInfoObject": {
+          "type": "object",
+          "description": "设备连接信息对象"
+        }
+      }
+    },
     "v1GetDeviceDataRelationResponse": {
       "type": "object",
       "properties": {
         "expressions": {
           "type": "object",
           "description": "单个关系表达式"
+        }
+      }
+    },
+    "v1GetDeviceRawDataResponse": {
+      "type": "object",
+      "properties": {
+        "rawDataObject": {
+          "type": "object",
+          "description": "设备原始数据对象"
         }
       }
     },
@@ -2757,6 +2738,24 @@
           "type": "object",
           "description": "设备对象",
           "title": "api.core.v1.EntityResponse deviceObject = 1 [(grpc.gateway.protoc_gen_openapiv2.options.openapiv2_field) = {description: \"设备对象\"}];"
+        }
+      }
+    },
+    "v1GetDeviceSysInfoResponse": {
+      "type": "object",
+      "properties": {
+        "sysInfoObject": {
+          "type": "object",
+          "description": "设备系统信息对象"
+        }
+      }
+    },
+    "v1GetDeviceTelemetryDataResponse": {
+      "type": "object",
+      "properties": {
+        "telemetryDataObject": {
+          "type": "object",
+          "description": "设备遥测数据对象"
         }
       }
     },
@@ -2847,88 +2846,6 @@
         }
       }
     },
-    "v1IdentifyResponse": {
-      "type": "object",
-      "properties": {
-        "res": {
-          "$ref": "#/definitions/v1Result"
-        },
-        "plugin_id": {
-          "type": "string"
-        },
-        "version": {
-          "type": "string"
-        },
-        "tkeel_version": {
-          "type": "string"
-        },
-        "addons_point": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/v1AddonsPoint"
-          }
-        },
-        "implemented_plugin": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/v1ImplementedPlugin"
-          }
-        },
-        "entries": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/v1ConsoleEntry"
-          }
-        },
-        "dependence": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/v1BriefPluginInfo"
-          }
-        },
-        "permissions": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/v1Permission"
-          }
-        },
-        "disable_manual_activation": {
-          "type": "boolean"
-        },
-        "profiles": {
-          "type": "string",
-          "format": "byte"
-        }
-      },
-      "description": "*\nThe response value of the GET /v1/identify,\nused when the plugin registered."
-    },
-    "v1ImplementedAddons": {
-      "type": "object",
-      "properties": {
-        "addons_point": {
-          "type": "string"
-        },
-        "implemented_endpoint": {
-          "type": "string"
-        }
-      },
-      "description": "*\nmessage plugin declares implemented other plugin extension point."
-    },
-    "v1ImplementedPlugin": {
-      "type": "object",
-      "properties": {
-        "plugin": {
-          "$ref": "#/definitions/v1BriefPluginInfo"
-        },
-        "addons": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/v1ImplementedAddons"
-          }
-        }
-      },
-      "description": "*\nmessage plugin implemented other plugin."
-    },
     "v1ListDeviceDataRelationResponse": {
       "type": "object",
       "properties": {
@@ -2990,44 +2907,6 @@
         }
       }
     },
-    "v1Permission": {
-      "type": "object",
-      "properties": {
-        "id": {
-          "type": "string"
-        },
-        "name": {
-          "type": "string"
-        },
-        "dependences": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/PermissionDependence"
-          }
-        },
-        "desc": {
-          "type": "string"
-        },
-        "children": {
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/v1Permission"
-          }
-        }
-      },
-      "description": "plugin define permission."
-    },
-    "v1PluginStatus": {
-      "type": "string",
-      "enum": [
-        "UNKNOWN",
-        "WAIT_RUNNING",
-        "ERR_REGISTER",
-        "RUNNING"
-      ],
-      "default": "UNKNOWN",
-      "description": "*\nplugin state enum."
-    },
     "v1Relation": {
       "type": "object",
       "properties": {
@@ -3057,28 +2936,6 @@
         }
       }
     },
-    "v1Result": {
-      "type": "object",
-      "properties": {
-        "ret": {
-          "$ref": "#/definitions/v1Retcode"
-        },
-        "msg": {
-          "type": "string"
-        }
-      },
-      "description": "*\nmessage result."
-    },
-    "v1Retcode": {
-      "type": "string",
-      "enum": [
-        "OK",
-        "BAD_REQEUST",
-        "INTERNAL_ERROR"
-      ],
-      "default": "OK",
-      "description": "*\nerror code enum."
-    },
     "v1SetContent": {
       "type": "object",
       "properties": {
@@ -3091,62 +2948,6 @@
           "description": "设置的 value"
         }
       }
-    },
-    "v1StatusResponse": {
-      "type": "object",
-      "properties": {
-        "res": {
-          "$ref": "#/definitions/v1Result"
-        },
-        "status": {
-          "$ref": "#/definitions/v1PluginStatus"
-        }
-      },
-      "description": "*\nThe request value of the GET /v1/Status.\nused when the tkeel checks the status of plugins regularly."
-    },
-    "v1TenantDisableRequest": {
-      "type": "object",
-      "properties": {
-        "tenant_id": {
-          "type": "string"
-        },
-        "extra": {
-          "type": "string",
-          "format": "byte"
-        }
-      },
-      "description": "*\nThe request value of the POST /v1/tenant/disable,\nused when the tenant administrator disables the plugin."
-    },
-    "v1TenantDisableResponse": {
-      "type": "object",
-      "properties": {
-        "res": {
-          "$ref": "#/definitions/v1Result"
-        }
-      },
-      "description": "*\nThe response value of the POST /v1/tenant/disable,\nused when the tenant administrator disables the plugin."
-    },
-    "v1TenantEnableRequest": {
-      "type": "object",
-      "properties": {
-        "tenant_id": {
-          "type": "string"
-        },
-        "extra": {
-          "type": "string",
-          "format": "byte"
-        }
-      },
-      "description": "*\nThe request value of the POST /v1/tenant/enable,\nused when the tenant administrator enables the plugin."
-    },
-    "v1TenantEnableResponse": {
-      "type": "object",
-      "properties": {
-        "res": {
-          "$ref": "#/definitions/v1Result"
-        }
-      },
-      "description": "*\nThe response value of the POST /v1/tenant/enable,\nused when the tenant administrator enables the plugin."
     },
     "v1UpdateDeviceResponse": {
       "type": "object",

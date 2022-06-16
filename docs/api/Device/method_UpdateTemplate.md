@@ -37,11 +37,14 @@ put /templates/{uid}
 
 | Name | Type | Description | 
 | ---- | ---- | ----------- |     
+| customId | string | 模板自定义id 选填 |      
 | description | string | 模板描述 |      
 | name | string | 模板名称 |   
 
 
   
+     
+   
      
    
      

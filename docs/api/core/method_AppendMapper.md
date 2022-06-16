@@ -1,9 +1,8 @@
 ---
 title: "AppendMapper"
 description: 'Append mapper for entity'
----调用该接口Append mapper for entity。
-
-
+---
+调用该接口Append mapper for entity。
 
 ## Request
 

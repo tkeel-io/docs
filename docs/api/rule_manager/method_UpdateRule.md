@@ -1,9 +1,8 @@
 ---
 title: "UpdateRule"
 description: 'Update Rule'
----调用该接口Update Rule。
-
-
+---
+调用该接口Update Rule。
 
 ## Request
 

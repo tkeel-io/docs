@@ -1,9 +1,8 @@
 ---
 title: "ValidateSubscribed"
 description: 'validate subscribe topic is user request'
----调用该接口validate subscribe topic is user request。
-
-
+---
+调用该接口validate subscribe topic is user request。
 
 ## Request
 

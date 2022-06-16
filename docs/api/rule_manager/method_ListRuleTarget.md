@@ -1,9 +1,8 @@
 ---
 title: "ListRuleTarget"
 description: 'List Rule Target'
----调用该接口List Rule Target。
-
-
+---
+调用该接口List Rule Target。
 
 ## Request
 

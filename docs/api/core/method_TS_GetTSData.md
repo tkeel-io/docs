@@ -1,9 +1,8 @@
 ---
 title: "TS_GetTSData"
 description: ''
----调用该接口。
-
-
+---
+调用该接口。
 
 ## Request
 

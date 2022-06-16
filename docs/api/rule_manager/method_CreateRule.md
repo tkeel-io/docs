@@ -1,9 +1,8 @@
 ---
 title: "CreateRule"
 description: 'Create Rule'
----调用该接口Create Rule。
-
-
+---
+调用该接口Create Rule。
 
 ## Request
 

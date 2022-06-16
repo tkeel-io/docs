@@ -1,15 +1,14 @@
 ---
 title: "GetResetPasswordKey"
 description: 'get reset user password key '
----调用该接口get reset user password key 。
-
-
+---
+调用该接口get reset user password key 。
 
 ## Request
 
 
 ```
-get \tenants\{tenant_id}\users\{user_id}\rpk
+get /tenants/{tenant_id}/users/{user_id}/rpk
 ```
 
 | Name | Located in | Type | Description | 

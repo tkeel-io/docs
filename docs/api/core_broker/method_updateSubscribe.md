@@ -1,9 +1,8 @@
 ---
 title: "updateSubscribe"
 description: 'update subscribe'
----调用该接口update subscribe。
-
-
+---
+调用该接口update subscribe。
 
 ## Request
 

@@ -1,15 +1,14 @@
 ---
 title: "ListUser"
 description: 'list users'
----调用该接口list users。
-
-
+---
+调用该接口list users。
 
 ## Request
 
 
 ```
-get \tenants\{tenant_id}\users
+get /tenants/{tenant_id}/users
 ```
 
 | Name | Located in | Type | Description | 

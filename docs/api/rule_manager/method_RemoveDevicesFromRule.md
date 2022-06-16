@@ -1,9 +1,8 @@
 ---
 title: "RemoveDevicesFromRule"
 description: 'Remove Devices From Rule'
----调用该接口Remove Devices From Rule。
-
-
+---
+调用该接口Remove Devices From Rule。
 
 ## Request
 

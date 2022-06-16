@@ -1,9 +1,8 @@
 ---
 title: "unsubscribeEntitiesByIDs"
 description: 'delete subscribe entities by ids'
----调用该接口delete subscribe entities by ids。
-
-
+---
+调用该接口delete subscribe entities by ids。
 
 ## Request
 

@@ -1,9 +1,8 @@
 ---
 title: "TS_GetLatestEntities"
 description: ''
----调用该接口。
-
-
+---
+调用该接口。
 
 ## Request
 

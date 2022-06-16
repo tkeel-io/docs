@@ -1,9 +1,8 @@
 ---
 title: "RemoveEntityConfigs"
 description: 'remove entity configs'
----调用该接口remove entity configs。
-
-
+---
+调用该接口remove entity configs。
 
 ## Request
 

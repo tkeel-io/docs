@@ -1,15 +1,14 @@
 ---
 title: "IdentityProviderRegister"
 description: 'identity provider register'
----调用该接口identity provider register。
-
-
+---
+调用该接口identity provider register。
 
 ## Request
 
 
 ```
-post \oauth\id-provider\register\{tenant_id}
+post /oauth/id-provider/register/{tenant_id}
 ```
 
 | Name | Located in | Type | Description | 

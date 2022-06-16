@@ -1,9 +1,8 @@
 ---
 title: "GetExpression"
 description: 'get expression by id'
----调用该接口get expression by id。
-
-
+---
+调用该接口get expression by id。
 
 ## Request
 

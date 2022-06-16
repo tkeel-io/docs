@@ -1,9 +1,8 @@
 ---
 title: "PatchEntityProps"
 description: 'Patch entity properties'
----调用该接口Patch entity properties。
-
-
+---
+调用该接口Patch entity properties。
 
 ## Request
 

@@ -1,15 +1,14 @@
 ---
 title: "TenantByExactSearch"
 description: 'tenant exact search'
----调用该接口tenant exact search。
-
-
+---
+调用该接口tenant exact search。
 
 ## Request
 
 
 ```
-get \tenants\exact
+get /tenants/exact
 ```
 
 ###  Request Parameters

@@ -1,15 +1,14 @@
 ---
 title: "UpdateUser"
 description: 'update user'
----调用该接口update user。
-
-
+---
+调用该接口update user。
 
 ## Request
 
 
 ```
-put \tenants\{tenant_id}\users\{user_id}
+put /tenants/{tenant_id}/users/{user_id}
 ```
 
 | Name | Located in | Type | Description | 

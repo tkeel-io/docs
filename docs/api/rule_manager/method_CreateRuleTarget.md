@@ -1,9 +1,8 @@
 ---
 title: "CreateRuleTarget"
 description: 'Create Rule Target'
----调用该接口Create Rule Target。
-
-
+---
+调用该接口Create Rule Target。
 
 ## Request
 

@@ -1,15 +1,14 @@
 ---
 title: "DeleteEntityToken"
 description: 'delete a entity token'
----调用该接口delete a entity token。
-
-
+---
+调用该接口delete a entity token。
 
 ## Request
 
 
 ```
-delete \entity\token\{token}
+delete /entity/token/{token}
 ```
 
 | Name | Located in | Type | Description | 

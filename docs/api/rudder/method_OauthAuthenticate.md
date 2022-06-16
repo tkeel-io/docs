@@ -1,15 +1,14 @@
 ---
 title: "OauthAuthenticate"
 description: 'oauth authenticate with header Authorization'
----调用该接口oauth authenticate with header Authorization。
-
-
+---
+调用该接口oauth authenticate with header Authorization。
 
 ## Request
 
 
 ```
-get \oauth\authenticate
+get /oauth/authenticate
 ```
 
 ## Response

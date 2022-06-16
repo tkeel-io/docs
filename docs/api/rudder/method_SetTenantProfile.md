@@ -1,15 +1,14 @@
 ---
 title: "SetTenantProfile"
 description: 'set tenant profile'
----调用该接口set tenant profile。
-
-
+---
+调用该接口set tenant profile。
 
 ## Request
 
 
 ```
-post \profile
+post /profile
 ```
 
 ###  Request Parameters

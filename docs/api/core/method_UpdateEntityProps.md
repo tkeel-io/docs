@@ -1,9 +1,8 @@
 ---
 title: "UpdateEntityProps"
 description: 'Update entity properties'
----调用该接口Update entity properties。
-
-
+---
+调用该接口Update entity properties。
 
 ## Request
 

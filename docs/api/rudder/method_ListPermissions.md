@@ -1,15 +1,14 @@
 ---
 title: "ListPermissions"
 description: 'list permissions '
----调用该接口list permissions 。
-
-
+---
+调用该接口list permissions 。
 
 ## Request
 
 
 ```
-get \rbac\permissions
+get /rbac/permissions
 ```
 
 ###  Request Parameters

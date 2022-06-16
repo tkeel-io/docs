@@ -1,9 +1,8 @@
 ---
 title: "UpdateEntityConfigs"
 description: 'update entity configs.'
----调用该接口update entity configs.。
-
-
+---
+调用该接口update entity configs.。
 
 ## Request
 

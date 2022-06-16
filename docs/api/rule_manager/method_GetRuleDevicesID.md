@@ -1,9 +1,8 @@
 ---
 title: "GetRuleDevicesID"
 description: 'Get Rule Devices ID'
----调用该接口Get Rule Devices ID。
-
-
+---
+调用该接口Get Rule Devices ID。
 
 ## Request
 

@@ -1,9 +1,8 @@
 ---
 title: "GetTableMap"
 description: 'Get Table Map'
----调用该接口Get Table Map。
-
-
+---
+调用该接口Get Table Map。
 
 ## Request
 

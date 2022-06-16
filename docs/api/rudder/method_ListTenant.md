@@ -1,15 +1,14 @@
 ---
 title: "ListTenant"
 description: 'tenant list'
----调用该接口tenant list。
-
-
+---
+调用该接口tenant list。
 
 ## Request
 
 
 ```
-get \tenants
+get /tenants
 ```
 
 ###  Request Parameters

@@ -1,15 +1,14 @@
 ---
 title: "AddPluginWhiteList"
 description: '添加 Plugin 白名单 dapr App ID 接口'
----调用该接口添加 Plugin 白名单 dapr App ID 接口。
-
-
+---
+调用该接口添加 Plugin 白名单 dapr App ID 接口。
 
 ## Request
 
 
 ```
-post \oauth2\plugin\white-list
+post /oauth2/plugin/white-list
 ```
 
 ### Request Body 

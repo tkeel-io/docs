@@ -1,9 +1,8 @@
 ---
 title: "GetEntity"
 description: 'Get a entity'
----调用该接口Get a entity。
-
-
+---
+调用该接口Get a entity。
 
 ## Request
 

@@ -1,12 +1,10 @@
 ---
 title: "ListTenantPlugin"
 description: '租户插件列表'
----调用该接口租户插件列表。
-
-
+---
+调用该接口租户插件列表。
 
 ## Request
-
 
 ```
 get \tenants\{tenant_id}\plugins

@@ -1,12 +1,10 @@
 ---
 title: "DelPlatformConfig"
 description: '删除 platform config 接口'
----调用该接口删除 platform config 接口。
-
-
+---
+调用该接口删除 platform config 接口。
 
 ## Request
-
 
 ```
 delete \config\platform\update

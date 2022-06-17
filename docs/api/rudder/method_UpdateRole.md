@@ -1,12 +1,10 @@
 ---
 title: "UpdateRole"
 description: '修改角色信息'
----调用该接口修改角色信息。
-
-
+---
+调用该接口修改角色信息。
 
 ## Request
-
 
 ```
 put \rbac\roles\{id}

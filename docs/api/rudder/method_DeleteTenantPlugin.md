@@ -1,12 +1,10 @@
 ---
 title: "DeleteTenantPlugin"
 description: '停用租户插件'
----调用该接口停用租户插件。
-
-
+---
+调用该接口停用租户插件。
 
 ## Request
-
 
 ```
 delete \tenants\{tenant_id}\plugins\{plugin_id}

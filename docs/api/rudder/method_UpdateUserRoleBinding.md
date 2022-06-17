@@ -1,12 +1,10 @@
 ---
 title: "UpdateUserRoleBinding"
 description: '全量更新用户角色'
----调用该接口全量更新用户角色。
-
-
+---
+调用该接口全量更新用户角色。
 
 ## Request
-
 
 ```
 put \rbac\users\{user_id}\roles

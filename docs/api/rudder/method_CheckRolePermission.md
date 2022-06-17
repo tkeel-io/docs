@@ -1,12 +1,10 @@
 ---
 title: "CheckRolePermission"
 description: '权限校验'
----调用该接口权限校验。
-
-
+---
+调用该接口权限校验。
 
 ## Request
-
 
 ```
 post \rbac\permissions\check

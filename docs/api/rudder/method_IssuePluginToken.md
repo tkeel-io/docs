@@ -1,12 +1,10 @@
 ---
 title: "IssuePluginToken"
 description: '插件 Token 颁发接口'
----调用该接口插件 Token 颁发接口。
-
-
+---
+调用该接口插件 Token 颁发接口。
 
 ## Request
-
 
 ```
 post \oauth2\plugin

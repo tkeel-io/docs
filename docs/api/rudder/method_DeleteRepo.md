@@ -1,12 +1,10 @@
 ---
 title: "DeleteRepo"
 description: '删除仓库接口'
----调用该接口删除仓库接口。
-
-
+---
+调用该接口删除仓库接口。
 
 ## Request
-
 
 ```
 delete \repos\{name}

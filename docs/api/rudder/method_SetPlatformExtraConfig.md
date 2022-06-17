@@ -1,12 +1,10 @@
 ---
 title: "SetPlatformExtraConfig"
 description: '设置 platform config extra 数据接口'
----调用该接口设置 platform config extra 数据接口。
-
-
+---
+调用该接口设置 platform config extra 数据接口。
 
 ## Request
-
 
 ```
 post \config\platform\update

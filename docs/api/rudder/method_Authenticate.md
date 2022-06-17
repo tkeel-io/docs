@@ -1,12 +1,10 @@
 ---
 title: "Authenticate"
 description: 'Authorization 认证'
----调用该接口Authorization 认证。
-
-
+---
+调用该接口Authorization 认证。
 
 ## Request
-
 
 ```
 get \authenticate

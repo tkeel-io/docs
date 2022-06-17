@@ -1,12 +1,10 @@
 ---
 title: "ListPermissions"
 description: '权限列表'
----调用该接口权限列表。
-
-
+---
+调用该接口权限列表。
 
 ## Request
-
 
 ```
 get \rbac\permissions

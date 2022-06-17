@@ -1,12 +1,10 @@
 ---
 title: "GetEntries"
 description: '查询 console entries 接口'
----调用该接口查询 console entries 接口。
-
-
+---
+调用该接口查询 console entries 接口。
 
 ## Request
-
 
 ```
 get \entries

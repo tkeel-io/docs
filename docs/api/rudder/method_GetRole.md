@@ -1,12 +1,10 @@
 ---
 title: "GetRole"
 description: '获取角色详情'
----调用该接口获取角色详情。
-
-
+---
+调用该接口获取角色详情。
 
 ## Request
-
 
 ```
 get \rbac\roles\{id}

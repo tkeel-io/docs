@@ -1,12 +1,10 @@
 ---
 title: "GetPlugin"
 description: '查询插件接口'
----调用该接口查询插件接口。
-
-
+---
+调用该接口查询插件接口。
 
 ## Request
-
 
 ```
 get \plugins\{id}

@@ -1,12 +1,10 @@
 ---
 title: "DeleteRole"
 description: '删除角色'
----调用该接口删除角色。
-
-
+---
+调用该接口删除角色。
 
 ## Request
-
 
 ```
 delete \rbac\roles\{id}

@@ -1,12 +1,10 @@
 ---
 title: "GetPlatformConfig"
 description: '查询 platform config 接口'
----调用该接口查询 platform config 接口。
-
-
+---
+调用该接口查询 platform config 接口。
 
 ## Request
-
 
 ```
 get \config\platform

@@ -1,12 +1,10 @@
 ---
 title: "PermissibleTenantPlugin"
 description: '租户插件权限校验'
----调用该接口租户插件权限校验。
-
-
+---
+调用该接口租户插件权限校验。
 
 ## Request
-
 
 ```
 get \tenants\plugins\permissible

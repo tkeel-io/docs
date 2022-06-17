@@ -1,12 +1,10 @@
 ---
 title: "GetRepoInstaller"
 description: '获取仓库中指定安装包'
----调用该接口获取仓库中指定安装包。
-
-
+---
+调用该接口获取仓库中指定安装包。
 
 ## Request
-
 
 ```
 get \repos\{repo}\installers\{installer_name}\{installer_version}

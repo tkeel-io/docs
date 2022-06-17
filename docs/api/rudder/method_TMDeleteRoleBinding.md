@@ -1,12 +1,10 @@
 ---
 title: "TMDeleteRoleBinding"
 description: 'TM delete policy 测试专用'
----调用该接口TM delete policy 测试专用。
-
-
+---
+调用该接口TM delete policy 测试专用。
 
 ## Request
-
 
 ```
 post \tkeel-manager\rbac\binding\delete

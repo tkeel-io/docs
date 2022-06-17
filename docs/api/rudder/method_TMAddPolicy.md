@@ -1,12 +1,10 @@
 ---
 title: "TMAddPolicy"
 description: 'TM add policy 测试专用'
----调用该接口TM add policy 测试专用。
-
-
+---
+调用该接口TM add policy 测试专用。
 
 ## Request
-
 
 ```
 post \tkeel-manager\rbac\policy

@@ -1,12 +1,10 @@
 ---
 title: "IssueAdminToken"
 description: '平台管理员 Token 颁发接口'
----调用该接口平台管理员 Token 颁发接口。
-
-
+---
+调用该接口平台管理员 Token 颁发接口。
 
 ## Request
-
 
 ```
 get \oauth2\admin

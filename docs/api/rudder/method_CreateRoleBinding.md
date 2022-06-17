@@ -1,12 +1,10 @@
 ---
 title: "CreateRoleBinding"
 description: '为用户添加角色'
----调用该接口为用户添加角色。
-
-
+---
+调用该接口为用户添加角色。
 
 ## Request
-
 
 ```
 post \rbac\roles\{role_id}\users

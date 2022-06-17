@@ -1,12 +1,10 @@
 ---
 title: "ListenableTenants"
 description: '获取插件绑定租户接口'
----调用该接口获取插件绑定租户接口。
-
-
+---
+调用该接口获取插件绑定租户接口。
 
 ## Request
-
 
 ```
 get \plugins\{id}\tenants

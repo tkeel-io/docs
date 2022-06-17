@@ -1,12 +1,10 @@
 ---
 title: "DeleteRoleBinding"
 description: '删除用户角色'
----调用该接口删除用户角色。
-
-
+---
+调用该接口删除用户角色。
 
 ## Request
-
 
 ```
 delete \rbac\roles\{role_id}\users\{user_id}

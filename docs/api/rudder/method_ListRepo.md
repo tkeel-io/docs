@@ -1,12 +1,10 @@
 ---
 title: "ListRepo"
 description: '获取仓库列表接口'
----调用该接口获取仓库列表接口。
-
-
+---
+调用该接口获取仓库列表接口。
 
 ## Request
-
 
 ```
 get \repos

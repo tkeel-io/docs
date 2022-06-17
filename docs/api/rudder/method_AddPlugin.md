@@ -1,12 +1,10 @@
 ---
 title: "AddPlugin"
 description: '租户启用插件'
----调用该接口租户启用插件。
-
-
+---
+调用该接口租户启用插件。
 
 ## Request
-
 
 ```
 post \tenants\{tenant_id}\plugins

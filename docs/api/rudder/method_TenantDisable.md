@@ -1,12 +1,10 @@
 ---
 title: "TenantDisable"
 description: '插件租户停用接口'
----调用该接口插件租户停用接口。
-
-
+---
+调用该接口插件租户停用接口。
 
 ## Request
-
 
 ```
 delete \plugins\{id}\tenants

@@ -1,14 +1,15 @@
 ---
 title: "CheckRolePermission"
-description: 'check role has the permission'
----
-调用该接口check role has the permission。
+description: '权限校验'
+---调用该接口权限校验。
+
+
 
 ## Request
 
 
 ```
-post /rbac/permissions/check
+post \rbac\permissions\check
 ```
 
 ### Request Body 

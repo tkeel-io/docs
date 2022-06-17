@@ -1,14 +1,15 @@
 ---
 title: "ListRole"
-description: 'list role in tenant '
----
-调用该接口list role in tenant 。
+description: '角色列表'
+---调用该接口角色列表。
+
+
 
 ## Request
 
 
 ```
-get /rbac/roles
+get \rbac\roles
 ```
 
 ###  Request Parameters

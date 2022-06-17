@@ -1,14 +1,15 @@
 ---
 title: "TenantEnable"
 description: '插件租户启用接口'
----
-调用该接口插件租户启用接口。
+---调用该接口插件租户启用接口。
+
+
 
 ## Request
 
 
 ```
-post /plugins/{id}/tenants
+post \plugins\{id}\tenants
 ```
 
 | Name | Located in | Type | Description | 

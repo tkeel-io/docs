@@ -1,14 +1,15 @@
 ---
 title: "CreateRepo"
 description: '创建仓库接口'
----
-调用该接口创建仓库接口。
+---调用该接口创建仓库接口。
+
+
 
 ## Request
 
 
 ```
-post /repos/{name}
+post \repos\{name}
 ```
 
 | Name | Located in | Type | Description | 

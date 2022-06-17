@@ -1,14 +1,15 @@
 ---
 title: "ListPlugin"
 description: '获取插件列表接口'
----
-调用该接口获取插件列表接口。
+---调用该接口获取插件列表接口。
+
+
 
 ## Request
 
 
 ```
-get /plugins
+get \plugins
 ```
 
 ###  Request Parameters

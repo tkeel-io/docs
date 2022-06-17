@@ -1,14 +1,15 @@
 ---
 title: "UpdateAdminPassword"
 description: 'admin 重设密码接口'
----
-调用该接口admin 重设密码接口。
+---调用该接口admin 重设密码接口。
+
+
 
 ## Request
 
 
 ```
-put /oauth2/pwd
+put \oauth2\pwd
 ```
 
 ### Request Body 

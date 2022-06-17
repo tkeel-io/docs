@@ -1,27 +1,179 @@
 ---
-title: API列表
+title: API 列表
 sidebar_position: 30
 ---
 
-平台 API 分为管理平台以及用户平台。
+API 列表中包含里管理平台和用户平台各功能模块的所有 API。
 
 ## 管理平台
 
-管理平台包括以下API：
+管理平台包括以下 API：
 
-- 平台基础API: 包含[平台配置接口](./rudder/tag.md#config)、[前端菜单接口](./rudder/tag.md#entry)
-  - 平台配置接口支持了[平台样式服务](./appendix/console.md#system-theme)以及[基础信息](./appendix/console.md#system-config)
-- 系统管理：包含[平台管理员 Token 颁发](./rudder/tag.md#Oauth2)、[Plugin 白名单](./rudder/tag.md#Oauth2)、[Token 验证接口](./rudder/tag.md#Oauth2)、[Admin重设密码接口](./rudder/tag.md#Oauth2)
-- 插件管理：包含[插件列表](./rudder/tag.md#Plugin)、[插件启用、停用、注册、更新](./rudder/tag.md#Plugin)、[插件仓库管理](./rudder/tag.md#Repo)
-- 租户管理：包含[租户空间管理](./rudder/tag.md#Tenant)、[单点登录配置](./rudder/tag.md#RBAC)
-- 计量服务：包含[用量数据接口](./rudder/tag.md#profile)
-- 登录认证：包含[登录认证](./rudder/tag.md#authentication)
+### 插件管理 API
+
+| Name                                                         | Description          |
+| :----------------------------------------------------------- | :------------------- |
+| [TMRegisterPlugin](https://docs.tkeel.io/api/rudder/method_TMRegisterPlugin) | 手动注册插件接口     |
+| [ListPlugin](https://docs.tkeel.io/api/rudder/method_ListPlugin) | 获取插件列表接口     |
+| [TMUpdatePluginIdentify](https://docs.tkeel.io/api/rudder/method_TMUpdatePluginIdentify) | 获取插件绑定租户接口 |
+| [GetPlugin](https://docs.tkeel.io/api/rudder/method_GetPlugin) | 查询插件接口         |
+| [UninstallPlugin](https://docs.tkeel.io/api/rudder/method_UninstallPlugin) | 卸载插件接口         |
+| [InstallPlugin](https://docs.tkeel.io/api/rudder/method_InstallPlugin) | 安装插件接口         |
+| [UpgradePlugin](https://docs.tkeel.io/api/rudder/method_UpgradePlugin) | 更新插件接口         |
+| [ListenableTenants](https://docs.tkeel.io/api/rudder/method_ListenableTenants) | 获取插件绑定租户接口 |
+| [TenantDisable](https://docs.tkeel.io/api/rudder/method_TenantDisable) | 插件租户停用接口     |
+| [TenantEnable](https://docs.tkeel.io/api/rudder/method_TenantEnable) | 插件租户启用接口     |
+
+### 租户管理 API
+
+| Name | Description |
+| :--- | :---------- |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+
+### 运维与管理 API
+
+| Name | Description |
+| :--- | :---------- |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+
+### 平台配置 API
+
+| Name | Description |
+| :--- | :---------- |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
 
 ## 租户平台
 
-租户平台包括以下API：
+租户平台包括以下 API：
 
-- 租户API：包含[用户管理](./rudder/tag.md#Tenant)、[权限管理](./rudder/tag.md#RBAC)
-- 设备API：包含[设备服务及映射服务](./device/tag.md#device)、[设备组服务](./device/tag.md#group)、[设备模板服务](./device/tag.md#template)
-- 数据服务API：包含[数据查询](./core_broker/tag.md#subscribe)、[订阅管理](./core_broker/tag.md#subscribe)、[数据路由](./rule_manager/tag.md#Rule)、[前端Websocket订阅](./appendix/websocket.md#sequence)
-- 网络服务API: [网关管理](./fluxswitch/tag.md#Clien)、[服务管理](./fluxswitch/tag.md#Proxy)、[批量导入](./fluxswitch/tag.md#Tools)
+### 插件管理 API
+
+| Name | Description |
+| :--- | :---------- |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+
+### 设备管理 API
+
+| Name | Description |
+| :--- | :---------- |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+
+### 数据查询 API
+
+| Name | Description |
+| :--- | :---------- |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+
+### 数据订阅 API
+
+| Name | Description |
+| :--- | :---------- |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+
+### 数据路由 API
+
+| Name | Description |
+| :--- | :---------- |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+
+### 用户管理 API
+
+| Name | Description |
+| :--- | :---------- |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+
+### 监控告警 API
+
+| Name | Description |
+| :--- | :---------- |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |
+|      |             |

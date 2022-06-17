@@ -1,9 +1,8 @@
 ---
 title: "SubscribeByDevice"
 description: 'subscribe by device'
----调用该接口subscribe by device。
-
-
+---
+调用该接口subscribe by device。
 
 ## Request
 

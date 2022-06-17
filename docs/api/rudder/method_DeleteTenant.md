@@ -1,15 +1,14 @@
 ---
 title: "DeleteTenant"
 description: 'delete a tenant'
----调用该接口delete a tenant。
-
-
+---
+调用该接口delete a tenant。
 
 ## Request
 
 
 ```
-delete \tenants\{tenant_id}
+delete /tenants/{tenant_id}
 ```
 
 | Name | Located in | Type | Description | 

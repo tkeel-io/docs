@@ -1,9 +1,8 @@
 ---
 title: "GetEntityProps"
 description: 'Get Entity Properties'
----调用该接口Get Entity Properties。
-
-
+---
+调用该接口Get Entity Properties。
 
 ## Request
 

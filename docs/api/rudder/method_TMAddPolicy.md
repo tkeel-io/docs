@@ -1,15 +1,14 @@
 ---
 title: "TMAddPolicy"
 description: 'TM add policy'
----调用该接口TM add policy。
-
-
+---
+调用该接口TM add policy。
 
 ## Request
 
 
 ```
-post \tkeel-manager\rbac\policy
+post /tkeel-manager/rbac/policy
 ```
 
 ### Request Body 

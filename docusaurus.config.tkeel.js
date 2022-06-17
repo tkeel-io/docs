@@ -1,3 +1,4 @@
+const simplePlantUML = require("@akebifiky/remark-simple-plantuml");
 const config = {
   title: 'tKeel',
   tagline: 'tKeel are cool',
@@ -17,12 +18,13 @@ const config = {
           routeBasePath: '/',
           editUrl: 'https://github.com/tkeel-io/docs/tree/main/',
           showLastUpdateTime: true,
+          remarkPlugins: [simplePlantUML],
         },
         theme: {
           customCss: require.resolve('./src/styles/tkeel.scss'),
         },
       },
-    ],
+    ]
   ],
 
   themeConfig: {

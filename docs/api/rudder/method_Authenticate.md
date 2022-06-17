@@ -1,15 +1,14 @@
 ---
 title: "Authenticate"
 description: 'tkeel authenticate with header Authorization'
----调用该接口tkeel authenticate with header Authorization。
-
-
+---
+调用该接口tkeel authenticate with header Authorization。
 
 ## Request
 
 
 ```
-get \authenticate
+get /authenticate
 ```
 
 ###  Request Parameters

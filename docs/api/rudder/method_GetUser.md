@@ -1,15 +1,14 @@
 ---
 title: "GetUser"
 description: 'get a  user'
----调用该接口get a  user。
-
-
+---
+调用该接口get a  user。
 
 ## Request
 
 
 ```
-get \tenants\{tenant_id}\users\{user_id}
+get /tenants/{tenant_id}/users/{user_id}
 ```
 
 | Name | Located in | Type | Description | 

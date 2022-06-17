@@ -1,15 +1,14 @@
 ---
 title: "InstallPlugin"
 description: '安装插件接口'
----调用该接口安装插件接口。
-
-
+---
+调用该接口安装插件接口。
 
 ## Request
 
 
 ```
-post \plugins\{id}
+post /plugins/{id}
 ```
 
 | Name | Located in | Type | Description | 

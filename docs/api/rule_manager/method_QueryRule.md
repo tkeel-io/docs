@@ -1,9 +1,8 @@
 ---
 title: "QueryRule"
 description: 'Query Rules'
----调用该接口Query Rules。
-
-
+---
+调用该接口Query Rules。
 
 ## Request
 

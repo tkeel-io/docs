@@ -1,15 +1,14 @@
 ---
 title: "OauthToken"
 description: 'oauth token with code or password'
----调用该接口oauth token with code or password。
-
-
+---
+调用该接口oauth token with code or password。
 
 ## Request
 
 
 ```
-get \oauth\{tenant_id}\token
+get /oauth/{tenant_id}/token
 ```
 
 | Name | Located in | Type | Description | 

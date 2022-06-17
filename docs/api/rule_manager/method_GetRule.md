@@ -1,9 +1,8 @@
 ---
 title: "GetRule"
 description: 'Get Rule'
----调用该接口Get Rule。
-
-
+---
+调用该接口Get Rule。
 
 ## Request
 

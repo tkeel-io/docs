@@ -1,9 +1,8 @@
 ---
 title: "PatchEntityConfigs"
 description: 'patch entity configs'
----调用该接口patch entity configs。
-
-
+---
+调用该接口patch entity configs。
 
 ## Request
 

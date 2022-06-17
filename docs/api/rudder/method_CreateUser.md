@@ -1,15 +1,14 @@
 ---
 title: "CreateUser"
 description: 'create a  user at tenant'
----调用该接口create a  user at tenant。
-
-
+---
+调用该接口create a  user at tenant。
 
 ## Request
 
 
 ```
-post \tenants\{tenant_id}\users
+post /tenants/{tenant_id}/users
 ```
 
 | Name | Located in | Type | Description | 

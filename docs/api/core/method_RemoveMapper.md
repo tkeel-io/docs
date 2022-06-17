@@ -1,9 +1,8 @@
 ---
 title: "RemoveMapper"
 description: 'remove mappers from entity'
----调用该接口remove mappers from entity。
-
-
+---
+调用该接口remove mappers from entity。
 
 ## Request
 

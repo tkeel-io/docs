@@ -1,9 +1,8 @@
 ---
 title: "TesyConnectToKafka"
 description: 'Test Kafka config'
----调用该接口Test Kafka config。
-
-
+---
+调用该接口Test Kafka config。
 
 ## Request
 

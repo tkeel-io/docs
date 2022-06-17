@@ -1,0 +1,1990 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "api/client/v1/client.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "Client"
+    },
+    {
+      "name": "Config"
+    },
+    {
+      "name": "Openapi"
+    },
+    {
+      "name": "Plugin"
+    },
+    {
+      "name": "Private"
+    },
+    {
+      "name": "Proxy"
+    },
+    {
+      "name": "Tools"
+    },
+    {
+      "name": "Topology"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/addons/identify": {
+      "post": {
+        "summary": "openapi addons identify",
+        "operationId": "Identify",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1AddonsIdentifyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1AddonsIdentifyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Openapi"
+        ]
+      }
+    },
+    "/client": {
+      "get": {
+        "operationId": "Client_ListClient",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ListClientResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query",
+            "description": "query items order by world",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "order_by",
+            "description": "query items order by field",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page_num",
+            "description": "query page number",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "page_size",
+            "description": "query page size",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "online",
+            "description": "query items by online status",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "description": "query items by enabled status",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Client"
+        ]
+      },
+      "post": {
+        "operationId": "Client_CreateClient",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1CreateClientResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1UpdateClient"
+            }
+          }
+        ],
+        "tags": [
+          "Client"
+        ]
+      }
+    },
+    "/client/{id}": {
+      "get": {
+        "operationId": "Client_GetClient",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetClientResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "Client"
+        ]
+      },
+      "delete": {
+        "operationId": "Client_DeleteClient",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DeleteClientResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "Client"
+        ]
+      },
+      "put": {
+        "operationId": "Client_UpdateClient",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1UpdateClientResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "client": {
+                  "$ref": "#/definitions/v1UpdateClient"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Client"
+        ]
+      }
+    },
+    "/export": {
+      "get": {
+        "summary": "TKEEL_COMMENT\n{\"request\":{\"raw_data\":true}}",
+        "operationId": "Tools_Export",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ExportResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Tools"
+        ]
+      }
+    },
+    "/identify": {
+      "get": {
+        "summary": "openapi identify",
+        "operationId": "Identify",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1IdentifyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Openapi"
+        ]
+      }
+    },
+    "/import": {
+      "post": {
+        "summary": "TKEEL_COMMENT\n{\"request\":{\"raw_data\":true}}",
+        "operationId": "Tools_Import",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ImportResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ImportRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Tools"
+        ]
+      }
+    },
+    "/plugin/login": {
+      "post": {
+        "summary": "TKEEL_COMMENT\n{\"response\":{\"raw_data\":true}}",
+        "operationId": "Plugin_LoginPlugin",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1LoginPluginResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1LoginObject"
+            }
+          }
+        ],
+        "tags": [
+          "Plugin"
+        ]
+      }
+    },
+    "/plugin/ping": {
+      "post": {
+        "summary": "TKEEL_COMMENT\n{\"response\":{\"raw_data\":true}}",
+        "operationId": "Plugin_PingPlugin",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1PingPluginResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1PingObject"
+            }
+          }
+        ],
+        "tags": [
+          "Plugin"
+        ]
+      }
+    },
+    "/plugin/proxy/close": {
+      "post": {
+        "summary": "TKEEL_COMMENT\n{\"response\":{\"raw_data\":true}}",
+        "operationId": "Plugin_CloseProxyPlugin",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1CloseProxyPluginResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1CloseProxyObject"
+            }
+          }
+        ],
+        "tags": [
+          "Plugin"
+        ]
+      }
+    },
+    "/plugin/proxy/new": {
+      "post": {
+        "summary": "TKEEL_COMMENT\n{\"response\":{\"raw_data\":true}}",
+        "operationId": "Plugin_NewProxyPlugin",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1NewProxyPluginResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1NewProxyObject"
+            }
+          }
+        ],
+        "tags": [
+          "Plugin"
+        ]
+      }
+    },
+    "/private": {
+      "get": {
+        "operationId": "Private_ListPrivate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ListPrivateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "order_by",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page_num",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "page_size",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "tags": [
+          "Private"
+        ]
+      },
+      "post": {
+        "operationId": "Private_CreatePrivate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1CreatePrivateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1CreatePrivateRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Private"
+        ]
+      }
+    },
+    "/private/{uid}": {
+      "get": {
+        "operationId": "Private_GetPrivate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetPrivateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Private"
+        ]
+      },
+      "delete": {
+        "operationId": "Private_DeletePrivate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DeletePrivateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Private"
+        ]
+      },
+      "put": {
+        "operationId": "Private_UpdatePrivate",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1UpdatePrivateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "obj": {
+                  "$ref": "#/definitions/v1PrivateObject"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Private"
+        ]
+      }
+    },
+    "/proxy": {
+      "get": {
+        "operationId": "Proxy_ListProxy",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1ListProxyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query",
+            "description": "query items order by world",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "order_by",
+            "description": "query items order by field",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page_num",
+            "description": "query page number",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "page_size",
+            "description": "query page size",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "online",
+            "description": "query items by online status",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "description": "query items by enabled status",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "client_id",
+            "description": "query items by specified client id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Proxy"
+        ]
+      },
+      "post": {
+        "operationId": "Proxy_CreateProxy",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1CreateProxyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1UpdateProxy"
+            }
+          }
+        ],
+        "tags": [
+          "Proxy"
+        ]
+      }
+    },
+    "/proxy/{id}": {
+      "get": {
+        "operationId": "Proxy_GetProxy",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetProxyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "Proxy"
+        ]
+      },
+      "delete": {
+        "operationId": "Proxy_DeleteProxy",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1DeleteProxyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "Proxy"
+        ]
+      },
+      "put": {
+        "operationId": "Proxy_UpdateProxy",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1UpdateProxyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1UpdateProxy"
+            }
+          }
+        ],
+        "tags": [
+          "Proxy"
+        ]
+      }
+    },
+    "/status": {
+      "get": {
+        "summary": "openapi status",
+        "operationId": "Status",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1StatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Openapi"
+        ]
+      }
+    },
+    "/template": {
+      "get": {
+        "operationId": "Tools_Template",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1TemplateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Tools"
+        ]
+      }
+    },
+    "/tenant/disable": {
+      "post": {
+        "summary": "openapi tenant disable",
+        "operationId": "TenantDisable",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1TenantDisableResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1TenantDisableRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Openapi"
+        ]
+      }
+    },
+    "/tenant/enable": {
+      "post": {
+        "summary": "openapi tenant enable",
+        "operationId": "TenantEnable",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1TenantEnableResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1TenantEnableRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Openapi"
+        ]
+      }
+    },
+    "/topology": {
+      "get": {
+        "operationId": "Topology_GetTopology",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetTopologyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Topology"
+        ]
+      }
+    },
+    "/watch/{token}": {
+      "get": {
+        "summary": "监听配置改变，实时更新\nTKEEL_COMMENT\n{\"request\":{\"raw_data\":true}}",
+        "operationId": "Config_WatchConfig",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1WatchConfigResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Config"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "PermissionDependence": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "desc": {
+          "type": "string",
+          "description": "ID\u003e/authority ID.The content in \u003c\u003e is variable."
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v1AddonsIdentifyRequest": {
+      "type": "object",
+      "properties": {
+        "plugin": {
+          "$ref": "#/definitions/v1BriefPluginInfo"
+        },
+        "implemented_addons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ImplementedAddons"
+          }
+        }
+      },
+      "description": "*\nThe request value of the POST /v1/addons/identify,\nused when the plugin in the registration process implements\nthe extension point of the registered plugin."
+    },
+    "v1AddonsIdentifyResponse": {
+      "type": "object",
+      "properties": {
+        "res": {
+          "$ref": "#/definitions/v1Result"
+        }
+      },
+      "description": "*\nThe response value of the POST /v1/addons/identify,\nused when the plugin in the registration process implements\nthe extension point of the registered plugin."
+    },
+    "v1AddonsPoint": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "desc": {
+          "type": "string"
+        }
+      },
+      "description": "*\nmessage plugin declares extension point."
+    },
+    "v1BriefPluginInfo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "description": "*\nmessage brief plugin information."
+    },
+    "v1Client": {
+      "type": "object",
+      "properties": {
+        "proxies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Proxy"
+          }
+        },
+        "name": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "online": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "v1CloseProxyContent": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/v1User"
+        },
+        "proxy_name": {
+          "type": "string"
+        }
+      }
+    },
+    "v1CloseProxyObject": {
+      "type": "object",
+      "properties": {
+        "op": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/definitions/v1CloseProxyContent"
+        }
+      }
+    },
+    "v1CloseProxyPluginResponse": {
+      "type": "object",
+      "properties": {
+        "unchange": {
+          "type": "boolean"
+        },
+        "reject": {
+          "type": "boolean"
+        },
+        "reject_reason": {
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/definitions/v1CloseProxyContent"
+        }
+      }
+    },
+    "v1ConsoleEntry": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "entry": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ConsoleEntry"
+          }
+        },
+        "portal": {
+          "$ref": "#/definitions/v1ConsolePortal"
+        }
+      },
+      "description": "plugin console entry."
+    },
+    "v1ConsolePortal": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "tenant"
+      ],
+      "default": "admin",
+      "description": "console portal enum."
+    },
+    "v1CreateClientResponse": {
+      "type": "object",
+      "properties": {
+        "client": {
+          "$ref": "#/definitions/v1QueryClient"
+        },
+        "command": {
+          "type": "string"
+        }
+      }
+    },
+    "v1CreatePrivateRequest": {
+      "type": "object",
+      "properties": {
+        "obj": {
+          "$ref": "#/definitions/v1PrivateObject"
+        }
+      }
+    },
+    "v1CreatePrivateResponse": {
+      "type": "object"
+    },
+    "v1CreateProxyResponse": {
+      "type": "object",
+      "properties": {
+        "proxy": {
+          "$ref": "#/definitions/v1QueryProxy"
+        }
+      }
+    },
+    "v1DeleteClientResponse": {
+      "type": "object",
+      "properties": {
+        "client": {
+          "$ref": "#/definitions/v1QueryClient"
+        }
+      }
+    },
+    "v1DeletePrivateResponse": {
+      "type": "object",
+      "properties": {
+        "obj": {
+          "$ref": "#/definitions/v1PrivateObject"
+        }
+      }
+    },
+    "v1DeleteProxyResponse": {
+      "type": "object",
+      "properties": {
+        "proxy": {
+          "$ref": "#/definitions/v1QueryProxy"
+        }
+      }
+    },
+    "v1ExportResponse": {
+      "type": "object"
+    },
+    "v1GetClientResponse": {
+      "type": "object",
+      "properties": {
+        "client": {
+          "$ref": "#/definitions/v1QueryClient"
+        },
+        "command": {
+          "type": "string"
+        }
+      }
+    },
+    "v1GetPrivateResponse": {
+      "type": "object",
+      "properties": {
+        "obj": {
+          "$ref": "#/definitions/v1PrivateObject"
+        }
+      }
+    },
+    "v1GetProxyResponse": {
+      "type": "object",
+      "properties": {
+        "proxy": {
+          "$ref": "#/definitions/v1QueryProxy"
+        }
+      }
+    },
+    "v1GetTopologyResponse": {
+      "type": "object",
+      "properties": {
+        "clients": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Client"
+          }
+        }
+      }
+    },
+    "v1IdentifyResponse": {
+      "type": "object",
+      "properties": {
+        "res": {
+          "$ref": "#/definitions/v1Result"
+        },
+        "plugin_id": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "tkeel_version": {
+          "type": "string"
+        },
+        "addons_point": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1AddonsPoint"
+          }
+        },
+        "implemented_plugin": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ImplementedPlugin"
+          }
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ConsoleEntry"
+          }
+        },
+        "dependence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1BriefPluginInfo"
+          }
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Permission"
+          }
+        },
+        "disable_manual_activation": {
+          "type": "boolean"
+        }
+      },
+      "description": "*\nThe response value of the GET /v1/identify,\nused when the plugin registered."
+    },
+    "v1ImplementedAddons": {
+      "type": "object",
+      "properties": {
+        "addons_point": {
+          "type": "string"
+        },
+        "implemented_endpoint": {
+          "type": "string"
+        }
+      },
+      "description": "*\nmessage plugin declares implemented other plugin extension point."
+    },
+    "v1ImplementedPlugin": {
+      "type": "object",
+      "properties": {
+        "plugin": {
+          "$ref": "#/definitions/v1BriefPluginInfo"
+        },
+        "addons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ImplementedAddons"
+          }
+        }
+      },
+      "description": "*\nmessage plugin implemented other plugin."
+    },
+    "v1ImportRequest": {
+      "type": "object"
+    },
+    "v1ImportResponse": {
+      "type": "object"
+    },
+    "v1ListClientResponse": {
+      "type": "object",
+      "properties": {
+        "client_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1QueryClient"
+          }
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "description": "total items"
+        },
+        "page_num": {
+          "type": "integer",
+          "format": "int32",
+          "description": "query page number"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "description": "query page size"
+        }
+      }
+    },
+    "v1ListPrivateResponse": {
+      "type": "object",
+      "properties": {
+        "objList": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1PrivateObject"
+          }
+        }
+      }
+    },
+    "v1ListProxyResponse": {
+      "type": "object",
+      "properties": {
+        "proxy_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1QueryProxy"
+          },
+          "description": "proxy list"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "description": "total items"
+        },
+        "page_num": {
+          "type": "integer",
+          "format": "int32",
+          "description": "query page number"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "description": "query page size"
+        }
+      }
+    },
+    "v1LoginContent": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "hostname": {
+          "type": "string"
+        },
+        "os": {
+          "type": "string"
+        },
+        "arch": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "int64"
+        },
+        "privilege_key": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "pool_count": {
+          "type": "string",
+          "format": "int64"
+        },
+        "metas": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "client_address": {
+          "type": "string"
+        }
+      }
+    },
+    "v1LoginObject": {
+      "type": "object",
+      "properties": {
+        "op": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/definitions/v1LoginContent"
+        }
+      }
+    },
+    "v1LoginPluginResponse": {
+      "type": "object",
+      "properties": {
+        "unchange": {
+          "type": "boolean"
+        },
+        "reject": {
+          "type": "boolean"
+        },
+        "reject_reason": {
+          "type": "string"
+        }
+      }
+    },
+    "v1NewProxyContent": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/v1User"
+        },
+        "proxy_name": {
+          "type": "string"
+        },
+        "proxy_type": {
+          "type": "string"
+        },
+        "use_encryption": {
+          "type": "boolean"
+        },
+        "use_compression": {
+          "type": "boolean"
+        },
+        "remote_port": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "metas": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v1NewProxyObject": {
+      "type": "object",
+      "properties": {
+        "op": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/definitions/v1NewProxyContent"
+        }
+      }
+    },
+    "v1NewProxyPluginResponse": {
+      "type": "object",
+      "properties": {
+        "unchange": {
+          "type": "boolean"
+        },
+        "reject": {
+          "type": "boolean"
+        },
+        "reject_reason": {
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/definitions/v1NewProxyContent"
+        }
+      }
+    },
+    "v1Permission": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "dependences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PermissionDependence"
+          }
+        },
+        "desc": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Permission"
+          }
+        }
+      },
+      "description": "plugin define permission."
+    },
+    "v1PingContent": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/v1User"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "int64"
+        },
+        "privilege_key": {
+          "type": "string"
+        }
+      }
+    },
+    "v1PingObject": {
+      "type": "object",
+      "properties": {
+        "op": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/definitions/v1PingContent"
+        }
+      }
+    },
+    "v1PingPluginResponse": {
+      "type": "object",
+      "properties": {
+        "unchange": {
+          "type": "boolean"
+        },
+        "reject": {
+          "type": "boolean"
+        },
+        "reject_reason": {
+          "type": "string"
+        }
+      }
+    },
+    "v1PluginStatus": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN",
+        "WAIT_RUNNING",
+        "ERR_REGISTER",
+        "RUNNING"
+      ],
+      "default": "UNKNOWN",
+      "description": "*\nplugin state enum."
+    },
+    "v1PrivateObject": {
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string"
+        }
+      }
+    },
+    "v1Proxy": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "host": {
+          "type": "string"
+        },
+        "port": {
+          "type": "string"
+        },
+        "protocol": {
+          "type": "string"
+        },
+        "device_id": {
+          "type": "string"
+        },
+        "device_name": {
+          "type": "string"
+        },
+        "online": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    "v1QueryClient": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "token": {
+          "type": "string"
+        },
+        "client_address": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "online": {
+          "type": "string"
+        },
+        "create_at": {
+          "type": "string",
+          "format": "int64"
+        },
+        "inlet_flow": {
+          "type": "string",
+          "format": "int64"
+        },
+        "export_flow": {
+          "type": "string",
+          "format": "int64"
+        }
+      }
+    },
+    "v1QueryProxy": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "host": {
+          "type": "string"
+        },
+        "port": {
+          "type": "string"
+        },
+        "protocol": {
+          "type": "string"
+        },
+        "device_id": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "online": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "client_id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "create_at": {
+          "type": "string",
+          "format": "int64"
+        },
+        "inlet_flow": {
+          "type": "string",
+          "format": "int64"
+        },
+        "export_flow": {
+          "type": "string",
+          "format": "int64"
+        },
+        "token": {
+          "type": "string"
+        },
+        "device_name": {
+          "type": "string"
+        }
+      }
+    },
+    "v1Result": {
+      "type": "object",
+      "properties": {
+        "ret": {
+          "$ref": "#/definitions/v1Retcode"
+        },
+        "msg": {
+          "type": "string"
+        }
+      },
+      "description": "*\nmessage result."
+    },
+    "v1Retcode": {
+      "type": "string",
+      "enum": [
+        "OK",
+        "BAD_REQEUST",
+        "INTERNAL_ERROR"
+      ],
+      "default": "OK",
+      "description": "*\nerror code enum."
+    },
+    "v1StatusResponse": {
+      "type": "object",
+      "properties": {
+        "res": {
+          "$ref": "#/definitions/v1Result"
+        },
+        "status": {
+          "$ref": "#/definitions/v1PluginStatus"
+        }
+      },
+      "description": "*\nThe request value of the GET /v1/Status.\nused when the tkeel checks the status of plugins regularly."
+    },
+    "v1TemplateResponse": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string"
+        }
+      }
+    },
+    "v1TenantDisableRequest": {
+      "type": "object",
+      "properties": {
+        "tenant_id": {
+          "type": "string"
+        },
+        "extra": {
+          "type": "string",
+          "format": "byte"
+        }
+      },
+      "description": "*\nThe request value of the POST /v1/tenant/disable,\nused when the tenant administrator disables the plugin."
+    },
+    "v1TenantDisableResponse": {
+      "type": "object",
+      "properties": {
+        "res": {
+          "$ref": "#/definitions/v1Result"
+        }
+      },
+      "description": "*\nThe response value of the POST /v1/tenant/disable,\nused when the tenant administrator disables the plugin."
+    },
+    "v1TenantEnableRequest": {
+      "type": "object",
+      "properties": {
+        "tenant_id": {
+          "type": "string"
+        },
+        "extra": {
+          "type": "string",
+          "format": "byte"
+        }
+      },
+      "description": "*\nThe request value of the POST /v1/tenant/enable,\nused when the tenant administrator enables the plugin."
+    },
+    "v1TenantEnableResponse": {
+      "type": "object",
+      "properties": {
+        "res": {
+          "$ref": "#/definitions/v1Result"
+        }
+      },
+      "description": "*\nThe response value of the POST /v1/tenant/enable,\nused when the tenant administrator enables the plugin."
+    },
+    "v1UpdateClient": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "device_name": {
+          "type": "string"
+        }
+      }
+    },
+    "v1UpdateClientResponse": {
+      "type": "object",
+      "properties": {
+        "client": {
+          "$ref": "#/definitions/v1QueryClient"
+        }
+      }
+    },
+    "v1UpdatePrivateResponse": {
+      "type": "object"
+    },
+    "v1UpdateProxy": {
+      "type": "object",
+      "properties": {
+        "client_id": {
+          "type": "string",
+          "format": "uint64"
+        },
+        "name": {
+          "type": "string"
+        },
+        "host": {
+          "type": "string"
+        },
+        "port": {
+          "type": "string"
+        },
+        "protocol": {
+          "type": "string"
+        },
+        "device_id": {
+          "type": "string"
+        },
+        "remark": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "device_name": {
+          "type": "string"
+        }
+      }
+    },
+    "v1UpdateProxyResponse": {
+      "type": "object",
+      "properties": {
+        "proxy": {
+          "$ref": "#/definitions/v1QueryProxy"
+        }
+      }
+    },
+    "v1User": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "type": "string"
+        },
+        "metas": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "run_id": {
+          "type": "string"
+        }
+      }
+    },
+    "v1WatchConfigResponse": {
+      "type": "object"
+    }
+  }
+}

@@ -1,15 +1,14 @@
 ---
 title: "VerifyToken"
 description: 'Token 验证接口'
----调用该接口Token 验证接口。
-
-
+---
+调用该接口Token 验证接口。
 
 ## Request
 
 
 ```
-get \oauth2\authorize
+get /oauth2/authorize
 ```
 
 ## Response

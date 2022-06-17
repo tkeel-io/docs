@@ -1,9 +1,8 @@
 ---
 title: "GetRawdata"
 description: 'Get entity rawdata'
----调用该接口Get entity rawdata。
-
-
+---
+调用该接口Get entity rawdata。
 
 ## Request
 

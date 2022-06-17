@@ -1,9 +1,8 @@
 ---
 title: "GetRuleDevices"
 description: 'Get Rule Devices'
----调用该接口Get Rule Devices。
-
-
+---
+调用该接口Get Rule Devices。
 
 ## Request
 

@@ -1,15 +1,14 @@
 ---
 title: "OIDCRegister"
 description: 'oauth OIDC provider register'
----调用该接口oauth OIDC provider register。
-
-
+---
+调用该接口oauth OIDC provider register。
 
 ## Request
 
 
 ```
-post \oauth\oidc\register
+post /oauth/oidc/register
 ```
 
 ### Request Body 

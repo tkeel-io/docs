@@ -1,9 +1,8 @@
 ---
 title: "RemoveEntityProps"
 description: 'Remove Entity Properties'
----调用该接口Remove Entity Properties。
-
-
+---
+调用该接口Remove Entity Properties。
 
 ## Request
 

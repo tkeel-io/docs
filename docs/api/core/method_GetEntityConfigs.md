@@ -1,9 +1,8 @@
 ---
 title: "GetEntityConfigs"
 description: 'query entity configs'
----调用该接口query entity configs。
-
-
+---
+调用该接口query entity configs。
 
 ## Request
 

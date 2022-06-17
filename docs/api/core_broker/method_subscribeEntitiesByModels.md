@@ -1,9 +1,8 @@
 ---
 title: "subscribeEntitiesByModels"
 description: 'add subscribe entities by models'
----调用该接口add subscribe entities by models。
-
-
+---
+调用该接口add subscribe entities by models。
 
 ## Request
 

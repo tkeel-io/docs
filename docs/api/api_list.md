@@ -13,16 +13,16 @@ API 列表中包含里管理平台和用户平台各功能模块的所有 API。
 
 | Name                                                         | Description          |
 | :----------------------------------------------------------- | :------------------- |
-| [TMRegisterPlugin](https://docs.tkeel.io/api/rudder/method_TMRegisterPlugin) | 手动注册插件接口     |
-| [ListPlugin](https://docs.tkeel.io/api/rudder/method_ListPlugin) | 获取插件列表接口     |
-| [TMUpdatePluginIdentify](https://docs.tkeel.io/api/rudder/method_TMUpdatePluginIdentify) | 获取插件绑定租户接口 |
-| [GetPlugin](https://docs.tkeel.io/api/rudder/method_GetPlugin) | 查询插件接口         |
-| [UninstallPlugin](https://docs.tkeel.io/api/rudder/method_UninstallPlugin) | 卸载插件接口         |
-| [InstallPlugin](https://docs.tkeel.io/api/rudder/method_InstallPlugin) | 安装插件接口         |
-| [UpgradePlugin](https://docs.tkeel.io/api/rudder/method_UpgradePlugin) | 更新插件接口         |
-| [ListenableTenants](https://docs.tkeel.io/api/rudder/method_ListenableTenants) | 获取插件绑定租户接口 |
-| [TenantDisable](https://docs.tkeel.io/api/rudder/method_TenantDisable) | 插件租户停用接口     |
-| [TenantEnable](https://docs.tkeel.io/api/rudder/method_TenantEnable) | 插件租户启用接口     |
+| [TMRegisterPlugin](./rudder/method_TMRegisterPlugin.md)      | 手动注册插件接口     |
+| [ListPlugin](./rudder/method_ListPlugin.md)                  | 获取插件列表接口     |
+| [TMUpdatePluginIdentify](./rudder/method_TMUpdatePluginIdentify.md) | 获取插件绑定租户接口 |
+| [GetPlugin](./rudder/method_GetPlugin.md)                    | 查询插件接口         |
+| [UninstallPlugin](./rudder/method_UninstallPlugin.md)        | 卸载插件接口         |
+| [InstallPlugin](./rudder/method_InstallPlugin.md)            | 安装插件接口         |
+| [UpgradePlugin](./rudder/method_UpgradePlugin.md)            | 更新插件接口         |
+| [ListenableTenants](./rudder/method_ListenableTenants.md)    | 获取插件绑定租户接口 |
+| [TenantDisable](./rudder/method_TenantDisable.md)            | 插件租户停用接口     |
+| [TenantEnable](./rudder/method_TenantEnable.md)              | 插件租户启用接口     |
 
 ### 租户管理 API
 

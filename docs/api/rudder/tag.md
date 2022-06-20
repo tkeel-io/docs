@@ -144,3 +144,4 @@ sidebar_position: 0
 | ---- |  ----------- | 
 | [SetTenantProfile](./method_SetTenantProfile)|  设置平台租户配置 |
 | [GetTenantProfile](./method_GetTenantProfile)|  获取平台租户配置 |
+

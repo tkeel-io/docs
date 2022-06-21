@@ -1,61 +1,69 @@
 ---
-title: "TenantEnable"
-description: 'openapi tenant enable'
+title: 'openapi tenant enable'
+description: "TenantEnable"
 ---
+## 接口说明
 调用该接口openapi tenant enable。
 
-## Request
+## URI
 
 ```
 post /tenant/enable
 ```
 
-### Request Body 
-| Description | Type | Schema |
+## 请求参数
+
+| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
+| ---- | ---------- | ----------- | ----------- | ----------- |
+
+### 请求Body
+| 字段名 | 类型 | 描述 |
 | ----------- | ------ | ------ |
-|  | Object | [v1TenantEnableRequest](#v1TenantEnableRequest) |
+| Body | Object([v1TenantEnableRequest](#v1TenantEnableRequest)) |  |
 
 #### v1TenantEnableRequest
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| extra | string |  |      
-| tenant_id | string |  |   
-
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| extra | string |  | 
+| tenant_id | string |  |
 
 
-## Response
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1TenantEnableResponse](#v1TenantEnableResponse) |
+
+
+
+## 响应
+
+
+### 响应<200>
+| Code | 描述 | 类型 |
+| ---- | ----------- | ------ | 
+| 200 | OK | Object([v1TenantEnableResponse](#v1TenantEnableResponse)) |
 
 #### v1TenantEnableResponse
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| res |  |  |   
+
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- |
+| res | Object |  [ 具体参数可见下面 [v1Result](#v1Result) ]  |
+
+
+### v1Result
+
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| msg | string |  |
+| ret | Object |  [ 具体参数可见下面 [v1Retcode](#v1Retcode) ]  |
+
+
+### v1Retcode
+
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- |
 
 
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
 
-#### rpcStatus
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
-
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
 
 
 

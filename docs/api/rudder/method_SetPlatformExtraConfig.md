@@ -6,9 +6,8 @@ description: '设置 platform config extra 数据接口'
 
 ## Request
 
-
 ```
-post /config/platform/update
+post \config\platform\update
 ```
 
 ###  Request Parameters

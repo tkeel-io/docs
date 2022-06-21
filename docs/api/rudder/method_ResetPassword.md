@@ -1,14 +1,13 @@
 ---
 title: "ResetPassword"
-description: 'oauth reset user password'
+description: '重置密码'
 ---
-调用该接口oauth reset user password。
+调用该接口重置密码。
 
 ## Request
 
-
 ```
-post /oauth/rspwd
+post \oauth\rspwd
 ```
 
 ### Request Body 

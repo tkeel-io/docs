@@ -1,14 +1,13 @@
 ---
 title: "ListTenant"
-description: 'tenant list'
+description: '获取租户列表'
 ---
-调用该接口tenant list。
+调用该接口获取租户列表。
 
 ## Request
 
-
 ```
-get /tenants
+get \tenants
 ```
 
 ###  Request Parameters

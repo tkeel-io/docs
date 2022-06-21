@@ -6,9 +6,8 @@ description: '卸载插件接口'
 
 ## Request
 
-
 ```
-delete /plugins/{id}
+delete \plugins\{id}
 ```
 
 | Name | Located in | Type | Description | 

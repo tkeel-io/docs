@@ -1,14 +1,13 @@
 ---
 title: "CreateEntityToken"
-description: 'create a entity token'
+description: '创建实体Token'
 ---
-调用该接口create a entity token。
+调用该接口创建实体Token。
 
 ## Request
 
-
 ```
-post /entity/token
+post \entity\token
 ```
 
 ### Request Body 

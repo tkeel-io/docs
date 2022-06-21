@@ -1,14 +1,13 @@
 ---
 title: "ListTenantPlugin"
-description: 'list tenant plugin'
+description: '租户插件列表'
 ---
-调用该接口list tenant plugin。
+调用该接口租户插件列表。
 
 ## Request
 
-
 ```
-get /tenants/{tenant_id}/plugins
+get \tenants\{tenant_id}\plugins
 ```
 
 | Name | Located in | Type | Description | 

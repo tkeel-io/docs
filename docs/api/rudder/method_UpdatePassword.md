@@ -1,14 +1,13 @@
 ---
 title: "UpdatePassword"
-description: 'oauth update user password'
+description: '修改密码'
 ---
-调用该接口oauth update user password。
+调用该接口修改密码。
 
 ## Request
 
-
 ```
-put /oauth/pwd
+put \oauth\pwd
 ```
 
 ### Request Body 

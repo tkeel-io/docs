@@ -1,14 +1,13 @@
 ---
 title: "PermissibleTenantPlugin"
-description: 'permissible tenant plugin'
+description: '租户插件权限校验'
 ---
-调用该接口permissible tenant plugin。
+调用该接口租户插件权限校验。
 
 ## Request
 
-
 ```
-get /tenants/plugins/permissible
+get \tenants\plugins\permissible
 ```
 
 ###  Request Parameters

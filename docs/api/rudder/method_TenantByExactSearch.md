@@ -1,14 +1,13 @@
 ---
 title: "TenantByExactSearch"
-description: 'tenant exact search'
+description: '租户认证方式查询'
 ---
-调用该接口tenant exact search。
+调用该接口租户认证方式查询。
 
 ## Request
 
-
 ```
-get /tenants/exact
+get \tenants\exact
 ```
 
 ###  Request Parameters

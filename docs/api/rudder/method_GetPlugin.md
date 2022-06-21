@@ -6,9 +6,8 @@ description: '查询插件接口'
 
 ## Request
 
-
 ```
-get /plugins/{id}
+get \plugins\{id}
 ```
 
 | Name | Located in | Type | Description | 

@@ -7,118 +7,118 @@ sidebar_position: 0
 
 
 
+## EntityToken API{#EntityToken}
+
+| Name |  Description | 
+| ---- |  ----------- | 
+| [EntityTokenInfo](./method_EntityTokenInfo)|  获取实体Token原信息 |
+| [DeleteEntityToken](./method_DeleteEntityToken)|  注销实体Token |
+| [CreateEntityToken](./method_CreateEntityToken)|  创建实体Token |
+
+
+## OAuth API{#OAuth}
+
+| Name |  Description | 
+| ---- |  ----------- | 
+| [IdentityProviderTemplate](./method_IdentityProviderTemplate)|  获取外部身份认证配置模板 |
+| [IdentityProviderRegister](./method_IdentityProviderRegister)|  外部认证注册 |
+| [ResetPassword](./method_ResetPassword)|  重置密码 |
+| [OauthToken](./method_OauthToken)|  获取API access_token |
+| [OauthAuthorize](./method_OauthAuthorize)|  获取授权码 |
+| [OIDCRegister](./method_OIDCRegister)|  注册 OIDC 外部身份认证方 |
+| [TokenRevoke](./method_TokenRevoke)|  注销 access_token |
+| [OauthAuthenticate](./method_OauthAuthenticate)|  获取 access_token 认证信息 |
+| [GetIdentityProvider](./method_GetIdentityProvider)|  获取租户外部认证配置 |
+| [UpdatePassword](./method_UpdatePassword)|  修改密码 |
+
+
 ## Oauth2 API{#Oauth2}
 
 | Name |  Description | 
 | ---- |  ----------- | 
-| [IssuePluginToken](./method_IssuePluginToken)|  插件 Token 颁发接口 |
-| [IssueAdminToken](./method_IssueAdminToken)|  平台管理员 Token 颁发接口 |
 | [AddPluginWhiteList](./method_AddPluginWhiteList)|  添加 Plugin 白名单 dapr App ID 接口 |
+| [IssuePluginToken](./method_IssuePluginToken)|  插件 Token 颁发接口 |
 | [VerifyToken](./method_VerifyToken)|  Token 验证接口 |
 | [UpdateAdminPassword](./method_UpdateAdminPassword)|  admin 重设密码接口 |
+| [IssueAdminToken](./method_IssueAdminToken)|  平台管理员 Token 颁发接口 |
 
 
 ## Plugin API{#Plugin}
 
 | Name |  Description | 
 | ---- |  ----------- | 
-| [TMRegisterPlugin](./method_TMRegisterPlugin)|  手动注册插件接口 |
-| [ListPlugin](./method_ListPlugin)|  获取插件列表接口 |
 | [TMUpdatePluginIdentify](./method_TMUpdatePluginIdentify)|  获取插件绑定租户接口 |
+| [ListPlugin](./method_ListPlugin)|  获取插件列表接口 |
+| [ListenableTenants](./method_ListenableTenants)|  获取插件绑定租户接口 |
+| [TenantDisable](./method_TenantDisable)|  插件租户停用接口 |
+| [TenantEnable](./method_TenantEnable)|  插件租户启用接口 |
+| [TMRegisterPlugin](./method_TMRegisterPlugin)|  手动注册插件接口 |
 | [GetPlugin](./method_GetPlugin)|  查询插件接口 |
 | [UninstallPlugin](./method_UninstallPlugin)|  卸载插件接口 |
 | [InstallPlugin](./method_InstallPlugin)|  安装插件接口 |
 | [UpgradePlugin](./method_UpgradePlugin)|  更新插件接口 |
-| [ListenableTenants](./method_ListenableTenants)|  获取插件绑定租户接口 |
-| [TenantDisable](./method_TenantDisable)|  插件租户停用接口 |
-| [TenantEnable](./method_TenantEnable)|  插件租户启用接口 |
 
 
 ## RBAC API{#RBAC}
 
 | Name |  Description | 
 | ---- |  ----------- | 
-| [TMDeleteRoleBinding](./method_TMDeleteRoleBinding)|  TM delete policy |
-| [DeleteRole](./method_DeleteRole)|  delete role in tenant  |
-| [UpdateRole](./method_UpdateRole)|  update role in tenant  |
-| [GetRole](./method_GetRole)|  Get role in tenant  |
-| [TMAddRoleBinding](./method_TMAddRoleBinding)|  TM add policy |
-| [ListPermissions](./method_ListPermissions)|  list permissions  |
-| [UpdateUserRoleBinding](./method_UpdateUserRoleBinding)|  create binding to bind user_id with roles |
-| [CheckRolePermission](./method_CheckRolePermission)|  check role has the permission |
-| [TMDeletePolicy](./method_TMDeletePolicy)|  TM delete policy |
-| [CreateRole](./method_CreateRole)|  create role in tenant  |
-| [ListRole](./method_ListRole)|  list role in tenant  |
-| [TMAddPolicy](./method_TMAddPolicy)|  TM add policy |
-| [CreateRoleBinding](./method_CreateRoleBinding)|  create binding to bind role_id with user_id |
-| [DeleteRoleBinding](./method_DeleteRoleBinding)|  delete binding of the bind role_name with user_id |
+| [ListPermissions](./method_ListPermissions)|  权限列表 |
+| [UpdateUserRoleBinding](./method_UpdateUserRoleBinding)|  全量更新用户角色 |
+| [TMAddPolicy](./method_TMAddPolicy)|  TM add policy 测试专用 |
+| [ListRole](./method_ListRole)|  角色列表 |
+| [CreateRole](./method_CreateRole)|  创建角色 |
+| [TMDeleteRoleBinding](./method_TMDeleteRoleBinding)|  TM delete policy 测试专用 |
+| [DeleteRoleBinding](./method_DeleteRoleBinding)|  删除用户角色 |
+| [CheckRolePermission](./method_CheckRolePermission)|  权限校验 |
+| [DeleteRole](./method_DeleteRole)|  删除角色 |
+| [UpdateRole](./method_UpdateRole)|  修改角色信息 |
+| [GetRole](./method_GetRole)|  获取角色详情 |
+| [TMDeletePolicy](./method_TMDeletePolicy)|  TM delete policy 测试专用 |
+| [TMAddRoleBinding](./method_TMAddRoleBinding)|  TM add policy 测试专用 |
+| [CreateRoleBinding](./method_CreateRoleBinding)|  为用户添加角色 |
 
 
 ## Repo API{#Repo}
 
 | Name |  Description | 
 | ---- |  ----------- | 
+| [ListRepoInstaller](./method_ListRepoInstaller)|  获取仓库中安装包列表接口 |
+| [ListAllRepoInstaller](./method_ListAllRepoInstaller)|  获取所有仓库的安装包列表接口 |
+| [ListRepo](./method_ListRepo)|  获取仓库列表接口 |
 | [DeleteRepo](./method_DeleteRepo)|  删除仓库接口 |
 | [CreateRepo](./method_CreateRepo)|  创建仓库接口 |
-| [ListRepo](./method_ListRepo)|  获取仓库列表接口 |
-| [ListAllRepoInstaller](./method_ListAllRepoInstaller)|  获取所有仓库的安装包列表接口 |
 | [GetRepoInstaller](./method_GetRepoInstaller)|  获取仓库中指定安装包 |
-| [ListRepoInstaller](./method_ListRepoInstaller)|  获取仓库中安装包列表接口 |
 
 
-## [Security] EntityToken API{#EntityToken}
-
-| Name |  Description | 
-| ---- |  ----------- | 
-| [EntityTokenInfo](./method_EntityTokenInfo)|  get a entity token info |
-| [DeleteEntityToken](./method_DeleteEntityToken)|  delete a entity token |
-| [CreateEntityToken](./method_CreateEntityToken)|  create a entity token |
-
-
-## [Security] OAuth API{#OAuth}
+## Tenant API{#Tenant}
 
 | Name |  Description | 
 | ---- |  ----------- | 
-| [OauthAuthenticate](./method_OauthAuthenticate)|  oauth authenticate with header Authorization |
-| [OauthAuthorize](./method_OauthAuthorize)|  oauth authorize code with username and password |
-| [UpdatePassword](./method_UpdatePassword)|  oauth update user password |
-| [OauthToken](./method_OauthToken)|  oauth token with code or password |
-| [IdentityProviderTemplate](./method_IdentityProviderTemplate)|  identity provider config template |
-| [ResetPassword](./method_ResetPassword)|  oauth reset user password |
-| [OIDCRegister](./method_OIDCRegister)|  oauth OIDC provider register |
-| [IdentityProviderRegister](./method_IdentityProviderRegister)|  identity provider register |
-| [GetIdentityProvider](./method_GetIdentityProvider)|  get identity provider |
-| [TokenRevoke](./method_TokenRevoke)|  oauth token revoke with refresh token |
-
-
-## [Security] Tenant API{#Tenant}
-
-| Name |  Description | 
-| ---- |  ----------- | 
-| [ListTenantPlugin](./method_ListTenantPlugin)|  list tenant plugin |
-| [AddPlugin](./method_AddPlugin)|  add a plugin |
-| [GetResetPasswordKey](./method_GetResetPasswordKey)|  get reset user password key  |
-| [ResetPasswordKeyInfo](./method_ResetPasswordKeyInfo)|  get reset user password key info |
-| [PermissibleTenantPlugin](./method_PermissibleTenantPlugin)|  permissible tenant plugin |
-| [CreateTenant](./method_CreateTenant)|  create a tenant |
-| [ListTenant](./method_ListTenant)|  tenant list |
-| [DeleteTenantPlugin](./method_DeleteTenantPlugin)|  delete tenant plugin |
-| [TenantByExactSearch](./method_TenantByExactSearch)|  tenant exact search |
-| [GetTenant](./method_GetTenant)|  get a tenant |
-| [DeleteTenant](./method_DeleteTenant)|  delete a tenant |
-| [UpdateTenant](./method_UpdateTenant)|  tenant update |
-| [GetUser](./method_GetUser)|  get a  user |
-| [DeleteUser](./method_DeleteUser)|  delete a user |
-| [UpdateUser](./method_UpdateUser)|  update user |
-| [ListUser](./method_ListUser)|  list users |
-| [CreateUser](./method_CreateUser)|  create a  user at tenant |
+| [CreateUser](./method_CreateUser)|  创建用户 |
+| [ListUser](./method_ListUser)|  查询用户列表 |
+| [PermissibleTenantPlugin](./method_PermissibleTenantPlugin)|  租户插件权限校验 |
+| [ResetPasswordKeyInfo](./method_ResetPasswordKeyInfo)|  获取重置密码密钥信息 |
+| [GetResetPasswordKey](./method_GetResetPasswordKey)|  获取重置密码密钥 |
+| [DeleteTenantPlugin](./method_DeleteTenantPlugin)|  停用租户插件 |
+| [ListTenant](./method_ListTenant)|  获取租户列表 |
+| [CreateTenant](./method_CreateTenant)|  创建租户 |
+| [DeleteUser](./method_DeleteUser)|  删除用户 |
+| [UpdateUser](./method_UpdateUser)|  修改用户信息 |
+| [GetUser](./method_GetUser)|  获取用户信息 |
+| [UpdateTenant](./method_UpdateTenant)|  修改租户信息 |
+| [GetTenant](./method_GetTenant)|  获取租户详情 |
+| [DeleteTenant](./method_DeleteTenant)|  删除租户 |
+| [ListTenantPlugin](./method_ListTenantPlugin)|  租户插件列表 |
+| [AddPlugin](./method_AddPlugin)|  租户启用插件 |
+| [TenantByExactSearch](./method_TenantByExactSearch)|  租户认证方式查询 |
 
 
 ## authentication API{#authentication}
 
 | Name |  Description | 
 | ---- |  ----------- | 
-| [Authenticate](./method_Authenticate)|  tkeel authenticate with header Authorization |
+| [Authenticate](./method_Authenticate)|  Authorization 认证 |
 
 
 ## config API{#config}
@@ -137,9 +137,11 @@ sidebar_position: 0
 | ---- |  ----------- | 
 | [GetEntries](./method_GetEntries)|  查询 console entries 接口 |
 
+
 ## profile API{#profile}
 
 | Name |  Description | 
 | ---- |  ----------- | 
-| [SetTenantProfile](./method_SetTenantProfile)|  set tenant profile |
-| [GetTenantProfile](./method_GetTenantProfile)|  get tenant profile |
+| [SetTenantProfile](./method_SetTenantProfile)|  设置平台租户配置 |
+| [GetTenantProfile](./method_GetTenantProfile)|  获取平台租户配置 |
+

@@ -6,9 +6,8 @@ description: '手动注册插件接口'
 
 ## Request
 
-
 ```
-get /tm/plugins/register
+get \tm\plugins\register
 ```
 
 ###  Request Parameters

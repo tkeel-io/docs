@@ -6,9 +6,8 @@ description: '更新插件接口'
 
 ## Request
 
-
 ```
-put /plugins/{id}
+put \plugins\{id}
 ```
 
 | Name | Located in | Type | Description | 

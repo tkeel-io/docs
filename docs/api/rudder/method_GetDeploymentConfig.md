@@ -6,9 +6,8 @@ description: '查询 deployment config 接口'
 
 ## Request
 
-
 ```
-get /config/deployment
+get \config\deployment
 ```
 
 ## Response

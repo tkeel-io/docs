@@ -1,14 +1,13 @@
 ---
 title: "CreateRoleBinding"
-description: 'create binding to bind role_id with user_id'
+description: '为用户添加角色'
 ---
-调用该接口create binding to bind role_id with user_id。
+调用该接口为用户添加角色。
 
 ## Request
 
-
 ```
-post /rbac/roles/{role_id}/users
+post \rbac\roles\{role_id}\users
 ```
 
 | Name | Located in | Type | Description | 

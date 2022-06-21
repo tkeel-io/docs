@@ -6,9 +6,8 @@ description: '获取仓库中安装包列表接口'
 
 ## Request
 
-
 ```
-get /repos/{repo}/installers
+get \repos\{repo}\installers
 ```
 
 | Name | Located in | Type | Description | 

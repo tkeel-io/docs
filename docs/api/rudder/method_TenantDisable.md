@@ -6,9 +6,8 @@ description: '插件租户停用接口'
 
 ## Request
 
-
 ```
-delete /plugins/{id}/tenants
+delete \plugins\{id}\tenants
 ```
 
 | Name | Located in | Type | Description | 

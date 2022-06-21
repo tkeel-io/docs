@@ -1,14 +1,13 @@
 ---
 title: "TokenRevoke"
-description: 'oauth token revoke with refresh token'
+description: '注销 access_token'
 ---
-调用该接口oauth token revoke with refresh token。
+调用该接口注销 access_token。
 
 ## Request
 
-
 ```
-post /oauth/token/revoke
+post \oauth\token\revoke
 ```
 
 ### Request Body 

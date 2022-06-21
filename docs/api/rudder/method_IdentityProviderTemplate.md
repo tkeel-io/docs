@@ -1,14 +1,13 @@
 ---
 title: "IdentityProviderTemplate"
-description: 'identity provider config template'
+description: '获取外部身份认证配置模板'
 ---
-调用该接口identity provider config template。
+调用该接口获取外部身份认证配置模板。
 
 ## Request
 
-
 ```
-get /oauth/id-provider/template
+get \oauth\id-provider\template
 ```
 
 ###  Request Parameters

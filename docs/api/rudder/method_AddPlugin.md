@@ -1,14 +1,13 @@
 ---
 title: "AddPlugin"
-description: 'add a plugin'
+description: '租户启用插件'
 ---
-调用该接口add a plugin。
+调用该接口租户启用插件。
 
 ## Request
 
-
 ```
-post /tenants/{tenant_id}/plugins
+post \tenants\{tenant_id}\plugins
 ```
 
 | Name | Located in | Type | Description | 

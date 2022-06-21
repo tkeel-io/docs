@@ -6,9 +6,8 @@ description: '删除仓库接口'
 
 ## Request
 
-
 ```
-delete /repos/{name}
+delete \repos\{name}
 ```
 
 | Name | Located in | Type | Description | 

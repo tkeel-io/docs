@@ -6,9 +6,8 @@ description: '删除 platform config 接口'
 
 ## Request
 
-
 ```
-delete /config/platform/update
+delete \config\platform\update
 ```
 
 ###  Request Parameters

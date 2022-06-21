@@ -1,14 +1,13 @@
 ---
 title: "DeleteRole"
-description: 'delete role in tenant '
+description: '删除角色'
 ---
-调用该接口delete role in tenant 。
+调用该接口删除角色。
 
 ## Request
 
-
 ```
-delete /rbac/roles/{id}
+delete \rbac\roles\{id}
 ```
 
 | Name | Located in | Type | Description | 

@@ -1,14 +1,13 @@
 ---
 title: "GetIdentityProvider"
-description: 'get identity provider'
+description: '获取租户外部认证配置'
 ---
-调用该接口get identity provider。
+调用该接口获取租户外部认证配置。
 
 ## Request
 
-
 ```
-get /oauth/id-provider/{tenant_id}
+get \oauth\id-provider\{tenant_id}
 ```
 
 | Name | Located in | Type | Description | 

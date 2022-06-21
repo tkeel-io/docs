@@ -6,9 +6,8 @@ description: '获取仓库列表接口'
 
 ## Request
 
-
 ```
-get /repos
+get \repos
 ```
 
 ## Response

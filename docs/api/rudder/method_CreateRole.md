@@ -1,14 +1,13 @@
 ---
 title: "CreateRole"
-description: 'create role in tenant '
+description: '创建角色'
 ---
-调用该接口create role in tenant 。
+调用该接口创建角色。
 
 ## Request
 
-
 ```
-post /rbac/roles
+post \rbac\roles
 ```
 
 ### Request Body 

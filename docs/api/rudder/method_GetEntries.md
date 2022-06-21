@@ -6,9 +6,8 @@ description: '查询 console entries 接口'
 
 ## Request
 
-
 ```
-get /entries
+get \entries
 ```
 
 ## Response

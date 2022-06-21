@@ -6,9 +6,8 @@ description: '获取插件绑定租户接口'
 
 ## Request
 
-
 ```
-get /plugins/{id}/tenants
+get \plugins\{id}\tenants
 ```
 
 | Name | Located in | Type | Description | 

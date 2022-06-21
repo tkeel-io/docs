@@ -6,9 +6,8 @@ description: '获取插件绑定租户接口'
 
 ## Request
 
-
 ```
-get /tm/plugins/identify
+get \tm\plugins\identify
 ```
 
 ###  Request Parameters

@@ -1,14 +1,13 @@
 ---
 title: "EntityTokenInfo"
-description: 'get a entity token info'
+description: '获取实体Token原信息'
 ---
-调用该接口get a entity token info。
+调用该接口获取实体Token原信息。
 
 ## Request
 
-
 ```
-get /entity/info/{token}
+get \entity\info\{token}
 ```
 
 | Name | Located in | Type | Description | 

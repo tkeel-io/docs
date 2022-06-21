@@ -1,14 +1,13 @@
 ---
 title: "UpdateUserRoleBinding"
-description: 'create binding to bind user_id with roles'
+description: '全量更新用户角色'
 ---
-调用该接口create binding to bind user_id with roles。
+调用该接口全量更新用户角色。
 
 ## Request
 
-
 ```
-put /rbac/users/{user_id}/roles
+put \rbac\users\{user_id}\roles
 ```
 
 | Name | Located in | Type | Description | 

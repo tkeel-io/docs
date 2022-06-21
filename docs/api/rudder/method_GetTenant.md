@@ -1,14 +1,13 @@
 ---
 title: "GetTenant"
-description: 'get a tenant'
+description: '获取租户详情'
 ---
-调用该接口get a tenant。
+调用该接口获取租户详情。
 
 ## Request
 
-
 ```
-get /tenants/{tenant_id}
+get \tenants\{tenant_id}
 ```
 
 | Name | Located in | Type | Description | 

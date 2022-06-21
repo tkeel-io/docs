@@ -1,14 +1,13 @@
 ---
 title: "OauthToken"
-description: 'oauth token with code or password'
+description: '获取API access_token'
 ---
-调用该接口oauth token with code or password。
+调用该接口获取API access_token。
 
 ## Request
 
-
 ```
-get /oauth/{tenant_id}/token
+get \oauth\{tenant_id}\token
 ```
 
 | Name | Located in | Type | Description | 

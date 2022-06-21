@@ -6,9 +6,8 @@ description: '获取插件列表接口'
 
 ## Request
 
-
 ```
-get /plugins
+get \plugins
 ```
 
 ###  Request Parameters

@@ -1,73 +1,64 @@
 ---
-title: "CreateRule"
-description: 'Create Rule'
+title: '创建路由'
+description: "CreateRule"
 ---
-调用该接口Create Rule。
+## 接口说明
+调用该接口创建路由。
 
-## Request
-
+## URI
 
 ```
 post /rules
 ```
 
-### Request Body 
-| Description | Type | Schema |
+## 请求参数
+
+| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
+| ---- | ---------- | ----------- | ----------- | ----------- |
+
+### 请求Body
+| 字段名 | 类型 | 描述 |
 | ----------- | ------ | ------ |
-|  | Object | [ruleRuleCreateReq](#ruleRuleCreateReq) |
+| Body | Object([ruleRuleCreateReq](#ruleRuleCreateReq)) |  |
 
-#### ruleRuleCreateReq
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| desc | string |  |      
-| model_id | string |  |      
-| model_name | string |  |      
-| name | string |  |      
-| type | integer | Type 1 for Message Data, 2 for Timeseries Data |   
+#### ruleRuleCreateReq| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| desc | string | 描述 | 
+| model_id | string | 模板id | 
+| model_name | string | 模板名称 | 
+| name | string | 名称 | 
+| type | integer | 类型 1 消息路由, 类型 2 时序路由 |
 
 
 
-## Response
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [ruleRuleCreateResp](#ruleRuleCreateResp) |
+
+
+## 响应
+
+
+### 响应<200>
+| Code | 描述 | 类型 |
+| ---- | ----------- | ------ | 
+| 200 | OK | Object([ruleRuleCreateResp](#ruleRuleCreateResp)) |
 
 #### ruleRuleCreateResp
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| created_at | string | 创建时间 |      
-| desc | string |  |      
-| id | string |  |      
-| model_id | string | 模板id |      
-| model_name | string | 模板名称 |      
-| name | string |  |      
-| status | integer | Status 1 for Running, 0 for Stopped |      
-| type | integer | Type 1 for Message Data, 2 for Timeseries Data |      
-| updated_at | string | 更新时间 |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| created_at | string | 创建时间 | 
+| desc | string | 描述 | 
+| id | string | 路由id | 
+| model_id | string | 模板id | 
+| model_name | string | 模板名称 | 
+| name | string | 名称 | 
+| status | integer | 状态 1 运行中, 状态 0 停止 | 
+| type | integer | 类型 1 消息路由, 类型 2 时序路由 | 
+| updated_at | string | 更新时间 |
 
 
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
 
-#### rpcStatus
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
-
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
 
 
 

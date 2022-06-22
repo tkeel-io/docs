@@ -1,84 +1,70 @@
 ---
-title: "QueryRule"
-description: 'Query Rules'
+title: '查询路由列表'
+description: "QueryRule"
 ---
-调用该接口Query Rules。
+## 接口说明
+调用该接口查询路由列表。
 
-## Request
-
+## URI
 
 ```
 get /rules
 ```
 
-###  Request Parameters
+## 请求参数
 
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| page_num | query | integer | Page number |  true |
-| page_size | query | integer | Page size |  true |
-| order_by | query | string | Order by |  false |
-| is_descending | query | boolean | Is descending |  false |
-| key_words | query | string | Key words |  false |
-| search_key | query | string | Search Key |  false |
+| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
+| ---- | ---------- | ----------- | ----------- | ----------- | 
+| page_num | query | integer | 页码 |  true |
+| page_size | query | integer | 每页数量 |  true |
+| order_by | query | string | 排序字段 |  false |
+| is_descending | query | boolean | 倒序 |  false |
+| key_words | query | string | 关键字 |  false |
+| search_key | query | string | 关键字值 |  false |
 | id.value | query | string |  |  false |
-| ids | query | array |  |  false |
+| ids | query | array | 路由 id 列表 |  false |
 | name.value | query | string |  |  false |
-| type | query | integer | Type 1 for Message Data, 2 for Timeseries Data |  false |
+| type | query | integer | 类型 1 消息路由, 类型 2 时序路由 |  false |
 | status.value | query | integer |  |  false |
 
-## Response
+## 响应
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [ruleRuleQueryResp](#ruleRuleQueryResp) |
+
+### 响应<200>
+| Code | 描述 | 类型 |
+| ---- | ----------- | ------ | 
+| 200 | OK | Object([ruleRuleQueryResp](#ruleRuleQueryResp)) |
 
 #### ruleRuleQueryResp
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |         
-| data | Array[ruleRule] |  [ 具体参数可见下面 [ruleRule](#ruleRule) ] |       
-| last_page | integer | Last page |      
-| page_num | integer | Page number |      
-| page_size | integer | Page size |      
-| total | integer | Total |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- |  
+| data | Array[ruleRule] | 路由列表 [ 具体参数可见下面 [ruleRule](#ruleRule) ] | 
+| last_page | integer | 上一页 | 
+| page_num | integer | 页码 | 
+| page_size | integer | 每页数量 | 
+| total | integer | 总数 |
+
 
 ### ruleRule
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| created_at | string | 创建时间 |      
-| desc | string |  |      
-| devices_status | integer |  |      
-| id | string |  |      
-| model_id | string | 模板id |      
-| model_name | string | 模板名称 |      
-| name | string |  |      
-| status | integer |  |      
-| sub_id | integer |  |      
-| targets_status | integer |  |      
-| type | integer | Type 1 for Message Data, 2 for Timeseries Data |      
-| updated_at | string | 更新时间 |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| created_at | string | 创建时间 | 
+| desc | string | 描述 | 
+| devices_status | integer | 路由设备数量 | 
+| id | string | 路由id | 
+| model_id | string | 模板id | 
+| model_name | string | 模板名称 | 
+| name | string | 名称 | 
+| status | integer | 状态 1 运行中, 状态 0 停止 | 
+| sub_id | integer | 错误订阅id | 
+| targets_status | integer | 路由目标数量 | 
+| type | integer | 类型 1 消息路由, 类型 2 时序路由 | 
+| updated_at | string | 更新时间 |
 
 
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
 
-#### rpcStatus
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
-
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
 
 
 

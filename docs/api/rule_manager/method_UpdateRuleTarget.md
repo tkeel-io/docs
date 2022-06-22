@@ -1,77 +1,74 @@
 ---
-title: "UpdateRuleTarget"
-description: 'Update Rule Target'
+title: '更新路由转发目标'
+description: "UpdateRuleTarget"
 ---
-调用该接口Update Rule Target。
+## 接口说明
+调用该接口更新路由转发目标。
 
-## Request
-
+## URI
 
 ```
 put /rules/{id}/target/{target_id}
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string |  |  
-| target_id | path | string |  |  
+## 请求参数
 
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [](#) |
+| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
+| ---- | ---------- | ----------- | ----------- | ----------- |    
+| id | path | string | 路由id |  Required | 
+| target_id | path | string | 目标id |  Required | 
 
-#### 
+### 请求Body 
+| 描述 | 类型 |
+| ----------- | ------ |
+|  | Object(<业务对象>) |
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
+## 响应
 
 
-## Response
-
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [ruleUpdateRuleTargetResp](#ruleUpdateRuleTargetResp) |
+### 响应<200>
+| Code | 描述 | 类型 |
+| ---- | ----------- | ------ | 
+| 200 | OK | Object([ruleUpdateRuleTargetResp](#ruleUpdateRuleTargetResp)) |
 
 #### ruleUpdateRuleTargetResp
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |         
-| fields | Array[ruleMapField] |  [ 具体参数可见下面 [ruleMapField](#ruleMapField) ] |       
-| host | string |  |      
-| id | string |  |      
-| sink_id | string |  |      
-| sink_type | string |  |      
-| type | integer |  |      
-| value | string |  |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- |  
+| fields | Array[ruleMapField] | 映射表 [ 具体参数可见下面 [ruleMapField](#ruleMapField) ] | 
+| host | string | kafka 地址， 仅 kafka 类型使用 | 
+| id | string | 路由id | 
+| sink_id | string | 验证成功后返回的id | 
+| sink_type | string | mysql 或者 clickhouse | 
+| type | integer | 类型 1 Kafka, 仅 kafka 类型使用 | 
+| value | string | kafka topic， 仅 kafka 类型使用 |
+
 
 ### ruleMapField
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| m_field |  |  |      
-| t_field |  |  |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- |
+| m_field | Object | 表字段 [ 具体参数可见下面 [ruleField](#ruleField) ]  |
+| t_field | Object | 模板字段 [ 具体参数可见下面 [ruleField](#ruleField) ]  |
+
+
+### ruleField
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| isPK | boolean | 是否为主键 | 
+| name | string | 字段名称 | 
+| type | string | 字段类型 |
+
+
+### ruleField
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| isPK | boolean | 是否为主键 | 
+| name | string | 字段名称 | 
+| type | string | 字段类型 |
 
 
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
 
-#### rpcStatus
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
-
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
 
 
 

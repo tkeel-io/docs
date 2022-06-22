@@ -1,56 +1,35 @@
 ---
-title: "AddDevicesToRule"
-description: 'Add Devices to Rule'
+title: '添加设备到路由'
+description: "AddDevicesToRule"
 ---
-调用该接口Add Devices to Rule。
+## 接口说明
+调用该接口添加设备到路由。
 
-## Request
-
+## URI
 
 ```
 post /rules/{id}/devices
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string |  |  
+## 请求参数
 
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [](#) |
+| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
+| ---- | ---------- | ----------- | ----------- | ----------- |    
+| id | path | string | 路由id |  Required | 
 
-#### 
+### 请求Body 
+| 描述 | 类型 |
+| ----------- | ------ |
+|  | Object(<业务对象>) |
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
+## 响应
 
 
-## Response
-
-### Response  200
-| Code3 | Description | Type | 
+### 响应<200>
+| Code | 描述 | 类型 |
 | ---- | ----------- | ------ | 
-| 200 | OK | {   { }} |
+| 200 | OK | - |
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
-
-#### rpcStatus
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
-
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
 
 
 

@@ -1,47 +1,31 @@
 ---
-title: "TesyConnectToKafka"
-description: 'Test Kafka config'
+title: '测试kafka配置'
+description: "TesyConnectToKafka"
 ---
-调用该接口Test Kafka config。
+## 接口说明
+调用该接口测试kafka配置。
 
-## Request
-
+## URI
 
 ```
 get /testing/kafka
 ```
 
-###  Request Parameters
+## 请求参数
 
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| host | query | string | Try to connect to kafka server address, split by ',' |  true |
-| topic | query | string |  |  false |
+| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
+| ---- | ---------- | ----------- | ----------- | ----------- | 
+| host | query | string | kafka地址, ','分割 |  true |
+| topic | query | string | topic |  true |
 
-## Response
+## 响应
 
-### Response  200
-| Code3 | Description | Type | 
+
+### 响应<200>
+| Code | 描述 | 类型 |
 | ---- | ----------- | ------ | 
-| 200 | OK | {   { }} |
+| 200 | OK | - |
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
-
-#### rpcStatus
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
-
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
 
 
 

@@ -1,79 +1,71 @@
 ---
-title: "listSubscribe"
-description: 'get subscribe list'
+title: '查询订阅列表'
+description: "listSubscribe"
 ---
-调用该接口get subscribe list。
+## 接口说明
+调用该接口查询订阅列表。
 
-## Request
-
+## URI
 
 ```
 post /subscribe/list
 ```
 
-### Request Body 
-| Description | Type | Schema |
+## 请求参数
+
+| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
+| ---- | ---------- | ----------- | ----------- | ----------- |
+
+### 请求Body
+| 字段名 | 类型 | 描述 |
 | ----------- | ------ | ------ |
-|  | Object | [v1ListSubscribeRequest](#v1ListSubscribeRequest) |
+| Body | Object([v1ListSubscribeRequest](#v1ListSubscribeRequest)) |  |
 
-#### v1ListSubscribeRequest
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| is_descending | boolean | Is descending |      
-| key_words | string | Key words |      
-| order_by | string | Order by |      
-| page_num | string | Page number |      
-| page_size | string | Page size |      
-| search_key | string | Search Key |   
+#### v1ListSubscribeRequest| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| is_descending | boolean | 倒序 | 
+| key_words | string | 关键字 | 
+| order_by | string | 排序 | 
+| page_num | string | 页数 | 
+| page_size | string | 每页数量 | 
+| search_key | string | 关键字值 |
 
 
 
-## Response
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListSubscribeResponse](#v1ListSubscribeResponse) |
+
+
+## 响应
+
+
+### 响应<200>
+| Code | 描述 | 类型 |
+| ---- | ----------- | ------ | 
+| 200 | OK | Object([v1ListSubscribeResponse](#v1ListSubscribeResponse)) |
 
 #### v1ListSubscribeResponse
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |         
-| data | Array[v1SubscribeObject] |  [ 具体参数可见下面 [v1SubscribeObject](#v1SubscribeObject) ] |       
-| last_page | string | Last page |      
-| page_num | string | Page number |      
-| page_size | string | Page size |      
-| total | string | Total |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- |  
+| data | Array[v1SubscribeObject] | 订阅 [ 具体参数可见下面 [v1SubscribeObject](#v1SubscribeObject) ] | 
+| last_page | string | 上一页 | 
+| page_num | string | 页数 | 
+| page_size | string | 每页数量 | 
+| total | string | 总数 |
+
 
 ### v1SubscribeObject
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| description | string | 订阅描述 |      
-| endpoint | string | 订阅endpoint |      
-| id | string | 订阅ID |      
-| is_default | boolean | 是否为默认订阅 |      
-| title | string | 订阅名称 |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| description | string | 订阅描述 | 
+| endpoint | string | 订阅endpoint | 
+| id | string | 订阅ID | 
+| is_default | boolean | 是否为默认订阅 | 
+| title | string | 订阅名称 |
 
 
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
 
-#### rpcStatus
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
-
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
 
 
 

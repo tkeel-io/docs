@@ -11,18 +11,18 @@ API 列表中包含里管理平台和用户平台各功能模块的所有 API。
 
 ### 插件管理 API
 
-| Name                                                         | Description          |
-| :----------------------------------------------------------- | :------------------- |
-| [TMRegisterPlugin](./rudder/method_TMRegisterPlugin.md)      | 手动注册插件接口     |
-| [ListPlugin](./rudder/method_ListPlugin.md)                  | 获取插件列表接口     |
+| Name                                                                | Description          |
+| :------------------------------------------------------------------ | :------------------- |
+| [TMRegisterPlugin](./rudder/method_TMRegisterPlugin.md)             | 手动注册插件接口     |
+| [ListPlugin](./rudder/method_ListPlugin.md)                         | 获取插件列表接口     |
 | [TMUpdatePluginIdentify](./rudder/method_TMUpdatePluginIdentify.md) | 获取插件绑定租户接口 |
-| [GetPlugin](./rudder/method_GetPlugin.md)                    | 查询插件接口         |
-| [UninstallPlugin](./rudder/method_UninstallPlugin.md)        | 卸载插件接口         |
-| [InstallPlugin](./rudder/method_InstallPlugin.md)            | 安装插件接口         |
-| [UpgradePlugin](./rudder/method_UpgradePlugin.md)            | 更新插件接口         |
-| [ListenableTenants](./rudder/method_ListenableTenants.md)    | 获取插件绑定租户接口 |
-| [TenantDisable](./rudder/method_TenantDisable.md)            | 插件租户停用接口     |
-| [TenantEnable](./rudder/method_TenantEnable.md)              | 插件租户启用接口     |
+| [GetPlugin](./rudder/method_GetPlugin.md)                           | 查询插件接口         |
+| [UninstallPlugin](./rudder/method_UninstallPlugin.md)               | 卸载插件接口         |
+| [InstallPlugin](./rudder/method_InstallPlugin.md)                   | 安装插件接口         |
+| [UpgradePlugin](./rudder/method_UpgradePlugin.md)                   | 更新插件接口         |
+| [ListenableTenants](./rudder/method_ListenableTenants.md)           | 获取插件绑定租户接口 |
+| [TenantDisable](./rudder/method_TenantDisable.md)                   | 插件租户停用接口     |
+| [TenantEnable](./rudder/method_TenantEnable.md)                     | 插件租户启用接口     |
 
 ### 租户管理 API
 
@@ -120,18 +120,19 @@ API 列表中包含里管理平台和用户平台各功能模块的所有 API。
 
 ### 数据订阅 API
 
-| Name | Description |
-| :--- | :---------- |
-|      |             |
-|      |             |
-|      |             |
-|      |             |
-|      |             |
-|      |             |
-|      |             |
-|      |             |
-|      |             |
-|      |             |
+| Name                                                                            | Description              |
+| :------------------------------------------------------------------------------ | :----------------------- |
+| [SubscribeByDevice](../core_broker/method_SubscribeByDevice.md)                 | 添加设备订阅             |
+| [listSubscribe](../core_broker/method_listSubscribe.md)                         | 查询订阅列表             |
+| [unsubscribeEntitiesByIDs](../core_broker/method_unsubscribeEntitiesByIDs.md)   | 取消订阅                 |
+| [subscribeEntitiesByGroups](../core_broker/method_subscribeEntitiesByGroups.md) | 通过实体组添加到订阅     |
+| [subscribeEntitiesByModels](../core_broker/method_subscribeEntitiesByModels.md) | 通过模板添加到订阅       |
+| [createSubscribe](../core_broker/method_createSubscribe.md)                     | 创建订阅                 |
+| [updateSubscribe](../core_broker/method_updateSubscribe.md)                     | 更新订阅                 |
+| [getSubscribe](../core_broker/method_getSubscribe.md)                           | 查询订阅                 |
+| [deleteSubscribe](../core_broker/method_deleteSubscribe.md)                     | 删除订阅                 |
+| [subscribeEntitiesByIDs](../core_broker/method_subscribeEntitiesByIDs.md)       | 通过实体id列表添加到订阅 |
+| [listSubscribeEntities](../core_broker/method_listSubscribeEntities.md)         | 查询订阅的实体列表       |
 
 ### 数据路由 API
 

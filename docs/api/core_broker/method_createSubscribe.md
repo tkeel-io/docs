@@ -1,66 +1,57 @@
 ---
-title: "createSubscribe"
-description: 'create subscribe'
+title: '创建订阅'
+description: "createSubscribe"
 ---
-调用该接口create subscribe。
+## 接口说明
+调用该接口创建订阅。
 
-## Request
-
+## URI
 
 ```
 post /subscribe
 ```
 
-### Request Body 
-| Description | Type | Schema |
+## 请求参数
+
+| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
+| ---- | ---------- | ----------- | ----------- | ----------- |
+
+### 请求Body
+| 字段名 | 类型 | 描述 |
 | ----------- | ------ | ------ |
-|  | Object | [v1CreateSubscribeRequest](#v1CreateSubscribeRequest) |
+| Body | Object([v1CreateSubscribeRequest](#v1CreateSubscribeRequest)) |  |
 
-#### v1CreateSubscribeRequest
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| description | string | 订阅描述 |      
-| title | string | 订阅名称 |   
+#### v1CreateSubscribeRequest| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| description | string | 订阅描述 | 
+| title | string | 订阅名称 |
 
 
 
-## Response
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1CreateSubscribeResponse](#v1CreateSubscribeResponse) |
+
+
+## 响应
+
+
+### 响应<200>
+| Code | 描述 | 类型 |
+| ---- | ----------- | ------ | 
+| 200 | OK | Object([v1CreateSubscribeResponse](#v1CreateSubscribeResponse)) |
 
 #### v1CreateSubscribeResponse
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| description | string | 订阅描述 |      
-| endpoint | string | 订阅endpoint |      
-| id | string | 订阅ID |      
-| is_default | boolean | 是否为默认订阅 |      
-| title | string | 订阅名称 |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| description | string | 订阅描述 | 
+| endpoint | string | 订阅endpoint | 
+| id | string | 订阅ID | 
+| is_default | boolean | 是否为默认订阅 | 
+| title | string | 订阅名称 |
 
 
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
 
-#### rpcStatus
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
-
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
 
 
 

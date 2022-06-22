@@ -1,78 +1,59 @@
 ---
-title: "listSubscribeEntities"
-description: 'get subscribe entities list'
+title: '查询订阅的实体列表'
+description: "listSubscribeEntities"
 ---
-调用该接口get subscribe entities list。
+## 接口说明
+调用该接口查询订阅的实体列表。
 
-## Request
-
+## URI
 
 ```
 post /subscribe/{id}/entities/list
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string | 订阅ID |  
+## 请求参数
 
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [](#) |
+| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
+| ---- | ---------- | ----------- | ----------- | ----------- |    
+| id | path | string | 订阅ID |  Required | 
 
-#### 
+### 请求Body 
+| 描述 | 类型 |
+| ----------- | ------ |
+|  | Object(<业务对象>) |
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
+## 响应
 
 
-## Response
-
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListSubscribeEntitiesResponse](#v1ListSubscribeEntitiesResponse) |
+### 响应<200>
+| Code | 描述 | 类型 |
+| ---- | ----------- | ------ | 
+| 200 | OK | Object([v1ListSubscribeEntitiesResponse](#v1ListSubscribeEntitiesResponse)) |
 
 #### v1ListSubscribeEntitiesResponse
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |         
-| data | Array[v1Entity] | 订阅实体 [ 具体参数可见下面 [v1Entity](#v1Entity) ] |       
-| last_page | string | Last page |      
-| page_num | string | Page number |      
-| page_size | string | Page size |      
-| total | string | Total |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- |  
+| data | Array[v1Entity] | 订阅实体 [ 具体参数可见下面 [v1Entity](#v1Entity) ] | 
+| last_page | string | 上一页 | 
+| page_num | string | 页数 | 
+| page_size | string | 每页数量 | 
+| total | string | 总数 |
+
 
 ### v1Entity
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| ID | string | entity id |      
-| group | string | group |      
-| name | string | name |      
-| status | string | status |      
-| template | string | template |      
-| updated_at | string | update time |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| ID | string | 实体id | 
+| group | string | 组 | 
+| name | string | 名称 | 
+| status | string | 状态 | 
+| template | string | 模板 | 
+| updated_at | string | 更新时间 |
 
 
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
 
-#### rpcStatus
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
-
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
 
 
 

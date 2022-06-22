@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "api/subscribe/v1/error.proto",
+    "title": "api/subscribe/v1/subscribe.proto",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/subscribe": {
       "post": {
-        "summary": "create subscribe",
+        "summary": "创建订阅",
         "operationId": "createSubscribe",
         "responses": {
           "200": {
@@ -51,7 +51,7 @@
     },
     "/subscribe/device/{id}": {
       "post": {
-        "summary": "subscribe by device",
+        "summary": "添加设备订阅",
         "operationId": "SubscribeByDevice",
         "responses": {
           "200": {
@@ -70,7 +70,7 @@
         "parameters": [
           {
             "name": "id",
-            "description": "device id",
+            "description": "设备id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -87,7 +87,7 @@
                   "items": {
                     "type": "string"
                   },
-                  "description": "subscribe ids"
+                  "description": "订阅id列表"
                 }
               }
             }
@@ -100,7 +100,7 @@
     },
     "/subscribe/list": {
       "post": {
-        "summary": "get subscribe list",
+        "summary": "查询订阅列表",
         "operationId": "listSubscribe",
         "responses": {
           "200": {
@@ -133,7 +133,7 @@
     },
     "/subscribe/{id}": {
       "get": {
-        "summary": "get subscribe",
+        "summary": "查询订阅",
         "operationId": "getSubscribe",
         "responses": {
           "200": {
@@ -164,7 +164,7 @@
         ]
       },
       "delete": {
-        "summary": "delete subscribe",
+        "summary": "删除订阅",
         "operationId": "deleteSubscribe",
         "responses": {
           "200": {
@@ -195,7 +195,7 @@
         ]
       },
       "put": {
-        "summary": "change subscribed to other subscription",
+        "summary": "移动订阅",
         "operationId": "changeSubscribe",
         "responses": {
           "200": {
@@ -248,7 +248,7 @@
         ]
       },
       "patch": {
-        "summary": "update subscribe",
+        "summary": "更新订阅",
         "operationId": "updateSubscribe",
         "responses": {
           "200": {
@@ -299,7 +299,7 @@
     },
     "/subscribe/{id}/entities": {
       "post": {
-        "summary": "add subscribe entities by ids",
+        "summary": "通过实体id列表添加到订阅",
         "operationId": "subscribeEntitiesByIDs",
         "responses": {
           "200": {
@@ -349,7 +349,7 @@
     },
     "/subscribe/{id}/entities/delete": {
       "post": {
-        "summary": "delete subscribe entities by ids",
+        "summary": "取消订阅",
         "operationId": "unsubscribeEntitiesByIDs",
         "responses": {
           "200": {
@@ -399,7 +399,7 @@
     },
     "/subscribe/{id}/entities/list": {
       "post": {
-        "summary": "get subscribe entities list",
+        "summary": "查询订阅的实体列表",
         "operationId": "listSubscribeEntities",
         "responses": {
           "200": {
@@ -434,7 +434,7 @@
                 "page_num": {
                   "type": "string",
                   "format": "uint64",
-                  "description": "Page number",
+                  "description": "页数",
                   "required": [
                     "page_num"
                   ]
@@ -442,26 +442,26 @@
                 "page_size": {
                   "type": "string",
                   "format": "uint64",
-                  "description": "Page size",
+                  "description": "每页数量",
                   "required": [
                     "page_size"
                   ]
                 },
                 "order_by": {
                   "type": "string",
-                  "description": "Order by"
+                  "description": "排序"
                 },
                 "is_descending": {
                   "type": "boolean",
-                  "description": "Is descending"
+                  "description": "倒序"
                 },
                 "key_words": {
                   "type": "string",
-                  "description": "Key words"
+                  "description": "关键字"
                 },
                 "search_key": {
                   "type": "string",
-                  "description": "Search Key"
+                  "description": "关键字值"
                 }
               },
               "required": [
@@ -478,7 +478,7 @@
     },
     "/subscribe/{id}/groups": {
       "post": {
-        "summary": "add subscribe entities by groups",
+        "summary": "通过实体组添加到订阅",
         "operationId": "subscribeEntitiesByGroups",
         "responses": {
           "200": {
@@ -528,7 +528,7 @@
     },
     "/subscribe/{id}/models": {
       "post": {
-        "summary": "add subscribe entities by models",
+        "summary": "通过模板添加到订阅",
         "operationId": "subscribeEntitiesByModels",
         "responses": {
           "200": {
@@ -578,7 +578,7 @@
     },
     "/validate/subscribe": {
       "post": {
-        "summary": "validate subscribe topic is user request",
+        "summary": "校验订阅信息",
         "operationId": "ValidateSubscribed",
         "responses": {
           "200": {
@@ -701,28 +701,28 @@
       "properties": {
         "ID": {
           "type": "string",
-          "description": "entity id"
+          "description": "实体id"
         },
         "name": {
           "type": "string",
-          "description": "name"
+          "description": "名称"
         },
         "status": {
           "type": "string",
-          "description": "status"
+          "description": "状态"
         },
         "template": {
           "type": "string",
-          "description": "template"
+          "description": "模板"
         },
         "group": {
           "type": "string",
-          "description": "group"
+          "description": "组"
         },
         "updated_at": {
           "type": "string",
           "format": "int64",
-          "description": "update time"
+          "description": "更新时间"
         }
       }
     },
@@ -773,7 +773,7 @@
         "total": {
           "type": "string",
           "format": "uint64",
-          "description": "Total",
+          "description": "总数",
           "required": [
             "total"
           ]
@@ -781,7 +781,7 @@
         "page_num": {
           "type": "string",
           "format": "uint64",
-          "description": "Page number",
+          "description": "页数",
           "required": [
             "page_num"
           ]
@@ -789,7 +789,7 @@
         "last_page": {
           "type": "string",
           "format": "uint64",
-          "description": "Last page",
+          "description": "上一页",
           "required": [
             "last_page"
           ]
@@ -797,7 +797,7 @@
         "page_size": {
           "type": "string",
           "format": "uint64",
-          "description": "Page size",
+          "description": "每页数量",
           "required": [
             "page_size"
           ]
@@ -823,7 +823,7 @@
         "page_num": {
           "type": "string",
           "format": "uint64",
-          "description": "Page number",
+          "description": "页数",
           "required": [
             "page_num"
           ]
@@ -831,26 +831,26 @@
         "page_size": {
           "type": "string",
           "format": "uint64",
-          "description": "Page size",
+          "description": "每页数量",
           "required": [
             "page_size"
           ]
         },
         "order_by": {
           "type": "string",
-          "description": "Order by"
+          "description": "排序"
         },
         "is_descending": {
           "type": "boolean",
-          "description": "Is descending"
+          "description": "倒序"
         },
         "key_words": {
           "type": "string",
-          "description": "Key words"
+          "description": "关键字"
         },
         "search_key": {
           "type": "string",
-          "description": "Search Key"
+          "description": "关键字值"
         }
       },
       "required": [
@@ -864,7 +864,7 @@
         "total": {
           "type": "string",
           "format": "uint64",
-          "description": "Total",
+          "description": "总数",
           "required": [
             "total"
           ]
@@ -872,7 +872,7 @@
         "page_num": {
           "type": "string",
           "format": "uint64",
-          "description": "Page number",
+          "description": "页数",
           "required": [
             "page_num"
           ]
@@ -880,7 +880,7 @@
         "last_page": {
           "type": "string",
           "format": "uint64",
-          "description": "Last page",
+          "description": "上一页",
           "required": [
             "last_page"
           ]
@@ -888,7 +888,7 @@
         "page_size": {
           "type": "string",
           "format": "uint64",
-          "description": "Page size",
+          "description": "每页数量",
           "required": [
             "page_size"
           ]
@@ -897,7 +897,8 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/v1SubscribeObject"
-          }
+          },
+          "description": "订阅"
         }
       },
       "required": [
@@ -912,7 +913,7 @@
       "properties": {
         "status": {
           "type": "string",
-          "description": "status"
+          "description": "状态"
         }
       }
     },
@@ -1038,7 +1039,7 @@
       "properties": {
         "status": {
           "type": "string",
-          "description": "status"
+          "description": "状态"
         }
       }
     }

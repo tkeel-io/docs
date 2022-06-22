@@ -1,68 +1,48 @@
 ---
-title: "updateSubscribe"
-description: 'update subscribe'
+title: '更新订阅'
+description: "updateSubscribe"
 ---
-调用该接口update subscribe。
+## 接口说明
+调用该接口更新订阅。
 
-## Request
-
+## URI
 
 ```
 patch /subscribe/{id}
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string | 订阅ID |  
+## 请求参数
 
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [](#) |
+| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
+| ---- | ---------- | ----------- | ----------- | ----------- |    
+| id | path | string | 订阅ID |  Required | 
 
-#### 
+### 请求Body 
+| 描述 | 类型 |
+| ----------- | ------ |
+|  | Object(<业务对象>) |
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
+## 响应
 
 
-## Response
-
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1UpdateSubscribeResponse](#v1UpdateSubscribeResponse) |
+### 响应<200>
+| Code | 描述 | 类型 |
+| ---- | ----------- | ------ | 
+| 200 | OK | Object([v1UpdateSubscribeResponse](#v1UpdateSubscribeResponse)) |
 
 #### v1UpdateSubscribeResponse
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| description | string | 订阅描述 |      
-| endpoint | string | 订阅endpoint |      
-| id | string | 订阅ID |      
-| is_default | boolean | 是否为默认订阅 |      
-| title | string | 订阅名称 |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| description | string | 订阅描述 | 
+| endpoint | string | 订阅endpoint | 
+| id | string | 订阅ID | 
+| is_default | boolean | 是否为默认订阅 | 
+| title | string | 订阅名称 |
 
 
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
 
-#### rpcStatus
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
-
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
 
 
 

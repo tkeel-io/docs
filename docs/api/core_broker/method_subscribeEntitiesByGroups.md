@@ -1,65 +1,45 @@
 ---
-title: "subscribeEntitiesByGroups"
-description: 'add subscribe entities by groups'
+title: '通过实体组添加到订阅'
+description: "subscribeEntitiesByGroups"
 ---
-调用该接口add subscribe entities by groups。
+## 接口说明
+调用该接口通过实体组添加到订阅。
 
-## Request
-
+## URI
 
 ```
 post /subscribe/{id}/groups
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string | 订阅ID |  
+## 请求参数
 
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [](#) |
+| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
+| ---- | ---------- | ----------- | ----------- | ----------- |    
+| id | path | string | 订阅ID |  Required | 
 
-#### 
+### 请求Body 
+| 描述 | 类型 |
+| ----------- | ------ |
+|  | Object(<业务对象>) |
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
+## 响应
 
 
-## Response
-
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1SubscribeEntitiesByGroupsResponse](#v1SubscribeEntitiesByGroupsResponse) |
+### 响应<200>
+| Code | 描述 | 类型 |
+| ---- | ----------- | ------ | 
+| 200 | OK | Object([v1SubscribeEntitiesByGroupsResponse](#v1SubscribeEntitiesByGroupsResponse)) |
 
 #### v1SubscribeEntitiesByGroupsResponse
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| id | string | 订阅ID |      
-| status | string | 订阅状态 |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| id | string | 订阅ID | 
+| status | string | 订阅状态 |
 
 
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
 
-#### rpcStatus
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
-
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
 
 
 

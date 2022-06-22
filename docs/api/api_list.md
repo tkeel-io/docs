@@ -120,19 +120,19 @@ API 列表中包含里管理平台和用户平台各功能模块的所有 API。
 
 ### 数据订阅 API
 
-| Name                                                                            | Description              |
-| :------------------------------------------------------------------------------ | :----------------------- |
-| [SubscribeByDevice](../core_broker/method_SubscribeByDevice.md)                 | 添加设备订阅             |
-| [listSubscribe](../core_broker/method_listSubscribe.md)                         | 查询订阅列表             |
-| [unsubscribeEntitiesByIDs](../core_broker/method_unsubscribeEntitiesByIDs.md)   | 取消订阅                 |
-| [subscribeEntitiesByGroups](../core_broker/method_subscribeEntitiesByGroups.md) | 通过实体组添加到订阅     |
-| [subscribeEntitiesByModels](../core_broker/method_subscribeEntitiesByModels.md) | 通过模板添加到订阅       |
-| [createSubscribe](../core_broker/method_createSubscribe.md)                     | 创建订阅                 |
-| [updateSubscribe](../core_broker/method_updateSubscribe.md)                     | 更新订阅                 |
-| [getSubscribe](../core_broker/method_getSubscribe.md)                           | 查询订阅                 |
-| [deleteSubscribe](../core_broker/method_deleteSubscribe.md)                     | 删除订阅                 |
-| [subscribeEntitiesByIDs](../core_broker/method_subscribeEntitiesByIDs.md)       | 通过实体id列表添加到订阅 |
-| [listSubscribeEntities](../core_broker/method_listSubscribeEntities.md)         | 查询订阅的实体列表       |
+| Name                                                                           | Description              |
+| :----------------------------------------------------------------------------- | :----------------------- |
+| [SubscribeByDevice](./core_broker/method_SubscribeByDevice.md)                 | 添加设备订阅             |
+| [listSubscribe](./core_broker/method_listSubscribe.md)                         | 查询订阅列表             |
+| [unsubscribeEntitiesByIDs](./core_broker/method_unsubscribeEntitiesByIDs.md)   | 取消订阅                 |
+| [subscribeEntitiesByGroups](./core_broker/method_subscribeEntitiesByGroups.md) | 通过实体组添加到订阅     |
+| [subscribeEntitiesByModels](./core_broker/method_subscribeEntitiesByModels.md) | 通过模板添加到订阅       |
+| [createSubscribe](./core_broker/method_createSubscribe.md)                     | 创建订阅                 |
+| [updateSubscribe](./core_broker/method_updateSubscribe.md)                     | 更新订阅                 |
+| [getSubscribe](./core_broker/method_getSubscribe.md)                           | 查询订阅                 |
+| [deleteSubscribe](./core_broker/method_deleteSubscribe.md)                     | 删除订阅                 |
+| [subscribeEntitiesByIDs](./core_broker/method_subscribeEntitiesByIDs.md)       | 通过实体id列表添加到订阅 |
+| [listSubscribeEntities](./core_broker/method_listSubscribeEntities.md)         | 查询订阅的实体列表       |
 
 ### 数据路由 API
 

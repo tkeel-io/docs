@@ -136,18 +136,31 @@ API 列表中包含里管理平台和用户平台各功能模块的所有 API。
 
 ### 数据路由 API
 
-| Name | Description |
-| :--- | :---------- |
-|      |             |
-|      |             |
-|      |             |
-|      |             |
-|      |             |
-|      |             |
-|      |             |
-|      |             |
-|      |             |
-|      |             |
+| Name                                                                    | Description          |
+| :---------------------------------------------------------------------- | :------------------- |
+| [GetRuleDevices](./rule_manager/method_GetRuleDevices.md)               | 查询路由的设备列表   |
+| [RemoveDevicesFromRule](./rule_manager/method_RemoveDevicesFromRule.md) | 从路由设备中删除设备 |
+| [AddDevicesToRule](./rule_manager/method_AddDevicesToRule.md)           | 添加设备到路由       |
+| [ErrUnsubscribe](./rule_manager/method_ErrUnsubscribe.md)               | 取消错误信息订阅     |
+| [ErrSubscribe](./rule_manager/method_ErrSubscribe.md)                   | 错误信息订阅         |
+| [ChangeErrSubscribe](./rule_manager/method_ChangeErrSubscribe.md)       | 改变错误信息订阅     |
+| [ListRuleTarget](./rule_manager/method_ListRuleTarget.md)               | 查询路由目标列表     |
+| [CreateRuleTarget](./rule_manager/method_CreateRuleTarget.md)           | 创建路由转发目标     |
+| [GetTableMap](./rule_manager/method_GetTableMap.md)                     | 查询数据表结构映射   |
+| [UpdateTableMap](./rule_manager/method_UpdateTableMap.md)               | 更新数据表映射       |
+| [GetTableDetails](./rule_manager/method_GetTableDetails.md)             | 查询数据表详情       |
+| [TesyConnectToKafka](./rule_manager/method_TesyConnectToKafka.md)       | 测试kafka配置        |
+| [ActionVerify](./rule_manager/method_ActionVerify.md)                   | 验证转发配置         |
+| [QueryRule](./rule_manager/method_QueryRule.md)                         | 查询路由列表         |
+| [CreateRule](./rule_manager/method_CreateRule.md)                       | 创建路由             |
+| [DeleteRule](./rule_manager/method_DeleteRule.md)                       | 删除路由             |
+| [UpdateRule](./rule_manager/method_UpdateRule.md)                       | 更新路由             |
+| [GetRule](./rule_manager/method_GetRule.md)                             | 查询路由详情         |
+| [GetRuleDevicesID](./rule_manager/method_GetRuleDevicesID.md)           | 查询路由的设备id列表 |
+| [SwitchRuleStatus](./rule_manager/method_SwitchRuleStatus.md)           | 切换路由状态         |
+| [DeleteRuleTarget](./rule_manager/method_DeleteRuleTarget.md)           | 删除路由目标         |
+| [UpdateRuleTarget](./rule_manager/method_UpdateRuleTarget.md)           | 更新路由转发目标     |
+| [TableList](./rule_manager/method_TableList.md)                         | 查询数据表列表       |
 
 ### 用户管理 API
 

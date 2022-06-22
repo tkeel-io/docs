@@ -1,44 +1,30 @@
 ---
-title: "DeleteRule"
-description: 'Delete Rule'
+title: '删除路由'
+description: "DeleteRule"
 ---
-调用该接口Delete Rule。
+## 接口说明
+调用该接口删除路由。
 
-## Request
-
+## URI
 
 ```
 delete /rules/{id}
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string |  |  
+## 请求参数
 
-## Response
+| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
+| ---- | ---------- | ----------- | ----------- | ----------- |    
+| id | path | string | 路由id |  Required | 
 
-### Response  200
-| Code3 | Description | Type | 
+## 响应
+
+
+### 响应<200>
+| Code | 描述 | 类型 |
 | ---- | ----------- | ------ | 
-| 200 | OK | {   { }} |
+| 200 | OK | - |
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
-
-#### rpcStatus
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
-
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
 
 
 

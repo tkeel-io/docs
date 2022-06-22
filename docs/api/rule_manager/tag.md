@@ -11,26 +11,26 @@ sidebar_position: 0
 
 | Name |  Description | 
 | ---- |  ----------- | 
-| [GetRule](./method_GetRule)|  Get Rule |
-| [DeleteRule](./method_DeleteRule)|  Delete Rule |
-| [UpdateRule](./method_UpdateRule)|  Update Rule |
-| [TableList](./method_TableList)|  Table List |
-| [ActionVerify](./method_ActionVerify)|  Action Verify |
-| [SwitchRuleStatus](./method_SwitchRuleStatus)|  Switch Rule Status |
-| [ErrUnsubscribe](./method_ErrUnsubscribe)|  Error UnSubscribe |
-| [ErrSubscribe](./method_ErrSubscribe)|  Error Subscribe |
-| [ChangeErrSubscribe](./method_ChangeErrSubscribe)|  Change Error Subscribe |
-| [ListRuleTarget](./method_ListRuleTarget)|  List Rule Target |
-| [CreateRuleTarget](./method_CreateRuleTarget)|  Create Rule Target |
-| [DeleteRuleTarget](./method_DeleteRuleTarget)|  Delete Rule Target |
-| [UpdateRuleTarget](./method_UpdateRuleTarget)|  Update Rule Target |
-| [GetTableMap](./method_GetTableMap)|  Get Table Map |
-| [UpdateTableMap](./method_UpdateTableMap)|  Update Table Map |
-| [QueryRule](./method_QueryRule)|  Query Rules |
-| [CreateRule](./method_CreateRule)|  Create Rule |
-| [RemoveDevicesFromRule](./method_RemoveDevicesFromRule)|  Remove Devices From Rule |
-| [AddDevicesToRule](./method_AddDevicesToRule)|  Add Devices to Rule |
-| [GetRuleDevices](./method_GetRuleDevices)|  Get Rule Devices |
-| [GetRuleDevicesID](./method_GetRuleDevicesID)|  Get Rule Devices ID |
-| [GetTableDetails](./method_GetTableDetails)|  Get Table Details |
-| [TesyConnectToKafka](./method_TesyConnectToKafka)|  Test Kafka config |
+| [GetRuleDevices](./method_GetRuleDevices.md)|  查询路由的设备列表 |
+| [RemoveDevicesFromRule](./method_RemoveDevicesFromRule.md)|  从路由设备中删除设备 |
+| [AddDevicesToRule](./method_AddDevicesToRule.md)|  添加设备到路由 |
+| [ErrUnsubscribe](./method_ErrUnsubscribe.md)|  取消错误信息订阅 |
+| [ErrSubscribe](./method_ErrSubscribe.md)|  错误信息订阅 |
+| [ChangeErrSubscribe](./method_ChangeErrSubscribe.md)|  改变错误信息订阅 |
+| [ListRuleTarget](./method_ListRuleTarget.md)|  查询路由目标列表 |
+| [CreateRuleTarget](./method_CreateRuleTarget.md)|  创建路由转发目标 |
+| [GetTableMap](./method_GetTableMap.md)|  查询数据表结构映射 |
+| [UpdateTableMap](./method_UpdateTableMap.md)|  更新数据表映射 |
+| [GetTableDetails](./method_GetTableDetails.md)|  查询数据表详情 |
+| [TesyConnectToKafka](./method_TesyConnectToKafka.md)|  测试kafka配置 |
+| [ActionVerify](./method_ActionVerify.md)|  验证转发配置 |
+| [QueryRule](./method_QueryRule.md)|  查询路由列表 |
+| [CreateRule](./method_CreateRule.md)|  创建路由 |
+| [DeleteRule](./method_DeleteRule.md)|  删除路由 |
+| [UpdateRule](./method_UpdateRule.md)|  更新路由 |
+| [GetRule](./method_GetRule.md)|  查询路由详情 |
+| [GetRuleDevicesID](./method_GetRuleDevicesID.md)|  查询路由的设备id列表 |
+| [SwitchRuleStatus](./method_SwitchRuleStatus.md)|  切换路由状态 |
+| [DeleteRuleTarget](./method_DeleteRuleTarget.md)|  删除路由目标 |
+| [UpdateRuleTarget](./method_UpdateRuleTarget.md)|  更新路由转发目标 |
+| [TableList](./method_TableList.md)|  查询数据表列表 |

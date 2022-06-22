@@ -1,73 +1,70 @@
 ---
-title: "UpdateTableMap"
-description: 'Update Table Map'
+title: '更新数据表映射'
+description: "UpdateTableMap"
 ---
-调用该接口Update Table Map。
+## 接口说明
+调用该接口更新数据表映射。
 
-## Request
-
+## URI
 
 ```
 put /sink/{id}/maps
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string |  |  
+## 请求参数
 
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [](#) |
+| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
+| ---- | ---------- | ----------- | ----------- | ----------- |    
+| id | path | string | 验证成功后返回的id |  Required | 
 
-#### 
+### 请求Body 
+| 描述 | 类型 |
+| ----------- | ------ |
+|  | Object(<业务对象>) |
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
+## 响应
 
 
-## Response
-
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [ruleASUpdateTableMapResp](#ruleASUpdateTableMapResp) |
+### 响应<200>
+| Code | 描述 | 类型 |
+| ---- | ----------- | ------ | 
+| 200 | OK | Object([ruleASUpdateTableMapResp](#ruleASUpdateTableMapResp)) |
 
 #### ruleASUpdateTableMapResp
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |         
-| fields | Array[ruleMapField] |  [ 具体参数可见下面 [ruleMapField](#ruleMapField) ] |       
-| id | string |  |      
-| table_name | string |  |      
-| target_id | string |  |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- |  
+| fields | Array[ruleMapField] | 映射表 [ 具体参数可见下面 [ruleMapField](#ruleMapField) ] | 
+| id | string | 验证成功后返回的id | 
+| table_name | string | 数据表名称 | 
+| target_id | string | 路由目标id |
+
 
 ### ruleMapField
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| m_field |  |  |      
-| t_field |  |  |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- |
+| m_field | Object | 表字段 [ 具体参数可见下面 [ruleField](#ruleField) ]  |
+| t_field | Object | 模板字段 [ 具体参数可见下面 [ruleField](#ruleField) ]  |
+
+
+### ruleField
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| isPK | boolean | 是否为主键 | 
+| name | string | 字段名称 | 
+| type | string | 字段类型 |
+
+
+### ruleField
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| isPK | boolean | 是否为主键 | 
+| name | string | 字段名称 | 
+| type | string | 字段类型 |
 
 
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
 
-#### rpcStatus
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
-
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
 
 
 

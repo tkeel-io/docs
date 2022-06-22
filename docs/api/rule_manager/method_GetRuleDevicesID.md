@@ -1,52 +1,39 @@
 ---
-title: "GetRuleDevicesID"
-description: 'Get Rule Devices ID'
+title: '查询路由的设备id列表'
+description: "GetRuleDevicesID"
 ---
-调用该接口Get Rule Devices ID。
+## 接口说明
+调用该接口查询路由的设备id列表。
 
-## Request
-
+## URI
 
 ```
 get /rules/{id}/devices_id_array
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string |  |  
+## 请求参数
 
-## Response
+| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
+| ---- | ---------- | ----------- | ----------- | ----------- |    
+| id | path | string | 路由id |  Required | 
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [ruleRuleDevicesIDResp](#ruleRuleDevicesIDResp) |
+## 响应
+
+
+### 响应<200>
+| Code | 描述 | 类型 |
+| ---- | ----------- | ------ | 
+| 200 | OK | Object([ruleRuleDevicesIDResp](#ruleRuleDevicesIDResp)) |
 
 #### ruleRuleDevicesIDResp
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |        
-| devices_ids | Array[ string ] |  |    
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| devices_ids | Array[ string ] | 路由设备id列表 |
 
 
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
 
-#### rpcStatus
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
-
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
 
 
 

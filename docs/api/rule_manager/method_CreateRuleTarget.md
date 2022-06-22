@@ -1,80 +1,78 @@
 ---
-title: "CreateRuleTarget"
-description: 'Create Rule Target'
+title: '创建路由转发目标'
+description: "CreateRuleTarget"
 ---
-调用该接口Create Rule Target。
+## 接口说明
+调用该接口创建路由转发目标。
 
-## Request
-
+## URI
 
 ```
 post /rules/{id}/target
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string |  |  
+## 请求参数
 
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [](#) |
+| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
+| ---- | ---------- | ----------- | ----------- | ----------- |    
+| id | path | string | 路由id |  Required | 
 
-#### 
+### 请求Body 
+| 描述 | 类型 |
+| ----------- | ------ |
+|  | Object(<业务对象>) |
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
-
+## 响应
 
 
-## Response
-
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [ruleCreateRuleTargetResp](#ruleCreateRuleTargetResp) |
+### 响应<200>
+| Code | 描述 | 类型 |
+| ---- | ----------- | ------ | 
+| 200 | OK | Object([ruleCreateRuleTargetResp](#ruleCreateRuleTargetResp)) |
 
 #### ruleCreateRuleTargetResp
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| database | string |  |          
-| fields | Array[ruleMapField] |  [ 具体参数可见下面 [ruleMapField](#ruleMapField) ] |       
-| host | string |  |      
-| id | string |  |      
-| password | string |  |      
-| sink_id | string |  |      
-| sink_type | string |  |      
-| table_name | string |  |      
-| type | integer | type 1 for Kafka, 2 for Object-Storage |      
-| user | string |  |      
-| value | string |  |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| database | string | 数据库 | 
+| endpoint | string | 目标地址字符串 |  
+| fields | Array[ruleMapField] | 映射表 [ 具体参数可见下面 [ruleMapField](#ruleMapField) ] | 
+| host | string | kafka 地址， 仅 kafka 类型使用 | 
+| id | string | 路由目标id | 
+| password | string | 密码 | 
+| sink_id | string | 验证成功后返回的id | 
+| sink_type | string | mysql 或者 clickhouse | 
+| table_name | string | 表名 | 
+| type | integer | 类型 1 Kafka, 仅 kafka 类型使用 | 
+| user | string | 用户名 | 
+| value | string | kafka topic， 仅 kafka 类型使用 |
+
 
 ### ruleMapField
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| m_field |  |  |      
-| t_field |  |  |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- |
+| m_field | Object | 表字段 [ 具体参数可见下面 [ruleField](#ruleField) ]  |
+| t_field | Object | 模板字段 [ 具体参数可见下面 [ruleField](#ruleField) ]  |
+
+
+### ruleField
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| isPK | boolean | 是否为主键 | 
+| name | string | 字段名称 | 
+| type | string | 字段类型 |
+
+
+### ruleField
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| isPK | boolean | 是否为主键 | 
+| name | string | 字段名称 | 
+| type | string | 字段类型 |
 
 
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
 
-#### rpcStatus
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
-
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
 
 
 

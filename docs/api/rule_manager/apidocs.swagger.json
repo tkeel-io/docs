@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "api/rule/v1/wrappers.proto",
+    "title": "api/rule/v1/dto_rule.proto",
     "version": "version not set"
   },
   "tags": [
@@ -18,7 +18,7 @@
   "paths": {
     "/rules": {
       "get": {
-        "summary": "Query Rules",
+        "summary": "查询路由列表",
         "operationId": "QueryRule",
         "responses": {
           "200": {
@@ -37,7 +37,7 @@
         "parameters": [
           {
             "name": "page_num",
-            "description": "Page number",
+            "description": "页码",
             "in": "query",
             "required": true,
             "type": "integer",
@@ -45,7 +45,7 @@
           },
           {
             "name": "page_size",
-            "description": "Page size",
+            "description": "每页数量",
             "in": "query",
             "required": true,
             "type": "integer",
@@ -53,28 +53,28 @@
           },
           {
             "name": "order_by",
-            "description": "Order by",
+            "description": "排序字段",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "is_descending",
-            "description": "Is descending",
+            "description": "倒序",
             "in": "query",
             "required": false,
             "type": "boolean"
           },
           {
             "name": "key_words",
-            "description": "Key words",
+            "description": "关键字",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "search_key",
-            "description": "Search Key",
+            "description": "关键字值",
             "in": "query",
             "required": false,
             "type": "string"
@@ -88,6 +88,7 @@
           },
           {
             "name": "ids",
+            "description": "路由 id 列表",
             "in": "query",
             "required": false,
             "type": "array",
@@ -104,7 +105,7 @@
           },
           {
             "name": "type",
-            "description": "Type 1 for Message Data, 2 for Timeseries Data",
+            "description": "类型 1 消息路由, 类型 2 时序路由",
             "in": "query",
             "required": false,
             "type": "integer",
@@ -123,7 +124,7 @@
         ]
       },
       "post": {
-        "summary": "Create Rule",
+        "summary": "创建路由",
         "operationId": "CreateRule",
         "responses": {
           "200": {
@@ -156,7 +157,7 @@
     },
     "/rules/{id}": {
       "get": {
-        "summary": "Get Rule",
+        "summary": "查询路由详情",
         "operationId": "GetRule",
         "responses": {
           "200": {
@@ -175,6 +176,7 @@
         "parameters": [
           {
             "name": "id",
+            "description": "路由id",
             "in": "path",
             "required": true,
             "type": "string",
@@ -186,7 +188,7 @@
         ]
       },
       "delete": {
-        "summary": "Delete Rule",
+        "summary": "删除路由",
         "operationId": "DeleteRule",
         "responses": {
           "200": {
@@ -205,6 +207,7 @@
         "parameters": [
           {
             "name": "id",
+            "description": "路由id",
             "in": "path",
             "required": true,
             "type": "string",
@@ -216,7 +219,7 @@
         ]
       },
       "put": {
-        "summary": "Update Rule",
+        "summary": "更新路由",
         "operationId": "UpdateRule",
         "responses": {
           "200": {
@@ -235,6 +238,7 @@
         "parameters": [
           {
             "name": "id",
+            "description": "路由id",
             "in": "path",
             "required": true,
             "type": "string",
@@ -248,10 +252,12 @@
               "type": "object",
               "properties": {
                 "name": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "名称"
                 },
                 "desc": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "描述"
                 }
               },
               "title": "rule update"
@@ -265,7 +271,7 @@
     },
     "/rules/{id}/devices": {
       "get": {
-        "summary": "Get Rule Devices",
+        "summary": "查询路由的设备列表",
         "operationId": "GetRuleDevices",
         "responses": {
           "200": {
@@ -284,6 +290,7 @@
         "parameters": [
           {
             "name": "id",
+            "description": "路由id",
             "in": "path",
             "required": true,
             "type": "string",
@@ -291,7 +298,7 @@
           },
           {
             "name": "page_num",
-            "description": "Page number",
+            "description": "页码",
             "in": "query",
             "required": true,
             "type": "integer",
@@ -299,7 +306,7 @@
           },
           {
             "name": "page_size",
-            "description": "Page size",
+            "description": "每页数量",
             "in": "query",
             "required": true,
             "type": "integer",
@@ -307,28 +314,28 @@
           },
           {
             "name": "order_by",
-            "description": "Order by",
+            "description": "排序字段",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "is_descending",
-            "description": "Is descending",
+            "description": "倒序",
             "in": "query",
             "required": false,
             "type": "boolean"
           },
           {
             "name": "key_words",
-            "description": "Key words",
+            "description": "关键字",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "search_key",
-            "description": "Search Key",
+            "description": "关键字值",
             "in": "query",
             "required": false,
             "type": "string"
@@ -339,7 +346,7 @@
         ]
       },
       "delete": {
-        "summary": "Remove Devices From Rule",
+        "summary": "从路由设备中删除设备",
         "operationId": "RemoveDevicesFromRule",
         "responses": {
           "200": {
@@ -358,6 +365,7 @@
         "parameters": [
           {
             "name": "id",
+            "description": "路由id",
             "in": "path",
             "required": true,
             "type": "string",
@@ -365,6 +373,7 @@
           },
           {
             "name": "devices_ids",
+            "description": "设备id列表",
             "in": "query",
             "required": false,
             "type": "string"
@@ -375,7 +384,7 @@
         ]
       },
       "post": {
-        "summary": "Add Devices to Rule",
+        "summary": "添加设备到路由",
         "operationId": "AddDevicesToRule",
         "responses": {
           "200": {
@@ -394,6 +403,7 @@
         "parameters": [
           {
             "name": "id",
+            "description": "路由id",
             "in": "path",
             "required": true,
             "type": "string",
@@ -410,7 +420,8 @@
                   "type": "array",
                   "items": {
                     "type": "string"
-                  }
+                  },
+                  "description": "设备id列表"
                 }
               }
             }
@@ -423,7 +434,7 @@
     },
     "/rules/{id}/devices_id_array": {
       "get": {
-        "summary": "Get Rule Devices ID",
+        "summary": "查询路由的设备id列表",
         "operationId": "GetRuleDevicesID",
         "responses": {
           "200": {
@@ -442,6 +453,7 @@
         "parameters": [
           {
             "name": "id",
+            "description": "路由id",
             "in": "path",
             "required": true,
             "type": "string",
@@ -455,7 +467,7 @@
     },
     "/rules/{id}/running_status": {
       "put": {
-        "summary": "Switch Rule Status",
+        "summary": "切换路由状态",
         "operationId": "SwitchRuleStatus",
         "responses": {
           "200": {
@@ -474,6 +486,7 @@
         "parameters": [
           {
             "name": "id",
+            "description": "路由id",
             "in": "path",
             "required": true,
             "type": "string",
@@ -489,7 +502,7 @@
                 "status": {
                   "type": "integer",
                   "format": "int64",
-                  "description": "Status 1 for Running, 0 for Stopped"
+                  "description": "状态 1 运行中, 状态 0 停止"
                 }
               }
             }
@@ -502,7 +515,7 @@
     },
     "/rules/{id}/subscribe/error": {
       "delete": {
-        "summary": "Error UnSubscribe",
+        "summary": "取消错误信息订阅",
         "operationId": "ErrUnsubscribe",
         "responses": {
           "200": {
@@ -521,6 +534,7 @@
         "parameters": [
           {
             "name": "id",
+            "description": "路由id",
             "in": "path",
             "required": true,
             "type": "string",
@@ -532,7 +546,7 @@
         ]
       },
       "post": {
-        "summary": "Error Subscribe",
+        "summary": "错误信息订阅",
         "operationId": "ErrSubscribe",
         "responses": {
           "200": {
@@ -551,6 +565,7 @@
         "parameters": [
           {
             "name": "id",
+            "description": "路由id",
             "in": "path",
             "required": true,
             "type": "string",
@@ -564,7 +579,8 @@
               "type": "object",
               "properties": {
                 "subscribe_id": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "数据订阅id"
                 }
               }
             }
@@ -575,7 +591,7 @@
         ]
       },
       "put": {
-        "summary": "Change Error Subscribe",
+        "summary": "改变错误信息订阅",
         "operationId": "ChangeErrSubscribe",
         "responses": {
           "200": {
@@ -594,6 +610,7 @@
         "parameters": [
           {
             "name": "id",
+            "description": "路由id",
             "in": "path",
             "required": true,
             "type": "string",
@@ -607,7 +624,8 @@
               "type": "object",
               "properties": {
                 "subscribe_id": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "数据订阅id"
                 }
               }
             }
@@ -620,7 +638,7 @@
     },
     "/rules/{id}/target": {
       "get": {
-        "summary": "List Rule Target",
+        "summary": "查询路由目标列表",
         "operationId": "ListRuleTarget",
         "responses": {
           "200": {
@@ -639,6 +657,7 @@
         "parameters": [
           {
             "name": "id",
+            "description": "路由id",
             "in": "path",
             "required": true,
             "type": "string",
@@ -646,7 +665,7 @@
           },
           {
             "name": "page_num",
-            "description": "Page number",
+            "description": "页码",
             "in": "query",
             "required": true,
             "type": "integer",
@@ -654,7 +673,7 @@
           },
           {
             "name": "page_size",
-            "description": "Page size",
+            "description": "每页数量",
             "in": "query",
             "required": true,
             "type": "integer",
@@ -662,28 +681,28 @@
           },
           {
             "name": "order_by",
-            "description": "Order by",
+            "description": "排序字段",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "is_descending",
-            "description": "Is descending",
+            "description": "倒序",
             "in": "query",
             "required": false,
             "type": "boolean"
           },
           {
             "name": "key_words",
-            "description": "Key words",
+            "description": "关键字",
             "in": "query",
             "required": false,
             "type": "string"
           },
           {
             "name": "search_key",
-            "description": "Search Key",
+            "description": "关键字值",
             "in": "query",
             "required": false,
             "type": "string"
@@ -694,7 +713,7 @@
         ]
       },
       "post": {
-        "summary": "Create Rule Target",
+        "summary": "创建路由转发目标",
         "operationId": "CreateRuleTarget",
         "responses": {
           "200": {
@@ -713,6 +732,7 @@
         "parameters": [
           {
             "name": "id",
+            "description": "路由id",
             "in": "path",
             "required": true,
             "type": "string",
@@ -728,29 +748,35 @@
                 "type": {
                   "type": "integer",
                   "format": "int64",
-                  "description": "type 1 for Kafka, 2 for Object-Storage"
+                  "description": "类型 1 Kafka, 仅 kafka 类型使用"
                 },
                 "host": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "kafka 地址， 仅 kafka 类型使用"
                 },
                 "value": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "kafka topic， 仅 kafka 类型使用"
                 },
                 "table_name": {
                   "type": "string",
+                  "description": "表名",
                   "title": "string ext = 5;"
                 },
                 "sink_type": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "mysql 或者 clickhouse"
                 },
                 "sink_id": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "验证成功后返回的id"
                 },
                 "fields": {
                   "type": "array",
                   "items": {
                     "$ref": "#/definitions/ruleMapField"
-                  }
+                  },
+                  "description": "映射表"
                 }
               }
             }
@@ -763,7 +789,7 @@
     },
     "/rules/{id}/target/{target_id}": {
       "delete": {
-        "summary": "Delete Rule Target",
+        "summary": "删除路由目标",
         "operationId": "DeleteRuleTarget",
         "responses": {
           "200": {
@@ -782,6 +808,7 @@
         "parameters": [
           {
             "name": "id",
+            "description": "路由id",
             "in": "path",
             "required": true,
             "type": "string",
@@ -789,6 +816,7 @@
           },
           {
             "name": "target_id",
+            "description": "路由目标id",
             "in": "path",
             "required": true,
             "type": "string",
@@ -800,7 +828,7 @@
         ]
       },
       "put": {
-        "summary": "Update Rule Target",
+        "summary": "更新路由转发目标",
         "operationId": "UpdateRuleTarget",
         "responses": {
           "200": {
@@ -819,6 +847,7 @@
         "parameters": [
           {
             "name": "id",
+            "description": "路由id",
             "in": "path",
             "required": true,
             "type": "string",
@@ -826,6 +855,7 @@
           },
           {
             "name": "target_id",
+            "description": "目标id",
             "in": "path",
             "required": true,
             "type": "string",
@@ -839,17 +869,21 @@
               "type": "object",
               "properties": {
                 "host": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "kafka 地址， 仅 kafka 类型使用"
                 },
                 "value": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "kafka topic， 仅 kafka 类型使用"
                 },
                 "sink_type": {
                   "type": "string",
+                  "description": "mysql 或者 clickhouse",
                   "title": "string ext = 5;"
                 },
                 "sink_id": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "验证成功后返回的id"
                 }
               }
             }
@@ -862,7 +896,7 @@
     },
     "/sink/{id}/maps": {
       "get": {
-        "summary": "Get Table Map",
+        "summary": "查询数据表结构映射",
         "operationId": "GetTableMap",
         "responses": {
           "200": {
@@ -881,12 +915,14 @@
         "parameters": [
           {
             "name": "id",
+            "description": "验证成功后返回的id",
             "in": "path",
             "required": true,
             "type": "string"
           },
           {
             "name": "table_name",
+            "description": "数据表名称",
             "in": "query",
             "required": false,
             "type": "string"
@@ -897,7 +933,7 @@
         ]
       },
       "put": {
-        "summary": "Update Table Map",
+        "summary": "更新数据表映射",
         "operationId": "UpdateTableMap",
         "responses": {
           "200": {
@@ -916,6 +952,7 @@
         "parameters": [
           {
             "name": "id",
+            "description": "验证成功后返回的id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -928,16 +965,19 @@
               "type": "object",
               "properties": {
                 "target_id": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "路由目标id"
                 },
                 "table_name": {
-                  "type": "string"
+                  "type": "string",
+                  "description": "数据表名称"
                 },
                 "fields": {
                   "type": "array",
                   "items": {
                     "$ref": "#/definitions/ruleMapField"
-                  }
+                  },
+                  "description": "映射表"
                 }
               },
               "description": "update table map."
@@ -951,7 +991,7 @@
     },
     "/sink/{id}/tables": {
       "get": {
-        "summary": "Table List",
+        "summary": "查询数据表列表",
         "operationId": "TableList",
         "responses": {
           "200": {
@@ -970,6 +1010,7 @@
         "parameters": [
           {
             "name": "id",
+            "description": "验证成功后返回的id",
             "in": "path",
             "required": true,
             "type": "string"
@@ -982,7 +1023,7 @@
     },
     "/sink/{id}/tables/{table_name}": {
       "get": {
-        "summary": "Get Table Details",
+        "summary": "查询数据表详情",
         "operationId": "GetTableDetails",
         "responses": {
           "200": {
@@ -1001,12 +1042,14 @@
         "parameters": [
           {
             "name": "id",
+            "description": "验证成功后返回的id",
             "in": "path",
             "required": true,
             "type": "string"
           },
           {
             "name": "table_name",
+            "description": "数据表名称",
             "in": "path",
             "required": true,
             "type": "string"
@@ -1019,7 +1062,7 @@
     },
     "/testing/kafka": {
       "get": {
-        "summary": "Test Kafka config",
+        "summary": "测试kafka配置",
         "operationId": "TesyConnectToKafka",
         "responses": {
           "200": {
@@ -1038,15 +1081,16 @@
         "parameters": [
           {
             "name": "host",
-            "description": "Try to connect to kafka server address, split by ','",
+            "description": "kafka地址, ','分割",
             "in": "query",
             "required": true,
             "type": "string"
           },
           {
             "name": "topic",
+            "description": "topic",
             "in": "query",
-            "required": false,
+            "required": true,
             "type": "string"
           }
         ],
@@ -1057,7 +1101,7 @@
     },
     "/verify/{sink_type}": {
       "post": {
-        "summary": "Action Verify",
+        "summary": "验证转发配置",
         "operationId": "ActionVerify",
         "responses": {
           "200": {
@@ -1076,6 +1120,7 @@
         "parameters": [
           {
             "name": "sink_type",
+            "description": "目标类型， clickhouse 或者 mysql",
             "in": "path",
             "required": true,
             "type": "string"
@@ -1089,20 +1134,27 @@
               "properties": {
                 "urls": {
                   "type": "string",
-                  "title": "delimiter : ';'"
-                },
-                "user_id": {
-                  "type": "string"
+                  "description": "连接地址",
+                  "required": [
+                    "urls"
+                  ]
                 },
                 "meta": {
                   "type": "object",
                   "additionalProperties": {
                     "type": "string"
                   },
-                  "title": "meta用于储存不同类型的特有信息，如chronus需要user，和password"
+                  "description": "meta用于储存不同类型的特有信息，如chronus需要user，和password",
+                  "required": [
+                    "meta"
+                  ]
                 }
               },
-              "description": "verify."
+              "description": "verify.",
+              "required": [
+                "urls",
+                "meta"
+              ]
             }
           }
         ],
@@ -1144,7 +1196,8 @@
       "type": "object",
       "properties": {
         "table": {
-          "$ref": "#/definitions/ruleTable"
+          "$ref": "#/definitions/ruleTable",
+          "description": "数据表"
         }
       }
     },
@@ -1152,22 +1205,26 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "验证成功后返回的id"
         },
         "table_name": {
-          "type": "string"
+          "type": "string",
+          "description": "数据表名称"
         },
         "table_fields": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ruleField"
-          }
+          },
+          "description": "数据库表字段"
         },
         "map_fields": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ruleMapField"
-          }
+          },
+          "description": "映射表"
         }
       }
     },
@@ -1178,7 +1235,8 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/ruleTable"
-          }
+          },
+          "description": "数据表列表"
         }
       }
     },
@@ -1186,19 +1244,23 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "验证成功后返回的id"
         },
         "target_id": {
-          "type": "string"
+          "type": "string",
+          "description": "路由目标id"
         },
         "table_name": {
-          "type": "string"
+          "type": "string",
+          "description": "数据表名称"
         },
         "fields": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ruleMapField"
-          }
+          },
+          "description": "映射表"
         }
       }
     },
@@ -1206,13 +1268,15 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "验证id"
         },
         "types": {
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "目标支持的数据类型"
         }
       }
     },
@@ -1221,43 +1285,57 @@
       "properties": {
         "id": {
           "type": "string",
-          "format": "uint64"
+          "format": "uint64",
+          "description": "路由目标id"
         },
         "type": {
           "type": "integer",
           "format": "int64",
-          "description": "type 1 for Kafka, 2 for Object-Storage"
+          "description": "类型 1 Kafka, 仅 kafka 类型使用"
         },
         "host": {
-          "type": "string"
+          "type": "string",
+          "description": "kafka 地址， 仅 kafka 类型使用"
         },
         "value": {
-          "type": "string"
+          "type": "string",
+          "description": "kafka topic， 仅 kafka 类型使用"
         },
         "table_name": {
           "type": "string",
+          "description": "表名",
           "title": "string ext = 5;"
         },
         "sink_type": {
-          "type": "string"
+          "type": "string",
+          "description": "mysql 或者 clickhouse"
         },
         "sink_id": {
-          "type": "string"
+          "type": "string",
+          "description": "验证成功后返回的id"
         },
         "fields": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ruleMapField"
-          }
+          },
+          "description": "映射表"
         },
         "user": {
-          "type": "string"
+          "type": "string",
+          "description": "用户名"
         },
         "password": {
-          "type": "string"
+          "type": "string",
+          "description": "密码"
         },
         "database": {
-          "type": "string"
+          "type": "string",
+          "description": "数据库"
+        },
+        "endpoint": {
+          "type": "string",
+          "description": "目标地址字符串"
         }
       }
     },
@@ -1265,19 +1343,24 @@
       "type": "object",
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "description": "设备id"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "description": "设备名称"
         },
         "template": {
-          "type": "string"
+          "type": "string",
+          "description": "设备模板"
         },
         "group_name": {
-          "type": "string"
+          "type": "string",
+          "description": "设备组"
         },
         "status": {
-          "type": "string"
+          "type": "string",
+          "description": "设备状态"
         }
       }
     },
@@ -1285,13 +1368,16 @@
       "type": "object",
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "description": "字段名称"
         },
         "type": {
-          "type": "string"
+          "type": "string",
+          "description": "字段类型"
         },
         "isPK": {
-          "type": "boolean"
+          "type": "boolean",
+          "description": "是否为主键"
         }
       }
     },
@@ -1301,7 +1387,7 @@
         "total": {
           "type": "integer",
           "format": "int64",
-          "description": "Total",
+          "description": "总数",
           "required": [
             "total"
           ]
@@ -1309,7 +1395,7 @@
         "page_num": {
           "type": "integer",
           "format": "int64",
-          "description": "Page number",
+          "description": "页码",
           "required": [
             "page_num"
           ]
@@ -1317,7 +1403,7 @@
         "last_page": {
           "type": "integer",
           "format": "int64",
-          "description": "Last page",
+          "description": "上一页",
           "required": [
             "last_page"
           ]
@@ -1325,7 +1411,7 @@
         "page_size": {
           "type": "integer",
           "format": "int64",
-          "description": "Page size",
+          "description": "每页数量",
           "required": [
             "page_size"
           ]
@@ -1334,24 +1420,31 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/ruleCreateRuleTargetResp"
-          }
+          },
+          "description": "路由目标列表",
+          "required": [
+            "data"
+          ]
         }
       },
       "required": [
         "total",
         "page_num",
         "last_page",
-        "page_size"
+        "page_size",
+        "data"
       ]
     },
     "ruleMapField": {
       "type": "object",
       "properties": {
         "t_field": {
-          "$ref": "#/definitions/ruleField"
+          "$ref": "#/definitions/ruleField",
+          "description": "模板字段"
         },
         "m_field": {
-          "$ref": "#/definitions/ruleField"
+          "$ref": "#/definitions/ruleField",
+          "description": "表字段"
         }
       }
     },
@@ -1360,22 +1453,26 @@
       "properties": {
         "id": {
           "type": "string",
-          "format": "uint64"
+          "format": "uint64",
+          "description": "路由id"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "description": "名称"
         },
         "desc": {
-          "type": "string"
+          "type": "string",
+          "description": "描述"
         },
         "type": {
           "type": "integer",
           "format": "int64",
-          "description": "Type 1 for Message Data, 2 for Timeseries Data"
+          "description": "类型 1 消息路由, 类型 2 时序路由"
         },
         "status": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "状态 1 运行中, 状态 0 停止"
         },
         "created_at": {
           "type": "string",
@@ -1389,15 +1486,18 @@
         },
         "devices_status": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "路由设备数量"
         },
         "targets_status": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "路由目标数量"
         },
         "sub_id": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "错误订阅id"
         },
         "model_id": {
           "type": "string",
@@ -1413,21 +1513,25 @@
       "type": "object",
       "properties": {
         "name": {
-          "type": "string"
+          "type": "string",
+          "description": "名称"
         },
         "desc": {
-          "type": "string"
+          "type": "string",
+          "description": "描述"
         },
         "type": {
           "type": "integer",
           "format": "int64",
-          "description": "Type 1 for Message Data, 2 for Timeseries Data"
+          "description": "类型 1 消息路由, 类型 2 时序路由"
         },
         "model_id": {
-          "type": "string"
+          "type": "string",
+          "description": "模板id"
         },
         "model_name": {
-          "type": "string"
+          "type": "string",
+          "description": "模板名称"
         }
       },
       "description": "Rule create."
@@ -1437,23 +1541,26 @@
       "properties": {
         "id": {
           "type": "string",
-          "format": "uint64"
+          "format": "uint64",
+          "description": "路由id"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "description": "名称"
         },
         "desc": {
-          "type": "string"
+          "type": "string",
+          "description": "描述"
         },
         "type": {
           "type": "integer",
           "format": "int64",
-          "description": "Type 1 for Message Data, 2 for Timeseries Data"
+          "description": "类型 1 消息路由, 类型 2 时序路由"
         },
         "status": {
           "type": "integer",
           "format": "int64",
-          "description": "Status 1 for Running, 0 for Stopped"
+          "description": "状态 1 运行中, 状态 0 停止"
         },
         "created_at": {
           "type": "string",
@@ -1482,7 +1589,8 @@
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "description": "路由设备id列表"
         }
       }
     },
@@ -1492,7 +1600,7 @@
         "total": {
           "type": "integer",
           "format": "int64",
-          "description": "Total",
+          "description": "总数",
           "required": [
             "total"
           ]
@@ -1500,7 +1608,7 @@
         "page_num": {
           "type": "integer",
           "format": "int64",
-          "description": "Page number",
+          "description": "页码",
           "required": [
             "page_num"
           ]
@@ -1508,7 +1616,7 @@
         "last_page": {
           "type": "integer",
           "format": "int64",
-          "description": "Last page",
+          "description": "上一页",
           "required": [
             "last_page"
           ]
@@ -1516,7 +1624,7 @@
         "page_size": {
           "type": "integer",
           "format": "int64",
-          "description": "Page size",
+          "description": "每页数量",
           "required": [
             "page_size"
           ]
@@ -1525,14 +1633,19 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/ruleDevice"
-          }
+          },
+          "description": "设备列表",
+          "required": [
+            "data"
+          ]
         }
       },
       "required": [
         "total",
         "page_num",
         "last_page",
-        "page_size"
+        "page_size",
+        "data"
       ]
     },
     "ruleRuleQueryResp": {
@@ -1541,7 +1654,7 @@
         "total": {
           "type": "integer",
           "format": "int64",
-          "description": "Total",
+          "description": "总数",
           "required": [
             "total"
           ]
@@ -1549,7 +1662,7 @@
         "page_num": {
           "type": "integer",
           "format": "int64",
-          "description": "Page number",
+          "description": "页码",
           "required": [
             "page_num"
           ]
@@ -1557,7 +1670,7 @@
         "last_page": {
           "type": "integer",
           "format": "int64",
-          "description": "Last page",
+          "description": "上一页",
           "required": [
             "last_page"
           ]
@@ -1565,7 +1678,7 @@
         "page_size": {
           "type": "integer",
           "format": "int64",
-          "description": "Page size",
+          "description": "每页数量",
           "required": [
             "page_size"
           ]
@@ -1574,14 +1687,19 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/ruleRule"
-          }
+          },
+          "description": "路由列表",
+          "required": [
+            "data"
+          ]
         }
       },
       "required": [
         "total",
         "page_num",
         "last_page",
-        "page_size"
+        "page_size",
+        "data"
       ]
     },
     "ruleRuleStatusSwitchResp": {
@@ -1589,12 +1707,13 @@
       "properties": {
         "id": {
           "type": "string",
-          "format": "uint64"
+          "format": "uint64",
+          "description": "路由id"
         },
         "status": {
           "type": "integer",
           "format": "int64",
-          "description": "Status 1 for Running, 0 for Stopped"
+          "description": "状态 1 运行中, 状态 0 停止"
         }
       }
     },
@@ -1603,22 +1722,26 @@
       "properties": {
         "id": {
           "type": "string",
-          "format": "uint64"
+          "format": "uint64",
+          "description": "路由id"
         },
         "name": {
-          "type": "string"
+          "type": "string",
+          "description": "名称"
         },
         "desc": {
-          "type": "string"
+          "type": "string",
+          "description": "描述"
         },
         "type": {
           "type": "integer",
           "format": "int64",
-          "description": "Type 1 for Message Data, 2 for Timeseries Data"
+          "description": "类型 1 消息路由, 类型 2 时序路由"
         },
         "status": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "状态 1 运行中, 状态 0 停止"
         },
         "created_at": {
           "type": "string",
@@ -1652,38 +1775,15 @@
       "type": "object",
       "properties": {
         "Name": {
-          "type": "string"
-        },
-        "Sql": {
-          "type": "string"
-        },
-        "Engine": {
-          "type": "string"
-        },
-        "Partitions": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "OrderBy": {
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
-        "TTL": {
-          "type": "string"
-        },
-        "IndexGranularity": {
           "type": "string",
-          "format": "int64"
+          "description": "表名"
         },
         "fields": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ruleField"
-          }
+          },
+          "description": "表字段"
         }
       }
     },
@@ -1710,30 +1810,36 @@
       "properties": {
         "id": {
           "type": "string",
-          "format": "uint64"
+          "format": "uint64",
+          "description": "路由id"
         },
         "type": {
           "type": "integer",
-          "format": "int64"
+          "format": "int64",
+          "description": "类型 1 Kafka, 仅 kafka 类型使用"
         },
         "host": {
-          "type": "string"
+          "type": "string",
+          "description": "kafka 地址， 仅 kafka 类型使用"
         },
         "value": {
-          "type": "string"
+          "type": "string",
+          "description": "kafka topic， 仅 kafka 类型使用"
         },
         "sink_type": {
           "type": "string",
-          "title": "string ext = 5;"
+          "description": "mysql 或者 clickhouse"
         },
         "sink_id": {
-          "type": "string"
+          "type": "string",
+          "description": "验证成功后返回的id"
         },
         "fields": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/ruleMapField"
-          }
+          },
+          "description": "映射表"
         }
       }
     }

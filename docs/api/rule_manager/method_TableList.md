@@ -1,71 +1,54 @@
 ---
-title: "TableList"
-description: 'Table List'
+title: '查询数据表列表'
+description: "TableList"
 ---
-调用该接口Table List。
+## 接口说明
+调用该接口查询数据表列表。
 
-## Request
-
+## URI
 
 ```
 get /sink/{id}/tables
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string |  |  
+## 请求参数
 
-## Response
+| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
+| ---- | ---------- | ----------- | ----------- | ----------- |    
+| id | path | string | 验证成功后返回的id |  Required | 
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [ruleASTableListResp](#ruleASTableListResp) |
+## 响应
+
+
+### 响应<200>
+| Code | 描述 | 类型 |
+| ---- | ----------- | ------ | 
+| 200 | OK | Object([ruleASTableListResp](#ruleASTableListResp)) |
 
 #### ruleASTableListResp
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |         
-| tables | Array[ruleTable] |  [ 具体参数可见下面 [ruleTable](#ruleTable) ] |    
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- |  
+| tables | Array[ruleTable] | 数据表列表 [ 具体参数可见下面 [ruleTable](#ruleTable) ] |
+
 
 ### ruleTable
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| Engine | string |  |      
-| IndexGranularity | string |  |      
-| Name | string |  |         
-| OrderBy | Array[ string ] |  |          
-| Partitions | Array[ string ] |  |       
-| Sql | string |  |      
-| TTL | string |  |          
-| fields | Array[ruleField] |  [ 具体参数可见下面 [ruleField](#ruleField) ] |    
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| Name | string | 表名 |  
+| fields | Array[ruleField] | 表字段 [ 具体参数可见下面 [ruleField](#ruleField) ] |
+
 
 ### ruleField
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| isPK | boolean |  |      
-| name | string |  |      
-| type | string |  |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| isPK | boolean | 是否为主键 | 
+| name | string | 字段名称 | 
+| type | string | 字段类型 |
 
 
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
 
-#### rpcStatus
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
-
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
 
 
 

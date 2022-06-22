@@ -1,50 +1,31 @@
 ---
-title: "RemoveDevicesFromRule"
-description: 'Remove Devices From Rule'
+title: '从路由设备中删除设备'
+description: "RemoveDevicesFromRule"
 ---
-调用该接口Remove Devices From Rule。
+## 接口说明
+调用该接口从路由设备中删除设备。
 
-## Request
-
+## URI
 
 ```
 delete /rules/{id}/devices
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string |  |  
+## 请求参数
 
-###  Request Parameters
+| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
+| ---- | ---------- | ----------- | ----------- | ----------- |    
+| id | path | string | 路由id |  Required |  
+| devices_ids | query | string | 设备id列表 |  false |
 
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| devices_ids | query | string |  |  false |
+## 响应
 
-## Response
 
-### Response  200
-| Code3 | Description | Type | 
+### 响应<200>
+| Code | 描述 | 类型 |
 | ---- | ----------- | ------ | 
-| 200 | OK | {   { }} |
+| 200 | OK | - |
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
-
-#### rpcStatus
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
-
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
 
 
 

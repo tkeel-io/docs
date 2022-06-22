@@ -1,63 +1,58 @@
 ---
-title: "GetSubscription"
-description: 'Get subscription'
----调用该接口Get subscription。
+title: '查询订阅信息'
+description: "GetSubscription"
+sidebar_position: 40
+---
+## 接口说明
+调用该接口查询订阅信息。
 
-
-
-## Request
-
+## URI
 
 ```
 get /subscriptions/{id}
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string | subscription id |  
+## 请求参数
 
-###  Request Parameters
+| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
+| ---- | ---------- | ----------- | ----------- | ----------- |    
+| id | path | string | 订阅id |  Required |  
+| source | query | string | 来源id |  false |
+| owner | query | string | 用户id |  false |
 
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| source | query | string | source id |  false |
-| owner | query | string | owner id |  false |
+## 响应
 
-## Response
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1SubscriptionResponse](#v1SubscriptionResponse) |
+### 响应<200>
+| Code | 描述 | 类型 |
+| ---- | ----------- | ------ | 
+| 200 | OK | Object([v1SubscriptionResponse](#v1SubscriptionResponse)) |
 
 #### v1SubscriptionResponse
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| id | string | subscription id |      
-| owner | string | owner id |      
-| source | string | source id |      
-| subscription |  | subscription object |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| id | string | 订阅id | 
+| owner | string | 用户id | 
+| source | string | 来源id |
+| subscription | Object | 订阅信息 [ 具体参数可见下面 [v1SubscriptionObject](#v1SubscriptionObject) ]  |
+
+
+### v1SubscriptionObject
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| filter | string | 过滤规则 | 
+| id | string | 订阅id | 
+| mode | string | 订阅模式 | 
+| owner | string | 订阅者 | 
+| pubsub_name | string | pubsub发布订阅名称 | 
+| source | string | 来源id | 
+| target | string | 目标id | 
+| topic | string | topic主题名称 |
 
 
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
 
-#### rpcStatus
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
-
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
 
 
 

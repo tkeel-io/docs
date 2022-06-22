@@ -57,7 +57,7 @@ curl --location --request GET 'http://<tkeel.io>:30707/apis/security/v1/oauth/<t
 
 #### 2. 调用 API
 
-以调用插件 <security> 的一个HTTPEndpoint </v1/oauth/authenticate> 为例： 
+以调用插件 `<security>` 的一个HTTPEndpoint `</v1/oauth/authenticate>` 为例： 
 - Request
 ```bash
 curl --location --request GET 'http://<tkeel.io>:30707/apis/security/v1/oauth/authenticate' \

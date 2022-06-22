@@ -7,57 +7,66 @@ sidebar_position: 0
 
 
 
-## Entity相关API
+## Entity API{#Entity}
 
 | Name |  Description | 
 | ---- |  ----------- | 
-| [ListEntity](./method_ListEntity)|  List entities |
-| [GetMapper](./method_GetMapper)|  get mapper by id |
-| [PatchEntityConfigsZ](./method_PatchEntityConfigsZ)|  patch entity configs |
-| [UpdateEntityProps](./method_UpdateEntityProps)|  Update entity properties |
-| [GetEntityProps](./method_GetEntityProps)|  Get Entity Properties |
-| [RemoveEntityProps](./method_RemoveEntityProps)|  Remove Entity Properties |
-| [CreateEntity](./method_CreateEntity)|  Create a entity |
-| [GetExpression](./method_GetExpression)|  get expression by id |
-| [GetEntity](./method_GetEntity)|  Get a entity |
-| [DeleteEntity](./method_DeleteEntity)|  Delete a entity |
-| [UpdateEntity](./method_UpdateEntity)|  Update Entity |
-| [PatchEntityProps](./method_PatchEntityProps)|  Patch entity properties |
-| [PatchEntityConfigs](./method_PatchEntityConfigs)|  patch entity configs |
-| [GetEntityConfigs](./method_GetEntityConfigs)|  query entity configs |
-| [RemoveEntityConfigs](./method_RemoveEntityConfigs)|  remove entity configs |
-| [UpdateEntityConfigs](./method_UpdateEntityConfigs)|  update entity configs. |
-| [AppendExpression](./method_AppendExpression)|  Append expressions for entity |
-| [ListExpression](./method_ListExpression)|  list expression |
-| [RemoveExpression](./method_RemoveExpression)|  remove expression from entity |
-| [ListMapper](./method_ListMapper)|  list mappers |
-| [RemoveMapper](./method_RemoveMapper)|  remove mappers from entity |
-| [AppendMapper](./method_AppendMapper)|  Append mapper for entity |
-| [PatchEntityPropsZ](./method_PatchEntityPropsZ)|  Patch entity properties |
+| [GetExpression](./method_GetExpression.md)|  获取实体表达式 |
+| [GetMapper](./method_GetMapper.md)|  查询实体映射 |
+| [GetEntity](./method_GetEntity.md)|  查询实体详情 |
+| [DeleteEntity](./method_DeleteEntity.md)|  删除实体 |
+| [UpdateEntity](./method_UpdateEntity.md)|  更新实体 |
+| [PatchEntityProps](./method_PatchEntityProps.md)|  批量更新实体属性 |
+| [PatchEntityConfigsZ](./method_PatchEntityConfigsZ.md)|  批量更新实体配置 |
+| [AppendExpression](./method_AppendExpression.md)|  添加实体表达式 |
+| [ListExpression](./method_ListExpression.md)|  获取实体表达式列表 |
+| [RemoveExpression](./method_RemoveExpression.md)|  移除实体表达式 |
+| [GetEntityProps](./method_GetEntityProps.md)|  查询实体属性 |
+| [RemoveEntityProps](./method_RemoveEntityProps.md)|  批量删除实体属性 |
+| [UpdateEntityProps](./method_UpdateEntityProps.md)|  更新(插入)实体属性 |
+| [ListEntity](./method_ListEntity.md)|  查询实体列表 |
+| [RemoveMapper](./method_RemoveMapper.md)|  移除实体映射 |
+| [AppendMapper](./method_AppendMapper.md)|  添加实体映射 |
+| [ListMapper](./method_ListMapper.md)|  获取实体映射列表 |
+| [CreateEntity](./method_CreateEntity.md)|  创建实体 |
+| [GetEntityConfigs](./method_GetEntityConfigs.md)|  查询实体配置 |
+| [RemoveEntityConfigs](./method_RemoveEntityConfigs.md)|  批量删除实体配置 |
+| [UpdateEntityConfigs](./method_UpdateEntityConfigs.md)|  更新(插入)实体配置 |
+| [PatchEntityConfigs](./method_PatchEntityConfigs.md)|  批量更新实体配置 |
+| [PatchEntityPropsZ](./method_PatchEntityPropsZ.md)|  批量更新实体属性 |
 
 
-## Rawdata相关API
-
-| Name |  Description | 
-| ---- |  ----------- | 
-| [GetRawdata](./method_GetRawdata)|  Get entity rawdata |
-
-
-## Subscription相关API
+## Rawdata API{#Rawdata}
 
 | Name |  Description | 
 | ---- |  ----------- | 
-| [ListScription](./method_ListScription)|  List subscriptions |
-| [CreateSubscription](./method_CreateSubscription)|  Create subscription |
-| [GetSubscription](./method_GetSubscription)|  Get subscription |
-| [DeleteSubscription](./method_DeleteSubscription)|  Delete subscription |
-| [UpdateSubscription](./method_UpdateSubscription)|  Update subscription |
+| [GetRawdata](./method_GetRawdata.md)|  查询实体原始数据 |
 
 
-## TS相关API
+## Search API{#Search}
 
 | Name |  Description | 
 | ---- |  ----------- | 
-| [TS_GetLatestEntities](./method_TS_GetLatestEntities)|   |
-| [TS_GetTSData](./method_TS_GetTSData)|   |
-| [TS_DownloadTSData](./method_TS_DownloadTSData)|   |
+| [SearchObjects](./method_SearchObjects.md)|  根据id删除实体信息 |
+| [SearchObjects](./method_SearchObjects.md)|  关键词搜索 |
+| [IndexObject](./method_IndexObject.md)|  创建索引 |
+
+
+## Subscription API{#Subscription}
+
+| Name |  Description | 
+| ---- |  ----------- | 
+| [GetSubscription](./method_GetSubscription.md)|  查询订阅信息 |
+| [DeleteSubscription](./method_DeleteSubscription.md)|  删除订阅信息 |
+| [UpdateSubscription](./method_UpdateSubscription.md)|  更新订阅信息 |
+| [ListScription](./method_ListScription.md)|  查询订阅列表 |
+| [CreateSubscription](./method_CreateSubscription.md)|  创建订阅信息 |
+
+
+## TS API{#TS}
+
+| Name |  Description | 
+| ---- |  ----------- | 
+| [DownloadTSData](./method_DownloadTSData.md)|  下载时序数据 |
+| [GetTSData](./method_GetTSData.md)|  获取时序数据 |
+| [GetLatestEntities](./method_GetLatestEntities.md)|  获取最新的实体数据 |

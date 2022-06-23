@@ -1,60 +1,49 @@
 ---
-title: "DeleteSubscription"
-description: 'Delete subscription'
+title: '删除订阅信息'
+description: "DeleteSubscription"
+sidebar_position: 141
 ---
-调用该接口Delete subscription。
+## 接口说明
+调用该接口删除订阅信息。
 
-## Request
-
+## URI
 
 ```
 delete /subscriptions/{id}
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string | subscription id |  
+## 请求参数
 
-###  Request Parameters
+| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
+| ---- | ---------- | ----------- | ----------- | ----------- | 
 
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| source | query | string | source id |  false |
-| owner | query | string | owner id |  false |
+| id | path | string | 订阅id |  Required | 
 
-## Response
+| source | query | string | 来源id |  false |
+| owner | query | string | 用户id |  false |
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1DeleteSubscriptionResponse](#v1DeleteSubscriptionResponse) |
+
+## 响应
+
+
+### 响应<200>
+| Code | 描述 | 类型 |
+| ---- | ----------- | ------ | 
+| 200 | OK | Object([v1DeleteSubscriptionResponse](#v1DeleteSubscriptionResponse)) |
 
 #### v1DeleteSubscriptionResponse
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| id | string | subscription id |      
-| status | string | status |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| id | string | 订阅id | 
+| status | string | 状态 |
 
 
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
 
-#### rpcStatus
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
 
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
+
 
 
 

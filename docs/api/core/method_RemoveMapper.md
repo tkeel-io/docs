@@ -1,65 +1,54 @@
 ---
-title: "RemoveMapper"
-description: 'remove mappers from entity'
+title: '移除实体映射'
+description: "RemoveMapper"
+sidebar_position: 91
 ---
-调用该接口remove mappers from entity。
+## 接口说明
+调用该接口移除实体映射。
 
-## Request
-
+## URI
 
 ```
 delete /entities/{entity_id}/mappers
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| entity_id | path | string | entity id |  
+## 请求参数
 
-###  Request Parameters
+| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
+| ---- | ---------- | ----------- | ----------- | ----------- | 
 
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| id | query | string | mapper id |  false |
-| type | query | string | entity type |  false |
-| owner | query | string | owner id |  false |
-| source | query | string | source id |  false |
+| entity_id | path | string | 实体id |  Required | 
 
-## Response
+| id | query | string | 映射id |  false |
+| type | query | string | 实体类型 |  false |
+| owner | query | string | 用户id |  false |
+| source | query | string | 来源id |  false |
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1RemoveMapperResponse](#v1RemoveMapperResponse) |
+
+## 响应
+
+
+### 响应<200>
+| Code | 描述 | 类型 |
+| ---- | ----------- | ------ | 
+| 200 | OK | Object([v1RemoveMapperResponse](#v1RemoveMapperResponse)) |
 
 #### v1RemoveMapperResponse
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| entity_id | string | entity id |      
-| id | string | mapper id |      
-| owner | string | owner id |      
-| source | string | source id |      
-| type | string | entity type |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| entity_id | string | 实体id | 
+| id | string | 映射id | 
+| owner | string | 用户id | 
+| source | string | 来源id | 
+| type | string | 实体类型 |
 
 
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
 
-#### rpcStatus
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
 
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
+
 
 
 

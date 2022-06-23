@@ -1,62 +1,63 @@
 ---
-title: "GetExpression"
-description: 'get expression by id'
+title: '获取实体表达式'
+description: "GetExpression"
+sidebar_position: 89
 ---
-调用该接口get expression by id。
+## 接口说明
+调用该接口获取实体表达式。
 
-## Request
-
+## URI
 
 ```
 get /entities/{entity_id}/expressions/{path}
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| entity_id | path | string | entity id |  
-| path | path | string | target property path |  
+## 请求参数
 
-###  Request Parameters
+| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
+| ---- | ---------- | ----------- | ----------- | ----------- | 
 
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| owner | query | string | owner id |  false |
-| source | query | string | source id |  false |
+| entity_id | path | string | 实体id |  Required | 
+| path | path | string | 目标属性 |  Required | 
 
-## Response
+| owner | query | string | 用户id |  false |
+| source | query | string | 来源id |  false |
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1GetExpressionResp](#v1GetExpressionResp) |
+
+## 响应
+
+
+### 响应<200>
+| Code | 描述 | 类型 |
+| ---- | ----------- | ------ | 
+| 200 | OK | Object([v1GetExpressionResp](#v1GetExpressionResp)) |
 
 #### v1GetExpressionResp
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| entity_id | string | entity id |      
-| expression |  | expression information |      
-| owner | string | owner id |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| entity_id | string | 实体id |
+| expression | Object | 表达式信息 [ 具体参数可见下面 [v1Expression](#v1Expression) ]  | 
+| owner | string | 用户id |
 
 
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
 
-#### rpcStatus
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
+### v1Expression
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| description | string | 表达式描述 | 
+| expression | string | 表达式 | 
+| name | string | 表达式名称 | 
+| path | string | 目标属性 |
 
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
+
+
+
+
+
+
 
 
 

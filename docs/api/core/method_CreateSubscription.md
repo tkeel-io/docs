@@ -1,79 +1,83 @@
 ---
-title: "CreateSubscription"
-description: 'Create subscription'
+title: '创建订阅信息'
+description: "CreateSubscription"
+sidebar_position: 139
 ---
-调用该接口Create subscription。
+## 接口说明
+调用该接口创建订阅信息。
 
-## Request
-
+## URI
 
 ```
 post /subscriptions
 ```
 
-###  Request Parameters
 
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| id | query | string | subscription id |  false |
-| source | query | string | source id |  false |
-| owner | query | string | owner id |  false |
-
-### Request Body 
-| Description | Type | Schema |
+### 请求Body
+| 字段名 | 类型 | 描述 |
 | ----------- | ------ | ------ |
-| subscription object | Object | [v1SubscriptionObject](#v1SubscriptionObject) |
+| Body | Object([v1SubscriptionObject](#v1SubscriptionObject)) | 订阅信息 |
 
 #### v1SubscriptionObject
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| filter | string | filter |      
-| id | string | suscription id |      
-| mode | string | suscription mode |      
-| owner | string | suscription owner |      
-| pubsub_name | string | pubsub name |      
-| source | string | source id |      
-| target | string | target id |      
-| topic | string | topic name |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| filter | string | 过滤规则 | 
+| id | string | 订阅id | 
+| mode | string | 订阅模式 | 
+| owner | string | 订阅者 | 
+| pubsub_name | string | pubsub发布订阅名称 | 
+| source | string | 来源id | 
+| target | string | 目标id | 
+| topic | string | topic主题名称 |
 
 
 
-## Response
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1SubscriptionResponse](#v1SubscriptionResponse) |
+
+
+
+
+
+## 响应
+
+
+### 响应<200>
+| Code | 描述 | 类型 |
+| ---- | ----------- | ------ | 
+| 200 | OK | Object([v1SubscriptionResponse](#v1SubscriptionResponse)) |
 
 #### v1SubscriptionResponse
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| id | string | subscription id |      
-| owner | string | owner id |      
-| source | string | source id |      
-| subscription |  | subscription object |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| id | string | 订阅id | 
+| owner | string | 用户id | 
+| source | string | 来源id |
+| subscription | Object | 订阅信息 [ 具体参数可见下面 [v1SubscriptionObject](#v1SubscriptionObject) ]  |
 
 
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
 
-#### rpcStatus
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
+### v1SubscriptionObject
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| filter | string | 过滤规则 | 
+| id | string | 订阅id | 
+| mode | string | 订阅模式 | 
+| owner | string | 订阅者 | 
+| pubsub_name | string | pubsub发布订阅名称 | 
+| source | string | 来源id | 
+| target | string | 目标id | 
+| topic | string | topic主题名称 |
 
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
+
+
+
+
+
+
 
 
 

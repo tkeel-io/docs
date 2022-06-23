@@ -1,76 +1,59 @@
 ---
-title: "GetRawdata"
-description: 'Get entity rawdata'
+title: '查询实体原始数据'
+description: "GetRawdata"
+sidebar_position: 184
 ---
-调用该接口Get entity rawdata。
+## 接口说明
+调用该接口查询实体原始数据。
 
-## Request
-
+## URI
 
 ```
 post /rawdata/{entity_id}
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| entity_id | path | string | 实体 id |  
 
-### Request Body 
-| Description | Type | Schema |
-| ----------- | ------ | ------ |
-|  | Object | [](#) |
+### 请求Body 
+| 描述 | 类型 |
+| ----------- | ------ |
+|  | Object(<业务对象>) |
 
-#### 
-
-| Name | Type | Description | 
-| ---- | ---- | ----------- |  
+## 响应
 
 
-
-## Response
-
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1GetRawdataResponse](#v1GetRawdataResponse) |
+### 响应<200>
+| Code | 描述 | 类型 |
+| ---- | ----------- | ------ | 
+| 200 | OK | Object([v1GetRawdataResponse](#v1GetRawdataResponse)) |
 
 #### v1GetRawdataResponse
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |         
-| items | Array[v1RawdataResponse] | data list [ 具体参数可见下面 [v1RawdataResponse](#v1RawdataResponse) ] |       
-| page_num | integer | 记录开始位置 |      
-| page_size | integer | 每页限制条数 |      
-| total | integer | total count of the entities |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- |  
+| items | Array[v1RawdataResponse] | 原始数据列表 [ 具体参数可见下面 [v1RawdataResponse](#v1RawdataResponse) ] | 
+| page_num | integer | 记录开始位置 | 
+| page_size | integer | 每页限制条数 | 
+| total | integer | 实体列表数量 |
+
+
+
+
 
 ### v1RawdataResponse
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| entity_id | string |  |      
-| id | string |  |      
-| path | string |  |      
-| timestamp | string |  |      
-| values | string |  |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| entity_id | string | 实体id | 
+| id | string | 编号 | 
+| path | string | 路径 | 
+| timestamp | string | 时间戳，毫秒 | 
+| values | string | 数据 |
 
 
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
 
-#### rpcStatus
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
 
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
+
 
 
 

@@ -1,64 +1,67 @@
 ---
-title: "ListScription"
-description: 'List subscriptions'
+title: '查询订阅列表'
+description: "ListScription"
+sidebar_position: 138
 ---
-调用该接口List subscriptions。
+## 接口说明
+调用该接口查询订阅列表。
 
-## Request
-
+## URI
 
 ```
 get /subscriptions
 ```
 
-###  Request Parameters
 
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| source | query | string | source id |  false |
-| owner | query | string | owner id |  false |
+## 响应
 
-## Response
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListSubscriptionResponse](#v1ListSubscriptionResponse) |
+### 响应<200>
+| Code | 描述 | 类型 |
+| ---- | ----------- | ------ | 
+| 200 | OK | Object([v1ListSubscriptionResponse](#v1ListSubscriptionResponse)) |
 
 #### v1ListSubscriptionResponse
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| count | integer | count of the subscriptions |          
-| items | Array[v1SubscriptionResponse] | subscription items [ 具体参数可见下面 [v1SubscriptionResponse](#v1SubscriptionResponse) ] |    
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| count | integer | 订阅id |  
+| items | Array[v1SubscriptionResponse] | 订阅列表 [ 具体参数可见下面 [v1SubscriptionResponse](#v1SubscriptionResponse) ] |
+
+
+
+
 
 ### v1SubscriptionResponse
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| id | string | subscription id |      
-| owner | string | owner id |      
-| source | string | source id |      
-| subscription |  | subscription object |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| id | string | 订阅id | 
+| owner | string | 用户id | 
+| source | string | 来源id |
+| subscription | Object | 订阅信息 [ 具体参数可见下面 [v1SubscriptionObject](#v1SubscriptionObject) ]  |
 
 
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
 
-#### rpcStatus
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
+### v1SubscriptionObject
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| filter | string | 过滤规则 | 
+| id | string | 订阅id | 
+| mode | string | 订阅模式 | 
+| owner | string | 订阅者 | 
+| pubsub_name | string | pubsub发布订阅名称 | 
+| source | string | 来源id | 
+| target | string | 目标id | 
+| topic | string | topic主题名称 |
 
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
+
+
+
+
+
+
 
 
 

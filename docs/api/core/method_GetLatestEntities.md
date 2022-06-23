@@ -1,33 +1,17 @@
 ---
-title: '更新(插入)实体配置'
-description: "UpdateEntityConfigs"
-sidebar_position: 187
+title: '最近查询数据的实体'
+description: "GetLatestEntities"
+sidebar_position: 85
 ---
 ## 接口说明
-调用该接口更新(插入)实体配置。
+调用该接口最近查询数据的实体。
 
 ## URI
 
 ```
-put /entities/{id}/configs
+get /ts
 ```
 
-## 请求参数
-
-| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
-| ---- | ---------- | ----------- | ----------- | ----------- | 
-
-| id | path | string | 实体id |  Required | 
-
-| type | query | string | 实体类型 |  false |
-| owner | query | string | 用户id |  false |
-| source | query | string | 来源id |  false |
-
-
-### 请求Body 
-| 描述 | 类型 |
-| ----------- | ------ |
-| 实体配置 | Object(<业务对象>) |
 
 ## 响应
 
@@ -35,10 +19,20 @@ put /entities/{id}/configs
 ### 响应<200>
 | Code | 描述 | 类型 |
 | ---- | ----------- | ------ | 
-| 200 | OK | Object([v1EntityResponse](#v1EntityResponse)) |
+| 200 | OK | Object([v1GetLatestEntitiesResponse](#v1GetLatestEntitiesResponse)) |
 
-#### v1EntityResponse
+#### v1GetLatestEntitiesResponse
 
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- |  
+| items | Array[v1EntityResponse] | 最新的实体数据列表 [ 具体参数可见下面 [v1EntityResponse](#v1EntityResponse) ] | 
+| total | string | 结果总数 |
+
+
+
+
+
+### v1EntityResponse
 | 字段名 | 类型 | 描述 |
 | ---- | ---- | ----------- | 
 | configs | object | 实体配置 | 

@@ -1,61 +1,50 @@
 ---
-title: "DeleteEntity"
-description: 'Delete a entity'
+title: '删除实体'
+description: "DeleteEntity"
+sidebar_position: 94
 ---
-调用该接口Delete a entity。
+## 接口说明
+调用该接口删除实体。
 
-## Request
-
+## URI
 
 ```
 delete /entities/{id}
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| id | path | string | entity id |  
+## 请求参数
 
-###  Request Parameters
+| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
+| ---- | ---------- | ----------- | ----------- | ----------- | 
 
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| type | query | string | entity type |  false |
-| source | query | string | source id |  false |
-| owner | query | string | owner id |  false |
+| id | path | string | 实体id |  Required | 
 
-## Response
+| type | query | string | 实体类型 |  false |
+| source | query | string | 来源id |  false |
+| owner | query | string | 用户id |  false |
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1DeleteEntityResponse](#v1DeleteEntityResponse) |
+
+## 响应
+
+
+### 响应<200>
+| Code | 描述 | 类型 |
+| ---- | ----------- | ------ | 
+| 200 | OK | Object([v1DeleteEntityResponse](#v1DeleteEntityResponse)) |
 
 #### v1DeleteEntityResponse
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| id | string | entity id |      
-| status | string | status |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| id | string | 实体id | 
+| status | string | 操作状态 |
 
 
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
 
-#### rpcStatus
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
 
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
+
 
 
 

@@ -1,72 +1,65 @@
 ---
-title: "ListMapper"
-description: 'list mappers'
+title: '获取实体映射列表'
+description: "ListMapper"
+sidebar_position: 90
 ---
-调用该接口list mappers。
+## 接口说明
+调用该接口获取实体映射列表。
 
-## Request
-
+## URI
 
 ```
 get /entities/{entity_id}/mappers
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| entity_id | path | string | entity id |  
+## 请求参数
 
-###  Request Parameters
+| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
+| ---- | ---------- | ----------- | ----------- | ----------- | 
 
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| type | query | string | entity type |  false |
-| source | query | string | source id |  false |
-| owner | query | string | owner id |  false |
+| entity_id | path | string | 实体id |  Required | 
 
-## Response
+| type | query | string | 实体类型 |  false |
+| source | query | string | 来源id |  false |
+| owner | query | string | 用户id |  false |
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1ListMapperResponse](#v1ListMapperResponse) |
+
+## 响应
+
+
+### 响应<200>
+| Code | 描述 | 类型 |
+| ---- | ----------- | ------ | 
+| 200 | OK | Object([v1ListMapperResponse](#v1ListMapperResponse)) |
 
 #### v1ListMapperResponse
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| entity_id | string | entity id |          
-| mappers | Array[v1Mapper] | mapper informations [ 具体参数可见下面 [v1Mapper](#v1Mapper) ] |       
-| owner | string | owner id |      
-| source | string | source id |      
-| type | string | entity type |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| entity_id | string | 实体id |  
+| mappers | Array[v1Mapper] | 映射信息 [ 具体参数可见下面 [v1Mapper](#v1Mapper) ] | 
+| owner | string | 用户id | 
+| source | string | 来源id | 
+| type | string | 实体类型 |
+
+
+
+
 
 ### v1Mapper
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| description | string | mapper description |      
-| id | string | mapper id |      
-| name | string | mapper name |      
-| tql | string | mapper tql text |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| description | string | 映射描述 | 
+| id | string | 映射id | 
+| name | string | 映射名称 | 
+| tql | string | 映射tql语句 |
 
 
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
 
-#### rpcStatus
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
 
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
+
 
 
 

@@ -1,80 +1,87 @@
 ---
-title: "AppendMapper"
-description: 'Append mapper for entity'
+title: '添加实体映射'
+description: "AppendMapper"
+sidebar_position: 92
 ---
-调用该接口Append mapper for entity。
+## 接口说明
+调用该接口添加实体映射。
 
-## Request
-
+## URI
 
 ```
 post /entities/{entity_id}/mappers
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| entity_id | path | string | entity id |  
+## 请求参数
 
-###  Request Parameters
+| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
+| ---- | ---------- | ----------- | ----------- | ----------- | 
 
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| type | query | string | entity type |  false |
-| source | query | string | source id |  false |
-| owner | query | string | owner id |  false |
+| entity_id | path | string | 实体id |  Required | 
 
-### Request Body 
-| Description | Type | Schema |
+| type | query | string | 实体类型 |  false |
+| source | query | string | 来源id |  false |
+| owner | query | string | 用户id |  false |
+
+
+### 请求Body
+| 字段名 | 类型 | 描述 |
 | ----------- | ------ | ------ |
-| mapper information | Object | [v1Mapper](#v1Mapper) |
+| Body | Object([v1Mapper](#v1Mapper)) | 映射信息 |
 
 #### v1Mapper
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| description | string | mapper description |      
-| id | string | mapper id |      
-| name | string | mapper name |      
-| tql | string | mapper tql text |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| description | string | 映射描述 | 
+| id | string | 映射id | 
+| name | string | 映射名称 | 
+| tql | string | 映射tql语句 |
 
 
 
-## Response
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1AppendMapperResponse](#v1AppendMapperResponse) |
+
+
+
+
+
+## 响应
+
+
+### 响应<200>
+| Code | 描述 | 类型 |
+| ---- | ----------- | ------ | 
+| 200 | OK | Object([v1AppendMapperResponse](#v1AppendMapperResponse)) |
 
 #### v1AppendMapperResponse
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| entity_id | string | entity id |      
-| mapper |  | mapper information |      
-| owner | string | owner id |      
-| source | string | source id |      
-| type | string | entity type |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| entity_id | string | 实体id |
+| mapper | Object | 映射信息 [ 具体参数可见下面 [v1Mapper](#v1Mapper) ]  | 
+| owner | string | 用户id | 
+| source | string | 来源id | 
+| type | string | 实体类型 |
 
 
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
 
-#### rpcStatus
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
+### v1Mapper
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| description | string | 映射描述 | 
+| id | string | 映射id | 
+| name | string | 映射名称 | 
+| tql | string | 映射tql语句 |
 
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
+
+
+
+
+
+
 
 
 

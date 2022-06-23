@@ -105,18 +105,11 @@ API 列表中包含里管理平台和用户平台各功能模块的所有 API。
 
 ### 数据查询 API
 
-| Name | Description |
-| :--- | :---------- |
-|      |             |
-|      |             |
-|      |             |
-|      |             |
-|      |             |
-|      |             |
-|      |             |
-|      |             |
-|      |             |
-|      |             |
+| Name                                                    | Description        |
+| :------------------------------------------------------ | :----------------- |
+| [GetRawdata](./core/method_GetRawdata.md)               | 查询实体原始数据   |
+| [GetLatestEntities](./core/method_GetLatestEntities.md) | 最近查询数据的实体 |
+| [GetTSData](./core/method_GetTSData.md)                 | 查询时序数据       |
 
 ### 数据订阅 API
 

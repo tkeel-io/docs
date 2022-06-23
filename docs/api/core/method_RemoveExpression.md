@@ -1,62 +1,51 @@
 ---
-title: "RemoveExpression"
-description: 'remove expression from entity'
+title: '移除实体表达式'
+description: "RemoveExpression"
+sidebar_position: 87
 ---
-调用该接口remove expression from entity。
+## 接口说明
+调用该接口移除实体表达式。
 
-## Request
-
+## URI
 
 ```
 delete /entities/{entity_id}/expressions
 ```
 
-| Name | Located in | Type | Description | 
-| ---- | ---------- | ----------- | ----------- | 
-| entity_id | path | string | entity id |  
+## 请求参数
 
-###  Request Parameters
+| 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
+| ---- | ---------- | ----------- | ----------- | ----------- | 
 
-| Name | Located in | Type | Description |  Required |
-| ---- | ---------- | ----------- | ----------- |  ---- |
-| paths | query | string | expression target path |  false |
-| owner | query | string | owner id |  false |
-| source | query | string | source id |  false |
+| entity_id | path | string | 实体id |  Required | 
 
-## Response
+| paths | query | string | 目标属性 |  false |
+| owner | query | string | 用户id |  false |
+| source | query | string | 来源id |  false |
 
-### Response  200 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| 200 | OK | Object | [v1RemoveExpressionResp](#v1RemoveExpressionResp) |
+
+## 响应
+
+
+### 响应<200>
+| Code | 描述 | 类型 |
+| ---- | ----------- | ------ | 
+| 200 | OK | Object([v1RemoveExpressionResp](#v1RemoveExpressionResp)) |
 
 #### v1RemoveExpressionResp
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| count | integer | effect count |      
-| entity_id | string | entity id |      
-| owner | string | owner id |   
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| count | integer | 变更数量 | 
+| entity_id | string | 实体id | 
+| owner | string | 用户id |
 
 
 
-### Response  default 
-| Code2 | Description | Type | Schema |
-| ---- | ----------- | ------ | ------ |
-| default | An unexpected error response. | Object | [rpcStatus](#rpcStatus) |
 
-#### rpcStatus
 
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| code | integer |  |          
-| details | Array[protobufAny] |  [ 具体参数可见下面 [protobufAny](#protobufAny) ] |       
-| message | string |  |   
 
-### protobufAny
-| Name | Type | Description | 
-| ---- | ---- | ----------- |     
-| @type | string |  |   
+
 
 
 

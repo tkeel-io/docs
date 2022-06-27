@@ -1,9 +1,6 @@
 ##### 1.3.7.1 查看设备原始数据
-```puml
+```plantuml
 @startuml
-
-header GetRawdata
-
 actor client
 participant CoreService
 participant RawDataService
@@ -18,11 +15,8 @@ CoreService->client:response：返回查询结果
 @enduml
 ```
 ##### 1.3.7.2 查看设备模板时序数据
-```puml
+```plantuml
 @startuml
-
-header GetTSData
-
 actor client
 participant CoreService
 participant TsService

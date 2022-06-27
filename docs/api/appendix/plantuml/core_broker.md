@@ -1,8 +1,6 @@
 ##### 1.3.6.1 创建订阅
 ```plantuml
 @startuml
-header AmqpSubscription
-
 actor HttpClient
 participant CoreBrokerService
 participant DB
@@ -16,11 +14,11 @@ CoreBrokerService->HttpClient:创建订阅结果
 ##### 1.3.6.2 为订阅添加设备
 ```plantuml
 @startuml
-header addDevice2Subscription
-
 actor HttpClient
 participant CoreBrokerService
 participant CoreService
+participant DB
+participant DaprPubsub
 
 HttpClient->CoreBrokerService:添加设备到订阅
 CoreBrokerService->CoreService:调用Core创建订阅
@@ -35,8 +33,6 @@ CoreService->DaprPubsub:Core发布消息到pubsub
 ##### 1.3.6.3 查看订阅设备列表
 ```plantuml
 @startuml
-header listSubscriptionEntities
-
 actor HttpClient
 participant CoreBrokerService
 participant DB
@@ -49,8 +45,6 @@ CoreBrokerService->HttpClient:返回查询结果
 ##### 1.3.6.4 移动订阅
 ```plantuml
 @startuml
-header moveSubscription
-
 actor HttpClient
 participant CoreBrokerService
 participant CoreService
@@ -72,11 +66,10 @@ CoreService->DaprPubsub:Core发布消息到pubsub
 ##### 1.3.6.5 从订阅中移除设备
 ```plantuml
 @startuml
-header moveSubscription
-
 actor HttpClient
 participant CoreBrokerService
 participant CoreService
+participant DB
 
 HttpClient->CoreBrokerService:从订阅中移除设备
 CoreBrokerService->DB:订阅信息持久化
@@ -84,16 +77,13 @@ CoreBrokerService->CoreService:调用Core取消订阅
 CoreBrokerService<-CoreService:调用Core取消订阅响应
 HttpClient<-CoreBrokerService:取消订阅中的设备响应
 @enduml
-
+```
 ##### 1.3.6.6 编辑订阅信息
 ```plantuml
 @startuml
-header editSubscription
-
 actor HttpClient
 participant CoreBrokerService
 participant DB
-
 
 HttpClient->CoreBrokerService:编辑订阅信息
 CoreBrokerService->DB:订阅信息持久化
@@ -103,7 +93,10 @@ CoreBrokerService->HttpClient:编辑订阅信息
 ##### 1.3.6.7 删除订阅
 ```plantuml
 @startuml
-====
+actor HttpClient
+participant CoreBrokerService
+participant DB
+
 HttpClient->CoreBrokerService:删除订阅
 CoreBrokerService->DB:订阅信息持久化
 CoreBrokerService->HttpClient:删除订阅结果
@@ -132,8 +125,6 @@ AmqpClient<-AmqpService:关闭数据消费响应
 ##### websocket订阅
 ```plantuml
 @startuml
-header WebsocketSubscription
-
 actor client
 participant CoreBrokerService
 participant DaprPubsub

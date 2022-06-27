@@ -1,8 +1,6 @@
 ##### 1.3.8.1 创建路由规则
 ```plantuml
 @startuml
-header createRule
-
 actor HttpClient
 participant RuleManagerService
 participant DB
@@ -15,8 +13,6 @@ RuleManagerService->HttpClient:创建订阅结果
 ##### 1.3.8.2 查询路由规则详情
 ```plantuml
 @startuml
-header getRule
-
 actor HttpClient
 participant RuleManagerService
 participant DB
@@ -28,8 +24,6 @@ RuleManagerService->HttpClient:返回路由规则详情
 ```
 ##### 1.3.8.3 启动路由规则
 ```plantuml
-@startuml
-header startRule
 
 actor HttpClient
 participant RuleManagerService
@@ -55,8 +49,6 @@ Rulex->Targets:数据经过规则处理后写入目标
 ##### 1.3.8.4 停止路由规则
 ```plantuml
 @startuml
-header stopRule
-
 actor HttpClient
 participant RuleManagerService
 participant DB
@@ -80,8 +72,6 @@ Rulex<-Rulex:无命中路由，丢弃数据
 ##### 1.3.8.5 编辑路由规则
 ```plantuml
 @startuml
-header editRule
-
 actor HttpClient
 participant RuleManagerService
 participant DB
@@ -94,8 +84,6 @@ RuleManagerService->HttpClient:返回路由规则详情
 ##### 1.3.8.6 删除路由规则
 ```plantuml
 @startuml
-header deleteRule
-
 actor HttpClient
 participant RuleManagerService
 participant DB
@@ -108,8 +96,6 @@ CoreBrokerService->HttpClient:删除订阅结果
 #### 添加设备到数据路由
 ```plantuml
 @startuml
-header addDeviceToRule
-
 actor HttpClient
 participant RuleManagerService
 participant DB
@@ -130,8 +116,6 @@ CoreService->DaprPubsub:Core发布消息到pubsub
 #### 从数据路由中删除设备
 ```plantuml
 @startuml
-header deleteDeviceFromRule
-
 actor HttpClient
 participant RuleManagerService
 participant DB

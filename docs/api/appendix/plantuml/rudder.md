@@ -38,8 +38,8 @@ keel-->user:response
 deactivate keel
 ```
 
-
-##### 1.1.2 时序
+#### 1.2 rudder
+##### 1.2.1 时序
 ```plantuml
 @startuml
 participant app
@@ -96,8 +96,7 @@ rudder-->app:start app
 deactivate rudder
 @enduml
 ```
-
-##### 1.2.1 plugin service
+##### 1.2.2 plugin service
 1. ServiceInit
 ```plantuml
 participant tenantPluginManager
@@ -308,14 +307,16 @@ pluginService->pluginOp:update plugin info
 pluginOp-->pluginService:response
 pluginService-->user:response
 ```
-##### 1.2.2 tenant service
-1.2.2.1 CreateTenant
+##### 1.2.3 tenant service
+1. CreateTenant
 ```plantuml
-actor user
-participant tenantService
-database rbacOp
+actor 用户 as user
+participant "APIServer(Keel)"  as keel
+participant "管理服务(rudr)"  as tenantService
+database "Mysql" as rbacOp
 
-user->tenantService:tenantId,Title,Remark
+user->keel:tenantId,Title,Remark
+keel->tenantService:tenantId,Title,Remark
 tenantService->rbacOp:create tenant model
 tenantService->rbacOp:create tenant role model
 tenantService->rbacOp:add policy: role permission in tenant
@@ -323,9 +324,22 @@ tenantService->rbacOp:add admin user
 tenantService->rbacOp:add policy: admin user has role in tenant
 tenantService->rbacOp:add group: admin user has user-sys-role in sys-tenant
 tenantService->rbacOp:add policy: user-sys-role has permissin in sys-tenant
-tenantService-->user:respnse
+tenantService->keel:respnse
+keel->user:respnse
 ```
-1.2.2.2 UpdateTenant
+2. GetTenant
+```plantuml
+actor user
+participant tenantService
+participant rbacOp
+
+user->tenantService:tenantId
+tenantService->rbacOp:get tenant's list
+tenantService->rbacOp:get tenant's role
+tenantService->rbacOp:get tenant's user
+tenantService-->user:response
+```
+3. UpdateTenant
 ```plantuml
 actor user
 participant tenantService
@@ -335,7 +349,7 @@ user->tenantService:tenantId,Titile,Remark
 tenantService->rbacOp:update tenant model
 tenantService-->user:response
 ```
-1.2.2.3 DeleteTenant
+4. DeleteTenant
 ```plantuml
 actor user
 participant tenantService
@@ -350,77 +364,6 @@ tenantService->rbacOp:delete tenant's user model
 tenantService->rbacOp:delete tenant's plugin-role policy
 tenantService-->user:response
 ```
-1.2.2.4 ListUser
-```plantuml
-
-header ListUser
-
-actor user
-participant tenantService
-database DB
-
-user->tenantService:request
-tenantService->DB:call: List User
-DB->tenantService: response user list
-tenantService-->user:response
-
-```
-1.2.2.5 ResetUserPassword
-
-```plantuml
-
-header ResetUserPassword
-
-actor user
-participant tenantService
-database DB
-
-user->tenantService:request
-tenantService->DB:call: update User
-DB->tenantService: response update user
-tenantService-->user:response
-
-```
-1.2.2.6 LoginWithExternalIdentityProvider
-```plantuml
-@startuml
-actor user
-user->front: 1.login
-front->rudder: 2. GET /oauth/:tennat_id/token
-rudder->front: 3. redirect_url (301)
-front->user: 4. redirect
-user->ExternalIdentityProvider: 5. login in
-
-ExternalIdentityProvider->user: 6. location(rudder)
-user->rudder: 7.auto redirect with authorization code
-rudder->ExternalIdentityProvider: 8. Viryfier & GetUser With Authorization Code
-ExternalIdentityProvider->rudder: 9.Valid & Response UserInfo
-rudder->rudder: 10.FirstOrCreateUser & Generate Access Token
-rudder->user: 11. redirect (front) .Response AccessToken
-user->front: 12. access token
-front->rudder: 13.authentication with access token
-rudder-> front: user info
-front->user: success
-
-@enduml  
-
-```
-
-
-3. GetTenant
-```plantuml
-actor user
-participant tenantService
-participant rbacOp
-
-user->tenantService:tenantId
-tenantService->rbacOp:get tenant's list
-tenantService->rbacOp:get tenant's role
-tenantService->rbacOp:get tenant's user
-tenantService-->user:response
-```
-
-4. 
 5. CreateUser
 ```plantuml
 
@@ -453,152 +396,11 @@ tenantService->rbacOp:call: DeleteUser(Group and Policy)
 tenantService-->user:response
 
 ```
-##### 1.2.3 server monitor
-1.2.3.1 server list
-
-```plantuml
-actor user
-participant tkeelMmonitor
-participant kubesphere
-
-user->tkeelMmonitor: get server list
-tkeelMmonitor->kubesphere: get workload status
-kubesphere->tkeelMmonitor: response workload status
-tkeelMmonitor->user: response server list
-```
-1.2.3.2 server server usage 
-```plantuml
-actor user
-participant tkeelMmonitor
-participant kubesphere
-
-user->tkeelMmonitor: get  server usage 
-tkeelMmonitor->kubesphere: get workload status
-kubesphere->tkeelMmonitor: response workload status
-tkeelMmonitor->user: response server usage 
-```
-##### 1.2.4 metrics monitor
-1.2.4.1 tenant usage overview
-```plantuml
-actor user
-participant tkeelMmonitor
-database prometheus
-
-user->tkeelMmonitor: get tenant usage overview
-tkeelMmonitor->prometheus: query metrics data 
-prometheus->tkeelMmonitor: response metrics data 
-tkeelMmonitor->user: response tenant usage overview
-```
-
-1.2.4.2 massage usage
-```plantuml
-actor user
-participant tkeelMmonitor
-database prometheus
-
-user->tkeelMmonitor: get tenant massage usage
-tkeelMmonitor->prometheus: query metrics data 
-prometheus->tkeelMmonitor: response metrics data 
-tkeelMmonitor->user: response tenant massage usage
-```
-
-1.2.4.3 data usage
-```plantuml
-actor user
-participant tkeelMmonitor
-database prometheus
-
-user->tkeelMmonitor: get tenant data usage
-tkeelMmonitor->prometheus: query metrics data 
-prometheus->tkeelMmonitor: response metrics data 
-tkeelMmonitor->user: response tenant data usage
-```
-
-1.2.4.4 api usage
-```plantuml
-actor user
-participant tkeelMmonitor
-database prometheus
-
-user->tkeelMmonitor: get tenant api usage
-tkeelMmonitor->prometheus: query metrics data 
-prometheus->tkeelMmonitor: response metrics data 
-tkeelMmonitor->user: response tenant api usage
-```
-
-##### 1.3.1 plugin manager
-1.3.1.1 list plugin
-```plantuml
-actor user
-participant pluginService
-participant pluginOp
-
-user->pluginService:request
-pluginService->pluginOp:plugin list
-pluginOp-->pluginService:get plugin cache
-pluginService->pluginService:regexp keywords
-pluginService->pluginService:pagination
-pluginService->user:reponse
-```
-1.3.1.2 enable plugin
-```plantuml
-actor user
-participant pluginService
-participant pluginOp
-participant plugin
-
-user->pluginService:pluginId
-pluginService->pluginOp:plugin cache
-pluginOp-->pluginService:reponse
-pluginService->pluginService:check plugin enable
-pluginService->pluginService:check plugin dependences
-pluginService->pluginService:enable plugin
-pluginService->plugin:openapi request::TenantDisable
-plugin->plugin:plugin enable
-plugin-->pluginService:reponse
-pluginService->user:reponse
-```
-1.3.1.3 disable plugin
-```plantuml
-actor user
-participant pluginService
-participant pluginOp
-participant plugin
-participant tenantPluginOp
-
-user->pluginService:pluginId
-pluginService->pluginOp:get plugin info
-pluginOp-->pluginService:get plugin cache
-pluginService->plugin:openapi request:TenantDisable
-plugin->plugin:plugin disable
-plugin-->pluginService:response
-pluginService->tenantPluginOp:DeleteTenantPlugin
-tenantPluginOp-->pluginService:response
-pluginService->pluginOp:update plugin cache
-pluginOp-->pluginService:response
-pluginService-->user:response
-```
-1.3.1.4 get plugin
-```plantuml
-actor user
-participant pluginService
-participant pluginOp
-participant pluginRouteOp
-
-
-user->pluginService:pluginId
-pluginService->pluginOp:get plugin cache info
-pluginOp-->pluginService:response success
-pluginService->pluginRouteOp:get plugin route info
-pluginRouteOp->pluginService:reponse success
-pluginService-->user:reponse success
-```
-
-##### 1.3.9 user manager
-1.3.9.1 creat role
+##### 1.2.4 rbac Service
+1. CreateRoles
 ```plantuml
 
-header CreateRole
+header CreateRoles
 
 actor user
 participant rbacService
@@ -613,35 +415,7 @@ rbacService->rbacOp:call:AddPolicy
 rbacService-->user:response
 
 ```
-1.3.9.2 list role 
-```plantuml
-
-header ListRole
-
-actor user
-participant rbacService
-database DB
-user->rbacService:request
-rbacService->DB:query roles
-DB->rbacService: response roles
-rbacService-->user:response
-
-```
-1.3.9.3 update role 
-```plantuml
-
-header UpdateRole
-
-actor user
-participant rbacService
-database DB
-user->rbacService:request
-rbacService->DB:update roles
-DB->rbacService:  roles update response
-rbacService-->user:response
-
-```
-1.3.9.4 delete role 
+2. DeleteRole
 ```plantuml
 
 header DeleteRole
@@ -650,6 +424,8 @@ actor user
 participant rbacService
 database DB
 database rbacOp
+
+
 user->rbacService:request
 rbacService->DB:getDeleteRole
 rbacService->rbacOp:deleteRoleInTenant:remove policy and group
@@ -657,85 +433,37 @@ rbacService->DB:deleteRole
 rbacService-->user:response
 
 ```
-1.3.9.5 create user
+3. CreateRoleBinding
 ```plantuml
 
-header CreateUser
+header CreateRoleBinding
+
 actor user
-participant TenantService
+participant rbacService
 database DB
-user->TenantService: create user
-TenantService->DB: insert user
-DB->TenantService: insert user success
-TenantService->user:create user success
+database rbacOp
+
+user->rbacService:request
+rbacService->DB:get Role
+rbacService->DB:get User
+rbacService->rbacOp:add group policy
+rbacService->user:response
+
 ```
-1.3.9.6 update user
+8. DeleteRoleBinding
 ```plantuml
 
-header UpdateUser
-actor user
-participant TenantService
-database DB
-user->TenantService: update  user
-TenantService->DB: update user
-DB->TenantService: update user success
-TenantService->user:update user success
-```
-1.3.9.7 list user
-```plantuml
-
-header ListUser
-actor user
-participant TenantService
-database DB
-user->TenantService: get user list
-TenantService->DB: select  user
-DB->TenantService: select user success
-TenantService->user:get user list success
-```
-1.3.9.8 reset user password
-```plantuml
-
-header ResetUserPassword
+header DeleteRoleBinding
 
 actor user
-participant TenantService
+participant rbacService
 database DB
-user->TenantService: update  user password
-TenantService->DB: get user
-DB->TenantService: get user success
-TenantService->DB: update user password
-DB->TenantService: update user password success
-TenantService->user:update user password success
+database rbacOp
+
+user->rbacService:request
+rbacService->rbacOp:get tenant's userRole
+rbacService->DB:get userRole bind info
+rbacService->rbacOp:has TkeelTenantAdminRole bind
+rbacService->user:response
+
 ```
-1.3.9.9 delete user
-```plantuml
-
-header DeleteUser
-
-actor user
-participant TenantService
-database DB
-user->TenantService: delete user
-TenantService->DB: delete user
-DB->TenantService: delete user success
-TenantService->user:delete user success
-```
-1.3.9.10 login 
-```plantuml
-
-header CreateUser
-
-actor user
-participant TenantService
-database DB
-user->TenantService: user login 
-TenantService->DB: get user
-DB->TenantService: get user success
-TenantService->DB: valid password
-DB->TenantService: valid password success
-TenantService->user: login success
-```
-
-
-

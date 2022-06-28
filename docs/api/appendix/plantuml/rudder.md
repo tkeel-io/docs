@@ -310,11 +310,13 @@ pluginService-->user:response
 ##### 1.2.3 tenant service
 1. CreateTenant
 ```plantuml
-actor user
-participant tenantService
-database rbacOp
+actor 用户 as user
+participant "APIServer(Keel)"  as keel
+participant "管理服务(rudr)"  as tenantService
+database "Mysql" as rbacOp
 
-user->tenantService:tenantId,Title,Remark
+user->keel:tenantId,Title,Remark
+keel->tenantService:tenantId,Title,Remark
 tenantService->rbacOp:create tenant model
 tenantService->rbacOp:create tenant role model
 tenantService->rbacOp:add policy: role permission in tenant
@@ -322,7 +324,8 @@ tenantService->rbacOp:add admin user
 tenantService->rbacOp:add policy: admin user has role in tenant
 tenantService->rbacOp:add group: admin user has user-sys-role in sys-tenant
 tenantService->rbacOp:add policy: user-sys-role has permissin in sys-tenant
-tenantService-->user:respnse
+tenantService->keel:respnse
+keel->user:respnse
 ```
 2. GetTenant
 ```plantuml
@@ -464,4 +467,3 @@ rbacService->rbacOp:has TkeelTenantAdminRole bind
 rbacService->user:response
 
 ```
-

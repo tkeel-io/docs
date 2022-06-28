@@ -657,3 +657,41 @@ core-->dev:返回信息
 dev-->user:返回结果
 @enduml
 ```
+
+23、 设备数据上行时序图
+```plantuml
+@startuml
+participant "设备"  as gw
+participant "emq"  as emq
+participant "iothub plugin"  as iothub
+participant "security plugin"  as sec
+participant "core plugin"  as core
+participant "后端设备管理 plugin"  as bdev 
+participant "前端设备管理 plugin"  as fdev
+participant "第三方应用 plugin"  as tp
+autonumber
+
+fdev->bdev: 定义数字化设备
+bdev->core: 创建承载数字化设备实体
+bdev-->sec: 申请设备token
+sec-->bdev: 颁发设备token
+bdev->fdev: 返回数字化设备信息（id、token等）
+gw->emq: 连接、携带在平台注册设备颁发的token
+emq->iothub: iothub hook 数据包
+iothub->sec: 鉴权
+sec->iothub: 成功 or  失败
+iothub->emq: 成功or 失败
+emq->gw: 成功or 失败
+gw->emq: 推送自定义、属性、遥测数据
+emq->iothub: iothub hook 数据包
+iothub->core: 推送数据到core 
+core<->core: 承载连接信息
+core<->core: 承载原始数据
+core<->core: 解析属性数据
+core<->core: 解析遥测数据
+fdev->bdev: 查询or订阅 设备基础信息、系统信息、连接信息、原始数据、属性数据、遥测数据等各维度数据
+bdev->fdev: 返回数字化设备实体各维度数据
+tp-->bdev: 查询or订阅 设备基础信息、系统信息、连接信息、原始数据、属性数据、遥测数据等各维度数据
+bdev-->tp:22、返回数字化设备实体各维度数据
+@enduml
+```

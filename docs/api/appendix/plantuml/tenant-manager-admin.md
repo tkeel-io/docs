@@ -92,7 +92,7 @@ participant "管理服务(rudder)"  as tenantService
 database "Mysql" as DB
 
 user->keel: 发起请求
-keel->tenantService: 发起请求
+keel->tenantService: 参数校验
 tenantService->DB: 更新用户信息
 DB->tenantService: 返回结果
 tenantService->keel: 返回结果

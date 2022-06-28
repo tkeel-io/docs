@@ -4,6 +4,7 @@
 #### 1.2.2.1 创建租户空间
 ##### 1.2.2.1.1 时序图
 ```plantuml
+@startuml
 actor 用户 as user
 participant "APIServer(Keel)"  as keel
 participant "管理服务(rudder)"  as tenantService
@@ -20,10 +21,12 @@ tenantService->rbacOp:add group: admin user has user-sys-role in sys-tenant
 tenantService->rbacOp:add policy: user-sys-role has permissin in sys-tenant
 tenantService->keel:respnse
 keel->user:respnse
+@enduml
 ```
 #### 1.2.2.2 编辑租户空间
 ##### 1.2.2.2.1 时序图
 ```plantuml
+@startuml
 actor 用户 as user
 participant "APIServer(Keel)"  as keel
 participant "管理服务(rudder)"  as tenantService
@@ -35,11 +38,13 @@ keel->tenantService:tenantId,Titile,Remark
 tenantService->rbacOp:update tenant model
 tenantService->keel:update tenant model
 keel-->user:response
+@enduml
 ```
 #### 1.2.2.3 删除租户空间
 ##### 1.2.2.3.1 时序图
 
 ```plantuml
+@startuml
 actor user
 participant "APIServer(Keel)"  as keel
 participant "管理服务(rudder)"  as tenantService
@@ -55,11 +60,12 @@ tenantService->rbacOp: 删除该租户下用户模型
 tenantService->rbacOp: 删除租户的插件角色策略
 tenantService->keel: 返回结果
 keel->user: 返回结果
+@enduml
 ```
 #### 1.2.2.4 查看用户列表
 ##### 1.2.2.4.1 时序图
 ```plantuml
-
+@startuml
 header ListUser
 actor user
 participant "APIServer(Keel)"  as keel
@@ -71,13 +77,13 @@ tenantService->DB:call: List User
 DB->tenantService: response user list
 tenantService->keel:response
 keel->user:response
-
+@enduml
 ```
 #### 1.2.2.5 重置用户密码
 ##### 1.2.2.5.1 时序图
 
 ```plantuml
-
+@startuml
 header ResetUserPassword
 
 actor user
@@ -91,7 +97,7 @@ tenantService->DB: 更新用户信息
 DB->tenantService: 返回结果
 tenantService->keel: 返回结果
 keel->user: 返回结果
-
+@enduml
 ```
 #### 1.2.2.6 单点登录
 ##### 1.2.2.6.1 时序图

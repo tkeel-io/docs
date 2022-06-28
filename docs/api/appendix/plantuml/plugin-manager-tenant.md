@@ -7,11 +7,20 @@
 
 ```plantuml
 @startuml
-user --> rudder : 查看插件列表
-rudder --> keel : 鉴权
-rudder --> db : 获取插件列表
-rudder --> rudder : 获取插件状态
-rudder --> user : 查看插件列表
+participant "user" as user
+participant "ApiServer(keel)" as keel
+participant "rudder" as rudder
+participant "持久层" as dblayer
+participant "mysql" as mysql
+
+user -> keel : 发起请求
+keel -> keel : 参数校验 
+keel -> rudder : 调用业务层
+rudder -> dblayer : 获取插件列表
+dblayer <-> mysql : 读取数据库
+rudder -> rudder : 获取插件状态
+dblayer <-> mysql : 读取数据库
+rudder -> user : 返回结果
 
 @enduml
 ```
@@ -28,13 +37,24 @@ rudder --> user : 查看插件列表
 
 ```plantuml
 @startuml
-user --> rudder : 启用插件
-rudder --> keel : 鉴权
-rudder --> rudder : 检查插件是否存在
-rudder --> rudder : 检查插件是否启用
-rudder --> rudder : 启用插件及依赖
-rudder --> db : 更新数据库
-rudder --> user : 启用成功
+participant "user" as user
+participant "ApiServer(keel)" as keel
+participant "rudder" as rudder
+participant "持久层" as dblayer
+participant "mysql" as mysql
+
+user -> keel : 发起请求
+keel -> keel : 参数校验 
+keel -> rudder : 调用业务层
+rudder -> rudder : 检查插件是否存在
+rudder -> rudder : 检查插件是否启用
+rudder -> rudder : 递归启用插件依赖
+rudder -> keel : 调用插件enable接口
+rudder -> dblayer : 启用插件
+dblayer <-> mysql : 写入数据库
+rudder -> dblayer : 更新插件的租户信息
+dblayer <-> mysql : 写入数据库
+rudder -> user : 返回结果
 
 @enduml
 ```
@@ -51,14 +71,23 @@ rudder --> user : 启用成功
 
 ```plantuml
 @startuml
-user --> rudder : 停用插件
-rudder --> keel : 鉴权
-rudder --> rudder : 检查插件是否存在
-rudder --> rudder : 检查插件是否启用
-rudder --> rudder : 停用插件及依赖
-rudder --> db : 更新数据库
-rudder --> user : 停用成功
+participant "user" as user
+participant "ApiServer(keel)" as keel
+participant "rudder" as rudder
+participant "持久层" as dblayer
+participant "mysql" as mysql
 
+user -> keel : 发起请求
+keel -> keel : 参数校验 
+keel -> rudder : 调用业务层
+rudder -> rudder : 检查插件是否存在
+rudder -> keel : 调用插件disable接口
+rudder -> dblayer : 删除租户的插件信息
+dblayer <-> mysql : 写入数据库
+rudder -> dblayer : 删除插件的租户信息
+dblayer <-> mysql : 写入数据库
+rudder -> db : 更新数据库
+rudder -> user : 返回结果
 @enduml
 ```
 
@@ -74,12 +103,19 @@ rudder --> user : 停用成功
 
 ```plantuml
 @startuml
-user --> rudder : 查看插件详情
-rudder --> keel : 鉴权
-rudder --> rudder : 检查插件是否存在
-rudder --> db : 获取插件信息
-rudder --> user : 插件详情
+participant "user" as user
+participant "ApiServer(keel)" as keel
+participant "rudder" as rudder
+participant "持久层" as dblayer
+participant "mysql" as mysql
 
+user -> keel : 发起请求
+keel -> keel : 参数校验 
+keel -> rudder : 调用业务层
+rudder -> rudder : 检查插件是否存在
+rudder -> dblayer : 获取插件信息
+dblayer <-> mysql : 读取数据库
+rudder -> user : 返回结果
 @enduml
 ```
 

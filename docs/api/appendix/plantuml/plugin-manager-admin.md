@@ -7,12 +7,19 @@
 
 ```plantuml
 @startuml
-user --> rudder : 创建插件源
-rudder --> keel : 鉴权
-rudder --> rudder : 校验插件源
-rudder --> rudder : 拉取插件列表
-rudder --> db : 更新数据库
-rudder --> user : 创建成功
+participant "user" as user
+participant "ApiServer(keel)" as keel
+participant "rudder" as rudder
+participant "持久层" as dblayer
+participant "mysql" as mysql
+
+user -> keel : 发起请求
+keel -> keel : 参数校验 
+keel -> rudder : 调用业务层
+rudder -> rudder : 校验插件源
+rudder -> rudder : 拉取插件列表
+rudder -> dblayer : 更新数据库
+rudder -> user : 返回结果
 
 @enduml
 ```
@@ -29,17 +36,30 @@ rudder --> user : 创建成功
 
 ```plantuml
 @startuml
-user --> rudder : 安装插件
-rudder --> keel : 鉴权
-rudder --> rudder : 下载chart包
-rudder --> rudder : chart添加依赖，kustomize更新yaml
-rudder --> helm : 安装应用
+participant "user" as user
+participant "ApiServer(keel)" as keel
+participant "rudder" as rudder
+participant "持久层" as dblayer
+participant "mysql" as mysql
+
+user -> keel : 发起请求
+keel -> keel : 参数校验 
+keel -> rudder : 调用业务层
+rudder -> rudder : 获取chart包
+rudder -> rudder : 更新插件ID
+rudder -> rudder : 注入依赖
+rudder -> helm : 安装应用
+rudder -> dblayer : 创建插件信息
+dblayer --> mysql : 写入数据库
+rudder -> dblayer : 为_tKeel_system启用插件
+dblayer --> mysql : 写入数据库
 loop async
-    rudder --> rudder : 检查是否安装完成
-    rudder --> rudder : 注册插件(更新权限、菜单、路由)
+    rudder -> rudder : 检查是否安装完成
+    rudder -> rudder : 注册插件(更新权限、菜单、路由)
 end
-rudder --> db : 更新数据库
-rudder --> user : 安装成功
+rudder -> dblayer : 更新数据库
+dblayer --> mysql : 写入数据库
+rudder -> user : 返回结果
 
 @enduml
 ```
@@ -56,13 +76,30 @@ rudder --> user : 安装成功
 
 ```plantuml
 @startuml
-user --> rudder : 卸载插件
-rudder --> keel : 鉴权
-rudder --> rudder : 检查是否有租户启用
-rudder --> rudder : 注销插件(删除权限、菜单、路由)
-rudder --> helm : 卸载应用
-rudder --> user : 卸载成功
+participant "user" as user
+participant "ApiServer(keel)" as keel
+participant "rudder" as rudder
+participant "持久层" as dblayer
+participant "mysql" as mysql
 
+user -> keel : 发起请求
+keel -> keel : 参数校验 
+keel -> rudder : 调用业务层
+rudder -> rudder : 检查插件是否安装
+rudder -> rudder : 检查插件路由是否存在
+rudder -> rudder : 检查插件扩展点是否被实现
+rudder -> rudder : 检查是否有租户启用插件
+rudder -> rudder : 注销插件实现的扩展点
+rudder -> dblayer : 删除插件
+dblayer <-> mysql : 写入数据库
+rudder -> dblayer : 删除插件路由
+dblayer <-> mysql : 写入数据库
+rudder -> dblayer : 为_tKeel_system禁用插件
+dblayer <-> mysql : 写入数据库
+rudder -> dblayer : 删除权限
+dblayer <-> mysql : 写入数据库
+rudder -> helm : 卸载插件
+rudder -> user : 返回结果
 @enduml
 ```
 
@@ -78,11 +115,21 @@ rudder --> user : 卸载成功
 
 ```plantuml
 @startuml
-user --> rudder : 查看插件详情
-rudder --> keel : 鉴权
-rudder --> rudder : 检查插件是否存在
-rudder --> db : 获取插件信息
-rudder --> user : 插件详情
+participant "user" as user
+participant "ApiServer(keel)" as keel
+participant "rudder" as rudder
+participant "持久层" as dblayer
+participant "mysql" as mysql
+
+user -> keel : 发起请求
+keel -> keel : 参数校验 
+keel -> rudder : 调用业务层
+rudder -> rudder : 检查插件是否存在
+rudder -> dblayer : 获取插件信息
+dblayer <-> mysql : 读取数据库
+rudder -> dblayer : 获取插件路由
+dblayer <-> mysql : 读取数据库
+rudder -> user : 返回结果
 
 @enduml
 ```
@@ -99,11 +146,18 @@ rudder --> user : 插件详情
 
 ```plantuml
 @startuml
-user --> rudder : 查看插件启用列表
-rudder --> keel : 鉴权
-rudder --> db : 获取插件列表
-rudder --> rudder : 获取插件状态
-rudder --> user : 插件启用列表
+participant "user" as user
+participant "ApiServer(keel)" as keel
+participant "rudder" as rudder
+participant "持久层" as dblayer
+participant "mysql" as mysql
+
+user -> keel : 发起请求
+keel -> keel : 参数校验 
+keel -> rudder : 调用业务层
+rudder -> dblayer : 获取插件的租户列表
+dblayer <-> mysql : 读取数据库
+rudder -> user : 返回结果
 
 @enduml
 ```

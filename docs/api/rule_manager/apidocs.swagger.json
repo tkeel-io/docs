@@ -1,0 +1,1847 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "api/rule/v1/dto_rule.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "Rules"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/rules": {
+      "get": {
+        "summary": "查询路由列表",
+        "operationId": "QueryRule",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleRuleQueryResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "page_num",
+            "description": "页码",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "page_size",
+            "description": "每页数量",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "order_by",
+            "description": "排序字段",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "is_descending",
+            "description": "倒序",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "key_words",
+            "description": "关键字",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "search_key",
+            "description": "关键字值",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "id.value",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "ids",
+            "description": "路由 id 列表",
+            "in": "query",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "name.value",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "description": "类型 1 消息路由, 类型 2 时序路由",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "status.value",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      },
+      "post": {
+        "summary": "创建路由",
+        "operationId": "CreateRule",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleRuleCreateResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/ruleRuleCreateReq"
+            }
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
+    "/rules/{id}": {
+      "get": {
+        "summary": "查询路由详情",
+        "operationId": "GetRule",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleRule"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "路由id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      },
+      "delete": {
+        "summary": "删除路由",
+        "operationId": "DeleteRule",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "路由id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      },
+      "put": {
+        "summary": "更新路由",
+        "operationId": "UpdateRule",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleRuleUpdateResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "路由id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string",
+                  "description": "名称"
+                },
+                "desc": {
+                  "type": "string",
+                  "description": "描述"
+                }
+              },
+              "title": "rule update"
+            }
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
+    "/rules/{id}/devices": {
+      "get": {
+        "summary": "查询路由的设备列表",
+        "operationId": "GetRuleDevices",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleRuleDevicesResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "路由id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "page_num",
+            "description": "页码",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "page_size",
+            "description": "每页数量",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "order_by",
+            "description": "排序字段",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "is_descending",
+            "description": "倒序",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "key_words",
+            "description": "关键字",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "search_key",
+            "description": "关键字值",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      },
+      "delete": {
+        "summary": "从路由设备中删除设备",
+        "operationId": "RemoveDevicesFromRule",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "路由id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "devices_ids",
+            "description": "设备id列表",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      },
+      "post": {
+        "summary": "添加设备到路由",
+        "operationId": "AddDevicesToRule",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "路由id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "devices_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "设备id列表"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
+    "/rules/{id}/devices_id_array": {
+      "get": {
+        "summary": "查询路由的设备id列表",
+        "operationId": "GetRuleDevicesID",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleRuleDevicesIDResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "路由id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
+    "/rules/{id}/running_status": {
+      "put": {
+        "summary": "切换路由状态",
+        "operationId": "SwitchRuleStatus",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleRuleStatusSwitchResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "路由id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "状态 1 运行中, 状态 0 停止"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
+    "/rules/{id}/subscribe/error": {
+      "delete": {
+        "summary": "取消错误信息订阅",
+        "operationId": "ErrUnsubscribe",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "路由id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      },
+      "post": {
+        "summary": "错误信息订阅",
+        "operationId": "ErrSubscribe",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "路由id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "subscribe_id": {
+                  "type": "string",
+                  "description": "数据订阅id"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      },
+      "put": {
+        "summary": "改变错误信息订阅",
+        "operationId": "ChangeErrSubscribe",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "路由id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "subscribe_id": {
+                  "type": "string",
+                  "description": "数据订阅id"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
+    "/rules/{id}/target": {
+      "get": {
+        "summary": "查询路由目标列表",
+        "operationId": "ListRuleTarget",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleListRuleTargetResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "路由id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "page_num",
+            "description": "页码",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "page_size",
+            "description": "每页数量",
+            "in": "query",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          },
+          {
+            "name": "order_by",
+            "description": "排序字段",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "is_descending",
+            "description": "倒序",
+            "in": "query",
+            "required": false,
+            "type": "boolean"
+          },
+          {
+            "name": "key_words",
+            "description": "关键字",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "search_key",
+            "description": "关键字值",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      },
+      "post": {
+        "summary": "创建路由转发目标",
+        "operationId": "CreateRuleTarget",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleCreateRuleTargetResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "路由id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "integer",
+                  "format": "int64",
+                  "description": "类型 1 Kafka, 仅 kafka 类型使用"
+                },
+                "host": {
+                  "type": "string",
+                  "description": "kafka 地址， 仅 kafka 类型使用"
+                },
+                "value": {
+                  "type": "string",
+                  "description": "kafka topic， 仅 kafka 类型使用"
+                },
+                "table_name": {
+                  "type": "string",
+                  "description": "表名",
+                  "title": "string ext = 5;"
+                },
+                "sink_type": {
+                  "type": "string",
+                  "description": "mysql 或者 clickhouse"
+                },
+                "sink_id": {
+                  "type": "string",
+                  "description": "验证成功后返回的id"
+                },
+                "fields": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/ruleMapField"
+                  },
+                  "description": "映射表"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
+    "/rules/{id}/target/{target_id}": {
+      "delete": {
+        "summary": "删除路由目标",
+        "operationId": "DeleteRuleTarget",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "路由id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "target_id",
+            "description": "路由目标id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      },
+      "put": {
+        "summary": "更新路由转发目标",
+        "operationId": "UpdateRuleTarget",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleUpdateRuleTargetResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "路由id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "target_id",
+            "description": "目标id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "host": {
+                  "type": "string",
+                  "description": "kafka 地址， 仅 kafka 类型使用"
+                },
+                "value": {
+                  "type": "string",
+                  "description": "kafka topic， 仅 kafka 类型使用"
+                },
+                "sink_type": {
+                  "type": "string",
+                  "description": "mysql 或者 clickhouse",
+                  "title": "string ext = 5;"
+                },
+                "sink_id": {
+                  "type": "string",
+                  "description": "验证成功后返回的id"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
+    "/sink/{id}/maps": {
+      "get": {
+        "summary": "查询数据表结构映射",
+        "operationId": "GetTableMap",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleASGetTableMapResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "验证成功后返回的id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "table_name",
+            "description": "数据表名称",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      },
+      "put": {
+        "summary": "更新数据表映射",
+        "operationId": "UpdateTableMap",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleASUpdateTableMapResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "验证成功后返回的id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "target_id": {
+                  "type": "string",
+                  "description": "路由目标id"
+                },
+                "table_name": {
+                  "type": "string",
+                  "description": "数据表名称"
+                },
+                "fields": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/ruleMapField"
+                  },
+                  "description": "映射表"
+                }
+              },
+              "description": "update table map."
+            }
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
+    "/sink/{id}/tables": {
+      "get": {
+        "summary": "查询数据表列表",
+        "operationId": "TableList",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleASTableListResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "验证成功后返回的id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
+    "/sink/{id}/tables/{table_name}": {
+      "get": {
+        "summary": "查询数据表详情",
+        "operationId": "GetTableDetails",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleASGetTableDetailsResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "验证成功后返回的id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "table_name",
+            "description": "数据表名称",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
+    "/testing/kafka": {
+      "get": {
+        "summary": "测试kafka配置",
+        "operationId": "TesyConnectToKafka",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "host",
+            "description": "kafka地址, ','分割",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "topic",
+            "description": "topic",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
+    "/verify/{sink_type}": {
+      "post": {
+        "summary": "验证转发配置",
+        "operationId": "ActionVerify",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleASVerifyResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "sink_type",
+            "description": "目标类型， clickhouse 或者 mysql",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "urls": {
+                  "type": "string",
+                  "description": "连接地址",
+                  "required": [
+                    "urls"
+                  ]
+                },
+                "meta": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "description": "meta用于储存不同类型的特有信息，如chronus需要user，和password",
+                  "required": [
+                    "meta"
+                  ]
+                }
+              },
+              "description": "verify.",
+              "required": [
+                "urls",
+                "meta"
+              ]
+            }
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "ruleASGetTableDetailsResp": {
+      "type": "object",
+      "properties": {
+        "table": {
+          "$ref": "#/definitions/ruleTable",
+          "description": "数据表"
+        }
+      }
+    },
+    "ruleASGetTableMapResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "验证成功后返回的id"
+        },
+        "table_name": {
+          "type": "string",
+          "description": "数据表名称"
+        },
+        "table_fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ruleField"
+          },
+          "description": "数据库表字段"
+        },
+        "map_fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ruleMapField"
+          },
+          "description": "映射表"
+        }
+      }
+    },
+    "ruleASTableListResp": {
+      "type": "object",
+      "properties": {
+        "tables": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ruleTable"
+          },
+          "description": "数据表列表"
+        }
+      }
+    },
+    "ruleASUpdateTableMapResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "验证成功后返回的id"
+        },
+        "target_id": {
+          "type": "string",
+          "description": "路由目标id"
+        },
+        "table_name": {
+          "type": "string",
+          "description": "数据表名称"
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ruleMapField"
+          },
+          "description": "映射表"
+        }
+      }
+    },
+    "ruleASVerifyResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "验证id"
+        },
+        "types": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "目标支持的数据类型"
+        }
+      }
+    },
+    "ruleCreateRuleTargetResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64",
+          "description": "路由目标id"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int64",
+          "description": "类型 1 Kafka, 仅 kafka 类型使用"
+        },
+        "host": {
+          "type": "string",
+          "description": "kafka 地址， 仅 kafka 类型使用"
+        },
+        "value": {
+          "type": "string",
+          "description": "kafka topic， 仅 kafka 类型使用"
+        },
+        "table_name": {
+          "type": "string",
+          "description": "表名",
+          "title": "string ext = 5;"
+        },
+        "sink_type": {
+          "type": "string",
+          "description": "mysql 或者 clickhouse"
+        },
+        "sink_id": {
+          "type": "string",
+          "description": "验证成功后返回的id"
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ruleMapField"
+          },
+          "description": "映射表"
+        },
+        "user": {
+          "type": "string",
+          "description": "用户名"
+        },
+        "password": {
+          "type": "string",
+          "description": "密码"
+        },
+        "database": {
+          "type": "string",
+          "description": "数据库"
+        },
+        "endpoint": {
+          "type": "string",
+          "description": "目标地址字符串"
+        }
+      }
+    },
+    "ruleDevice": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "设备id"
+        },
+        "name": {
+          "type": "string",
+          "description": "设备名称"
+        },
+        "template": {
+          "type": "string",
+          "description": "设备模板"
+        },
+        "group_name": {
+          "type": "string",
+          "description": "设备组"
+        },
+        "status": {
+          "type": "string",
+          "description": "设备状态"
+        }
+      }
+    },
+    "ruleField": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "字段名称"
+        },
+        "type": {
+          "type": "string",
+          "description": "字段类型"
+        },
+        "isPK": {
+          "type": "boolean",
+          "description": "是否为主键"
+        }
+      }
+    },
+    "ruleListRuleTargetResp": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": "总数",
+          "required": [
+            "total"
+          ]
+        },
+        "page_num": {
+          "type": "integer",
+          "format": "int64",
+          "description": "页码",
+          "required": [
+            "page_num"
+          ]
+        },
+        "last_page": {
+          "type": "integer",
+          "format": "int64",
+          "description": "上一页",
+          "required": [
+            "last_page"
+          ]
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int64",
+          "description": "每页数量",
+          "required": [
+            "page_size"
+          ]
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ruleCreateRuleTargetResp"
+          },
+          "description": "路由目标列表",
+          "required": [
+            "data"
+          ]
+        }
+      },
+      "required": [
+        "total",
+        "page_num",
+        "last_page",
+        "page_size",
+        "data"
+      ]
+    },
+    "ruleMapField": {
+      "type": "object",
+      "properties": {
+        "t_field": {
+          "$ref": "#/definitions/ruleField",
+          "description": "模板字段"
+        },
+        "m_field": {
+          "$ref": "#/definitions/ruleField",
+          "description": "表字段"
+        }
+      }
+    },
+    "ruleRule": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64",
+          "description": "路由id"
+        },
+        "name": {
+          "type": "string",
+          "description": "名称"
+        },
+        "desc": {
+          "type": "string",
+          "description": "描述"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int64",
+          "description": "类型 1 消息路由, 类型 2 时序路由"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int64",
+          "description": "状态 1 运行中, 状态 0 停止"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "int64",
+          "description": "创建时间"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "int64",
+          "description": "更新时间"
+        },
+        "devices_status": {
+          "type": "integer",
+          "format": "int64",
+          "description": "路由设备数量"
+        },
+        "targets_status": {
+          "type": "integer",
+          "format": "int64",
+          "description": "路由目标数量"
+        },
+        "sub_id": {
+          "type": "integer",
+          "format": "int64",
+          "description": "错误订阅id"
+        },
+        "model_id": {
+          "type": "string",
+          "description": "模板id"
+        },
+        "model_name": {
+          "type": "string",
+          "description": "模板名称"
+        }
+      }
+    },
+    "ruleRuleCreateReq": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "名称"
+        },
+        "desc": {
+          "type": "string",
+          "description": "描述"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int64",
+          "description": "类型 1 消息路由, 类型 2 时序路由"
+        },
+        "model_id": {
+          "type": "string",
+          "description": "模板id"
+        },
+        "model_name": {
+          "type": "string",
+          "description": "模板名称"
+        }
+      },
+      "description": "Rule create."
+    },
+    "ruleRuleCreateResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64",
+          "description": "路由id"
+        },
+        "name": {
+          "type": "string",
+          "description": "名称"
+        },
+        "desc": {
+          "type": "string",
+          "description": "描述"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int64",
+          "description": "类型 1 消息路由, 类型 2 时序路由"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int64",
+          "description": "状态 1 运行中, 状态 0 停止"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "int64",
+          "description": "创建时间"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "int64",
+          "description": "更新时间"
+        },
+        "model_id": {
+          "type": "string",
+          "description": "模板id"
+        },
+        "model_name": {
+          "type": "string",
+          "description": "模板名称"
+        }
+      }
+    },
+    "ruleRuleDevicesIDResp": {
+      "type": "object",
+      "properties": {
+        "devices_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "路由设备id列表"
+        }
+      }
+    },
+    "ruleRuleDevicesResp": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": "总数",
+          "required": [
+            "total"
+          ]
+        },
+        "page_num": {
+          "type": "integer",
+          "format": "int64",
+          "description": "页码",
+          "required": [
+            "page_num"
+          ]
+        },
+        "last_page": {
+          "type": "integer",
+          "format": "int64",
+          "description": "上一页",
+          "required": [
+            "last_page"
+          ]
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int64",
+          "description": "每页数量",
+          "required": [
+            "page_size"
+          ]
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ruleDevice"
+          },
+          "description": "设备列表",
+          "required": [
+            "data"
+          ]
+        }
+      },
+      "required": [
+        "total",
+        "page_num",
+        "last_page",
+        "page_size",
+        "data"
+      ]
+    },
+    "ruleRuleQueryResp": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int64",
+          "description": "总数",
+          "required": [
+            "total"
+          ]
+        },
+        "page_num": {
+          "type": "integer",
+          "format": "int64",
+          "description": "页码",
+          "required": [
+            "page_num"
+          ]
+        },
+        "last_page": {
+          "type": "integer",
+          "format": "int64",
+          "description": "上一页",
+          "required": [
+            "last_page"
+          ]
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int64",
+          "description": "每页数量",
+          "required": [
+            "page_size"
+          ]
+        },
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ruleRule"
+          },
+          "description": "路由列表",
+          "required": [
+            "data"
+          ]
+        }
+      },
+      "required": [
+        "total",
+        "page_num",
+        "last_page",
+        "page_size",
+        "data"
+      ]
+    },
+    "ruleRuleStatusSwitchResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64",
+          "description": "路由id"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int64",
+          "description": "状态 1 运行中, 状态 0 停止"
+        }
+      }
+    },
+    "ruleRuleUpdateResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64",
+          "description": "路由id"
+        },
+        "name": {
+          "type": "string",
+          "description": "名称"
+        },
+        "desc": {
+          "type": "string",
+          "description": "描述"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int64",
+          "description": "类型 1 消息路由, 类型 2 时序路由"
+        },
+        "status": {
+          "type": "integer",
+          "format": "int64",
+          "description": "状态 1 运行中, 状态 0 停止"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "int64",
+          "description": "创建时间"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "int64",
+          "description": "更新时间"
+        },
+        "model_id": {
+          "type": "string",
+          "description": "模板id"
+        },
+        "model_name": {
+          "type": "string",
+          "description": "模板名称"
+        }
+      }
+    },
+    "ruleString": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "ruleTable": {
+      "type": "object",
+      "properties": {
+        "Name": {
+          "type": "string",
+          "description": "表名"
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ruleField"
+          },
+          "description": "表字段"
+        }
+      }
+    },
+    "ruleUint32": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    },
+    "ruleUint64": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "string",
+          "format": "uint64"
+        }
+      }
+    },
+    "ruleUpdateRuleTargetResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64",
+          "description": "路由id"
+        },
+        "type": {
+          "type": "integer",
+          "format": "int64",
+          "description": "类型 1 Kafka, 仅 kafka 类型使用"
+        },
+        "host": {
+          "type": "string",
+          "description": "kafka 地址， 仅 kafka 类型使用"
+        },
+        "value": {
+          "type": "string",
+          "description": "kafka topic， 仅 kafka 类型使用"
+        },
+        "sink_type": {
+          "type": "string",
+          "description": "mysql 或者 clickhouse"
+        },
+        "sink_id": {
+          "type": "string",
+          "description": "验证成功后返回的id"
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ruleMapField"
+          },
+          "description": "映射表"
+        }
+      }
+    }
+  }
+}

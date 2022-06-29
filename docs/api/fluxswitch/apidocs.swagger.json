@@ -1,0 +1,1816 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "api/client/v1/client.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "Client"
+    },
+    {
+      "name": "Config"
+    },
+    {
+      "name": "Openapi"
+    },
+    {
+      "name": "Plugin"
+    },
+    {
+      "name": "Proxy"
+    },
+    {
+      "name": "Tools"
+    },
+    {
+      "name": "Topology"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/addons/identify": {
+      "post": {
+        "summary": "openapi addons identify",
+        "operationId": "Identify",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1AddonsIdentifyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1AddonsIdentifyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Openapi"
+        ]
+      }
+    },
+    "/client": {
+      "get": {
+        "summary": "搜索网关",
+        "operationId": "ListClient",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ListClientResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query",
+            "description": "搜索关键字",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "order_by",
+            "description": "排序字段",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page_num",
+            "description": "页码",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "page_size",
+            "description": "每页数量",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "online",
+            "description": "在线状态",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "description": "启用状态",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Client"
+        ]
+      },
+      "post": {
+        "summary": "创建网关",
+        "operationId": "CreateClient",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1CreateClientResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": "网关信息",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1UpdateClient",
+              "description": "网关信息"
+            }
+          }
+        ],
+        "tags": [
+          "Client"
+        ]
+      }
+    },
+    "/client/{id}": {
+      "get": {
+        "summary": "查询网关详情",
+        "operationId": "GetClient",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1GetClientResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "网关ID",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "Client"
+        ]
+      },
+      "delete": {
+        "summary": "删除网关",
+        "operationId": "DeleteClient",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1DeleteClientResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "网关ID",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "Client"
+        ]
+      },
+      "put": {
+        "summary": "修改网关信息",
+        "operationId": "UpdateClient",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1UpdateClientResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "网关ID",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "client": {
+                  "$ref": "#/definitions/v1UpdateClient",
+                  "description": "网关信息"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Client"
+        ]
+      }
+    },
+    "/identify": {
+      "get": {
+        "summary": "openapi identify",
+        "operationId": "Identify",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1IdentifyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Openapi"
+        ]
+      }
+    },
+    "/import": {
+      "post": {
+        "summary": "批量导入",
+        "operationId": "Import",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ImportResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ImportRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Tools"
+        ]
+      }
+    },
+    "/plugin/login": {
+      "post": {
+        "summary": "frps plugin login",
+        "operationId": "LoginPlugin",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1LoginPluginResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1LoginObject"
+            }
+          }
+        ],
+        "tags": [
+          "fluxswitch"
+        ]
+      }
+    },
+    "/plugin/ping": {
+      "post": {
+        "summary": "TKEEL_COMMENT\n{\"response\":{\"raw_data\":true}}",
+        "operationId": "Plugin_PingPlugin",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1PingPluginResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1PingObject"
+            }
+          }
+        ],
+        "tags": [
+          "Plugin"
+        ]
+      }
+    },
+    "/plugin/proxy/close": {
+      "post": {
+        "summary": "TKEEL_COMMENT\n{\"response\":{\"raw_data\":true}}",
+        "operationId": "Plugin_CloseProxyPlugin",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1CloseProxyPluginResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1CloseProxyObject"
+            }
+          }
+        ],
+        "tags": [
+          "Plugin"
+        ]
+      }
+    },
+    "/plugin/proxy/new": {
+      "post": {
+        "summary": "TKEEL_COMMENT\n{\"response\":{\"raw_data\":true}}",
+        "operationId": "Plugin_NewProxyPlugin",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1NewProxyPluginResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1NewProxyObject"
+            }
+          }
+        ],
+        "tags": [
+          "Plugin"
+        ]
+      }
+    },
+    "/proxy": {
+      "get": {
+        "summary": "搜索服务列表",
+        "operationId": "ListProxy",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ListProxyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "query",
+            "description": "搜索关键字",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "order_by",
+            "description": "排序",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "page_num",
+            "description": "页数",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "page_size",
+            "description": "每页数量",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "online",
+            "description": "在线状态",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "description": "启用状态",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "client_id",
+            "description": "客户端ID",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Proxy"
+        ]
+      },
+      "post": {
+        "summary": "创建代理服务",
+        "operationId": "CreateProxy",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1CreateProxyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": "代理服务信息",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1UpdateProxy",
+              "description": "代理服务信息"
+            }
+          }
+        ],
+        "tags": [
+          "Proxy"
+        ]
+      }
+    },
+    "/proxy/{id}": {
+      "get": {
+        "summary": "查询代理服务详情",
+        "operationId": "GetProxy",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1GetProxyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "代理服务ID",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "Proxy"
+        ]
+      },
+      "delete": {
+        "summary": "删除代理服务",
+        "operationId": "DeleteProxy",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1DeleteProxyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "代理服务ID",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          }
+        ],
+        "tags": [
+          "Proxy"
+        ]
+      },
+      "put": {
+        "summary": "更新代理服务",
+        "operationId": "UpdateProxy",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1UpdateProxyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "代理服务ID",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "body",
+            "description": "代理服务信息",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1UpdateProxy",
+              "description": "代理服务信息"
+            }
+          }
+        ],
+        "tags": [
+          "Proxy"
+        ]
+      }
+    },
+    "/status": {
+      "get": {
+        "summary": "openapi status",
+        "operationId": "Status",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1StatusResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Openapi"
+        ]
+      }
+    },
+    "/template": {
+      "get": {
+        "summary": "下载模板",
+        "operationId": "Template",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1TemplateResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "Tools"
+        ]
+      }
+    },
+    "/tenant/disable": {
+      "post": {
+        "summary": "openapi tenant disable",
+        "operationId": "TenantDisable",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1TenantDisableResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1TenantDisableRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Openapi"
+        ]
+      }
+    },
+    "/tenant/enable": {
+      "post": {
+        "summary": "openapi tenant enable",
+        "operationId": "TenantEnable",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1TenantEnableResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1TenantEnableRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Openapi"
+        ]
+      }
+    },
+    "/topology": {
+      "get": {
+        "summary": "查询拓扑结构",
+        "operationId": "GetTopology",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1GetTopologyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "uid",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Topology"
+        ]
+      }
+    },
+    "/watch/{token}": {
+      "get": {
+        "summary": "监听配置变化",
+        "operationId": "WatchConfig",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1WatchConfigResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "description": "Token",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Config"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "PermissionDependence": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "desc": {
+          "type": "string"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v1AddonsIdentifyRequest": {
+      "type": "object",
+      "properties": {
+        "plugin": {
+          "$ref": "#/definitions/v1BriefPluginInfo"
+        },
+        "implemented_addons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ImplementedAddons"
+          }
+        }
+      },
+      "description": "*\nThe request value of the POST /v1/addons/identify,\nused when the plugin in the registration process implements\nthe extension point of the registered plugin."
+    },
+    "v1AddonsIdentifyResponse": {
+      "type": "object",
+      "properties": {
+        "res": {
+          "$ref": "#/definitions/v1Result"
+        }
+      },
+      "description": "*\nThe response value of the POST /v1/addons/identify,\nused when the plugin in the registration process implements\nthe extension point of the registered plugin."
+    },
+    "v1AddonsPoint": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "desc": {
+          "type": "string"
+        }
+      },
+      "description": "*\nmessage plugin declares extension point."
+    },
+    "v1BriefPluginInfo": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "description": "*\nmessage brief plugin information."
+    },
+    "v1Client": {
+      "type": "object",
+      "properties": {
+        "proxies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Proxy"
+          },
+          "description": "代理服务列表"
+        },
+        "name": {
+          "type": "string",
+          "description": "网关名称"
+        },
+        "address": {
+          "type": "string",
+          "description": "网关地址"
+        },
+        "online": {
+          "type": "string",
+          "description": "在线状态"
+        },
+        "status": {
+          "type": "string",
+          "description": "启用状态"
+        }
+      }
+    },
+    "v1CloseProxyContent": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/v1User"
+        },
+        "proxy_name": {
+          "type": "string"
+        }
+      }
+    },
+    "v1CloseProxyObject": {
+      "type": "object",
+      "properties": {
+        "op": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/definitions/v1CloseProxyContent"
+        }
+      }
+    },
+    "v1CloseProxyPluginResponse": {
+      "type": "object",
+      "properties": {
+        "unchange": {
+          "type": "boolean"
+        },
+        "reject": {
+          "type": "boolean"
+        },
+        "reject_reason": {
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/definitions/v1CloseProxyContent"
+        }
+      }
+    },
+    "v1ConsoleEntry": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "icon": {
+          "type": "string"
+        },
+        "path": {
+          "type": "string"
+        },
+        "entry": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ConsoleEntry"
+          }
+        },
+        "portal": {
+          "$ref": "#/definitions/v1ConsolePortal"
+        }
+      },
+      "description": "plugin console entry."
+    },
+    "v1ConsolePortal": {
+      "type": "string",
+      "enum": [
+        "admin",
+        "tenant"
+      ],
+      "default": "admin",
+      "description": "console portal enum."
+    },
+    "v1CreateClientResponse": {
+      "type": "object",
+      "properties": {
+        "client": {
+          "$ref": "#/definitions/v1QueryClient",
+          "description": "网关信息"
+        },
+        "command": {
+          "type": "string",
+          "description": "网关启动命令"
+        }
+      }
+    },
+    "v1CreateProxyResponse": {
+      "type": "object",
+      "properties": {
+        "proxy": {
+          "$ref": "#/definitions/v1QueryProxy",
+          "description": "代理服务信息"
+        }
+      }
+    },
+    "v1DeleteClientResponse": {
+      "type": "object",
+      "properties": {
+        "client": {
+          "$ref": "#/definitions/v1QueryClient",
+          "description": "网关信息"
+        }
+      }
+    },
+    "v1DeleteProxyResponse": {
+      "type": "object",
+      "properties": {
+        "proxy": {
+          "$ref": "#/definitions/v1QueryProxy",
+          "description": "代理服务信息"
+        }
+      }
+    },
+    "v1GetClientResponse": {
+      "type": "object",
+      "properties": {
+        "client": {
+          "$ref": "#/definitions/v1QueryClient",
+          "description": "网关信息"
+        },
+        "command": {
+          "type": "string",
+          "description": "网关启动命令"
+        }
+      }
+    },
+    "v1GetProxyResponse": {
+      "type": "object",
+      "properties": {
+        "proxy": {
+          "$ref": "#/definitions/v1QueryProxy",
+          "description": "代理服务信息"
+        }
+      }
+    },
+    "v1GetTopologyResponse": {
+      "type": "object",
+      "properties": {
+        "clients": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Client"
+          }
+        }
+      }
+    },
+    "v1IdentifyResponse": {
+      "type": "object",
+      "properties": {
+        "res": {
+          "$ref": "#/definitions/v1Result"
+        },
+        "plugin_id": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "tkeel_version": {
+          "type": "string"
+        },
+        "addons_point": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1AddonsPoint"
+          }
+        },
+        "implemented_plugin": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ImplementedPlugin"
+          }
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ConsoleEntry"
+          }
+        },
+        "dependence": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1BriefPluginInfo"
+          }
+        },
+        "permissions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Permission"
+          }
+        },
+        "disable_manual_activation": {
+          "type": "boolean"
+        }
+      },
+      "description": "*\nThe response value of the GET /v1/identify,\nused when the plugin registered."
+    },
+    "v1ImplementedAddons": {
+      "type": "object",
+      "properties": {
+        "addons_point": {
+          "type": "string"
+        },
+        "implemented_endpoint": {
+          "type": "string"
+        }
+      },
+      "description": "*\nmessage plugin declares implemented other plugin extension point."
+    },
+    "v1ImplementedPlugin": {
+      "type": "object",
+      "properties": {
+        "plugin": {
+          "$ref": "#/definitions/v1BriefPluginInfo"
+        },
+        "addons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1ImplementedAddons"
+          }
+        }
+      },
+      "description": "*\nmessage plugin implemented other plugin."
+    },
+    "v1ImportRequest": {
+      "type": "object"
+    },
+    "v1ImportResponse": {
+      "type": "object"
+    },
+    "v1ListClientResponse": {
+      "type": "object",
+      "properties": {
+        "client_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1QueryClient"
+          },
+          "description": "网关列表"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总数量"
+        },
+        "page_num": {
+          "type": "integer",
+          "format": "int32",
+          "description": "页码"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "description": "每页数量"
+        }
+      }
+    },
+    "v1ListProxyResponse": {
+      "type": "object",
+      "properties": {
+        "proxy_list": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1QueryProxy"
+          },
+          "description": "代理服务列表"
+        },
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "description": "总数量"
+        },
+        "page_num": {
+          "type": "integer",
+          "format": "int32",
+          "description": "页数"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "description": "每页数量"
+        }
+      }
+    },
+    "v1LoginContent": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string"
+        },
+        "hostname": {
+          "type": "string"
+        },
+        "os": {
+          "type": "string"
+        },
+        "arch": {
+          "type": "string"
+        },
+        "user": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "int64"
+        },
+        "privilege_key": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "pool_count": {
+          "type": "string",
+          "format": "int64"
+        },
+        "metas": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "client_address": {
+          "type": "string"
+        }
+      }
+    },
+    "v1LoginObject": {
+      "type": "object",
+      "properties": {
+        "op": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/definitions/v1LoginContent"
+        }
+      }
+    },
+    "v1LoginPluginResponse": {
+      "type": "object",
+      "properties": {
+        "unchange": {
+          "type": "boolean"
+        },
+        "reject": {
+          "type": "boolean"
+        },
+        "reject_reason": {
+          "type": "string"
+        }
+      }
+    },
+    "v1NewProxyContent": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/v1User"
+        },
+        "proxy_name": {
+          "type": "string"
+        },
+        "proxy_type": {
+          "type": "string"
+        },
+        "use_encryption": {
+          "type": "boolean"
+        },
+        "use_compression": {
+          "type": "boolean"
+        },
+        "remote_port": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "metas": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "v1NewProxyObject": {
+      "type": "object",
+      "properties": {
+        "op": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/definitions/v1NewProxyContent"
+        }
+      }
+    },
+    "v1NewProxyPluginResponse": {
+      "type": "object",
+      "properties": {
+        "unchange": {
+          "type": "boolean"
+        },
+        "reject": {
+          "type": "boolean"
+        },
+        "reject_reason": {
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/definitions/v1NewProxyContent"
+        }
+      }
+    },
+    "v1Permission": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "dependences": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PermissionDependence"
+          }
+        },
+        "desc": {
+          "type": "string"
+        },
+        "children": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Permission"
+          }
+        }
+      },
+      "description": "plugin define permission."
+    },
+    "v1PingContent": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "$ref": "#/definitions/v1User"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "int64"
+        },
+        "privilege_key": {
+          "type": "string"
+        }
+      }
+    },
+    "v1PingObject": {
+      "type": "object",
+      "properties": {
+        "op": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/definitions/v1PingContent"
+        }
+      }
+    },
+    "v1PingPluginResponse": {
+      "type": "object",
+      "properties": {
+        "unchange": {
+          "type": "boolean"
+        },
+        "reject": {
+          "type": "boolean"
+        },
+        "reject_reason": {
+          "type": "string"
+        }
+      }
+    },
+    "v1PluginStatus": {
+      "type": "string",
+      "enum": [
+        "UNKNOWN",
+        "WAIT_RUNNING",
+        "ERR_REGISTER",
+        "RUNNING"
+      ],
+      "default": "UNKNOWN",
+      "description": "*\nplugin state enum."
+    },
+    "v1Proxy": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "代理服务名称"
+        },
+        "host": {
+          "type": "string",
+          "description": "代理服务地址"
+        },
+        "port": {
+          "type": "string",
+          "description": "代理服务端口"
+        },
+        "protocol": {
+          "type": "string",
+          "description": "协议"
+        },
+        "device_id": {
+          "type": "string",
+          "description": "设备ID"
+        },
+        "device_name": {
+          "type": "string",
+          "description": "设备名称"
+        },
+        "online": {
+          "type": "string",
+          "description": "在线状态"
+        },
+        "status": {
+          "type": "string",
+          "description": "启用状态"
+        }
+      }
+    },
+    "v1QueryClient": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64",
+          "description": "网关ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "名称"
+        },
+        "token": {
+          "type": "string",
+          "description": "Token"
+        },
+        "client_address": {
+          "type": "string",
+          "description": "网关地址"
+        },
+        "status": {
+          "type": "string",
+          "description": "启用状态"
+        },
+        "online": {
+          "type": "string",
+          "description": "在线状态"
+        },
+        "create_at": {
+          "type": "string",
+          "format": "int64",
+          "description": "创建时间"
+        },
+        "inlet_flow": {
+          "type": "string",
+          "format": "int64",
+          "description": "上行流量"
+        },
+        "export_flow": {
+          "type": "string",
+          "format": "int64",
+          "description": "下行流量"
+        }
+      }
+    },
+    "v1QueryProxy": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64",
+          "description": "代理服务ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "名称"
+        },
+        "host": {
+          "type": "string",
+          "description": "服务地址"
+        },
+        "port": {
+          "type": "string",
+          "description": "服务端口"
+        },
+        "protocol": {
+          "type": "string",
+          "description": "协议"
+        },
+        "device_id": {
+          "type": "string",
+          "description": "设备ID"
+        },
+        "url": {
+          "type": "string",
+          "description": "访问地址"
+        },
+        "status": {
+          "type": "string",
+          "description": "启用状态"
+        },
+        "online": {
+          "type": "string",
+          "description": "在线状态"
+        },
+        "remark": {
+          "type": "string",
+          "description": "备注"
+        },
+        "client_id": {
+          "type": "string",
+          "format": "uint64",
+          "description": "网关ID"
+        },
+        "create_at": {
+          "type": "string",
+          "format": "int64",
+          "description": "创建时间"
+        },
+        "inlet_flow": {
+          "type": "string",
+          "format": "int64",
+          "description": "上行流量"
+        },
+        "export_flow": {
+          "type": "string",
+          "format": "int64",
+          "description": "下行流量"
+        },
+        "token": {
+          "type": "string",
+          "description": "Token"
+        },
+        "device_name": {
+          "type": "string",
+          "description": "设备名称"
+        }
+      }
+    },
+    "v1Result": {
+      "type": "object",
+      "properties": {
+        "ret": {
+          "$ref": "#/definitions/v1Retcode"
+        },
+        "msg": {
+          "type": "string"
+        }
+      },
+      "description": "*\nmessage result."
+    },
+    "v1Retcode": {
+      "type": "string",
+      "enum": [
+        "OK",
+        "BAD_REQEUST",
+        "INTERNAL_ERROR"
+      ],
+      "default": "OK",
+      "description": "*\nerror code enum."
+    },
+    "v1StatusResponse": {
+      "type": "object",
+      "properties": {
+        "res": {
+          "$ref": "#/definitions/v1Result"
+        },
+        "status": {
+          "$ref": "#/definitions/v1PluginStatus"
+        }
+      },
+      "description": "*\nThe request value of the GET /v1/Status.\nused when the tkeel checks the status of plugins regularly."
+    },
+    "v1TemplateResponse": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string",
+          "description": "模板内容"
+        }
+      }
+    },
+    "v1TenantDisableRequest": {
+      "type": "object",
+      "properties": {
+        "tenant_id": {
+          "type": "string"
+        },
+        "extra": {
+          "type": "string",
+          "format": "byte"
+        }
+      },
+      "description": "*\nThe request value of the POST /v1/tenant/disable,\nused when the tenant administrator disables the plugin."
+    },
+    "v1TenantDisableResponse": {
+      "type": "object",
+      "properties": {
+        "res": {
+          "$ref": "#/definitions/v1Result"
+        }
+      },
+      "description": "*\nThe response value of the POST /v1/tenant/disable,\nused when the tenant administrator disables the plugin."
+    },
+    "v1TenantEnableRequest": {
+      "type": "object",
+      "properties": {
+        "tenant_id": {
+          "type": "string"
+        },
+        "extra": {
+          "type": "string",
+          "format": "byte"
+        }
+      },
+      "description": "*\nThe request value of the POST /v1/tenant/enable,\nused when the tenant administrator enables the plugin."
+    },
+    "v1TenantEnableResponse": {
+      "type": "object",
+      "properties": {
+        "res": {
+          "$ref": "#/definitions/v1Result"
+        }
+      },
+      "description": "*\nThe response value of the POST /v1/tenant/enable,\nused when the tenant administrator enables the plugin."
+    },
+    "v1UpdateClient": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "网关名称"
+        },
+        "status": {
+          "type": "string",
+          "description": "启用状态"
+        }
+      }
+    },
+    "v1UpdateClientResponse": {
+      "type": "object",
+      "properties": {
+        "client": {
+          "$ref": "#/definitions/v1QueryClient",
+          "description": "网关信息"
+        }
+      }
+    },
+    "v1UpdateProxy": {
+      "type": "object",
+      "properties": {
+        "client_id": {
+          "type": "string",
+          "format": "uint64",
+          "description": "网关ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "名称"
+        },
+        "host": {
+          "type": "string",
+          "description": "服务地址"
+        },
+        "port": {
+          "type": "string",
+          "description": "服务端口"
+        },
+        "protocol": {
+          "type": "string",
+          "description": "服务协议"
+        },
+        "device_id": {
+          "type": "string",
+          "description": "设备ID"
+        },
+        "remark": {
+          "type": "string",
+          "description": "备注"
+        },
+        "status": {
+          "type": "string",
+          "description": "启用状态"
+        },
+        "device_name": {
+          "type": "string",
+          "description": "设备名称"
+        }
+      }
+    },
+    "v1UpdateProxyResponse": {
+      "type": "object",
+      "properties": {
+        "proxy": {
+          "$ref": "#/definitions/v1QueryProxy",
+          "description": "代理服务信息"
+        }
+      }
+    },
+    "v1User": {
+      "type": "object",
+      "properties": {
+        "user": {
+          "type": "string"
+        },
+        "metas": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "run_id": {
+          "type": "string"
+        }
+      }
+    },
+    "v1WatchConfigResponse": {
+      "type": "object"
+    }
+  }
+}

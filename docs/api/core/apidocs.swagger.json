@@ -1,0 +1,2510 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "api/core/v1/entity.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "Entity"
+    },
+    {
+      "name": "Subscription"
+    },
+    {
+      "name": "TS"
+    },
+    {
+      "name": "Topic"
+    },
+    {
+      "name": "Rawdata"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/entities": {
+      "post": {
+        "summary": "创建实体",
+        "operationId": "CreateEntity",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1EntityResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": "实体属性, 可选的",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "description": "实体属性, 可选的"
+            }
+          },
+          {
+            "name": "id",
+            "description": "实体id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "from",
+            "description": "模版id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "description": "实体类型",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Entity"
+        ]
+      }
+    },
+    "/entities/search": {
+      "post": {
+        "summary": "查询实体列表",
+        "operationId": "ListEntity",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ListEntityResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ListEntityRequest"
+            }
+          }
+        ],
+        "tags": [
+          "Entity"
+        ]
+      }
+    },
+    "/entities/{entity_id}/expressions": {
+      "get": {
+        "summary": "获取实体表达式列表",
+        "operationId": "ListExpression",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ListExpressionResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "entity_id",
+            "description": "实体id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Entity",
+          "Expression"
+        ]
+      },
+      "delete": {
+        "summary": "移除实体表达式",
+        "operationId": "RemoveExpression",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1RemoveExpressionResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "entity_id",
+            "description": "实体id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "paths",
+            "description": "目标属性",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Entity",
+          "Expression"
+        ]
+      },
+      "post": {
+        "summary": "添加实体表达式",
+        "operationId": "AppendExpression",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1AppendExpressionResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "entity_id",
+            "description": "实体id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "表达式信息",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1Expressions",
+              "description": "表达式信息"
+            }
+          },
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Entity",
+          "Expression"
+        ]
+      }
+    },
+    "/entities/{entity_id}/expressions/{path}": {
+      "get": {
+        "summary": "获取实体表达式",
+        "operationId": "GetExpression",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1GetExpressionResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "entity_id",
+            "description": "实体id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "path",
+            "description": "目标属性",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Entity",
+          "Expression"
+        ]
+      }
+    },
+    "/entities/{entity_id}/mappers": {
+      "get": {
+        "summary": "获取实体映射列表",
+        "operationId": "ListMapper",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ListMapperResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "entity_id",
+            "description": "实体id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "description": "实体类型",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Entity",
+          "Mapper"
+        ]
+      },
+      "delete": {
+        "summary": "移除实体映射",
+        "operationId": "RemoveMapper",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1RemoveMapperResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "entity_id",
+            "description": "实体id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "description": "映射id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "description": "实体类型",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Entity",
+          "Mapper"
+        ]
+      },
+      "post": {
+        "summary": "添加实体映射",
+        "operationId": "AppendMapper",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1AppendMapperResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "entity_id",
+            "description": "实体id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "映射信息",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1Mapper",
+              "description": "映射信息"
+            }
+          },
+          {
+            "name": "type",
+            "description": "实体类型",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Entity",
+          "Mapper"
+        ]
+      }
+    },
+    "/entities/{entity_id}/mappers/{id}": {
+      "get": {
+        "summary": "查询实体映射",
+        "operationId": "GetMapper",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1GetMapperResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "entity_id",
+            "description": "实体id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "id",
+            "description": "映射id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "description": "实体类型",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Entity",
+          "Mapper"
+        ]
+      }
+    },
+    "/entities/{id}": {
+      "get": {
+        "summary": "查询实体详情",
+        "operationId": "GetEntity",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1EntityResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "实体id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "description": "实体类型",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Entity"
+        ]
+      },
+      "delete": {
+        "summary": "删除实体",
+        "operationId": "DeleteEntity",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1DeleteEntityResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "实体id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "description": "实体类型",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Entity"
+        ]
+      },
+      "put": {
+        "summary": "更新实体",
+        "operationId": "UpdateEntity",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1EntityResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "实体id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "description": "实体类型"
+                },
+                "source": {
+                  "type": "string",
+                  "description": "来源id"
+                },
+                "owner": {
+                  "type": "string",
+                  "description": "用户id"
+                },
+                "template_id": {
+                  "type": "string",
+                  "description": "模版id"
+                },
+                "description": {
+                  "type": "string",
+                  "description": "描述"
+                },
+                "properties": {
+                  "type": "object",
+                  "description": "实体描述"
+                },
+                "configs": {
+                  "type": "object",
+                  "description": "实体配置"
+                }
+              },
+              "description": "Update Entity Request."
+            }
+          }
+        ],
+        "tags": [
+          "Entity"
+        ]
+      },
+      "patch": {
+        "summary": "批量更新实体属性",
+        "operationId": "PatchEntityProps",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1EntityResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "实体id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "实体属性",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "description": "实体属性"
+            }
+          },
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "description": "实体类型",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Entity"
+        ]
+      }
+    },
+    "/entities/{id}/configs": {
+      "get": {
+        "summary": "查询实体配置",
+        "operationId": "GetEntityConfigs",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1EntityResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "实体id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "description": "实体类型",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "property_keys",
+            "description": "实体属性字段",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Entity"
+        ]
+      },
+      "delete": {
+        "summary": "批量删除实体配置",
+        "operationId": "RemoveEntityConfigs",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1EntityResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "实体id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "description": "实体类型",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "property_keys",
+            "description": "实体属性字段",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Entity"
+        ]
+      },
+      "put": {
+        "summary": "更新(插入)实体配置",
+        "operationId": "UpdateEntityConfigs",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1EntityResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "实体id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "实体配置",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "description": "实体配置"
+            }
+          },
+          {
+            "name": "type",
+            "description": "实体类型",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Entity"
+        ]
+      },
+      "patch": {
+        "summary": "批量更新实体配置",
+        "operationId": "PatchEntityConfigs",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1EntityResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "实体id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "实体配置",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "description": "实体配置"
+            }
+          },
+          {
+            "name": "type",
+            "description": "实体类型",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Entity"
+        ]
+      }
+    },
+    "/entities/{id}/configs/patch": {
+      "put": {
+        "summary": "批量更新实体配置",
+        "operationId": "PatchEntityConfigsZ",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1EntityResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "实体id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "实体配置",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "description": "实体配置"
+            }
+          },
+          {
+            "name": "type",
+            "description": "实体类型",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Entity"
+        ]
+      }
+    },
+    "/entities/{id}/patch": {
+      "put": {
+        "summary": "批量更新实体属性",
+        "operationId": "PatchEntityPropsZ",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1EntityResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "实体id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "实体属性",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "description": "实体属性"
+            }
+          },
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "description": "实体类型",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Entity"
+        ]
+      }
+    },
+    "/entities/{id}/properties": {
+      "get": {
+        "summary": "查询实体属性",
+        "operationId": "GetEntityProps",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1EntityResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "实体id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "description": "实体类型",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "property_keys",
+            "description": "实体属性字段, eg: pids=1,2,3",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Entity"
+        ]
+      },
+      "delete": {
+        "summary": "批量删除实体属性",
+        "operationId": "RemoveEntityProps",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1EntityResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "实体id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "type",
+            "description": "实体类型",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "property_keys",
+            "description": "实体属性字段",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Entity"
+        ]
+      },
+      "put": {
+        "summary": "更新(插入)实体属性",
+        "operationId": "UpdateEntityProps",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1EntityResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "实体id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "实体属性",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "description": "实体属性"
+            }
+          },
+          {
+            "name": "type",
+            "description": "实体类型",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Entity"
+        ]
+      }
+    },
+    "/rawdata/{entity_id}": {
+      "post": {
+        "summary": "查询实体原始数据",
+        "operationId": "GetRawdata",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1GetRawdataResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "entity_id",
+            "description": "实体id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "start_time": {
+                  "type": "string",
+                  "format": "int64",
+                  "description": "起始时间"
+                },
+                "end_time": {
+                  "type": "string",
+                  "format": "int64",
+                  "description": "终止时间"
+                },
+                "path": {
+                  "type": "string",
+                  "description": "属性的位置"
+                },
+                "page_num": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "记录开始位置"
+                },
+                "page_size": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "每页限制条数"
+                },
+                "is_descending": {
+                  "type": "boolean",
+                  "description": "是否逆序， false：不逆序，true:逆序"
+                },
+                "filters": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "description": "过滤条件"
+                }
+              },
+              "description": "查询原始数据请求",
+              "title": "GetRawdata"
+            }
+          }
+        ],
+        "tags": [
+          "Rawdata"
+        ]
+      }
+    },
+    "/subscriptions": {
+      "get": {
+        "summary": "查询订阅列表",
+        "operationId": "ListScription",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ListSubscriptionResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Subscription"
+        ]
+      },
+      "post": {
+        "summary": "创建订阅信息",
+        "operationId": "CreateSubscription",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1SubscriptionResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "description": "订阅信息",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1SubscriptionObject",
+              "description": "订阅信息"
+            }
+          },
+          {
+            "name": "id",
+            "description": "subscription id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Subscription"
+        ]
+      }
+    },
+    "/subscriptions/{id}": {
+      "get": {
+        "summary": "查询订阅信息",
+        "operationId": "GetSubscription",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1SubscriptionResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "订阅id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Subscription"
+        ]
+      },
+      "delete": {
+        "summary": "删除订阅信息",
+        "operationId": "DeleteSubscription",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1DeleteSubscriptionResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "订阅id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Subscription"
+        ]
+      },
+      "put": {
+        "summary": "更新订阅信息",
+        "operationId": "UpdateSubscription",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1SubscriptionResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "订阅id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "description": "订阅信息",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1SubscriptionObject",
+              "description": "订阅信息"
+            }
+          },
+          {
+            "name": "source",
+            "description": "来源id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "owner",
+            "description": "用户id",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Subscription"
+        ]
+      }
+    },
+    "/ts": {
+      "get": {
+        "summary": "最近查询数据的实体",
+        "operationId": "GetLatestEntities",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1GetLatestEntitiesResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "TS"
+        ]
+      }
+    },
+    "/ts/{id}": {
+      "get": {
+        "summary": "下载时序数据",
+        "operationId": "DownloadTSData",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1DownloadTSDataResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "实体id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "start_time",
+            "description": "起始时间",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "end_time",
+            "description": "终止时间",
+            "in": "query",
+            "required": false,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "identifiers",
+            "description": "标识符",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "TS",
+          "Internal"
+        ]
+      },
+      "post": {
+        "summary": "获取时序数据",
+        "operationId": "GetTSData",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1GetTSDataResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "实体id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "start_time": {
+                  "type": "string",
+                  "format": "int64",
+                  "description": "起始时间"
+                },
+                "end_time": {
+                  "type": "string",
+                  "format": "int64",
+                  "description": "终止时间"
+                },
+                "identifiers": {
+                  "type": "string",
+                  "description": "标识符"
+                },
+                "page_num": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "记录开始位置"
+                },
+                "page_size": {
+                  "type": "integer",
+                  "format": "int32",
+                  "description": "每页限制条数"
+                }
+              },
+              "description": "获取时序数据",
+              "title": "GetTSData"
+            }
+          }
+        ],
+        "tags": [
+          "TS"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "protobufNullValue": {
+      "type": "string",
+      "enum": [
+        "NULL_VALUE"
+      ],
+      "default": "NULL_VALUE",
+      "description": "`NullValue` is a singleton enumeration to represent the null value for the\n`Value` type union.\n\n The JSON representation for `NullValue` is JSON `null`.\n\n - NULL_VALUE: Null value."
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v1AppendExpressionResp": {
+      "type": "object",
+      "properties": {
+        "owner": {
+          "type": "string",
+          "description": "用户id"
+        },
+        "entity_id": {
+          "type": "string",
+          "description": "实体id"
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "description": "变更数量"
+        }
+      },
+      "description": "Append Expression Response."
+    },
+    "v1AppendMapperResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "实体类型"
+        },
+        "owner": {
+          "type": "string",
+          "description": "用户id"
+        },
+        "source": {
+          "type": "string",
+          "description": "来源id"
+        },
+        "entity_id": {
+          "type": "string",
+          "description": "实体id"
+        },
+        "mapper": {
+          "$ref": "#/definitions/v1Mapper",
+          "description": "映射信息"
+        }
+      },
+      "description": "Append Mapper Response."
+    },
+    "v1DeleteEntityResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "实体id"
+        },
+        "status": {
+          "type": "string",
+          "description": "操作状态"
+        }
+      },
+      "description": "Delete Entity Response."
+    },
+    "v1DeleteSubscriptionResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "订阅id"
+        },
+        "status": {
+          "type": "string",
+          "description": "状态"
+        }
+      }
+    },
+    "v1DownloadTSDataResponse": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "string",
+          "format": "byte",
+          "description": "数据内容"
+        },
+        "length": {
+          "type": "string",
+          "description": "数据长度"
+        },
+        "filename": {
+          "type": "string",
+          "description": "文件名"
+        }
+      }
+    },
+    "v1EntityResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "实体id"
+        },
+        "source": {
+          "type": "string",
+          "description": "来源id"
+        },
+        "owner": {
+          "type": "string",
+          "description": "用户id"
+        },
+        "type": {
+          "type": "string",
+          "description": "实体类型"
+        },
+        "version": {
+          "type": "string",
+          "format": "int64",
+          "description": "实体版本"
+        },
+        "last_time": {
+          "type": "string",
+          "format": "int64",
+          "description": "上次修改时间"
+        },
+        "template_id": {
+          "type": "string",
+          "description": "实体模版"
+        },
+        "description": {
+          "type": "string",
+          "description": "实体描述"
+        },
+        "mappers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Mapper"
+          },
+          "description": "实体映射"
+        },
+        "configs": {
+          "type": "object",
+          "description": "实体配置"
+        },
+        "properties": {
+          "type": "object",
+          "description": "实体属性"
+        }
+      },
+      "description": "Entity Response."
+    },
+    "v1Expression": {
+      "type": "object",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "目标属性"
+        },
+        "name": {
+          "type": "string",
+          "description": "表达式名称"
+        },
+        "expression": {
+          "type": "string",
+          "description": "表达式"
+        },
+        "description": {
+          "type": "string",
+          "description": "表达式描述"
+        }
+      },
+      "description": "Expression Definition."
+    },
+    "v1Expressions": {
+      "type": "object",
+      "properties": {
+        "expressions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Expression"
+          }
+        }
+      }
+    },
+    "v1GetExpressionResp": {
+      "type": "object",
+      "properties": {
+        "owner": {
+          "type": "string",
+          "description": "用户id"
+        },
+        "entity_id": {
+          "type": "string",
+          "description": "实体id"
+        },
+        "expression": {
+          "$ref": "#/definitions/v1Expression",
+          "description": "表达式信息"
+        }
+      },
+      "description": "Get Expression Response."
+    },
+    "v1GetLatestEntitiesResponse": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "string",
+          "format": "int64",
+          "description": "结果总数"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1EntityResponse"
+          },
+          "description": "最新的实体数据列表"
+        }
+      }
+    },
+    "v1GetMapperResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "实体类型"
+        },
+        "source": {
+          "type": "string",
+          "description": "来源id"
+        },
+        "owner": {
+          "type": "string",
+          "description": "用户id"
+        },
+        "entity_id": {
+          "type": "string",
+          "description": "实体id"
+        },
+        "mapper": {
+          "$ref": "#/definitions/v1Mapper",
+          "description": "映射信息"
+        }
+      },
+      "description": "Get Mapper Response."
+    },
+    "v1GetRawdataResponse": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "description": "实体列表数量"
+        },
+        "page_num": {
+          "type": "integer",
+          "format": "int32",
+          "description": "记录开始位置"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "description": "每页限制条数"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1RawdataResponse"
+          },
+          "description": "原始数据列表"
+        }
+      }
+    },
+    "v1GetTSDataResponse": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "description": "结果总数"
+        },
+        "page_num": {
+          "type": "integer",
+          "format": "int32",
+          "description": "记录开始位置"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "description": "每页限制条数"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1TSResponse"
+          },
+          "description": "结果列表"
+        }
+      }
+    },
+    "v1ListEntityRequest": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "type": "string",
+          "description": "来源id"
+        },
+        "owner": {
+          "type": "string",
+          "description": "用户id"
+        },
+        "query": {
+          "type": "string",
+          "description": "搜索关键词"
+        },
+        "condition": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1SearchCondition"
+          },
+          "description": "搜索条件"
+        },
+        "page_num": {
+          "type": "integer",
+          "format": "int32",
+          "description": "记录开始位置"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "description": "每页限制条数"
+        },
+        "order_by": {
+          "type": "string",
+          "description": "排序字段"
+        },
+        "is_descending": {
+          "type": "boolean",
+          "description": "是否逆序， false：不逆序，true:逆序"
+        }
+      },
+      "description": "获取实体列表",
+      "title": "ListEntities"
+    },
+    "v1ListEntityResponse": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer",
+          "format": "int32",
+          "description": "实体总数"
+        },
+        "page_num": {
+          "type": "integer",
+          "format": "int32",
+          "description": "记录开始位置"
+        },
+        "page_size": {
+          "type": "integer",
+          "format": "int32",
+          "description": "每页限制条数"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1EntityResponse"
+          },
+          "description": "实体列表"
+        }
+      },
+      "description": "List Entity Response."
+    },
+    "v1ListExpressionResp": {
+      "type": "object",
+      "properties": {
+        "owner": {
+          "type": "string",
+          "description": "用户id"
+        },
+        "entity_id": {
+          "type": "string",
+          "description": "实体id"
+        },
+        "expressions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Expression"
+          },
+          "description": "表达式信息"
+        }
+      },
+      "description": "List Expression Response."
+    },
+    "v1ListMapperResponse": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "实体类型"
+        },
+        "source": {
+          "type": "string",
+          "description": "来源id"
+        },
+        "owner": {
+          "type": "string",
+          "description": "用户id"
+        },
+        "entity_id": {
+          "type": "string",
+          "description": "实体id"
+        },
+        "mappers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Mapper"
+          },
+          "description": "映射信息"
+        }
+      },
+      "description": "List Mapper Response."
+    },
+    "v1ListSubscriptionResponse": {
+      "type": "object",
+      "properties": {
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "description": "订阅id"
+        },
+        "items": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1SubscriptionResponse"
+          },
+          "description": "订阅列表"
+        }
+      }
+    },
+    "v1Mapper": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "映射id"
+        },
+        "name": {
+          "type": "string",
+          "description": "映射名称"
+        },
+        "tql": {
+          "type": "string",
+          "description": "映射tql语句"
+        },
+        "description": {
+          "type": "string",
+          "description": "映射描述"
+        }
+      }
+    },
+    "v1Metadata": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "specversion": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "datacontenttype": {
+          "type": "string"
+        },
+        "subject": {
+          "type": "string"
+        },
+        "topic": {
+          "type": "string"
+        },
+        "pubsubname": {
+          "type": "string"
+        }
+      }
+    },
+    "v1RawdataResponse": {
+      "type": "object",
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "format": "int64",
+          "description": "时间戳，毫秒"
+        },
+        "id": {
+          "type": "string",
+          "description": "编号"
+        },
+        "entity_id": {
+          "type": "string",
+          "description": "实体id"
+        },
+        "path": {
+          "type": "string",
+          "description": "路径"
+        },
+        "values": {
+          "type": "string",
+          "description": "数据"
+        }
+      }
+    },
+    "v1RemoveExpressionResp": {
+      "type": "object",
+      "properties": {
+        "owner": {
+          "type": "string",
+          "description": "用户id"
+        },
+        "entity_id": {
+          "type": "string",
+          "description": "实体id"
+        },
+        "count": {
+          "type": "integer",
+          "format": "int32",
+          "description": "变更数量"
+        }
+      },
+      "description": "Remove Expression Response."
+    },
+    "v1RemoveMapperResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "映射id"
+        },
+        "type": {
+          "type": "string",
+          "description": "实体类型"
+        },
+        "owner": {
+          "type": "string",
+          "description": "用户id"
+        },
+        "source": {
+          "type": "string",
+          "description": "来源id"
+        },
+        "entity_id": {
+          "type": "string",
+          "description": "实体id"
+        }
+      },
+      "description": "Remove Mapper Response."
+    },
+    "v1SearchCondition": {
+      "type": "object",
+      "properties": {
+        "field": {
+          "type": "string",
+          "description": "实体属性字段"
+        },
+        "operator": {
+          "type": "string",
+          "description": "操作符 $gt $gte $eq $lt $lte "
+        },
+        "value": {
+          "type": "object",
+          "description": "实体数值"
+        }
+      }
+    },
+    "v1SubscriptionObject": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "type": "string",
+          "description": "订阅模式"
+        },
+        "source": {
+          "type": "string",
+          "description": "来源id"
+        },
+        "filter": {
+          "type": "string",
+          "description": "过滤规则"
+        },
+        "target": {
+          "type": "string",
+          "description": "目标id"
+        },
+        "topic": {
+          "type": "string",
+          "description": "topic主题名称"
+        },
+        "pubsub_name": {
+          "type": "string",
+          "description": "pubsub发布订阅名称"
+        },
+        "id": {
+          "type": "string",
+          "description": "订阅id"
+        },
+        "owner": {
+          "type": "string",
+          "description": "订阅者"
+        }
+      }
+    },
+    "v1SubscriptionResponse": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "订阅id"
+        },
+        "source": {
+          "type": "string",
+          "description": "来源id"
+        },
+        "owner": {
+          "type": "string",
+          "description": "用户id"
+        },
+        "subscription": {
+          "$ref": "#/definitions/v1SubscriptionObject",
+          "description": "订阅信息"
+        }
+      }
+    },
+    "v1TSResponse": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "type": "string",
+          "format": "int64",
+          "description": "时间"
+        },
+        "value": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "format": "float"
+          },
+          "description": "时序数据"
+        }
+      }
+    },
+    "v1TopicEventResponse": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

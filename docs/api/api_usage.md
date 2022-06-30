@@ -22,7 +22,7 @@ TKeel 物联网平台向用户开放所有资源操作相关的 API ,得益于�
 
 请求的整体流程如图所示：
 
-![api_usage](../../static/images/plugins/api_usage.png)
+![api_usage](../../static/images/plugins/api_usage.svg)
 
 
 

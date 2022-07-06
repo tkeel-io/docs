@@ -27,8 +27,6 @@ curl -fsSL https://raw.githubusercontent.com/tkeel-io/cli/master/install/install
 - 安装 [Dapr on Kubernetes](https://docs.dapr.io/operations/hosting/kubernetes/kubernetes-deploy/)
 - kubernetes worker 节点需安装 socat
 
-## 快速入门
-
 ### 安装 TKeel 平台
 
 ```bash
@@ -69,6 +67,46 @@ curl -fsSL https://raw.githubusercontent.com/tkeel-io/cli/master/install/install
 ✅  Success! tKeel Platform has been installed to namespace keel-system. To verify, run `tkeel plugin list' in your terminal. To get started, go here: https://tkeel.io/keel-getting-started
 ```
 
+### 自定义配置
+
+#### 生成默认配置
+
+tkeel 安装可以自定义配置
+
+```bash
+> tkeel config > config.yaml
+> cat config.yaml
+
+host:
+  admin: admin.tkeel.io # 管理平台的入口地址
+  tenant: tkeel.io # 租户平台的入口地址
+middleware: # 自定义中间件
+  cache: # 缓存
+    customized: false
+    url: redis://:Biz0P8Xoup@tkeel-middleware-redis-master:6379/0
+  database: # 数据库
+    customized: false
+    url: mysql://root:a3fks=ixmeb82a@tkeel-middleware-mysql:3306/tkeelauth
+  queue: # 消息队列
+    customized: false
+    url: kafka://tkeel-middleware-kafka-headless:9092
+  search: # 搜索
+    customized: false
+    url: elasticsearch://admin:admin@tkeel-middleware-elasticsearch-master:9200
+  service_registry: # 服务注册与发现
+    customized: false
+    url: etcd://tkeel-middleware-etcd:2379
+port: 30080 # 租户平台入口和管理平台入口的端口
+repo: # 插件源
+  name: tkeel
+  url: https://tkeel-io.github.io/helm-charts
+plugins: # 自动安装的插件列表
+  - tkeel/console-portal-admin@latest
+  - tkeel/console-portal-tenant@latest
+  - tkeel/console-plugin-admin-plugins@latest
+
+```
+
 ### 平台管理员
 
 #### 登录
@@ -79,7 +117,7 @@ curl -fsSL https://raw.githubusercontent.com/tkeel-io/cli/master/install/install
 ✅  You are Login Success!
 ```
 
-### 插件源管理
+### 插件管理
 
 #### 查看插件源
 
@@ -103,9 +141,7 @@ curl -fsSL https://raw.githubusercontent.com/tkeel-io/cli/master/install/install
 ✅  Successfully delete!
 ```
 
-### 安装包
-
-#### 查看安装包列表
+#### 查看插件源所有安装包
 
 ```bash
 > tkeel installer list -r <repo-name>
@@ -115,9 +151,7 @@ curl -fsSL https://raw.githubusercontent.com/tkeel-io/cli/master/install/install
   console-plugin-admin-plugins                0.6.0              tkeel-io-dev  SAME_NAME
 ```
 
-### 插件管理
-
-#### 查看已安装插件
+#### 查看所有已安装插件
 
 ```bash
 > tkeel plugin list
@@ -155,7 +189,7 @@ curl -fsSL https://raw.githubusercontent.com/tkeel-io/cli/master/install/install
 ✅  Successfully disabled!
 ```
 
-### 租户管理管理
+### 租户管理
 
 #### 创建租户
 
@@ -185,44 +219,6 @@ curl -fsSL https://raw.githubusercontent.com/tkeel-io/cli/master/install/install
 ```bash
 > tkeel tenant delete <tenant-id>
 ✅  Successfully delete!
-```
-
-### 自定义配置
-
-#### 生成默认配置
-
-```bash
-> tkeel config > config.yaml
-> cat config.yaml
-
-host:
-  admin: admin.tkeel.io
-  tenant: tkeel.io
-middleware:
-  cache:
-    customized: false
-    url: redis://:Biz0P8Xoup@tkeel-middleware-redis-master:6379/0
-  database:
-    customized: false
-    url: mysql://root:a3fks=ixmeb82a@tkeel-middleware-mysql:3306/tkeelauth
-  queue:
-    customized: false
-    url: kafka://tkeel-middleware-kafka-headless:9092
-  search:
-    customized: false
-    url: elasticsearch://admin:admin@tkeel-middleware-elasticsearch-master:9200
-  service_registry:
-    customized: false
-    url: etcd://tkeel-middleware-etcd:2379
-port: 30080
-repo:
-  name: tkeel
-  url: https://tkeel-io.github.io/helm-charts
-plugins:
-  - tkeel/console-portal-admin@latest
-  - tkeel/console-portal-tenant@latest
-  - tkeel/console-plugin-admin-plugins@latest
-
 ```
 
 ### 调用插件接口

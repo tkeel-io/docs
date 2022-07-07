@@ -1,0 +1,43 @@
+@import '../helpers/index';
+
+.navbar__logo {
+  height: 3rem;
+}
+
+.navbar__title {
+  font-weight: 700;
+  font-size: px-to-rem(18);
+  line-height: px-to-rem(28);
+}
+
+a.navbar__item.navbar__link {
+  font-weight: 400;
+  font-size: px-to-rem(14);
+  line-height: px-to-rem(24);
+}
+
+a.navbar__item.navbar__link.navbar__link--active {
+  position: relative;
+  font-weight: 700;
+
+  &::after {
+    position: absolute;
+    right: var(--ifm-navbar-item-padding-horizontal);
+    bottom: -0.5rem;
+    left: var(--ifm-navbar-item-padding-horizontal);
+    display: block;
+    height: 4px;
+    background-color: var(--ifm-color-primary);
+    content: ' ';
+  }
+}
+
+.navbar--dark {
+  --ifm-navbar-background-color: #1a202c;
+}
+
+@media screen and (max-width: 996px) {
+  .navbar__logo {
+    height: 2.5rem;
+  }
+}

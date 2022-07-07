@@ -1,0 +1,145 @@
+@import '../helpers/index';
+
+.markdown {
+  font-size: px-to-rem(14);
+  line-height: px-to-rem(24);
+
+  h1 {
+    font-size: px-to-rem(24);
+
+    &:first-child {
+      font-size: px-to-rem(20);
+    }
+  }
+
+  h2 {
+    font-size: px-to-rem(20);
+  }
+
+  h3 {
+    font-size: px-to-rem(18);
+  }
+
+  h4 {
+    font-size: px-to-rem(16);
+  }
+
+  h5 {
+    font-size: px-to-rem(14);
+  }
+
+  h6 {
+    font-size: px-to-rem(12);
+  }
+
+  img {
+    box-sizing: border-box;
+    padding: 8px;
+    background-color: #fff;
+    border: 1px solid #d1d7df;
+    box-shadow: 0 10px 15px -3px rgb(113 128 150 / 10%),
+      0 4px 6px -2px rgb(113 128 150 / 5%);
+  }
+
+  table {
+    display: table;
+    width: 100%;
+
+    th,
+    td {
+      text-align: left;
+    }
+  }
+
+  .admonition {
+    &.alert {
+      --ifm-alert-shadow: 0 4px 4px rgb(182 194 205 / 20%);
+    }
+
+    &.alert--success {
+      --ifm-alert-background-color: #eef8f3;
+      --ifm-alert-foreground-color: #55bc8a;
+      --ifm-alert-border-color: #55bc8a;
+
+      .admonition-icon::after {
+        background-image: url('/images/icons/tip.svg');
+      }
+    }
+
+    &.alert--info {
+      --ifm-alert-background-color: #ebf8ff;
+      --ifm-alert-foreground-color: #329dce;
+      --ifm-alert-border-color: #329dce;
+
+      .admonition-icon::after {
+        background-image: url('/images/icons/info.svg');
+      }
+    }
+
+    &.alert--warning {
+      --ifm-alert-background-color: #fff4e8;
+      --ifm-alert-foreground-color: #f5a623;
+      --ifm-alert-border-color: #f5a623;
+
+      .admonition-icon::after {
+        background-image: url('/images/icons/caution.svg');
+      }
+    }
+
+    &.alert--danger {
+      --ifm-alert-background-color: #fff5f5;
+      --ifm-alert-foreground-color: #ca2621;
+      --ifm-alert-border-color: #ca2621;
+
+      .admonition-icon::after {
+        background-image: url('/images/icons/danger.svg');
+      }
+    }
+
+    .admonition-heading {
+      & > h5 {
+        color: var(--ifm-alert-foreground-color);
+
+        .admonition-icon {
+          & > svg {
+            display: none;
+          }
+
+          &::after {
+            display: inline-block;
+            width: 22px;
+            height: 22px;
+            background-repeat: no-repeat;
+            background-position: center;
+            content: ' ';
+          }
+        }
+      }
+    }
+
+    &.alert--secondary {
+      --ifm-alert-background-color: #f9fbfd;
+      --ifm-alert-foreground-color: #6b7b95;
+      --ifm-alert-border-color: #ccd3db;
+
+      border: 1px solid #d8dee5;
+
+      .admonition-heading {
+        & > h5 {
+          color: #242e42;
+
+          & > .admonition-icon::after {
+            background-image: url('/images/icons/note.svg');
+          }
+        }
+      }
+    }
+  }
+}
+
+html {
+  &[data-theme='light'] {
+    --ifm-font-color-base: #404e68;
+    --ifm-heading-color: #242e42;
+  }
+}

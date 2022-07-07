@@ -1,0 +1,23 @@
+@import '../helpers/index';
+
+.theme-doc-sidebar-container {
+  min-height: 100vh;
+}
+
+.menu__link {
+  font-size: px-to-rem(14);
+  line-height: px-to-rem(24);
+}
+
+.menu__caret::before,
+.menu__link--sublist-caret::after {
+  background-size: 1rem 1rem;
+}
+
+html {
+  &[data-theme='light'] {
+    .theme-doc-sidebar-container {
+      background-color: #f9fbfd;
+    }
+  }
+}

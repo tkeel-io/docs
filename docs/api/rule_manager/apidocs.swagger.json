@@ -16,6 +16,38 @@
     "application/json"
   ],
   "paths": {
+    "/devices/{id}": {
+      "delete": {
+        "summary": "从所有的路由设备中删除设备",
+        "operationId": "RemoveDeviceFromAllRule",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "properties": {}
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "设备id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
     "/rules": {
       "get": {
         "summary": "查询路由列表",
@@ -513,6 +545,57 @@
         ]
       }
     },
+    "/rules/{id}/sql": {
+      "put": {
+        "summary": "更新路由SQL规则",
+        "operationId": "UpdateRuleSQL",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/ruleRuleSqlUpdateResp"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "description": "路由id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "uint64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "select_expr": {
+                  "type": "string",
+                  "description": "select语句"
+                },
+                "where_expr": {
+                  "type": "string",
+                  "description": "where语句"
+                }
+              }
+            }
+          }
+        ],
+        "tags": [
+          "Rule"
+        ]
+      }
+    },
     "/rules/{id}/subscribe/error": {
       "delete": {
         "summary": "取消错误信息订阅",
@@ -777,6 +860,13 @@
                     "$ref": "#/definitions/ruleMapField"
                   },
                   "description": "映射表"
+                },
+                "tags": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "description": "自定义标签"
                 }
               }
             }
@@ -884,6 +974,13 @@
                 "sink_id": {
                   "type": "string",
                   "description": "验证成功后返回的id"
+                },
+                "tags": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "description": "自定义标签"
                 }
               }
             }
@@ -1336,6 +1433,21 @@
         "endpoint": {
           "type": "string",
           "description": "目标地址字符串"
+        },
+        "tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "自定义标签"
+        },
+        "org": {
+          "type": "string",
+          "description": "influxdb org"
+        },
+        "bucket": {
+          "type": "string",
+          "description": "influxdb bucket"
         }
       }
     },
@@ -1506,6 +1618,14 @@
         "model_name": {
           "type": "string",
           "description": "模板名称"
+        },
+        "select_expr": {
+          "type": "string",
+          "description": "select语句"
+        },
+        "where_expr": {
+          "type": "string",
+          "description": "where语句"
         }
       }
     },
@@ -1702,6 +1822,29 @@
         "data"
       ]
     },
+    "ruleRuleSqlUpdateResp": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "uint64",
+          "description": "路由id"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "int64",
+          "description": "更新时间"
+        },
+        "select_expr": {
+          "type": "string",
+          "description": "select语句"
+        },
+        "where_expr": {
+          "type": "string",
+          "description": "where语句"
+        }
+      }
+    },
     "ruleRuleStatusSwitchResp": {
       "type": "object",
       "properties": {
@@ -1840,6 +1983,13 @@
             "$ref": "#/definitions/ruleMapField"
           },
           "description": "映射表"
+        },
+        "tags": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "自定义标签"
         }
       }
     }

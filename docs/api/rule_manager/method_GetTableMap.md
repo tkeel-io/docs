@@ -1,6 +1,7 @@
 ---
 title: '查询数据表结构映射'
 description: "GetTableMap"
+sidebar_position: 30
 ---
 ## 接口说明
 调用该接口查询数据表结构映射。
@@ -14,8 +15,8 @@ get /sink/{id}/maps
 ## 请求参数
 
 | 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
-| ---- | ---------- | ----------- | ----------- | ----------- |    
-| id | path | string | 验证成功后返回的id |  Required |  
+| ---- | ---------- | ----------- | ----------- | ----------- |
+| id | path | string | 验证成功后返回的id |  Required | 
 | table_name | query | string | 数据表名称 |  false |
 
 ## 响应
@@ -36,6 +37,9 @@ get /sink/{id}/maps
 | table_name | string | 数据表名称 |
 
 
+
+
+
 ### ruleMapField
 | 字段名 | 类型 | 描述 |
 | ---- | ---- | ----------- |
@@ -43,12 +47,7 @@ get /sink/{id}/maps
 | t_field | Object | 模板字段 [ 具体参数可见下面 [ruleField](#ruleField) ]  |
 
 
-### ruleField
-| 字段名 | 类型 | 描述 |
-| ---- | ---- | ----------- | 
-| isPK | boolean | 是否为主键 | 
-| name | string | 字段名称 | 
-| type | string | 字段类型 |
+
 
 
 ### ruleField
@@ -59,12 +58,29 @@ get /sink/{id}/maps
 | type | string | 字段类型 |
 
 
+
+
+
 ### ruleField
 | 字段名 | 类型 | 描述 |
 | ---- | ---- | ----------- | 
 | isPK | boolean | 是否为主键 | 
 | name | string | 字段名称 | 
 | type | string | 字段类型 |
+
+
+
+
+
+### ruleField
+| 字段名 | 类型 | 描述 |
+| ---- | ---- | ----------- | 
+| isPK | boolean | 是否为主键 | 
+| name | string | 字段名称 | 
+| type | string | 字段类型 |
+
+
+
 
 
 

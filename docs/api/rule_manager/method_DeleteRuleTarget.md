@@ -1,6 +1,7 @@
 ---
 title: '删除路由目标'
 description: "DeleteRuleTarget"
+sidebar_position: 41
 ---
 ## 接口说明
 调用该接口删除路由目标。
@@ -14,7 +15,7 @@ delete /rules/{id}/target/{target_id}
 ## 请求参数
 
 | 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
-| ---- | ---------- | ----------- | ----------- | ----------- |    
+| ---- | ---------- | ----------- | ----------- | ----------- |
 | id | path | string | 路由id |  Required | 
 | target_id | path | string | 路由目标id |  Required | 
 

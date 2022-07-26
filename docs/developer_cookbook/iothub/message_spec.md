@@ -5,15 +5,18 @@ sidebar_position: 3
 
 ## 消息格式分类
 - 支持三类上行数据（用户自定义数据， 属性， 遥测）
-- 支持两类下行数据（属性（可写）， 命令）
+- 支持三类下行数据（用户自定义数据（原始数据）、属性， 命令）
 
-### 用户自定义数据
+## 上行数据
+
+### 1、用户自定义数据上行
+
 #### 推送用户自定义数据到平台
 - topic： 合法的非平台预定义的 topic 均作为原始数据topic, 用户可以自定义。
 - payload： 上行原始数据可以是任意类型的数据， 比如 json, 二进制数据等用户自定义数据.
 
 
-### 属性数据
+### 2、属性数据上行
 属性API包括以下几种
 - 设备推送属性数据到平台
 - 设备订阅平台属性变化
@@ -30,19 +33,9 @@ sidebar_position: 3
 }
 ```
 
-#### 订阅平台属性变化
 
-设备订阅 topic: `v1/devices/me/attributes`
 
-平台侧修改属性后设备侧会收到变更的属性 payload：
-```json
-{
-   "attribute1": "value1",
-   "attribute2": "value2"
-}
-```
-
-### 遥测数据
+### 3、遥测数据上行
 - 设备推送遥测数据到平台
 - topic: `v1/devices/me/telemetry`
 - payload:
@@ -54,7 +47,36 @@ sidebar_position: 3
 ```
 
 
-### 命令数据
+
+## 下行数据
+
+### 1、自定义数据（原始数据）下行
+
+设备订阅 v1/devices/me/raw
+
+平台推送数据到设备的 topic(v1/devices/me/raw)
+
+```
+Tips:
+命令跟反控的区别在于命令下发的是格式化的数据（json），而反控可以是任意的数据
+```
+
+### 2、属性下行
+
+设备订阅 topic: `v1/devices/me/attributes`
+
+平台侧修改属性后设备侧会收到变更的属性 payload：
+
+```json
+{
+   "attribute1": "value1",
+   "attribute2": "value2"
+}
+```
+
+
+
+### 3、命令数据下行
 
 设备订阅topic: `v1/devices/me/commands`
 
@@ -90,15 +112,7 @@ payload:
 }
 ```
 
-### 反控数据
-设备订阅 v1/devices/me/raw
 
-平台推送数据到设备的 topic(v1/devices/me/raw)
-
-```
-Tips:
-命令跟反控的区别在于命令下发的是格式化的数据（json），而反控可以是任意的数据
-```
 
 ### 注意
 

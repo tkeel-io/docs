@@ -26,7 +26,7 @@ id: device
 
 
 
-![image-20211202034919748](../../static/images/device/image-20211202034919748.png)
+![image-20211202034919748](../../../static/images/device/image-20211202034919748.png)
 
 
 
@@ -59,7 +59,7 @@ id: device
 
 ### 物理世界的组成
 
-![image-20211201235714219](../../static/images/device/image-20211201235714219.png)
+![image-20211201235714219](../../../static/images/device/image-20211201235714219.png)
 
 ### 抽象的基础逻辑
 
@@ -98,13 +98,13 @@ id: device
 
 组织的本质为构建关系，根据关系自由编排组织成某一目的的业务或服务形态
 
-![image-20211202001120160](../../static/images/device/image-20211202001120160.png)
+![image-20211202001120160](../../../static/images/device/image-20211202001120160.png)
 
 
 
 ### 如何构建关系
 
-![image-20211202001203358](../../static/images/device/image-20211202001203358.png)
+![image-20211202001203358](../../../static/images/device/image-20211202001203358.png)
 
 
   Actor 模式（组织数字化设备）:   
@@ -119,11 +119,11 @@ id: device
 
 ### 选择物理设备到数字化设备的感知映射方式
 
-![image-20211202002219190](../../static/images/device/image-20211202002219190.png)
+![image-20211202002219190](../../../static/images/device/image-20211202002219190.png)
 
 ### 物理设备数据流驱动数字化设备示例
 
-![image-20211202002641305](../../static/images/device/image-20211202002641305.png)
+![image-20211202002641305](../../../static/images/device/image-20211202002641305.png)
 
 ### 物理设备数据驱动数字化设备示例
 
@@ -134,13 +134,13 @@ id: device
 
   一切行为都能解析出动机和目地，抽象、定义、组织编排、驱动数字化设备的最终目的是为了解决某一场景需求，例如：对物理设备实时数据映射、控制、融合构建时空关系、追溯过去、提效降本现在、预测优化未来等.
 
-![image-20211202003145719](../../static/images/device/image-20211202003145719.png)
+![image-20211202003145719](../../../static/images/device/image-20211202003145719.png)
 
 ### 数字化设备输出能力
 
 #### 使用基础能力
 
-![image-20211202040942237](../../static/images/device/image-20211202040942237.png)
+![image-20211202040942237](../../../static/images/device/image-20211202040942237.png)
 
  1. 以实体的维度信息按需投递
  2. 以实体为维度信息自动传播

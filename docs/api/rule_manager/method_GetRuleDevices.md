@@ -1,6 +1,7 @@
 ---
 title: '查询路由的设备列表'
 description: "GetRuleDevices"
+sidebar_position: 35
 ---
 ## 接口说明
 调用该接口查询路由的设备列表。
@@ -14,8 +15,8 @@ get /rules/{id}/devices
 ## 请求参数
 
 | 名称 | 参数位置 | 类型 | 描述 |  是否必须 |
-| ---- | ---------- | ----------- | ----------- | ----------- |    
-| id | path | string | 路由id |  Required |  
+| ---- | ---------- | ----------- | ----------- | ----------- |
+| id | path | string | 路由id |  Required | 
 | page_num | query | integer | 页码 |  true |
 | page_size | query | integer | 每页数量 |  true |
 | order_by | query | string | 排序字段 |  false |
@@ -42,6 +43,9 @@ get /rules/{id}/devices
 | total | integer | 总数 |
 
 
+
+
+
 ### ruleDevice
 | 字段名 | 类型 | 描述 |
 | ---- | ---- | ----------- | 
@@ -50,6 +54,9 @@ get /rules/{id}/devices
 | name | string | 设备名称 | 
 | status | string | 设备状态 | 
 | template | string | 设备模板 |
+
+
+
 
 
 

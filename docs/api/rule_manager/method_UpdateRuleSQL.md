@@ -1,15 +1,15 @@
 ---
-title: '切换路由状态'
-description: "SwitchRuleStatus"
-sidebar_position: 54
+title: '更新路由SQL规则'
+description: "UpdateRuleSQL"
+sidebar_position: 46
 ---
 ## 接口说明
-调用该接口切换路由状态。
+调用该接口更新路由SQL规则。
 
 ## URI
 
 ```
-put /rules/{id}/running_status
+put /rules/{id}/sql
 ```
 
 ## 请求参数
@@ -21,7 +21,8 @@ put /rules/{id}/running_status
 ### 请求Body
 | 字段名 | 类型 | 描述 |
 | ---- | ---- | ----------- | 
-| status | integer | 状态 1 运行中, 状态 0 停止 |
+| select_expr | string | select语句 | 
+| where_expr | string | where语句 |
 
 
 
@@ -36,14 +37,16 @@ put /rules/{id}/running_status
 ### 响应<200>
 | Code | 描述 | 类型 |
 | ---- | ----------- | ------ | 
-| 200 | OK | Object([ruleRuleStatusSwitchResp](#ruleRuleStatusSwitchResp)) |
+| 200 | OK | Object([ruleRuleSqlUpdateResp](#ruleRuleSqlUpdateResp)) |
 
-#### ruleRuleStatusSwitchResp
+#### ruleRuleSqlUpdateResp
 
 | 字段名 | 类型 | 描述 |
 | ---- | ---- | ----------- | 
 | id | string | 路由id | 
-| status | integer | 状态 1 运行中, 状态 0 停止 |
+| select_expr | string | select语句 | 
+| updated_at | string | 更新时间 | 
+| where_expr | string | where语句 |
 
 
 

@@ -36,11 +36,33 @@ const config = {
         height: 28,
       },
       items: [
-        { to: '/getting_started/guide', label: '新手引导', position: 'left' },
-        { to: '/api/Core/tag', label: 'API', position: 'left' },
+        {
+          type: 'docSidebar',
+          sidebarId: 'startSidebar',
+          position: 'left',
+          label: '快速开始',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'introSidebar',
+          position: 'left',
+          label: '熟悉tKeel',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'developSidebar',
+          position: 'left',
+          label: '开发文档',
+        },
+        {
+          type: 'docSidebar',
+          sidebarId: 'apiSidebar',
+          position: 'left',
+          label: 'API',
+        }
       ],
     },
-    footer: {
+footer: {
       style: 'dark',
       links: [
         {

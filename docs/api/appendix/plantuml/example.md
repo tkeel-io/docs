@@ -24,7 +24,7 @@ db --> user : 返回结果
 ```plantuml
 participant "用户" as user
 participant "APIServer(Keel)"  as keel
-participant "设备管理"  as device
+participant "设备管理(device)"  as device
 participant "CoreService"  as core
 participant "Redis"  as redis
 participant "Mysql"  as mysql
